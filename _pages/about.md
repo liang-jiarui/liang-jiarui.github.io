@@ -8,5 +8,3 @@ redirect_from:
 ---
 
 Liang is a Master student at Tsinghua University, supervised by [Prof. Bo Zheng](https://zheng-bo.com/).
-- Zhang Wanting 
-- Zhang Wanting

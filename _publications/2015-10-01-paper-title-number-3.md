@@ -1,5 +1,5 @@
 ---
-title: "Paper Title Number 3"
+title: "Long-term operation optimization of circulating water systems under fouling conditions"
 collection: publications
 category: manuscripts
 permalink: /publication/2015-10-01-paper-title-number-3

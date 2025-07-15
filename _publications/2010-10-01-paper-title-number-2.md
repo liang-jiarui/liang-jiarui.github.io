@@ -1,5 +1,5 @@
 ---
-title: "Paper Title Number 2"
+title: "Degradation of 1,2,3-trichloropropane by pyrite activating sodium percarbonate and the implications for groundwater remediation"
 collection: publications
 category: manuscripts
 permalink: /publication/2010-10-01-paper-title-number-2

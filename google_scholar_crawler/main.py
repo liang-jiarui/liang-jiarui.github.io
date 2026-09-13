@@ -4,6 +4,8 @@
 import json
 import os
 import re
+import sys
+import time
 import urllib.request
 from datetime import datetime, timezone
 
@@ -20,17 +22,59 @@ HEADERS = {
 }
 
 
-def fetch_html(url: str) -> str:
-    try:
-        import requests
+class ScholarUnavailable(RuntimeError):
+    """Google Scholar blocked the request or returned unusable HTML."""
 
-        response = requests.get(url, headers=HEADERS, timeout=30)
-        response.raise_for_status()
-        return response.text
-    except ImportError:
-        request = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(request, timeout=30) as response:
-            return response.read().decode("utf-8", "replace")
+
+def is_blocked(html: str) -> bool:
+    text = html.lower()
+    return any(
+        marker in text
+        for marker in (
+            "unusual traffic",
+            "gs_captcha",
+            "our systems have detected",
+        )
+    ) or ("gsc_rsb_std" not in html and "cited by" not in text)
+
+
+def fetch_html(url: str) -> str:
+    last_error = None
+    for attempt in range(3):
+        try:
+            import requests
+
+            response = requests.get(url, headers=HEADERS, timeout=30)
+            if response.status_code in {403, 429, 503}:
+                last_error = f"HTTP {response.status_code}"
+                time.sleep(2**attempt)
+                continue
+            response.raise_for_status()
+            html = response.text
+        except ImportError:
+            request = urllib.request.Request(url, headers=HEADERS)
+            try:
+                with urllib.request.urlopen(request, timeout=30) as response:
+                    html = response.read().decode("utf-8", "replace")
+            except Exception as exc:
+                last_error = str(exc)
+                time.sleep(2**attempt)
+                continue
+        except Exception as exc:
+            last_error = str(exc)
+            time.sleep(2**attempt)
+            continue
+
+        if is_blocked(html):
+            last_error = "blocked or captcha HTML"
+            time.sleep(2**attempt)
+            continue
+        return html
+
+    raise ScholarUnavailable(
+        f"Google Scholar is unavailable from this runner ({last_error}). "
+        "The site will keep using cached citation counts."
+    )
 
 
 def parse_papers(html):
@@ -64,21 +108,24 @@ def parse_stats(html: str) -> dict:
 
     hindex = cells[2] if len(cells) >= 3 else None
     if citedby is None:
-        raise RuntimeError("Could not parse citation count from Google Scholar HTML")
-
-    papers = parse_papers(html)
+        raise ScholarUnavailable("Could not parse citation count from Google Scholar HTML")
 
     return {
         "citedby": citedby,
         "hindex": hindex,
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "scholar_id": SCHOLAR_ID,
-        "papers": papers,
+        "papers": parse_papers(html),
     }
 
 
-def main() -> None:
-    data = parse_stats(fetch_html(URL))
+def main() -> int:
+    try:
+        data = parse_stats(fetch_html(URL))
+    except ScholarUnavailable as exc:
+        print(f"::warning:: {exc}")
+        return 1
+
     os.makedirs("results", exist_ok=True)
     with open("results/gs_data.json", "w", encoding="utf-8") as handle:
         json.dump(data, handle, ensure_ascii=False)
@@ -88,7 +135,8 @@ def main() -> None:
             handle,
         )
     print(json.dumps(data, indent=2, ensure_ascii=False))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

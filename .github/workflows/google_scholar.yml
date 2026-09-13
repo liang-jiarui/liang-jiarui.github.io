@@ -17,9 +17,9 @@ jobs:
   crawl:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -27,11 +27,14 @@ jobs:
         run: pip install requests
 
       - name: Fetch citation stats
+        id: fetch
+        continue-on-error: true
         env:
           GOOGLE_SCHOLAR_ID: AJl9nB4AAAAJ
         run: python google_scholar_crawler/main.py
 
       - name: Publish stats branch
+        if: hashFiles('results/gs_data.json') != ''
         run: |
           mkdir -p /tmp/gs-stats
           cp results/gs_data.json results/gs_data_shieldsio.json /tmp/gs-stats/

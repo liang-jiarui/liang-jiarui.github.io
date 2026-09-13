@@ -6,7 +6,9 @@
   <span class="pub-item__index" aria-hidden="true"></span>
   <div class="pub-item__body">
     <h3 class="pub-item__title">
-      {% if post.paperurl %}
+      {% if post.webpage %}
+        <a href="{{ post.webpage }}">{{ title }}</a>
+      {% elsif post.paperurl %}
         <a href="{{ post.paperurl }}">{{ title }}</a>
       {% else %}
         <a href="{{ base_path }}{{ post.url }}">{{ title }}</a>

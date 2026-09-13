@@ -95,6 +95,7 @@
   margin-bottom: 0.75em;
   overflow: hidden;
   line-height: 0;
+  text-align: center;
 
   img {
     display: block;
@@ -102,6 +103,7 @@
     width: 100%;
     max-width: 100%;
     height: auto;
+    margin: 0 auto;
     object-fit: contain;
     border: 0;
     padding: 0;
@@ -116,6 +118,7 @@
   padding-left: 0;
   padding-right: 0;
   line-height: 1.4;
+  text-align: center;
 }
 
 .author__name {
@@ -129,6 +132,7 @@
 .sidebar .author__name {
   font-family: $sans-serif;
   font-size: $type-size-5;
+  text-align: center;
 }
 
 .sidebar .author__desktop {
@@ -149,6 +153,7 @@
 
 .author__bio {
   margin: 0;
+  text-align: center;
 
   @include breakpoint($large) {
     margin-top: 10px;

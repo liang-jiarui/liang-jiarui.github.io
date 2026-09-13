@@ -1,0 +1,35 @@
+{% if site.author.googlescholar %}
+  <p class="pub-scholar">
+    Also on <a href="{{ site.author.googlescholar }}">Google Scholar</a>
+    <span class="scholar-cite scholar-cite--inline">
+      · <span data-scholar-citations>{{ site.data.scholar.citedby }}</span> citations
+      · h-index <span data-scholar-hindex>{{ site.data.scholar.hindex }}</span>
+    </span>
+  </p>
+{% endif %}
+
+{% if site.publication_category %}
+  {% for category in site.publication_category %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        <h3 class="pub-heading reveal">{{ category[1].title }}</h3>
+        <div class="pub-list">
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include pub-item.html %}
+    {% endfor %}
+    {% if title_shown %}
+      </div>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <div class="pub-list">
+  {% for post in site.publications reversed %}
+    {% include pub-item.html %}
+  {% endfor %}
+  </div>
+{% endif %}

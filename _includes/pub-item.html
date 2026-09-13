@@ -3,18 +3,24 @@
 {% assign authors = post.authors | default: site.author.name | replace: 'Jiarui Liang', '<strong>Jiarui Liang</strong>' %}
 
 <article class="pub-item reveal">
-  <h3 class="pub-item__title">
-    {% if post.paperurl %}
-      <a href="{{ post.paperurl }}">{{ title }}</a>
-    {% else %}
-      <a href="{{ base_path }}{{ post.url }}">{{ title }}</a>
-    {% endif %}
-  </h3>
-  <p class="pub-item__authors">{{ authors | raw }}</p>
-  <p class="pub-item__meta">
-    <i>{{ post.venue }}</i>, {{ post.date | date: "%Y" }}
-    {% if post.paperurl %}
-      · <a href="{{ post.paperurl }}">PDF</a>
-    {% endif %}
-  </p>
+  <span class="pub-item__index" aria-hidden="true"></span>
+  <div class="pub-item__body">
+    <h3 class="pub-item__title">
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}">{{ title }}</a>
+      {% else %}
+        <a href="{{ base_path }}{{ post.url }}">{{ title }}</a>
+      {% endif %}
+    </h3>
+    <p class="pub-item__authors">{{ authors | raw }}</p>
+    <p class="pub-item__meta">
+      <i>{{ post.venue }}</i>, {{ post.date | date: "%Y" }}
+      {% if post.paperurl %}
+        · <a href="{{ post.paperurl }}">PDF</a>
+      {% endif %}
+      <span class="pub-item__cites" data-scholar-paper="{{ post.title | escape }}">
+        · Cited by <span data-scholar-paper-count>{{ post.citedby }}</span>
+      </span>
+    </p>
+  </div>
 </article>

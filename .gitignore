@@ -6,6 +6,9 @@ vendor/bundle/
 # Ignore the directory for local files during development
 local/
 
+# Ignore crawler output used only by the GitHub Action
+results/
+
 # Ignore the Gemfile that is generated
 Gemfile.lock
 

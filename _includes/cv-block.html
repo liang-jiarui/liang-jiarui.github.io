@@ -1,0 +1,17 @@
+{% include base_path %}
+{% assign cv_pdf = base_path | append: '/files/CV-Jiarui Liang-20260913.pdf' | replace: ' ', '%20' %}
+
+<p class="cv-contact">
+  Email: <a href="mailto:ljr23@mails.tsinghua.edu.cn">ljr23@mails.tsinghua.edu.cn</a>
+</p>
+
+<p class="cv-actions">
+  <a class="btn" href="{{ cv_pdf }}" target="_blank" rel="noopener">View PDF</a>
+  <a class="btn btn--inverse" href="{{ cv_pdf }}" download="CV-Jiarui Liang-20260913.pdf">Download PDF</a>
+</p>
+
+<div class="cv-preview{% if include.compact %} cv-preview--compact{% endif %}">
+  <object data="{{ cv_pdf }}" type="application/pdf" aria-label="Curriculum Vitae of Jiarui Liang">
+    <p>The PDF preview is unavailable in this browser. <a href="{{ cv_pdf }}" target="_blank" rel="noopener">Open the CV</a> instead.</p>
+  </object>
+</div>

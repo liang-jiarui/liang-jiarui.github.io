@@ -1,0 +1,27 @@
+{% include base_path %}
+{% assign name = item.school | default: item.org %}
+{% assign subtitle = item.degree | default: item.role %}
+
+<article class="edu-card reveal">
+  <div class="edu-card__logo">
+    {% if item.logo %}
+      <img src="{{ base_path }}{{ item.logo }}" alt="{{ name }} emblem">
+    {% else %}
+      <span class="edu-card__mark" aria-hidden="true">{{ item.mark }}</span>
+    {% endif %}
+  </div>
+  <div class="edu-card__body">
+    <h3 class="edu-card__school">
+      {% if item.url %}
+        <a href="{{ item.url }}" target="_blank" rel="noopener">{{ name }}</a>
+      {% else %}
+        {{ name }}
+      {% endif %}
+    </h3>
+    <p class="edu-card__degree">{{ subtitle }}</p>
+    {% if item.note %}
+      <p class="edu-card__note">{{ item.note }}</p>
+    {% endif %}
+  </div>
+  <p class="edu-card__years">{{ item.years }}</p>
+</article>

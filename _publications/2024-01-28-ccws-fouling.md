@@ -7,6 +7,7 @@ authors: "Jiarui Liang, Yong Tian, Shutong Yang, Yong Wang, Ruiqi Yin, Yufei Wan
 date: 2024-01-28
 venue: "Chinese Journal of Chemical Engineering"
 paperurl: "/files/liang-2024-ccws-fouling.pdf"
+citedby: 17
 citation: 'Jiarui Liang, Yong Tian, Shutong Yang, Yong Wang, Ruiqi Yin, Yufei Wang. (2024). "Long-term operation optimization of circulating cooling water systems under fouling conditions." <i>Chinese Journal of Chemical Engineering</i>, 65(1), 255–267. <a href="https://doi.org/10.1016/j.cjche.2023.08.008">https://doi.org/10.1016/j.cjche.2023.08.008</a>'
 ---
 

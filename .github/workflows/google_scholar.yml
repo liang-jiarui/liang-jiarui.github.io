@@ -1,0 +1,46 @@
+name: Update Google Scholar citations and h-index
+
+on:
+  schedule:
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - "google_scholar_crawler/**"
+      - ".github/workflows/google_scholar.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch citation stats
+        env:
+          GOOGLE_SCHOLAR_ID: AJl9nB4AAAAJ
+        run: python google_scholar_crawler/main.py
+
+      - name: Publish stats branch
+        run: |
+          mkdir -p /tmp/gs-stats
+          cp results/gs_data.json results/gs_data_shieldsio.json /tmp/gs-stats/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan google-scholar-stats-new
+          git rm -rf --quiet . || true
+          cp /tmp/gs-stats/gs_data.json gs_data.json
+          cp /tmp/gs-stats/gs_data_shieldsio.json gs_data_shieldsio.json
+          git add gs_data.json gs_data_shieldsio.json
+          git commit -m "Update Google Scholar citation stats"
+          git push -f origin HEAD:google-scholar-stats

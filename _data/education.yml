@@ -1,10 +1,13 @@
 - school: Tsinghua University
   degree: Ph.D. student
-  years: 2023 – present
+  years: 2023.9 - present
   note: Supervised by Prof. Bo Zheng
-  mark: THU
+  logo: /images/org/tsinghua.svg
+  url: https://www.tsinghua.edu.cn/
 
-- school: China University of Petroleum, Beijing
+- school: China University of Petroleum (Beijing)
   degree: Bachelor's degree
-  years: 2019 – 2023
-  mark: CUPB
+  years: 2019.9 - 2023.6
+  note: Environmental Engineering
+  logo: /images/org/cupb.png
+  url: https://www.cup.edu.cn/

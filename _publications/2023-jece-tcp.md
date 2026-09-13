@@ -7,6 +7,7 @@ authors: "Chunyun Gu, Shuyu Liu, Jiarui Liang, Yuqian Wang, Shuyu Lu, Jie Ma"
 date: 2023-01-01
 venue: "Journal of Environmental Chemical Engineering"
 paperurl: "/files/gu-2023-tcp-pyrite-spc.pdf"
+citedby: 18
 citation: 'Chunyun Gu, Shuyu Liu, Jiarui Liang, Yuqian Wang, Shuyu Lu, Jie Ma. (2023). "Degradation of 1,2,3-trichloropropane by pyrite activating sodium percarbonate and the implications for groundwater remediation." <i>Journal of Environmental Chemical Engineering</i>, 11, 109217. <a href="https://doi.org/10.1016/j.jece.2022.109217">https://doi.org/10.1016/j.jece.2022.109217</a>'
 ---
 

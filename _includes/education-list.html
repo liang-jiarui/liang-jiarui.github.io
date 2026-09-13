@@ -1,0 +1,16 @@
+{% include base_path %}
+
+<div class="edu-list">
+{% for item in site.data.education %}
+  {% include education-card.html %}
+{% endfor %}
+</div>
+
+{% if site.data.experience %}
+<h3 class="pub-heading reveal">Experience</h3>
+<div class="edu-list">
+{% for item in site.data.experience %}
+  {% include education-card.html %}
+{% endfor %}
+</div>
+{% endif %}

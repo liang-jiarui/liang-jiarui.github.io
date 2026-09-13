@@ -7,58 +7,46 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
+{% include cv-block.html %}
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+## Education
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* **Tsinghua University**, Ph.D. candidate, 2023.9 - present
+  * Supervisor: Associate Professor [Bo Zheng](https://zheng-bo.com/)
+* **China University of Petroleum (Beijing)**, B.Eng. in Environmental Engineering, 2019.9 - 2023.6
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+## Experience
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* **Research Intern**, Anhui Meteorological Bureau, 2026.6 - 2026.8
+  * GNSS three-dimensional water vapor reconstruction and correction in the Huaihe River Basin
 
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+## Research
+
+* **Evolution of wildfire emissions and associated Earth system impacts**, 2025.08 – present
+  * Quantify the atmospheric and climatic effects of global wildfire emissions with the Community Earth System Model (CESM)
+* **Source–sink budgets and spatiotemporal patterns of carbon dioxide, methane, and nitrous oxide in China**, 2024.12 – 2025.08
+  * Ensemble analysis of greenhouse-gas source–sink budgets and spatial patterns in China, based on Global Carbon Project atmospheric inversions
+* **Anthropogenic nitrous oxide emissions in China: trends, variations, and driving factors**, 2023.09 – present
+  * Combine emission inventories and machine learning to quantify China’s anthropogenic N<sub>2</sub>O emissions and explore mitigation pathways compatible with the 1.5 °C target
+* **Source apportionment of summer ozone in Beijing with a machine learning–enhanced atmospheric chemical transport model**, 2022.07 – 2025.02
+  * Build a GEOS-Chem and WRF-CAMx modelling framework, apply Ozone Source Apportionment Technology (OSAT), and complete an English manuscript
+* **Operational optimization of industrial circulating water systems**, 2021.09 – 2023.09
+  * Develop a mixed-integer nonlinear optimization model for converter frequency and valve opening, solved with a genetic algorithm
+  * Two first-author English journal papers
+
+## Publications
+
+<div class="pub-list">
+{% for post in site.publications reversed %}
+  {% include pub-item.html %}
+{% endfor %}
+</div>
+
+### In preparation
+
+* Liang, J<sup>#</sup>., Qiu, J<sup>#</sup>., Zheng, B<sup>*</sup>., et al. Transboundary air pollution masks a decade of ozone mitigation in Chinese cities.
+
+## Research skills
+
+* Linux and high-performance computing (HPC) clusters; Python; conventional machine learning and deep learning
+* Meteorological data processing; compilation and operation of global and regional Earth system and atmospheric chemical transport models (CESM, GEOS-Chem, WRF, CAMx, CAM-Chem)

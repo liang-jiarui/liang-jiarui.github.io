@@ -11,10 +11,8 @@ redirect_from:
 
 <section id="about" class="home-section">
 <h2 class="page__title">About Me</h2>
-
-I am a PhD student at [Tsinghua University](https://www.tsinghua.edu.cn/), supervised by [Prof. Bo Zheng](https://zheng-bo.com/).
-
-My research focuses on atmospheric chemistry, greenhouse-gas budgets, Earth system modelling, and data-driven environmental modelling.
+<p>I am a PhD student at <a href="https://www.tsinghua.edu.cn/">Tsinghua University</a>, supervised by <a href="https://zheng-bo.com/">Prof. Bo Zheng</a>.</p>
+<p>My research focuses on atmospheric chemistry, greenhouse-gas budgets, Earth system modelling, and data-driven environmental modelling.</p>
 </section>
 
 <section id="publications" class="home-section">

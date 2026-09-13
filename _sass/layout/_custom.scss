@@ -1,0 +1,145 @@
+/* Homepage-style motion and compact publication / education cards */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.pub-scholar {
+  margin-bottom: 1.5em;
+  color: var(--global-text-color-light);
+}
+
+.pub-heading {
+  margin-top: 1.6em;
+  margin-bottom: 0.8em;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--global-border-color);
+  font-size: 1.15em;
+}
+
+.pub-item {
+  margin: 0 0 1.35em;
+  padding: 0.85em 1em;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.pub-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--global-border-color);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  background-color: var(--global-footer-bg-color);
+}
+
+.pub-item__title {
+  margin: 0 0 0.35em;
+  font-size: 1em;
+  line-height: 1.35;
+  font-weight: 650;
+}
+
+.pub-item__title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pub-item__title a:hover {
+  color: var(--global-link-color);
+}
+
+.pub-item__authors,
+.pub-item__meta {
+  margin: 0;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+
+.pub-item__authors {
+  color: var(--global-text-color);
+}
+
+.pub-item__meta {
+  margin-top: 0.25em;
+  color: var(--global-text-color-light);
+}
+
+.pub-item__meta a {
+  text-decoration: none;
+}
+
+.edu-card {
+  display: flex;
+  align-items: center;
+  gap: 1.1em;
+  margin: 0 0 1.1em;
+  padding: 1.1em 1.2em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 12px;
+  background-color: var(--global-bg-color);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--global-dark-border-color);
+}
+
+.edu-card__mark {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--global-footer-bg-color);
+  color: var(--global-masthead-link-color);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.edu-card__body {
+  min-width: 0;
+}
+
+.edu-card__school {
+  margin: 0 0 0.2em;
+  font-size: 1.15em;
+  border-bottom: none;
+}
+
+.edu-card__degree,
+.edu-card__years,
+.edu-card__note {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.edu-card__degree {
+  font-weight: 600;
+}
+
+.edu-card__years,
+.edu-card__note {
+  color: var(--global-text-color-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .pub-item,
+  .edu-card {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}

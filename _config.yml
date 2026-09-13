@@ -33,12 +33,12 @@ author:
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar    : "https://scholar.google.com/citations?user=AJl9nB4AAAAJ&hl=zh-CN"
   impactstory      : # URL
   orcid            : # URL
   semantic         : # URL
   pubmed           : # URL #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : # URL
+  researchgate     : "https://www.researchgate.net/profile/Jiarui-Liang-8/research"
   scopus           : # URL
 
   # Repositories and software development
@@ -77,12 +77,10 @@ author:
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
-  books:
-    title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
+  first-author:
+    title: 'First-Author Publications'
+  collaborative:
+    title: 'Collaborative Publications'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -118,7 +116,7 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
-  hide                   : false     # change to true to hide the RSS feed in the footer
+  hide                   : true      # change to true to hide the RSS feed in the footer
   path                   : # blank (default) uses feed.xml
 
 

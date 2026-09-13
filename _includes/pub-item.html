@@ -1,0 +1,20 @@
+{% include base_path %}
+{% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% assign authors = post.authors | default: site.author.name | replace: 'Jiarui Liang', '<strong>Jiarui Liang</strong>' %}
+
+<article class="pub-item reveal">
+  <h3 class="pub-item__title">
+    {% if post.paperurl %}
+      <a href="{{ post.paperurl }}">{{ title }}</a>
+    {% else %}
+      <a href="{{ base_path }}{{ post.url }}">{{ title }}</a>
+    {% endif %}
+  </h3>
+  <p class="pub-item__authors">{{ authors | raw }}</p>
+  <p class="pub-item__meta">
+    <i>{{ post.venue }}</i>, {{ post.date | date: "%Y" }}
+    {% if post.paperurl %}
+      · <a href="{{ post.paperurl }}">PDF</a>
+    {% endif %}
+  </p>
+</article>

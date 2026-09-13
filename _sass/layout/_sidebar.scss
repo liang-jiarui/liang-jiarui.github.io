@@ -19,9 +19,16 @@
 
   @media screen and (min-width: $sidebar-screen-min-width) {
     height: 100vh;
+    overflow-x: hidden;
     overflow-y: auto;               // Add scrollbar if the sidebar is too long
     position: fixed;
     padding-top: $masthead-height;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+    &:hover {
+      scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+    }
   }
 
   @include breakpoint($large) {
@@ -83,20 +90,23 @@
 
 .author__avatar {
   display: block;
-  width: auto;
-  height: auto;
+  width: 100%;
+  max-width: 100%;
   margin-bottom: 0.75em;
+  overflow: hidden;
+  line-height: 0;
 
   img {
     display: block;
+    box-sizing: border-box;
     width: 100%;
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    border: 0;
+    padding: 0;
     border-radius: 8px;
-    padding: 4px;
-    border: 1px solid var(--global-border-color);
-    background-color: var(--global-footer-bg-color);
+    background: none;
   }
 }
 

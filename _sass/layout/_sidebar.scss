@@ -27,6 +27,7 @@
   @include breakpoint($large) {
     @include span(2 of 12);
     opacity: 1;
+    padding-right: 1.5em;
     -webkit-transition: opacity 0.2s ease-in-out;
             transition: opacity 0.2s ease-in-out;
 
@@ -37,7 +38,7 @@
 
   @include breakpoint($x-large) {
     max-width: $sidebar-link-max-width;
-    padding-right: 0;
+    padding-right: 2em;
   }
 
   h2, h3, h4, h5, h6 {
@@ -81,42 +82,30 @@
    ========================================================================== */
 
 .author__avatar {
-  display: table-cell;
-  vertical-align: top;
-  width: 36px;
-  // set width only, for non-square avatars
-  // height: 36px;
-
-  @include breakpoint($large) {
-    display: block;
-    width: auto;
-    height: auto;
-  }
+  display: block;
+  width: auto;
+  height: auto;
+  margin-bottom: 0.75em;
 
   img {
-    max-width: 175px;
-    border-radius: 50%;
-
-    @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid var(--global-border-color);
-    }
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    padding: 4px;
+    border: 1px solid var(--global-border-color);
+    background-color: var(--global-footer-bg-color);
   }
 }
 
 .author__content {
-  display: table-cell;
-  vertical-align: top;
-  padding-left: 15px;
-  padding-right: 25px;
-  line-height: 1;
-
-  @include breakpoint($large) {
-    display: block;
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-  }
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 1.4;
 }
 
 .author__name {
@@ -159,11 +148,9 @@
 
 .author__urls-wrapper {
   position: relative;
-  display: table-cell;
-  vertical-align: middle;
+  display: block;
   font-family: $sans-serif;
   z-index: 10;
-  position: relative;
   cursor: pointer;
 
   li:last-child {

@@ -1,5 +1,6 @@
-{% if site.url %}
-  {% assign base_path = site.url | append: site.baseurl %}
-{% else %}
-  {% assign base_path = site.github.url %}
-{% endif %}
+{% comment %}
+  Use a root-relative path so images, CSS, and in-site links work both
+  locally (jekyll serve) and on GitHub Pages. Absolute site.url is only
+  for canonical / social metadata in seo.html.
+{% endcomment %}
+{% assign base_path = site.baseurl %}

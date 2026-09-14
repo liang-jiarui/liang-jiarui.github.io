@@ -1,3 +1,14 @@
+- org: Laboratory for Climate and Environmental Sciences (LSCE), Paris, France
+  org_zh: 气候与环境科学实验室（LSCE），法国巴黎
+  role: Visiting Scholar
+  role_zh: 访问学者
+  years: 2026.12 - 2027.5 (expected)
+  years_zh: 2026.12 – 2027.5（预计）
+  note: Earth system modelling
+  note_zh: 地球系统模拟
+  logo: /images/org/LSCE.png
+  url: https://www.lsce.ipsl.fr/en/home-public/
+
 - org: Anhui Meteorological Bureau, Hefei, China
   org_zh: 安徽省气象局，合肥
   role: Research Intern
@@ -17,14 +28,3 @@
   note_zh: 可再生能源装机适宜布局方案
   logo: /images/org/kanazawa.png
   url: https://www.kanazawa-u.ac.jp/
-
-- org: Laboratory for Climate and Environmental Sciences (LSCE), Paris, France
-  org_zh: 气候与环境科学实验室（LSCE），法国巴黎
-  role: Visiting Scholar
-  role_zh: 访问学者
-  years: 2026.12 - 2027.5 (expected)
-  years_zh: 2026.12 – 2027.5（预计）
-  note: Earth system modelling
-  note_zh: 地球系统模拟
-  logo: /images/org/LSCE.png
-  url: https://www.lsce.ipsl.fr/en/home-public/

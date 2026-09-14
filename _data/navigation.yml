@@ -8,11 +8,6 @@
 #      Markdown formatted page while the second is generated using JSON.
 
 main:
-  - title: "Projects"
-    title_zh: "当前项目"
-    url: /#projects
-    url_zh: /index_chinese.html#projects
-
   - title: "Publications"
     title_zh: "论文"
     url: /#publications

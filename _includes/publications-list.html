@@ -1,9 +1,11 @@
+{% include lang.html %}
+
 {% if site.author.googlescholar %}
   <p class="pub-scholar">
-    Also on <a href="{{ site.author.googlescholar }}">Google Scholar</a>
+    {{ t.also_on }} <a href="{{ site.author.googlescholar }}">Google Scholar</a>
     <span class="scholar-cite scholar-cite--inline">
-      · <span data-scholar-citations>{{ site.data.scholar.citedby }}</span> citations
-      · h-index <span data-scholar-hindex>{{ site.data.scholar.hindex }}</span>
+      · <span data-scholar-citations>{{ site.data.scholar.citedby }}</span> {{ t.citations }}
+      · {{ t.h_index }} <span data-scholar-hindex>{{ site.data.scholar.hindex }}</span>
     </span>
   </p>
 {% endif %}
@@ -11,12 +13,20 @@
 {% if site.publication_category %}
   {% for category in site.publication_category %}
     {% assign title_shown = false %}
+    {% assign cat_title = category[1].title %}
+    {% if lang == "zh" %}
+      {% if category[0] == "first-author" %}
+        {% assign cat_title = t.first_author %}
+      {% elsif category[0] == "collaborative" %}
+        {% assign cat_title = t.collaborative %}
+      {% endif %}
+    {% endif %}
     {% for post in site.publications reversed %}
       {% if post.category != category[0] %}
         {% continue %}
       {% endif %}
       {% unless title_shown %}
-        <h3 class="pub-heading reveal">{{ category[1].title }}</h3>
+        <h3 class="pub-heading reveal">{{ cat_title }}</h3>
         <div class="pub-list">
         {% assign title_shown = true %}
       {% endunless %}

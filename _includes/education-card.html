@@ -1,6 +1,16 @@
+{% include lang.html %}
 {% include base_path %}
-{% assign name = item.school | default: item.org %}
-{% assign subtitle = item.degree | default: item.role %}
+{% if lang == "zh" %}
+  {% assign name = item.school_zh | default: item.school | default: item.org_zh | default: item.org %}
+  {% assign subtitle = item.degree_zh | default: item.degree | default: item.role_zh | default: item.role %}
+  {% assign years = item.years_zh | default: item.years %}
+  {% assign note = item.note_zh | default: item.note %}
+{% else %}
+  {% assign name = item.school | default: item.org %}
+  {% assign subtitle = item.degree | default: item.role %}
+  {% assign years = item.years %}
+  {% assign note = item.note %}
+{% endif %}
 
 <article class="edu-card reveal">
   <div class="edu-card__logo">
@@ -19,9 +29,9 @@
       {% endif %}
     </h3>
     <p class="edu-card__degree">{{ subtitle }}</p>
-    {% if item.note %}
-      <p class="edu-card__note">{{ item.note }}</p>
+    {% if note %}
+      <p class="edu-card__note">{{ note }}</p>
     {% endif %}
   </div>
-  <p class="edu-card__years">{{ item.years }}</p>
+  <p class="edu-card__years">{{ years }}</p>
 </article>

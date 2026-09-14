@@ -24,16 +24,13 @@ author:
   # Biographic information
   avatar           : "profile.jpg"
   name             : "Jiarui Liang"
-  name_zh          : "梁家睿"
   # pronouns         : "he/him"  
   # bio              : "PhD student at Tsinghua University"
+  # bio              : "梁家睿"
   bio              : "Ph.D. student, Tsinghua University, China"
-  bio_zh           : "清华大学博士生"
   # bio              : " "
   location         : "Shenzhen, China"
-  location_zh      : "中国深圳"
   employer         : "Tsinghua University"
-  employer_zh      : "清华大学"
   uri              : # URL
   email            : "ljr23@mails.tsinghua.edu.cn" 
 
@@ -85,10 +82,8 @@ author:
 publication_category:
   first-author:
     title: 'First-Author Publications'
-    title_zh: '第一作者论文'
   collaborative:
     title: 'Collaborative Publications'
-    title_zh: '合作论文'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"

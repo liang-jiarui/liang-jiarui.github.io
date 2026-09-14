@@ -9,5 +9,9 @@
 <link rel="manifest" href="{{ base_path }}/images/manifest.json"/>
 <meta name="theme-color" content="#ffffff"/>
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
+{% if page.url == "/" or page.lang == "zh" %}
+<link rel="alternate" hreflang="en" href="{{ base_path }}/"/>
+<link rel="alternate" hreflang="zh-CN" href="{{ base_path }}/index_chinese.html"/>
+{% endif %}
 
 <!-- end custom head snippets -->

@@ -1,5 +1,6 @@
+{% include lang.html %}
 {% include base_path %}
 
 <div class="page__footer-copyright">
-  Site last updated {{ "now" | date: '%Y-%m-%d' }}
+  {{ t.site_updated }} {{ "now" | date: '%Y-%m-%d' }}
 </div>

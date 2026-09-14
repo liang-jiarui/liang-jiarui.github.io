@@ -1,3 +1,4 @@
+{% include lang.html %}
 {% include base_path %}
 
 <div class="edu-list">
@@ -7,7 +8,7 @@
 </div>
 
 {% if site.data.experience %}
-<h3 class="pub-heading reveal">Experience</h3>
+<h3 class="pub-heading reveal">{{ t.experience }}</h3>
 <div class="edu-list">
 {% for item in site.data.experience %}
   {% include education-card.html %}

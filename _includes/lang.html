@@ -2,8 +2,7 @@
 {% assign t = site.data.i18n[lang] %}
 {% if lang == "zh" %}
   {% assign home_path = "/index_chinese.html" %}
-  {% assign site_title_localized = site.author.name_zh | default: site.title %}
 {% else %}
   {% assign home_path = "/" %}
-  {% assign site_title_localized = site.title %}
 {% endif %}
+{% assign site_title_localized = t.author_name | default: site.title %}

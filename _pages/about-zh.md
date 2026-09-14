@@ -1,12 +1,14 @@
 ---
 layout: archive
-permalink: /
-title: "Homepage"
+permalink: /index_chinese.html
+title: "主页"
+lang: zh
 hide_page_title: true
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
+description: "梁家睿，清华大学博士生"
+redirect_from:
+  - /zh/
+  - /zh.html
 ---
 
 {% include lang.html %}
@@ -14,11 +16,11 @@ redirect_from:
 <section id="about" class="home-section" markdown="1">
 <h2 class="page__title">{{ t.about }}</h2>
 
-I am a Ph.D. student at [Tsinghua University](https://www.tsinghua.edu.cn/), supervised by [Prof. Bo Zheng](https://zheng-bo.com/).
+我是[清华大学](https://www.tsinghua.edu.cn/)博士生，导师为[郑博副教授](https://zheng-bo.com/)。
 
-My research focuses on:
-- Earth system modelling
-- Machine learning
+研究方向：
+- 地球系统模拟
+- 机器学习
 
 </section>
 

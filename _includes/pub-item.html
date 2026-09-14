@@ -1,3 +1,4 @@
+{% include lang.html %}
 {% include base_path %}
 {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
 {% assign authors = post.authors | default: site.author.name | replace: 'Jiarui Liang', '<strong>Jiarui Liang</strong>' %}
@@ -21,7 +22,7 @@
         · <a href="{{ post.paperurl }}">PDF</a>
       {% endif %}
       <span class="pub-item__cites" data-scholar-paper="{{ post.title | escape }}">
-        · Cited by <span data-scholar-paper-count>{{ post.citedby }}</span>
+        · {{ t.cited_by }} <span data-scholar-paper-count>{{ post.citedby }}</span>
       </span>
     </p>
   </div>

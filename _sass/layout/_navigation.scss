@@ -225,6 +225,27 @@
       }
     }
 
+    #lang-toggle {
+      a {
+        margin-left: 0.35rem;
+        padding: 0.28em 0.8em;
+        border: 1px solid var(--global-border-color);
+        border-radius: 999px;
+        font-size: 0.82em;
+        font-weight: 650;
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+
+        &:before {
+          display: none;
+        }
+
+        &:hover {
+          border-color: var(--global-masthead-link-color-hover);
+        }
+      }
+    }
+
     #theme-toggle {
       a {
         width: 25px;

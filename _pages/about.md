@@ -9,10 +9,15 @@ redirect_from:
   - /about.html
 ---
 
-<section id="about" class="home-section">
+<section id="about" class="home-section" markdown="1">
 <h2 class="page__title">About Me</h2>
-<p>I am a PhD student at <a href="https://www.tsinghua.edu.cn/">Tsinghua University</a>, supervised by <a href="https://zheng-bo.com/">Prof. Bo Zheng</a>.</p>
-<p>My research focuses on atmospheric chemistry, greenhouse-gas budgets, Earth system modelling, and data-driven environmental modelling.</p>
+
+I am a PhD student at [Tsinghua University](https://www.tsinghua.edu.cn/), supervised by [Prof. Bo Zheng](https://zheng-bo.com/).
+
+My research focuses on:
+- Earth system modelling
+- Machine learning
+
 </section>
 
 <section id="publications" class="home-section">

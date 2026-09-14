@@ -189,6 +189,20 @@ html {
   line-height: 1.2;
 }
 
+#about {
+  p:has(+ ul) {
+    margin-bottom: 0.2em;
+  }
+
+  p + ul {
+    margin: 0.15em 0 0;
+  }
+
+  ul li {
+    margin-bottom: 0.15em;
+  }
+}
+
 .edu-list {
   display: flex;
   flex-direction: column;

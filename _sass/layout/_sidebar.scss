@@ -34,7 +34,7 @@
   @include breakpoint($large) {
     @include span(2.5 of 12);
     opacity: 1;
-    padding-right: 2em;
+    padding-right: 2.5em;
     -webkit-transition: opacity 0.2s ease-in-out;
             transition: opacity 0.2s ease-in-out;
 
@@ -45,7 +45,7 @@
 
   @include breakpoint($x-large) {
     max-width: $sidebar-link-max-width;
-    padding-right: 2em;
+    padding-right: 2.5em;
   }
 
   h2, h3, h4, h5, h6 {

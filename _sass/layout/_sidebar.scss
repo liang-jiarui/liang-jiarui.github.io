@@ -32,9 +32,9 @@
   }
 
   @include breakpoint($large) {
-    @include span(2 of 12);
+    @include span(2.5 of 12);
     opacity: 1;
-    padding-right: 1.5em;
+    padding-right: 2em;
     -webkit-transition: opacity 0.2s ease-in-out;
             transition: opacity 0.2s ease-in-out;
 
@@ -93,7 +93,7 @@
   width: 100%;
   max-width: 100%;
   margin-bottom: 0.75em;
-  overflow: hidden;
+  overflow: visible;
   line-height: 0;
   text-align: center;
 
@@ -103,8 +103,9 @@
     width: 100%;
     max-width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin: 0;
     object-fit: contain;
+    object-position: top center;
     border: 0;
     padding: 0;
     border-radius: 8px;

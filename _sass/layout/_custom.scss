@@ -125,12 +125,9 @@
   font-variant-numeric: tabular-nums;
 }
 
-.author__urls li.author__email {
-  white-space: normal;
-}
-
+.author__urls li.author__email,
 .author__email a {
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 
 .cv-contact {

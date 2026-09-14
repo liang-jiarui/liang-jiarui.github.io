@@ -25,7 +25,9 @@ author:
   avatar           : "profile.jpg"
   name             : "Liang Jiarui"
   # pronouns         : "he/him"  
-  bio              : "PhD student at Tsinghua University"
+  # bio              : "PhD student at Tsinghua University"
+  bio              : "梁家睿"
+  # bio              : " "
   location         : "Shenzhen, China"
   employer         : "Tsinghua University"
   uri              : # URL

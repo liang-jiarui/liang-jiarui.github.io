@@ -1,0 +1,9 @@
+name: academic-pages
+channels:
+  - conda-forge
+dependencies:
+  - ruby=3.3
+  - nodejs
+  - compilers
+  - make
+  - pkg-config

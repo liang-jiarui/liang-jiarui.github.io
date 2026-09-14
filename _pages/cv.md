@@ -17,8 +17,12 @@ redirect_from:
 
 ## Experience
 
-* **Research Intern**, Anhui Meteorological Bureau, 2026.6 - 2026.8
+* **Research Intern**, Anhui Meteorological Bureau, Hefei, China, 2026.6 - 2026.8
   * GNSS three-dimensional water vapor reconstruction and correction in the Huaihe River Basin
+* **Sakura Science Program**, Kanazawa University, Japan, 2024.7
+  * Proposal for a suitable distribution of installed renewable energy sources across Indonesia
+* **Visiting Scholar**, Laboratory for Climate and Environmental Sciences (LSCE), Gif-sur-Yvette, France, 2026.11 - 2027.5 (expected)
+  * Earth system modelling
 
 ## Research
 

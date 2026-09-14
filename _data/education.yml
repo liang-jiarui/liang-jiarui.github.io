@@ -1,13 +1,20 @@
 - school: Tsinghua University
+  school_zh: 清华大学
   degree: Ph.D. student
+  degree_zh: 博士研究生
   years: 2023.9 - present
+  years_zh: 2023.9 – 至今
   note: Environmental Science and New Energy Technology, supervised by Prof. Bo Zheng
+  note_zh: 环境科学与新能源技术，导师郑波副教授
   logo: /images/org/tsinghua.svg
   url: https://www.tsinghua.edu.cn/
 
 - school: China University of Petroleum (Beijing)
+  school_zh: 中国石油大学（北京）
   degree: Bachelor's degree
+  degree_zh: 工学学士
   years: 2019.9 - 2023.6
   note: Environmental Engineering
+  note_zh: 环境工程
   logo: /images/org/cupb.png
   url: https://www.cup.edu.cn/

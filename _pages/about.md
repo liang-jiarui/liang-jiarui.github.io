@@ -12,7 +12,7 @@ redirect_from:
 <section id="about" class="home-section" markdown="1">
 <h2 class="page__title">About Me</h2>
 
-I am a PhD student at [Tsinghua University](https://www.tsinghua.edu.cn/), supervised by [Prof. Bo Zheng](https://zheng-bo.com/).
+I am a Ph.D. student at [Tsinghua University](https://www.tsinghua.edu.cn/), supervised by [Prof. Bo Zheng](https://zheng-bo.com/).
 
 My research focuses on:
 - Earth system modelling

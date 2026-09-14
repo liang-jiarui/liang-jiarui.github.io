@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "Jiarui Liang"
 title_separator          : "-"
 name                     : &name "Jiarui Liang"
-description              : &description "Jiarui Liang, PhD student at Tsinghua University"
+description              : &description "Jiarui Liang, Ph.D. student at Tsinghua University"
 url                      : https://liang-jiarui.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "liang-jiarui/liang-jiarui.github.io"
@@ -24,12 +24,16 @@ author:
   # Biographic information
   avatar           : "profile.jpg"
   name             : "Jiarui Liang"
+  name_zh          : "梁家睿"
   # pronouns         : "he/him"  
   # bio              : "PhD student at Tsinghua University"
-  bio              : "梁家睿"
+  bio              : "Ph.D. student, Tsinghua University, China"
+  bio_zh           : "清华大学博士生"
   # bio              : " "
   location         : "Shenzhen, China"
+  location_zh      : "中国深圳"
   employer         : "Tsinghua University"
+  employer_zh      : "清华大学"
   uri              : # URL
   email            : "ljr23@mails.tsinghua.edu.cn" 
 
@@ -81,8 +85,10 @@ author:
 publication_category:
   first-author:
     title: 'First-Author Publications'
+    title_zh: '第一作者论文'
   collaborative:
     title: 'Collaborative Publications'
+    title_zh: '合作论文'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"

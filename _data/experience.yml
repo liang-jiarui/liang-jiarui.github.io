@@ -1,6 +1,30 @@
-- org: Anhui Meteorological Bureau
+- org: Anhui Meteorological Bureau, Hefei, China
+  org_zh: 安徽省气象局，合肥
   role: Research Intern
+  role_zh: 研究实习生
   years: 2026.6 - 2026.8
-  note: GNSS three-dimensional water vapor reconstruction and correction in the Huaihe River Basin
+  note: Machine learning-based GNSS three-dimensional water vapor reconstruction
+  note_zh: 基于机器学习的 GNSS 三维水汽重建
   logo: /images/org/anhui.png
   url: https://ah.cma.gov.cn/
+
+- org: Kanazawa University, Japan
+  org_zh: 日本金泽大学
+  role: Sakura Science Program
+  role_zh: 樱花科技计划
+  years: 2024.7
+  note: Proposal for suitable distribution of installed renewable energy
+  note_zh: 可再生能源装机适宜布局方案
+  logo: /images/org/kanazawa.png
+  url: https://www.kanazawa-u.ac.jp/
+
+- org: Laboratory for Climate and Environmental Sciences (LSCE), Paris, France
+  org_zh: 气候与环境科学实验室（LSCE），法国巴黎
+  role: Visiting Scholar
+  role_zh: 访问学者
+  years: 2026.11 - 2027.5 (expected)
+  years_zh: 2026.11 – 2027.5（预计）
+  note: Earth system modelling
+  note_zh: 地球系统模拟
+  logo: /images/org/LSCE.png
+  url: https://www.lsce.ipsl.fr/en/home-public/

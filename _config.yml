@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Homepage"
+title                    : "Jiarui Liang"
 title_separator          : "-"
-name                     : &name "Liang Jiarui"
-description              : &description "personal description"
+name                     : &name "Jiarui Liang"
+description              : &description "Jiarui Liang, PhD student at Tsinghua University"
 url                      : https://liang-jiarui.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "liang-jiarui/liang-jiarui.github.io"
@@ -23,7 +23,7 @@ repository               : "liang-jiarui/liang-jiarui.github.io"
 author:
   # Biographic information
   avatar           : "profile.jpg"
-  name             : "Liang Jiarui"
+  name             : "Jiarui Liang"
   # pronouns         : "he/him"  
   # bio              : "PhD student at Tsinghua University"
   bio              : "梁家睿"

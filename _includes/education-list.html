@@ -11,7 +11,9 @@
 <h3 class="pub-heading reveal">{{ t.experience }}</h3>
 <div class="edu-list">
 {% for item in site.data.experience %}
+  {% unless item.hidden %}
   {% include education-card.html %}
+  {% endunless %}
 {% endfor %}
 </div>
 {% endif %}

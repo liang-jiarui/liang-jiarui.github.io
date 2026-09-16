@@ -8,6 +8,7 @@
   note_zh: 地球系统模拟
   logo: /images/org/LSCE.png
   url: https://www.lsce.ipsl.fr/en/home-public/
+  hidden: true # temporarily hidden; set to false to show again
 
 - org: Anhui Meteorological Bureau, Hefei, China
   org_zh: 安徽省气象局，合肥

@@ -19,8 +19,8 @@ redirect_from:
 我是[清华大学](https://www.tsinghua.edu.cn/)博士生，导师为[郑博副教授](https://zheng-bo.com/)。
 
 研究方向：
-- 地球系统模拟
-- 机器学习
+- 地球系统与大气化学模拟
+- 机器学习在大气科学中的应用
 
 </section>
 

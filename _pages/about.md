@@ -16,9 +16,9 @@ redirect_from:
 
 I am a Ph.D. student at [Tsinghua University](https://www.tsinghua.edu.cn/), supervised by [Prof. Bo Zheng](https://zheng-bo.com/).
 
-My research focuses on:
-- Earth system modelling
-- Machine learning
+Research interests:
+- Earth system and atmospheric chemistry modelling
+- Machine learning for atmospheric sciences
 
 </section>
 

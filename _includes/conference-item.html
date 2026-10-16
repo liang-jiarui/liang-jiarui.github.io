@@ -1,0 +1,28 @@
+{% include lang.html %}
+{% if lang == "zh" %}
+  {% assign name = item.org_zh | default: item.org %}
+  {% assign place = item.role_zh | default: item.role %}
+  {% assign years = item.years_zh | default: item.years %}
+  {% assign note = item.note_zh | default: item.note %}
+{% else %}
+  {% assign name = item.org %}
+  {% assign place = item.role %}
+  {% assign years = item.years %}
+  {% assign note = item.note %}
+{% endif %}
+
+<article class="pub-item reveal">
+  <span class="pub-item__index" aria-hidden="true"></span>
+  <div class="pub-item__body">
+    <h3 class="pub-item__title">
+      {% if item.url %}
+        <a href="{{ item.url }}" target="_blank" rel="noopener">{{ name }}</a>
+      {% else %}
+        {{ name }}
+      {% endif %}
+    </h3>
+    <p class="pub-item__meta">
+      {% if place %}<i>{{ place }}</i>, {% endif %}{{ years }}{% if note %} · {{ note }}{% endif %}
+    </p>
+  </div>
+</article>

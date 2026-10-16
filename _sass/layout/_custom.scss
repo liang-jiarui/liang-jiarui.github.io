@@ -225,10 +225,6 @@ html {
   transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
 }
 
-.edu-card--plain {
-  grid-template-columns: minmax(0, 1fr) auto;
-}
-
 .edu-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
@@ -330,14 +326,6 @@ html {
   .edu-card__years {
     grid-column: 2;
     justify-self: start;
-  }
-
-  .edu-card--plain {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .edu-card--plain .edu-card__years {
-    grid-column: 1;
   }
 }
 

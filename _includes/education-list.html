@@ -17,3 +17,14 @@
 {% endfor %}
 </div>
 {% endif %}
+
+{% if site.data.conferences %}
+<h3 class="pub-heading reveal">{{ t.conferences }}</h3>
+<div class="edu-list">
+{% for item in site.data.conferences %}
+  {% unless item.hidden %}
+  {% include education-card.html %}
+  {% endunless %}
+{% endfor %}
+</div>
+{% endif %}

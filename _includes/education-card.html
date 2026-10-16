@@ -12,7 +12,8 @@
   {% assign note = item.note %}
 {% endif %}
 
-<article class="edu-card reveal">
+<article class="edu-card reveal{% unless item.logo or item.mark %} edu-card--plain{% endunless %}">
+  {% if item.logo or item.mark %}
   <div class="edu-card__logo">
     {% if item.logo %}
       <img src="{{ base_path }}{{ item.logo }}" alt="{{ name }} emblem">
@@ -20,6 +21,7 @@
       <span class="edu-card__mark" aria-hidden="true">{{ item.mark }}</span>
     {% endif %}
   </div>
+  {% endif %}
   <div class="edu-card__body">
     <h3 class="edu-card__school">
       {% if item.url %}
@@ -28,7 +30,9 @@
         {{ name }}
       {% endif %}
     </h3>
-    <p class="edu-card__degree">{{ subtitle }}</p>
+    {% if subtitle %}
+      <p class="edu-card__degree">{{ subtitle }}</p>
+    {% endif %}
     {% if note %}
       <p class="edu-card__note">{{ note }}</p>
     {% endif %}

@@ -1,0 +1,25 @@
+- org: EGU27
+  years: 2027.4 (expected)
+  years_zh: 2027.4（预计）
+
+- org: Overshoot Conference
+  years: 2026.11 (expected)
+  years_zh: 2026.11（预计）
+
+- org: "2026 Annual Academic Conference and the 8th Technical Workshop on Pollution Source Emission Inventories"
+  org_zh: 2026年污染源排放与管控学术会议暨第八届中国污染源排放清单技术研讨会
+  role: "Xiong'an, China"
+  role_zh: 雄安
+  years: 2026.8
+
+- org: The 2nd GEOS-Chem Asia Meeting (GCA2)
+  org_zh: 第2届 GEOS-Chem 亚洲会议（GCA2）
+  role: Nanjing, China
+  role_zh: 南京
+  years: 2024.5
+
+- org: PSE2022 Process Systems Engineering Annual Conference
+  org_zh: PSE2022 过程系统工程年会
+  role: Oral
+  role_zh: 口头报告
+  years: 2022

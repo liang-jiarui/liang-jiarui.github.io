@@ -1,6 +1,6 @@
 {% include lang.html %}
 {% include base_path %}
-{% assign cv_pdf = base_path | append: '/files/CV-Jiarui Liang-20260913.pdf' | replace: ' ', '%20' %}
+{% assign cv_pdf = base_path | append: '/files/CV-Jiarui-Liang.pdf' %}
 
 <p class="cv-contact">
   {{ t.email }}: <a href="mailto:ljr23@mails.tsinghua.edu.cn">ljr23@mails.tsinghua.edu.cn</a>
@@ -8,7 +8,7 @@
 
 <p class="cv-actions">
   <a class="btn" href="{{ cv_pdf }}" target="_blank" rel="noopener">{{ t.view_pdf }}</a>
-  <a class="btn btn--inverse" href="{{ cv_pdf }}" download="CV-Jiarui Liang-20260913.pdf">{{ t.download_pdf }}</a>
+  <a class="btn btn--inverse" href="{{ cv_pdf }}" download="CV-Jiarui-Liang.pdf">{{ t.download_pdf }}</a>
 </p>
 
 <div class="cv-preview{% if include.compact %} cv-preview--compact{% endif %}">

@@ -1,0 +1,884 @@
+{
+  "scan_roots": [
+    "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run",
+    "/public/home/liangjiarui/ljr/research/models/gc_rrtmg/run",
+    "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1",
+    "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/run",
+    "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/config/geoschem/project",
+    "/public/home/liangjiarui/ljr/paper_replicates/todo/Nr_RF/gc_reproduce/run_13_2_0",
+    "/public/home/liangjiarui/ljr/research/phd/FireEarth/other_studies/Nr_RF/run_13_2_0",
+    "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/12.3.0/20xx_prep/code",
+    "/public/home/liangjiarui/ljr/research/phd/GCadjoint/gcadj_std/runs",
+    "/public/home/liangjiarui/ljr/research/models/gcadj/GEOS-Chem-adjoint-v35/runs",
+    "/public/home/liangjiarui/ljr/research/models/gcadj/v35n/gcadj_std-v35n/runs",
+    "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_6_2",
+    "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_12_0",
+    "/public/home/liangjiarui/ljr/research/models/GCHP/run",
+    "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem",
+    "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem_rrtmg",
+    "/public/home/liangjiarui/ljr/research/EarthModelHub/archive/geoschem",
+    "/public/home/liangjiarui/ljr/research/EarthModelHub/archive/geoschem_rrtmg"
+  ],
+  "cases": [
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run/gc_13_2_0/gc_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/classic_history/geoschem/gc_13_2_0/gc_13_2_0__gc_merra2_fullchem/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@classic_history/geoschem/gc_13_2_0/gc_13_2_0__gc_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run/gc_14_1_1/Ndep",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/classic_history/geoschem/gc_14_1_1/gc_14_1_1__Ndep/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@classic_history/geoschem/gc_14_1_1/gc_14_1_1__Ndep"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run/gc_14_1_1/gc_2x25_47L_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/classic_history/geoschem/gc_14_1_1/gc_14_1_1__gc_2x25_47L_merra2_fullchem/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@classic_history/geoschem/gc_14_1_1/gc_14_1_1__gc_2x25_47L_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run/gc_14_6_3/gc_2x25_47L_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/classic_history/geoschem/gc_14_6_3/gc_14_6_3__gc_2x25_47L_merra2_fullchem/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@classic_history/geoschem/gc_14_6_3/gc_14_6_3__gc_2x25_47L_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gc_rrtmg/run/gc_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/classic_history/geoschem_rrtmg/gc_13_2_0/rrtmg__gc_merra2_fullchem/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@classic_history/geoschem_rrtmg/gc_13_2_0/rrtmg__gc_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/ALL_2016",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__ALL_2016/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2016-01-01T00:00:00",
+        "end": "2017-01-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2016-01-01T00:00:00",
+        "end": "2017-01-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__ALL_2016"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/ALL_2023",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__ALL_2023/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2023-01-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2023-01-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__ALL_2023"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/Nofire_2000",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__Nofire_2000/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2001-04-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2001-04-01T00:00:00",
+        "end": "2002-09-22T09:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "off",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__Nofire_2000"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/Nofire_2010",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__Nofire_2010/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2011-01-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2011-01-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "off",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__Nofire_2010"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/ALL_2000_no_hemco",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2000_no_hemco/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2002-08-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2002-02-15T22:30:00",
+        "end": "2002-09-16T06:30:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2000_no_hemco"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/ALL_2010_no_soilnox",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2010_no_soilnox/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2010-08-01T00:00:00",
+        "end": "2011-01-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2010-08-01T00:00:00",
+        "end": "2011-01-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "on",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "目录名称与 SoilNOx 开关冲突，需核对历史实验意图"
+      ],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2010_no_soilnox"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/ALL_2016_no_soilnox",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2016_no_soilnox/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2016-01-01T00:00:00",
+        "end": "2017-01-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2016-01-01T00:00:00",
+        "end": "2017-01-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2016_no_soilnox"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/NAT",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__NAT/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2019-10-01T00:00:00",
+        "end": "2024-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-10-01T00:00:00",
+        "end": "2020-07-15T01:10:00"
+      },
+      "controls": {
+        "SoilNOx": "on",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__test__NAT"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/Nofire_2020_wrong_hemco",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__Nofire_2020_wrong_hemco/case.yaml",
+      "status": "failed",
+      "period": {
+        "start": "2021-04-01T00:00:00",
+        "end": "2024-07-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2021-04-01T00:00:00",
+        "end": "2022-01-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "off",
+        "FINN": "off"
+      },
+      "blockers": [
+        "来源目录标记为 wrong，保留作排错记录，需修正后另建实验"
+      ],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__test__Nofire_2020_wrong_hemco"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/test_zly_GFED",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__test_zly_GFED/case.yaml",
+      "status": "failed",
+      "period": {
+        "start": "2022-07-01T00:00:00",
+        "end": "2022-08-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "on",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/old__test__test_zly_GFED"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/run/14_1_1/Fire_Ndep_Csink/e1_atm_all_2000",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/run__14_1_1__Fire_Ndep_Csink__e1_atm_all_2000/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2000-01-01T00:00:00",
+        "end": "2001-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/run__14_1_1__Fire_Ndep_Csink__e1_atm_all_2000"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/config/geoschem/project/Fire_Ndep_Csink/e1_atm_all",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e1_atm_all/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "来源缺少控制文件：HEMCO_Diagn.rc",
+        "来源缺少控制文件：species_database.yml"
+      ],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e1_atm_all"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/config/geoschem/project/Fire_Ndep_Csink/e1_atm_all_2000",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e1_atm_all_2000/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "来源缺少控制文件：HEMCO_Diagn.rc",
+        "来源缺少控制文件：species_database.yml"
+      ],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e1_atm_all_2000"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/config/geoschem/project/Fire_Ndep_Csink/e2_atm_nofire",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e2_atm_nofire/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "off",
+        "FINN": "off"
+      },
+      "blockers": [
+        "来源缺少控制文件：HEMCO_Diagn.rc",
+        "来源缺少控制文件：species_database.yml"
+      ],
+      "id": "@fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e2_atm_nofire"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/todo/Nr_RF/gc_reproduce/run_13_2_0/gc_merra2_fullchem_RRTMG",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/nr_rf_classic/geoschem_rrtmg/gc_13_2_0/paper_replicates__gc_merra2_fullchem_RRTMG/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@nr_rf_classic/geoschem_rrtmg/gc_13_2_0/paper_replicates__gc_merra2_fullchem_RRTMG"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/FireEarth/other_studies/Nr_RF/run_13_2_0/gc_merra2_fullchem_RRTMG",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/nr_rf_classic/geoschem_rrtmg/gc_13_2_0/fireearth__gc_merra2_fullchem_RRTMG/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@nr_rf_classic/geoschem_rrtmg/gc_13_2_0/fireearth__gc_merra2_fullchem_RRTMG"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/12.3.0/20xx_prep/code/global/base/merra2_2x25_tropchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gc_legacy/geoschem/gc_12_3_0/global__base__merra2_2x25_tropchem/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-12-01T00:00:00",
+        "end": "2019-12-11T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "on",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口",
+        "来源缺少控制文件：species_database.yml"
+      ],
+      "id": "@gc_legacy/geoschem/gc_12_3_0/global__base__merra2_2x25_tropchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/12.3.0/20xx_prep/code/nested/base/merra2_05x0625_tropchem_as",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gc_legacy/geoschem/gc_12_3_0/nested__base__merra2_05x0625_tropchem_as/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2020-12-01T00:00:00",
+        "end": "2021-05-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "on",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口",
+        "来源缺少控制文件：species_database.yml"
+      ],
+      "id": "@gc_legacy/geoschem/gc_12_3_0/nested__base__merra2_05x0625_tropchem_as"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/GCadjoint/gcadj_std/runs/v10-01b/ucx",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gc_adjoint_history/gcadj/gcadj_v10_01b/v10-01b__ucx/case.yaml",
+      "status": "failed",
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2010-01-01T06:00:00"
+      },
+      "actual_period": {},
+      "controls": {},
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@gc_adjoint_history/gcadj/gcadj_v10_01b/v10-01b__ucx"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gcadj/GEOS-Chem-adjoint-v35/runs/v8-02-01/geos5",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gc_adjoint_history/gcadj/gcadj_v35/v8-02-01__geos5/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2006-05-01T00:00:00",
+        "end": "2006-05-16T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {},
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@gc_adjoint_history/gcadj/gcadj_v35/v8-02-01__geos5"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gcadj/GEOS-Chem-adjoint-v35/runs/v8-02-01/geos5_tes_mls_0605",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gc_adjoint_history/gcadj/gcadj_v35/v8-02-01__geos5_tes_mls_0605/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2006-05-01T00:00:00",
+        "end": "2006-05-16T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {},
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@gc_adjoint_history/gcadj/gcadj_v35/v8-02-01__geos5_tes_mls_0605"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gcadj/v35n/gcadj_std-v35n/runs/v8-02-01/geos4",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gc_adjoint_history/gcadj/gcadj_v35n/v8-02-01__geos4/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2004-05-01T00:00:00",
+        "end": "2004-05-02T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {},
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@gc_adjoint_history/gcadj/gcadj_v35n/v8-02-01__geos4"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gcadj/v35n/gcadj_std-v35n/runs/v8-02-01/geos5",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gc_adjoint_history/gcadj/gcadj_v35n/v8-02-01__geos5/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2005-07-01T00:00:00",
+        "end": "2005-07-01T06:00:00"
+      },
+      "actual_period": {},
+      "controls": {},
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@gc_adjoint_history/gcadj/gcadj_v35n/v8-02-01__geos5"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_6_2/ALL_05_0625_MERRA2",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hemco_history/hemco/hemco_3_6_2/ALL_05_0625_MERRA2/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@hemco_history/hemco/hemco_3_6_2/ALL_05_0625_MERRA2"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_6_2/ALL_HEMCO",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hemco_history/hemco/hemco_3_6_2/ALL_HEMCO/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2000-01-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@hemco_history/hemco/hemco_3_6_2/ALL_HEMCO"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_6_2/ALL_HEMCO_2000",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hemco_history/hemco/hemco_3_6_2/ALL_HEMCO_2000/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2001-01-01T00:00:00",
+        "end": "2010-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@hemco_history/hemco/hemco_3_6_2/ALL_HEMCO_2000"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_6_2/ALL_HEMCO_2010",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hemco_history/hemco/hemco_3_6_2/ALL_HEMCO_2010/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2011-01-01T00:00:00",
+        "end": "2016-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@hemco_history/hemco/hemco_3_6_2/ALL_HEMCO_2010"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_6_2/ALL_HEMCO_2016",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hemco_history/hemco/hemco_3_6_2/ALL_HEMCO_2016/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2017-01-01T00:00:00",
+        "end": "2023-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@hemco_history/hemco/hemco_3_6_2/ALL_HEMCO_2016"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_6_2/ALL_HEMCO_2023",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hemco_history/hemco/hemco_3_6_2/ALL_HEMCO_2023/case.yaml",
+      "status": "incomplete",
+      "period": {
+        "start": "2023-01-01T00:00:00",
+        "end": "2024-01-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@hemco_history/hemco/hemco_3_6_2/ALL_HEMCO_2023"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/run_hemco_3_12_0/ALL_025_03125_GEOSFP",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hemco_history/hemco/hemco_3_12_0/ALL_025_03125_GEOSFP/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@hemco_history/hemco/hemco_3_12_0/ALL_025_03125_GEOSFP"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GCHP/run/run_14_1_1/Ndep",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gchp_history/gchp/gchp_14_1_1/run_14_1_1__Ndep/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "length": "0000100 000000"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@gchp_history/gchp/gchp_14_1_1/run_14_1_1__Ndep"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GCHP/run/run_14_1_1/gchp_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/gchp_history/gchp/gchp_14_1_1/run_14_1_1__gchp_merra2_fullchem/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "length": "00000100 000000"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "已保存原生配置；此模型/旧版尚未接入 Gallery 自动复现，请使用原生运行入口"
+      ],
+      "id": "@gchp_history/gchp/gchp_14_1_1/run_14_1_1__gchp_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem/gc_13_2_0/gc_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hub_classic/geoschem/gc_13_2_0/cases__gc_13_2_0__gc_merra2_fullchem/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-07-02T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@hub_classic/geoschem/gc_13_2_0/cases__gc_13_2_0__gc_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem/gc_14_1_1/gc_2x25_47L_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hub_classic/geoschem/gc_14_1_1/cases__gc_14_1_1__gc_2x25_47L_merra2_fullchem/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@hub_classic/geoschem/gc_14_1_1/cases__gc_14_1_1__gc_2x25_47L_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem/gc_14_1_1/smoke",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hub_classic/geoschem/gc_14_1_1/cases__gc_14_1_1__smoke/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-07-01T03:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-07-01T03:00:00"
+      },
+      "controls": {
+        "SoilNOx": "on",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@hub_classic/geoschem/gc_14_1_1/cases__gc_14_1_1__smoke"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem/gc_14_6_3/gc_2x25_47L_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hub_classic/geoschem/gc_14_6_3/cases__gc_14_6_3__gc_2x25_47L_merra2_fullchem/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-07-02T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@hub_classic/geoschem/gc_14_6_3/cases__gc_14_6_3__gc_2x25_47L_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem_rrtmg/gc_13_2_0/gc_merra2_fullchem",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hub_classic/geoschem_rrtmg/gc_13_2_0/cases__gc_13_2_0__gc_merra2_fullchem/case.yaml",
+      "status": "configuration_only",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {},
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [],
+      "id": "@hub_classic/geoschem_rrtmg/gc_13_2_0/cases__gc_13_2_0__gc_merra2_fullchem"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/archive/geoschem/gc_13_2_0/gc_merra2_fullchem/20190701_000000-20190702_000000",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hub_classic/geoschem/gc_13_2_0/archive__gc_13_2_0__gc_merra2_fullchem__20190701_000000-20190702_000000/case.yaml",
+      "status": "completed",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-07-02T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-07-02T00:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "来源缺少控制文件：HEMCO_Diagn.rc",
+        "来源缺少控制文件：species_database.yml"
+      ],
+      "id": "@hub_classic/geoschem/gc_13_2_0/archive__gc_13_2_0__gc_merra2_fullchem__20190701_000000-20190702_000000"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/archive/geoschem/gc_14_1_1/gc_2x25_47L_merra2_fullchem/20190701_000000-20190801_000000",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hub_classic/geoschem/gc_14_1_1/archive__gc_14_1_1__gc_2x25_47L_merra2_fullchem__20190701_000000-20190801_000000/case.yaml",
+      "status": "period_mismatch",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-07-01T03:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "日志实际积分时段与当前配置不一致",
+        "来源缺少控制文件：HEMCO_Diagn.rc",
+        "来源缺少控制文件：species_database.yml"
+      ],
+      "id": "@hub_classic/geoschem/gc_14_1_1/archive__gc_14_1_1__gc_2x25_47L_merra2_fullchem__20190701_000000-20190801_000000"
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/archive/geoschem_rrtmg/gc_13_2_0/gc_merra2_fullchem/20190701_000000-20190801_000000",
+      "config": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/hub_classic/geoschem_rrtmg/gc_13_2_0/archive__gc_13_2_0__gc_merra2_fullchem__20190701_000000-20190801_000000/case.yaml",
+      "status": "period_mismatch",
+      "period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-08-01T00:00:00"
+      },
+      "actual_period": {
+        "start": "2019-07-01T00:00:00",
+        "end": "2019-07-01T03:00:00"
+      },
+      "controls": {
+        "SoilNOx": "off",
+        "GFED": "on",
+        "FINN": "off"
+      },
+      "blockers": [
+        "日志实际积分时段与当前配置不一致",
+        "来源缺少控制文件：HEMCO_Diagn.rc",
+        "来源缺少控制文件：species_database.yml"
+      ],
+      "id": "@hub_classic/geoschem_rrtmg/gc_13_2_0/archive__gc_13_2_0__gc_merra2_fullchem__20190701_000000-20190801_000000"
+    }
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "roots": [
+    "/public/home/liangjiarui/ljr/research",
+    "/public/home/liangjiarui/ljr/paper_replicates",
+    "/public/home/liangjiarui/Documents"
+  ],
+  "excluded_directory_names": [
+    ".git",
+    "Build",
+    "Buildconf",
+    "CESM_GC_2_3_alpha17e",
+    "E3SM_v3_0_2",
+    "ExtData",
+    "GEOSChem",
+    "HEMCO",
+    "OutputDir",
+    "Registry",
+    "SourceMods",
+    "WPS",
+    "analysis",
+    "archive",
+    "atm",
+    "bld",
+    "build",
+    "cache",
+    "cesm2_1_5",
+    "cesm2_3_alpha17e",
+    "chem",
+    "cime",
+    "cmake",
+    "components",
+    "data",
+    "download",
+    "external",
+    "inc",
+    "input",
+    "inputdata",
+    "libraries",
+    "lnd",
+    "logs",
+    "node_modules",
+    "ocn",
+    "phys",
+    "prefix",
+    "raw",
+    "runoff",
+    "scratch",
+    "share",
+    "src",
+    "tools"
+  ],
+  "errors": [],
+  "cases": [
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/GCadjoint/gcadj_std/runs/v10-01b/ucx",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gc_adjoint_history/gcadj/gcadj_v10_01b/v10-01b__ucx/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/GCadjoint/docs/material/gcadj_std-master/runs/v10-01b/ucx",
+      "disposition": "documentation_mirror",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/CESM_GC/cases/FCHIST_GC",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/cesm_gc_completed/cesm/CESM_GC_2_3_alpha17e/FCHIST_GC_6b14e14264/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/CESM_GC/cases/FC2000climo_GC",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/CESM_GC/cases/FC2010climo_GC",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/cesm_gc_completed/cesm/CESM_GC_2_3_alpha17e/FC2010climo_GC_447b9b5434/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/CESM_GC/cases/FCnudged_GC",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/cesm_gc_completed/cesm/CESM_GC_2_3_alpha17e/FCnudged_GC_a7e903b3d1/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/ALL_2016",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__ALL_2016/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/Nofire_2020_wrong_hemco",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__Nofire_2020_wrong_hemco/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/ALL_2016_no_soilnox",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2016_no_soilnox/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/ALL_2010_no_soilnox",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2010_no_soilnox/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/ALL_2000_no_hemco",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__ALL_2000_no_hemco/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/test_zly_GFED",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__test_zly_GFED/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/test/NAT",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__test__NAT/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/Nofire_2000",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__Nofire_2000/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/Nofire_2010",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__Nofire_2010/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/old/gc_14_1_1/ALL_2023",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/old__ALL_2023/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/geoschem/run/14_1_1/Fire_Ndep_Csink/e1_atm_all_2000",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/run__14_1_1__Fire_Ndep_Csink__e1_atm_all_2000/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/config/geoschem/project/Fire_Ndep_Csink/e1_atm_all",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e1_atm_all/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/config/geoschem/project/Fire_Ndep_Csink/e2_atm_nofire",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e2_atm_nofire/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/Fire_Ndep/config/geoschem/project/Fire_Ndep_Csink/e1_atm_all_2000",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fire_ndep_classic/geoschem/gc_14_1_1/templates__Fire_Ndep_Csink__e1_atm_all_2000/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/FireEarth/geoschem/gc_rrtmg/run/run_13_2_0/test/gc_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/fireearth_geoschem/geoschem_rrtmg/gc_13_2_0/e01_gc_merra2_fullchem_2x2.5_L47_201907-201907/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/phd/FireEarth/other_studies/Nr_RF/run_13_2_0/gc_merra2_fullchem_RRTMG",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/nr_rf_classic/geoschem_rrtmg/gc_13_2_0/fireearth__gc_merra2_fullchem_RRTMG/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run/gc_14_1_1/gc_2x25_47L_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/classic_history/geoschem/gc_14_1_1/gc_14_1_1__gc_2x25_47L_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run/gc_14_1_1/Ndep",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/classic_history/geoschem/gc_14_1_1/gc_14_1_1__Ndep/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run/gc_14_6_3/gc_2x25_47L_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/classic_history/geoschem/gc_14_6_3/gc_14_6_3__gc_2x25_47L_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/run/gc_13_2_0/gc_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/classic_history/geoschem/gc_13_2_0/gc_13_2_0__gc_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/12.3.0/20xx_prep/code/global/base/merra2_2x25_tropchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gc_legacy/geoschem/gc_12_3_0/global__base__merra2_2x25_tropchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GEOS-Chem/12.3.0/20xx_prep/code/nested/base/merra2_05x0625_tropchem_as",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gc_legacy/geoschem/gc_12_3_0/nested__base__merra2_05x0625_tropchem_as/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/CESM_GC/cases/FCHIST_GC",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gcadj/GEOS-Chem-adjoint-v35/runs/v8-02-01/geos5_tes_mls_0605",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gc_adjoint_history/gcadj/gcadj_v35/v8-02-01__geos5_tes_mls_0605/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gcadj/GEOS-Chem-adjoint-v35/runs/v8-02-01/geos5",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gc_adjoint_history/gcadj/gcadj_v35/v8-02-01__geos5/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gcadj/v35n/gcadj_std-v35n/runs/v8-02-01/geos5",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gc_adjoint_history/gcadj/gcadj_v35n/v8-02-01__geos5/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gcadj/v35n/gcadj_std-v35n/runs/v8-02-01/geos4",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gc_adjoint_history/gcadj/gcadj_v35n/v8-02-01__geos4/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GCHP/run/run_14_1_1/gchp_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gchp_history/gchp/gchp_14_1_1/run_14_1_1__gchp_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/GCHP/run/run_14_1_1/Ndep",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/gchp_history/gchp/gchp_14_1_1/run_14_1_1__Ndep/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/WRF_GC/cases/fullchem_fnl_20190101",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/WRF_GC/cases/fullchem_fnl_20190101_oneway",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/WRF_GC/cases/fullchem_fnl_20190101_twoway",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/WRF_GC/model/WRF_v4.4/run",
+      "disposition": "source_template",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/models/gc_rrtmg/run/gc_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/classic_history/geoschem_rrtmg/gc_13_2_0/rrtmg__gc_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/tasks/work/fireearth_geoschem/geoschem_rrtmg/gc_13_2_0/e01_gc_merra2_fullchem_2x2.5_L47_201907-201907",
+      "disposition": "repository_configuration",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/model/wrfgc/experiments/liangjiarui/20261102_lym_YRD_simulation",
+      "disposition": "repository_configuration",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/config/model/gchp/experiments/gchp_14_1_1/smoke",
+      "disposition": "repository_configuration",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/model/wrfgc/WRF_v4.4/run",
+      "disposition": "source_template",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem/gc_13_2_0/gc_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/hub_classic/geoschem/gc_13_2_0/cases__gc_13_2_0__gc_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem/gc_14_1_1/gc_2x25_47L_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/hub_classic/geoschem/gc_14_1_1/cases__gc_14_1_1__gc_2x25_47L_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem/gc_14_1_1/smoke",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/hub_classic/geoschem/gc_14_1_1/cases__gc_14_1_1__smoke/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem/gc_14_6_3/gc_2x25_47L_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/hub_classic/geoschem/gc_14_6_3/cases__gc_14_6_3__gc_2x25_47L_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/geoschem_rrtmg/gc_13_2_0/gc_merra2_fullchem",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/hub_classic/geoschem_rrtmg/gc_13_2_0/cases__gc_13_2_0__gc_merra2_fullchem/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/lym_YRD_1day_20221228",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/china_125km_1day_20190101_preflight_levels34",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/lym_YRD_1day_20190101",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/lym_YRD_1day_20190101_pd",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/lym_YRD_default_1day_20190101",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/smoke",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/20261102_lym_YRD_1day_20221228",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/china_125km_1day_20221228",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/china_125km_1day_20190101",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/wrfgc/WRF_v4.4/lym_YRD_1day_20190101_preflight_levels34",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/research/EarthModelHub/cases/gchp/gchp_14_1_1/smoke",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/todo/Nr_RF/gc_reproduce/run_13_2_0/gc_merra2_fullchem_RRTMG",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/nr_rf_classic/geoschem_rrtmg/gc_13_2_0/paper_replicates__gc_merra2_fullchem_RRTMG/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/todo/other/CESM-GC-troposphere/cases/FCnudged_GC",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/Clow_2025_JAMES/run/amd64_20261117/fchist_gc/run",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/Clow_2025_JAMES/run/partition64_20261118/fchist_gc_amd_part/run",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/Clow_2025_JAMES/run/partition64_20261118/fchist_gc_6430_part/run",
+      "disposition": "coupled_or_model_native_case",
+      "configs": []
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/Clow_2025_JAMES/cases/partition64_20261118/fchist_gc_6430_part",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/clow_2025_james_completed/cesm/cesm2_3_alpha17e/fchist_gc_6430_part_9b163b9261/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/Clow_2025_JAMES/cases/partition64_20261118/fchist_gc_amd_part",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/clow_2025_james_completed/cesm/cesm2_3_alpha17e/fchist_gc_amd_part_5f9b20c5b5/case.yaml"
+      ]
+    },
+    {
+      "source": "/public/home/liangjiarui/ljr/paper_replicates/Clow_2025_JAMES/cases/amd64_20261117/fchist_gc",
+      "disposition": "registered",
+      "configs": [
+        "config/tasks/work/clow_2025_james_completed/cesm/cesm2_3_alpha17e/fchist_gc_ac83911536/case.yaml"
+      ]
+    }
+  ]
+}

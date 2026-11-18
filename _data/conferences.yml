@@ -6,12 +6,14 @@
 #   years_zh: 2027.4
 #   url: https://www.egu27.eu/
 
-# - org: Overshoot Conference 2026
-#   role: Beijing, China
-#   role_zh: 北京
-#   years: 2026.11
-#   years_zh: 2026.11
-#   url: https://overshootconference.org/
+- org: Overshoot Conference 2026
+  org_zh: 气候过冲会议（Overshoot Conference 2026）
+  role: Beijing, China
+  role_zh: 北京
+  years: 2026.11.24–25
+  url: https://overshootconference.org/
+  schedule: /files/overshoot-conference-2026-schedule.pdf
+  program: /files/overshoot-conference-2026-program.pdf
 
 - org: Annual Academic Conference and the 8th Technical Workshop on Pollution Source Emission Inventories
   org_zh: 污染源排放与管控学术会议暨第八届中国污染源排放清单技术研讨会

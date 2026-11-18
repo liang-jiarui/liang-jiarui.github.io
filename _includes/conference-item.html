@@ -1,4 +1,5 @@
 {% include lang.html %}
+{% include base_path %}
 {% if lang == "zh" %}
   {% assign name = item.org_zh | default: item.org %}
   {% assign place = item.role_zh | default: item.role %}
@@ -23,6 +24,8 @@
     </h3>
     <p class="pub-item__meta">
       {% if place %}<i>{{ place }}</i>, {% endif %}{{ years }}{% if note %} · {{ note }}{% endif %}
+      {% if item.schedule %} · <a href="{{ base_path }}{{ item.schedule }}" target="_blank" rel="noopener">{% if lang == "zh" %}日程{% else %}Schedule{% endif %}</a>{% endif %}
+      {% if item.program %} · <a href="{{ base_path }}{{ item.program }}" target="_blank" rel="noopener">{% if lang == "zh" %}详细议程{% else %}Program{% endif %}</a>{% endif %}
     </p>
   </div>
 </article>

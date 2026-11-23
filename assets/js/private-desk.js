@@ -17,6 +17,7 @@ const dialogStatus = byId('dialog-status');
 const folderSelect = byId('link-folder');
 const editorGroups = ['link', 'bulk', 'assign', 'note', 'folder', 'restore'];
 
+const minimumPasswordLength = 6;
 const allFolders = null;
 const unfiled = '';
 let raw = null;
@@ -75,16 +76,16 @@ function validateRecords(records) {
 
 function configureGate() {
   const firstUse = raw === null;
-  byId('gate-title').textContent = firstUse ? '创建私人资料库' : '解锁私人资料库';
+  byId('gate-title').textContent = firstUse ? 'Create your vault' : 'Unlock your vault';
   byId('gate-description').textContent = firstUse
-    ? '设置至少 12 个字符的密码。链接和备注会加密保存在此浏览器，密码无法找回。'
-    : '输入密码查看此浏览器中加密保存的链接。';
-  byId('gate-submit').textContent = firstUse ? '创建资料库' : '解锁';
+    ? `Choose a password with at least ${minimumPasswordLength} characters. Keep it somewhere safe to access your encrypted links and notes.`
+    : 'Enter your password to view the encrypted links in this browser.';
+  byId('gate-submit').textContent = firstUse ? 'Create vault' : 'Unlock';
   byId('confirm-field').hidden = !firstUse;
   confirmPassword.disabled = !firstUse;
   confirmPassword.required = firstUse;
   password.autocomplete = firstUse ? 'new-password' : 'current-password';
-  password.minLength = firstUse ? 12 : 0;
+  password.minLength = firstUse ? minimumPasswordLength : 0;
   gateForm.hidden = false;
   byId('gate-footer').hidden = false;
 }
@@ -101,7 +102,7 @@ function lockDesk(focus = true) {
   linkList.replaceChildren();
   folderSelect.replaceChildren();
   byId('dialog-detail').textContent = '';
-  byId('list-title').textContent = '全部链接';
+  byId('list-title').textContent = 'All links';
   byId('list-count').textContent = '';
   status(dialogStatus);
   status(workspaceStatus);
@@ -143,7 +144,7 @@ function refreshVault() {
   if (saved === raw) return false;
   raw = saved;
   lockDesk();
-  status(gateStatus, '另一个标签页更新了资料库，请重新解锁。', true);
+  status(gateStatus, 'Your vault changed in another tab. Unlock it again to continue.', true);
   return true;
 }
 
@@ -156,7 +157,7 @@ async function operate(action, feedback, fallback) {
   } catch (error) {
     if (!departing && !refreshVault()) {
       const message = error.name === 'QuotaExceededError'
-        ? '浏览器存储空间不足，本次更改未保存。'
+        ? 'Your browser ran out of storage. This change could not be saved.'
         : fallback;
       status(feedback, message, true);
     }
@@ -167,8 +168,8 @@ async function operate(action, feedback, fallback) {
 }
 
 function folderName(folder) {
-  if (folder === allFolders) return '全部链接';
-  if (folder === unfiled) return '未归档';
+  if (folder === allFolders) return 'All links';
+  if (folder === unfiled) return 'Unfiled';
   return session.records.folders.find((entry) => entry.id === folder).name;
 }
 
@@ -218,11 +219,11 @@ function renderLinks() {
     [link.title, link.url, link.note].some((value) => value.toLocaleLowerCase().includes(query))
   );
   byId('list-title').textContent = folderName(selectedFolder);
-  byId('list-count').textContent = matches.length + ' 条链接';
+  byId('list-count').textContent = `${matches.length} ${matches.length === 1 ? 'link' : 'links'}`;
   linkList.replaceChildren(...matches.map(linkCard));
   byId('empty-state').hidden = matches.length > 0;
-  byId('empty-title').textContent = query ? '没有匹配的链接' : '这里还没有链接';
-  byId('empty-detail').textContent = query ? '试试其他关键词。' : '添加单个网址，或粘贴一组网址。';
+  byId('empty-title').textContent = query ? 'No matching links' : 'No links yet';
+  byId('empty-detail').textContent = query ? 'Try a different search.' : 'Add a single link or paste a list of URLs.';
 }
 
 function linkCard(link) {
@@ -242,11 +243,11 @@ function linkCard(link) {
   if (link.note) info.append(element('p', 'link-note', link.note));
 
   const actions = element('div', 'card-actions', '');
-  const edit = element('button', 'button button-quiet', '编辑');
-  const remove = element('button', 'button button-quiet button-danger', '删除');
+  const edit = element('button', 'button button-quiet', 'Edit');
+  const remove = element('button', 'button button-quiet button-danger', 'Delete');
   edit.type = remove.type = 'button';
-  edit.setAttribute('aria-label', '编辑 ' + link.title);
-  remove.setAttribute('aria-label', '删除 ' + link.title);
+  edit.setAttribute('aria-label', 'Edit ' + link.title);
+  remove.setAttribute('aria-label', 'Delete ' + link.title);
   edit.addEventListener('click', () => showEditor('link', link));
   remove.addEventListener('click', () => showEditor('delete-link', link));
   actions.append(edit, remove);
@@ -274,7 +275,7 @@ function showEditor(mode, record = null) {
   }
 
   if (groups[mode].includes('assign')) {
-    const options = [new Option('未归档', unfiled)];
+    const options = [new Option('Unfiled', unfiled)];
     for (const folder of session.records.folders) options.push(new Option(folder.name, folder.id));
     folderSelect.replaceChildren(...options);
     folderSelect.value = record?.folder ?? selectedFolder ?? unfiled;
@@ -288,26 +289,26 @@ function showEditor(mode, record = null) {
   if (mode === 'folder' && record) byId('folder-name').value = record.name;
 
   const titles = {
-    link: record ? '编辑链接' : '添加链接',
-    bulk: '批量添加链接',
-    folder: record ? '管理文件夹' : '新建文件夹',
-    restore: '从备份恢复',
-    'delete-link': '删除链接',
-    'delete-folder': '删除文件夹',
+    link: record ? 'Edit link' : 'Add link',
+    bulk: 'Add links in bulk',
+    folder: record ? 'Manage folder' : 'New folder',
+    restore: 'Restore from backup',
+    'delete-link': 'Delete link',
+    'delete-folder': 'Delete folder',
   };
   const details = {
-    bulk: '每行输入一个完整的 HTTP 或 HTTPS 网址。已有网址会跳过。',
+    bulk: 'Enter one full HTTP or HTTPS URL per line. Duplicate URLs are skipped.',
     restore: raw === null
-      ? '选择之前导出的加密备份，并输入备份使用的密码。'
-      : '恢复备份将替换此浏览器中当前的资料库。确认前可以先解锁并导出当前资料。',
-    'delete-link': record ? '将从资料库删除「' + record.title + '」。' : '',
-    'delete-folder': record ? '将删除文件夹「' + record.name + '」，其中的链接会移到「未归档」。' : '',
+      ? 'Choose an encrypted backup and enter its password.'
+      : 'Restoring a backup replaces the vault in this browser. You can unlock and export your current vault first.',
+    'delete-link': record ? `Delete “${record.title}” from your vault?` : '',
+    'delete-folder': record ? `Delete “${record.name}”? Its links will move to Unfiled.` : '',
   };
   const submitLabels = {
-    bulk: '添加链接',
-    restore: raw === null ? '恢复资料库' : '替换并恢复',
-    'delete-link': '删除链接',
-    'delete-folder': '删除文件夹',
+    bulk: 'Add links',
+    restore: raw === null ? 'Restore vault' : 'Replace and restore',
+    'delete-link': 'Delete link',
+    'delete-folder': 'Delete folder',
   };
   const detail = byId('dialog-detail');
   detail.textContent = details[mode] ?? '';
@@ -316,7 +317,7 @@ function showEditor(mode, record = null) {
   byId('dialog-delete').hidden = mode !== 'folder' || record === null;
   const submit = byId('dialog-submit');
   const destructive = mode.startsWith('delete-') || (mode === 'restore' && raw !== null);
-  submit.textContent = submitLabels[mode] ?? '保存';
+  submit.textContent = submitLabels[mode] ?? 'Save';
   submit.classList.toggle('button-danger', destructive);
   submit.classList.toggle('button-primary', !destructive);
 
@@ -346,7 +347,7 @@ async function submitEditor() {
     const file = byId('backup-file').files[0];
     const backupPassword = byId('backup-password').value;
     if (file.size > 8 * 1024 * 1024) {
-      status(dialogStatus, '备份文件过大，无法在此浏览器恢复。', true);
+      status(dialogStatus, 'The backup file is too large to restore in this browser.', true);
       return;
     }
     const backup = await file.text();
@@ -356,7 +357,7 @@ async function submitEditor() {
     raw = backup;
     editor.close();
     showDesk(unlocked);
-    status(workspaceStatus, '已恢复加密备份。');
+    status(workspaceStatus, 'Backup restored.');
     return;
   }
 
@@ -364,14 +365,14 @@ async function submitEditor() {
   if (dialogMode === 'link') {
     const url = normalizeUrl(byId('link-url').value.trim());
     if (!url) {
-      status(dialogStatus, '请输入有效的 HTTP 或 HTTPS 网址。', true);
+      status(dialogStatus, 'Enter a valid HTTP or HTTPS URL.', true);
       byId('link-url').focus();
       return;
     }
     const revised = linkFromUrl(url, folderSelect.value, byId('link-title').value.trim(),
       byId('link-note').value.trim(), editing?.id);
     const updated = editing ? links.map((link) => link.id === revised.id ? revised : link) : [revised, ...links];
-    await saveRecords({ folders, links: updated }, editing ? '链接已更新。' : '已添加链接。');
+    await saveRecords({ folders, links: updated }, editing ? 'Link updated.' : 'Link added.');
     return;
   }
 
@@ -380,7 +381,7 @@ async function submitEditor() {
     const urls = lines.map(normalizeUrl);
     const invalid = urls.findIndex((url) => !url);
     if (!lines.length || invalid >= 0) {
-      status(dialogStatus, lines.length ? '请检查此网址：' + lines[invalid] : '请输入至少一个网址。', true);
+      status(dialogStatus, lines.length ? `Check the URL “${lines[invalid]}”.` : 'Enter at least one URL.', true);
       byId('bulk-urls').focus();
       return;
     }
@@ -393,11 +394,12 @@ async function submitEditor() {
       }
     }
     if (!added.length) {
-      status(dialogStatus, '这些网址已经在资料库中。', true);
+      status(dialogStatus, 'Your vault already contains these URLs.', true);
       return;
     }
     const skipped = urls.length - added.length;
-    const message = '已添加 ' + added.length + ' 条链接。' + (skipped ? '跳过 ' + skipped + ' 个重复网址。' : '');
+    const message = `Added ${added.length} ${added.length === 1 ? 'link' : 'links'}.` +
+      (skipped ? ` Skipped ${skipped} ${skipped === 1 ? 'duplicate' : 'duplicates'}.` : '');
     await saveRecords({ folders, links: [...added, ...links] }, message);
     return;
   }
@@ -406,35 +408,35 @@ async function submitEditor() {
     const name = byId('folder-name').value.trim();
     if (!name || folders.some((folder) => folder.id !== editing?.id &&
         folder.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
-      status(dialogStatus, name ? '已存在同名文件夹。' : '请输入文件夹名称。', true);
+      status(dialogStatus, name ? 'A folder with that name already exists.' : 'Enter a folder name.', true);
       byId('folder-name').focus();
       return;
     }
     const revised = { id: editing?.id ?? crypto.randomUUID(), name };
     const updated = editing ? folders.map((folder) => folder.id === revised.id ? revised : folder) : [...folders, revised];
-    await saveRecords({ folders: updated, links }, editing ? '文件夹已更新。' : '文件夹已创建。', revised.id);
+    await saveRecords({ folders: updated, links }, editing ? 'Folder updated.' : 'Folder created.', revised.id);
     return;
   }
 
   if (dialogMode === 'delete-link') {
-    await saveRecords({ folders, links: links.filter((link) => link.id !== editing.id) }, '链接已删除。');
+    await saveRecords({ folders, links: links.filter((link) => link.id !== editing.id) }, 'Link deleted.');
     return;
   }
 
   const remaining = folders.filter((folder) => folder.id !== editing.id);
   const moved = links.map((link) => link.folder === editing.id ? { ...link, folder: unfiled } : link);
-  await saveRecords({ folders: remaining, links: moved }, '文件夹已删除。', unfiled);
+  await saveRecords({ folders: remaining, links: moved }, 'Folder deleted.', unfiled);
 }
 
 gateForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const firstUse = raw === null;
-  if (firstUse && password.value.length < 12) {
-    status(gateStatus, '请输入至少 12 个字符的密码。', true);
+  if (firstUse && password.value.length < minimumPasswordLength) {
+    status(gateStatus, `Use at least ${minimumPasswordLength} characters.`, true);
     return;
   }
   if (firstUse && password.value !== confirmPassword.value) {
-    status(gateStatus, '两次输入的密码不一致。', true);
+    status(gateStatus, 'The passwords must match.', true);
     confirmPassword.focus();
     return;
   }
@@ -450,14 +452,16 @@ gateForm.addEventListener('submit', (event) => {
       validateRecords(unlocked.records);
       if (!departing && !refreshVault()) showDesk(unlocked);
     }
-  }, gateStatus, firstUse ? '无法创建资料库，请检查浏览器存储设置。' : '密码不正确，或浏览器中的资料无法读取。');
+  }, gateStatus, firstUse
+    ? 'Could not create your vault. Check your browser storage settings.'
+    : 'Could not unlock your vault. Check your password.');
 });
 
 editorForm.addEventListener('submit', (event) => {
   event.preventDefault();
   operate(submitEditor, dialogStatus, dialogMode === 'restore'
-    ? '无法恢复备份，请检查文件和密码。'
-    : '无法保存更改，请检查浏览器存储设置。');
+    ? 'Could not restore the backup. Check the file and password.'
+    : 'Could not save changes. Check your browser storage settings.');
 });
 
 editor.addEventListener('cancel', (event) => {
@@ -490,7 +494,7 @@ byId('export').addEventListener('click', () => {
   download.download = 'private-desk-' + new Date().toISOString().slice(0, 10) + '.json';
   download.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  status(workspaceStatus, '已导出加密备份。恢复时需要资料库密码。');
+  status(workspaceStatus, 'Encrypted backup exported. Keep your password to restore it.');
 });
 
 window.addEventListener('storage', (event) => {
@@ -509,5 +513,5 @@ try {
   raw = readVault();
   configureGate();
 } catch {
-  byId('gate-description').textContent = '请通过 HTTPS 打开此页，并允许浏览器使用本地存储。';
+  byId('gate-description').textContent = 'Open this page over HTTPS and allow local storage in your browser.';
 }

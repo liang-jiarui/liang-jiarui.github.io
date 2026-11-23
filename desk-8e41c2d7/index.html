@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,17 +7,17 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="theme-color" content="#f1f5f8">
-  <title>私人资料库</title>
+  <title>Private Link Vault</title>
   <link rel="stylesheet" href="../assets/css/private-desk.css">
-  <script type="module" src="../assets/js/private-desk.js"></script>
+  <script type="module" src="../assets/js/private-desk.js?v=2"></script>
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>私人资料库</span></div>
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Private Link Vault</span></div>
       <div class="top-actions" id="workspace-actions" hidden>
-        <button class="button button-quiet" type="button" id="export">导出备份</button>
-        <button class="button" type="button" id="lock">锁定</button>
+        <button class="button button-quiet" type="button" id="export">Export backup</button>
+        <button class="button" type="button" id="lock">Lock</button>
       </div>
     </div>
   </header>
@@ -26,53 +26,53 @@
     <section class="gate" id="gate" aria-labelledby="gate-title">
       <div class="gate-card">
         <div class="gate-icon" aria-hidden="true"></div>
-        <h1 id="gate-title">私人资料库</h1>
-        <p class="muted" id="gate-description">正在读取此浏览器中的资料库。</p>
-        <noscript><p>请启用 JavaScript 以使用资料库。</p></noscript>
+        <h1 id="gate-title">Private Link Vault</h1>
+        <p class="muted" id="gate-description">Checking this browser for a saved vault.</p>
+        <noscript><p>Enable JavaScript to use the vault.</p></noscript>
         <form class="stack" id="gate-form" hidden>
-          <label>资料库密码
+          <label>Vault password
             <input id="password" type="password" required>
           </label>
-          <label id="confirm-field" hidden>确认密码
+          <label id="confirm-field" hidden>Confirm password
             <input id="confirm-password" type="password" autocomplete="new-password" disabled>
           </label>
-          <button class="button button-primary" id="gate-submit" type="submit">解锁</button>
+          <button class="button button-primary" id="gate-submit" type="submit">Unlock</button>
         </form>
         <div class="status" id="gate-status" role="status" hidden></div>
         <div class="gate-footer" id="gate-footer" hidden>
-          <button class="button button-quiet" id="restore" type="button">从备份恢复</button>
+          <button class="button button-quiet" id="restore" type="button">Restore from backup</button>
         </div>
       </div>
     </section>
 
     <section class="workspace" id="workspace" aria-labelledby="workspace-title" hidden>
       <div class="workspace-heading">
-        <h1 id="workspace-title" tabindex="-1">链接资料库</h1>
-        <p class="muted">资料仅在此浏览器内加密保存。</p>
+        <h1 id="workspace-title" tabindex="-1">Link Vault</h1>
+        <p class="muted">Your links and notes are encrypted and stored in this browser.</p>
       </div>
       <div class="status" id="workspace-status" role="status" hidden></div>
       <div class="desk-grid">
         <aside class="sidebar" aria-labelledby="folders-title">
-          <div class="sidebar-heading"><h2 id="folders-title">文件夹</h2></div>
+          <div class="sidebar-heading"><h2 id="folders-title">Folders</h2></div>
           <ul class="folder-list" id="folder-list"></ul>
           <div class="folder-tools">
-            <button class="button button-quiet" id="new-folder" type="button">新建文件夹</button>
-            <button class="button button-quiet" id="manage-folder" type="button" hidden>管理当前文件夹</button>
+            <button class="button button-quiet" id="new-folder" type="button">New folder</button>
+            <button class="button button-quiet" id="manage-folder" type="button" hidden>Manage folder</button>
           </div>
         </aside>
 
         <section class="content" aria-labelledby="list-title">
           <div class="toolbar">
-            <label class="search"><span class="sr-only">搜索链接</span>
-              <input id="search" type="search" placeholder="搜索标题、网址或备注" autocomplete="off" spellcheck="false">
+            <label class="search"><span class="sr-only">Search links</span>
+              <input id="search" type="search" placeholder="Search titles, URLs, or notes" autocomplete="off" spellcheck="false">
             </label>
             <div class="toolbar-actions">
-              <button class="button" id="bulk-add" type="button">批量添加</button>
-              <button class="button button-primary" id="new-link" type="button">添加链接</button>
+              <button class="button" id="bulk-add" type="button">Bulk add</button>
+              <button class="button button-primary" id="new-link" type="button">Add link</button>
             </div>
           </div>
           <div class="list-heading">
-            <h2 id="list-title">全部链接</h2><span class="list-count" id="list-count" role="status"></span>
+            <h2 id="list-title">All links</h2><span class="list-count" id="list-count" role="status"></span>
           </div>
           <ul class="link-list" id="link-list"></ul>
           <div class="empty-state" id="empty-state" hidden>
@@ -88,47 +88,47 @@
     <form class="stack" id="editor-form" autocomplete="off" spellcheck="false">
       <h2 id="dialog-title"></h2>
       <fieldset class="stack" id="link-fields" hidden disabled>
-        <label>网址
+        <label>URL
           <input id="link-url" type="text" inputmode="url" autocomplete="off" maxlength="4096" placeholder="https://" required>
         </label>
-        <label>标题
-          <input id="link-title" type="text" maxlength="160" placeholder="留空时使用域名">
+        <label>Title
+          <input id="link-title" type="text" maxlength="160" placeholder="Leave blank to use the website's domain">
         </label>
       </fieldset>
       <fieldset class="stack" id="bulk-fields" hidden disabled>
-        <label>网址列表
-          <textarea id="bulk-urls" rows="7" placeholder="每行粘贴一个网址" required></textarea>
+        <label>URLs
+          <textarea id="bulk-urls" rows="7" placeholder="Paste one URL per line" required></textarea>
         </label>
       </fieldset>
       <fieldset class="stack" id="assign-fields" hidden disabled>
-        <label>文件夹
+        <label>Folder
           <select id="link-folder"></select>
         </label>
       </fieldset>
       <fieldset class="stack" id="note-fields" hidden disabled>
-        <label>备注
+        <label>Notes
           <textarea id="link-note" rows="3" maxlength="1200"></textarea>
         </label>
       </fieldset>
       <fieldset class="stack" id="folder-fields" hidden disabled>
-        <label>文件夹名称
+        <label>Folder name
           <input id="folder-name" type="text" maxlength="80" required>
         </label>
       </fieldset>
       <fieldset class="stack" id="restore-fields" hidden disabled>
-        <label>加密备份文件
+        <label>Encrypted backup file
           <input id="backup-file" type="file" accept=".json,application/json" required>
         </label>
-        <label>备份密码
+        <label>Backup password
           <input id="backup-password" type="password" autocomplete="current-password" required>
         </label>
       </fieldset>
       <p class="muted" id="dialog-detail" hidden></p>
       <div class="status status-error" id="dialog-status" role="status" hidden></div>
       <div class="dialog-actions">
-        <button class="button button-danger" id="dialog-delete" type="button" hidden>删除文件夹</button>
-        <button class="button" id="dialog-cancel" type="button">取消</button>
-        <button class="button button-primary" id="dialog-submit" type="submit">保存</button>
+        <button class="button button-danger" id="dialog-delete" type="button" hidden>Delete folder</button>
+        <button class="button" id="dialog-cancel" type="button">Cancel</button>
+        <button class="button button-primary" id="dialog-submit" type="submit">Save</button>
       </div>
     </form>
   </dialog>

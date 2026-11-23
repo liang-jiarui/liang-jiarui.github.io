@@ -13483,6 +13483,151 @@
     }
   },
   {
+    "id": "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
+    "task": "fireearth_elm_cn_crop",
+    "name": "fireearth_elm_cn_crop_f19_ad",
+    "model": "e3sm",
+    "version": "E3SM_v3_0_2",
+    "task_title": "FireEarth · ELM-CN 作物与灌溉",
+    "task_about": "FireEarth ALL 的 f19 ELM-CN 作物试验。200 年 AD、1000 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。",
+    "title": "FireEarth · ELM-CN · 作物 AD 自旋",
+    "description": "ELM-CN 作物与灌溉",
+    "compset": "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+    "res": "f19_f19",
+    "group": "ELM-CN 作物与灌溉",
+    "role": "simulation",
+    "category": "projects",
+    "period": {
+      "start": "0001-01-01",
+      "end": "0200-12-31",
+      "frequency": "annual"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
+      "preview": "python -m src.simulations reproduce @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad --dry-run"
+    }
+  },
+  {
+    "id": "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
+    "task": "fireearth_elm_cn_crop",
+    "name": "fireearth_elm_cn_crop_f19_postad",
+    "model": "e3sm",
+    "version": "E3SM_v3_0_2",
+    "task_title": "FireEarth · ELM-CN 作物与灌溉",
+    "task_about": "FireEarth ALL 的 f19 ELM-CN 作物试验。200 年 AD、1000 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。",
+    "title": "FireEarth · ELM-CN · 作物常规自旋",
+    "description": "ELM-CN 作物与灌溉",
+    "compset": "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+    "res": "f19_f19",
+    "group": "ELM-CN 作物与灌溉",
+    "role": "simulation",
+    "category": "projects",
+    "period": {
+      "start": "0201-01-01",
+      "end": "1200-12-31",
+      "frequency": "annual"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
+      "preview": "python -m src.simulations reproduce @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad --dry-run"
+    }
+  },
+  {
+    "id": "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1850_1900",
+    "task": "fireearth_elm_cn_crop",
+    "name": "fireearth_elm_cn_crop_f19_hist_1850_1900",
+    "model": "e3sm",
+    "version": "E3SM_v3_0_2",
+    "task_title": "FireEarth · ELM-CN 作物与灌溉",
+    "task_about": "FireEarth ALL 的 f19 ELM-CN 作物试验。200 年 AD、1000 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。",
+    "title": "FireEarth · ELM-CN · 历史期 1850–1900",
+    "description": "ELM-CN 作物与灌溉",
+    "compset": "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+    "res": "f19_f19",
+    "group": "ELM-CN 作物与灌溉",
+    "role": "simulation",
+    "category": "projects",
+    "period": {
+      "start": "1850-01-01",
+      "end": "1900-12-31",
+      "frequency": "annual"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1850_1900",
+      "preview": "python -m src.simulations reproduce @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1850_1900 --dry-run"
+    }
+  },
+  {
+    "id": "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1901_2023",
+    "task": "fireearth_elm_cn_crop",
+    "name": "fireearth_elm_cn_crop_f19_hist_1901_2023",
+    "model": "e3sm",
+    "version": "E3SM_v3_0_2",
+    "task_title": "FireEarth · ELM-CN 作物与灌溉",
+    "task_about": "FireEarth ALL 的 f19 ELM-CN 作物试验。200 年 AD、1000 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。",
+    "title": "FireEarth · ELM-CN · 历史期 1901–2023",
+    "description": "ELM-CN 作物与灌溉",
+    "compset": "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+    "res": "f19_f19",
+    "group": "ELM-CN 作物与灌溉",
+    "role": "simulation",
+    "category": "projects",
+    "period": {
+      "start": "1901-01-01",
+      "end": "2023-12-31",
+      "frequency": "annual"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1901_2023",
+      "preview": "python -m src.simulations reproduce @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1901_2023 --dry-run"
+    }
+  },
+  {
+    "id": "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ssp245_2024_2100",
+    "task": "fireearth_elm_cn_crop",
+    "name": "fireearth_elm_cn_crop_f19_ssp245_2024_2100",
+    "model": "e3sm",
+    "version": "E3SM_v3_0_2",
+    "task_title": "FireEarth · ELM-CN 作物与灌溉",
+    "task_about": "FireEarth ALL 的 f19 ELM-CN 作物试验。200 年 AD、1000 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。",
+    "title": "FireEarth · ELM-CN · SSP2-4.5 2024–2100",
+    "description": "ELM-CN 作物与灌溉",
+    "compset": "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+    "res": "f19_f19",
+    "group": "ELM-CN 作物与灌溉",
+    "role": "simulation",
+    "category": "projects",
+    "period": {
+      "start": "2024-01-01",
+      "end": "2100-12-31",
+      "frequency": "annual"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ssp245_2024_2100",
+      "preview": "python -m src.simulations reproduce @fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ssp245_2024_2100 --dry-run"
+    }
+  },
+  {
     "id": "@fireearth_geoschem/geoschem_rrtmg/gc_13_2_0/e01_gc_merra2_fullchem_2x2.5_L47_201907-201907",
     "task": "fireearth_geoschem",
     "name": "fe_gc_merra2_fullchem",

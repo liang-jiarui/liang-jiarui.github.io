@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-23T23:45:39Z",
+  "updated_at": "2026-11-23T23:50:47Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -10220,6 +10220,116 @@
         "simulation"
       ],
       "description": "chapter4/v20260919/a_GFED4/lnd/20261104/1901_2023"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 作物 AD 自旋",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fad",
+      "keywords": [
+        "0001-01-01",
+        "0200-12-31",
+        "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
+        "E3SM_v3_0_2",
+        "ELM-CN 作物与灌溉",
+        "FireEarth · ELM-CN 作物与灌溉",
+        "e3sm",
+        "f19_f19",
+        "fireearth_elm_cn_crop",
+        "fireearth_elm_cn_crop_f19_ad",
+        "simulation"
+      ],
+      "description": "ELM-CN 作物与灌溉"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1850_1900",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 历史期 1850–1900",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fhist_1850_1900",
+      "keywords": [
+        "1850-01-01",
+        "1900-12-31",
+        "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1850_1900",
+        "E3SM_v3_0_2",
+        "ELM-CN 作物与灌溉",
+        "FireEarth · ELM-CN 作物与灌溉",
+        "e3sm",
+        "f19_f19",
+        "fireearth_elm_cn_crop",
+        "fireearth_elm_cn_crop_f19_hist_1850_1900",
+        "simulation"
+      ],
+      "description": "ELM-CN 作物与灌溉"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1901_2023",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 历史期 1901–2023",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fhist_1901_2023",
+      "keywords": [
+        "1901-01-01",
+        "2023-12-31",
+        "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1901_2023",
+        "E3SM_v3_0_2",
+        "ELM-CN 作物与灌溉",
+        "FireEarth · ELM-CN 作物与灌溉",
+        "e3sm",
+        "f19_f19",
+        "fireearth_elm_cn_crop",
+        "fireearth_elm_cn_crop_f19_hist_1901_2023",
+        "simulation"
+      ],
+      "description": "ELM-CN 作物与灌溉"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 作物常规自旋",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fpostad",
+      "keywords": [
+        "0201-01-01",
+        "1200-12-31",
+        "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
+        "E3SM_v3_0_2",
+        "ELM-CN 作物与灌溉",
+        "FireEarth · ELM-CN 作物与灌溉",
+        "e3sm",
+        "f19_f19",
+        "fireearth_elm_cn_crop",
+        "fireearth_elm_cn_crop_f19_postad",
+        "simulation"
+      ],
+      "description": "ELM-CN 作物与灌溉"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ssp245_2024_2100",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · SSP2-4.5 2024–2100",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fssp245_2024_2100",
+      "keywords": [
+        "2024-01-01",
+        "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "2100-12-31",
+        "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ssp245_2024_2100",
+        "E3SM_v3_0_2",
+        "ELM-CN 作物与灌溉",
+        "FireEarth · ELM-CN 作物与灌溉",
+        "e3sm",
+        "f19_f19",
+        "fireearth_elm_cn_crop",
+        "fireearth_elm_cn_crop_f19_ssp245_2024_2100",
+        "simulation"
+      ],
+      "description": "ELM-CN 作物与灌溉"
     },
     {
       "id": "emh:simulation:@fireearth_geoschem/geoschem_rrtmg/gc_13_2_0/e01_gc_merra2_fullchem_2x2.5_L47_201907-201907",
@@ -24135,6 +24245,17 @@
       ]
     },
     {
+      "id": "emh:task:fireearth_elm_cn_crop",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "FireEarth · ELM-CN 作物与灌溉",
+      "url": "../EarthModelHub/docs/simulations/?task=fireearth_elm_cn_crop",
+      "keywords": [
+        "fireearth_elm_cn_crop"
+      ],
+      "description": "FireEarth ALL 的 f19 ELM-CN 作物试验。200 年 AD、1000 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。"
+    },
+    {
       "id": "emh:task:fireearth_geoschem",
       "hub": "EMH",
       "type": "Task",
@@ -30400,6 +30521,66 @@
   ],
   "recent": [
     {
+      "id": "emh:task:fireearth_elm_cn_crop",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "FireEarth · ELM-CN 作物与灌溉",
+      "description": "FireEarth ALL 的 f19 ELM-CN 作物试验。200 年 AD、1000 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。",
+      "url": "../EarthModelHub/docs/simulations/?task=fireearth_elm_cn_crop",
+      "date": "2026-11-23T23:50:47Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 作物 AD 自旋",
+      "description": "ELM-CN 作物与灌溉",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fad",
+      "date": "2026-11-23T23:50:47Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1850_1900",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 历史期 1850–1900",
+      "description": "ELM-CN 作物与灌溉",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fhist_1850_1900",
+      "date": "2026-11-23T23:50:47Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1901_2023",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 历史期 1901–2023",
+      "description": "ELM-CN 作物与灌溉",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fhist_1901_2023",
+      "date": "2026-11-23T23:50:47Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 作物常规自旋",
+      "description": "ELM-CN 作物与灌溉",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fpostad",
+      "date": "2026-11-23T23:50:47Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ssp245_2024_2100",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · SSP2-4.5 2024–2100",
+      "description": "ELM-CN 作物与灌溉",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fssp245_2024_2100",
+      "date": "2026-11-23T23:50:47Z",
+      "change": "added"
+    },
+    {
       "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3",
       "hub": "EMH",
       "type": "Simulation",
@@ -31086,66 +31267,6 @@
       "title": "GFED4 · NoFIRE · 1920",
       "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1920。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e16_atm_FCSD_HCO_NoFIRE_1920",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e17_atm_FCSD_HCO_ALL_1930",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1930",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1930。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e17_atm_FCSD_HCO_ALL_1930",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e18_atm_FCSD_HCO_NoFIRE_1930",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1930",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1930。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e18_atm_FCSD_HCO_NoFIRE_1930",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e19_atm_FCSD_HCO_ALL_1940",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1940",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1940。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e19_atm_FCSD_HCO_ALL_1940",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e1_atm_FCSD_HCO_ALL_1850",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1850",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1850。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e1_atm_FCSD_HCO_ALL_1850",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e20_atm_FCSD_HCO_NoFIRE_1940",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1940",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1940。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e20_atm_FCSD_HCO_NoFIRE_1940",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e21_atm_FCSD_HCO_ALL_1950",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1950",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1950。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e21_atm_FCSD_HCO_ALL_1950",
       "date": "2026-11-23T23:00:42Z",
       "change": "added"
     }

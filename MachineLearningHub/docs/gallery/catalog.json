@@ -1,0 +1,3525 @@
+{
+  "schema_version": 1,
+  "hub": {
+    "id": "machinelearninghub",
+    "title": "MachineLearningHub",
+    "repository": "https://github.com/liang-jiarui/MachineLearningHub"
+  },
+  "hubs": [
+    {
+      "id": "observationhub",
+      "title": "ObsHub",
+      "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/"
+    },
+    {
+      "id": "machinelearninghub",
+      "title": "MLHub",
+      "url": "https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/"
+    },
+    {
+      "id": "earthmodelhub",
+      "title": "ModelHub",
+      "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/"
+    }
+  ],
+  "guide": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/GALLERY.md",
+  "datasets": [
+    {
+      "id": "gfed5",
+      "title": "GFED5 burned area",
+      "category": "Fire",
+      "description": "Monthly burned area assembled from GFED5.0, GFED5.1 Ecosystem and GFED5.1 near-real-time inputs. Months without complete coverage are kept missing in the full-month product.",
+      "role": "label",
+      "temporal": "monthly",
+      "spatial": "1 deg for 1997–2000; 0.25 deg thereafter",
+      "coverage": "1997-01–2026-12 (catalog window)",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 199701,
+          "end": 202612
+        }
+      ],
+      "variables": [
+        "burned_area_gfed5"
+      ],
+      "variable_metadata": {
+        "burned_area_gfed5": {
+          "units": "m2",
+          "description": "Total monthly burned area per grid cell, conservatively regridded",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Data and processing methods",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/gfed5_burned_area.md"
+        },
+        {
+          "label": "GFED data releases",
+          "url": "https://www.globalfiredata.org/data.html"
+        },
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L196"
+        }
+      ],
+      "related_resources": [
+        {
+          "hub_id": "observationhub",
+          "kind": "dataset",
+          "id": "gfed5_fireearth",
+          "title": "FireEarth 2° × 2.5° GFED5 snapshot",
+          "relationship": "Derived snapshot",
+          "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/?dataset=gfed5_fireearth"
+        },
+        {
+          "hub_id": "observationhub",
+          "kind": "dataset",
+          "id": "gfed5_burned_area",
+          "title": "Original GFED5 product archive",
+          "relationship": "Original product archive",
+          "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/?dataset=gfed5_burned_area"
+        }
+      ]
+    },
+    {
+      "id": "gfed4",
+      "title": "GFED4.1s burned area",
+      "category": "Fire",
+      "description": "Monthly burned area including small fires. MLHub converts burned fraction to area before regridding. The official burned-area release ends in 2016.",
+      "role": "label",
+      "temporal": "monthly",
+      "spatial": "0.25x0.25 deg",
+      "coverage": "1997-01–2016-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 199701,
+          "end": 201612
+        }
+      ],
+      "variables": [
+        "burned_area"
+      ],
+      "variable_metadata": {
+        "burned_area": {
+          "units": "m2",
+          "description": "Monthly burned area (burned_fraction x grid_cell_area)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "GFED data releases",
+          "url": "https://www.globalfiredata.org/data.html"
+        },
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L170"
+        }
+      ],
+      "related_resources": [
+        {
+          "hub_id": "observationhub",
+          "kind": "dataset",
+          "id": "gfed4_1s",
+          "title": "GFED4.1s archive",
+          "relationship": "Same product family",
+          "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/?dataset=gfed4_1s"
+        }
+      ]
+    },
+    {
+      "id": "era5",
+      "title": "ERA5 reanalysis",
+      "category": "Climate",
+      "description": "ERA5 reanalysis monthly fields; 0.25 deg global, regridded to ml grid",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "0.25x0.25 deg",
+      "coverage": "1940-01–2025-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 194001,
+          "end": 202512
+        }
+      ],
+      "variables": [
+        "tp",
+        "u10",
+        "v10",
+        "t2m",
+        "sp",
+        "blh",
+        "d2m",
+        "tcw",
+        "tcwv",
+        "pev",
+        "prep"
+      ],
+      "variable_metadata": {
+        "tp": {
+          "units": "m/day",
+          "description": "Total precipitation (ERA5 avgad stream)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "u10": {
+          "units": "m/s",
+          "description": "10 m u-wind component",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "v10": {
+          "units": "m/s",
+          "description": "10 m v-wind component",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "t2m": {
+          "units": "K",
+          "description": "2 m air temperature",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "sp": {
+          "units": "Pa",
+          "description": "Surface pressure",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "blh": {
+          "units": "m",
+          "description": "Boundary layer height",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "d2m": {
+          "units": "K",
+          "description": "2 m dewpoint temperature",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "tcw": {
+          "units": "kg/m2",
+          "description": "Total column water",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "tcwv": {
+          "units": "kg/m2",
+          "description": "Total column water vapour",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "pev": {
+          "units": "m/day",
+          "description": "Potential evaporation (ERA5 avgad stream)",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "prep": {
+          "units": "mm/month",
+          "description": "Monthly precipitation total (derived from tp)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L59"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "era5_land",
+      "title": "ERA5-Land reanalysis",
+      "category": "Climate",
+      "description": "ERA5-Land monthly land-surface fields; ~0.1 deg native, regridded to ml grid",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "0.1x0.1 deg",
+      "coverage": "1950-01–2025-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 195001,
+          "end": 202512
+        }
+      ],
+      "variables": [
+        "d2m",
+        "t2m",
+        "skt",
+        "pev",
+        "e",
+        "u10",
+        "v10",
+        "sp",
+        "tp",
+        "prep"
+      ],
+      "variable_metadata": {
+        "d2m": {
+          "units": "K",
+          "description": "2 m dewpoint temperature",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "t2m": {
+          "units": "K",
+          "description": "2 m air temperature",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "skt": {
+          "units": "K",
+          "description": "Skin temperature",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "pev": {
+          "units": "m/day",
+          "description": "Potential evaporation",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "e": {
+          "units": "m/day",
+          "description": "Actual evaporation",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "u10": {
+          "units": "m/s",
+          "description": "10 m u-wind",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "v10": {
+          "units": "m/s",
+          "description": "10 m v-wind",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "sp": {
+          "units": "Pa",
+          "description": "Surface pressure",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "tp": {
+          "units": "m/day",
+          "description": "Total precipitation",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "prep": {
+          "units": "mm/month",
+          "description": "Monthly precipitation total (derived from tp)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L135"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "cesm2_climate",
+      "title": "CESM2 CMIP6 climate",
+      "category": "Climate",
+      "description": "Monthly CESM2 historical and SSP climate, land carbon and soil-water fields for variant r4i1p1f1. The burned-area experiments use 11 predictor variables on the model's native grid before regridding.",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "native gn grid (f09 288x192)",
+      "coverage": "1850-01–2014-12 · 2015-01–2100-12",
+      "coverage_periods": [
+        {
+          "id": "historical",
+          "start": 185001,
+          "end": 201412
+        },
+        {
+          "id": "ssp",
+          "start": 201501,
+          "end": 210012,
+          "scenarios": [
+            "ssp126",
+            "ssp245",
+            "ssp370",
+            "ssp585"
+          ]
+        }
+      ],
+      "variables": [
+        "tas",
+        "hurs",
+        "pr",
+        "sfcWind",
+        "evspsbl",
+        "lai",
+        "cLeaf",
+        "cLitter",
+        "cVeg",
+        "cRoot",
+        "mrsos"
+      ],
+      "variable_metadata": {
+        "tas": {
+          "units": "K",
+          "description": "2 m air temperature (CMIP6 Amon)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "hurs": {
+          "units": "%",
+          "description": "Near-surface relative humidity (CMIP6 Amon)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "pr": {
+          "units": "kg/m2/s",
+          "description": "Precipitation (CMIP6 Amon; 与 ERA5 tp 不同单位，训练时注意)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "sfcWind": {
+          "units": "m/s",
+          "description": "Near-surface wind speed (CMIP6 Amon)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "evspsbl": {
+          "units": "kg/m2/s",
+          "description": "Evaporation including sublimation and transpiration",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "lai": {
+          "units": "1",
+          "description": "Leaf area index",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "cLeaf": {
+          "units": "kg/m2",
+          "description": "Carbon mass in leaves (CMIP6 Lmon)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "cLitter": {
+          "units": "kg/m2",
+          "description": "Carbon mass in litter (CMIP6 Lmon)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "cVeg": {
+          "units": "kg/m2",
+          "description": "Total vegetation carbon (CMIP6 Lmon)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "cRoot": {
+          "units": "kg/m2",
+          "description": "Carbon mass in roots (CMIP6 Lmon)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "mrsos": {
+          "units": "kg/m2",
+          "description": "Mass of water in upper portion of soil column (drought/fuel moisture proxy)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L374"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "clm_luh2",
+      "title": "CLM LUH2 land use",
+      "category": "Land use",
+      "description": "CLM LUH2 landuse.timeseries on CMIP6 f09 grid; annual; hist + SSP segments (same SSP NC)",
+      "role": "feature",
+      "temporal": "annual",
+      "spatial": "0.9x1.25 deg (f09)",
+      "coverage": "1850-01–2100-12",
+      "coverage_periods": [
+        {
+          "id": "ssp",
+          "start": 185001,
+          "end": 210012,
+          "scenarios": [
+            "ssp126",
+            "ssp245",
+            "ssp370",
+            "ssp585"
+          ]
+        }
+      ],
+      "variables": [
+        "PCT_NAT_PFT",
+        "PCT_NAT_PFT_3",
+        "PCT_NAT_PFT_9",
+        "PCT_NAT_PFT_12",
+        "PCT_NAT_PFT_13",
+        "PCT_NAT_PFT_14",
+        "PCT_CROP",
+        "PCT_CFT",
+        "frac_forest",
+        "frac_shrub",
+        "frac_grass",
+        "HARVEST_VH1",
+        "HARVEST_VH2",
+        "HARVEST_prim",
+        "HARVEST_SH1",
+        "HARVEST_SH2",
+        "HARVEST_SH3",
+        "GRAZING",
+        "FERTNITRO_CFT",
+        "UNREPRESENTED_PFT_LULCC",
+        "UNREPRESENTED_CFT_LULCC",
+        "LANDFRAC_PFT",
+        "PFTDATA_MASK",
+        "AREA"
+      ],
+      "variable_metadata": {
+        "PCT_NAT_PFT": {
+          "units": "dimensionless",
+          "description": "Natural PFT fraction (15 PFTs, natpft=1-15)",
+          "dims": "time,natpft,lat,lon",
+          "ml_scope": "optional"
+        },
+        "PCT_NAT_PFT_3": {
+          "units": "%",
+          "description": "Native PCT_NAT_PFT channel 3 (% of natural landunit)",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "PCT_NAT_PFT_9": {
+          "units": "%",
+          "description": "Native PCT_NAT_PFT channel 9 (% of natural landunit)",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "PCT_NAT_PFT_12": {
+          "units": "%",
+          "description": "Native PCT_NAT_PFT channel 12 (% of natural landunit)",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "PCT_NAT_PFT_13": {
+          "units": "%",
+          "description": "Native PCT_NAT_PFT channel 13 (% of natural landunit)",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "PCT_NAT_PFT_14": {
+          "units": "%",
+          "description": "Native PCT_NAT_PFT channel 14 (% of natural landunit)",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "PCT_CROP": {
+          "units": "dimensionless",
+          "description": "Total crop landunit fraction",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "frac_forest": {
+          "units": "1",
+          "description": "Grid-cell forest fraction; LANDFRAC_PFT x (1-PCT_CROP/100) x PCT_NAT_PFT (PFT 1-8)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "frac_shrub": {
+          "units": "1",
+          "description": "Grid-cell shrub fraction; LANDFRAC_PFT x (1-PCT_CROP/100) x PCT_NAT_PFT (PFT 9-11)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "frac_grass": {
+          "units": "1",
+          "description": "Grid-cell grass fraction; LANDFRAC_PFT x (1-PCT_CROP/100) x PCT_NAT_PFT (PFT 12-14)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "PCT_CFT": {
+          "units": "dimensionless",
+          "description": "Crop functional type fraction (64 CFTs)",
+          "dims": "time,cft,lat,lon",
+          "ml_scope": "optional"
+        },
+        "HARVEST_VH1": {
+          "units": "gC/m2/yr",
+          "description": "Harvest of primary forest",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "HARVEST_VH2": {
+          "units": "gC/m2/yr",
+          "description": "Harvest of primary non-forest",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "HARVEST_prim": {
+          "units": "gC/m2/yr",
+          "description": "Primary harvest VH1+VH2",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "HARVEST_SH1": {
+          "units": "gC/m2/yr",
+          "description": "Harvest of secondary mature forest",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "HARVEST_SH2": {
+          "units": "gC/m2/yr",
+          "description": "Harvest of secondary young forest",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "HARVEST_SH3": {
+          "units": "gC/m2/yr",
+          "description": "Harvest of secondary non-forest",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "GRAZING": {
+          "units": "gC/m2/yr",
+          "description": "Grazing on grassland",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "FERTNITRO_CFT": {
+          "units": "gN/m2/yr",
+          "description": "Crop nitrogen fertilizer by CFT",
+          "dims": "time,cft,lat,lon",
+          "ml_scope": "optional"
+        },
+        "UNREPRESENTED_PFT_LULCC": {
+          "units": "dimensionless",
+          "description": "Unrepresented PFT LULCC transfer",
+          "dims": "time,natpft,lat,lon",
+          "ml_scope": "optional"
+        },
+        "UNREPRESENTED_CFT_LULCC": {
+          "units": "dimensionless",
+          "description": "Unrepresented CFT LULCC transfer",
+          "dims": "time,cft,lat,lon",
+          "ml_scope": "optional"
+        },
+        "LANDFRAC_PFT": {
+          "units": "dimensionless",
+          "description": "Land fraction on PFT grid (static; broadcast to time in prep)",
+          "dims": "lat,lon",
+          "ml_scope": "static"
+        },
+        "PFTDATA_MASK": {
+          "units": "dimensionless",
+          "description": "Valid gridcell mask (static; broadcast to time in prep)",
+          "dims": "lat,lon",
+          "ml_scope": "static"
+        },
+        "AREA": {
+          "units": "km2",
+          "description": "Gridcell area (static; broadcast to time in prep)",
+          "dims": "lat,lon",
+          "ml_scope": "static"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L221"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "clm_hdm",
+      "title": "CLM human population density",
+      "category": "Human activity",
+      "description": "CLM CMIP6 population density (Li HYDE hist + SSP); 0.5 deg annual hdm",
+      "role": "feature",
+      "temporal": "annual",
+      "spatial": "0.5x0.5 deg",
+      "coverage": "1850-01–2100-12",
+      "coverage_periods": [
+        {
+          "id": "ssp",
+          "start": 185001,
+          "end": 210012,
+          "scenarios": [
+            "ssp126",
+            "ssp245",
+            "ssp370",
+            "ssp585"
+          ]
+        }
+      ],
+      "variables": [
+        "hdm"
+      ],
+      "variable_metadata": {
+        "hdm": {
+          "units": "ind/km2",
+          "description": "Population density (people per land area, CLM fire forcing)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L780"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "cam_emis_ndep",
+      "title": "CAM emissions and nitrogen deposition",
+      "category": "Nitrogen",
+      "description": "CMIP6 historical emissions + e1 HEMCO emission/deposition merge; 1850-1999 CMIP6 + 2000-2023 e1",
+      "role": "feature_and_label",
+      "temporal": "monthly",
+      "spatial": "1.9x2.5 deg (CAM) + e1 f19",
+      "coverage": "1850-01–1999-12 · 2000-01–2023-12",
+      "coverage_periods": [
+        {
+          "id": "historical_emissions",
+          "start": 185001,
+          "end": 199912
+        },
+        {
+          "id": "cesm_emission",
+          "start": 200001,
+          "end": 202312
+        }
+      ],
+      "variables": [
+        "HCO_NH3_as_N_kgN_ha_month",
+        "HCO_NO_as_N_kgN_ha_month",
+        "HCO_NO_as_N_with_lightning_kgN_ha_month",
+        "HCO_NO2_as_N_kgN_ha_month",
+        "HCO_NOx_as_N_kgN_ha_month",
+        "HCO_NOx_as_N_with_lightning_kgN_ha_month",
+        "Fire_NH3_as_N_kgN_ha_month",
+        "Fire_NO_as_N_kgN_ha_month",
+        "Fire_NO2_as_N_kgN_ha_month",
+        "Fire_NOx_as_N_kgN_ha_month",
+        "Fire_Nr_as_N_kgN_ha_month",
+        "LNO_COL_PROD",
+        "HCO_Nr_as_N_kgN_ha_month",
+        "HCO_Nr_as_N_with_lightning_kgN_ha_month",
+        "HCO_Nr_as_N_kgN_ha_month_nofire",
+        "HCO_Nr_as_N_with_lightning_kgN_ha_month_nofire",
+        "HCO_Nr_as_N_kgN_ha_month_fire",
+        "NDEP_month_all",
+        "NDEP_month_nofire",
+        "NDEP_month_fire",
+        "wet_deposition_NHx_as_N_all",
+        "dry_deposition_NHx_as_N_all",
+        "wet_deposition_NOy_as_N_all",
+        "dry_deposition_NOy_as_N_all",
+        "wet_deposition_NHx_as_N_nofire",
+        "dry_deposition_NHx_as_N_nofire",
+        "wet_deposition_NOy_as_N_nofire",
+        "dry_deposition_NOy_as_N_nofire",
+        "wet_deposition_NHx_as_N_fire",
+        "dry_deposition_NHx_as_N_fire",
+        "wet_deposition_NOy_as_N_fire",
+        "dry_deposition_NOy_as_N_fire",
+        "NDEP_NHx_month_all",
+        "NDEP_NHx_month_nofire",
+        "NDEP_NHx_month_fire",
+        "NDEP_NOy_month_all",
+        "NDEP_NOy_month_nofire",
+        "NDEP_NOy_month_fire",
+        "NDEP_dry_month_all",
+        "NDEP_dry_month_nofire",
+        "NDEP_dry_month_fire",
+        "NDEP_wet_month_all",
+        "NDEP_wet_month_nofire",
+        "NDEP_wet_month_fire"
+      ],
+      "variable_metadata": {
+        "HCO_NH3_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "HEMCO anthropogenic NH3 as N",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "HCO_NO_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "HEMCO anthropogenic NO as N",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "HCO_NO_as_N_with_lightning_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "HEMCO NO as N including lightning",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "HCO_NO2_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "HEMCO NO2 as N",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "HCO_NOx_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "HEMCO NOx as N",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "HCO_NOx_as_N_with_lightning_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "HEMCO NOx as N including lightning",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "Fire_NH3_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "Fire NH3 as N",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "Fire_NO_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "Fire NO as N",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "Fire_NO2_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "Fire NO2 as N",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "Fire_NOx_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "Fire NOx as N",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "Fire_Nr_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "Fire reactive nitrogen total as N",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "LNO_COL_PROD": {
+          "units": "kg N ha-1 month-1",
+          "description": "Lightning column NO production as N",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "HCO_Nr_as_N_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "HEMCO reactive nitrogen total as N",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "HCO_Nr_as_N_with_lightning_kgN_ha_month": {
+          "units": "kg N ha-1 month-1",
+          "description": "HEMCO Nr as N including lightning",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "HCO_Nr_as_N_kgN_ha_month_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Non-fire HEMCO Nr as N",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "HCO_Nr_as_N_with_lightning_kgN_ha_month_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Non-fire Nr as N including lightning",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "HCO_Nr_as_N_kgN_ha_month_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Fire-source HEMCO Nr as N",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_month_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "Total N deposition wet+dry (all)",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "NDEP_month_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Non-fire N deposition",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_month_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Fire-related N deposition",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "wet_deposition_NHx_as_N_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "NHx wet deposition (all)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "dry_deposition_NHx_as_N_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "NHx dry deposition (all)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "wet_deposition_NOy_as_N_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "NOy wet deposition (all)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "dry_deposition_NOy_as_N_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "NOy dry deposition (all)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "wet_deposition_NHx_as_N_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "NHx wet deposition (nofire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "dry_deposition_NHx_as_N_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "NHx dry deposition (nofire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "wet_deposition_NOy_as_N_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "NOy wet deposition (nofire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "dry_deposition_NOy_as_N_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "NOy dry deposition (nofire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "wet_deposition_NHx_as_N_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "NHx wet deposition (fire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "dry_deposition_NHx_as_N_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "NHx dry deposition (fire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "wet_deposition_NOy_as_N_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "NOy wet deposition (fire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "dry_deposition_NOy_as_N_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "NOy dry deposition (fire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_NHx_month_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly NHx deposition (all)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_NHx_month_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly NHx deposition (nofire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_NHx_month_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly NHx deposition (fire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_NOy_month_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly NOy deposition (all)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_NOy_month_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly NOy deposition (nofire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_NOy_month_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly NOy deposition (fire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_dry_month_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly dry deposition (all)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_dry_month_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly dry deposition (nofire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_dry_month_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly dry deposition (fire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_wet_month_all": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly wet deposition (all)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_wet_month_nofire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly wet deposition (nofire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "NDEP_wet_month_fire": {
+          "units": "kg N ha-1 month-1",
+          "description": "Monthly wet deposition (fire)",
+          "dims": "time",
+          "ml_scope": "optional"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L525"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "cam_ndep",
+      "title": "CAM wet nitrogen deposition",
+      "category": "Nitrogen",
+      "description": "CAM wet deposition NHx/NOy; fv1.9x2.5 native, regridded to ml grid",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "1.9x2.5 deg",
+      "coverage": "2000-01–2023-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 200001,
+          "end": 202312
+        }
+      ],
+      "variables": [
+        "wet_deposition_NHx_as_N",
+        "wet_deposition_NOy_as_N"
+      ],
+      "variable_metadata": {
+        "wet_deposition_NHx_as_N": {
+          "units": "kg/m2/s",
+          "description": "NHx wet deposition (CAM fv1.9x2.5 native)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "wet_deposition_NOy_as_N": {
+          "units": "kg/m2/s",
+          "description": "NOy wet deposition",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L621"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "gdp_ec",
+      "title": "GDP and electricity consumption",
+      "category": "Human activity",
+      "description": "GDP and electricity consumption annual grids; Mollweide TIF resampled to ml grid",
+      "role": "feature",
+      "temporal": "annual",
+      "spatial": "~0.1 deg (TIF resample)",
+      "coverage": "1990-01–2020-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 199001,
+          "end": 202012
+        }
+      ],
+      "variables": [
+        "GDP",
+        "EC"
+      ],
+      "variable_metadata": {
+        "GDP": {
+          "units": "dimensionless",
+          "description": "Gross domestic product (gridded annual)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "EC": {
+          "units": "dimensionless",
+          "description": "Electricity consumption (file name Electricity_consumption, alias EC)",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L591"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "merra2",
+      "title": "MERRA-2 reanalysis",
+      "category": "Climate",
+      "description": "MERRA-2 reanalysis monthly fields; ~0.5 deg native (GEOS-Chem Asia stream), regridded to ml grid",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "0.5x0.625 deg",
+      "coverage": "2000-01–2023-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 200001,
+          "end": 202312
+        }
+      ],
+      "variables": [
+        "T2M",
+        "U10M",
+        "V10M",
+        "PRECTOT",
+        "PBLH",
+        "QV2M",
+        "SWGDN",
+        "TS",
+        "EVAP"
+      ],
+      "variable_metadata": {
+        "T2M": {
+          "units": "K",
+          "description": "2 m air temperature",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "U10M": {
+          "units": "m/s",
+          "description": "10 m u-wind",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "V10M": {
+          "units": "m/s",
+          "description": "10 m v-wind",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "PRECTOT": {
+          "units": "kg/m2/s",
+          "description": "Total precipitation",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "PBLH": {
+          "units": "m",
+          "description": "Planetary boundary layer height",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "QV2M": {
+          "units": "kg/kg",
+          "description": "2 m specific humidity",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "SWGDN": {
+          "units": "W/m2",
+          "description": "Surface downward shortwave flux",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "TS": {
+          "units": "K",
+          "description": "Surface skin temperature",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "EVAP": {
+          "units": "kg/m2/s",
+          "description": "Evaporation",
+          "dims": "time",
+          "ml_scope": "optional"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L649"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "hwsd2",
+      "title": "HWSD2 soil properties",
+      "category": "Soils",
+      "description": "HWSD2 soil properties 0-20 cm; static spatial fields regridded to ml grid",
+      "role": "feature",
+      "temporal": "static",
+      "spatial": "1/120 deg raster",
+      "coverage": "Static surface fields",
+      "coverage_periods": [],
+      "variables": [
+        "BD",
+        "pH",
+        "SOC",
+        "Clay"
+      ],
+      "variable_metadata": {
+        "BD": {
+          "units": "g/cm3",
+          "description": "Bulk density 0-20 cm",
+          "dims": "lat",
+          "ml_scope": "core"
+        },
+        "pH": {
+          "units": "dimensionless",
+          "description": "pH in water 0-20 cm",
+          "dims": "lat",
+          "ml_scope": "core"
+        },
+        "SOC": {
+          "units": "percent",
+          "description": "Organic carbon 0-20 cm",
+          "dims": "lat",
+          "ml_scope": "core"
+        },
+        "Clay": {
+          "units": "percent",
+          "description": "Clay content 0-20 cm",
+          "dims": "lat",
+          "ml_scope": "optional"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L678"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "population",
+      "title": "LandScan population",
+      "category": "Human activity",
+      "description": "LandScan ambient population; annual GeoTIFF regridded to ml grid",
+      "role": "feature",
+      "temporal": "annual",
+      "spatial": "~30 arc-sec",
+      "coverage": "2000-01–2022-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 200001,
+          "end": 202212
+        }
+      ],
+      "variables": [
+        "population"
+      ],
+      "variable_metadata": {
+        "population": {
+          "units": "persons",
+          "description": "LandScan ambient population per grid cell",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L702"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "cruts",
+      "title": "CRU TS 4.08 climate",
+      "category": "Climate",
+      "description": "CRU TS4.08 monthly climate (tmp, pre, pet) or annual indices (MAT, MAP, MAPET, HI); 0.5 deg native",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "0.5x0.5 deg",
+      "coverage": "1978-01–2022-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 197801,
+          "end": 202212
+        }
+      ],
+      "variables": [
+        "tmp",
+        "pre",
+        "pet",
+        "MAT",
+        "MAP",
+        "MAPET",
+        "HI"
+      ],
+      "variable_metadata": {
+        "tmp": {
+          "units": "degC",
+          "description": "Mean temperature",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "pre": {
+          "units": "mm/month",
+          "description": "Precipitation",
+          "dims": "time",
+          "ml_scope": "core"
+        },
+        "pet": {
+          "units": "mm/day",
+          "description": "Potential evapotranspiration",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "MAT": {
+          "units": "degC",
+          "description": "Mean annual temperature",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "MAP": {
+          "units": "mm/year",
+          "description": "Mean annual precipitation",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "MAPET": {
+          "units": "mm/year",
+          "description": "Mean annual PET",
+          "dims": "time",
+          "ml_scope": "optional"
+        },
+        "HI": {
+          "units": "1",
+          "description": "Humidity index",
+          "dims": "time",
+          "ml_scope": "optional"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L727"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "srunet_npp",
+      "title": "SRUNet reconstructed night lights",
+      "category": "Human activity",
+      "description": "SRUNet reconstructed annual NPP-VIIRS-V2-like nighttime light; GeoTIFF in yearly zip",
+      "role": "feature",
+      "temporal": "annual",
+      "spatial": "high-res GeoTIFF",
+      "coverage": "1992-01–2023-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 199201,
+          "end": 202312
+        }
+      ],
+      "variables": [
+        "npp_viirs"
+      ],
+      "variable_metadata": {
+        "npp_viirs": {
+          "units": "dimensionless",
+          "description": "SRUNet NPP-VIIRS-V2-like nighttime light intensity",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L754"
+        }
+      ],
+      "related_resources": [
+        {
+          "hub_id": "observationhub",
+          "kind": "dataset",
+          "id": "sr_unet_nightlights",
+          "title": "SRUNet VIIRS-like night-light archive",
+          "relationship": "Archive reference",
+          "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/?dataset=sr_unet_nightlights"
+        }
+      ]
+    },
+    {
+      "id": "other_features",
+      "title": "Calendar and spatial features",
+      "category": "Derived",
+      "description": "Calendar and grid-coordinate predictors, including cyclic encodings of month, latitude and longitude, derived during feature preparation.",
+      "role": "derived",
+      "temporal": "derived",
+      "spatial": "",
+      "coverage": "",
+      "coverage_periods": [],
+      "variables": [
+        "year",
+        "month",
+        "lat",
+        "lon",
+        "month_sin",
+        "month_cos",
+        "lat_sin",
+        "lat_cos",
+        "lon_sin",
+        "lon_cos"
+      ],
+      "variable_metadata": {
+        "year": {
+          "units": "dimensionless",
+          "description": "Calendar year (derived from time)",
+          "dims": "time",
+          "ml_scope": "derived"
+        },
+        "month": {
+          "units": "dimensionless",
+          "description": "Calendar month (derived from time)",
+          "dims": "time",
+          "ml_scope": "derived"
+        },
+        "lat": {
+          "units": "degrees_north",
+          "description": "Grid latitude per cell (archive nc 变量名为 lat2d)",
+          "dims": "time,lat,lon",
+          "ml_scope": "derived"
+        },
+        "lon": {
+          "units": "degrees_east",
+          "description": "Grid longitude per cell (archive nc 变量名为 lon2d)",
+          "dims": "time,lat,lon",
+          "ml_scope": "derived"
+        },
+        "month_sin": {
+          "units": "dimensionless",
+          "description": "sin(2π(month-1)/12) periodic month encoding",
+          "dims": "time,lat,lon",
+          "ml_scope": "derived"
+        },
+        "month_cos": {
+          "units": "dimensionless",
+          "description": "cos(2π(month-1)/12) periodic month encoding",
+          "dims": "time,lat,lon",
+          "ml_scope": "derived"
+        },
+        "lat_sin": {
+          "units": "dimensionless",
+          "description": "sin(π·lat/180) periodic latitude encoding",
+          "dims": "time,lat,lon",
+          "ml_scope": "derived"
+        },
+        "lat_cos": {
+          "units": "dimensionless",
+          "description": "cos(π·lat/180) periodic latitude encoding",
+          "dims": "time,lat,lon",
+          "ml_scope": "derived"
+        },
+        "lon_sin": {
+          "units": "dimensionless",
+          "description": "sin(π·lon/180) periodic longitude encoding",
+          "dims": "time,lat,lon",
+          "ml_scope": "derived"
+        },
+        "lon_cos": {
+          "units": "dimensionless",
+          "description": "cos(π·lon/180) periodic longitude encoding",
+          "dims": "time,lat,lon",
+          "ml_scope": "derived"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L830"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "isimip3b_met",
+      "title": "isimip3b met",
+      "category": "Other",
+      "description": "GFDL-ESM4 ISIMIP3b daily CMIP6 atmospheric forcing, bias-adjusted and downscaled using W5E5 v2.0.",
+      "role": "feature",
+      "temporal": "daily",
+      "spatial": "0.5 × 0.5 degrees",
+      "coverage": "1850-01–2014-12 · 2015-01–2100-12",
+      "coverage_periods": [
+        {
+          "id": "historical",
+          "start": 185001,
+          "end": 201412
+        },
+        {
+          "id": "ssp",
+          "start": 201501,
+          "end": 210012,
+          "scenarios": [
+            "ssp126",
+            "ssp245",
+            "ssp370",
+            "ssp585"
+          ]
+        }
+      ],
+      "variables": [
+        "tas",
+        "hurs",
+        "pr",
+        "sfcWind"
+      ],
+      "variable_metadata": {
+        "tas": {
+          "units": "K",
+          "description": "Monthly mean near-surface air temperature",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "hurs": {
+          "units": "%",
+          "description": "Monthly mean near-surface relative humidity",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "pr": {
+          "units": "kg m-2 s-1",
+          "description": "Monthly mean precipitation flux",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "sfcWind": {
+          "units": "m s-1",
+          "description": "Monthly mean near-surface wind speed (ISIMIP3b sfcwind)",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L500"
+        }
+      ],
+      "related_resources": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "gfed5-burned-area-comparison",
+      "title": "Global burned area comparison",
+      "category": "Fire",
+      "status": "Available",
+      "target": "Monthly burned area",
+      "description": "Aggregate GFED5 burned area on the native grid and a conservative 2° × 2.5° grid, then compare against GFED4.1s and four existing ML scenario predictions. The report covers 1997–2026 and tracks incomplete months.",
+      "dataset_ids": [
+        "gfed5",
+        "gfed4"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "gfed5/ba_monthly_1997_2026",
+          "title": "GFED5 monthly archive",
+          "command": "python scripts/mlhub validate --experiment gfed5/ba_monthly_1997_2026 --schema-only",
+          "config": "config/ml/experiment/gfed5/ba_monthly_1997_2026.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/gfed5/ba_monthly_1997_2026.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "Report methods and reproduction",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/gfed5_burned_area.md"
+        }
+      ],
+      "related_resources": [
+        {
+          "hub_id": "observationhub",
+          "kind": "dataset",
+          "id": "gfed5_fireearth",
+          "title": "FireEarth 2° × 2.5° GFED5 snapshot",
+          "relationship": "Derived snapshot",
+          "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/?dataset=gfed5_fireearth"
+        }
+      ]
+    },
+    {
+      "id": "burned-area-ssp-projection",
+      "title": "Burned area across four SSPs",
+      "category": "Fire",
+      "status": "Available",
+      "target": "Global monthly burned area",
+      "description": "Reconstruct and project global burned area through 2100 using CESM2 climate, LUH2 land use and human population density. The paired GFED4.1s and GFED5 definitions use conservative remapping. Gallery diagnostics document the early Example 10 configuration.",
+      "dataset_ids": [
+        "gfed4",
+        "gfed5",
+        "cesm2_climate",
+        "clm_luh2",
+        "clm_hdm",
+        "other_features"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100",
+          "title": "GFED5 four-SSP projection",
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_models",
+          "title": "GFED4.1s multi-model projection",
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_models --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_models.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_models.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "examples/10_ba_cesm_climate_full_ssp_20260831",
+          "title": "Example 10 archived diagnostics",
+          "command": "python scripts/mlhub validate --experiment examples/10_ba_cesm_climate_full_ssp_20260831 --schema-only",
+          "config": "config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "GFED5 experiment notes",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20261119_GFED5/README.md"
+        },
+        {
+          "label": "FireEarth experiment families",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/README.md"
+        }
+      ],
+      "related_resources": [
+        {
+          "hub_id": "earthmodelhub",
+          "kind": "task",
+          "id": "xu_2026_fire_2023",
+          "title": "2023 fire-emissions simulation",
+          "relationship": "Related model case",
+          "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/?task=xu_2026_fire_2023"
+        }
+      ]
+    },
+    {
+      "id": "station-wet-deposition",
+      "title": "Station wet deposition",
+      "category": "Nitrogen",
+      "status": "Archived",
+      "target": "NH₄⁺ and NO₃⁻ wet deposition",
+      "description": "Use ERA5, CAM wet deposition, emissions and socioeconomic predictors to predict station NH₄⁺ and NO₃⁻ targets and infer on a 0.25° grid with the historical Fire_Ndep station configuration.",
+      "dataset_ids": [
+        "era5",
+        "gdp_ec",
+        "cam_ndep",
+        "cam_emis_ndep",
+        "other_features"
+      ],
+      "experiments": [
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_16_era5_gdp_mask",
+          "title": "Historical 0.25° station experiment",
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_16_era5_gdp_mask --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_mask.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_mask.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "Project setup",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/projects.md#fire_ndep_csink"
+        }
+      ],
+      "related_resources": [
+        {
+          "hub_id": "observationhub",
+          "kind": "dataset",
+          "id": "ndep",
+          "title": "Wet deposition station records",
+          "relationship": "Related observation archive",
+          "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/?dataset=ndep"
+        },
+        {
+          "hub_id": "earthmodelhub",
+          "kind": "task",
+          "id": "fire_ndep_completed",
+          "title": "Fire_Ndep model archive",
+          "relationship": "Related model case",
+          "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/?task=fire_ndep_completed"
+        }
+      ]
+    },
+    {
+      "id": "gridded-nitrogen-deposition",
+      "title": "Gridded fire and non-fire nitrogen deposition",
+      "category": "Nitrogen",
+      "status": "Available",
+      "target": "Fire and non-fire nitrogen deposition",
+      "description": "Inference on the global monthly CAM f19 grid using ERA5 and CAM emissions and deposition predictors. The selected project configuration reuses fitted models and the feature archive for its 2023 prediction window.",
+      "dataset_ids": [
+        "era5",
+        "cam_emis_ndep",
+        "other_features"
+      ],
+      "experiments": [
+        {
+          "profile": "fire_ndep_csink",
+          "id": "e1_Ndep_v20260509",
+          "title": "Fire and non-fire 2023 fields",
+          "command": "python scripts/mlhub --project fire_ndep_csink validate --experiment e1_Ndep_v20260509 --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/e1_Ndep_v20260509.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/e1_Ndep_v20260509.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "Project setup and inference",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/projects.md#fire_ndep_csink"
+        }
+      ],
+      "related_resources": [
+        {
+          "hub_id": "earthmodelhub",
+          "kind": "task",
+          "id": "fire_ndep_completed",
+          "title": "Fire_Ndep model archive",
+          "relationship": "Related model case",
+          "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/?task=fire_ndep_completed"
+        }
+      ]
+    },
+    {
+      "id": "zhao-burned-area-reproduction",
+      "title": "Zhao et al. (2025) burned-area workflow",
+      "category": "Fire",
+      "status": "Partial reproduction",
+      "target": "Monthly burned area",
+      "description": "Reproduce the burned-area workflow using GFED4.1s, one CESM2 member, XGBoost, leave-one-year-out validation and two SSPs. The experiment notes document differences in climate inputs and bias correction from the paper.",
+      "dataset_ids": [
+        "gfed4",
+        "cesm2_climate",
+        "other_features"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "paper_replicates/Zhao_Nature_2025/replicate",
+          "title": "Zhao 2025 BA workflow",
+          "command": "python scripts/mlhub validate --experiment paper_replicates/Zhao_Nature_2025/replicate --schema-only",
+          "config": "config/ml/experiment/paper_replicates/Zhao_Nature_2025/replicate.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/paper_replicates/Zhao_Nature_2025/replicate.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "Reproduction scope",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/paper_replicates/Zhao_Nature_2025/README.md"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "cropland-n2o-mitigation",
+      "title": "Cropland N₂O mitigation",
+      "category": "Agriculture",
+      "status": "Frozen",
+      "target": "N₂O, nitrogen leaching and runoff",
+      "description": "Frozen training and inference workflows for direct and indirect cropland nitrogen losses. Reproduction uses the original training tables, staged prediction inputs and paper model checkpoints.",
+      "dataset_ids": [
+        "hwsd2",
+        "cruts"
+      ],
+      "experiments": [
+        {
+          "id": "paper_v1_20260317",
+          "title": "N₂O mitigation frozen experiment",
+          "config": "examples/n2o_mitigation/config/run.py",
+          "command": "python examples/n2o_mitigation/run_ml.py check",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/examples/n2o_mitigation/config/run.py"
+        }
+      ],
+      "links": [
+        {
+          "label": "Frozen example and setup",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/examples/n2o_mitigation/README.md"
+        }
+      ],
+      "related_resources": [
+        {
+          "hub_id": "observationhub",
+          "kind": "dataset",
+          "id": "cropland_n2o_training",
+          "title": "Cropland N₂O training archive",
+          "relationship": "Related training data archive",
+          "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/?dataset=cropland_n2o_training"
+        }
+      ]
+    },
+    {
+      "id": "configured-fire-ndep-csink-experiments-bcb30b7d0942",
+      "title": "Fire_Ndep_Csink experiments",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": ".",
+      "target": "C-NH4, C-NO3, NDEP_month_all, NDEP_month_fire, NDEP_month_nofire",
+      "dataset_ids": [
+        "era5",
+        "gdp_ec",
+        "cam_ndep",
+        "cam_emis_ndep"
+      ],
+      "experiments": [
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_12_era5",
+          "title": "C_12_era5",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_12_era5 --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_12_era5.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_12_era5.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_12_era5_excel",
+          "title": "C_12_era5_excel",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_12_era5_excel --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_12_era5_excel.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_12_era5_excel.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_12_era5_spatial_holdout_test_20260522",
+          "title": "C_12_era5_spatial_holdout_test_20260522",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_12_era5_spatial_holdout_test_20260522 --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_12_era5_spatial_holdout_test_20260522.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_12_era5_spatial_holdout_test_20260522.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_14_era5_gdp",
+          "title": "C_14_era5_gdp",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_14_era5_gdp --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_14_era5_gdp.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_14_era5_gdp.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_14_era5_gdp_test_mask",
+          "title": "C_14_era5_gdp_test_mask",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_14_era5_gdp_test_mask --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_14_era5_gdp_test_mask.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_14_era5_gdp_test_mask.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_15_era5_gdp_emis",
+          "title": "C_15_era5_gdp_emis",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_15_era5_gdp_emis --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_15_era5_gdp_emis.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_15_era5_gdp_emis.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_15_era5_gdp_sim",
+          "title": "C_15_era5_gdp_sim",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_15_era5_gdp_sim --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_15_era5_gdp_sim.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_15_era5_gdp_sim.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_16_era5_gdp_sim_emis",
+          "title": "C_16_era5_gdp_sim_emis",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_16_era5_gdp_sim_emis --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_sim_emis.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_sim_emis.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_16_era5_gdp_sim_emis_add_CAPMoN_EANET",
+          "title": "C_16_era5_gdp_sim_emis_add_CAPMoN_EANET",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_16_era5_gdp_sim_emis_add_CAPMoN_EANET --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_sim_emis_add_CAPMoN_EANET.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_sim_emis_add_CAPMoN_EANET.yaml"
+        },
+        {
+          "profile": "fire_ndep_station",
+          "id": "C_16_era5_gdp_sim_emis_anchor",
+          "title": "C_16_era5_gdp_sim_emis_anchor",
+          "description": "",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "era5",
+            "gdp_ec",
+            "cam_ndep"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_station validate --experiment C_16_era5_gdp_sim_emis_anchor --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_sim_emis_anchor.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_sim_emis_anchor.yaml"
+        },
+        {
+          "profile": "fire_ndep_csink",
+          "id": "e1_Ndep",
+          "title": "e1_Ndep",
+          "description": "",
+          "targets": [
+            "NDEP_month_all",
+            "NDEP_month_fire"
+          ],
+          "dataset_ids": [
+            "cam_emis_ndep",
+            "era5"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_csink validate --experiment e1_Ndep --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/e1_Ndep.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/e1_Ndep.yaml"
+        },
+        {
+          "profile": "fire_ndep_csink",
+          "id": "e1_Ndep_20250527_scaled_by_region",
+          "title": "e1_Ndep_20250527_scaled_by_region",
+          "description": "",
+          "targets": [
+            "NDEP_month_fire",
+            "NDEP_month_nofire"
+          ],
+          "dataset_ids": [
+            "cam_emis_ndep",
+            "era5"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_csink validate --experiment e1_Ndep_20250527_scaled_by_region --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/e1_Ndep_20250527_scaled_by_region.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/e1_Ndep_20250527_scaled_by_region.yaml"
+        },
+        {
+          "profile": "fire_ndep_csink",
+          "id": "e1_Ndep_v20260428",
+          "title": "e1_Ndep_v20260428",
+          "description": "",
+          "targets": [
+            "NDEP_month_fire",
+            "NDEP_month_nofire"
+          ],
+          "dataset_ids": [
+            "cam_emis_ndep",
+            "era5"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_csink validate --experiment e1_Ndep_v20260428 --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/e1_Ndep_v20260428.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/e1_Ndep_v20260428.yaml"
+        },
+        {
+          "profile": "fire_ndep_csink",
+          "id": "e1_Ndep_v20260430",
+          "title": "e1_Ndep_v20260430",
+          "description": "",
+          "targets": [
+            "NDEP_month_fire",
+            "NDEP_month_nofire"
+          ],
+          "dataset_ids": [
+            "cam_emis_ndep",
+            "era5"
+          ],
+          "command": "python scripts/mlhub --project fire_ndep_csink validate --experiment e1_Ndep_v20260430 --schema-only",
+          "config": "config/fire_ndep_csink/ml/experiment/e1_Ndep_v20260430.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/e1_Ndep_v20260430.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-4e6d93e99fa9",
+      "title": "Ch2_FIRE_BA_SSP",
+      "category": "Experiment configurations",
+      "description": "Ch2 FireML-BA baseline: GFED4 + LUH2 (PCT_CROP), SSP245",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/BA_BASELINE",
+          "title": "BA_BASELINE",
+          "description": "Ch2 FireML-BA baseline: GFED4 + LUH2 (PCT_CROP), SSP245",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/BA_BASELINE --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/BA_BASELINE.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/BA_BASELINE.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-isimip3b-4d171d3a9661",
+      "title": "Ch2_FIRE_BA_SSP / ISIMIP3b",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/ISIMIP3b",
+      "target": "burned_area, burned_area_gfed5",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate",
+        "isimip3b_met",
+        "gfed5"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/gfed4_ba",
+          "title": "gfed4_ba",
+          "description": "GFED4.1s BA with ISIMIP3b GFDL-ESM4 meteorology on the 2x2.5 degree grid",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/gfed4_ba --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed4_ba.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed4_ba.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/gfed4_ba_tas_pr",
+          "title": "gfed4_ba_tas_pr",
+          "description": "GFED4.1s BA with ISIMIP3b GFDL-ESM4 temperature and precipitation",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/gfed4_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed4_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed4_ba_tas_pr.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba",
+          "title": "gfed5_ba",
+          "description": "GFED5 BA with ISIMIP3b GFDL-ESM4 meteorology on the 2x2.5 degree grid",
+          "targets": [
+            "burned_area_gfed5"
+          ],
+          "dataset_ids": [
+            "gfed5",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba_tas_pr",
+          "title": "gfed5_ba_tas_pr",
+          "description": "GFED5 BA with ISIMIP3b GFDL-ESM4 temperature and precipitation",
+          "targets": [
+            "burned_area_gfed5"
+          ],
+          "dataset_ids": [
+            "gfed5",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba_tas_pr.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-paper-0845e608589a",
+      "title": "Ch2_FIRE_BA_SSP / paper",
+      "category": "Experiment configurations",
+      "description": "Ch2 BA paper 20260831: same features as test, no shap/uncertainty/eval",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/paper",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/paper/test_BA_cesm_climate_full_ssp_20260831",
+          "title": "test_BA_cesm_climate_full_ssp_20260831",
+          "description": "Ch2 BA paper 20260831: same features as test, no shap/uncertainty/eval",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/paper/test_BA_cesm_climate_full_ssp_20260831 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/paper/test_BA_cesm_climate_full_ssp_20260831.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/paper/test_BA_cesm_climate_full_ssp_20260831.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-test-a2defdd5f71d",
+      "title": "Ch2_FIRE_BA_SSP / test",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/test",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "era5",
+        "population",
+        "srunet_npp",
+        "clm_hdm",
+        "cesm2_climate"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/test/BA_BASELINE",
+          "title": "BA_BASELINE",
+          "description": "Ch2 FireML-BA baseline: GFED4 + LUH2 (PCT_CROP), SSP245",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/test/BA_BASELINE --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/test/BA_BASELINE.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/test/BA_BASELINE.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/test/test_BA_BASELINE_1997_2016_20260616",
+          "title": "test_BA_BASELINE_1997_2016_20260616",
+          "description": "Ch2 BA: GFED4+LUH2+ERA5+population+NPP, spatial_mask, 1997-2014 train / 2015-2016 validate",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "era5",
+            "population",
+            "srunet_npp"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/test/test_BA_BASELINE_1997_2016_20260616 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_BASELINE_1997_2016_20260616.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_BASELINE_1997_2016_20260616.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/test/test_BA_BASELINE_land_mask_20260616",
+          "title": "test_BA_BASELINE_land_mask_20260616",
+          "description": "Ch2 BA smoke: GFED4+LUH2+ERA5+GDP+population+NPP, spatial_mask, 2013-2014 train / 2015 predict",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "era5",
+            "population",
+            "srunet_npp"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/test/test_BA_BASELINE_land_mask_20260616 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_BASELINE_land_mask_20260616.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_BASELINE_land_mask_20260616.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_20260617",
+          "title": "test_BA_cesm_climate_20260617",
+          "description": "Ch2 BA smoke: GFED4+LUH2+CESM2+CLM HDM, 2013-2014 train / 2015 validate",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_20260617 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_20260617.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_20260617.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_full_ssp_20260622",
+          "title": "test_BA_cesm_climate_full_ssp_20260622",
+          "description": "Ch2 BA smoke: GFED4+LUH2+CESM2+CLM HDM, 2013-2014 train / 2015 validate",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_full_ssp_20260622 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_full_ssp_20260622.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_full_ssp_20260622.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_full_ssp_20260831",
+          "title": "test_BA_cesm_climate_full_ssp_20260831",
+          "description": "Ch2 BA full SSP 1850-2100: GFED4+LUH2+CESM2+CLM HDM, no year feature, 20260831",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_full_ssp_20260831 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_full_ssp_20260831.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/test/test_BA_hdm_20260617",
+          "title": "test_BA_hdm_20260617",
+          "description": "Ch2 BA smoke: GFED4+LUH2+CLM HDM (hdm), 2013-2014 train / 2015 validate",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/test/test_BA_hdm_20260617 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_hdm_20260617.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/test/test_BA_hdm_20260617.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-v20260831-test-ml-cc166a285375",
+      "title": "Ch2_FIRE_BA_SSP / v20260831_test_ML",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/v20260831_test_ML",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260831",
+          "title": "test_BA_cesm_climate_full_ssp_20260831",
+          "description": "Ch2 BA full SSP 1850-2100: GFED4+LUH2+CESM2+CLM HDM, no year feature, 20260831",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260831 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260831.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260907",
+          "title": "test_BA_cesm_climate_full_ssp_20260907",
+          "description": "Ch2 BA full SSP 1850-2100: GFED4+LUH2(landcover)+CESM2+CLM HDM, 20260907",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260907 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260907.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260907.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260907_0p25",
+          "title": "test_BA_cesm_climate_full_ssp_20260907_0p25",
+          "description": "Ch2 BA full SSP 1850-2100: GFED4+LUH2(landcover)+CESM2+CLM HDM, 0.25deg, 20260907",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260907_0p25 --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260907_0p25.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260907_0p25.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260917_models",
+          "title": "test_BA_cesm_climate_full_ssp_20260917_models",
+          "description": "Ch2 BA full SSP 1850-2100: GBM/XGB/RF + ensemble, family_top1 inference, 20260917",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260917_models --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260917_models.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260831_test_ML/test_BA_cesm_climate_full_ssp_20260917_models.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-v20260918-ml-cf3af1ff69ad",
+      "title": "Ch2_FIRE_BA_SSP / v20260918_ML",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/v20260918_ML",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20260918_ML/test_BA_cesm_climate_full_ssp_20260918_features",
+          "title": "test_BA_cesm_climate_full_ssp_20260918_features",
+          "description": "Ch2 BA full SSP 1850-2100: LUH2 landcover+harvest, GBM/CAT/XGB/RF/XT, high_quality, 20260918",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20260918_ML/test_BA_cesm_climate_full_ssp_20260918_features --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20260918_ML/test_BA_cesm_climate_full_ssp_20260918_features.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260918_ML/test_BA_cesm_climate_full_ssp_20260918_features.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20260918_ML/test_BA_cesm_climate_full_ssp_20260918_models",
+          "title": "test_BA_cesm_climate_full_ssp_20260918_models",
+          "description": "Ch2 BA full SSP 1850-2100: GBM/CAT/XGB/RF/XT + ensemble, high_quality, family_top1, 20260918",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20260918_ML/test_BA_cesm_climate_full_ssp_20260918_models --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20260918_ML/test_BA_cesm_climate_full_ssp_20260918_models.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260918_ML/test_BA_cesm_climate_full_ssp_20260918_models.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-v20260921-ml-2x2p5-f72aa3ebb002",
+      "title": "Ch2_FIRE_BA_SSP / v20260921_ML_2x2p5",
+      "category": "Experiment configurations",
+      "description": "Ch2 BA full SSP 1850-2100: LUH2 landcover+harvest, GBM/CAT/XGB/RF/XT, medium_quality, 2x2.5deg, 20260921",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_features",
+          "title": "test_BA_cesm_climate_full_ssp_20260921_features",
+          "description": "Ch2 BA full SSP 1850-2100: LUH2 landcover+harvest, GBM/CAT/XGB/RF/XT, medium_quality, 2x2.5deg, 20260921",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_features --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_features.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_features.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-v20261119-gfed5-540c187b8f63",
+      "title": "Ch2_FIRE_BA_SSP / v20261119_GFED5",
+      "category": "Experiment configurations",
+      "description": "GFED5 BA with native CLM land use and vegetation variables",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/v20261119_GFED5",
+      "target": "burned_area_gfed5",
+      "dataset_ids": [
+        "gfed5",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100_raw_features",
+          "title": "gfed5_ba_1850_2100_raw_features",
+          "description": "GFED5 BA with native CLM land use and vegetation variables",
+          "targets": [
+            "burned_area_gfed5"
+          ],
+          "dataset_ids": [
+            "gfed5",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100_raw_features --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100_raw_features.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100_raw_features.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ba-ablation-ui-a5ed22030888",
+      "title": "ba_ablation_ui",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "ba_ablation_ui",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "ba_ablation_ui/drop_cesm2_climate",
+          "title": "drop_cesm2_climate",
+          "description": "Ablation of Ch2_FIRE_BA_SSP/BA_BASELINE drop-source=cesm2_climate",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2"
+          ],
+          "command": "python scripts/mlhub validate --experiment ba_ablation_ui/drop_cesm2_climate --schema-only",
+          "config": "config/ml/experiment/ba_ablation_ui/drop_cesm2_climate.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/ba_ablation_ui/drop_cesm2_climate.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "ba_ablation_ui/drop_clm_luh2",
+          "title": "drop_clm_luh2",
+          "description": "Ablation of Ch2_FIRE_BA_SSP/BA_BASELINE drop-source=clm_luh2",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features"
+          ],
+          "command": "python scripts/mlhub validate --experiment ba_ablation_ui/drop_clm_luh2 --schema-only",
+          "config": "config/ml/experiment/ba_ablation_ui/drop_clm_luh2.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/ba_ablation_ui/drop_clm_luh2.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-examples-3d7aecfd5131",
+      "title": "examples",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "examples",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "era5",
+        "clm_luh2"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "examples/01_smoke_era5_gfed4",
+          "title": "01_smoke_era5_gfed4",
+          "description": "Example 01: smoke ERA5 + GFED4 (2000-2012, global 0.25 deg)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment examples/01_smoke_era5_gfed4 --schema-only",
+          "config": "config/ml/experiment/examples/01_smoke_era5_gfed4.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/01_smoke_era5_gfed4.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "examples/02_fireml_ba_luh2_ssp245",
+          "title": "02_fireml_ba_luh2_ssp245",
+          "description": "Example 02: FireML-BA LUH2 + GFED4 SSP245 (global f09)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2"
+          ],
+          "command": "python scripts/mlhub validate --experiment examples/02_fireml_ba_luh2_ssp245 --schema-only",
+          "config": "config/ml/experiment/examples/02_fireml_ba_luh2_ssp245.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/02_fireml_ba_luh2_ssp245.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "examples/03_inference_data_only",
+          "title": "03_inference_data_only",
+          "description": "Example 03: inference_data only (shorter archive 1997-2014)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2"
+          ],
+          "command": "python scripts/mlhub validate --experiment examples/03_inference_data_only --schema-only",
+          "config": "config/ml/experiment/examples/03_inference_data_only.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/03_inference_data_only.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "examples/04_feature_ablation",
+          "title": "04_feature_ablation",
+          "description": "Example 04: ablation (year/month only; uses Ex02 archive path)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features"
+          ],
+          "command": "python scripts/mlhub validate --experiment examples/04_feature_ablation --schema-only",
+          "config": "config/ml/experiment/examples/04_feature_ablation.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/04_feature_ablation.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "examples/05_ndep_grid_era5",
+          "title": "05_ndep_grid_era5",
+          "description": "Example 05: NDEP grid template ERA5 (global f19)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment examples/05_ndep_grid_era5 --schema-only",
+          "config": "config/ml/experiment/examples/05_ndep_grid_era5.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/05_ndep_grid_era5.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "examples/06_east_asia_0p25",
+          "title": "06_east_asia_0p25",
+          "description": "Example 06: East Asia regional box 0.25 deg (ERA5 + GFED4)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment examples/06_east_asia_0p25 --schema-only",
+          "config": "config/ml/experiment/examples/06_east_asia_0p25.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/06_east_asia_0p25.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "examples/08_v2_smoke_era5_gfed4",
+          "title": "08_v2_smoke_era5_gfed4",
+          "description": "Example 08: v2 smoke ERA5 + GFED4 (2000-2012, global 0.25 deg)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment examples/08_v2_smoke_era5_gfed4 --schema-only",
+          "config": "config/ml/experiment/examples/08_v2_smoke_era5_gfed4.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/08_v2_smoke_era5_gfed4.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "examples/09_quick_east_asia_era5_gfed4",
+          "title": "09_quick_east_asia_era5_gfed4",
+          "description": "Example 09: quick East Asia 0.25 deg ERA5+GFED4 (2010-2012)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment examples/09_quick_east_asia_era5_gfed4 --schema-only",
+          "config": "config/ml/experiment/examples/09_quick_east_asia_era5_gfed4.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/09_quick_east_asia_era5_gfed4.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-other-zhao-nature-2025-220bce4faeb8",
+      "title": "other / Zhao_Nature_2025",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "other/Zhao_Nature_2025",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "cesm2_climate"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "other/Zhao_Nature_2025/replicate",
+          "title": "replicate",
+          "description": "Zhao Nature 2025: GFED4 BA + CESM2×11 + periodic, 2x2.5deg, LOYO + SSP inference",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/Zhao_Nature_2025/replicate --schema-only",
+          "config": "config/ml/experiment/other/Zhao_Nature_2025/replicate.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/Zhao_Nature_2025/replicate.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/Zhao_Nature_2025/test",
+          "title": "test",
+          "description": "Zhao Nature 2025: GFED4 BA + CESM2×11 + periodic, 2x2.5deg, LOYO + SSP inference",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/Zhao_Nature_2025/test --schema-only",
+          "config": "config/ml/experiment/other/Zhao_Nature_2025/test.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/Zhao_Nature_2025/test.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-other-examples-966cd94775c5",
+      "title": "other / examples",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "other/examples",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "era5",
+        "clm_luh2"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "other/examples/01_smoke_era5_gfed4",
+          "title": "01_smoke_era5_gfed4",
+          "description": "Example 01: smoke ERA5 + GFED4 (2000-2012, global 0.25 deg)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/examples/01_smoke_era5_gfed4 --schema-only",
+          "config": "config/ml/experiment/other/examples/01_smoke_era5_gfed4.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/examples/01_smoke_era5_gfed4.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/examples/02_fireml_ba_luh2_ssp245",
+          "title": "02_fireml_ba_luh2_ssp245",
+          "description": "Example 02: FireML-BA LUH2 + GFED4 SSP245 (global f09)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/examples/02_fireml_ba_luh2_ssp245 --schema-only",
+          "config": "config/ml/experiment/other/examples/02_fireml_ba_luh2_ssp245.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/examples/02_fireml_ba_luh2_ssp245.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/examples/03_inference_data_only",
+          "title": "03_inference_data_only",
+          "description": "Example 03: inference_data only (shorter archive 1997-2014)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/examples/03_inference_data_only --schema-only",
+          "config": "config/ml/experiment/other/examples/03_inference_data_only.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/examples/03_inference_data_only.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/examples/04_feature_ablation",
+          "title": "04_feature_ablation",
+          "description": "Example 04: ablation (year/month only; uses Ex02 archive path)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/examples/04_feature_ablation --schema-only",
+          "config": "config/ml/experiment/other/examples/04_feature_ablation.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/examples/04_feature_ablation.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/examples/05_ndep_grid_era5",
+          "title": "05_ndep_grid_era5",
+          "description": "Example 05: NDEP grid template ERA5 (global f19)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/examples/05_ndep_grid_era5 --schema-only",
+          "config": "config/ml/experiment/other/examples/05_ndep_grid_era5.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/examples/05_ndep_grid_era5.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/examples/06_east_asia_0p25",
+          "title": "06_east_asia_0p25",
+          "description": "Example 06: East Asia regional box 0.25 deg (ERA5 + GFED4)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/examples/06_east_asia_0p25 --schema-only",
+          "config": "config/ml/experiment/other/examples/06_east_asia_0p25.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/examples/06_east_asia_0p25.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/examples/08_v2_smoke_era5_gfed4",
+          "title": "08_v2_smoke_era5_gfed4",
+          "description": "Example 08: v2 smoke ERA5 + GFED4 (2000-2012, global 0.25 deg)",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/examples/08_v2_smoke_era5_gfed4 --schema-only",
+          "config": "config/ml/experiment/other/examples/08_v2_smoke_era5_gfed4.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/examples/08_v2_smoke_era5_gfed4.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-other-paper-ndep-grid-1850-2023-f19-98d83b7064df",
+      "title": "other / paper / NDEP_GRID_1850_2023_f19",
+      "category": "Experiment configurations",
+      "description": "NDEP dual-target on historical grid 2000-2023",
+      "status": "Configured",
+      "task_path": "other/paper/NDEP_GRID_1850_2023_f19",
+      "target": "NDEP_month_fire, NDEP_month_nofire",
+      "dataset_ids": [
+        "cam_emis_ndep",
+        "other_features",
+        "era5",
+        "gfed4"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "other/paper/NDEP_GRID_1850_2023_f19/e1_ndep_v20260528",
+          "title": "e1_ndep_v20260528",
+          "description": "NDEP dual-target on historical grid 2000-2023",
+          "targets": [
+            "NDEP_month_fire",
+            "NDEP_month_nofire"
+          ],
+          "dataset_ids": [
+            "cam_emis_ndep",
+            "other_features",
+            "era5",
+            "gfed4"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/paper/NDEP_GRID_1850_2023_f19/e1_ndep_v20260528 --schema-only",
+          "config": "config/ml/experiment/other/paper/NDEP_GRID_1850_2023_f19/e1_ndep_v20260528.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/paper/NDEP_GRID_1850_2023_f19/e1_ndep_v20260528.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-other-paper-ndep-station-2000-2023-0p25-97d237195b5a",
+      "title": "other / paper / NDEP_STATION_2000_2023_0p25",
+      "category": "Experiment configurations",
+      "description": "Station NH4/NO3 with re_extract_features (2000-2023)",
+      "status": "Configured",
+      "task_path": "other/paper/NDEP_STATION_2000_2023_0p25",
+      "target": "C-NH4, C-NO3",
+      "dataset_ids": [
+        "other_features",
+        "era5",
+        "gdp_ec",
+        "cam_emis_ndep"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "other/paper/NDEP_STATION_2000_2023_0p25/C_15_era5_gdp_emis",
+          "title": "C_15_era5_gdp_emis",
+          "description": "Station NH4/NO3 with re_extract_features (2000-2023)",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "other_features",
+            "era5",
+            "gdp_ec",
+            "cam_emis_ndep"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/paper/NDEP_STATION_2000_2023_0p25/C_15_era5_gdp_emis --schema-only",
+          "config": "config/ml/experiment/other/paper/NDEP_STATION_2000_2023_0p25/C_15_era5_gdp_emis.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/paper/NDEP_STATION_2000_2023_0p25/C_15_era5_gdp_emis.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-other-test-fd8a35c181e4",
+      "title": "other / test",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "other/test",
+      "target": "C-NH4, C-NO3, burned_area",
+      "dataset_ids": [
+        "other_features",
+        "era5",
+        "gfed4"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "other/test/test_v2_excel_ndep",
+          "title": "test_v2_excel_ndep",
+          "description": "Test v2 excel full: NDEP station NH4/NO3",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/test/test_v2_excel_ndep --schema-only",
+          "config": "config/ml/experiment/other/test/test_v2_excel_ndep.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/test/test_v2_excel_ndep.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/test/test_v2_grid_full",
+          "title": "test_v2_grid_full",
+          "description": "Test v2 grid full: nc_to_tabular, East Asia 2000, BA",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/test/test_v2_grid_full --schema-only",
+          "config": "config/ml/experiment/other/test/test_v2_grid_full.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/test/test_v2_grid_full.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/test/test_v2_grid_loyo",
+          "title": "test_v2_grid_loyo",
+          "description": "Test v2 grid LOYO CV: East Asia BA 2000-2001",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/test/test_v2_grid_loyo --schema-only",
+          "config": "config/ml/experiment/other/test/test_v2_grid_loyo.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/test/test_v2_grid_loyo.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "other/test/test_v2_re_extract_train_ndep",
+          "title": "test_v2_re_extract_train_ndep",
+          "description": "Test v2 re_extract full: NDEP NH4/NO3, ERA5 2010-2015 east_asia",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment other/test/test_v2_re_extract_train_ndep --schema-only",
+          "config": "config/ml/experiment/other/test/test_v2_re_extract_train_ndep.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/other/test/test_v2_re_extract_train_ndep.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-paper-ndep-grid-1850-2023-f19-4cdc80ca753a",
+      "title": "paper / NDEP_GRID_1850_2023_f19",
+      "category": "Experiment configurations",
+      "description": "NDEP dual-target on historical grid 2000-2023",
+      "status": "Configured",
+      "task_path": "paper/NDEP_GRID_1850_2023_f19",
+      "target": "NDEP_month_fire, NDEP_month_nofire",
+      "dataset_ids": [
+        "cam_emis_ndep",
+        "other_features",
+        "era5",
+        "gfed4"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "paper/NDEP_GRID_1850_2023_f19/e1_ndep_v20260528",
+          "title": "e1_ndep_v20260528",
+          "description": "NDEP dual-target on historical grid 2000-2023",
+          "targets": [
+            "NDEP_month_fire",
+            "NDEP_month_nofire"
+          ],
+          "dataset_ids": [
+            "cam_emis_ndep",
+            "other_features",
+            "era5",
+            "gfed4"
+          ],
+          "command": "python scripts/mlhub validate --experiment paper/NDEP_GRID_1850_2023_f19/e1_ndep_v20260528 --schema-only",
+          "config": "config/ml/experiment/paper/NDEP_GRID_1850_2023_f19/e1_ndep_v20260528.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/paper/NDEP_GRID_1850_2023_f19/e1_ndep_v20260528.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-paper-ndep-station-2000-2023-0p25-bc15fd7f5651",
+      "title": "paper / NDEP_STATION_2000_2023_0p25",
+      "category": "Experiment configurations",
+      "description": "Station NH4/NO3 with re_extract_features (2000-2023)",
+      "status": "Configured",
+      "task_path": "paper/NDEP_STATION_2000_2023_0p25",
+      "target": "C-NH4, C-NO3",
+      "dataset_ids": [
+        "other_features",
+        "era5",
+        "gdp_ec",
+        "cam_emis_ndep"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "paper/NDEP_STATION_2000_2023_0p25/C_15_era5_gdp_emis",
+          "title": "C_15_era5_gdp_emis",
+          "description": "Station NH4/NO3 with re_extract_features (2000-2023)",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "other_features",
+            "era5",
+            "gdp_ec",
+            "cam_emis_ndep"
+          ],
+          "command": "python scripts/mlhub validate --experiment paper/NDEP_STATION_2000_2023_0p25/C_15_era5_gdp_emis --schema-only",
+          "config": "config/ml/experiment/paper/NDEP_STATION_2000_2023_0p25/C_15_era5_gdp_emis.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/paper/NDEP_STATION_2000_2023_0p25/C_15_era5_gdp_emis.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-paper-replicates-zhao-nature-2025-fb6495872201",
+      "title": "paper_replicates / Zhao_Nature_2025",
+      "category": "Experiment configurations",
+      "description": "Zhao Nature 2025: GFED4 BA + CESM2×11 + periodic, 2x2.5deg, LOYO + SSP inference",
+      "status": "Configured",
+      "task_path": "paper_replicates/Zhao_Nature_2025",
+      "target": "burned_area",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "cesm2_climate"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "paper_replicates/Zhao_Nature_2025/test",
+          "title": "test",
+          "description": "Zhao Nature 2025: GFED4 BA + CESM2×11 + periodic, 2x2.5deg, LOYO + SSP inference",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "cesm2_climate"
+          ],
+          "command": "python scripts/mlhub validate --experiment paper_replicates/Zhao_Nature_2025/test --schema-only",
+          "config": "config/ml/experiment/paper_replicates/Zhao_Nature_2025/test.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/paper_replicates/Zhao_Nature_2025/test.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-test-d6e4e979a6ed",
+      "title": "test",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "test",
+      "target": "C-NH4, C-NO3, burned_area",
+      "dataset_ids": [
+        "other_features",
+        "era5",
+        "gfed4"
+      ],
+      "experiments": [
+        {
+          "profile": "mlhub",
+          "id": "test/test_v2_excel_ndep",
+          "title": "test_v2_excel_ndep",
+          "description": "Test v2 excel full: NDEP station NH4/NO3",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment test/test_v2_excel_ndep --schema-only",
+          "config": "config/ml/experiment/test/test_v2_excel_ndep.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/test/test_v2_excel_ndep.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "test/test_v2_grid_full",
+          "title": "test_v2_grid_full",
+          "description": "Test v2 grid full: nc_to_tabular, East Asia 2000, BA",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment test/test_v2_grid_full --schema-only",
+          "config": "config/ml/experiment/test/test_v2_grid_full.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/test/test_v2_grid_full.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "test/test_v2_grid_loyo",
+          "title": "test_v2_grid_loyo",
+          "description": "Test v2 grid LOYO CV: East Asia BA 2000-2001",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment test/test_v2_grid_loyo --schema-only",
+          "config": "config/ml/experiment/test/test_v2_grid_loyo.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/test/test_v2_grid_loyo.yaml"
+        },
+        {
+          "profile": "mlhub",
+          "id": "test/test_v2_re_extract_train_ndep",
+          "title": "test_v2_re_extract_train_ndep",
+          "description": "Test v2 re_extract full: NDEP NH4/NO3, ERA5 2010-2015 east_asia",
+          "targets": [
+            "C-NH4",
+            "C-NO3"
+          ],
+          "dataset_ids": [
+            "other_features",
+            "era5"
+          ],
+          "command": "python scripts/mlhub validate --experiment test/test_v2_re_extract_train_ndep --schema-only",
+          "config": "config/ml/experiment/test/test_v2_re_extract_train_ndep.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/test/test_v2_re_extract_train_ndep.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gfed5-global-burned-area",
+      "title": "Global burned area comparison",
+      "category": "Data comparison",
+      "description": "Global monthly and annual burned area from GFED4.1s, GFED5 including NRT and existing ML predictions for four SSPs. Annual totals require all 12 months.",
+      "task_id": "gfed5-burned-area-comparison",
+      "run_id": "gfed5/ba_monthly_1997_2026",
+      "image": "assets/gfed5-global-burned-area.webp",
+      "alt": "Line charts of monthly and annual global burned area from GFED4.1s, GFED5 and ML predictions.",
+      "links": [
+        {
+          "label": "Data and processing methods",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/gfed5_burned_area.md"
+        }
+      ]
+    },
+    {
+      "id": "ba-ssp-spatial-mean",
+      "title": "Mean burned area by SSP",
+      "category": "Scenario inference",
+      "description": "Mean predicted burned area for SSP1-2.6, SSP2-4.5, SSP3-7.0 and SSP5-8.5 from the frozen Example 10 run.",
+      "badge": "Archived diagnostic",
+      "note": "The 0831 experiment used non-conservative remapping of the burned-area label. Use this figure to inspect the archived workflow. The current 2° × 2.5° experiments use conservative remapping.",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "examples/10_ba_cesm_climate_full_ssp_20260831",
+      "image": "assets/ba-ssp-spatial-mean.webp",
+      "alt": "Four global maps of mean predicted burned area for the four SSPs.",
+      "links": [
+        {
+          "label": "Frozen experiment configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "label": "Remapping and current experiments",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/README.md"
+        }
+      ]
+    },
+    {
+      "id": "ba-holdout-spatial-bias",
+      "title": "Spatial bias in holdout burned area",
+      "category": "Model evaluation",
+      "description": "Mean difference between the SSP2-4.5 prediction and the GFED4.1s reference at each grid cell in the holdout period of the frozen Example 10 run.",
+      "badge": "Archived diagnostic",
+      "note": "The 0831 experiment used non-conservative remapping of the burned-area label. Use this figure to inspect the archived workflow. The current 2° × 2.5° experiments use conservative remapping.",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "examples/10_ba_cesm_climate_full_ssp_20260831",
+      "scenario": "ssp245",
+      "image": "assets/ba-holdout-spatial-bias.webp",
+      "alt": "Global map of predicted minus reference burned area in the SSP2-4.5 holdout period.",
+      "links": [
+        {
+          "label": "Frozen experiment configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "label": "Remapping and current experiments",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/README.md"
+        }
+      ]
+    },
+    {
+      "id": "ba-shap-beeswarm",
+      "title": "Feature effects on burned area predictions",
+      "category": "Model interpretation",
+      "description": "SHAP value distributions for the burned-area model under SSP1-2.6 from the frozen Example 10 run.",
+      "badge": "Archived diagnostic",
+      "note": "The 0831 experiment used non-conservative remapping of the burned-area label. Use this figure to inspect the archived workflow. The current 2° × 2.5° experiments use conservative remapping.",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "examples/10_ba_cesm_climate_full_ssp_20260831",
+      "scenario": "ssp126",
+      "image": "assets/ba-shap-beeswarm.webp",
+      "alt": "SHAP beeswarm showing the contributions of each model input to predicted burned area.",
+      "links": [
+        {
+          "label": "Frozen experiment configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "label": "Remapping and current experiments",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/README.md"
+        }
+      ]
+    },
+    {
+      "id": "ndep-station-scatter",
+      "title": "Wet deposition at monitoring stations",
+      "category": "Model evaluation",
+      "description": "NH₄⁺ and NO₃⁻ predictions compared with observations in the archived Fire_Ndep v20260403 station experiment C_16_era5_gdp_mask.",
+      "task_id": "station-wet-deposition",
+      "run_id": "C_16_era5_gdp_mask",
+      "image": "assets/ndep-station-scatter.webp",
+      "alt": "Scatterplots comparing predicted and observed ammonium and nitrate at monitoring stations.",
+      "links": [
+        {
+          "label": "Archived station configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/fire_ndep_csink/ml/experiment/C_16_era5_gdp_mask.yaml"
+        },
+        {
+          "label": "Project setup",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/projects.md#fire_ndep_csink"
+        }
+      ]
+    }
+  ]
+}

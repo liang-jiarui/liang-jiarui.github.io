@@ -1,0 +1,1492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Browse observation datasets and reproducible validation tasks in ObservationHub.">
+<title>Observation Gallery · ObservationHub</title>
+<style>
+:root {
+  --ink: #1b2e29;
+  --muted: #5d7268;
+  --paper: #eef2eb;
+  --line: #d5e0d6;
+  --teal: #0f6b54;
+  --head: #f4f7f2;
+  --zebra: #f8fbf8;
+  --selected: #e5f3ec;
+  --shadow: 0 10px 30px #16342f14;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1rem/1.5 system-ui, -apple-system, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+}
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button, a { touch-action: manipulation; }
+a { color: var(--teal); }
+:focus-visible { outline: 3px solid #7eae96; outline-offset: 2px; }
+[hidden] { display: none !important; }
+h1, h2, h3, p, dl { margin: 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.muted { color: var(--muted); }
+.mono, code, kbd, pre { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem 1.25rem;
+  padding: .75rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  background: #f7faf6;
+}
+.brand { display: flex; align-items: center; gap: .625rem; font-weight: 700; letter-spacing: -.02em; }
+.mark { display: grid; place-items: center; width: 1.625rem; height: 1.625rem; flex: none; border-radius: 50%; background: var(--ink); color: #fff; line-height: 1; }
+.quiet { color: var(--muted); font-size: .75rem; font-weight: 650; letter-spacing: .08em; }
+.hubs, .tabs { display: flex; align-items: center; flex-wrap: wrap; gap: .375rem; }
+.hubs a, .hubs .current, .tabs a { border-radius: 8px; padding: .375rem .625rem; font-size: .875rem; text-decoration: none; }
+.hubs a, .tabs a { color: var(--muted); }
+.hubs a:hover, .hubs .current { color: var(--teal); background: var(--selected); }
+.hubs .current, .tabs a { font-weight: 650; }
+main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .625rem; padding: .75rem 1rem; }
+.tabs a { border: 1px solid transparent; padding-inline: .75rem; }
+.tabs a[aria-current] { border-color: var(--line); background: #fff; color: var(--teal); }
+.tabs a:hover { color: var(--teal); }
+.tabs .count { margin-left: .375rem; font-variant-numeric: tabular-nums; font-size: .8125rem; font-weight: 500; }
+
+.workspace {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.filters { width: 13rem; flex: none; border-right: 1px solid var(--line); background: #fbfcf8; }
+.filter-group + .filter-group { border-top: 1px solid var(--line); }
+.filter-group { padding-bottom: .5rem; }
+.treehead { padding: .8125rem .75rem .375rem; color: var(--muted); font-size: .8125rem; font-weight: 700; }
+.filters button { width: 100%; border: 0; background: transparent; display: flex; justify-content: space-between; gap: .5rem; padding: .375rem .75rem; text-align: left; font-size: .875rem; }
+.filters button:hover { background: #eef4ef; }
+.filters button:focus-visible { outline-offset: -3px; }
+.filters button[aria-pressed="true"] { background: var(--selected); box-shadow: inset 3px 0 0 var(--teal); font-weight: 650; }
+.filter-count { color: var(--muted); font-size: .8125rem; font-variant-numeric: tabular-nums; }
+.sheet { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.toolbar { padding: .625rem .75rem .5rem; border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem .75rem; }
+.bar h1 { font-size: 1.0625rem; letter-spacing: -.02em; }
+.search { flex: 1; min-width: min(100%, 13rem); border: 1px solid #c9d6c8; border-radius: 8px; display: flex; align-items: center; gap: .5rem; padding: 0 .625rem; }
+.search:focus-within { outline: 2px solid #7eae96; }
+.search input { padding: .4375rem 0; width: 100%; min-width: 0; border: 0; outline: none; background: transparent; font-size: .875rem; }
+kbd { padding: 0 .25rem; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; color: var(--muted); font-size: .8125rem; }
+.ghost, .mini { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: .375rem .625rem; font-size: .875rem; }
+.ghost:hover, .mini:hover { background: var(--selected); }
+.resultbar { margin-top: .375rem; color: var(--muted); font-size: .875rem; }
+.tablewrap { flex: 1; min-width: 0; max-height: max(20rem, calc(100dvh - 15rem)); overflow: auto; }
+.tablewrap:focus-visible { outline-offset: -3px; }
+table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: .875rem; }
+th, td { padding: .5rem .75rem; border-bottom: 1px solid #e4ece4; vertical-align: middle; text-align: left; }
+thead th { position: sticky; top: 0; z-index: 1; white-space: nowrap; background: var(--head); color: var(--muted); font-size: .8125rem; border-bottom-color: #c9d7ca; }
+tbody tr:nth-child(even) { background: var(--zebra); }
+tbody tr:hover { background: #eef6f2; }
+tbody tr:last-child td { border-bottom: 0; }
+td:first-child { min-width: 13rem; }
+td:nth-child(2), td:last-child { white-space: nowrap; }
+td .title { font-weight: 650; text-decoration: none; }
+td .title:hover { text-decoration: underline; }
+td .mono { display: block; color: var(--muted); font-size: .8125rem; overflow-wrap: anywhere; }
+.pill { display: inline-block; border-radius: 999px; background: #e5f2e8; color: #1d6b45; padding: .0625rem .5rem; font-size: .8125rem; }
+.pill.secondary { background: #e7eef6; color: #2c5278; }
+.pill.neutral { background: #eef1ec; color: #3e534a; }
+.empty { padding: 3rem 1rem; text-align: center; color: var(--muted); }
+footer { display: flex; gap: 1rem; flex-wrap: wrap; padding-inline: .25rem; font-size: .875rem; color: var(--muted); }
+dialog { width: min(calc(100% - 1.5rem), 54rem); max-height: 88dvh; border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem; color: var(--ink); overflow: auto; }
+dialog::backdrop { background: #0c251a70; }
+.dialog-actions { display: flex; justify-content: space-between; gap: .75rem; align-items: center; margin-bottom: .75rem; }
+dialog h2 { font-size: 1.375rem; line-height: 1.35; }
+dialog h3 { font-size: .9375rem; margin: 1.125rem 0 .5rem; }
+.description { margin-top: .5rem; }
+.meta { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .375rem .875rem; margin-top: .875rem; }
+.meta dt { color: var(--muted); }
+.meta dd { margin: 0; overflow-wrap: anywhere; }
+.links { margin: 0; padding-left: 1.25rem; }
+.links li + li { margin-top: .25rem; }
+.command { border: 1px solid var(--line); border-radius: 8px; background: #f7faf6; margin-top: .5rem; padding: .5rem .75rem; }
+.command-label { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .375rem; font-size: .875rem; }
+.command pre { margin: .5rem 0 .25rem; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .8125rem; }
+#toast { position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%); max-width: calc(100% - 2rem); border-radius: 8px; background: var(--ink); color: #fff; padding: .5rem .75rem; font-size: .875rem; }
+@media (min-width: 741px) {
+  .workspace { flex: none; height: max(25rem, calc(100dvh - 8.75rem)); }
+  .filters { overflow: auto; }
+  .tablewrap { min-height: 0; max-height: none; }
+}
+@media (max-width: 740px) {
+  .masthead { padding-inline: .875rem; }
+  main { padding: .625rem .75rem; }
+  .workspace { flex-direction: column; }
+  .filters { width: auto; display: flex; border-right: 0; border-bottom: 1px solid var(--line); }
+  .filter-group { flex: 1; min-width: 0; padding: .375rem .625rem .5rem; }
+  .filter-group + .filter-group { border-top: 0; border-left: 1px solid var(--line); }
+  .treehead { padding: .125rem 0 .3125rem; }
+  .filter-options { display: flex; gap: .375rem; overflow: auto; }
+  .filters button { width: auto; flex: none; white-space: nowrap; border: 1px solid var(--line); border-radius: 6px; padding: .25rem .5rem; }
+  .filters button[aria-pressed="true"] { box-shadow: none; border-color: #8ab69c; }
+  .tablewrap { max-height: 68vh; }
+  td:nth-child(3), th:nth-child(3) { display: none; }
+  kbd { display: none; }
+}
+@media (max-width: 480px) {
+  .filters { display: block; }
+  .filter-group + .filter-group { border-left: 0; border-top: 1px solid var(--line); }
+  .search { order: 1; flex-basis: 100%; }
+  .bar h1 { flex: 1; }
+  th, td { padding-inline: .5rem; }
+  td:first-child { min-width: 0; }
+  td:last-child, th:last-child { display: none; }
+  .meta { grid-template-columns: 1fr; gap: .125rem; }
+  .meta dd + dt { margin-top: .375rem; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="brand"><span class="mark" aria-hidden="true">◒</span>ObservationHub <span class="quiet">/ GALLERY</span></div>
+  <nav id="hubs" class="hubs" aria-label="Research hubs"></nav>
+</header>
+<main>
+  <nav class="tabs" aria-label="Gallery views">
+    <a href="?view=datasets" id="datasets-tab">Datasets<span id="datasets-total" class="count"></span></a>
+    <a href="?view=tasks" id="tasks-tab">Tasks<span id="tasks-total" class="count"></span></a>
+  </nav>
+  <div class="workspace">
+    <aside class="filters" aria-label="Filters">
+      <section class="filter-group" aria-labelledby="category-heading">
+        <h2 id="category-heading" class="treehead">Category</h2>
+        <div id="categories" class="filter-options"></div>
+      </section>
+      <section class="filter-group" id="kind-group" aria-labelledby="kind-heading">
+        <h2 id="kind-heading" class="treehead">Data type</h2>
+        <div id="kinds" class="filter-options"></div>
+      </section>
+    </aside>
+    <section class="sheet" aria-labelledby="view-title">
+      <div class="toolbar">
+        <div class="bar">
+          <h1 id="view-title">Datasets</h1>
+          <label class="search"><span class="sr">Search the catalog</span><input id="query" type="search" autocomplete="off" placeholder="Search by name, ID, or source"><kbd aria-hidden="true">/</kbd></label>
+          <button class="ghost" id="reset" type="button">Clear filters</button>
+        </div>
+        <p class="resultbar" id="result-count" aria-live="polite"></p>
+      </div>
+      <div id="tablewrap" class="tablewrap" tabindex="0" role="region" aria-label="Catalog results">
+        <table>
+          <caption class="sr" id="table-caption">Datasets</caption>
+          <thead><tr><th scope="col" id="column-title">Dataset</th><th scope="col">Category</th><th scope="col" id="column-summary">Coverage</th><th scope="col" id="column-context">Storage</th></tr></thead>
+          <tbody id="records"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <a href="https://github.com/liang-jiarui/ObservationHub">Guide</a>
+    <a href="catalog.json">Catalog JSON</a>
+  </footer>
+</main>
+<dialog id="detail" aria-labelledby="detail-title">
+  <div class="dialog-actions">
+    <span id="detail-kind" class="pill"></span>
+    <button class="mini" id="close" type="button">Close</button>
+  </div>
+  <div id="detail-body"></div>
+  <p id="toast" role="status" hidden></p>
+</dialog>
+<noscript>Enable JavaScript to browse the gallery, or open the <a href="catalog.json">catalog JSON</a>.</noscript>
+<script type="application/json" id="catalog">{
+  "schema_version": 1,
+  "hub": "observationhub",
+  "datasets": [
+    {
+      "id": "cnemc_china",
+      "title": "China national air quality monitoring, hourly station and city archive",
+      "category": "Air quality",
+      "kind": "Station observations",
+      "storage": "Local copy",
+      "publisher": "China National Environmental Monitoring Centre (CNEMC)",
+      "description": "Original station and city CSV archives and successive station lists. The reader supports hourly O₃ and PM₂.₅ concentrations in µg/m³.",
+      "path": "data/air_quality/cnemc_china",
+      "links": [
+        {
+          "label": "Publisher",
+          "url": "https://air.cnemc.cn:18007/"
+        },
+        {
+          "label": "Source archive",
+          "url": "https://quotsoft.net/air/"
+        }
+      ],
+      "coverage": "The station archive covers 2,040 dates across part of 2014, all of 2017, 2020 and 2023–2024, and 2025 through December 20. The city archive covers 1,827 days across all of 2017, 2020 and 2023–2025."
+    },
+    {
+      "id": "beijing_air_quality",
+      "title": "Beijing hourly air quality station archive",
+      "category": "Air quality",
+      "kind": "Station observations",
+      "storage": "Local copy",
+      "publisher": "Beijing Municipal Environmental Monitoring Center",
+      "description": "Original hourly station CSV files and annual ZIP archives. PM₂.₅ is from beijing_all and O₃ is from beijing_extra.",
+      "path": "data/air_quality/beijing_air_quality",
+      "links": [
+        {
+          "label": "Publisher",
+          "url": "https://www.bjmemc.com.cn/"
+        },
+        {
+          "label": "Source archive",
+          "url": "https://quotsoft.net/air/"
+        }
+      ],
+      "coverage": "PM₂.₅ starts in December 2013 and O₃ in April 2014. Both end October 11, 2025. Some years and days are missing."
+    },
+    {
+      "id": "xu2023_pm25",
+      "title": "Xu et al. (2023) global station daily mean PM₂.₅",
+      "category": "Air quality",
+      "kind": "Station observations",
+      "storage": "Local copy",
+      "publisher": "Rongbin Xu et al.",
+      "description": "Daily mean PM₂.₅ concentrations compiled from multiple monitoring networks and quality-controlled by the authors. The reader extracts records for the China region.",
+      "path": "data/air_quality/xu2023_pm25",
+      "links": [
+        {
+          "label": "Publisher",
+          "url": "https://doi.org/10.1038/s41586-023-06398-6"
+        },
+        {
+          "label": "Source archive",
+          "url": "https://osf.io/dn7ya/files/seybm"
+        }
+      ],
+      "coverage": "1,722 stations in the China region from November 27, 2013 to December 31, 2019."
+    },
+    {
+      "id": "xu2023_o3",
+      "title": "Xu et al. (2023) global station daily maximum 8-hour average ozone",
+      "category": "Air quality",
+      "kind": "Station observations",
+      "storage": "Local copy",
+      "publisher": "Rongbin Xu et al.",
+      "description": "Daily maximum 8-hour average ozone concentrations compiled from multiple monitoring networks and quality-controlled by the authors. The reader extracts records for the China region.",
+      "path": "data/air_quality/xu2023_o3",
+      "links": [
+        {
+          "label": "Publisher",
+          "url": "https://doi.org/10.1038/s41586-023-06398-6"
+        },
+        {
+          "label": "Source archive",
+          "url": "https://osf.io/dn7ya/files/3afcm"
+        }
+      ],
+      "coverage": "1,720 stations in the China region from May 13, 2014 to December 31, 2019."
+    },
+    {
+      "id": "noaa_isd_lite_china",
+      "title": "NOAA ISD-Lite surface weather observations for China",
+      "category": "Meteorology and soundings",
+      "kind": "Station observations",
+      "storage": "Local copy",
+      "publisher": "NOAA National Centers for Environmental Information (NCEI)",
+      "description": "Annual station ZIP files, their extracted contents, a station history table and documentation. Sampling intervals include hourly and three-hourly records.",
+      "path": "data/meteorology/noaa_isd_lite_china",
+      "links": [
+        {
+          "label": "Publisher",
+          "url": "https://www.ncei.noaa.gov/products/land-based-station/integrated-surface-database"
+        },
+        {
+          "label": "Source archive",
+          "url": "https://quotsoft.net/air/"
+        },
+        {
+          "label": "File format",
+          "url": "https://www.ncei.noaa.gov/pub/data/noaa/isd-lite/isd-lite-format.pdf"
+        }
+      ],
+      "coverage": "China, including Hong Kong, Macao and Taiwan. Annual archives for 2014, 2017, 2020 and 2023."
+    },
+    {
+      "id": "ndep",
+      "title": "Atmospheric nitrogen deposition observations and reference data",
+      "category": "Nitrogen deposition",
+      "kind": "Monitoring networks and references",
+      "storage": "Existing archive",
+      "publisher": "EANET, CAPMoN, NADP/NTN, INDAAF, EMEP and other networks and study authors",
+      "description": "Raw data, monthly wet deposition measurements, historical intermediate tables, literature and training workbooks.",
+      "path": "data/ndep",
+      "links": [
+        {
+          "label": "MLHub station nitrogen deposition experiments",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/projects.md#fire_ndep_csink"
+        }
+      ],
+      "coverage": "Dates vary by network. The merged workbook reports monthly NH₄⁺ and NO₃⁻ wet deposition by station."
+    },
+    {
+      "id": "tap_daily_o3",
+      "title": "TAP daily gridded ozone estimates for China",
+      "category": "Air quality",
+      "kind": "Observation-derived products",
+      "storage": "Local copy",
+      "publisher": "Tracking Air Pollution in China (TAP)",
+      "description": "Extracted v1 and v2 files and original ZIP archives for daily O₃. The archive preserves the source directory structure by version and year.",
+      "path": "data/air_quality/tap_daily_o3",
+      "links": [],
+      "coverage": "Nationwide. V1 covers 2014, 2017 and 2020. V2 also includes 2023."
+    },
+    {
+      "id": "omi_total_column_o3",
+      "title": "Aura OMI Level 3 daily total column ozone",
+      "category": "Air quality",
+      "kind": "Satellite-derived products",
+      "storage": "Local copy",
+      "publisher": "Aura Ozone Monitoring Instrument (OMI)",
+      "description": "Daily global 1° grids whose file headers read OMI TO3 STD OZONE. The archive retains the original text files.",
+      "path": "data/air_quality/omi_total_column_o3",
+      "links": [],
+      "coverage": "Global 1° grids in 12 annual directories between 2012 and 2025."
+    },
+    {
+      "id": "camx_station_metadata",
+      "title": "CAMx air quality station reference tables for China and regional domains",
+      "category": "Air quality",
+      "kind": "Station metadata",
+      "storage": "Local copy",
+      "publisher": "CAMx project historical archive",
+      "description": "National, Beijing and Jining station lists with records for merging station lists or mapping stations to model grids.",
+      "path": "data/air_quality/camx_station_metadata/legacy",
+      "links": []
+    },
+    {
+      "id": "camx_station_reference",
+      "title": "CAMx national and Beijing station crosswalks",
+      "category": "Air quality",
+      "kind": "Station metadata",
+      "storage": "Local copy",
+      "publisher": "CAMx project working archive",
+      "description": "Monitoring network rosters, station crosswalks and project grid fields.",
+      "path": "data/air_quality/camx_station_metadata/reference",
+      "links": []
+    },
+    {
+      "id": "global_carbon_budget",
+      "title": "Global Carbon Budget and project comparison workbooks",
+      "category": "Carbon budgets and inversions",
+      "kind": "Carbon budget workbooks",
+      "storage": "Local copy",
+      "publisher": "Global Carbon Project, FireEarth and Fire_Ndep",
+      "description": "The workbooks compile multiple datasets and estimates. Includes the 2024 v1.1, 2025 v0.7 and 2026 v0.1 editions, along with project comparison tables.",
+      "path": "data/carbon/global_carbon_budget",
+      "links": []
+    },
+    {
+      "id": "ndep_csink_reference",
+      "title": "Nitrogen deposition and carbon sink reference workbook",
+      "category": "Carbon budgets and inversions",
+      "kind": "Project references",
+      "storage": "Local copy",
+      "publisher": "FireEarth and Fire_Ndep",
+      "description": "Project summary workbook dated April 12, 2026.",
+      "path": "data/carbon/ndep_csink_reference",
+      "links": []
+    },
+    {
+      "id": "cropland_n2o_training",
+      "title": "Cropland N₂O and related nitrogen flux training data",
+      "category": "Cropland nitrogen fluxes",
+      "kind": "Literature and training tables",
+      "storage": "Local copy",
+      "publisher": "Published supplementary data compiled by the N2O_mitigation project",
+      "description": "Original study supplements and project training tables for N₂O, nitrogen leaching and runoff, NH₃, and fertilizer management.",
+      "path": "data/nitrogen/cropland_n2o_training",
+      "links": [
+        {
+          "label": "MLHub cropland N₂O experiment snapshot",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/tree/main/examples/n2o_mitigation"
+        }
+      ]
+    },
+    {
+      "id": "fertilizer_nh3_measurements",
+      "title": "Global fertilizer management and ammonia volatilization supplementary data",
+      "category": "Cropland nitrogen fluxes",
+      "kind": "Supplementary tables",
+      "storage": "Local copy",
+      "publisher": "Fertilizer-Management-for-Global-Ammonia-Emission-Reduction",
+      "description": "Supplementary Table 3-use2775.xlsx from the original study repository.",
+      "path": "data/nitrogen/fertilizer_nh3_measurements",
+      "links": []
+    },
+    {
+      "id": "wrfgc_station_observations",
+      "title": "WRF-GC D03 air quality observations and validation tables",
+      "category": "Air quality",
+      "kind": "Matched model and station data",
+      "storage": "Local copy",
+      "publisher": "lym_ml_wrfgc project station archive",
+      "description": "Station O₃ and PM₂.₅ observation CSVs and matched tables containing model variables. The source time zone is unconfirmed.",
+      "path": "data/air_quality/wrfgc_station_observations",
+      "links": []
+    },
+    {
+      "id": "huaihe_gnss_station",
+      "title": "Huai River basin operational GNSS meteorological station archive",
+      "category": "Meteorology and soundings",
+      "kind": "Station observations",
+      "storage": "Cluster link",
+      "publisher": "huaihe_ahqx project",
+      "description": "Original GNSS/MET station XML archive. Use is subject to the source project's permissions.",
+      "path": "data/meteorology/huaihe_gnss_station",
+      "links": []
+    },
+    {
+      "id": "huaihe_gnss_pwv",
+      "title": "Huai River basin GNSS precipitable water vapor and station data",
+      "category": "Meteorology and soundings",
+      "kind": "Station observations",
+      "storage": "Cluster link",
+      "publisher": "huaihe_ahqx project",
+      "description": "Station metadata, original compressed archives and extracted high-frequency text records. Use is subject to the source project's permissions.",
+      "path": "data/meteorology/huaihe_gnss_pwv",
+      "links": [],
+      "coverage": "The project configuration uses 20 stations in the Huai River basin."
+    },
+    {
+      "id": "huaihe_radiosonde",
+      "title": "Huai River basin radiosonde observations at five stations",
+      "category": "Meteorology and soundings",
+      "kind": "Station observations",
+      "storage": "Local copy",
+      "publisher": "huaihe_ahqx project",
+      "description": "Radiosonde observations from Zhengzhou, Nanyang, Xuzhou, Sheyang and Fuyang. Use is subject to the source project's permissions.",
+      "path": "data/meteorology/huaihe_radiosonde",
+      "links": [],
+      "coverage": "Approximately October 2025 to March 2026. January 2026 is missing at Nanyang."
+    },
+    {
+      "id": "huaihe_water_vapor_tomography",
+      "title": "Huai River basin gridded water vapor tomography",
+      "category": "Meteorology and soundings",
+      "kind": "Observation-derived products",
+      "storage": "Cluster link",
+      "publisher": "huaihe_ahqx project",
+      "description": "Original project grids of water vapor density derived from observations. The time series contains gaps.",
+      "path": "data/meteorology/huaihe_water_vapor_tomography",
+      "links": []
+    },
+    {
+      "id": "cru_ts_4_08",
+      "title": "CRU TS v4.08 monthly gridded land climate data",
+      "category": "Meteorology and soundings",
+      "kind": "Observation-derived products",
+      "storage": "Cluster link",
+      "publisher": "Climatic Research Unit",
+      "description": "Precipitation, air temperature and potential evapotranspiration data used by the project, including original downloads and extracted files.",
+      "path": "data/meteorology/cru_ts_4_08",
+      "links": []
+    },
+    {
+      "id": "cobe_sst2_jma",
+      "title": "JMA COBE-SST2 gridded sea surface temperature",
+      "category": "Ocean",
+      "kind": "Observation-derived products",
+      "storage": "Local copy",
+      "publisher": "Japan Meteorological Agency",
+      "description": "Original annual GRIB2 files archived by EarthModelHub.",
+      "path": "data/ocean/cobe_sst2_jma",
+      "links": [],
+      "coverage": "Annual files for 2022–2026."
+    },
+    {
+      "id": "cobe_sst2_amip",
+      "title": "COBE-SST2 boundary data for CESM AMIP",
+      "category": "Ocean",
+      "kind": "Observation-derived model inputs",
+      "storage": "Cluster link",
+      "publisher": "CESM boundary data used by EarthModelHub",
+      "description": "Model boundary files derived from COBE-SST2, available at 1° and 1.9° × 2.5°.",
+      "path": "data/ocean/cobe_sst2_amip",
+      "links": [],
+      "coverage": "1850–2025 at 1° and 1.9° × 2.5°."
+    },
+    {
+      "id": "gfed4_1s",
+      "title": "GFED4.1s global burned area and fire emissions",
+      "category": "Wildfire",
+      "kind": "Satellite-derived products",
+      "storage": "Cluster link",
+      "publisher": "Global Fire Emissions Database",
+      "description": "Annual HDF5 archive assembled by EarthModelHub. Later years are marked beta.",
+      "path": "data/fire/gfed4_1s",
+      "links": []
+    },
+    {
+      "id": "gfed4_1_source",
+      "title": "GFED4.1 original fire emissions release",
+      "category": "Wildfire",
+      "kind": "Satellite-derived products",
+      "storage": "Cluster link",
+      "publisher": "Global Fire Emissions Database",
+      "description": "Original GFED4.1 release files preserved by EarthModelHub.",
+      "path": "data/fire/gfed4_1_source",
+      "links": []
+    },
+    {
+      "id": "gfed5_burned_area",
+      "title": "GFED5 historical monthly gridded burned area",
+      "category": "Wildfire",
+      "kind": "Satellite-derived products",
+      "storage": "Cluster link",
+      "publisher": "Global Fire Emissions Database",
+      "description": "Original release package and monthly burned area grids archived by EarthModelHub. Includes the historical reconstruction and the satellite-era product.",
+      "path": "data/fire/gfed5_burned_area",
+      "links": [
+        {
+          "label": "MLHub GFED5 processing and comparisons",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/gfed5_burned_area.md"
+        }
+      ]
+    },
+    {
+      "id": "gfed5_shared",
+      "title": "GFED5 shared data archive",
+      "category": "Wildfire",
+      "kind": "Satellite-derived products",
+      "storage": "Cluster link",
+      "publisher": "Global Fire Emissions Database",
+      "description": "Shared data archive used by EarthModelHub and other projects.",
+      "path": "data/fire/gfed5_shared",
+      "links": []
+    },
+    {
+      "id": "gfed5_fireearth",
+      "title": "FireEarth GFED5 monthly gridded product",
+      "category": "Wildfire",
+      "kind": "Satellite-derived products",
+      "storage": "Local copy",
+      "publisher": "FireEarth and the Global Fire Emissions Database",
+      "description": "Monthly 2° × 2.5° gridded input prepared for FireEarth.",
+      "path": "data/fire/gfed5_fireearth",
+      "links": [
+        {
+          "label": "MLHub GFED5 processing and comparisons",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/gfed5_burned_area.md"
+        }
+      ],
+      "coverage": "The file indicates 1997–2026 on a monthly 2° × 2.5° grid."
+    },
+    {
+      "id": "sr_unet_nightlights",
+      "title": "SRUNet VIIRS-like nighttime lights reconstruction",
+      "category": "Remote sensing",
+      "kind": "Remote-sensing reconstructions",
+      "storage": "Cluster link",
+      "publisher": "MachineLearningHub and Fire_Ndep project archives",
+      "description": "Historical nighttime lights reconstruction and simulation products, including original compressed archives and extracted files.",
+      "path": "data/remote_sensing/sr_unet_nightlights",
+      "links": []
+    },
+    {
+      "id": "camx_station_training",
+      "title": "CAMx daily station observation and simulation training pairs",
+      "category": "Air quality",
+      "kind": "Matched model and station data",
+      "storage": "Local copy",
+      "publisher": "CAMx project archive",
+      "description": "The day_sim_obs.csv and training_data_processed.csv tables contain national monitoring station observations, model output and meteorological variables.",
+      "path": "data/air_quality/camx_station_training",
+      "links": []
+    },
+    {
+      "id": "camx_bth_validation",
+      "title": "BTH CAMx example and national station matchup archive",
+      "category": "Air quality",
+      "kind": "Matched model and station data",
+      "storage": "Existing archive",
+      "publisher": "BTH-Ozone-CAMx-OSAT",
+      "description": "Includes the existing mda8_d01.csv.gz matchup table and four UTC days of example CAMx simulations. Source project file locations are listed in data/README.md.",
+      "path": "data/air_quality/camx_bth",
+      "links": []
+    },
+    {
+      "id": "ghg_budget_inversions",
+      "title": "Global greenhouse gas budget inversion reference data",
+      "category": "Carbon budgets and inversions",
+      "kind": "Flux inversion products",
+      "storage": "Cluster link",
+      "publisher": "GHG_budget project archive",
+      "description": "Multiple versions of CO₂, CH₄ and N₂O flux inversion products, including priors, posteriors and some original releases.",
+      "path": "data/carbon/ghg_budget_inversions",
+      "links": []
+    },
+    {
+      "id": "camx_acs_weather_validation",
+      "title": "WRF D02 hourly station meteorology validation for the CAMx study",
+      "category": "Meteorology and soundings",
+      "kind": "Matched model and station data",
+      "storage": "Local copy",
+      "publisher": "NOAA ISD-Lite and CAMx",
+      "description": "Hourly temperature, relative humidity and wind speed matchups used in Supplementary Figure S6, with station metadata and validation notes. Covers 30 stations for the summers of 2014, 2017, 2020 and 2023.",
+      "path": "data/meteorology/camx_acs_weather_validation",
+      "links": []
+    },
+    {
+      "id": "camx_acs_ozone_validation",
+      "title": "CAMx study D01/D02 ozone station validation data",
+      "category": "Air quality",
+      "kind": "Matched model and station data",
+      "storage": "Local copy",
+      "publisher": "China National Environmental Monitoring Centre (CNEMC) and CAMx",
+      "description": "Station observations, station lists, grid-level observations, CAMx baseline indices and audit files for the summers of 2014, 2017, 2020 and 2023. Consult the audit files when using camx_acs_ozone_grid_hourly with this archive.",
+      "path": "data/air_quality/camx_acs_ozone_validation",
+      "links": []
+    },
+    {
+      "id": "camx_yrd_station_daily",
+      "title": "CAMx regional project daily station O₃ and PM₂.₅ statistics",
+      "category": "Air quality",
+      "kind": "Observation-derived products",
+      "storage": "Local copy",
+      "publisher": "China National Environmental Monitoring Centre (CNEMC) and CAMx",
+      "description": "Daily O₃ and PM₂.₅ statistics and pollution categories at 12 stations from May 1, 2024 to April 30, 2025. SHA-256 checksums agree across the Yangtze River Delta and Beijing project branches and the CAMx working copy.",
+      "path": "data/air_quality/camx_yrd_station_daily",
+      "links": []
+    },
+    {
+      "id": "camx_merra2_station_training",
+      "title": "CAMx daily station observations matched to MERRA-2",
+      "category": "Air quality",
+      "kind": "Matched model and station data",
+      "storage": "Local copy",
+      "publisher": "CAMx project archive",
+      "description": "Daily station ozone statistics and matched MERRA-2 meteorological and surface fields for the summers of 2014, 2017, 2020 and 2023. Includes the 0.625° × 0.5° and 0.1° × 0.1° matchup tables and their training inputs.",
+      "path": "data/air_quality/camx_merra2_station_training",
+      "links": []
+    },
+    {
+      "id": "camx_modis_lai_2008",
+      "title": "2008 MODIS leaf area index for CAMx MEGAN",
+      "category": "Remote sensing",
+      "kind": "Observation-derived model inputs",
+      "storage": "Local copy",
+      "publisher": "MODIS and CAMx",
+      "description": "46 NetCDF files on a 0.05° grid contain the LAIv variable and geographic coordinates for MEGAN. Source filenames follow eight-day intervals in 2008.",
+      "path": "data/remote_sensing/camx_modis_lai_2008",
+      "links": []
+    },
+    {
+      "id": "camx_acs_ozone_grid_hourly",
+      "title": "CAMx study D01/D02 hourly gridded ozone matchups",
+      "category": "Air quality",
+      "kind": "Matched model and station data",
+      "storage": "Local copy",
+      "publisher": "China National Environmental Monitoring Centre (CNEMC) and CAMx",
+      "description": "Two hourly gridded input tables with observed ozone, CAMx ozone and WRF meteorological fields. The audit files in camx_acs_ozone_validation record their input checksums.",
+      "path": "data/air_quality/camx_acs_ozone_grid_hourly",
+      "links": []
+    },
+    {
+      "id": "tropomi_no2_east_asia",
+      "title": "TROPOMI tropospheric NO₂ over East Asia, processed course data",
+      "category": "Remote sensing",
+      "kind": "Observation-derived products",
+      "storage": "Local copy",
+      "publisher": "Sentinel-5P TROPOMI and class_zb",
+      "description": "119 daily tables of satellite along-track samples and two 0.5° gridded arrays for January and February 2019 and 2020, between 10–60° N and 70–150° E.",
+      "path": "data/remote_sensing/tropomi_no2_east_asia",
+      "links": []
+    },
+    {
+      "id": "mopitt_co_course",
+      "title": "MOPITT gridded carbon monoxide and summary tables, course data",
+      "category": "Remote sensing",
+      "kind": "Observation-derived products",
+      "storage": "Local copy",
+      "publisher": "Terra MOPITT and class_zb",
+      "description": "Daily 0.5° total column carbon monoxide NetCDF files for January 2021 and seven carbon monoxide summary workbooks.",
+      "path": "data/remote_sensing/mopitt_co_course",
+      "links": []
+    },
+    {
+      "id": "tropomi_no2_l2",
+      "title": "Sentinel-5P TROPOMI Level 2 NO₂ shared archive",
+      "category": "Remote sensing",
+      "kind": "Satellite observations",
+      "storage": "Cluster link",
+      "publisher": "Sentinel-5P TROPOMI",
+      "description": "NetCDF orbital files for 2018–2026, including reprocessed and offline products.",
+      "path": "data/remote_sensing/tropomi_no2_l2",
+      "links": []
+    },
+    {
+      "id": "gosat_ch4_ocpr_v9",
+      "title": "GOSAT CH₄ OCPR v9 shared archive",
+      "category": "Remote sensing",
+      "kind": "Satellite observations",
+      "storage": "Cluster link",
+      "publisher": "University of Leicester and GOSAT",
+      "description": "Level 2 methane NetCDF files for 2009–2025, including the 2021 data used in the course.",
+      "path": "data/remote_sensing/gosat_ch4_ocpr_v9",
+      "links": []
+    },
+    {
+      "id": "mopitt_co_l2_v9",
+      "title": "Terra MOPITT Level 2 CO v9 shared archive",
+      "category": "Remote sensing",
+      "kind": "Satellite observations",
+      "storage": "Cluster link",
+      "publisher": "Terra MOPITT",
+      "description": "Level 2 carbon monoxide HDF-EOS5 files for 2000–2024.",
+      "path": "data/remote_sensing/mopitt_co_l2_v9",
+      "links": []
+    },
+    {
+      "id": "blended_tropomi_gosat_ch4",
+      "title": "Blended TROPOMI–GOSAT methane shared archive",
+      "category": "Remote sensing",
+      "kind": "Observation-derived products",
+      "storage": "Cluster link",
+      "publisher": "Blended TROPOMI–GOSAT methane project",
+      "description": "Shared copy of the product associated with the blended_tropomi_gosat_methane repository, covering April 2018 through December 2025.",
+      "path": "data/remote_sensing/blended_tropomi_gosat_ch4",
+      "links": []
+    },
+    {
+      "id": "camx_bth_station_pairs",
+      "title": "BTH CAMx hourly and MDA8 station ozone matchups",
+      "category": "Air quality",
+      "kind": "Matched model and station data",
+      "storage": "Local copy",
+      "publisher": "China National Environmental Monitoring Centre (CNEMC) and BTH-Ozone-CAMx-OSAT",
+      "description": "The main sample, subsets used for Figure 2 and Figure S4, and the Beijing holdout validation. Hourly and daily tables cover D01 and D02 for the summers of 2014, 2017, 2020 and 2023. The Figure 2 D01 daily table is in camx_bth_validation.",
+      "path": "data/air_quality/camx_bth_station_pairs",
+      "links": []
+    },
+    {
+      "id": "gfed4_1s_emission_tables",
+      "title": "GFED4.1s annual fire emissions of NH₃ and NOₓ",
+      "category": "Wildfire",
+      "kind": "Satellite-derived products",
+      "storage": "Local copy",
+      "publisher": "Global Fire Emissions Database and Fire_Ndep_Csink",
+      "description": "Global and regional emissions estimates for 1997–2023. The estimates for 2017–2023 are marked beta.",
+      "path": "data/fire/gfed4_1s_emission_tables",
+      "links": []
+    },
+    {
+      "id": "oscar_v3_1_observation_benchmarks",
+      "title": "OSCAR v3.1 climate and atmospheric composition benchmarks",
+      "category": "Climate benchmarks",
+      "kind": "Observational benchmarks",
+      "storage": "Local copy",
+      "publisher": "OSCAR v3.1 and the observation product providers",
+      "description": "24 NetCDF files compiled for the project, covering greenhouse gas concentrations, surface temperature, precipitation, sea surface temperature, ocean heat content, carbon budgets, radiative forcing and related evaluation quantities.",
+      "path": "data/climate/oscar_v3_1_observation_benchmarks",
+      "links": []
+    },
+    {
+      "id": "noaa_gml_global_mole_fractions",
+      "title": "NOAA GML global annual mean greenhouse gas dry-air mole fractions",
+      "category": "Climate benchmarks",
+      "kind": "Observation-derived products",
+      "storage": "Local copy",
+      "publisher": "NOAA Global Monitoring Laboratory",
+      "description": "The companion table to NOAA's Annual Greenhouse Gas Index used in the FaIR study reproduction. Includes 46 annual values from 1979–2024 and fields for 22 gases.",
+      "path": "data/climate/noaa_gml_global_mole_fractions",
+      "links": []
+    },
+    {
+      "id": "igcc_gmst_1850_2022",
+      "title": "IGCC global mean surface temperature time series",
+      "category": "Climate benchmarks",
+      "kind": "Observational benchmarks",
+      "storage": "Local copy",
+      "publisher": "Indicators of Global Climate Change and the FaIR calibration project",
+      "description": "Global mean surface temperature used to calibrate FaIR, with 173 annual values from 1850–2022.",
+      "path": "data/climate/igcc_gmst_1850_2022",
+      "links": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "cnemc_2023_monthly",
+      "title": "2023 CNEMC Monthly Station Dataset",
+      "category": "Observation processing",
+      "description": "Aggregate hourly O₃ and PM₂.₅ records from China's national monitoring network by UTC month. Require valid records for at least 75% of the hours in each month and produce a station dataset for CAM and EAM.",
+      "datasets": [
+        "cnemc_china"
+      ],
+      "commands": [
+        {
+          "label": "Build station dataset",
+          "command": "observationhub build-stations --config config/stations/cnemc_2023_monthly.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "View YAML configuration",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/config/stations/cnemc_2023_monthly.yaml"
+        }
+      ],
+      "config": "config/stations/cnemc_2023_monthly.yaml",
+      "outputs": [
+        "stations.csv",
+        "observations.csv.gz",
+        "manifest.json"
+      ]
+    },
+    {
+      "id": "cnemc_2023_june_daily",
+      "title": "June 2023 CNEMC Daily Station Dataset",
+      "category": "Observation processing",
+      "description": "Calculate daily maximum eight-hour mean O₃ and daily means for five other pollutants for June 1–3, 2023 using Beijing time. The dataset supports CAMx and WRF-GC.",
+      "datasets": [
+        "cnemc_china"
+      ],
+      "commands": [
+        {
+          "label": "Build station dataset",
+          "command": "observationhub build-stations --config config/stations/cnemc_2023_june_daily.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "View YAML configuration",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/config/stations/cnemc_2023_june_daily.yaml"
+        }
+      ],
+      "config": "config/stations/cnemc_2023_june_daily.yaml",
+      "outputs": [
+        "stations.csv",
+        "observations.csv.gz",
+        "manifest.json"
+      ]
+    },
+    {
+      "id": "xu_2019_o3",
+      "title": "2019 Xu Daily Station O₃ Dataset",
+      "category": "Observation processing",
+      "description": "Extract 2019 station O₃ for China from the global archive, preserving the original date labels and daily maximum eight-hour means.",
+      "datasets": [
+        "xu2023_o3"
+      ],
+      "commands": [
+        {
+          "label": "Build station dataset",
+          "command": "observationhub build-stations --config config/stations/xu_2019_o3.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "View YAML configuration",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/config/stations/xu_2019_o3.yaml"
+        }
+      ],
+      "config": "config/stations/xu_2019_o3.yaml",
+      "outputs": [
+        "stations.csv",
+        "observations.csv.gz",
+        "manifest.json"
+      ]
+    },
+    {
+      "id": "rebuild_ndep_workbooks",
+      "title": "Rebuild Multi-Network Wet Nitrogen Deposition Workbooks",
+      "category": "Observation processing",
+      "description": "Clean and merge monthly wet nitrogen deposition from EANET, CAPMoN, NTN, INDAAF, and EMEP. Export individual network workbooks, the station list, and the combined workbook.",
+      "datasets": [
+        "ndep"
+      ],
+      "commands": [
+        {
+          "label": "Clean and merge observations",
+          "command": "python -m observationhub.ndep.clean.main"
+        }
+      ],
+      "links": [
+        {
+          "label": "Processing guide",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/README.md#%E9%87%8D%E5%BB%BA%E8%A7%82%E6%B5%8B%E5%B7%A5%E4%BD%9C%E7%B0%BF"
+        }
+      ],
+      "outputs": [
+        "output/ndep/cleaned/obs_wet_deposition_merged.xlsx",
+        "output/ndep/cleaned/sites.csv"
+      ]
+    },
+    {
+      "id": "cam_2023_monthly",
+      "title": "2023 CAM Monthly Air Quality Validation for China",
+      "category": "Model validation",
+      "description": "Pair CAM surface O₃ and PM₂.₅ with the 2023 CNEMC monthly station dataset. Use CF time bounds to assign records to months.",
+      "datasets": [
+        "cnemc_china"
+      ],
+      "commands": [
+        {
+          "label": "Run CAM validation",
+          "command": "observationhub validate --config config/validation/cam_2023_monthly.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "View YAML configuration",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/config/validation/cam_2023_monthly.yaml"
+        }
+      ],
+      "config": "config/validation/cam_2023_monthly.yaml",
+      "outputs": [
+        "station_validation.xlsx",
+        "paired_stations.csv.gz",
+        "metrics.csv",
+        "evaluation.json"
+      ],
+      "requires": [
+        "Build the cnemc_2023_monthly station dataset.",
+        "Set MODEL_ARCHIVE to the CAM history directory."
+      ]
+    },
+    {
+      "id": "cam_ndep_monthly",
+      "title": "CAM Monthly Wet Nitrogen Deposition Validation",
+      "category": "Model validation",
+      "description": "Pair gridded model fluxes with wet deposition observations by site and month. Integrate rates over each month using the model calendar and summarize metrics by monitoring network.",
+      "datasets": [
+        "ndep"
+      ],
+      "commands": [
+        {
+          "label": "Run nitrogen deposition validation",
+          "command": "observationhub validate --config config/validation/cam_ndep_monthly.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "View YAML configuration",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/config/validation/cam_ndep_monthly.yaml"
+        }
+      ],
+      "config": "config/validation/cam_ndep_monthly.yaml",
+      "outputs": [
+        "ndep_validation.xlsx",
+        "paired_site_months.csv.gz",
+        "metrics_by_network.csv"
+      ],
+      "requires": [
+        "Set CAM_NDEP_FILE to the monthly CAM file containing NHₓ and NOᵧ wet deposition fluxes."
+      ]
+    },
+    {
+      "id": "camx_c07_2023_daily",
+      "title": "CAMx C07 D01 Hourly Grid Validation",
+      "category": "Model validation",
+      "description": "Reconstruct spatial and temporal coordinates from I/O API NetCDF. Use Beijing time to aggregate hourly fields into daily maximum eight-hour mean O₃ and daily mean NO₂, SO₂, and CO, then pair them with CNEMC station observations.",
+      "datasets": [
+        "cnemc_china",
+        "camx_bth_validation"
+      ],
+      "commands": [
+        {
+          "label": "Validate native CAMx output",
+          "command": "observationhub validate --config config/validation/camx_c07_2023_daily.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "View YAML configuration",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/config/validation/camx_c07_2023_daily.yaml"
+        }
+      ],
+      "config": "config/validation/camx_c07_2023_daily.yaml",
+      "outputs": [
+        "station_validation.xlsx",
+        "paired_stations.csv.gz",
+        "metrics.csv",
+        "evaluation.json"
+      ],
+      "requires": [
+        "Build the cnemc_2023_june_daily station dataset."
+      ]
+    },
+    {
+      "id": "camx_bth_archive_2023",
+      "title": "Archived BTH CAMx Station Pairs",
+      "category": "Model validation",
+      "description": "Reuse the BTH project's daily D01 O₃ station pairs for summer 2023. Apply the documented factor of 1.09375 to match reported concentrations.",
+      "datasets": [
+        "camx_bth_validation"
+      ],
+      "commands": [
+        {
+          "label": "Validate archived station pairs",
+          "command": "observationhub validate --config config/validation/camx_bth_archive_2023.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "View YAML configuration",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/config/validation/camx_bth_archive_2023.yaml"
+        }
+      ],
+      "config": "config/validation/camx_bth_archive_2023.yaml",
+      "outputs": [
+        "station_validation.xlsx",
+        "paired_stations.csv.gz",
+        "metrics.csv",
+        "evaluation.json"
+      ]
+    },
+    {
+      "id": "wrfgc_china_daily",
+      "title": "WRF-GC Daily Air Quality Validation for China",
+      "category": "Model validation",
+      "description": "Read native wrfout files and pair model output with CNEMC stations inside the model domain. Validate daily maximum eight-hour mean O₃, daily mean NO₂, and daily mean dry surface PM₂.₅.",
+      "datasets": [
+        "cnemc_china"
+      ],
+      "commands": [
+        {
+          "label": "Run WRF-GC validation",
+          "command": "observationhub validate --config config/validation/wrfgc_china_daily.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "View YAML configuration",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/config/validation/wrfgc_china_daily.yaml"
+        }
+      ],
+      "config": "config/validation/wrfgc_china_daily.yaml",
+      "outputs": [
+        "station_validation.xlsx",
+        "paired_stations.csv.gz",
+        "metrics.csv",
+        "evaluation.json"
+      ],
+      "requires": [
+        "Set WRFGC_ARCHIVE to the directory of wrfout_d01 files on the same grid.",
+        "Build a CNEMC daily station dataset for the simulation period."
+      ]
+    },
+    {
+      "id": "xu_2026_fire_2023",
+      "title": "Xu 2026 Cross-Model Validation of China Wildfire Simulations",
+      "category": "Cross-hub tasks",
+      "description": "Use the same 2023 CNEMC monthly station dataset to validate EarthModelHub cases CESM/CAM e07 and E3SM/EAM e15 and e17. Each case's validation YAML references the case.yaml in its directory and reads the FireEarth history archive.",
+      "datasets": [
+        "cnemc_china"
+      ],
+      "commands": [
+        {
+          "label": "Prepare shared station dataset",
+          "command": "observationhub build-stations --config config/stations/cnemc_2023_monthly.yaml"
+        },
+        {
+          "label": "Validate a model case",
+          "command": "observationhub validate --config \"$EMH_CASE_DIR\""
+        }
+      ],
+      "links": [
+        {
+          "label": "EarthModelHub case configurations",
+          "url": "https://github.com/liang-jiarui/EarthModelHub/tree/main/config/tasks/applications/xu_2026_fire_2023"
+        }
+      ],
+      "outputs": [
+        "output/validation/xu_2026_fire_2023/e07/",
+        "output/validation/xu_2026_fire_2023/e15/",
+        "output/validation/xu_2026_fire_2023/e17/"
+      ],
+      "requires": [
+        "Set OBSERVATIONHUB_ROOT and FIREEARTH_ROOT.",
+        "Set EMH_CASE_DIR to each configuration directory for e07, e15, and e17 and run validation separately."
+      ],
+      "upstream_tasks": [
+        {
+          "hub": "earthmodelhub",
+          "id": "xu_2026_fire_2023",
+          "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/?task=xu_2026_fire_2023"
+        }
+      ]
+    },
+    {
+      "id": "xu_2026_common_stations",
+      "title": "CAM and EAM Shared Station Sample Comparison",
+      "category": "Cross-hub tasks",
+      "description": "Select the sites and periods with valid model–observation pairs in all three cases, e07, e15, and e17. Recompute metrics for each model using the shared sample.",
+      "datasets": [
+        "cnemc_china"
+      ],
+      "commands": [
+        {
+          "label": "Generate shared sample workbook",
+          "command": "observationhub compare-stations --output output/validation/xu_2026_fire_2023/common_station_comparison.xlsx output/validation/xu_2026_fire_2023/e07 output/validation/xu_2026_fire_2023/e15 output/validation/xu_2026_fire_2023/e17"
+        }
+      ],
+      "links": [
+        {
+          "label": "Shared sample criteria",
+          "url": "https://github.com/liang-jiarui/ObservationHub/blob/main/README.md#excel-%E4%B8%8E%E5%85%B1%E5%90%8C%E6%A0%B7%E6%9C%AC%E6%AF%94%E8%BE%83"
+        }
+      ],
+      "outputs": [
+        "output/validation/xu_2026_fire_2023/common_station_comparison.xlsx"
+      ],
+      "requires": [
+        "Complete station validation for e07, e15, and e17."
+      ],
+      "upstream_tasks": [
+        {
+          "hub": "earthmodelhub",
+          "id": "xu_2026_fire_2023",
+          "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/?task=xu_2026_fire_2023"
+        }
+      ]
+    }
+  ],
+  "hubs": [
+    {
+      "id": "observationhub",
+      "label": "ObsHub",
+      "url": "index.html"
+    },
+    {
+      "id": "machinelearninghub",
+      "label": "MLHub",
+      "url": "https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/"
+    },
+    {
+      "id": "earthmodelhub",
+      "label": "ModelHub",
+      "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/"
+    }
+  ]
+}</script>
+<script>
+"use strict";
+const data = JSON.parse(document.querySelector("#catalog").textContent);
+const byId = id => document.getElementById(id);
+const detail = byId("detail");
+const query = byId("query");
+const views = {
+  datasets: {title: "Datasets", item: "Dataset", index: new Map(data.datasets.map(row => [row.id, row]))},
+  tasks: {title: "Tasks", item: "Task", index: new Map(data.tasks.map(row => [row.id, row]))},
+};
+const tasksByDataset = new Map();
+for (const task of data.tasks) {
+  for (const id of task.datasets) {
+    if (!tasksByDataset.has(id)) tasksByDataset.set(id, []);
+    tasksByDataset.get(id).push(task);
+  }
+}
+
+function element(tag, value, className) {
+  const node = document.createElement(tag);
+  if (value != null) node.textContent = value;
+  if (className) node.className = className;
+  return node;
+}
+
+function externalLink(label, url) {
+  const parsed = new URL(url);
+  if (parsed.protocol !== "https:" && parsed.protocol !== "http:") return element("span", label);
+  const link = element("a", label);
+  link.href = parsed.href;
+  return link;
+}
+
+function getState() {
+  const params = new URLSearchParams(location.search);
+  const dataset = params.get("dataset");
+  const task = params.get("task");
+  const view = task || (!dataset && params.get("view") === "tasks") ? "tasks" : "datasets";
+  return {view, open: task || dataset || "", q: params.get("q") || "", category: params.get("category") || "", kind: view === "datasets" ? params.get("kind") || "" : ""};
+}
+
+function stateUrl(state) {
+  const url = new URL(location.href);
+  url.search = "";
+  if (state.open) url.searchParams.set(state.view === "tasks" ? "task" : "dataset", state.open);
+  else if (state.view === "tasks") url.searchParams.set("view", state.view);
+  for (const field of ["category", "kind", "q"]) {
+    if (state[field]) url.searchParams.set(field, state[field]);
+  }
+  return url;
+}
+
+let state = getState();
+let openKey = "";
+let openRowId = "";
+let copyTimer;
+function navigate(next, replace = false) {
+  const url = stateUrl(next);
+  if (url.href !== location.href) {
+    try {
+      history[replace ? "replaceState" : "pushState"](null, "", url);
+    } catch (error) {
+      if (error.name !== "SecurityError") throw error;
+      location.assign(url);
+      return;
+    }
+  }
+  state = next;
+  render();
+}
+
+function internalLink(label, view, id, className) {
+  const link = element("a", label, className);
+  const next = state.view === view ? {...state, open: id} : {view, open: id};
+  link.href = stateUrl(next);
+  link.addEventListener("click", event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    navigate(next);
+  });
+  return link;
+}
+
+for (const hub of data.hubs) {
+  if (hub.id === data.hub) {
+    const current = element("span", hub.label, "current");
+    current.setAttribute("aria-current", "page");
+    byId("hubs").append(current);
+  } else {
+    byId("hubs").append(externalLink(hub.label, hub.url));
+  }
+}
+for (const view of Object.keys(views)) {
+  byId(view + "-total").textContent = data[view].length;
+  byId(view + "-tab").addEventListener("click", event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    navigate({view});
+  });
+}
+
+function refine(field, value) {
+  navigate({...state, [field]: value, open: ""});
+  const panel = byId(field === "category" ? "categories" : "kinds");
+  panel.querySelector('[aria-pressed="true"]')?.focus({preventScroll: true});
+}
+
+function filterGroup(container, field, rows) {
+  const counts = new Map();
+  for (const row of rows) counts.set(row[field], (counts.get(row[field]) || 0) + 1);
+  const options = [["", rows.length], ...counts];
+  container.replaceChildren(...options.map(([value, count]) => {
+    const option = element("button");
+    option.type = "button";
+    option.setAttribute("aria-pressed", String((state[field] || "") === value));
+    option.append(element("span", value || "All"), element("span", count, "filter-count"));
+    option.addEventListener("click", () => refine(field, value));
+    return option;
+  }));
+}
+
+function searchRows(rows) {
+  const tokens = (state.q || "").trim().toLowerCase().split(/\s+/).filter(Boolean);
+  return rows.filter(row => {
+    const words = [row.title, row.id, row.category, row.publisher, row.coverage, row.kind, row.storage, row.description, row.path, row.config, ...(row.datasets || []), ...(row.upstream_tasks || []).map(item => item.id)].join(" ").toLowerCase();
+    return tokens.every(token => words.includes(token));
+  });
+}
+
+function renderRows(rows) {
+  const isTask = state.view === "tasks";
+  const records = rows.map(row => {
+    const tr = element("tr");
+    const title = element("td");
+    const link = internalLink(row.title, state.view, row.id, "title");
+    link.dataset.entryId = row.id;
+    title.append(link, element("span", row.id, "mono"));
+    const category = element("td");
+    category.append(element("span", row.category, "pill"));
+    const summary = element("td", isTask ? row.description : row.coverage || "—");
+    const context = element("td");
+    context.append(element("span", isTask ? row.datasets.length + (row.datasets.length === 1 ? " dataset" : " datasets") : row.storage, "pill " + (isTask ? "secondary" : "neutral")));
+    tr.append(title, category, summary, context);
+    return tr;
+  });
+  if (!records.length) {
+    const row = element("tr");
+    const cell = element("td", "No records match your filters.", "empty");
+    cell.colSpan = 4;
+    row.append(cell);
+    records.push(row);
+  }
+  byId("records").replaceChildren(...records);
+}
+
+function listSection(parent, title, items) {
+  if (!items.length) return;
+  const list = element("ul", null, "links");
+  for (const item of items) {
+    const li = element("li");
+    li.append(item);
+    list.append(li);
+  }
+  parent.append(element("h3", title), list);
+}
+
+function metadata(parent, pairs) {
+  const list = element("dl", null, "meta");
+  for (const [label, value, isCode] of pairs) {
+    if (!value) continue;
+    const cell = element("dd");
+    cell.append(element(isCode ? "code" : "span", value));
+    list.append(element("dt", label), cell);
+  }
+  if (list.children.length) parent.append(list);
+}
+
+async function copy(value) {
+  let copied = false;
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      copied = true;
+    }
+  } catch {}
+  if (!copied) {
+    const field = element("textarea");
+    field.value = value;
+    field.style.cssText = "position:fixed;opacity:0;pointer-events:none";
+    const previous = document.activeElement;
+    detail.append(field);
+    field.select();
+    copied = document.execCommand("copy");
+    field.remove();
+    previous?.focus();
+  }
+  const toast = byId("toast");
+  toast.textContent = copied ? "Copied" : "Copy failed. Select and copy the text manually.";
+  toast.hidden = false;
+  clearTimeout(copyTimer);
+  copyTimer = setTimeout(() => { toast.hidden = true; }, 2200);
+}
+
+function renderDetail(row) {
+  const body = byId("detail-body");
+  const isTask = state.view === "tasks";
+  byId("detail-kind").textContent = row.kind || row.category;
+  byId("toast").hidden = true;
+  const title = element("h2", row.title);
+  title.id = "detail-title";
+  body.replaceChildren(title, element("p", row.description, "description"));
+  if (isTask) {
+    metadata(body, [["Task ID", row.id, true], ["Configuration", row.config, true]]);
+    listSection(body, "Input datasets", row.datasets.map(id => internalLink(views.datasets.index.get(id).title, "datasets", id)));
+    listSection(body, "Related hub tasks", (row.upstream_tasks || []).map(item => externalLink((data.hubs.find(hub => hub.id === item.hub)?.label || item.hub) + " · " + item.id, item.url)));
+    listSection(body, "Requirements", (row.requires || []).map(item => element("span", item)));
+    if (row.commands.length) body.append(element("h3", "Commands"));
+    for (const command of row.commands) {
+      const box = element("div", null, "command");
+      const label = element("div", null, "command-label");
+      const button = element("button", "Copy", "mini");
+      button.type = "button";
+      button.setAttribute("aria-label", "Copy command for " + command.label);
+      button.addEventListener("click", () => copy(command.command));
+      label.append(element("strong", command.label), button);
+      box.append(label, element("pre", command.command));
+      body.append(box);
+    }
+    listSection(body, "Outputs", (row.outputs || []).map(item => element("code", item)));
+  } else {
+    metadata(body, [["Source ID", row.id, true], ["Publisher or archive", row.publisher], ["Coverage", row.coverage], ["Storage", row.storage], ["Repository path", row.path, true]]);
+    listSection(body, "Related tasks", (tasksByDataset.get(row.id) || []).map(task => internalLink(task.title, "tasks", task.id)));
+  }
+  listSection(body, "Sources and documentation", row.links.map(link => externalLink(link.label, link.url)));
+  const permalink = element("p");
+  permalink.append(internalLink("Permalink", state.view, row.id));
+  const button = element("button", "Copy link", "mini");
+  button.type = "button";
+  button.style.marginLeft = ".625rem";
+  button.addEventListener("click", () => copy(stateUrl({view: state.view, open: row.id}).href));
+  permalink.append(button);
+  body.append(element("h3", "Share"), permalink);
+}
+
+function render() {
+  const view = views[state.view];
+  const isTask = state.view === "tasks";
+  for (const name of Object.keys(views)) {
+    const tab = byId(name + "-tab");
+    if (name === state.view) tab.setAttribute("aria-current", "page");
+    else tab.removeAttribute("aria-current");
+  }
+  byId("view-title").textContent = view.title;
+  byId("table-caption").textContent = view.title;
+  byId("column-title").textContent = view.item;
+  byId("column-summary").textContent = isTask ? "Description" : "Coverage";
+  byId("column-context").textContent = isTask ? "Input datasets" : "Storage";
+  if (query.value !== (state.q || "")) query.value = state.q || "";
+  const rows = data[state.view];
+  const categoryRows = rows.filter(row => !state.kind || row.kind === state.kind);
+  const kindRows = rows.filter(row => !state.category || row.category === state.category);
+  filterGroup(byId("categories"), "category", categoryRows);
+  byId("kind-group").hidden = isTask;
+  if (!isTask) filterGroup(byId("kinds"), "kind", kindRows);
+  const matching = searchRows(rows).filter(row => (!state.category || row.category === state.category) && (!state.kind || row.kind === state.kind));
+  byId("result-count").textContent = matching.length + " of " + rows.length + " " + view.title.toLowerCase();
+  renderRows(matching);
+  const item = view.index.get(state.open);
+  if (item) {
+    const key = state.view + ":" + item.id;
+    if (key !== openKey) {
+      renderDetail(item);
+      detail.scrollTop = 0;
+      if (!detail.open) detail.showModal();
+      else byId("close").focus({preventScroll: true});
+    }
+    openKey = key;
+    openRowId = item.id;
+  } else if (detail.open) {
+    detail.close();
+    const previous = Array.from(byId("records").querySelectorAll("a.title")).find(link => link.dataset.entryId === openRowId);
+    (previous || query).focus({preventScroll: true});
+    openKey = "";
+    openRowId = "";
+  }
+}
+
+query.addEventListener("input", () => navigate({...state, q: query.value, open: ""}, true));
+byId("reset").addEventListener("click", () => navigate({view: state.view}));
+byId("close").addEventListener("click", () => navigate({...state, open: ""}, true));
+detail.addEventListener("cancel", event => {
+  event.preventDefault();
+  navigate({...state, open: ""}, true);
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "/" && !detail.open && !event.altKey && !event.ctrlKey && !event.metaKey &&
+      !event.target.closest("input, textarea, select, [contenteditable]")) {
+    event.preventDefault();
+    query.focus();
+  }
+});
+window.addEventListener("popstate", () => {
+  state = getState();
+  render();
+});
+render();
+</script>
+</body>
+</html>

@@ -5,26 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Browse ResearchStarter's submodules, galleries, and research workflows.">
   <title>Research Gallery · ResearchStarter</title>
+  <link rel="stylesheet" href="hub-nav.css">
   <link rel="stylesheet" href="gallery.css">
   <script src="gallery.js" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#module-directory">Skip to the submodule directory</a>
+  <nav data-research-nav class="research-nav" aria-label="Research galleries"><div class="research-nav__inner"><a class="research-nav__home" href="index.html" aria-current="page">ResearchStarter</a><div class="research-nav__hubs"><a href="../EarthModelHub/docs/simulations/index.html">EMH</a><a href="../ObservationHub/docs/observations/index.html">ObsHub</a><a href="../MachineLearningHub/docs/gallery/index.html">MLHub</a></div></div></nav>
   <header class="masthead">
     <div class="page-width">
-      <div class="topbar">
-        <a class="brand" href="#top">
-          <span class="brand-mark" aria-hidden="true"></span>
-          ResearchStarter
-        </a>
-        <nav aria-label="Page navigation">
-          <a href="#module-directory">Submodule directory</a>
-          <a href="#workflow">Experiment workflows</a>
-        </nav>
-      </div>
       <div class="hero">
         <h1>Research Gallery</h1>
         <p>Explore Earth system simulations, observational data, and machine learning experiments. Find galleries and guides for each submodule.</p>
+        <nav class="section-links" aria-label="Page navigation">
+          <a href="#module-directory">Submodule directory</a>
+          <a href="#workflow">Experiment workflows</a>
+        </nav>
       </div>
     </div>
   </header>
@@ -54,7 +50,7 @@
     <h3>EarthModelHub</h3>
   </div>
   <p class="module-card__description">Browse simulation experiments by model, paper, and version. View case status, configuration files, and reproduction commands.</p>
-  <div class="module-card__links"><a class="button button--primary" href="https://liang-jiarui.github.io/EarthModelHub/docs/simulations/">Simulation Gallery</a><a class="button button--secondary" href="https://github.com/liang-jiarui/EarthModelHub/blob/3da861569db83c6301ba729d0c7cfdb655d39b88/docs/SIMULATIONS.md">Simulation guide</a><a class="button button--secondary" href="https://github.com/liang-jiarui/EarthModelHub/tree/3da861569db83c6301ba729d0c7cfdb655d39b88">Repository</a></div>
+  <div class="module-card__links"><a class="button button--primary" href="../EarthModelHub/docs/simulations/index.html">Simulation Gallery</a><a class="button button--secondary" href="https://github.com/liang-jiarui/EarthModelHub/blob/3da861569db83c6301ba729d0c7cfdb655d39b88/docs/SIMULATIONS.md">Simulation guide</a><a class="button button--secondary" href="https://github.com/liang-jiarui/EarthModelHub/tree/3da861569db83c6301ba729d0c7cfdb655d39b88">Repository</a></div>
 </article>
 <article class="module-card" data-category="observation">
   <div class="module-card__header">
@@ -62,7 +58,7 @@
     <h3>ObservationHub</h3>
   </div>
   <p class="module-card__description">Browse observation datasets, their coverage, and validation tasks. Prepare inputs for matching model output with observations.</p>
-  <div class="module-card__links"><a class="button button--primary" href="https://liang-jiarui.github.io/ObservationHub/docs/observations/">Observation Gallery</a><a class="button button--secondary" href="https://github.com/liang-jiarui/ObservationHub/blob/5e6f7046042c8b6f3c14f71c559899ecb11b86a0/data/sources.json">Data source catalog</a><a class="button button--secondary" href="https://github.com/liang-jiarui/ObservationHub/tree/5e6f7046042c8b6f3c14f71c559899ecb11b86a0">Repository</a></div>
+  <div class="module-card__links"><a class="button button--primary" href="../ObservationHub/docs/observations/index.html">Observation Gallery</a><a class="button button--secondary" href="https://github.com/liang-jiarui/ObservationHub/blob/5e6f7046042c8b6f3c14f71c559899ecb11b86a0/data/sources.json">Data source catalog</a><a class="button button--secondary" href="https://github.com/liang-jiarui/ObservationHub/tree/5e6f7046042c8b6f3c14f71c559899ecb11b86a0">Repository</a></div>
 </article>
 <article class="module-card" data-category="ml">
   <div class="module-card__header">
@@ -70,7 +66,7 @@
     <h3>MachineLearningHub</h3>
   </div>
   <p class="module-card__description">Explore machine learning results, input datasets, and experiment configurations. Use the local workbench to configure experiments and submit Slurm jobs.</p>
-  <div class="module-card__links"><a class="button button--primary" href="https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/">ML Gallery</a><a class="button button--secondary" href="#ml-workbench">Local workbench</a><a class="button button--secondary" href="https://github.com/liang-jiarui/MachineLearningHub/blob/c57e4734ac107ef11020fc6fbadd9bba0ebebc86/docs/projects.md">Project integration guide</a><a class="button button--secondary" href="https://github.com/liang-jiarui/MachineLearningHub/tree/c57e4734ac107ef11020fc6fbadd9bba0ebebc86">Repository</a></div>
+  <div class="module-card__links"><a class="button button--primary" href="../MachineLearningHub/docs/gallery/index.html">ML Gallery</a><a class="button button--secondary" href="#ml-workbench">Local workbench</a><a class="button button--secondary" href="https://github.com/liang-jiarui/MachineLearningHub/blob/c57e4734ac107ef11020fc6fbadd9bba0ebebc86/docs/projects.md">Project integration guide</a><a class="button button--secondary" href="https://github.com/liang-jiarui/MachineLearningHub/tree/c57e4734ac107ef11020fc6fbadd9bba0ebebc86">Repository</a></div>
 </article>
 <article class="module-card" data-category="paper">
   <div class="module-card__header">

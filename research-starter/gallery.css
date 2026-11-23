@@ -55,49 +55,15 @@ button { cursor: pointer; }
 
 .masthead :focus-visible { outline-color: #9ee6d1; }
 
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 4.25rem;
-  border-bottom: 1px solid #f6fbf926;
-}
-
-.brand, .topbar nav a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  font-weight: 700;
-  letter-spacing: .005em;
-}
-
-.brand-mark {
-  width: 1.35rem;
-  height: 1.35rem;
-  flex: none;
-  border: 1px solid #9ee6d1;
-  border-radius: .3rem;
-  background:
-    linear-gradient(0deg, transparent 46%, #9ee6d1 46%, #9ee6d1 54%, transparent 54%),
-    linear-gradient(90deg, transparent 46%, #9ee6d1 46%, #9ee6d1 54%, transparent 54%);
-  transform: rotate(-8deg);
-}
-
-.topbar nav {
+.section-links {
   display: flex;
   flex-wrap: wrap;
   gap: .375rem 1.5rem;
+  margin-top: 1.25rem;
   font-size: .9rem;
-  color: #dcebe6;
 }
 
-.topbar nav a:hover { text-decoration: underline; }
+.section-links a { color: #dcebe6; }
 
 .hero {
   position: relative;
@@ -355,14 +321,6 @@ button { cursor: pointer; }
 }
 
 @media (max-width: 31rem) {
-  .topbar {
-    align-items: start;
-    flex-direction: column;
-    justify-content: center;
-    gap: .45rem;
-    min-height: 0;
-    padding-block: .75rem;
-  }
   .module-controls { flex-direction: column; }
   .command button { padding-inline: .5rem; }
 }

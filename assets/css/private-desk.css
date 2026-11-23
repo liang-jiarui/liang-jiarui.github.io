@@ -258,10 +258,19 @@ fieldset.stack {
 
 .stack label {
   display: grid;
+  min-width: 0;
   gap: 0.35rem;
   color: var(--ink);
   font-size: 0.9rem;
   font-weight: 650;
+}
+
+.file-picker {
+  gap: 0.4rem;
+}
+
+.field-help {
+  font-size: 0.875rem;
 }
 
 .stack > .button {
@@ -500,7 +509,16 @@ textarea {
   text-decoration: none;
 }
 
-.link-title:hover {
+button.file-title {
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: start;
+}
+
+a.link-title:hover, button.link-title:hover {
   color: var(--accent-hover);
   text-decoration: underline;
   text-underline-offset: 0.18em;
@@ -523,6 +541,14 @@ textarea {
 
 .card-actions .button, .folder-tools .button {
   padding-inline: 0.55rem;
+}
+
+.card-actions .button {
+  white-space: nowrap;
+}
+
+.file-card .card-actions {
+  max-width: 13.75rem;
 }
 
 .empty-state {
@@ -637,5 +663,9 @@ dialog .status {
 
   .toolbar-actions {
     width: 100%;
+  }
+
+  .toolbar-actions .button {
+    flex: 1 1 auto;
   }
 }

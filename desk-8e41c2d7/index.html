@@ -7,14 +7,14 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="theme-color" content="#f1f5f8">
-  <title>Private Link Vault</title>
-  <link rel="stylesheet" href="../assets/css/private-desk.css">
-  <script type="module" src="../assets/js/private-desk.js?v=2"></script>
+  <title>Private Vault</title>
+  <link rel="stylesheet" href="../assets/css/private-desk.css?v=3">
+  <script type="module" src="../assets/js/private-desk.js?v=3"></script>
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Private Link Vault</span></div>
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Private Vault</span></div>
       <div class="top-actions" id="workspace-actions" hidden>
         <button class="button button-quiet" type="button" id="export">Export backup</button>
         <button class="button" type="button" id="lock">Lock</button>
@@ -26,7 +26,7 @@
     <section class="gate" id="gate" aria-labelledby="gate-title">
       <div class="gate-card">
         <div class="gate-icon" aria-hidden="true"></div>
-        <h1 id="gate-title">Private Link Vault</h1>
+        <h1 id="gate-title">Private Vault</h1>
         <p class="muted" id="gate-description">Checking this browser for a saved vault.</p>
         <noscript><p>Enable JavaScript to use the vault.</p></noscript>
         <form class="stack" id="gate-form" hidden>
@@ -47,8 +47,8 @@
 
     <section class="workspace" id="workspace" aria-labelledby="workspace-title" hidden>
       <div class="workspace-heading">
-        <h1 id="workspace-title" tabindex="-1">Link Vault</h1>
-        <p class="muted">Your links and notes are encrypted and stored in this browser.</p>
+        <h1 id="workspace-title" tabindex="-1">Vault</h1>
+        <p class="muted">Your files, links, and notes are encrypted and stored in this browser.</p>
       </div>
       <div class="status" id="workspace-status" role="status" hidden></div>
       <div class="desk-grid">
@@ -63,16 +63,17 @@
 
         <section class="content" aria-labelledby="list-title">
           <div class="toolbar">
-            <label class="search"><span class="sr-only">Search links</span>
-              <input id="search" type="search" placeholder="Search titles, URLs, or notes" autocomplete="off" spellcheck="false">
+            <label class="search"><span class="sr-only">Search links and files</span>
+              <input id="search" type="search" placeholder="Search links and file names" autocomplete="off" spellcheck="false">
             </label>
             <div class="toolbar-actions">
               <button class="button" id="bulk-add" type="button">Bulk add</button>
               <button class="button button-primary" id="new-link" type="button">Add link</button>
+              <button class="button button-primary" id="add-files" type="button">Add files</button>
             </div>
           </div>
           <div class="list-heading">
-            <h2 id="list-title">All links</h2><span class="list-count" id="list-count" role="status"></span>
+            <h2 id="list-title">All items</h2><span class="list-count" id="list-count" role="status"></span>
           </div>
           <ul class="link-list" id="link-list"></ul>
           <div class="empty-state" id="empty-state" hidden>
@@ -100,6 +101,17 @@
           <textarea id="bulk-urls" rows="7" placeholder="Paste one URL per line" required></textarea>
         </label>
       </fieldset>
+      <fieldset class="stack file-picker" id="file-pick-fields" hidden disabled>
+        <label>Local files
+          <input id="local-files" type="file" multiple required aria-describedby="file-pick-help">
+        </label>
+        <p class="muted field-help" id="file-pick-help">Up to 25 MiB per file and 100 MiB of files per vault.</p>
+      </fieldset>
+      <fieldset class="stack" id="file-name-fields" hidden disabled>
+        <label>File name
+          <input id="file-name" type="text" maxlength="255" required>
+        </label>
+      </fieldset>
       <fieldset class="stack" id="assign-fields" hidden disabled>
         <label>Folder
           <select id="link-folder"></select>
@@ -117,7 +129,7 @@
       </fieldset>
       <fieldset class="stack" id="restore-fields" hidden disabled>
         <label>Encrypted backup file
-          <input id="backup-file" type="file" accept=".json,application/json" required>
+          <input id="backup-file" type="file" accept=".json,.vault,application/json" required>
         </label>
         <label>Backup password
           <input id="backup-password" type="password" autocomplete="current-password" required>

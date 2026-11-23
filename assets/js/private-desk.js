@@ -1,4 +1,8 @@
-import { STORAGE_KEY, openVault, prepareVault, readVault, sealVault, writeVault } from './private-desk-storage.js';
+import { openVault, prepareVault, sealVault } from './private-desk-storage.js';
+import { CHANGE_KEY, readAttachment, readAttachments, readVault, writeVault } from './private-desk-database.js';
+import {
+  MAX_FILE_BYTES, MAX_TOTAL_FILE_BYTES, MAX_VAULT_BYTES, createBackup, openAttachment, readBackup, sealAttachment,
+} from './private-desk-attachments.js';
 
 const byId = (id) => document.getElementById(id);
 const gate = byId('gate');
@@ -15,9 +19,10 @@ const editor = byId('editor');
 const editorForm = byId('editor-form');
 const dialogStatus = byId('dialog-status');
 const folderSelect = byId('link-folder');
-const editorGroups = ['link', 'bulk', 'assign', 'note', 'folder', 'restore'];
+const editorGroups = ['link', 'bulk', 'assign', 'note', 'folder', 'restore', 'file-pick', 'file-name'];
 
 const minimumPasswordLength = 6;
+const fileSizeFormatter = new Intl.NumberFormat('en', { maximumFractionDigits: 1 });
 const allFolders = null;
 const unfiled = '';
 let raw = null;
@@ -48,6 +53,10 @@ function validText(value, maxLength) {
   return typeof value === 'string' && value.length <= maxLength;
 }
 
+function totalFileBytes(files) {
+  return files.reduce((total, file) => total + file.size, 0);
+}
+
 function validateRecords(records) {
   if (!Array.isArray(records?.folders) || !Array.isArray(records.links)) {
     throw new Error('Invalid vault records');
@@ -72,14 +81,27 @@ function validateRecords(records) {
     }
     linkIds.add(link.id);
   }
+
+  if (records.files === undefined) records.files = [];
+  if (!Array.isArray(records.files)) throw new Error('Invalid file list');
+  const fileIds = new Set();
+  for (const file of records.files) {
+    if (!validText(file?.id, 80) || !file.id || fileIds.has(file.id) ||
+        !validText(file.name, 255) || !file.name.trim() || !folderIds.has(file.folder) ||
+        !Number.isInteger(file.size) || file.size < 0 || file.size > MAX_FILE_BYTES) {
+      throw new Error('Invalid file');
+    }
+    fileIds.add(file.id);
+  }
+  if (totalFileBytes(records.files) > MAX_TOTAL_FILE_BYTES) throw new Error('File storage limit exceeded');
 }
 
 function configureGate() {
   const firstUse = raw === null;
   byId('gate-title').textContent = firstUse ? 'Create your vault' : 'Unlock your vault';
   byId('gate-description').textContent = firstUse
-    ? `Choose a password with at least ${minimumPasswordLength} characters. Keep it somewhere safe to access your encrypted links and notes.`
-    : 'Enter your password to view the encrypted links in this browser.';
+    ? `Choose a password with at least ${minimumPasswordLength} characters. You’ll need it to access your encrypted files and links.`
+    : 'Enter your password to access the encrypted files and links in this browser.';
   byId('gate-submit').textContent = firstUse ? 'Create vault' : 'Unlock';
   byId('confirm-field').hidden = !firstUse;
   confirmPassword.disabled = !firstUse;
@@ -102,7 +124,7 @@ function lockDesk(focus = true) {
   linkList.replaceChildren();
   folderSelect.replaceChildren();
   byId('dialog-detail').textContent = '';
-  byId('list-title').textContent = 'All links';
+  byId('list-title').textContent = 'All items';
   byId('list-count').textContent = '';
   status(dialogStatus);
   status(workspaceStatus);
@@ -127,21 +149,22 @@ function showDesk(unlocked) {
 
 function setBusy(value) {
   busy = value;
-  for (const id of ['gate-submit', 'restore', 'lock', 'dialog-submit', 'dialog-delete', 'dialog-cancel']) {
+  for (const id of ['gate-submit', 'restore', 'lock', 'export', 'dialog-submit', 'dialog-delete', 'dialog-cancel']) {
     byId(id).disabled = value;
   }
   gateForm.setAttribute('aria-busy', String(value));
   editorForm.setAttribute('aria-busy', String(value));
 }
 
-function refreshVault() {
+async function refreshVault(allowBusy = false) {
+  const before = raw;
   let saved;
   try {
-    saved = readVault();
+    saved = await readVault();
   } catch {
     return false;
   }
-  if (saved === raw) return false;
+  if (departing || (busy && !allowBusy) || before !== raw || saved === raw) return false;
   raw = saved;
   lockDesk();
   status(gateStatus, 'Your vault changed in another tab. Unlock it again to continue.', true);
@@ -155,20 +178,22 @@ async function operate(action, feedback, fallback) {
   try {
     await action();
   } catch (error) {
-    if (!departing && !refreshVault()) {
-      const message = error.name === 'QuotaExceededError'
-        ? 'Your browser ran out of storage. This change could not be saved.'
-        : fallback;
+    if (!departing && !(await refreshVault(true))) {
+      const messages = {
+        QuotaExceededError: 'Your browser ran out of storage. This change could not be saved.',
+        VaultBackupSizeError: 'The backup file is too large to restore in this browser.',
+      };
+      const message = messages[error.name] ?? fallback;
       status(feedback, message, true);
     }
   } finally {
+    if (!departing) await refreshVault(true);
     setBusy(false);
-    if (!departing) refreshVault();
   }
 }
 
 function folderName(folder) {
-  if (folder === allFolders) return 'All links';
+  if (folder === allFolders) return 'All items';
   if (folder === unfiled) return 'Unfiled';
   return session.records.folders.find((entry) => entry.id === folder).name;
 }
@@ -181,9 +206,10 @@ function element(tag, className, value) {
 }
 
 function renderDesk(focusFolder = false) {
-  const { folders, links } = session.records;
+  const { folders, links, files } = session.records;
+  const items = [...files, ...links];
   const counts = new Map();
-  for (const { folder } of links) {
+  for (const { folder } of items) {
     counts.set(folder, (counts.get(folder) ?? 0) + 1);
   }
 
@@ -192,7 +218,7 @@ function renderDesk(focusFolder = false) {
   folderList.replaceChildren(...options.map((folder) => {
     const item = document.createElement('li');
     const button = element('button', 'folder-button', '');
-    const count = folder === allFolders ? links.length : counts.get(folder) ?? 0;
+    const count = folder === allFolders ? items.length : counts.get(folder) ?? 0;
     button.type = 'button';
     button.append(element('span', 'folder-label', folderName(folder)), element('span', 'folder-count', count));
     if (folder === selectedFolder) {
@@ -207,23 +233,26 @@ function renderDesk(focusFolder = false) {
     return item;
   }));
   byId('manage-folder').hidden = !selectedFolder;
-  renderLinks();
+  renderItems();
   if (focusFolder) selectedButton?.focus();
 }
 
-function renderLinks() {
+function renderItems() {
   const query = search.value.trim().toLocaleLowerCase();
-  const { links } = session.records;
-  const matches = links.filter((link) =>
-    (selectedFolder === allFolders || link.folder === selectedFolder) &&
-    [link.title, link.url, link.note].some((value) => value.toLocaleLowerCase().includes(query))
+  const { links, files } = session.records;
+  const inCurrentFolder = ({ folder }) => selectedFolder === allFolders || folder === selectedFolder;
+  const matchesQuery = (value) => value.toLocaleLowerCase().includes(query);
+  const matchingLinks = links.filter((link) =>
+    inCurrentFolder(link) && [link.title, link.url, link.note].some(matchesQuery)
   );
+  const matchingFiles = files.filter((file) => inCurrentFolder(file) && matchesQuery(file.name));
+  const count = matchingLinks.length + matchingFiles.length;
   byId('list-title').textContent = folderName(selectedFolder);
-  byId('list-count').textContent = `${matches.length} ${matches.length === 1 ? 'link' : 'links'}`;
-  linkList.replaceChildren(...matches.map(linkCard));
-  byId('empty-state').hidden = matches.length > 0;
-  byId('empty-title').textContent = query ? 'No matching links' : 'No links yet';
-  byId('empty-detail').textContent = query ? 'Try a different search.' : 'Add a single link or paste a list of URLs.';
+  byId('list-count').textContent = `${count} ${count === 1 ? 'item' : 'items'}`;
+  linkList.replaceChildren(...matchingFiles.map(fileCard), ...matchingLinks.map(linkCard));
+  byId('empty-state').hidden = count > 0;
+  byId('empty-title').textContent = query ? 'No matching items' : 'No items yet';
+  byId('empty-detail').textContent = query ? 'Try a different search.' : 'Add a file or save a link.';
 }
 
 function linkCard(link) {
@@ -255,6 +284,42 @@ function linkCard(link) {
   return card;
 }
 
+function formatBytes(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  const unit = bytes < 1024 ** 2 ? 'KiB' : 'MiB';
+  const divisor = unit === 'KiB' ? 1024 : 1024 ** 2;
+  return `${fileSizeFormatter.format(bytes / divisor)} ${unit}`;
+}
+
+function fileCard(file) {
+  const card = element('li', 'link-card file-card', '');
+  const icon = element('div', 'link-icon', 'File');
+  icon.setAttribute('aria-hidden', 'true');
+  const info = element('div', 'link-info', '');
+  info.append(element('span', 'link-title file-title', file.name), element('p', 'link-meta', formatBytes(file.size)));
+
+  const actions = element('div', 'card-actions', '');
+  const download = element('button', 'button button-quiet', 'Download');
+  const edit = element('button', 'button button-quiet', 'Edit');
+  const remove = element('button', 'button button-quiet button-danger', 'Delete');
+  download.type = edit.type = remove.type = 'button';
+  download.setAttribute('aria-label', `Download ${file.name}`);
+  edit.setAttribute('aria-label', `Edit ${file.name}`);
+  remove.setAttribute('aria-label', `Delete ${file.name}`);
+  download.addEventListener('click', () => operate(async () => {
+    const { key } = session;
+    const stored = await readAttachment(file.id, raw);
+    if (!stored) throw new Error('File missing from vault');
+    const contents = await openAttachment(key, stored);
+    if (!departing) downloadBlob(contents, file.name);
+  }, workspaceStatus, 'Could not download this file.'));
+  edit.addEventListener('click', () => showEditor('file-edit', file));
+  remove.addEventListener('click', () => showEditor('delete-file', file));
+  actions.append(download, edit, remove);
+  card.append(icon, info, actions);
+  return card;
+}
+
 function showEditor(mode, record = null) {
   dialogMode = mode;
   editing = record;
@@ -264,9 +329,12 @@ function showEditor(mode, record = null) {
   const groups = {
     link: ['link', 'assign', 'note'],
     bulk: ['bulk', 'assign'],
+    'file-add': ['file-pick', 'assign'],
+    'file-edit': ['file-name', 'assign'],
     folder: ['folder'],
     restore: ['restore'],
     'delete-link': [],
+    'delete-file': [],
     'delete-folder': [],
   };
   for (const name of editorGroups) {
@@ -287,13 +355,17 @@ function showEditor(mode, record = null) {
     byId('link-note').value = record.note;
   }
   if (mode === 'folder' && record) byId('folder-name').value = record.name;
+  if (mode === 'file-edit') byId('file-name').value = record.name;
 
   const titles = {
     link: record ? 'Edit link' : 'Add link',
     bulk: 'Add links in bulk',
+    'file-add': 'Add local files',
+    'file-edit': 'Edit file',
     folder: record ? 'Manage folder' : 'New folder',
     restore: 'Restore from backup',
     'delete-link': 'Delete link',
+    'delete-file': 'Delete file',
     'delete-folder': 'Delete folder',
   };
   const details = {
@@ -302,12 +374,15 @@ function showEditor(mode, record = null) {
       ? 'Choose an encrypted backup and enter its password.'
       : 'Restoring a backup replaces the vault in this browser. You can unlock and export your current vault first.',
     'delete-link': record ? `Delete “${record.title}” from your vault?` : '',
-    'delete-folder': record ? `Delete “${record.name}”? Its links will move to Unfiled.` : '',
+    'delete-file': record ? `Delete “${record.name}” from your vault?` : '',
+    'delete-folder': record ? `Delete “${record.name}”? Its files and links will move to Unfiled.` : '',
   };
   const submitLabels = {
     bulk: 'Add links',
+    'file-add': 'Add files',
     restore: raw === null ? 'Restore vault' : 'Replace and restore',
     'delete-link': 'Delete link',
+    'delete-file': 'Delete file',
     'delete-folder': 'Delete folder',
   };
   const detail = byId('dialog-detail');
@@ -325,9 +400,14 @@ function showEditor(mode, record = null) {
   (editor.querySelector('fieldset:not([hidden]) :is(input, textarea)') ?? byId('dialog-cancel')).focus();
 }
 
-async function saveRecords(records, message, folder = selectedFolder) {
+async function saveRecords(changes, message, folder = selectedFolder, attachments) {
+  const records = { ...session.records, ...changes };
   const updated = await sealVault(session.key, session.salt, records);
-  await writeVault(updated, raw);
+  if (updated.length > MAX_VAULT_BYTES) {
+    status(dialogStatus, 'This vault has reached its item storage limit.', true);
+    return;
+  }
+  await writeVault(updated, raw, attachments);
   raw = updated;
   if (departing) return;
   session.records = records;
@@ -346,22 +426,74 @@ async function submitEditor() {
   if (dialogMode === 'restore') {
     const file = byId('backup-file').files[0];
     const backupPassword = byId('backup-password').value;
-    if (file.size > 8 * 1024 * 1024) {
-      status(dialogStatus, 'The backup file is too large to restore in this browser.', true);
-      return;
-    }
-    const backup = await file.text();
-    const unlocked = await openVault(backupPassword, backup);
+    const backup = await readBackup(file);
+    const unlocked = await openVault(backupPassword, backup.raw);
     validateRecords(unlocked.records);
-    await writeVault(backup, raw);
-    raw = backup;
+    const files = new Map(unlocked.records.files.map((entry) => [entry.id, entry]));
+    if (files.size !== backup.rows.length) throw new Error('File count does not match backup');
+    for (const row of backup.rows) {
+      const item = files.get(row.id);
+      if (!item || row.ciphertext.size !== item.size + 16) throw new Error('File does not match backup');
+      await openAttachment(unlocked.key, row);
+    }
+    if (departing) return;
+    await writeVault(backup.raw, raw, { put: backup.rows, replace: true });
+    raw = backup.raw;
     editor.close();
     showDesk(unlocked);
     status(workspaceStatus, 'Backup restored.');
     return;
   }
 
-  const { folders, links } = session.records;
+  const { folders, links, files } = session.records;
+  if (dialogMode === 'file-add') {
+    const chosen = Array.from(byId('local-files').files);
+    const oversized = chosen.find((file) => file.size > MAX_FILE_BYTES);
+    if (oversized) {
+      status(dialogStatus, `“${oversized.name}” exceeds the ${formatBytes(MAX_FILE_BYTES)} limit per file.`, true);
+      return;
+    }
+    if (totalFileBytes(files) + totalFileBytes(chosen) > MAX_TOTAL_FILE_BYTES) {
+      status(dialogStatus, `This vault can store up to ${formatBytes(MAX_TOTAL_FILE_BYTES)} of files.`, true);
+      return;
+    }
+    if (chosen.some((file) => !file.name.trim() || file.name.length > 255)) {
+      status(dialogStatus, 'Choose files with names between 1 and 255 characters.', true);
+      return;
+    }
+    const folder = folderSelect.value;
+    const { key } = session;
+    const records = [];
+    const put = [];
+    for (const file of chosen) {
+      const id = crypto.randomUUID();
+      put.push(await sealAttachment(key, id, file));
+      if (departing) return;
+      records.push({ id, name: file.name, folder, size: file.size });
+    }
+    const count = records.length;
+    await saveRecords({ files: [...records, ...files] }, `Added ${count} ${count === 1 ? 'file' : 'files'}.`,
+      selectedFolder, { put });
+    return;
+  }
+
+  if (dialogMode === 'file-edit') {
+    const name = byId('file-name').value.trim();
+    if (!name) {
+      status(dialogStatus, 'Enter a file name.', true);
+      byId('file-name').focus();
+      return;
+    }
+    const revised = { ...editing, name, folder: folderSelect.value };
+    await saveRecords({ files: files.map((file) => file.id === revised.id ? revised : file) }, 'File updated.');
+    return;
+  }
+
+  if (dialogMode === 'delete-file') {
+    await saveRecords({ files: files.filter((file) => file.id !== editing.id) }, 'File deleted.',
+      selectedFolder, { remove: [editing.id] });
+    return;
+  }
   if (dialogMode === 'link') {
     const url = normalizeUrl(byId('link-url').value.trim());
     if (!url) {
@@ -424,8 +556,9 @@ async function submitEditor() {
   }
 
   const remaining = folders.filter((folder) => folder.id !== editing.id);
-  const moved = links.map((link) => link.folder === editing.id ? { ...link, folder: unfiled } : link);
-  await saveRecords({ folders: remaining, links: moved }, 'Folder deleted.', unfiled);
+  const moveToUnfiled = (item) => item.folder === editing.id ? { ...item, folder: unfiled } : item;
+  await saveRecords({ folders: remaining, links: links.map(moveToUnfiled), files: files.map(moveToUnfiled) },
+    'Folder deleted.', unfiled);
 }
 
 gateForm.addEventListener('submit', (event) => {
@@ -442,7 +575,7 @@ gateForm.addEventListener('submit', (event) => {
   }
   operate(async () => {
     if (firstUse) {
-      const records = { folders: [], links: [] };
+      const records = { folders: [], links: [], files: [] };
       const created = await prepareVault(password.value, records);
       await writeVault(created.raw, raw);
       raw = created.raw;
@@ -450,7 +583,7 @@ gateForm.addEventListener('submit', (event) => {
     } else {
       const unlocked = await openVault(password.value, raw);
       validateRecords(unlocked.records);
-      if (!departing && !refreshVault()) showDesk(unlocked);
+      if (!departing && !(await refreshVault(true))) showDesk(unlocked);
     }
   }, gateStatus, firstUse
     ? 'Could not create your vault. Check your browser storage settings.'
@@ -483,22 +616,33 @@ byId('manage-folder').addEventListener('click', () => {
 });
 byId('new-link').addEventListener('click', () => showEditor('link'));
 byId('bulk-add').addEventListener('click', () => showEditor('bulk'));
+byId('add-files').addEventListener('click', () => showEditor('file-add'));
 byId('dialog-cancel').addEventListener('click', () => editor.close());
 byId('dialog-delete').addEventListener('click', () => showEditor('delete-folder', editing));
-search.addEventListener('input', renderLinks);
+search.addEventListener('input', renderItems);
 
-byId('export').addEventListener('click', () => {
-  const url = URL.createObjectURL(new Blob([raw], { type: 'application/json' }));
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
   const download = document.createElement('a');
   download.href = url;
-  download.download = 'private-desk-' + new Date().toISOString().slice(0, 10) + '.json';
+  download.download = filename;
   download.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+}
+
+byId('export').addEventListener('click', () => operate(async () => {
+  const snapshot = raw;
+  const rows = await readAttachments(snapshot);
+  if (departing) return;
+  if (rows.length !== session.records.files.length) throw new Error('File count does not match vault');
+  const backup = createBackup(snapshot, rows);
+  const extension = rows.length ? 'vault' : 'json';
+  downloadBlob(backup, `private-desk-${new Date().toISOString().slice(0, 10)}.${extension}`);
   status(workspaceStatus, 'Encrypted backup exported. Keep your password to restore it.');
-});
+}, workspaceStatus, 'Could not export the backup.'));
 
 window.addEventListener('storage', (event) => {
-  if (!busy && !departing && (!event.key || event.key === STORAGE_KEY)) refreshVault();
+  if (!busy && !departing && (!event.key || event.key === CHANGE_KEY)) refreshVault();
 });
 window.addEventListener('pagehide', () => {
   departing = true;
@@ -509,8 +653,8 @@ window.addEventListener('pageshow', (event) => {
 });
 
 try {
-  if (!window.isSecureContext || !crypto.subtle) throw new Error('Secure context required');
-  raw = readVault();
+  if (!window.isSecureContext || !crypto.subtle || !window.indexedDB) throw new Error('Secure storage required');
+  raw = await readVault();
   configureGate();
 } catch {
   byId('gate-description').textContent = 'Open this page over HTTPS and allow local storage in your browser.';

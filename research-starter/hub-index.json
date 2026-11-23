@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-23T23:38:41Z",
+  "updated_at": "2026-11-23T23:45:39Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -21738,6 +21738,116 @@
       "description": "TRENDY2026 土壤加速自旋。从 AD 的 0361-01-01 混合启动，积分 320 年至 0321-01-01。"
     },
     {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · S3 · 1700–1849",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3",
+      "keywords": [
+        "1700-01-01",
+        "1849-12-31",
+        "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@trendy_v15_gcb2026/e3sm/elm/f19/s3",
+        "TRENDY v15 / ELM f19",
+        "TRENDYv15 (GCB2026)",
+        "e3sm",
+        "elm",
+        "f19_f19",
+        "gcb2026_elm_f19_s3",
+        "simulation",
+        "trendy_v15_gcb2026"
+      ],
+      "description": "从平衡 restart 启动。CO₂ 自 1700 年历史变化，循环 1901–1920 年气象。土地利用和氮沉降沿用输入序列首年 1850。"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3_1850_1900",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · S3 · 1850–1900",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3_1850_1900",
+      "keywords": [
+        "1850-01-01",
+        "1900-12-31",
+        "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@trendy_v15_gcb2026/e3sm/elm/f19/s3_1850_1900",
+        "TRENDY v15 / ELM f19",
+        "TRENDYv15 (GCB2026)",
+        "e3sm",
+        "elm",
+        "f19_f19",
+        "gcb2026_elm_f19_s3_1850_1900",
+        "simulation",
+        "trendy_v15_gcb2026"
+      ],
+      "description": "延续 S3 的全强迫试验，历史土地利用和氮沉降从 1850 年起变化，气象继续循环 1901–1920 年。"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3_1901_2025",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · S3 · 1901–2025",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3_1901_2025",
+      "keywords": [
+        "1901-01-01",
+        "2025-12-31",
+        "20TR_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@trendy_v15_gcb2026/e3sm/elm/f19/s3_1901_2025",
+        "TRENDY v15 / ELM f19",
+        "TRENDYv15 (GCB2026)",
+        "e3sm",
+        "elm",
+        "f19_f19",
+        "gcb2026_elm_f19_s3_1901_2025",
+        "simulation",
+        "trendy_v15_gcb2026"
+      ],
+      "description": "延续 S3 试验，从 1901 年起使用逐年 GCB2026 气象，积分至 2025 年末。"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · 加速分解自旋",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin",
+      "keywords": [
+        "0001-01-01",
+        "0360-12-31",
+        "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@trendy_v15_gcb2026/e3sm/elm/f19/spin",
+        "TRENDY v15 / ELM f19",
+        "TRENDYv15 (GCB2026)",
+        "e3sm",
+        "elm",
+        "f19_f19",
+        "gcb2026_elm_f19_spin",
+        "simulation",
+        "trendy_v15_gcb2026"
+      ],
+      "description": "ELM 加速分解 360 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin_postad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · 常规自旋",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin_postad",
+      "keywords": [
+        "0001-01-01",
+        "0600-12-31",
+        "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
+        "@trendy_v15_gcb2026/e3sm/elm/f19/spin_postad",
+        "TRENDY v15 / ELM f19",
+        "TRENDYv15 (GCB2026)",
+        "e3sm",
+        "elm",
+        "f19_f19",
+        "gcb2026_elm_f19_spin_postad",
+        "simulation",
+        "trendy_v15_gcb2026"
+      ],
+      "description": "从 AD 结束状态衔接，关闭加速分解并积分 600 年，覆盖 CLM SASU 与 post-SASU 的总时长。"
+    },
+    {
       "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/s0",
       "hub": "EMH",
       "type": "Simulation",
@@ -24313,7 +24423,7 @@
       "keywords": [
         "trendy_v15_gcb2026"
       ],
-      "description": "GCB2026 陆面试验。CLM6.0 的 AD、SASU、post-SASU 和 S0–S6 初始建例来自 trendyclm。CLM 和 ELM 均接入本地 GCB2026 CRU–JRA-3Q 气象。ELM 提供 f09 自旋至 S3 全瞬变链，提交输出作为协议参考。"
+      "description": "GCB2026 陆面试验。CLM6.0 的 AD、SASU、post-SASU 和 S0–S6 初始建例来自 trendyclm。CLM 和 ELM 均接入本地 GCB2026 CRU–JRA-3Q 气象。ELM 提供 f09 和 f19 自旋至 S3 全瞬变链，提交输出作为协议参考。"
     },
     {
       "id": "emh:task:xie_2025_brc_bleaching",
@@ -30290,6 +30400,66 @@
   ],
   "recent": [
     {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · S3 · 1700–1849",
+      "description": "从平衡 restart 启动。CO₂ 自 1700 年历史变化，循环 1901–1920 年气象。土地利用和氮沉降沿用输入序列首年 1850。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3",
+      "date": "2026-11-23T23:45:39Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3_1850_1900",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · S3 · 1850–1900",
+      "description": "延续 S3 的全强迫试验，历史土地利用和氮沉降从 1850 年起变化，气象继续循环 1901–1920 年。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3_1850_1900",
+      "date": "2026-11-23T23:45:39Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3_1901_2025",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · S3 · 1901–2025",
+      "description": "延续 S3 试验，从 1901 年起使用逐年 GCB2026 气象，积分至 2025 年末。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3_1901_2025",
+      "date": "2026-11-23T23:45:39Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · 加速分解自旋",
+      "description": "ELM 加速分解 360 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin",
+      "date": "2026-11-23T23:45:39Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin_postad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · 常规自旋",
+      "description": "从 AD 结束状态衔接，关闭加速分解并积分 600 年，覆盖 CLM SASU 与 post-SASU 的总时长。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin_postad",
+      "date": "2026-11-23T23:45:39Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:task:trendy_v15_gcb2026",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "TRENDYv15 (GCB2026)",
+      "description": "GCB2026 陆面试验。CLM6.0 的 AD、SASU、post-SASU 和 S0–S6 初始建例来自 trendyclm。CLM 和 ELM 均接入本地 GCB2026 CRU–JRA-3Q 气象。ELM 提供 f09 和 f19 自旋至 S3 全瞬变链，提交输出作为协议参考。",
+      "url": "../EarthModelHub/docs/simulations/?task=trendy_v15_gcb2026",
+      "date": "2026-11-23T23:45:39Z",
+      "change": "updated"
+    },
+    {
       "id": "mlhub:inference variable:cam_emis_ndep:Fire_NH3_as_N_kgN_ha_month",
       "hub": "MLHub",
       "type": "Inference variable",
@@ -30830,16 +31000,6 @@
       "change": "added"
     },
     {
-      "id": "emh:task:trendy_v15_gcb2026",
-      "hub": "EMH",
-      "type": "Task",
-      "title": "TRENDYv15 (GCB2026)",
-      "description": "GCB2026 陆面试验。CLM6.0 的 AD、SASU、post-SASU 和 S0–S6 初始建例来自 trendyclm。CLM 和 ELM 均接入本地 GCB2026 CRU–JRA-3Q 气象。ELM 提供 f09 自旋至 S3 全瞬变链，提交输出作为协议参考。",
-      "url": "../EarthModelHub/docs/simulations/?task=trendy_v15_gcb2026",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
       "id": "emh:task:yang_2016_marine_ndep",
       "hub": "EMH",
       "type": "Task",
@@ -30986,56 +31146,6 @@
       "title": "GFED4 · ALL · 1950",
       "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1950。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e21_atm_FCSD_HCO_ALL_1950",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e22_atm_FCSD_HCO_NoFIRE_1950",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1950",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1950。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e22_atm_FCSD_HCO_NoFIRE_1950",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e23_atm_FCSD_HCO_ALL_1960",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1960",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1960。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e23_atm_FCSD_HCO_ALL_1960",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e24_atm_FCSD_HCO_NoFIRE_1960",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1960",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1960。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e24_atm_FCSD_HCO_NoFIRE_1960",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e25_atm_FCSD_HCO_ALL_1970",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1970",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1970。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e25_atm_FCSD_HCO_ALL_1970",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e26_atm_FCSD_HCO_NoFIRE_1970",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1970",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1970。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e26_atm_FCSD_HCO_NoFIRE_1970",
       "date": "2026-11-23T23:00:42Z",
       "change": "added"
     }

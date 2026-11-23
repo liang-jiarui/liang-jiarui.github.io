@@ -7,21 +7,34 @@
   },
   "hubs": [
     {
+      "id": "earthmodelhub",
+      "title": "ModelHub",
+      "name": "EarthModelHub",
+      "short_name": "EMH",
+      "description": "Earth system simulations, model configurations and reproducible cases.",
+      "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/"
+    },
+    {
       "id": "observationhub",
       "title": "ObsHub",
+      "name": "ObservationHub",
+      "short_name": "ObsHub",
+      "description": "Observational datasets, station products and model validation workflows.",
       "url": "https://liang-jiarui.github.io/ObservationHub/docs/observations/"
     },
     {
       "id": "machinelearninghub",
       "title": "MLHub",
+      "name": "MachineLearningHub",
+      "short_name": "MLHub",
+      "description": "Earth science machine learning experiments, input datasets and research results.",
       "url": "https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/"
-    },
-    {
-      "id": "earthmodelhub",
-      "title": "ModelHub",
-      "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/"
     }
   ],
+  "portal": {
+    "title": "ResearchStarter",
+    "url": "https://liang-jiarui.github.io/research-starter/"
+  },
   "guide": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/GALLERY.md",
   "datasets": [
     {
@@ -62,7 +75,7 @@
         },
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L196"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L219"
         }
       ],
       "related_resources": [
@@ -118,7 +131,7 @@
         },
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L170"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L193"
         }
       ],
       "related_resources": [
@@ -446,7 +459,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L374"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L397"
         }
       ],
       "related_resources": []
@@ -648,7 +661,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L221"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L244"
         }
       ],
       "related_resources": []
@@ -689,7 +702,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L780"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L803"
         }
       ],
       "related_resources": []
@@ -1030,7 +1043,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L525"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L548"
         }
       ],
       "related_resources": []
@@ -1072,7 +1085,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L621"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L644"
         }
       ],
       "related_resources": []
@@ -1114,7 +1127,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L591"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L614"
         }
       ],
       "related_resources": []
@@ -1205,7 +1218,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L649"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L672"
         }
       ],
       "related_resources": []
@@ -1255,7 +1268,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L678"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L701"
         }
       ],
       "related_resources": []
@@ -1290,7 +1303,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L702"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L725"
         }
       ],
       "related_resources": []
@@ -1367,7 +1380,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L727"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L750"
         }
       ],
       "related_resources": []
@@ -1402,7 +1415,7 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L754"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L777"
         }
       ],
       "related_resources": [
@@ -1503,7 +1516,63 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L830"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L1001"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "gleam",
+      "title": "gleam",
+      "category": "Other",
+      "description": "GLEAM v4.1a historical monthly land evaporation, evaporative stress, and soil moisture.",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "0.1 × 0.1 degrees, global",
+      "coverage": "1980-01–2023-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 198001,
+          "end": 202312
+        }
+      ],
+      "variables": [
+        "SMrz",
+        "SMs",
+        "S",
+        "E"
+      ],
+      "variable_metadata": {
+        "SMrz": {
+          "units": "m3 m-3",
+          "description": "Root-zone volumetric soil moisture",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "SMs": {
+          "units": "m3 m-3",
+          "description": "Surface volumetric soil moisture",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "S": {
+          "units": "1",
+          "description": "Evaporative stress factor",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "E": {
+          "units": "mm",
+          "description": "Monthly actual land evaporation amount",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L170"
         }
       ],
       "related_resources": []
@@ -1512,7 +1581,7 @@
       "id": "isimip3b_met",
       "title": "isimip3b met",
       "category": "Other",
-      "description": "GFDL-ESM4 ISIMIP3b daily CMIP6 atmospheric forcing, bias-adjusted and downscaled using W5E5 v2.0.",
+      "description": "ISIMIP3b daily CMIP6 atmospheric forcing, bias-adjusted and downscaled using W5E5 v2.0. GFDL-ESM4 is the default.",
       "role": "feature",
       "temporal": "daily",
       "spatial": "0.5 × 0.5 degrees",
@@ -1570,7 +1639,413 @@
       "links": [
         {
           "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L500"
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L523"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "ceds",
+      "title": "ceds",
+      "category": "Other",
+      "description": "CEDS 2025-04-18 historical NH3 and NOx surface emissions summed across sectors",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "0.5 degrees",
+      "coverage": "1750-01–2023-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 175001,
+          "end": 202312
+        }
+      ],
+      "variables": [
+        "ceds_nh3",
+        "ceds_nox"
+      ],
+      "variable_metadata": {
+        "ceds_nh3": {
+          "units": "kg m-2 s-1",
+          "description": "Anthropogenic NH3 mass flux",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "ceds_nox": {
+          "units": "kg m-2 s-1",
+          "description": "Anthropogenic NOx mass flux",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L854"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "gfed5_emissions",
+      "title": "gfed5 emissions",
+      "category": "Other",
+      "description": "GFED5.1 monthly fire emissions by species",
+      "role": "label",
+      "temporal": "monthly",
+      "spatial": "1 degree early years and 0.25 degrees thereafter",
+      "coverage": "1997-01–2022-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 199701,
+          "end": 202212
+        }
+      ],
+      "variables": [
+        "gfed5_nh3",
+        "gfed5_nox",
+        "gfed5_n2o",
+        "gfed5_co",
+        "gfed5_co2",
+        "gfed5_ch4",
+        "gfed5_c"
+      ],
+      "variable_metadata": {
+        "gfed5_nh3": {
+          "units": "kg",
+          "description": "Fire NH3 mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "gfed5_nox": {
+          "units": "kg",
+          "description": "Fire NOx mass as NO per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "gfed5_n2o": {
+          "units": "kg",
+          "description": "Fire N2O mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "gfed5_co": {
+          "units": "kg",
+          "description": "Fire CO mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "gfed5_co2": {
+          "units": "kg",
+          "description": "Fire CO2 mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "gfed5_ch4": {
+          "units": "kg",
+          "description": "Fire CH4 mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "gfed5_c": {
+          "units": "kg",
+          "description": "Fire carbon mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L872"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "gfas_emissions",
+      "title": "gfas emissions",
+      "category": "Other",
+      "description": "GFAS fire emissions, with complete UTC months, using v1.2 and v1.4.2",
+      "role": "label",
+      "temporal": "daily",
+      "spatial": "0.1 degrees",
+      "coverage": "2003-01–2026-09",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 200301,
+          "end": 202609
+        }
+      ],
+      "variables": [
+        "gfas_co",
+        "gfas_co2",
+        "gfas_ch4"
+      ],
+      "variable_metadata": {
+        "gfas_co": {
+          "units": "kg",
+          "description": "GFAS fire CO mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "gfas_co2": {
+          "units": "kg",
+          "description": "GFAS fire CO2 mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "gfas_ch4": {
+          "units": "kg",
+          "description": "GFAS fire CH4 mass per cell and month",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L895"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "firefuel",
+      "title": "firefuel",
+      "category": "Other",
+      "description": "Historical live and dead fuel moisture, area-weighted over valid days",
+      "role": "feature",
+      "temporal": "daily",
+      "spatial": "approximately 0.07 degrees on a Gaussian grid",
+      "coverage": "2003-01–2021-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 200301,
+          "end": 202112
+        }
+      ],
+      "variables": [
+        "LFMC",
+        "DFMC_Foliage",
+        "DFMC_Wood"
+      ],
+      "variable_metadata": {
+        "LFMC": {
+          "units": "%",
+          "description": "Live fuel moisture content",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "DFMC_Foliage": {
+          "units": "native units unspecified",
+          "description": "Dead foliage fuel moisture content",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "DFMC_Wood": {
+          "units": "native units unspecified",
+          "description": "Dead wood fuel moisture content",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L914"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "modis_vegetation",
+      "title": "modis vegetation",
+      "category": "Other",
+      "description": "MODIS Terra MOD13A3 Collection 6.1 monthly vegetation indices",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "1 km sinusoidal tiles",
+      "coverage": "2000-02–2025-04",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 200002,
+          "end": 202504
+        }
+      ],
+      "variables": [
+        "modis_ndvi",
+        "modis_evi"
+      ],
+      "variable_metadata": {
+        "modis_ndvi": {
+          "units": "1",
+          "description": "Quality-filtered normalized difference vegetation index",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "modis_evi": {
+          "units": "1",
+          "description": "Quality-filtered enhanced vegetation index",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L933"
+        }
+      ],
+      "related_resources": []
+    },
+    {
+      "id": "modis_land_cover",
+      "title": "modis land cover",
+      "category": "Other",
+      "description": "MODIS MCD12Q1 061 annual IGBP land-cover class fractions",
+      "role": "feature",
+      "temporal": "annual",
+      "spatial": "500 m sinusoidal tiles",
+      "coverage": "2001-01–2023-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 200101,
+          "end": 202312
+        }
+      ],
+      "variables": [
+        "modis_lc_igbp_01",
+        "modis_lc_igbp_02",
+        "modis_lc_igbp_03",
+        "modis_lc_igbp_04",
+        "modis_lc_igbp_05",
+        "modis_lc_igbp_06",
+        "modis_lc_igbp_07",
+        "modis_lc_igbp_08",
+        "modis_lc_igbp_09",
+        "modis_lc_igbp_10",
+        "modis_lc_igbp_11",
+        "modis_lc_igbp_12",
+        "modis_lc_igbp_13",
+        "modis_lc_igbp_14",
+        "modis_lc_igbp_15",
+        "modis_lc_igbp_16",
+        "modis_lc_igbp_17"
+      ],
+      "variable_metadata": {
+        "modis_lc_igbp_01": {
+          "units": "1",
+          "description": "Evergreen needleleaf forests fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_02": {
+          "units": "1",
+          "description": "Evergreen broadleaf forests fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_03": {
+          "units": "1",
+          "description": "Deciduous needleleaf forests fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_04": {
+          "units": "1",
+          "description": "Deciduous broadleaf forests fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_05": {
+          "units": "1",
+          "description": "Mixed forests fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_06": {
+          "units": "1",
+          "description": "Closed shrublands fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_07": {
+          "units": "1",
+          "description": "Open shrublands fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_08": {
+          "units": "1",
+          "description": "Woody savannas fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_09": {
+          "units": "1",
+          "description": "Savannas fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_10": {
+          "units": "1",
+          "description": "Grasslands fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_11": {
+          "units": "1",
+          "description": "Permanent wetlands fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_12": {
+          "units": "1",
+          "description": "Croplands fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_13": {
+          "units": "1",
+          "description": "Urban and built-up lands fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_14": {
+          "units": "1",
+          "description": "Cropland and natural vegetation mosaics fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_15": {
+          "units": "1",
+          "description": "Permanent snow and ice fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_16": {
+          "units": "1",
+          "description": "Barren lands fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        },
+        "modis_lc_igbp_17": {
+          "units": "1",
+          "description": "Water bodies fraction of accepted pixels",
+          "dims": "time,lat,lon",
+          "ml_scope": "optional"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L951"
         }
       ],
       "related_resources": []
@@ -2135,6 +2610,68 @@
       "related_resources": []
     },
     {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-gleam-ea0dd6dac21b",
+      "title": "Ch2_FIRE_BA_SSP / GLEAM",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/GLEAM",
+      "target": "burned_area, burned_area_gfed5",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate",
+        "gleam",
+        "gfed5"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba",
+          "title": "gfed4_ba",
+          "description": "Historical GFED4.1s BA with GLEAM root-zone soil moisture and evaporative stress",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "gleam"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba",
+          "title": "gfed5_ba",
+          "description": "Historical GFED5 BA with GLEAM root-zone soil moisture and evaporative stress",
+          "targets": [
+            "burned_area_gfed5"
+          ],
+          "dataset_ids": [
+            "gfed5",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "gleam"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
       "id": "configured-mlhub-ch2-fire-ba-ssp-isimip3b-4d171d3a9661",
       "title": "Ch2_FIRE_BA_SSP / ISIMIP3b",
       "category": "Experiment configurations",
@@ -2231,6 +2768,254 @@
           "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba_tas_pr --schema-only",
           "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba_tas_pr.yaml",
           "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/gfed5_ba_tas_pr.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-isimip3b-ipsl-cm6a-lr-ec604cf11b46",
+      "title": "Ch2_FIRE_BA_SSP / ISIMIP3b / ipsl-cm6a-lr",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr",
+      "target": "burned_area, burned_area_gfed5",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate",
+        "isimip3b_met",
+        "gfed5"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr/gfed4_ba_tas_pr",
+          "title": "gfed4_ba_tas_pr",
+          "description": "GFED4.1s BA with ISIMIP3b IPSL-CM6A-LR temperature and precipitation",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr/gfed4_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr/gfed4_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr/gfed4_ba_tas_pr.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr/gfed5_ba_tas_pr",
+          "title": "gfed5_ba_tas_pr",
+          "description": "GFED5 BA with ISIMIP3b IPSL-CM6A-LR temperature and precipitation",
+          "targets": [
+            "burned_area_gfed5"
+          ],
+          "dataset_ids": [
+            "gfed5",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr/gfed5_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr/gfed5_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/ipsl-cm6a-lr/gfed5_ba_tas_pr.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-isimip3b-mpi-esm1-2-hr-d8209fed1311",
+      "title": "Ch2_FIRE_BA_SSP / ISIMIP3b / mpi-esm1-2-hr",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr",
+      "target": "burned_area, burned_area_gfed5",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate",
+        "isimip3b_met",
+        "gfed5"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr/gfed4_ba_tas_pr",
+          "title": "gfed4_ba_tas_pr",
+          "description": "GFED4.1s BA with ISIMIP3b MPI-ESM1-2-HR temperature and precipitation",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr/gfed4_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr/gfed4_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr/gfed4_ba_tas_pr.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr/gfed5_ba_tas_pr",
+          "title": "gfed5_ba_tas_pr",
+          "description": "GFED5 BA with ISIMIP3b MPI-ESM1-2-HR temperature and precipitation",
+          "targets": [
+            "burned_area_gfed5"
+          ],
+          "dataset_ids": [
+            "gfed5",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr/gfed5_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr/gfed5_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/mpi-esm1-2-hr/gfed5_ba_tas_pr.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-isimip3b-mri-esm2-0-b5ebd80ac8c7",
+      "title": "Ch2_FIRE_BA_SSP / ISIMIP3b / mri-esm2-0",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0",
+      "target": "burned_area, burned_area_gfed5",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate",
+        "isimip3b_met",
+        "gfed5"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0/gfed4_ba_tas_pr",
+          "title": "gfed4_ba_tas_pr",
+          "description": "GFED4.1s BA with ISIMIP3b MRI-ESM2-0 temperature and precipitation",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0/gfed4_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0/gfed4_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0/gfed4_ba_tas_pr.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0/gfed5_ba_tas_pr",
+          "title": "gfed5_ba_tas_pr",
+          "description": "GFED5 BA with ISIMIP3b MRI-ESM2-0 temperature and precipitation",
+          "targets": [
+            "burned_area_gfed5"
+          ],
+          "dataset_ids": [
+            "gfed5",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0/gfed5_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0/gfed5_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/mri-esm2-0/gfed5_ba_tas_pr.yaml"
+        }
+      ],
+      "links": [],
+      "related_resources": []
+    },
+    {
+      "id": "configured-mlhub-ch2-fire-ba-ssp-isimip3b-ukesm1-0-ll-254267f93677",
+      "title": "Ch2_FIRE_BA_SSP / ISIMIP3b / ukesm1-0-ll",
+      "category": "Experiment configurations",
+      "description": "Experiments discovered from the repository configuration.",
+      "status": "Configured",
+      "task_path": "Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll",
+      "target": "burned_area, burned_area_gfed5",
+      "dataset_ids": [
+        "gfed4",
+        "other_features",
+        "clm_luh2",
+        "clm_hdm",
+        "cesm2_climate",
+        "isimip3b_met",
+        "gfed5"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll/gfed4_ba_tas_pr",
+          "title": "gfed4_ba_tas_pr",
+          "description": "GFED4.1s BA with ISIMIP3b UKESM1-0-LL temperature and precipitation",
+          "targets": [
+            "burned_area"
+          ],
+          "dataset_ids": [
+            "gfed4",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll/gfed4_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll/gfed4_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll/gfed4_ba_tas_pr.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll/gfed5_ba_tas_pr",
+          "title": "gfed5_ba_tas_pr",
+          "description": "GFED5 BA with ISIMIP3b UKESM1-0-LL temperature and precipitation",
+          "targets": [
+            "burned_area_gfed5"
+          ],
+          "dataset_ids": [
+            "gfed5",
+            "other_features",
+            "clm_luh2",
+            "clm_hdm",
+            "cesm2_climate",
+            "isimip3b_met"
+          ],
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll/gfed5_ba_tas_pr --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll/gfed5_ba_tas_pr.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/ISIMIP3b/ukesm1-0-ll/gfed5_ba_tas_pr.yaml"
         }
       ],
       "links": [],

@@ -19,7 +19,7 @@ button,a{touch-action:manipulation}
 button{cursor:pointer}
 a{color:var(--teal)}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #7eae96;outline-offset:2px}
-header{flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px;border-bottom:1px solid var(--line);background:#f7faf6}
+header{flex:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:12px 20px;border-bottom:1px solid var(--line);background:#f7faf6}
 .brand{font-weight:700;letter-spacing:-.2px;display:flex;align-items:center;gap:10px}
 .mark{background:var(--ink);color:#fff;border-radius:50%;width:26px;height:26px;display:grid;place-items:center;font-size:15px}
 .quiet{font-size:11px;color:var(--muted);letter-spacing:.08em}
@@ -198,6 +198,13 @@ dialog h2{font-size:22px;line-height:1.35;margin:6px 0 8px;padding-right:42px;le
   .pathrow{grid-template-columns:72px minmax(0,1fr)}
   .pathrow .mini{grid-column:2;justify-self:start}
 }
+
+.hubs{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.hubs a{border:1px solid transparent;border-radius:7px;color:var(--muted);padding:7px 9px;font-weight:650;text-decoration:none}
+.hubs a:hover{background:var(--head);color:var(--teal)}
+.hubs [aria-current]{border-color:#cbded2;background:#e5f3ec;color:var(--teal)}
+@media(max-width:700px){header .stats{order:1;flex-basis:100%;flex-wrap:wrap;gap:6px 14px}}
+@media(max-width:368px){header .hubs{gap:2px}header .hubs a{padding-inline:4px}}
 </style>
 </head>
 <body>
@@ -208,6 +215,12 @@ dialog h2{font-size:22px;line-height:1.35;margin:6px 0 8px;padding-right:42px;le
     <div><b id="sources">—</b><span>successful source runs</span></div>
     <div><b id="ready">—</b><span>ready</span></div>
   </div>
+  <nav class="hubs" id="hubs" aria-label="Research hubs">
+    <a data-hub="researchstarter" href="https://liang-jiarui.github.io/research-starter/">ResearchStarter</a>
+    <a data-hub="earthmodelhub" href="index.html" aria-current="page" aria-label="EMH · EarthModelHub">EMH</a>
+    <a data-hub="observationhub" href="https://liang-jiarui.github.io/ObservationHub/docs/observations/" aria-label="ObsHub · ObservationHub">ObsHub</a>
+    <a data-hub="machinelearninghub" href="https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/" aria-label="MLHub · MachineLearningHub">MLHub</a>
+  </nav>
 </header>
 <main>
   <div class="workspace">

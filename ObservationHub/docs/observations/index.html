@@ -52,10 +52,10 @@ h1, h2, h3, p, dl { margin: 0; }
 .mark { display: grid; place-items: center; width: 1.625rem; height: 1.625rem; flex: none; border-radius: 50%; background: var(--ink); color: #fff; line-height: 1; }
 .quiet { color: var(--muted); font-size: .75rem; font-weight: 650; letter-spacing: .08em; }
 .hubs, .tabs { display: flex; align-items: center; flex-wrap: wrap; gap: .375rem; }
-.hubs a, .hubs .current, .tabs a { border-radius: 8px; padding: .375rem .625rem; font-size: .875rem; text-decoration: none; }
+.hubs a, .tabs a { border-radius: 8px; padding: .375rem .625rem; font-size: .875rem; text-decoration: none; }
 .hubs a, .tabs a { color: var(--muted); }
-.hubs a:hover, .hubs .current { color: var(--teal); background: var(--selected); }
-.hubs .current, .tabs a { font-weight: 650; }
+.hubs a:hover, .hubs a[aria-current] { color: var(--teal); background: var(--selected); }
+.hubs a[aria-current], .tabs a { font-weight: 650; }
 main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .625rem; padding: .75rem 1rem; }
 .tabs a { border: 1px solid transparent; padding-inline: .75rem; }
 .tabs a[aria-current] { border-color: var(--line); background: #fff; color: var(--teal); }
@@ -161,7 +161,9 @@ dialog h3 { font-size: .9375rem; margin: 1.125rem 0 .5rem; }
 <body>
 <header class="masthead">
   <div class="brand"><span class="mark" aria-hidden="true">◒</span>ObservationHub <span class="quiet">/ GALLERY</span></div>
-  <nav id="hubs" class="hubs" aria-label="Research hubs"></nav>
+  <nav id="hubs" class="hubs" aria-label="Research hubs">
+    <a data-hub="researchstarter" href="https://liang-jiarui.github.io/research-starter/">ResearchStarter</a>
+  </nav>
 </header>
 <main>
   <nav class="tabs" aria-label="Gallery views">
@@ -1165,19 +1167,25 @@ dialog h3 { font-size: .9375rem; margin: 1.125rem 0 .5rem; }
   ],
   "hubs": [
     {
+      "id": "earthmodelhub",
+      "label": "EMH",
+      "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/",
+      "name": "EarthModelHub",
+      "site_path": "EarthModelHub/docs/simulations/"
+    },
+    {
       "id": "observationhub",
       "label": "ObsHub",
-      "url": "index.html"
+      "url": "index.html",
+      "name": "ObservationHub",
+      "site_path": "ObservationHub/docs/observations/"
     },
     {
       "id": "machinelearninghub",
       "label": "MLHub",
-      "url": "https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/"
-    },
-    {
-      "id": "earthmodelhub",
-      "label": "ModelHub",
-      "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/"
+      "url": "https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/",
+      "name": "MachineLearningHub",
+      "site_path": "MachineLearningHub/docs/gallery/"
     }
   ]
 }</script>
@@ -1264,14 +1272,26 @@ function internalLink(label, view, id, className) {
   return link;
 }
 
+// At the shared mount, resolve peer galleries on this host (including preview prefixes).
+const home = data.hubs.find(hub => hub.id === data.hub);
+const directory = location.pathname.replace(/index\.html$/, "");
+const sharedRoot = /^https?:$/.test(location.protocol) && home?.site_path &&
+  directory.endsWith("/" + home.site_path) ? directory.slice(0, -home.site_path.length) : "";
+function mountedUrl(path) {
+  const url = new URL(location.origin);
+  url.pathname = sharedRoot + path;
+  return url.href;
+}
+const hubNavigation = byId("hubs");
+if (sharedRoot) hubNavigation.querySelector('[data-hub="researchstarter"]').href = mountedUrl("research-starter/");
 for (const hub of data.hubs) {
-  if (hub.id === data.hub) {
-    const current = element("span", hub.label, "current");
-    current.setAttribute("aria-current", "page");
-    byId("hubs").append(current);
-  } else {
-    byId("hubs").append(externalLink(hub.label, hub.url));
-  }
+  const current = hub.id === data.hub;
+  const link = element("a", hub.label);
+  link.dataset.hub = hub.id;
+  link.href = !current && sharedRoot && hub.site_path ? mountedUrl(hub.site_path) : hub.url;
+  if (current) link.setAttribute("aria-current", "page");
+  if (hub.name && hub.name !== hub.label) link.setAttribute("aria-label", `${hub.label} · ${hub.name}`);
+  hubNavigation.append(link);
 }
 for (const view of Object.keys(views)) {
   byId(view + "-total").textContent = data[view].length;

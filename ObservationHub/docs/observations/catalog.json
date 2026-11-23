@@ -952,19 +952,25 @@
   ],
   "hubs": [
     {
+      "id": "earthmodelhub",
+      "label": "EMH",
+      "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/",
+      "name": "EarthModelHub",
+      "site_path": "EarthModelHub/docs/simulations/"
+    },
+    {
       "id": "observationhub",
       "label": "ObsHub",
-      "url": "index.html"
+      "url": "index.html",
+      "name": "ObservationHub",
+      "site_path": "ObservationHub/docs/observations/"
     },
     {
       "id": "machinelearninghub",
       "label": "MLHub",
-      "url": "https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/"
-    },
-    {
-      "id": "earthmodelhub",
-      "label": "ModelHub",
-      "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/"
+      "url": "https://liang-jiarui.github.io/MachineLearningHub/docs/gallery/",
+      "name": "MachineLearningHub",
+      "site_path": "MachineLearningHub/docs/gallery/"
     }
   ]
 }

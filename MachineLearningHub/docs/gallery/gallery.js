@@ -20,18 +20,20 @@ function element(tag, attrs = {}, ...children) {
 function start(catalog) {
   const tasks = new Map(catalog.tasks.map((row) => [row.id, row]));
   const datasets = new Map(catalog.datasets.map((row) => [row.id, row]));
-  const hubTitles = new Map(catalog.hubs.map((hub) => [hub.id, hub.title]));
+  const hubTitles = new Map(catalog.hubs.map((hub) => [hub.id, hub.short_name ?? hub.title]));
   const views = {
     gallery: {
-      title: "Research results", unit: "figure", rows: catalog.gallery,
-      placeholder: "Search figures, types, tasks", groupLabel: "By result type",
+      title: "ML Gallery", unit: "figure", rows: catalog.gallery,
+      description: "Browse research figures and the experiments behind them.",
+      placeholder: "Search figures", groupLabel: "By result type",
       groupAll: "All result types", filterLabel: "By task", facetAll: "All tasks",
       facet: (row) => row.task_id, facetTitle: (id) => tasks.get(id)?.title ?? id,
       relatedText: (row) => tasks.get(row.task_id)?.title,
     },
     data: {
       title: "ML datasets", unit: "dataset", rows: catalog.datasets,
-      placeholder: "Search datasets, variables, sources", filterLabel: "By role", facetAll: "All roles",
+      description: "Explore input datasets, their coverage and the variables used in ML experiments.",
+      placeholder: "Search datasets", filterLabel: "By role", facetAll: "All roles",
       facet: (row) => row.role, facetTitle: (id) => roleLabels[id] ?? id,
       columns: [
         ["title", "Dataset"], ["role", "Role"], ["temporal", "Frequency"],
@@ -40,7 +42,8 @@ function start(catalog) {
     },
     tasks: {
       title: "ML tasks", unit: "task", rows: catalog.tasks,
-      placeholder: "Search tasks, targets, experiment IDs", filterLabel: "By status", facetAll: "All statuses",
+      description: "Find experiment configurations, input datasets and commands to validate each workflow.",
+      placeholder: "Search tasks", filterLabel: "By status", facetAll: "All statuses",
       facet: (row) => row.status, facetTitle: (id) => id,
       relatedText: (row) => row.dataset_ids.map((id) => datasets.get(id)?.title),
       columns: [
@@ -51,6 +54,8 @@ function start(catalog) {
   };
 
   const state = { view: "gallery", topic: "", facet: "", query: "", item: "", sort: "", descending: false };
+  const filterToggle = byId("filter-toggle");
+  const reset = byId("reset");
   let opener;
 
   function hrefFor(view, item = "") {
@@ -111,7 +116,9 @@ function start(catalog) {
     for (const value of include) {
       if (!groupCounts.has(value)) groupCounts.set(value, 0);
     }
-    const options = [["", rows.length], ...[...groupCounts].sort(([a], [b]) => label(a).localeCompare(label(b)))];
+    const sorted = [...groupCounts].sort(([a, aCount], [b, bCount]) =>
+      Number(bCount > 0) - Number(aCount > 0) || label(a).localeCompare(label(b)));
+    const options = [["", rows.length], ...sorted];
     container.replaceChildren(...options.map(([value, count]) => {
       const button = element("button", { type: "button", "aria-pressed": String(state[key] === value) },
         element("span", {}, value ? label(value) : allLabel), element("span", { class: "n" }, String(count)));
@@ -132,6 +139,8 @@ function start(catalog) {
       if (link.hasAttribute("aria-current")) link.setAttribute("aria-current", "page");
     }
     byId("view-title").textContent = view.title;
+    byId("view-description").textContent = view.description;
+    document.title = `${view.title} · ${catalog.hub.title}`;
     byId("group-label").textContent = view.groupLabel ?? "By topic";
     byId("filter-label").textContent = view.filterLabel;
     queryInput.placeholder = view.placeholder;
@@ -151,12 +160,15 @@ function start(catalog) {
 
   function card(row) {
     const image = element("img", { src: row.image, alt: "", loading: "lazy", decoding: "async" });
+    const taskTitle = tasks.get(row.task_id)?.title ?? row.task_id;
     const button = element("button", { type: "button", class: "card" },
       element("span", { class: "card-media" }, image),
       element("span", { class: "card-copy" },
-        element("span", { class: "card-kicker" }, [row.category, row.badge].filter(Boolean).join(" · ")),
+        element("span", { class: "card-labels" },
+          element("span", { class: "card-kicker" }, row.category),
+          ...(row.badge ? [element("span", { class: "card-badge" }, row.badge)] : [])),
         element("strong", { class: "card-title" }, row.title),
-        element("span", { class: "card-task" }, tasks.get(row.task_id)?.title ?? row.task_id)));
+        ...(taskTitle && taskTitle !== row.title ? [element("span", { class: "card-task" }, taskTitle)] : [])));
     button.addEventListener("click", () => openDetail(row.id, button));
     return button;
   }
@@ -227,6 +239,26 @@ function start(catalog) {
     return element("p", { class: "empty" }, "No results match these filters.");
   }
 
+  function drawActiveFilters(view) {
+    const selected = [["topic", state.topic], ["facet", state.facet && view.facetTitle(state.facet)]];
+    const chips = selected.filter(([, label]) => label).map(([key, label]) => {
+      const button = element("button", { type: "button", class: "chip", "aria-label": `Remove filter: ${label}` },
+        label, element("span", { "aria-hidden": "true" }, "×"));
+      button.addEventListener("click", () => {
+        state[key] = "";
+        syncUrl();
+        drawView();
+        queryInput.focus();
+      });
+      return button;
+    });
+    const count = byId("filter-count");
+    count.hidden = !chips.length;
+    count.textContent = String(chips.length);
+    byId("active-filters").replaceChildren(...chips);
+    reset.disabled = !chips.length && !state.query && !state.sort;
+  }
+
   function drawResults(resetScroll = false) {
     const view = views[state.view];
     const tokens = state.query.toLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -241,6 +273,7 @@ function start(catalog) {
       rows.sort((a, b) => String(value(a)).localeCompare(String(value(b)), undefined, { numeric: true }) * (state.descending ? -1 : 1));
     }
     byId("resultcount").textContent = `${rows.length} of ${view.rows.length} ${view.unit}${view.rows.length === 1 ? "" : "s"}`;
+    drawActiveFilters(view);
     const content = !rows.length
       ? emptyResults(view, tokens)
       : state.view === "gallery"
@@ -386,13 +419,21 @@ function start(catalog) {
   }
 
   const activeHub = catalog.hub;
-  byId("hubs").replaceChildren(...catalog.hubs.map((hub) => {
-    const label = hub.label ?? hub.title;
-    if (hub.id === activeHub.id) {
-      return element("span", { class: "current", "aria-current": "page" }, label);
-    }
-    return element("a", { href: hub.url, title: hub.title }, label);
+  const hubNavigation = byId("hubs");
+  hubNavigation.replaceChildren(...catalog.hubs.map((hub) => {
+    const label = hub.short_name ?? hub.label ?? hub.title;
+    const name = hub.name ?? hub.title;
+    const attrs = { title: hub.description ?? name, "data-hub": hub.id };
+    const current = hub.id === activeHub.id;
+    const href = current ? "index.html" : hub.url;
+    if (!href) return element("span", attrs, label);
+    if (label !== name) attrs["aria-label"] = `${label} · ${name}`;
+    if (current) attrs["aria-current"] = "page";
+    return element("a", { ...attrs, href }, label);
   }));
+  if (catalog.portal) {
+    hubNavigation.prepend(element("a", { href: catalog.portal.url, "data-hub": "researchstarter" }, catalog.portal.title));
+  }
   if (activeHub.repository) byId("repository").href = activeHub.repository;
   if (catalog.guide && location.protocol !== "file:") byId("guide").href = catalog.guide;
 
@@ -411,7 +452,10 @@ function start(catalog) {
     syncUrl();
     drawResults(true);
   });
-  byId("reset").addEventListener("click", () => {
+  filterToggle.addEventListener("click", () => {
+    filterToggle.setAttribute("aria-expanded", String(filterToggle.getAttribute("aria-expanded") === "false"));
+  });
+  reset.addEventListener("click", () => {
     Object.assign(state, { query: "", topic: "", facet: "", sort: "", descending: false });
     syncUrl();
     drawView();

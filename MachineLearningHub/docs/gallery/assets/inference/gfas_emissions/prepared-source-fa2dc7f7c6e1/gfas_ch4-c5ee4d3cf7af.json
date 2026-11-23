@@ -1,0 +1,53 @@
+{
+  "time_axis": "Calendar year",
+  "time_reduction": "Sum over finite grid cells",
+  "time": [
+    2024.0
+  ],
+  "dates": [
+    "2024-01-01"
+  ],
+  "values": [
+    655657003.3585538
+  ],
+  "finite_grid_fractions": [
+    1.0
+  ],
+  "years": [],
+  "annual": [],
+  "climatology": [],
+  "label": "ch4fire monthly emitted mass per grid cell",
+  "units": "kg",
+  "summary": {
+    "grid_cells": 12960,
+    "analysed_cells": 12960,
+    "spatial_stride": 1,
+    "time_steps": 1,
+    "steps_with_data": 1,
+    "valid_time_start": "2024-01-01",
+    "valid_time_end": "2024-01-01",
+    "cells_ever_finite": 12960,
+    "cells_always_finite": 12960,
+    "mean_finite_fraction": 1.0,
+    "distribution": {
+      "grid_cells": 12960,
+      "min": 0.0,
+      "p01": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p99": 938714.9556249982,
+      "max": 17099298.0,
+      "zero_fraction": 0.876466049382716
+    },
+    "annual_summation": true,
+    "trend_cells": 0,
+    "trend_method": "Least-squares slope over annual values with at least three finite years per cell.",
+    "valid_lat_min": -89.0,
+    "valid_lat_max": 89.0,
+    "valid_lon_min": -178.75,
+    "valid_lon_max": 178.75,
+    "excluded_filled_years": 0,
+    "display_map_stride": 1
+  }
+}

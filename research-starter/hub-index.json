@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-23T23:00:42Z",
+  "updated_at": "2026-11-23T23:38:41Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -25212,6 +25212,3132 @@
       "content_hash": "849b9f8d15f1da805f3dbacaf6559562c0b47a1c87c0918a89deec867fa9a92b"
     },
     {
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_NH3_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_NH3_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_NH3_as_N_kgN_ha_month",
+      "keywords": [
+        "Fire_NH3_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Fire NH3 as N",
+      "content_hash": "ae7bb5b9bbdff749db52b046f300aaf4077901f9ed7b985460ae65c01c20a244"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_NO2_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_NO2_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_NO2_as_N_kgN_ha_month",
+      "keywords": [
+        "Fire_NO2_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Fire NO2 as N",
+      "content_hash": "d9667551738741209ca887d7a3911c2a4da1b19c796ca6325b576e67d85ef783"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_NO_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_NO_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_NO_as_N_kgN_ha_month",
+      "keywords": [
+        "Fire_NO_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Fire NO as N",
+      "content_hash": "31ab35b5666d8ba3caaa4805461b86367c14210c1d1c64f31afc5fb5fb5f8a96"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_NOx_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_NOx_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_NOx_as_N_kgN_ha_month",
+      "keywords": [
+        "Fire_NOx_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Fire NOx as N",
+      "content_hash": "1c4fe414909fa87b9c8028a662c400bcd9fc60d65c0a937b728e80877f2559f4"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_Nr_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_Nr_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_Nr_as_N_kgN_ha_month",
+      "keywords": [
+        "Fire_Nr_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Fire reactive nitrogen total as N",
+      "content_hash": "7d217e02396fa6c62779a59d2b80478756c36b91ffc8a86c05092fe6bfb4284a"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NH3_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_NH3_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NH3_as_N_kgN_ha_month",
+      "keywords": [
+        "HCO_NH3_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "HEMCO anthropogenic NH3 as N",
+      "content_hash": "08a0aa3b9510e1fdc8f981f60ec41bd0075da29564661f90429b002af8a90926"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NO2_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_NO2_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NO2_as_N_kgN_ha_month",
+      "keywords": [
+        "HCO_NO2_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "HEMCO NO2 as N",
+      "content_hash": "80f66dbe04b32f987403280f73d05c2ec1e6c7ad8f389772d4dbec51b2e0784e"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NO_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_NO_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NO_as_N_kgN_ha_month",
+      "keywords": [
+        "HCO_NO_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "HEMCO anthropogenic NO as N",
+      "content_hash": "0fb38a367df1241048f1f39784580c3293fd1c9290a6a970c756457460459857"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NO_as_N_with_lightning_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO NO as N plus lightning column N (HCO_NO + LNO_COL_PROD)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NO_as_N_with_lightning_kgN_ha_month",
+      "keywords": [
+        "HCO_NO_as_N_with_lightning_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "HEMCO NO as N including lightning",
+      "content_hash": "276890eaac2124123465a7621283a8d6fbd55415dcc1c7382a7a5ebdc3d6991a"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NOx_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_NOx_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NOx_as_N_kgN_ha_month",
+      "keywords": [
+        "HCO_NOx_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "HEMCO NOx as N",
+      "content_hash": "7f0e853c1b69041f9cd7df223570d1c561f238c019c5560e594906ab2e341a62"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NOx_as_N_with_lightning_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO NOx as N plus lightning column N (HCO_NOx + LNO_COL_PROD)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NOx_as_N_with_lightning_kgN_ha_month",
+      "keywords": [
+        "HCO_NOx_as_N_with_lightning_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "HEMCO NOx as N including lightning",
+      "content_hash": "70e86e69c10161588773507cc6750f8faa0766542ef1e4e6724e7b8a93c120a1"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_Nr_as_N_kgN_ha_month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_kgN_ha_month",
+      "keywords": [
+        "HCO_Nr_as_N_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "HEMCO reactive nitrogen total as N",
+      "content_hash": "23ebf28ee07ed5d1f78db76a8eb5d2a0b949ac62149f83f240c5974f2d280563"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_kgN_ha_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_Nr_as_N_kgN_ha_month_fire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_kgN_ha_month_fire",
+      "keywords": [
+        "HCO_Nr_as_N_kgN_ha_month_fire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Fire-source HEMCO Nr as N",
+      "content_hash": "e3040907479914689940fb504cd27349f709061ee07e23d22986400291778da0"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_kgN_ha_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_Nr (non-fire portion) = HCO_Nr - Fire_Nr, clipped at 0",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_kgN_ha_month_nofire",
+      "keywords": [
+        "HCO_Nr_as_N_kgN_ha_month_nofire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Non-fire HEMCO Nr as N",
+      "content_hash": "11bebf984c7f57531298c921d18aa64a1b867b0b661406a54bfa0477dacc00bf"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_with_lightning_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO Nr as N plus lightning column N (HCO_Nr_as_N_kgN_ha_month + LNO_COL_PROD)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_with_lightning_kgN_ha_month",
+      "keywords": [
+        "HCO_Nr_as_N_with_lightning_kgN_ha_month",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "HEMCO Nr as N including lightning",
+      "content_hash": "5c50fc24ecd181323e19a7c6fce968c20c1b23e2edb8bf49ae8080c1a4e0069d"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_with_lightning_kgN_ha_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO Nr non-fire + lightning column N (HCO_Nr_as_N_kgN_ha_month_nofire + LNO_COL_PROD)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_with_lightning_kgN_ha_month_nofire",
+      "keywords": [
+        "HCO_Nr_as_N_with_lightning_kgN_ha_month_nofire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Non-fire Nr as N including lightning",
+      "content_hash": "5681fee2141730298c5a1adf7077b11c630d922bde26abf53ae481c274e9caec"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:LNO_COL_PROD",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · LNO_COL_PROD",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=LNO_COL_PROD",
+      "keywords": [
+        "LNO_COL_PROD",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Lightning column NO production as N",
+      "content_hash": "f02f9b5b7ed76b64b277617b7c62a0624d4ae44ad526900af3f4e89e57e0045e"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NHx_month_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NHx deposition (wet+dry) all (ndep fire merge)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NHx_month_all",
+      "keywords": [
+        "NDEP_NHx_month_all",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly NHx deposition (all)",
+      "content_hash": "e21c0b6378bf515a14113fd53b1a1f715163602b0fbe6435082299db37b0b34d"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NHx_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NHx deposition (wet+dry) fire (ndep fire merge)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NHx_month_fire",
+      "keywords": [
+        "NDEP_NHx_month_fire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly NHx deposition (fire)",
+      "content_hash": "b331e9fcbf3df53003f00d1e184df9b91155250c53ca1cbfed4245e294c15dfc"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NHx_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NHx deposition (wet+dry) nofire (ndep fire merge)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NHx_month_nofire",
+      "keywords": [
+        "NDEP_NHx_month_nofire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly NHx deposition (nofire)",
+      "content_hash": "002a945bd671ae2d285b94152349aeda868b4c372038fbe023e80c749ea3b1e9"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NOy_month_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NOy deposition (wet+dry) all (ndep fire merge)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NOy_month_all",
+      "keywords": [
+        "NDEP_NOy_month_all",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly NOy deposition (all)",
+      "content_hash": "4170da38f7db079f8176f55e54f57b41f4d7d231adcf3a757840dc82d3819c39"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NOy_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NOy deposition (wet+dry) fire (ndep fire merge)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NOy_month_fire",
+      "keywords": [
+        "NDEP_NOy_month_fire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly NOy deposition (fire)",
+      "content_hash": "4611e6c34a40ebb92c9b6182705df49db4c1524381567c1bd444d7288606393e"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NOy_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NOy deposition (wet+dry) nofire (ndep fire merge)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NOy_month_nofire",
+      "keywords": [
+        "NDEP_NOy_month_nofire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly NOy deposition (nofire)",
+      "content_hash": "086f835d2226c909f5b566447aecc0a21284464c71d8dce010ce00381a01868a"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_dry_month_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry NHx+NOy all",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_dry_month_all",
+      "keywords": [
+        "NDEP_dry_month_all",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly dry deposition (all)",
+      "content_hash": "18b23c1f4b7d5e1cf014dbd07f42301f2ed6a1fc1dd4c95160a78e08d47c9941"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_dry_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry NHx+NOy fire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_dry_month_fire",
+      "keywords": [
+        "NDEP_dry_month_fire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly dry deposition (fire)",
+      "content_hash": "6b9581f3f58198f275c29ae3aa311d576ce75aae53e87570055439210300e769"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_dry_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry NHx+NOy nofire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_dry_month_nofire",
+      "keywords": [
+        "NDEP_dry_month_nofire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly dry deposition (nofire)",
+      "content_hash": "7659f55642bf5a858c1b2b7cfb0060413db77770a2e3c36de530bb9ccc2aa162"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_month_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NDEP_month_all",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_month_all",
+      "keywords": [
+        "NDEP_month_all",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Total N deposition wet+dry (all)",
+      "content_hash": "1ce573e082cf088f8daa8320a2623fdae4751a720e8ece0352229b7fdcd80711"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NDEP_month_fire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_month_fire",
+      "keywords": [
+        "NDEP_month_fire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Fire-related N deposition",
+      "content_hash": "4e445128db28c6da654bc2fdf3ea8f3eb13e2ac5b622bd9d1cb42d5534719af5"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NDEP_month_nofire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_month_nofire",
+      "keywords": [
+        "NDEP_month_nofire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Non-fire N deposition",
+      "content_hash": "c8d358f6752370b947bcad9bd33d9e3be9d464b7f6c69f61293e57f0c6f0ed5b"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_wet_month_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet NHx+NOy all",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_wet_month_all",
+      "keywords": [
+        "NDEP_wet_month_all",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly wet deposition (all)",
+      "content_hash": "74fd130e6e76815b272caf79ca3e096a20a24af913573fa65b5ddc13073c47af"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_wet_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet NHx+NOy fire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_wet_month_fire",
+      "keywords": [
+        "NDEP_wet_month_fire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly wet deposition (fire)",
+      "content_hash": "58d2eddad597b253830d778a417b331e28cb586cd8a2701f720f060d23f66b80"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_wet_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet NHx+NOy nofire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_wet_month_nofire",
+      "keywords": [
+        "NDEP_wet_month_nofire",
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "Monthly wet deposition (nofire)",
+      "content_hash": "6a873e91b81f76415afbb41f51a96d84e220b836d01d2e73e55c643a8b6eb932"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:dry_deposition_NHx_as_N_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry_deposition_NHx_as_N_all",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=dry_deposition_NHx_as_N_all",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "dry_deposition_NHx_as_N_all",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "NHx dry deposition (all)",
+      "content_hash": "959501b17f00a4fcf51cc4e127a20fa44283cd3b7cb9241872e78bcc65a892e8"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:dry_deposition_NHx_as_N_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry_deposition_NHx_as_N_fire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=dry_deposition_NHx_as_N_fire",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "dry_deposition_NHx_as_N_fire",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "NHx dry deposition (fire)",
+      "content_hash": "df2cd263b53c76216d304ac454a6bb872448071a1dbb17a2f53e6104ff8c0f24"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:dry_deposition_NHx_as_N_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry_deposition_NHx_as_N_nofire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=dry_deposition_NHx_as_N_nofire",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "dry_deposition_NHx_as_N_nofire",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "NHx dry deposition (nofire)",
+      "content_hash": "2f13c9cd8db5887e9021fd161cb2bb0c92fe277a6e4bc96f5d3c586783562b4c"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:dry_deposition_NOy_as_N_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry_deposition_NOy_as_N_all",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=dry_deposition_NOy_as_N_all",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "dry_deposition_NOy_as_N_all",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "NOy dry deposition (all)",
+      "content_hash": "2a84625ad6700e2b7ac255818c553d59652e03b6f7bc6c2242861863deeba04e"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:dry_deposition_NOy_as_N_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry_deposition_NOy_as_N_fire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=dry_deposition_NOy_as_N_fire",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "dry_deposition_NOy_as_N_fire",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "NOy dry deposition (fire)",
+      "content_hash": "03b62fcbc9db03c5353729cbd8232adbe5a54110b89073362c207e6bbfd5f2c3"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:dry_deposition_NOy_as_N_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry_deposition_NOy_as_N_nofire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=dry_deposition_NOy_as_N_nofire",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "dry_deposition_NOy_as_N_nofire",
+        "feature_and_label",
+        "kg N ha-1 month-1"
+      ],
+      "description": "NOy dry deposition (nofire)",
+      "content_hash": "dbf5ddb61a1bb25e0c66eff96aa4e017d864369a37e154450d448080f0b774f1"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:wet_deposition_NHx_as_N_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet_deposition_NHx_as_N_all",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=wet_deposition_NHx_as_N_all",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1",
+        "wet_deposition_NHx_as_N_all"
+      ],
+      "description": "NHx wet deposition (all)",
+      "content_hash": "96f5b8726ff44dd1725105a797c8c7ca297b81429782ce6e8a059995e1dcce14"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:wet_deposition_NHx_as_N_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet_deposition_NHx_as_N_fire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=wet_deposition_NHx_as_N_fire",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1",
+        "wet_deposition_NHx_as_N_fire"
+      ],
+      "description": "NHx wet deposition (fire)",
+      "content_hash": "05d49686d18f45a5b4091d25856febfa110b5a36a71644b535c04aaad2c11e09"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:wet_deposition_NHx_as_N_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet_deposition_NHx_as_N_nofire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=wet_deposition_NHx_as_N_nofire",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1",
+        "wet_deposition_NHx_as_N_nofire"
+      ],
+      "description": "NHx wet deposition (nofire)",
+      "content_hash": "226c9542d2b1bfd98ad17596d5876679d28e7fd064bacfdf4e07e95973bbdd7c"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:wet_deposition_NOy_as_N_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet_deposition_NOy_as_N_all",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=wet_deposition_NOy_as_N_all",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1",
+        "wet_deposition_NOy_as_N_all"
+      ],
+      "description": "NOy wet deposition (all)",
+      "content_hash": "e15725688dae3ebc4fe07b72e1f9f1369b6a596847b025e0a7538ba21401c48d"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:wet_deposition_NOy_as_N_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet_deposition_NOy_as_N_fire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=wet_deposition_NOy_as_N_fire",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1",
+        "wet_deposition_NOy_as_N_fire"
+      ],
+      "description": "NOy wet deposition (fire)",
+      "content_hash": "b1da904cf253ca352411accc2eef61a2ee45df5c3885f1b5f0a6cf183f47ef0f"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:wet_deposition_NOy_as_N_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · wet_deposition_NOy_as_N_nofire",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=wet_deposition_NOy_as_N_nofire",
+      "keywords": [
+        "Nitrogen",
+        "cam_emis_ndep",
+        "feature_and_label",
+        "kg N ha-1 month-1",
+        "wet_deposition_NOy_as_N_nofire"
+      ],
+      "description": "NOy wet deposition (nofire)",
+      "content_hash": "fa3c14a575d27d639798e0ecf9278186009de4344d10409ce0a084e254858093"
+    },
+    {
+      "id": "mlhub:inference variable:cam_ndep:wet_deposition_NHx_as_N",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM wet nitrogen deposition · wet_deposition_NHx_as_N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_ndep&variable=wet_deposition_NHx_as_N",
+      "keywords": [
+        "Nitrogen",
+        "cam_ndep",
+        "feature",
+        "kg N ha-1 month-1",
+        "wet_deposition_NHx_as_N"
+      ],
+      "description": "NHx wet deposition (CAM fv1.9x2.5 native)",
+      "content_hash": "eff5f2091b84adcf1765f8439f40d1c696b3d4711f69a9741e01a1ff2673f365"
+    },
+    {
+      "id": "mlhub:inference variable:cam_ndep:wet_deposition_NOy_as_N",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM wet nitrogen deposition · wet_deposition_NOy_as_N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_ndep&variable=wet_deposition_NOy_as_N",
+      "keywords": [
+        "Nitrogen",
+        "cam_ndep",
+        "feature",
+        "kg N ha-1 month-1",
+        "wet_deposition_NOy_as_N"
+      ],
+      "description": "NOy wet deposition",
+      "content_hash": "9a536d3c9f4639e80793cdfc716f828e40361f74ecccea4b31a1a533cd850804"
+    },
+    {
+      "id": "mlhub:inference variable:ceds:ceds_nh3",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ceds · NH3_em_anthro monthly mean emissions flux",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=ceds&variable=ceds_nh3",
+      "keywords": [
+        "Other",
+        "ceds",
+        "ceds_nh3",
+        "feature",
+        "kg m-2 s-1"
+      ],
+      "description": "Anthropogenic NH3 mass flux",
+      "content_hash": "56e3308b961fe5758616a1d8b2ef63ce0f3d3b00ddf40145c1ece1cc4daaf5fc"
+    },
+    {
+      "id": "mlhub:inference variable:ceds:ceds_nh3_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ceds · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=ceds&variable=ceds_nh3_days_available",
+      "keywords": [
+        "Other",
+        "ceds",
+        "ceds_nh3_days_available",
+        "feature"
+      ],
+      "content_hash": "98ac3df64b365f6122d8c542db69ec89568d52a0e5087361ee5118470351d619"
+    },
+    {
+      "id": "mlhub:inference variable:ceds:ceds_nox",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ceds · NOx_em_anthro monthly mean emissions flux",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=ceds&variable=ceds_nox",
+      "keywords": [
+        "Other",
+        "ceds",
+        "ceds_nox",
+        "feature",
+        "kg m-2 s-1"
+      ],
+      "description": "Anthropogenic NOx mass flux",
+      "content_hash": "465015a79b8359c9ec42fac63d905ff9d4de8402374ca4759a7ca07798611c2a"
+    },
+    {
+      "id": "mlhub:inference variable:ceds:ceds_nox_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ceds · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=ceds&variable=ceds_nox_days_available",
+      "keywords": [
+        "Other",
+        "ceds",
+        "ceds_nox_days_available",
+        "feature"
+      ],
+      "content_hash": "910decbdd15bb77d4d239f7812e7675d65e5f1b22970a94ccbd4d828a150a668"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:cLeaf",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Carbon Mass in Leaves",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=cLeaf",
+      "keywords": [
+        "Climate",
+        "cLeaf",
+        "cesm2_climate",
+        "feature",
+        "kg m-2",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Carbon mass in leaves (CMIP6 Lmon)",
+      "content_hash": "cb115e28452436b64731b4a609af914a5f8ec4ceb00f9de2d106c49e738e562d"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:cLitter",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Carbon Mass in Litter Pool",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=cLitter",
+      "keywords": [
+        "Climate",
+        "cLitter",
+        "cesm2_climate",
+        "feature",
+        "kg m-2",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Carbon mass in litter (CMIP6 Lmon)",
+      "content_hash": "ea45b98576c875a76a4c9d322115eb940bbe1b1f78c5bd993f7f234dacd81def"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:cRoot",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Carbon Mass in Roots",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=cRoot",
+      "keywords": [
+        "Climate",
+        "cRoot",
+        "cesm2_climate",
+        "feature",
+        "kg m-2",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Carbon mass in roots (CMIP6 Lmon)",
+      "content_hash": "08aed4e63bdad6973fe0024c780ca261266c2e7a92ffdfe4cbdc14e84d01d01c"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:cVeg",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Carbon Mass in Vegetation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=cVeg",
+      "keywords": [
+        "Climate",
+        "cVeg",
+        "cesm2_climate",
+        "feature",
+        "kg m-2",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Total vegetation carbon (CMIP6 Lmon)",
+      "content_hash": "e132cf2621145036aaee169a641b2f330ba09cf7d9bc0105bfc256c593cdec1f"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:evspsbl",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Evaporation Including Sublimation and Transpiration",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=evspsbl",
+      "keywords": [
+        "Climate",
+        "cesm2_climate",
+        "evspsbl",
+        "feature",
+        "kg m-2 s-1",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Evaporation including sublimation and transpiration",
+      "content_hash": "f3fa8f7d7fef205fef8502ccdb6b79d8082ac6491ab63f481cd6e9b512571b53"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:hurs",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Near-Surface Relative Humidity",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=hurs",
+      "keywords": [
+        "%",
+        "Climate",
+        "cesm2_climate",
+        "feature",
+        "hurs",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Near-surface relative humidity (CMIP6 Amon)",
+      "content_hash": "d1e54eff2977f4f01aaf48289a04cf361104c9d90f533ce6313e62acd4b748b0"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:lai",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Leaf Area Index",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=lai",
+      "keywords": [
+        "1",
+        "Climate",
+        "cesm2_climate",
+        "feature",
+        "lai",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Leaf area index",
+      "content_hash": "5e11f435595fd0ef8f008ea636ebd4d0c30be1803407448764fd7afa1f244cc6"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:mrsos",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Moisture in Upper Portion of Soil Column",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=mrsos",
+      "keywords": [
+        "Climate",
+        "cesm2_climate",
+        "feature",
+        "kg m-2",
+        "mrsos",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Mass of water in upper portion of soil column (drought/fuel moisture proxy)",
+      "content_hash": "69805e77f0f2b74c18904aa29427097a889b61562a886d2bc70f69303d49774f"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:pr",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Precipitation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=pr",
+      "keywords": [
+        "Climate",
+        "cesm2_climate",
+        "feature",
+        "kg m-2 s-1",
+        "pr",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Precipitation (CMIP6 Amon; 与 ERA5 tp 不同单位，训练时注意)",
+      "content_hash": "1c3e657d3764aaf48b9d554ee8490b1a15258b4cd20447115f9cf50144ae3ec8"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:sfcWind",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Near-Surface Wind Speed",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=sfcWind",
+      "keywords": [
+        "Climate",
+        "cesm2_climate",
+        "feature",
+        "m s-1",
+        "sfcWind",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Near-surface wind speed (CMIP6 Amon)",
+      "content_hash": "9dd9e981276c3cba737c49186652e79e7643d4449808eb3ca61ba2b9891a9e12"
+    },
+    {
+      "id": "mlhub:inference variable:cesm2_climate:tas",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CESM2 CMIP6 climate · Near-Surface Air Temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cesm2_climate&variable=tas",
+      "keywords": [
+        "Climate",
+        "K",
+        "cesm2_climate",
+        "feature",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585",
+        "tas"
+      ],
+      "description": "2 m air temperature (CMIP6 Amon)",
+      "content_hash": "dc20093edf6cfe37d407acabcfc457c8945a0e2babd5f64f3af543ed42fd4e65"
+    },
+    {
+      "id": "mlhub:inference variable:clm_hdm:hdm",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM human population density · Population density, people per land area",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_hdm&variable=hdm",
+      "keywords": [
+        "Human activity",
+        "clm_hdm",
+        "feature",
+        "hdm",
+        "ind/km2",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp460",
+        "ssp585"
+      ],
+      "description": "Population density (people per land area, CLM fire forcing)",
+      "content_hash": "e1899e965c0e017b1c795ac111bd25ce8567743bc4f73cb7aa419d048283f3fc"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:AREA",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · area",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=AREA",
+      "keywords": [
+        "AREA",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "km^2",
+        "ssp245"
+      ],
+      "description": "Gridcell area (static; broadcast to time in prep)",
+      "content_hash": "026dced376e65cc68d3c6771db95a74f69c7902e81f81c43d9b376bd99f3e774"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:FERTNITRO_CFT_component_0",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · nitrogen fertilizer for each crop · cft index 0",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=FERTNITRO_CFT_component_0",
+      "keywords": [
+        "FERTNITRO_CFT_component_0",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "gN/m2/yr",
+        "ssp245"
+      ],
+      "content_hash": "bcb398ec307769b6b3db341e6657461e0977f186de85300494914494ec6a0a98"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:GRAZING",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · grazing of herbacous pfts",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=GRAZING",
+      "keywords": [
+        "GRAZING",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "gC/m2/yr",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Grazing on grassland",
+      "content_hash": "5dc3cbda1e23725969ffa409126678ef00d7893fbdfcb7a8c6c59e1e9459b6ff"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:HARVEST_SH1",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · harvest from secondary mature-forest",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=HARVEST_SH1",
+      "keywords": [
+        "HARVEST_SH1",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "gC/m2/yr",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Harvest of secondary mature forest",
+      "content_hash": "ee388b6d916274cd21b4af3a104f4f9c94a6da5442032105b8c97cf2921f27d2"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:HARVEST_SH2",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · harvest from secondary young-forest",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=HARVEST_SH2",
+      "keywords": [
+        "HARVEST_SH2",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "gC/m2/yr",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Harvest of secondary young forest",
+      "content_hash": "b3212b6e0137c996262ff57bc0bd65b3f16c7053cf5dd20af7080cca147f2437"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:HARVEST_SH3",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · harvest from secondary non-forest",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=HARVEST_SH3",
+      "keywords": [
+        "HARVEST_SH3",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "gC/m2/yr",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Harvest of secondary non-forest",
+      "content_hash": "255cae6e79f04985f354ae7ed862635fac405042a0bf4438f25e44b249f28b5d"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:HARVEST_VH1",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · harvest from primary forest",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=HARVEST_VH1",
+      "keywords": [
+        "HARVEST_VH1",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "gC/m2/yr",
+        "ssp245"
+      ],
+      "description": "Harvest of primary forest",
+      "content_hash": "466fdf77767cf340273f036d264f42825009fe011439913d594eee7dd35d4cb6"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:HARVEST_VH2",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · harvest from primary non-forest",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=HARVEST_VH2",
+      "keywords": [
+        "HARVEST_VH2",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "gC/m2/yr",
+        "ssp245"
+      ],
+      "description": "Harvest of primary non-forest",
+      "content_hash": "25e61f2b2ba3f9439e7f4f2191e5448348f94aa0b9f2a83e17eeb30f2de1ade8"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:HARVEST_prim",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · harvest from primary vegetation (VH1+VH2)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=HARVEST_prim",
+      "keywords": [
+        "HARVEST_prim",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "gC/m2/yr",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Primary harvest VH1+VH2",
+      "content_hash": "6ebbab249c7281136d2f3a35abf385dc82247c14bdb2a2fae8430113f3221084"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:LANDFRAC_PFT",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · land fraction from pft dataset",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=LANDFRAC_PFT",
+      "keywords": [
+        "LANDFRAC_PFT",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "ssp245",
+        "unitless"
+      ],
+      "description": "Land fraction on PFT grid (static; broadcast to time in prep)",
+      "content_hash": "14e2de050b4dcf91ac07caec6f0472439339b1329d57d4f470d5fe973aaf3b6e"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PCT_CFT_component_0",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · percent crop functional type on the crop landunit (% of landunit) · cft index 0",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PCT_CFT_component_0",
+      "keywords": [
+        "Land use",
+        "PCT_CFT_component_0",
+        "clm_luh2",
+        "feature",
+        "ssp245",
+        "unitless"
+      ],
+      "content_hash": "a6fb111619beab486fa31f27d81d8e29bb61a733aa7e28e6f60a20e7303ea3d3"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PCT_CROP",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · total percent crop landunit",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PCT_CROP",
+      "keywords": [
+        "Land use",
+        "PCT_CROP",
+        "clm_luh2",
+        "feature",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585",
+        "unitless"
+      ],
+      "description": "Total crop landunit fraction",
+      "content_hash": "12a11cd8ecab68b6bec9145fd87fdc6ec227067bb62ecb557e3988a4b25573b9"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PCT_NAT_PFT_12",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · Natural vegetation PFT 12 (% of natural landunit)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PCT_NAT_PFT_12",
+      "keywords": [
+        "%",
+        "Land use",
+        "PCT_NAT_PFT_12",
+        "clm_luh2",
+        "feature",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Native PCT_NAT_PFT channel 12 (% of natural landunit)",
+      "content_hash": "35cf82d3b52f796cf460b78ace3859987c4b3bbc85f67e135dff757f349093c2"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PCT_NAT_PFT_13",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · Natural vegetation PFT 13 (% of natural landunit)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PCT_NAT_PFT_13",
+      "keywords": [
+        "%",
+        "Land use",
+        "PCT_NAT_PFT_13",
+        "clm_luh2",
+        "feature",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Native PCT_NAT_PFT channel 13 (% of natural landunit)",
+      "content_hash": "0c28d89a75d4ec679796087b7f58712ad699b39efb91dbcd7d17ec0da1618998"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PCT_NAT_PFT_14",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · Natural vegetation PFT 14 (% of natural landunit)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PCT_NAT_PFT_14",
+      "keywords": [
+        "%",
+        "Land use",
+        "PCT_NAT_PFT_14",
+        "clm_luh2",
+        "feature",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Native PCT_NAT_PFT channel 14 (% of natural landunit)",
+      "content_hash": "92550721587c5b47f1895be44742867e7832732729e9e95f736422e2df098b00"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PCT_NAT_PFT_3",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · Natural vegetation PFT 3 (% of natural landunit)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PCT_NAT_PFT_3",
+      "keywords": [
+        "%",
+        "Land use",
+        "PCT_NAT_PFT_3",
+        "clm_luh2",
+        "feature",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Native PCT_NAT_PFT channel 3 (% of natural landunit)",
+      "content_hash": "eaeaaa1035b210bfcc2e3d91d3a21312357fc3b1ee1a0ec7aa7cb23b4ed1316c"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PCT_NAT_PFT_9",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · Natural vegetation PFT 9 (% of natural landunit)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PCT_NAT_PFT_9",
+      "keywords": [
+        "%",
+        "Land use",
+        "PCT_NAT_PFT_9",
+        "clm_luh2",
+        "feature",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Native PCT_NAT_PFT channel 9 (% of natural landunit)",
+      "content_hash": "fbe38a798c853ca1718c50e269c65712eed137c71cfd9100b74a23b493df8a29"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PCT_NAT_PFT_component_0",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · percent plant functional type on the natural veg landunit (% of landunit) · natpft index 0",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PCT_NAT_PFT_component_0",
+      "keywords": [
+        "Land use",
+        "PCT_NAT_PFT_component_0",
+        "clm_luh2",
+        "feature",
+        "ssp245",
+        "unitless"
+      ],
+      "content_hash": "2ac98251651e660c072c838bcb0fa137598c734d467afc8f59419809ca6a35bb"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:PFTDATA_MASK",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · land mask from pft dataset, indicative of real/fake points",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=PFTDATA_MASK",
+      "keywords": [
+        "Land use",
+        "PFTDATA_MASK",
+        "clm_luh2",
+        "feature",
+        "ssp245",
+        "unitless"
+      ],
+      "description": "Valid gridcell mask (static; broadcast to time in prep)",
+      "content_hash": "59838bbf185717e979120eb527f6b09e2a1654d20a667991e9f7021be1ab6ab1"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:UNREPRESENTED_CFT_LULCC_component_0",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · unrepresented crop gross LULCC transitions · cft index 0",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=UNREPRESENTED_CFT_LULCC_component_0",
+      "keywords": [
+        "Land use",
+        "UNREPRESENTED_CFT_LULCC_component_0",
+        "clm_luh2",
+        "feature",
+        "ssp245",
+        "unitless"
+      ],
+      "content_hash": "e87feda9de4272e06d00240a489f9c4817bbff6a79412b371656ba62612ba5dc"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:UNREPRESENTED_PFT_LULCC_component_0",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · unrepresented PFT gross LULCC transitions · natpft index 0",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=UNREPRESENTED_PFT_LULCC_component_0",
+      "keywords": [
+        "Land use",
+        "UNREPRESENTED_PFT_LULCC_component_0",
+        "clm_luh2",
+        "feature",
+        "ssp245",
+        "unitless"
+      ],
+      "content_hash": "7238adba7acbbac7b601ebdf9da1b4237b03cb4ac22873df8f0d0860cb199a35"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:frac_forest",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · grid-cell forest fraction",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=frac_forest",
+      "keywords": [
+        "1",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "frac_forest",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Grid-cell forest fraction; LANDFRAC_PFT x (1-PCT_CROP/100) x PCT_NAT_PFT (PFT 1-8)",
+      "content_hash": "06ea4934d8117e08b19a42ad0298c76766b71c1298b3a158d0b70ccc02477915"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:frac_grass",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · grid-cell grass fraction",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=frac_grass",
+      "keywords": [
+        "1",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "frac_grass",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Grid-cell grass fraction; LANDFRAC_PFT x (1-PCT_CROP/100) x PCT_NAT_PFT (PFT 12-14)",
+      "content_hash": "893bd28a7b42823a2d6dc2037103f95b0b16bd672010cd172c24208999df88bc"
+    },
+    {
+      "id": "mlhub:inference variable:clm_luh2:frac_shrub",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CLM LUH2 land use · grid-cell shrub fraction",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=clm_luh2&variable=frac_shrub",
+      "keywords": [
+        "1",
+        "Land use",
+        "clm_luh2",
+        "feature",
+        "frac_shrub",
+        "ssp126",
+        "ssp245",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Grid-cell shrub fraction; LANDFRAC_PFT x (1-PCT_CROP/100) x PCT_NAT_PFT (PFT 9-11)",
+      "content_hash": "fbdda32e48af8f03674a2736e39d088420f6c57c2d77cbb0f3a9e05318c37e51"
+    },
+    {
+      "id": "mlhub:inference variable:cruts:HI",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CRU TS 4.08 climate · HI",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cruts&variable=HI",
+      "keywords": [
+        "1",
+        "Climate",
+        "HI",
+        "cruts",
+        "feature"
+      ],
+      "description": "Humidity index",
+      "content_hash": "dfe6c6891cb4c35ecb55af1e99c075171be02ce2609c7723e57fb105085c1629"
+    },
+    {
+      "id": "mlhub:inference variable:cruts:MAP",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CRU TS 4.08 climate · precipitation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cruts&variable=MAP",
+      "keywords": [
+        "Climate",
+        "MAP",
+        "cruts",
+        "feature",
+        "mm/year"
+      ],
+      "description": "Mean annual precipitation",
+      "content_hash": "4c709decac53ccd9b22182ccebff377564c7488c9458e659686d3540d14bd017"
+    },
+    {
+      "id": "mlhub:inference variable:cruts:MAPET",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CRU TS 4.08 climate · MAPET",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cruts&variable=MAPET",
+      "keywords": [
+        "Climate",
+        "MAPET",
+        "cruts",
+        "feature",
+        "mm/year"
+      ],
+      "description": "Mean annual PET",
+      "content_hash": "d9e37dbd16e4308868500e5dc8ecf5b12b2d3450ca49e1d0c811cdc20315ea9e"
+    },
+    {
+      "id": "mlhub:inference variable:cruts:MAT",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CRU TS 4.08 climate · near-surface temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cruts&variable=MAT",
+      "keywords": [
+        "Climate",
+        "MAT",
+        "cruts",
+        "degrees Celsius",
+        "feature"
+      ],
+      "description": "Mean annual temperature",
+      "content_hash": "3569bc5de196e1d0a94b883c65045e4006464984145b764a9c278bb49320df1f"
+    },
+    {
+      "id": "mlhub:inference variable:cruts:pet",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CRU TS 4.08 climate · potential evapotranspiration",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cruts&variable=pet",
+      "keywords": [
+        "Climate",
+        "cruts",
+        "feature",
+        "mm/day",
+        "pet"
+      ],
+      "description": "Potential evapotranspiration",
+      "content_hash": "0abde445c968551415dd0abdeae76a73abafc8611c31ddadc08b7883c7688815"
+    },
+    {
+      "id": "mlhub:inference variable:cruts:pre",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CRU TS 4.08 climate · precipitation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cruts&variable=pre",
+      "keywords": [
+        "Climate",
+        "cruts",
+        "feature",
+        "mm/month",
+        "pre"
+      ],
+      "description": "Precipitation",
+      "content_hash": "86dceef6ed03894925cd587b28f8bf39c45de3088b82592c2a582524172f3814"
+    },
+    {
+      "id": "mlhub:inference variable:cruts:tmp",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CRU TS 4.08 climate · near-surface temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cruts&variable=tmp",
+      "keywords": [
+        "Climate",
+        "cruts",
+        "degrees Celsius",
+        "feature",
+        "tmp"
+      ],
+      "description": "Mean temperature",
+      "content_hash": "bc5ee18d7975b3e5335581bca9118db6459a0048744456c24cec3690ec147dba"
+    },
+    {
+      "id": "mlhub:inference variable:era5:blh",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · Boundary layer height",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=blh",
+      "keywords": [
+        "Climate",
+        "blh",
+        "era5",
+        "feature",
+        "m"
+      ],
+      "description": "Boundary layer height",
+      "content_hash": "45c0f6dd0cf1154caca0dbcc1dfcb988e6daeea8d9877a399924b88165174e0c"
+    },
+    {
+      "id": "mlhub:inference variable:era5:d2m",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · 2 metre dewpoint temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=d2m",
+      "keywords": [
+        "Climate",
+        "K",
+        "d2m",
+        "era5",
+        "feature"
+      ],
+      "description": "2 m dewpoint temperature",
+      "content_hash": "b822b974d2e870ad0907b2edc3514dc5934ab100d0f9bbe545cd353e23f93a60"
+    },
+    {
+      "id": "mlhub:inference variable:era5:pev",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · Potential evaporation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=pev",
+      "keywords": [
+        "Climate",
+        "era5",
+        "feature",
+        "m",
+        "pev"
+      ],
+      "description": "Potential evaporation (ERA5 avgad stream)",
+      "content_hash": "2e939f4c9d71aea1c3150b32bb3d951a03dd4b33460c85a29d7ed9646936b720"
+    },
+    {
+      "id": "mlhub:inference variable:era5:prep",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · Monthly total precipitation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=prep",
+      "keywords": [
+        "Climate",
+        "era5",
+        "feature",
+        "mm/month",
+        "prep"
+      ],
+      "description": "Monthly precipitation total (derived from tp)",
+      "content_hash": "b42d0daef26cb059bffb42d11f6ec9e1a7a65e0f652bc67ed631eb1bd69cdc0f"
+    },
+    {
+      "id": "mlhub:inference variable:era5:sp",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · Surface pressure",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=sp",
+      "keywords": [
+        "Climate",
+        "Pa",
+        "era5",
+        "feature",
+        "sp"
+      ],
+      "description": "Surface pressure",
+      "content_hash": "ea495a09f9353a9a6e5b41d4878e5e33238a6f3b612380c63903240367630c4b"
+    },
+    {
+      "id": "mlhub:inference variable:era5:t2m",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · 2 metre temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=t2m",
+      "keywords": [
+        "Climate",
+        "K",
+        "era5",
+        "feature",
+        "t2m"
+      ],
+      "description": "2 m air temperature",
+      "content_hash": "918c9dcb7aee4918a12ec51b9e71b253c9c707a6bc8a522bd2817178e3fa060e"
+    },
+    {
+      "id": "mlhub:inference variable:era5:tcw",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · Total column water",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=tcw",
+      "keywords": [
+        "Climate",
+        "era5",
+        "feature",
+        "kg m**-2",
+        "tcw"
+      ],
+      "description": "Total column water",
+      "content_hash": "5ffa5fad376339eab7f3acc4b577cd9976fd1a9ded45ee8c7842b0b7b4e3814d"
+    },
+    {
+      "id": "mlhub:inference variable:era5:tcwv",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · Total column vertically-integrated water vapour",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=tcwv",
+      "keywords": [
+        "Climate",
+        "era5",
+        "feature",
+        "kg m**-2",
+        "tcwv"
+      ],
+      "description": "Total column water vapour",
+      "content_hash": "92f266012d875270c2120f486d7ffc8967fa034bca435da5eb0702348bd00cbd"
+    },
+    {
+      "id": "mlhub:inference variable:era5:tp",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · Total precipitation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=tp",
+      "keywords": [
+        "Climate",
+        "era5",
+        "feature",
+        "m",
+        "tp"
+      ],
+      "description": "Total precipitation (ERA5 avgad stream)",
+      "content_hash": "2e161b6902f1ba081e11c72ab78167b74544b6976d1fc3ec0d93bcb1f1513db5"
+    },
+    {
+      "id": "mlhub:inference variable:era5:u10",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · 10 metre U wind component",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=u10",
+      "keywords": [
+        "Climate",
+        "era5",
+        "feature",
+        "m s**-1",
+        "u10"
+      ],
+      "description": "10 m u-wind component",
+      "content_hash": "d5172994319190c8abf58f5556b7dcaaecfaa86bae6f9e6fd6e52756c074cf6d"
+    },
+    {
+      "id": "mlhub:inference variable:era5:v10",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5 reanalysis · 10 metre V wind component",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5&variable=v10",
+      "keywords": [
+        "Climate",
+        "era5",
+        "feature",
+        "m s**-1",
+        "v10"
+      ],
+      "description": "10 m v-wind component",
+      "content_hash": "6f90da4bc44fbfb4dd925b94a0de3a94367ae7da86dc8fc31b324d0a105ea607"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:d2m",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · 2 metre dewpoint temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=d2m",
+      "keywords": [
+        "Climate",
+        "K",
+        "d2m",
+        "era5_land",
+        "feature"
+      ],
+      "description": "2 m dewpoint temperature",
+      "content_hash": "9a128209b98c7906ab747409bebc1c9797299c0bb8df5ab3cb91d8cf4ee5d132"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:e",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · Evaporation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=e",
+      "keywords": [
+        "Climate",
+        "e",
+        "era5_land",
+        "feature",
+        "m of water equivalent"
+      ],
+      "description": "Actual evaporation",
+      "content_hash": "6494e9f0ccba0fa1cb1efa00d1f9f5224df66cc22668f981e752005ae2e535f8"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:pev",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · Potential evaporation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=pev",
+      "keywords": [
+        "Climate",
+        "era5_land",
+        "feature",
+        "m",
+        "pev"
+      ],
+      "description": "Potential evaporation",
+      "content_hash": "f6e6852961af587d6fdf649a84ca05b1f44156fc68040edf356adffc09ae829f"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:prep",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · Monthly total precipitation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=prep",
+      "keywords": [
+        "Climate",
+        "era5_land",
+        "feature",
+        "mm/month",
+        "prep"
+      ],
+      "description": "Monthly precipitation total (derived from tp)",
+      "content_hash": "3216e0701385b6b6f7e1ea78f34437f4d0c5d35c9cfa0ae013c0ea689c674496"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:skt",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · Skin temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=skt",
+      "keywords": [
+        "Climate",
+        "K",
+        "era5_land",
+        "feature",
+        "skt"
+      ],
+      "description": "Skin temperature",
+      "content_hash": "e19a03b807ad9ca706abf3aebde1ef9f72a6df72935d668d2cfeece08122b971"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:sp",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · Surface pressure",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=sp",
+      "keywords": [
+        "Climate",
+        "Pa",
+        "era5_land",
+        "feature",
+        "sp"
+      ],
+      "description": "Surface pressure",
+      "content_hash": "aa9ff0febe04a7f914833b824515471948153ac2015ba92feb745ef3093ee5db"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:t2m",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · 2 metre temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=t2m",
+      "keywords": [
+        "Climate",
+        "K",
+        "era5_land",
+        "feature",
+        "t2m"
+      ],
+      "description": "2 m air temperature",
+      "content_hash": "192d56f22d71f9aaebc336e1877f54e78a07de976fa007d1e4a2cf457c18c907"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:tp",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · Total precipitation",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=tp",
+      "keywords": [
+        "Climate",
+        "era5_land",
+        "feature",
+        "m",
+        "tp"
+      ],
+      "description": "Total precipitation",
+      "content_hash": "60ea3cd81f8b232a5d2ca5d0a84577a02669e62fce20beeddd44e3b2eea41371"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:u10",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · 10 metre U wind component",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=u10",
+      "keywords": [
+        "Climate",
+        "era5_land",
+        "feature",
+        "m s**-1",
+        "u10"
+      ],
+      "description": "10 m u-wind",
+      "content_hash": "62b1fd50d455c8026f70ff7dd580e0722435e59793286cbc7474d12b913a95a9"
+    },
+    {
+      "id": "mlhub:inference variable:era5_land:v10",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "ERA5-Land reanalysis · 10 metre V wind component",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=era5_land&variable=v10",
+      "keywords": [
+        "Climate",
+        "era5_land",
+        "feature",
+        "m s**-1",
+        "v10"
+      ],
+      "description": "10 m v-wind",
+      "content_hash": "d764b719c74d215807d0805958b1225ceea5d6d698313167171e750fb5795dba"
+    },
+    {
+      "id": "mlhub:inference variable:firefuel:DFMC_Foliage",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "firefuel · Dead foliage fuel moisture content",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=firefuel&variable=DFMC_Foliage",
+      "keywords": [
+        "DFMC_Foliage",
+        "Other",
+        "feature",
+        "firefuel",
+        "native units unspecified"
+      ],
+      "description": "Dead foliage fuel moisture content",
+      "content_hash": "aed44433ed62cf1aa389aecb2ad16e2db9449ece87a58cd903e06b79d2225c41"
+    },
+    {
+      "id": "mlhub:inference variable:firefuel:DFMC_Wood",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "firefuel · Dead wood fuel moisture content",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=firefuel&variable=DFMC_Wood",
+      "keywords": [
+        "DFMC_Wood",
+        "Other",
+        "feature",
+        "firefuel",
+        "native units unspecified"
+      ],
+      "description": "Dead wood fuel moisture content",
+      "content_hash": "53d03615e994d852a46e85acfe65d3c080cb0bb0c456a2396557d009f676401e"
+    },
+    {
+      "id": "mlhub:inference variable:firefuel:LFMC",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "firefuel · Live fuel moisture content",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=firefuel&variable=LFMC",
+      "keywords": [
+        "%",
+        "LFMC",
+        "Other",
+        "feature",
+        "firefuel"
+      ],
+      "description": "Live fuel moisture content",
+      "content_hash": "c58ac1d4b6bdf01760847dcb2e78600cbbf7ea2fc257542aef75cf508abc6d72"
+    },
+    {
+      "id": "mlhub:inference variable:gdp_ec:EC",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GDP and electricity consumption · EC",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gdp_ec&variable=EC",
+      "keywords": [
+        "EC",
+        "Human activity",
+        "dimensionless",
+        "feature",
+        "gdp_ec"
+      ],
+      "description": "Electricity consumption (file name Electricity_consumption, alias EC)",
+      "content_hash": "08abac80b95e8b0b8152b3214b5befb674c8a101f3c90709d405891149688c82"
+    },
+    {
+      "id": "mlhub:inference variable:gdp_ec:GDP",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GDP and electricity consumption · GDP",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gdp_ec&variable=GDP",
+      "keywords": [
+        "GDP",
+        "Human activity",
+        "dimensionless",
+        "feature",
+        "gdp_ec"
+      ],
+      "description": "Gross domestic product (gridded annual)",
+      "content_hash": "38bba66b82b527915e0b602a892b7155ae20c78a1a8d94742002ea210ee90c55"
+    },
+    {
+      "id": "mlhub:inference variable:gfas_emissions:gfas_ch4",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfas emissions · ch4fire monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfas_emissions&variable=gfas_ch4",
+      "keywords": [
+        "Other",
+        "gfas_ch4",
+        "gfas_emissions",
+        "kg",
+        "label"
+      ],
+      "description": "GFAS fire CH4 mass per cell and month",
+      "content_hash": "40f55b7986f19074c9614cac9b919226ff1d644316951ee66d32c88101c79b24"
+    },
+    {
+      "id": "mlhub:inference variable:gfas_emissions:gfas_ch4_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfas emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfas_emissions&variable=gfas_ch4_days_available",
+      "keywords": [
+        "Other",
+        "gfas_ch4_days_available",
+        "gfas_emissions",
+        "label"
+      ],
+      "content_hash": "83e718fe56b99be532db52f5b07016792d48ecda7752047686e311476875546b"
+    },
+    {
+      "id": "mlhub:inference variable:gfas_emissions:gfas_co",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfas emissions · cofire monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfas_emissions&variable=gfas_co",
+      "keywords": [
+        "Other",
+        "gfas_co",
+        "gfas_emissions",
+        "kg",
+        "label"
+      ],
+      "description": "GFAS fire CO mass per cell and month",
+      "content_hash": "ec951d308b1eaa8898b1bc1de131b35e804e67ba2d29b2fe818970583a8b659a"
+    },
+    {
+      "id": "mlhub:inference variable:gfas_emissions:gfas_co2",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfas emissions · co2fire monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfas_emissions&variable=gfas_co2",
+      "keywords": [
+        "Other",
+        "gfas_co2",
+        "gfas_emissions",
+        "kg",
+        "label"
+      ],
+      "description": "GFAS fire CO2 mass per cell and month",
+      "content_hash": "f71ca23d8f5e344cf607cff73fa5d304e36817000f000e6115185a833b9c708e"
+    },
+    {
+      "id": "mlhub:inference variable:gfas_emissions:gfas_co2_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfas emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfas_emissions&variable=gfas_co2_days_available",
+      "keywords": [
+        "Other",
+        "gfas_co2_days_available",
+        "gfas_emissions",
+        "label"
+      ],
+      "content_hash": "9552cd07dc48b940a8a0eb4488e8b3f005f86ba7ac9d68c2c4c17f5d0dc920cf"
+    },
+    {
+      "id": "mlhub:inference variable:gfas_emissions:gfas_co_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfas emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfas_emissions&variable=gfas_co_days_available",
+      "keywords": [
+        "Other",
+        "gfas_co_days_available",
+        "gfas_emissions",
+        "label"
+      ],
+      "content_hash": "060da3d22edd8411d7077fefc0253f4b7b69a5e19e25125e2e02c3101b072eb6"
+    },
+    {
+      "id": "mlhub:inference variable:gfed4:burned_area",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GFED4.1s burned area · GFED4s burned area (fraction × grid cell area)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed4&variable=burned_area",
+      "keywords": [
+        "Fire",
+        "burned_area",
+        "gfed4",
+        "label",
+        "m^2"
+      ],
+      "description": "Monthly burned area (burned_fraction x grid_cell_area)",
+      "content_hash": "bc72fcc674200faedd22508c7d81f6e83c096020ab724c6075f05cd2d2814987"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5:available_days_global_ba_mha",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GFED5 burned area · Official global BA summed over the available days of incomplete months",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5&variable=available_days_global_ba_mha",
+      "keywords": [
+        "Fire",
+        "Mha",
+        "available_days_global_ba_mha",
+        "gfed5",
+        "label"
+      ],
+      "content_hash": "012537a3dec23a7813ae803b5bc7dc7d0d0bcb8c023001e4f2c38fe5ae95a4ad"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5:burned_area_gfed5",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GFED5 burned area · Monthly total burned area in each grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5&variable=burned_area_gfed5",
+      "keywords": [
+        "Fire",
+        "burned_area_gfed5",
+        "gfed5",
+        "label",
+        "m2"
+      ],
+      "description": "Total monthly burned area per grid cell, conservatively regridded",
+      "content_hash": "f287f3434d97ff324c435f6df784a9dc14d23954dec4c7f6fb73da55922dc283"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5:gfed5_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GFED5 burned area · Number of days represented by the available source data",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5&variable=gfed5_days_available",
+      "keywords": [
+        "Fire",
+        "gfed5",
+        "gfed5_days_available",
+        "label"
+      ],
+      "content_hash": "4fe7e22de6e65fda49e877e91acf39d9e0f6ffdeadc874e2c9481999d0825821"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5:gfed5_product",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GFED5 burned area · gfed5_product",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5&variable=gfed5_product",
+      "keywords": [
+        "Fire",
+        "gfed5",
+        "gfed5_product",
+        "label"
+      ],
+      "content_hash": "7ac26bbfe4bfad2ffbc790b4da943e23e9682065aac985c86eb3a065d081b00f"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5:official_global_ba_mha",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GFED5 burned area · Official global BA on the native grid for complete months",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5&variable=official_global_ba_mha",
+      "keywords": [
+        "Fire",
+        "Mha",
+        "gfed5",
+        "label",
+        "official_global_ba_mha"
+      ],
+      "content_hash": "df981b55a204f6116ca45df58bec292f2608a6bd3bdfd154ed2519355b0bced8"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_c",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · C monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_c",
+      "keywords": [
+        "Other",
+        "gfed5_c",
+        "gfed5_emissions",
+        "kg",
+        "label"
+      ],
+      "description": "Fire carbon mass per cell and month",
+      "content_hash": "9b0af893742af6520b1aa60ab1f7223f0e3018e75e6bf9545c78ec3f0dbd99c4"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_c_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_c_days_available",
+      "keywords": [
+        "Other",
+        "gfed5_c_days_available",
+        "gfed5_emissions",
+        "label"
+      ],
+      "content_hash": "74d0ce68364987c1d8e1aa8ca04c4ce752660f293cf5f9f6295acca963c65639"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_ch4",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · CH4 monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_ch4",
+      "keywords": [
+        "Other",
+        "gfed5_ch4",
+        "gfed5_emissions",
+        "kg",
+        "label"
+      ],
+      "description": "Fire CH4 mass per cell and month",
+      "content_hash": "ca4549351d0d305c786ccd0bc8204f58f80a7658283279893e5b5d0b440d289b"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_ch4_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_ch4_days_available",
+      "keywords": [
+        "Other",
+        "gfed5_ch4_days_available",
+        "gfed5_emissions",
+        "label"
+      ],
+      "content_hash": "88e0f97246288f5ea07a3ff5cfd6c598e50662ae351cdef52eddb8908dc6d02b"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_co",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · CO monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_co",
+      "keywords": [
+        "Other",
+        "gfed5_co",
+        "gfed5_emissions",
+        "kg",
+        "label"
+      ],
+      "description": "Fire CO mass per cell and month",
+      "content_hash": "629ed5e03e02fb4b390a8f76f164d9e4bf8277eefb2f4325c98ed1b041306c71"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_co2",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · CO2 monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_co2",
+      "keywords": [
+        "Other",
+        "gfed5_co2",
+        "gfed5_emissions",
+        "kg",
+        "label"
+      ],
+      "description": "Fire CO2 mass per cell and month",
+      "content_hash": "f6d5f66c4b4165149b89752f5a4ed179b1e9a05b6d487848f26ed10e87fc87c9"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_co2_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_co2_days_available",
+      "keywords": [
+        "Other",
+        "gfed5_co2_days_available",
+        "gfed5_emissions",
+        "label"
+      ],
+      "content_hash": "1f6fb62ca337547e20e60c9135e210ac2f6f28f499054f443de80513bea8dbfe"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_co_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_co_days_available",
+      "keywords": [
+        "Other",
+        "gfed5_co_days_available",
+        "gfed5_emissions",
+        "label"
+      ],
+      "content_hash": "bac3028f7d256996ba1c8af2c6c55e0122c7511dd53af47c4ca407d448127a11"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_n2o",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · N2O monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_n2o",
+      "keywords": [
+        "Other",
+        "gfed5_emissions",
+        "gfed5_n2o",
+        "kg",
+        "label"
+      ],
+      "description": "Fire N2O mass per cell and month",
+      "content_hash": "92a1c4b9fd2b9ef0e53260232b9372942f19ab1ec05bca9134c60ab1d6ed5c86"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_n2o_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_n2o_days_available",
+      "keywords": [
+        "Other",
+        "gfed5_emissions",
+        "gfed5_n2o_days_available",
+        "label"
+      ],
+      "content_hash": "c6cd0e1c45e43befae9165020fb8cf77c4a8bb56b466b852c35191c350637ce8"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_nh3",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · NH3 monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_nh3",
+      "keywords": [
+        "Other",
+        "gfed5_emissions",
+        "gfed5_nh3",
+        "kg",
+        "label"
+      ],
+      "description": "Fire NH3 mass per cell and month",
+      "content_hash": "59815cb9224c79ee99e92f4734c9eccc99428d9f4374e58f7c32eabf9ea69f0c"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_nh3_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_nh3_days_available",
+      "keywords": [
+        "Other",
+        "gfed5_emissions",
+        "gfed5_nh3_days_available",
+        "label"
+      ],
+      "content_hash": "6fe6e425f430845d15054018d55b63b75e1ac0c3e18c03dce65e13d1912c786b"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_nox",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · NOx monthly emitted mass per grid cell",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_nox",
+      "keywords": [
+        "Other",
+        "gfed5_emissions",
+        "gfed5_nox",
+        "kg",
+        "label"
+      ],
+      "description": "Fire NOx mass as NO per cell and month",
+      "content_hash": "3debd6766613b1941747a791ffe949f2dc335ad9abd263bea6feb024b0bf7bb5"
+    },
+    {
+      "id": "mlhub:inference variable:gfed5_emissions:gfed5_nox_days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "gfed5 emissions · Source calendar days represented in each output month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gfed5_emissions&variable=gfed5_nox_days_available",
+      "keywords": [
+        "Other",
+        "gfed5_emissions",
+        "gfed5_nox_days_available",
+        "label"
+      ],
+      "content_hash": "1f3ed20597cf923a9d73487bade4ea6a64fd8c235f143396dd833b7d703d3fac"
+    },
+    {
+      "id": "mlhub:inference variable:gleam:E",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GLEAM v4.1a land water cycle · Monthly actual land evaporation amount",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gleam&variable=E",
+      "keywords": [
+        "E",
+        "Hydrology",
+        "feature",
+        "gleam",
+        "mm"
+      ],
+      "description": "Monthly actual land evaporation amount",
+      "content_hash": "fbd4477c59a7f73621e8ec67c22e925e72e5d11601085192ae8fb418f57205d6"
+    },
+    {
+      "id": "mlhub:inference variable:gleam:S",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GLEAM v4.1a land water cycle · Evaporative stress factor",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gleam&variable=S",
+      "keywords": [
+        "1",
+        "Hydrology",
+        "S",
+        "feature",
+        "gleam"
+      ],
+      "description": "Evaporative stress factor",
+      "content_hash": "046be5b6bed34396434b6713d9d3597fa98d4faf989ba2a6234d87260a413b58"
+    },
+    {
+      "id": "mlhub:inference variable:gleam:SMrz",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GLEAM v4.1a land water cycle · Root-zone volumetric soil moisture",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gleam&variable=SMrz",
+      "keywords": [
+        "Hydrology",
+        "SMrz",
+        "feature",
+        "gleam",
+        "m3 m-3"
+      ],
+      "description": "Root-zone volumetric soil moisture",
+      "content_hash": "a7547dca6e229c02d6407d1055b7c74f4d38e2d61d448e3e19d4d37479e4e832"
+    },
+    {
+      "id": "mlhub:inference variable:gleam:SMs",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "GLEAM v4.1a land water cycle · Surface volumetric soil moisture",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=gleam&variable=SMs",
+      "keywords": [
+        "Hydrology",
+        "SMs",
+        "feature",
+        "gleam",
+        "m3 m-3"
+      ],
+      "description": "Surface volumetric soil moisture",
+      "content_hash": "ad0af4b6b09fa59c033faf3b3ca72528d5e4fc8de12a8a548847cf7bdc587dc0"
+    },
+    {
+      "id": "mlhub:inference variable:hwsd2:BD",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "HWSD2 soil properties · BD",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=hwsd2&variable=BD",
+      "keywords": [
+        "BD",
+        "Soils",
+        "feature",
+        "g/cm3",
+        "hwsd2"
+      ],
+      "description": "Bulk density 0-20 cm",
+      "content_hash": "1a03955b69da7de4436953cb8e1101ae331c731ed852701625c591915a3d37db"
+    },
+    {
+      "id": "mlhub:inference variable:hwsd2:Clay",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "HWSD2 soil properties · Clay",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=hwsd2&variable=Clay",
+      "keywords": [
+        "Clay",
+        "Soils",
+        "feature",
+        "hwsd2",
+        "percent"
+      ],
+      "description": "Clay content 0-20 cm",
+      "content_hash": "a6ed6ab06798523e16bc2f6e77ca4554951dd01c682b1d9343d9b16cbb3a05bf"
+    },
+    {
+      "id": "mlhub:inference variable:hwsd2:SOC",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "HWSD2 soil properties · SOC",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=hwsd2&variable=SOC",
+      "keywords": [
+        "SOC",
+        "Soils",
+        "feature",
+        "hwsd2",
+        "percent"
+      ],
+      "description": "Organic carbon 0-20 cm",
+      "content_hash": "9cfb1fc18a6b3733f7c201e423a4e1480d519f916c6704075322734c1bb822aa"
+    },
+    {
+      "id": "mlhub:inference variable:hwsd2:pH",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "HWSD2 soil properties · pH",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=hwsd2&variable=pH",
+      "keywords": [
+        "Soils",
+        "dimensionless",
+        "feature",
+        "hwsd2",
+        "pH"
+      ],
+      "description": "pH in water 0-20 cm",
+      "content_hash": "5817053a56c58002545efa0216515002431883dd5dcee7c2aac52485d9f8012a"
+    },
+    {
+      "id": "mlhub:inference variable:isimip3b_met:hurs",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "isimip3b met · Near-Surface Relative Humidity",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=isimip3b_met&variable=hurs",
+      "keywords": [
+        "%",
+        "Other",
+        "feature",
+        "hurs",
+        "isimip3b_met",
+        "ssp126"
+      ],
+      "description": "Monthly mean near-surface relative humidity",
+      "content_hash": "3a8d1d1711a22a7dceda59b9375d297ccb266976d4e907cf9d5aacf16b6079b9"
+    },
+    {
+      "id": "mlhub:inference variable:isimip3b_met:pr",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "isimip3b met · pr",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=isimip3b_met&variable=pr",
+      "keywords": [
+        "Other",
+        "feature",
+        "isimip3b_met",
+        "kg m-2 s-1",
+        "pr",
+        "ssp126",
+        "ssp370",
+        "ssp585"
+      ],
+      "description": "Monthly mean precipitation flux",
+      "content_hash": "8fe139eabb4be4cf77bc4c58418a72a5341e045fd4a012759690e305ca8edd6b"
+    },
+    {
+      "id": "mlhub:inference variable:isimip3b_met:sfcWind",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "isimip3b met · Near-Surface Wind Speed",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=isimip3b_met&variable=sfcWind",
+      "keywords": [
+        "Other",
+        "feature",
+        "isimip3b_met",
+        "m s-1",
+        "sfcWind",
+        "ssp126"
+      ],
+      "description": "Monthly mean near-surface wind speed (ISIMIP3b sfcwind)",
+      "content_hash": "6b2f4a0987bae83c247a3082553d874fb9687302f1079a31ee1ac061b71a1b49"
+    },
+    {
+      "id": "mlhub:inference variable:isimip3b_met:tas",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "isimip3b met · tas",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=isimip3b_met&variable=tas",
+      "keywords": [
+        "K",
+        "Other",
+        "feature",
+        "isimip3b_met",
+        "ssp126",
+        "ssp370",
+        "ssp585",
+        "tas"
+      ],
+      "description": "Monthly mean near-surface air temperature",
+      "content_hash": "2939e049781b8f1ff1bb7be47639e6ad8d95b6f5863b76cc4c3724474c4f44fb"
+    },
+    {
+      "id": "mlhub:inference variable:merra2:TS",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "MERRA-2 reanalysis · MERRA-2 surface skin temperature",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=merra2&variable=TS",
+      "keywords": [
+        "Climate",
+        "K",
+        "TS",
+        "feature",
+        "merra2"
+      ],
+      "description": "Surface skin temperature",
+      "content_hash": "1d42eea63cbfd6cb956ed2d33c63733560118e3424156f83d59dc25cdde6a5a1"
+    },
+    {
+      "id": "mlhub:inference variable:merra2:days_available",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "MERRA-2 reanalysis · Number of sampled days",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=merra2&variable=days_available",
+      "keywords": [
+        "Climate",
+        "days_available",
+        "feature",
+        "merra2"
+      ],
+      "content_hash": "e6321d3eb07ab56c062fe37aa1c4b20d0da0843e33945300855227b0109e8287"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_01",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Evergreen needleleaf forests",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_01",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_01"
+      ],
+      "description": "Evergreen needleleaf forests fraction of accepted pixels",
+      "content_hash": "014ca994c6c587d2c9f6f70f3f1461306e21a33ad8055cba802b61fdd951d8f9"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_02",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Evergreen broadleaf forests",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_02",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_02"
+      ],
+      "description": "Evergreen broadleaf forests fraction of accepted pixels",
+      "content_hash": "883f21dff59beb06b0b2063ed32306e6b74a8028d385408f6122884d704b25da"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_03",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Deciduous needleleaf forests",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_03",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_03"
+      ],
+      "description": "Deciduous needleleaf forests fraction of accepted pixels",
+      "content_hash": "243b4e2307b72fa2c19c4d9af14578042418f6298fbd6be4957e086dd8a2d62d"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_04",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Deciduous broadleaf forests",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_04",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_04"
+      ],
+      "description": "Deciduous broadleaf forests fraction of accepted pixels",
+      "content_hash": "b98f58a55f7faad6c05348cb034efb746799a85a774273f5a3bf961ae0becd7d"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_05",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Mixed forests",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_05",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_05"
+      ],
+      "description": "Mixed forests fraction of accepted pixels",
+      "content_hash": "aa6d4435e79e30c4e84361eddde98934266d63cd3db1f9effcbc64836c1e0811"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_06",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Closed shrublands",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_06",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_06"
+      ],
+      "description": "Closed shrublands fraction of accepted pixels",
+      "content_hash": "b0a504dfc4487bc659bd23ad045bacae015db42368aa0ba3f8b1fb2943a530c2"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_07",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Open shrublands",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_07",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_07"
+      ],
+      "description": "Open shrublands fraction of accepted pixels",
+      "content_hash": "545f8d867b60ae9480933578a4339852b0b7f6bdbce8f07ded1add6b2e9a996d"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_08",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Woody savannas",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_08",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_08"
+      ],
+      "description": "Woody savannas fraction of accepted pixels",
+      "content_hash": "101fb588fca774eb9fdb95ff43f8fc9480260f3bf21a6727ad1b4bdf92c487a3"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_09",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Savannas",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_09",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_09"
+      ],
+      "description": "Savannas fraction of accepted pixels",
+      "content_hash": "243be3a5c74dcf693ec4c722b0dc8e8f249579f0d94ca564feed5a3339a70a75"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_10",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Grasslands",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_10",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_10"
+      ],
+      "description": "Grasslands fraction of accepted pixels",
+      "content_hash": "592f96aae37c293288aa60193ce9fb676e484388c855804096ede7d2896de93a"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_11",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Permanent wetlands",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_11",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_11"
+      ],
+      "description": "Permanent wetlands fraction of accepted pixels",
+      "content_hash": "5a6fa72f4626384fcf1dbd5c72c0a551b229ee756489a99d3ec3e8f3591de734"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_12",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Croplands",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_12",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_12"
+      ],
+      "description": "Croplands fraction of accepted pixels",
+      "content_hash": "d37f1010dde31500019abd68b11a0fcb73db54ed1f66a07ae1c376c00191e1fd"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_13",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Urban and built-up lands",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_13",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_13"
+      ],
+      "description": "Urban and built-up lands fraction of accepted pixels",
+      "content_hash": "c0e43f52bc22235185e2570419648d7a6851db857f64676154a1d0655e7a2ea6"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_14",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Cropland and natural vegetation mosaics",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_14",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_14"
+      ],
+      "description": "Cropland and natural vegetation mosaics fraction of accepted pixels",
+      "content_hash": "92f459719d0c87cd4624f7c0ce3a8e251c2bf6fcf06a04e6099f68f3c2b3de7c"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_15",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Permanent snow and ice",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_15",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_15"
+      ],
+      "description": "Permanent snow and ice fraction of accepted pixels",
+      "content_hash": "6eb8cdf80878f42d308cdcebb99445211c4198860429d433ea33621ca23535e4"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_16",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Barren",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_16",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_16"
+      ],
+      "description": "Barren lands fraction of accepted pixels",
+      "content_hash": "290ef08ec2236b123e3f6b48d50cbd1764398427cbd5f32339786e9f02453656"
+    },
+    {
+      "id": "mlhub:inference variable:modis_land_cover:modis_lc_igbp_17",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis land cover · IGBP fraction of valid classified area: Water bodies",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_land_cover&variable=modis_lc_igbp_17",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_land_cover",
+        "modis_lc_igbp_17"
+      ],
+      "description": "Water bodies fraction of accepted pixels",
+      "content_hash": "637ae441a5408e7496f8103cfec46c8460b93cee820c0f4cd7c6121cfb445181"
+    },
+    {
+      "id": "mlhub:inference variable:modis_vegetation:modis_evi",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis vegetation · Enhanced Vegetation Index",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_vegetation&variable=modis_evi",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_evi",
+        "modis_vegetation"
+      ],
+      "description": "Quality-filtered enhanced vegetation index",
+      "content_hash": "f759fa78431f522a5b585a420a46170628d2d88716c8501ae48f9be1f98b4b0d"
+    },
+    {
+      "id": "mlhub:inference variable:modis_vegetation:modis_ndvi",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "modis vegetation · Normalized Difference Vegetation Index",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=modis_vegetation&variable=modis_ndvi",
+      "keywords": [
+        "1",
+        "Other",
+        "feature",
+        "modis_ndvi",
+        "modis_vegetation"
+      ],
+      "description": "Quality-filtered normalized difference vegetation index",
+      "content_hash": "5d3358f69f97deca197d8b9f8201331a834d788cd67f4402c722f92a223e1db1"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:lat",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · lat",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=lat",
+      "keywords": [
+        "Derived",
+        "degrees_north",
+        "derived",
+        "lat",
+        "other_features"
+      ],
+      "description": "Grid latitude per cell (archive nc 变量名为 lat2d)",
+      "content_hash": "6017816d85e04e1598d6ec5ded4ab2db44bb14f3dd3fa1aa726f33786e1569f6"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:lat_cos",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · lat_cos",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=lat_cos",
+      "keywords": [
+        "1",
+        "Derived",
+        "derived",
+        "lat_cos",
+        "other_features"
+      ],
+      "description": "cos(π·lat/180) periodic latitude encoding",
+      "content_hash": "8abaa747f5507b003c78c09f2ff83aeb62d831f3f4a43ac581880ac58357344a"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:lat_sin",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · lat_sin",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=lat_sin",
+      "keywords": [
+        "1",
+        "Derived",
+        "derived",
+        "lat_sin",
+        "other_features"
+      ],
+      "description": "sin(π·lat/180) periodic latitude encoding",
+      "content_hash": "482b9ba49b183316c86443b46677c825b8a37b78ab7c01d50c791422ca09188a"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:lon",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · longitude",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=lon",
+      "keywords": [
+        "Derived",
+        "degrees_east",
+        "derived",
+        "lon",
+        "other_features"
+      ],
+      "description": "Grid longitude per cell (archive nc 变量名为 lon2d)",
+      "content_hash": "6c159002fb4b9c5948c30b9e634dc47d58baf4bf422791f6be992447ba42b4d1"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:lon_cos",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · lon_cos",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=lon_cos",
+      "keywords": [
+        "1",
+        "Derived",
+        "derived",
+        "lon_cos",
+        "other_features"
+      ],
+      "description": "cos(π·lon/180) periodic longitude encoding",
+      "content_hash": "29c686e72ea5d4479c507808e474d8e05b9c9a0993a377973a3d971494c6316a"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:lon_sin",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · lon_sin",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=lon_sin",
+      "keywords": [
+        "1",
+        "Derived",
+        "derived",
+        "lon_sin",
+        "other_features"
+      ],
+      "description": "sin(π·lon/180) periodic longitude encoding",
+      "content_hash": "c483a1bdf14444a64b9549cfb63bc6bc20f62d189cf46d1ca2409ec6c55a9bf0"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · month",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=month",
+      "keywords": [
+        "Derived",
+        "derived",
+        "dimensionless",
+        "month",
+        "other_features",
+        "ssp585"
+      ],
+      "description": "Calendar month (derived from time)",
+      "content_hash": "04bdbf32285946acf686d99d1aa0060d5c72bbced1410d136d26644f098c3def"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:month_cos",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · month_cos",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=month_cos",
+      "keywords": [
+        "1",
+        "Derived",
+        "derived",
+        "month_cos",
+        "other_features"
+      ],
+      "description": "cos(2π(month-1)/12) periodic month encoding",
+      "content_hash": "f571721a5ba8ab3f41a450f7140f542b6de0643d7bd6613d46a3b89c5113c868"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:month_sin",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · month_sin",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=month_sin",
+      "keywords": [
+        "1",
+        "Derived",
+        "derived",
+        "month_sin",
+        "other_features"
+      ],
+      "description": "sin(2π(month-1)/12) periodic month encoding",
+      "content_hash": "f35c94809929957ba3faa04ea47855a7cc856b5001f71f27b13e8bc844af0a8a"
+    },
+    {
+      "id": "mlhub:inference variable:other_features:year",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "Calendar and spatial features · year",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=other_features&variable=year",
+      "keywords": [
+        "Derived",
+        "derived",
+        "dimensionless",
+        "other_features",
+        "year"
+      ],
+      "description": "Calendar year (derived from time)",
+      "content_hash": "921e82c11ab3b71ff2d715ffef31f84488247f622233979776cbeebe69c021ea"
+    },
+    {
+      "id": "mlhub:inference variable:population:population",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "LandScan population · LandScan ambient population",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=population&variable=population",
+      "keywords": [
+        "Human activity",
+        "feature",
+        "persons per grid cell",
+        "population"
+      ],
+      "description": "LandScan ambient population per grid cell",
+      "content_hash": "c59606486a9be01a0fc1cecbf2a6409178153299a7f592174f604d48ad562a7e"
+    },
+    {
+      "id": "mlhub:inference variable:srunet_npp:npp_viirs",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "SRUNet reconstructed night lights · SRUNet reconstructed NPP-VIIRS-V2-like nighttime light",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=srunet_npp&variable=npp_viirs",
+      "keywords": [
+        "Human activity",
+        "dimensionless",
+        "feature",
+        "npp_viirs",
+        "srunet_npp"
+      ],
+      "description": "SRUNet NPP-VIIRS-V2-like nighttime light intensity",
+      "content_hash": "bc99fc8edd47911ed415bd5b2361f3f145b361c6448be81d8e19a464e53711ea"
+    },
+    {
       "id": "mlhub:task:burned-area-ssp-projection",
       "hub": "MLHub",
       "type": "Task",
@@ -25757,19 +28883,481 @@
       "description": "Reproduce the burned-area workflow using GFED4.1s, one CESM2 member, XGBoost, leave-one-year-out validation and two SSPs. The experiment notes document differences in climate inputs and bias correction from the paper."
     },
     {
+      "id": "obshub:analysis:beijing_air_quality",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Beijing hourly air quality",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=beijing_air_quality",
+      "keywords": [
+        "2023-07-14 to 2023-07-15",
+        "Hourly PM₂.₅",
+        "Hourly ozone",
+        "beijing_air_quality"
+      ],
+      "description": "Beijing monitoring station archive, beijing_all and beijing_extra.",
+      "content_hash": "c02122c6448b056472de095e11e9680c7d9cf0c59df20c2b2fcb686b8dd19039"
+    },
+    {
+      "id": "obshub:analysis:blended_tropomi_gosat_ch4",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Blended TROPOMI–GOSAT methane",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=blended_tropomi_gosat_ch4",
+      "keywords": [
+        "Bias-corrected column-average CH₄",
+        "Sampled April orbits from available years in 2018–2025",
+        "blended_tropomi_gosat_ch4"
+      ],
+      "description": "Blended TROPOMI–GOSAT Level 2 files. Dates label the orbit start day.",
+      "content_hash": "a8a77d44d08cbd96c4aa87c77800af7be7810ffe289a49a1e59bc7169671c555"
+    },
+    {
+      "id": "obshub:analysis:camx_acs_ozone_grid_hourly",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx ACS D01 grid observation inputs",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_ozone_grid_hourly",
+      "keywords": [
+        "2014-06-01 to 2014-08-31",
+        "Gridded observed ozone",
+        "camx_acs_ozone_grid_hourly"
+      ],
+      "description": "Source table: hour_obs_with_feature_d01.csv.",
+      "content_hash": "ca5e1cc6eda743cdbde3a4d2bd58c70f5717c972fcee811bdb99789fef7c8c4d"
+    },
+    {
+      "id": "obshub:analysis:camx_acs_ozone_validation",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx ACS D01 station ozone archive",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_ozone_validation",
+      "keywords": [
+        "2014-06-01 to 2014-08-31",
+        "Observed ozone",
+        "camx_acs_ozone_validation"
+      ],
+      "description": "D01 station_pairs.npz observation field, times from the corresponding grid table, and locations from stations.csv.",
+      "content_hash": "8e402a9273c2fbb46e3d997e07135b7572061834dc1dd2d5882b2230769964e7"
+    },
+    {
+      "id": "obshub:analysis:camx_acs_weather_validation",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx ACS weather station observations",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_weather_validation",
+      "keywords": [
+        "2014-06-01 to 2017-08-31",
+        "Air temperature",
+        "Relative humidity",
+        "Wind speed",
+        "camx_acs_weather_validation"
+      ],
+      "description": "Source table: paired_station_hours.csv.gz.",
+      "content_hash": "627a991fc9e9178f0a2e89c501fea0f61ca4972d472123f6a416640c5dbf97b5"
+    },
+    {
+      "id": "obshub:analysis:camx_bth_station_pairs",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "BTH D01 station observations from CAMx matchups",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_bth_station_pairs",
+      "keywords": [
+        "2014-06-01 to 2014-08-31",
+        "Observed hourly ozone",
+        "camx_bth_station_pairs"
+      ],
+      "description": "Source table: extract_site_hour_ml_obs_d01.csv.",
+      "content_hash": "166e744d7848cc76e8f61b6dbee34a2fe3b1a80a97b29e13c29031f31645da6a"
+    },
+    {
+      "id": "obshub:analysis:camx_bth_validation",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Archived BTH D01 station ozone observations",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_bth_validation",
+      "keywords": [
+        "2014-06-01 to 2023-08-31",
+        "Observed daily maximum 8-hour ozone",
+        "camx_bth_validation"
+      ],
+      "description": "Source table: mda8_d01.csv.gz.",
+      "content_hash": "a8f4902c45c06191ad0eb929a2456fb2d94fc1203c17c0fa26b4706b056af55b"
+    },
+    {
+      "id": "obshub:analysis:camx_merra2_station_training",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Station ozone archive paired with MERRA-2",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_merra2_station_training",
+      "keywords": [
+        "2014-06-01 to 2014-06-27",
+        "Observed daily maximum 8-hour ozone",
+        "camx_merra2_station_training"
+      ],
+      "description": "Source table: obs_with_met_0.625_0.5.csv.",
+      "content_hash": "3c0acea8c12c046cbcfa81d60f06d0252d3891bcc902bb4c31cd16802b25f0f6"
+    },
+    {
+      "id": "obshub:analysis:camx_modis_lai_2008",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "MODIS leaf area index for CAMx",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_modis_lai_2008",
+      "keywords": [
+        "Selected eight-day periods from the 2008 file series",
+        "Stored LAIv",
+        "camx_modis_lai_2008"
+      ],
+      "description": "Dates follow the YYYYDDD filenames. The files do not record physical units or a scale factor, and the internal year attribute differs from the filenames.",
+      "content_hash": "afbaa5c2efa0f9a6b24f2dc95bccd76865bb994ff5babc2a1ded2163a6b78ad2"
+    },
+    {
+      "id": "obshub:analysis:camx_station_metadata",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx merged China station list",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_metadata",
+      "keywords": [
+        "2,083 of 2,093 entries have valid coordinates.",
+        "Station latitude",
+        "camx_station_metadata"
+      ],
+      "description": "CAMx station reference table, china_sites_merge.csv. This archive contains station metadata.",
+      "content_hash": "3944f5d6fe85a45b219b87d7cb2b7cca701d333590455aa160c485a98edfbc9f"
+    },
+    {
+      "id": "obshub:analysis:camx_station_reference",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx national station crosswalk",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_reference",
+      "keywords": [
+        "2,016 of 2,026 entries have valid coordinates.",
+        "Station latitude",
+        "camx_station_reference"
+      ],
+      "description": "CAMx station reference table, China_sites_after_20220213.csv. This archive contains station metadata.",
+      "content_hash": "8c658ac8137c16fa192c9d3fa11d9590dd92fb81933bf0c44da5281d1a9b9303"
+    },
+    {
+      "id": "obshub:analysis:camx_station_training",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx training station observations",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_training",
+      "keywords": [
+        "2014-06-01 to 2014-06-27",
+        "Observed ozone",
+        "camx_station_training"
+      ],
+      "description": "Source table: day_sim_obs.csv.",
+      "content_hash": "932d39d86f5150a130de16c85b0934475e78c718f93e8c8496724e764cb9231d"
+    },
+    {
+      "id": "obshub:analysis:camx_yrd_station_daily",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx station daily observations",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_yrd_station_daily",
+      "keywords": [
+        "2024-05-01 to 2025-04-30",
+        "Observed daily maximum 8-hour ozone",
+        "Observed daily mean PM₂.₅",
+        "camx_yrd_station_daily"
+      ],
+      "description": "Source table: obs_with_pollution_level.csv.",
+      "content_hash": "c3f05bd477825adfe5743ad907f2e005c501af9e26f43e65201f3500d958c517"
+    },
+    {
       "id": "obshub:analysis:cnemc-2023",
       "hub": "ObsHub",
       "type": "Analysis",
-      "title": "China air quality · 2023",
+      "title": "2023 China air quality",
       "url": "../ObservationHub/docs/observations/?view=analysis&profile=cnemc-2023",
       "keywords": [
         "Fine particulate matter (PM₂.₅)",
-        "Jan–Dec 2023",
+        "Hourly CNEMC observations from 365 daily archive files in 2023",
         "Ozone (O₃)",
         "cnemc_china"
       ],
-      "description": "China National Environmental Monitoring Centre hourly station observations, summarized from the ObservationHub quality-controlled monthly station product.",
-      "content_hash": "e42ff80e3b10b456a033a50736e75d7009018a07758cacce5a7495b31b69e426"
+      "description": "China National Environmental Monitoring Centre hourly station archive. Locations come from the 2022 station list.",
+      "content_hash": "952c41064839528f2fb0fadb468366213f089272bc71e285277d303d6846b65c"
+    },
+    {
+      "id": "obshub:analysis:cobe_sst2_amip",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "COBE-SST2 AMIP boundary conditions",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cobe_sst2_amip",
+      "keywords": [
+        "January, April, July and October 2024, native 1.9° × 2.5° CESM boundary file",
+        "Prescribed sea surface temperature",
+        "cobe_sst2_amip"
+      ],
+      "description": "CESM AMIP boundary forcing derived from COBE-SST2.",
+      "content_hash": "f6d03b8a3ba5a3d0bb95a19b7e8f58f9362a5038919ef247f35d661647f5ccf6"
+    },
+    {
+      "id": "obshub:analysis:cobe_sst2_jma",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "JMA COBE-SST2",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cobe_sst2_jma",
+      "keywords": [
+        "Analyzed sea surface temperature",
+        "January, April, July and October 2024, JMA 1° analysis grid",
+        "cobe_sst2_jma"
+      ],
+      "description": "Japan Meteorological Agency Centennial In Situ Observation-Based Estimates of SST version 2.",
+      "content_hash": "2c630183838d75af7dd7a17eee930af6643bcc5460d27b87b9bb62c5bcf637ea"
+    },
+    {
+      "id": "obshub:analysis:cropland_n2o_training",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Cropland nitrogen flux measurements",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cropland_n2o_training",
+      "keywords": [
+        "Growing-season trials in the Nature Food source workbook",
+        "N₂O emission factor",
+        "cropland_n2o_training"
+      ],
+      "description": "N2O_NF.xlsx, data sheet. Fallow-season entries are in a separate sheet.",
+      "content_hash": "56be4275876514d8ebf60068312ecf76276a4c9df691736be5ba2f8b854b295c"
+    },
+    {
+      "id": "obshub:analysis:cru_ts_4_08",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CRU TS v4.08 monthly climate grids",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cru_ts_4_08",
+      "keywords": [
+        "2023-01-16 to 2023-12-16",
+        "Air temperature",
+        "Potential evapotranspiration",
+        "Precipitation",
+        "cru_ts_4_08"
+      ],
+      "description": "Climatic Research Unit gridded time series, version 4.08.",
+      "content_hash": "79b31b0f44a70c93305654e25690c58bb0b67f2b540437304a9f0179b6ef96aa"
+    },
+    {
+      "id": "obshub:analysis:fertilizer_nh3_measurements",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Fertilizer ammonia measurements",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=fertilizer_nh3_measurements",
+      "keywords": [
+        "Ammonia emissions",
+        "Published field trials with a single numeric experimental year",
+        "fertilizer_nh3_measurements"
+      ],
+      "description": "Original supplementary workbook, Erate column. The table supplies no mapped study coordinates.",
+      "content_hash": "364f0eb23771cd5bb053cb6692ebddcd0bb20df89d44cb9a782d66cadd14693e"
+    },
+    {
+      "id": "obshub:analysis:gfed4_1_source",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED4.1 original archive burned fraction",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1_source",
+      "keywords": [
+        "Burned fraction",
+        "Global native-grid samples in 2010 and 2015",
+        "gfed4_1_source"
+      ],
+      "description": "Original fire_emissions_v4_R1_1293 release annual HDF5 files.",
+      "content_hash": "a7175bccffe6749a840dc71a7387af9d5729eb7f0e0ae02363cc7224d5025fd6"
+    },
+    {
+      "id": "obshub:analysis:gfed4_1s",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED4.1s global burned fraction",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1s",
+      "keywords": [
+        "Burned fraction",
+        "Global native-grid samples in 2010 and 2016",
+        "gfed4_1s"
+      ],
+      "description": "Annual HDF5 archives include the experimental small-fire correction.",
+      "content_hash": "efb65fdafbf234521d2603322b931788dbcecb84657f98191ae8a96a15f4b0cc"
+    },
+    {
+      "id": "obshub:analysis:gfed4_1s_emission_tables",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED4.1s annual global fire emissions",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1s_emission_tables",
+      "keywords": [
+        "Ammonia emissions",
+        "Global annual estimates, 1997–2023",
+        "Nitrogen oxide emissions",
+        "gfed4_1s_emission_tables"
+      ],
+      "description": "Archive tables mark 2017–2023 estimates as beta, with higher uncertainty. The publisher advises against trend analysis using those estimates.",
+      "content_hash": "6022310337dd814a13504a474f3e89d5a838e9455f2bbebe535866cc41e0784d"
+    },
+    {
+      "id": "obshub:analysis:gfed5_burned_area",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED5.0 historical burned area",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_burned_area",
+      "keywords": [
+        "Global native-grid samples in 2001, 2010 and 2020",
+        "Total burned area",
+        "gfed5_burned_area"
+      ],
+      "description": "GFED5.0 monthly BA files. Area units follow the release readme.",
+      "content_hash": "ad4c370ad0e45de5fdfe4d329f25ff2cf2e3e6171d359c1175cc9e8674f77e4d"
+    },
+    {
+      "id": "obshub:analysis:gfed5_fireearth",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "FireEarth GFED5 monthly inputs",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_fireearth",
+      "keywords": [
+        "Burned area in the FireEarth grid",
+        "FireEarth monthly snapshot covering 1997–2026",
+        "Official global burned area",
+        "gfed5_fireearth"
+      ],
+      "description": "gfed5_global_2x2p5deg_monthly_1997_2026.nc, archived GFED5 inputs and native-grid aggregates.",
+      "content_hash": "03b460b8593e2c9e084a0f1329beffb8b11c19d705b8196eec7655fdb4082202"
+    },
+    {
+      "id": "obshub:analysis:gfed5_shared",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED5.1 shared fire emissions",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_shared",
+      "keywords": [
+        "Carbon emissions",
+        "Global GFED5.1 grid samples in 2001, 2010 and 2022",
+        "gfed5_shared"
+      ],
+      "description": "GFED5.1 Monthly files from the shared archive. GFED5.1NRT is outside this sample.",
+      "content_hash": "d2fe21a743cb56347df975cd775efc9d283be8525472448e077d14e6020dc6dd"
+    },
+    {
+      "id": "obshub:analysis:ghg_budget_inversions",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Greenhouse gas flux inversions",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=ghg_budget_inversions",
+      "keywords": [
+        "January, April, July and October 2017, CTE SURF posterior in GCP2019",
+        "Posterior net methane flux",
+        "ghg_budget_inversions"
+      ],
+      "description": "Global Carbon Project 2019 methane budget, CTE simulation constrained by surface observations.",
+      "content_hash": "e72624e20d9ad21d514366f3b277c67aecf9de4035a582c941bdf93dc4c29e45"
+    },
+    {
+      "id": "obshub:analysis:global_carbon_budget",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Global Carbon Budget",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=global_carbon_budget",
+      "keywords": [
+        "Annual land sink estimates in the Global Carbon Budget 2025 v0.7 workbook",
+        "Land carbon sink",
+        "global_carbon_budget"
+      ],
+      "description": "Global Carbon Project, Global Carbon Budget 2025 v0.7.",
+      "content_hash": "7a82f35a7c66508c7abaf89ddc9393fa5f06edcb09dff3f006bca9067c3990dd"
+    },
+    {
+      "id": "obshub:analysis:gosat_ch4_ocpr_v9",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GOSAT OCPR v9 methane retrievals",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gosat_ch4_ocpr_v9",
+      "keywords": [
+        "Available midmonth days in 2021",
+        "Column-average CH₄",
+        "gosat_ch4_ocpr_v9"
+      ],
+      "description": "University of Leicester GOSAT OCPR v9.0 Level 2 data.",
+      "content_hash": "4581debd5fa03f8c1b53347deb9669294939badbef3784aedcf90e7420d8d9cb"
+    },
+    {
+      "id": "obshub:analysis:igcc_gmst_1850_2022",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "IGCC global temperature",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=igcc_gmst_1850_2022",
+      "keywords": [
+        "Annual global estimates, 1850–2022",
+        "Global mean surface temperature anomaly",
+        "igcc_gmst_1850_2022"
+      ],
+      "description": "Indicators of Global Climate Change global mean surface temperature series used by FaIR.",
+      "content_hash": "88bc32b7280dfbcfcae5e7187a650645163f32d5a41a27e058966ce49f9a13d2"
+    },
+    {
+      "id": "obshub:analysis:mopitt_co_course",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "MOPITT CO course grids",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=mopitt_co_course",
+      "keywords": [
+        "January 2021 daily 0.5° grids",
+        "Total CO column",
+        "mopitt_co_course"
+      ],
+      "description": "MOPITTv9_0.5_202101.nc course product. Masks are preserved.",
+      "content_hash": "cc4ac4cd03ac26ddcbc5165b8c8ce0cd3f3f49d588f6a9de54512099510b65bf"
+    },
+    {
+      "id": "obshub:analysis:mopitt_co_l2_v9",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "MOPITT Level 2 v9 CO retrievals",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=mopitt_co_l2_v9",
+      "keywords": [
+        "Six sampled dates in 2021",
+        "Total CO column",
+        "mopitt_co_l2_v9"
+      ],
+      "description": "MOP02J L2V19.9.3. Values are unchanged and use the molecule-column interpretation recorded for the same values by the companion regridding.",
+      "content_hash": "374ddfb0f203407adec24835181a27f6eac1988802503434c596007908da9efa"
+    },
+    {
+      "id": "obshub:analysis:ndep",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Observed wet nitrogen deposition",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=ndep",
+      "keywords": [
+        "CAPMoN ammonium concentration",
+        "CAPMoN nitrate concentration",
+        "EMEP ammonium concentration",
+        "EMEP nitrate concentration",
+        "Illustrative precipitation chemistry samples and archived monthly deposition amounts",
+        "NTN ammonium concentration",
+        "NTN ammonium wet deposition",
+        "NTN nitrate concentration",
+        "ndep"
+      ],
+      "description": "Concentration charts use the selected network's original precipitation chemistry files. The archived NTN monthly amounts use elemental nitrogen mass per area.",
+      "content_hash": "ac3c3974fe1eef51c66758fb4d9c0d13ceda0271d21886e24091bcda5107ffce"
+    },
+    {
+      "id": "obshub:analysis:ndep_csink_reference",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Nitrogen deposition and the carbon sink",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=ndep_csink_reference",
+      "keywords": [
+        "Annual estimates in the project's April 2026 reference workbook",
+        "Net biome production",
+        "ndep_csink_reference"
+      ],
+      "description": "FireEarth and Fire_Ndep project reference workbook. Values are model-derived estimates.",
+      "content_hash": "68ed95f7e53706de2a180b5e03b874bcfc5d9acc4401b3ca7b3bfabe6616e3ec"
     },
     {
       "id": "obshub:analysis:noaa-china-surface-weather",
@@ -25778,13 +29366,13 @@
       "title": "Surface weather across China",
       "url": "../ObservationHub/docs/observations/?view=analysis&profile=noaa-china-surface-weather",
       "keywords": [
+        "2023 readings at station 545110-99999 and 15 July 2023 UTC network observations",
         "Air temperature",
-        "China station archive, January–December 2023",
         "Wind speed",
         "noaa_isd_lite_china"
       ],
-      "description": "NOAA National Centers for Environmental Information Integrated Surface Database (ISD-Lite).",
-      "content_hash": "e8f0b62f61f4d369b8bd77149fc23e20f0127a705c83e1f1c8308ab4d4a98230"
+      "description": "NOAA National Centers for Environmental Information Integrated Surface Database (ISD-Lite). Station coordinates use the latest entries in the archived station history.",
+      "content_hash": "7cdad0fa1ae2c81cbb1b5c31c470fdae75d110610e05f802855b4acfa9a1f334"
     },
     {
       "id": "obshub:analysis:noaa-global-greenhouse-gases",
@@ -25801,6 +29389,133 @@
       ],
       "description": "NOAA's Annual Greenhouse Gas Index companion table combines measurements and historical records. This edition was archived by the FaIR reproduction project.",
       "content_hash": "8f8857cce4ba89fac244e0095d74b2c07817b45e803c6ba2844316345f1e1af3"
+    },
+    {
+      "id": "obshub:analysis:omi_total_column_o3",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Aura OMI total column ozone",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=omi_total_column_o3",
+      "keywords": [
+        "2023-07-12 to 2023-07-18",
+        "Total column ozone",
+        "omi_total_column_o3"
+      ],
+      "description": "Aura Ozone Monitoring Instrument (OMI) Level 3 total ozone text archive. DU denotes Dobson units.",
+      "content_hash": "4d8462559d65e6e5e53fea9f1fdf4eb25eb39ae3e793128ff971c98842ff506a"
+    },
+    {
+      "id": "obshub:analysis:oscar_v3_1_observation_benchmarks",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "OSCAR v3.1 climate benchmarks",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=oscar_v3_1_observation_benchmarks",
+      "keywords": [
+        "GISTEMP temperature anomaly",
+        "Historical global GISTEMP benchmark included with OSCAR v3.1",
+        "oscar_v3_1_observation_benchmarks"
+      ],
+      "description": "NASA GISTEMP temperature benchmark packaged with OSCAR v3.1.",
+      "content_hash": "f0b27c09236298f3a871440ffe345c31d9769edb7e37ffa3c1b8e3933bdb5bb1"
+    },
+    {
+      "id": "obshub:analysis:sr_unet_nightlights",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "SRUNet reconstructed nighttime light",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=sr_unet_nightlights",
+      "keywords": [
+        "Global reconstructed GeoTIFFs for 1997, 2001, 2006 and 2011",
+        "Nighttime light intensity",
+        "sr_unet_nightlights"
+      ],
+      "description": "Annual SRUNet NPP-VIIRS-V2-like reconstructions. The sample uses the historical reconstruction only.",
+      "content_hash": "9d02ac294040e15872ece4dfe9b19a11460b5b2507786f62430fc451907beacb"
+    },
+    {
+      "id": "obshub:analysis:tap_daily_o3",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "TAP v2 gridded ozone estimates",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=tap_daily_o3",
+      "keywords": [
+        "2023-07-12 to 2023-07-18",
+        "Daily maximum 8-hour ozone",
+        "tap_daily_o3"
+      ],
+      "description": "Tracking Air Pollution in China (TAP), release v2.",
+      "content_hash": "67737ce6c4394822b1c9f2a8e475385d7adcc97e231ac2f8630889a68893c1f0"
+    },
+    {
+      "id": "obshub:analysis:tropomi_no2_east_asia",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "East Asia TROPOMI NO₂ course grids",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=tropomi_no2_east_asia",
+      "keywords": [
+        "East Asia, January–February 2019 and 2020",
+        "Tropospheric NO₂ column",
+        "tropomi_no2_east_asia"
+      ],
+      "description": "The archived course regridding code defines row order north to south over 10–60°N and 70–150°E. The grid stores NO₂ in the L2 source units.",
+      "content_hash": "48ae4bd69c8599d608c7010e742e22aadbbc6d7f0054e9aa6817974ef4ebe666"
+    },
+    {
+      "id": "obshub:analysis:tropomi_no2_l2",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "TROPOMI Level 2 NO₂",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=tropomi_no2_l2",
+      "keywords": [
+        "Eight sampled 2019 acquisition days",
+        "Tropospheric NO₂ column",
+        "tropomi_no2_l2"
+      ],
+      "description": "2019 reduced Sentinel-5P TROPOMI PRODUCT swaths. Dates label the acquisition days.",
+      "content_hash": "ee371b7d8b05c9aa0792675ca67d40dd61114203bea3cee6484f8866d966a669"
+    },
+    {
+      "id": "obshub:analysis:wrfgc_station_observations",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "WRF-GC D03 station observations",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=wrfgc_station_observations",
+      "keywords": [
+        "2023-01-01 to 2023-10-31",
+        "Observed PM₂.₅",
+        "Observed ozone",
+        "wrfgc_station_observations"
+      ],
+      "description": "Source table: converted_observed_data_with_latlon_d03.csv.",
+      "content_hash": "4b6bb23b244fac172d57eddc4ba4cdc9ecffe2cb62e9c8f9767e98ce279a02fd"
+    },
+    {
+      "id": "obshub:analysis:xu2023_o3",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Xu et al. (2023) · Daily maximum 8-hour ozone",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=xu2023_o3",
+      "keywords": [
+        "2019-07-13 to 2019-07-19",
+        "Daily maximum 8-hour ozone",
+        "xu2023_o3"
+      ],
+      "description": "Rongbin Xu et al. (2023), quality-controlled monitoring-station observations.",
+      "content_hash": "88289a257f947f2f7a077f12b4216131a854349a0a301b53d07c3d955233e223"
+    },
+    {
+      "id": "obshub:analysis:xu2023_pm25",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Xu et al. (2023) · Daily mean PM₂.₅",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=xu2023_pm25",
+      "keywords": [
+        "2019-07-13 to 2019-07-19",
+        "Daily mean PM₂.₅",
+        "xu2023_pm25"
+      ],
+      "description": "Rongbin Xu et al. (2023), quality-controlled monitoring-station observations.",
+      "content_hash": "32391051bdc62323f8227efbf31aa90bbe751e0ae6d481dc6d15088e05e5a851"
     },
     {
       "id": "obshub:dataset:beijing_air_quality",
@@ -26575,133 +30290,503 @@
   ],
   "recent": [
     {
-      "id": "mlhub:figure:ba-ssp-seasonal-uncertainty",
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_NH3_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Seasonal uncertainty of holdout burned area",
-      "description": "Mean observed and predicted holdout burned area by calendar month, with an empirical absolute-residual band and the ensemble 16th–84th percentile envelope.",
-      "url": "../MachineLearningHub/docs/gallery/?item=ba-ssp-seasonal-uncertainty",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_NH3_as_N_kgN_ha_month",
+      "description": "Fire NH3 as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_NH3_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:cesm2-ssp-temperature-annual",
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_NO2_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Annual near-surface temperature across four SSPs",
-      "description": "Annual means of the CESM2 near-surface air temperature predictor in the frozen Example 10 archive. The four pathways share a historical climate trajectory through 2014.",
-      "url": "../MachineLearningHub/docs/gallery/?item=cesm2-ssp-temperature-annual",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_NO2_as_N_kgN_ha_month",
+      "description": "Fire NO2 as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_NO2_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:cesm2-ssp-temperature-trend",
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_NO_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Global maps of CESM2 temperature trends",
-      "description": "Grid-cell linear slopes fitted to annual mean near-surface temperature over the full Example 10 archive. The four maps share a color scale.",
-      "url": "../MachineLearningHub/docs/gallery/?item=cesm2-ssp-temperature-trend",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_NO_as_N_kgN_ha_month",
+      "description": "Fire NO as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_NO_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gfed4-conservative-holdout-scatter",
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_NOx_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Burned area holdout on the conservative grid",
-      "description": "Observed and predicted monthly grid-cell burned area for the GFED4.1s-trained ensemble. Colors distinguish out-of-fold training predictions and the independent time holdout.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gfed4-conservative-holdout-scatter",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_NOx_as_N_kgN_ha_month",
+      "description": "Fire NOx as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_NOx_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gfed5-inference-distribution",
+      "id": "mlhub:inference variable:cam_emis_ndep:Fire_Nr_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Concentration of burned area across grid cells",
-      "description": "A logarithmic histogram of mean annual burned area in grid cells with burning, with a cumulative contribution curve using all grid cells.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gfed5-inference-distribution",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · Fire_Nr_as_N_kgN_ha_month",
+      "description": "Fire reactive nitrogen total as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=Fire_Nr_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gfed5-inference-seasonality",
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NH3_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "GFED5 burned-area seasonality and monthly coverage",
-      "description": "Annual global burned area, the historical median and 10th–90th percentile by calendar month, and a timeline of complete, partial and unavailable months.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gfed5-inference-seasonality",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_NH3_as_N_kgN_ha_month",
+      "description": "HEMCO anthropogenic NH3 as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NH3_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gfed5-inference-spatial",
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NO2_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Where land burns in the GFED5 archive",
-      "description": "Mean annual burned area as a percentage of each cell's area, with a map of the percentage-point change between two equal ten-year windows.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gfed5-inference-spatial",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_NO2_as_N_kgN_ha_month",
+      "description": "HEMCO NO2 as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NO2_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gfed5-ssp-projection-comparison",
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NO_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Burned area projections trained on GFED4.1s and GFED5",
-      "description": "Global annual burned area across four SSPs and monthly comparisons with observations. Both experiments use the same 2° × 2.5° grid and CESM2 and land-use predictors.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gfed5-ssp-projection-comparison",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_NO_as_N_kgN_ha_month",
+      "description": "HEMCO anthropogenic NO as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NO_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gleam-inference-coverage",
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NO_as_N_with_lightning_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Coverage of GLEAM root-zone soil moisture",
-      "description": "A map of valid months per grid cell and a time series of the share of the full grid with finite values.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gleam-inference-coverage",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO NO as N plus lightning column N (HCO_NO + LNO_COL_PROD)",
+      "description": "HEMCO NO as N including lightning",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NO_as_N_with_lightning_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gleam-inference-distribution",
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NOx_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "GLEAM predictor distributions across two periods",
-      "description": "Area-weighted histograms of grid-cell time means, using the same bins within each variable for two twenty-year periods.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gleam-inference-distribution",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_NOx_as_N_kgN_ha_month",
+      "description": "HEMCO NOx as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NOx_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gleam-inference-seasonality",
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_NOx_as_N_with_lightning_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "GLEAM soil moisture and evaporation over time",
-      "description": "Annual land series and calendar-month medians with 10th–90th percentiles for root-zone soil moisture and actual evaporation on the staged inference grid.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gleam-inference-seasonality",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO NOx as N plus lightning column N (HCO_NOx + LNO_COL_PROD)",
+      "description": "HEMCO NOx as N including lightning",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_NOx_as_N_with_lightning_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:gleam-inference-spatial",
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_kgN_ha_month",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "GLEAM mean land-surface conditions",
-      "description": "Maps of the full-period means for root-zone and surface soil moisture, evaporative stress and actual evaporation on the 2° × 2.5° predictor grid.",
-      "url": "../MachineLearningHub/docs/gallery/?item=gleam-inference-spatial",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_Nr_as_N_kgN_ha_month",
+      "description": "HEMCO reactive nitrogen total as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
-      "id": "mlhub:figure:luh2-ssp-cropland-zonal",
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_kgN_ha_month_fire",
       "hub": "MLHub",
-      "type": "Figure",
-      "title": "Cropland distribution by latitude",
-      "description": "Longitude averages of the time-mean CLM LUH2 cropland field in the frozen Example 10 archive.",
-      "url": "../MachineLearningHub/docs/gallery/?item=luh2-ssp-cropland-zonal",
-      "date": "2026-11-23T23:00:42Z",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_Nr_as_N_kgN_ha_month_fire",
+      "description": "Fire-source HEMCO Nr as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_kgN_ha_month_fire",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_kgN_ha_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO_Nr (non-fire portion) = HCO_Nr - Fire_Nr, clipped at 0",
+      "description": "Non-fire HEMCO Nr as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_kgN_ha_month_nofire",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_with_lightning_kgN_ha_month",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO Nr as N plus lightning column N (HCO_Nr_as_N_kgN_ha_month + LNO_COL_PROD)",
+      "description": "HEMCO Nr as N including lightning",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_with_lightning_kgN_ha_month",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:HCO_Nr_as_N_with_lightning_kgN_ha_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · HCO Nr non-fire + lightning column N (HCO_Nr_as_N_kgN_ha_month_nofire + LNO_COL_PROD)",
+      "description": "Non-fire Nr as N including lightning",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=HCO_Nr_as_N_with_lightning_kgN_ha_month_nofire",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:LNO_COL_PROD",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · LNO_COL_PROD",
+      "description": "Lightning column NO production as N",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=LNO_COL_PROD",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NHx_month_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NHx deposition (wet+dry) all (ndep fire merge)",
+      "description": "Monthly NHx deposition (all)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NHx_month_all",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NHx_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NHx deposition (wet+dry) fire (ndep fire merge)",
+      "description": "Monthly NHx deposition (fire)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NHx_month_fire",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NHx_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NHx deposition (wet+dry) nofire (ndep fire merge)",
+      "description": "Monthly NHx deposition (nofire)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NHx_month_nofire",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NOy_month_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NOy deposition (wet+dry) all (ndep fire merge)",
+      "description": "Monthly NOy deposition (all)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NOy_month_all",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NOy_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NOy deposition (wet+dry) fire (ndep fire merge)",
+      "description": "Monthly NOy deposition (fire)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NOy_month_fire",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_NOy_month_nofire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · NOy deposition (wet+dry) nofire (ndep fire merge)",
+      "description": "Monthly NOy deposition (nofire)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_NOy_month_nofire",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_dry_month_all",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry NHx+NOy all",
+      "description": "Monthly dry deposition (all)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_dry_month_all",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "mlhub:inference variable:cam_emis_ndep:NDEP_dry_month_fire",
+      "hub": "MLHub",
+      "type": "Inference variable",
+      "title": "CAM emissions and nitrogen deposition · dry NHx+NOy fire",
+      "description": "Monthly dry deposition (fire)",
+      "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_dry_month_fire",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:beijing_air_quality",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Beijing hourly air quality",
+      "description": "Beijing monitoring station archive, beijing_all and beijing_extra.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=beijing_air_quality",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:blended_tropomi_gosat_ch4",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Blended TROPOMI–GOSAT methane",
+      "description": "Blended TROPOMI–GOSAT Level 2 files. Dates label the orbit start day.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=blended_tropomi_gosat_ch4",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_acs_ozone_grid_hourly",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx ACS D01 grid observation inputs",
+      "description": "Source table: hour_obs_with_feature_d01.csv.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_ozone_grid_hourly",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_acs_ozone_validation",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx ACS D01 station ozone archive",
+      "description": "D01 station_pairs.npz observation field, times from the corresponding grid table, and locations from stations.csv.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_ozone_validation",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_acs_weather_validation",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx ACS weather station observations",
+      "description": "Source table: paired_station_hours.csv.gz.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_weather_validation",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_bth_station_pairs",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "BTH D01 station observations from CAMx matchups",
+      "description": "Source table: extract_site_hour_ml_obs_d01.csv.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_bth_station_pairs",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_bth_validation",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Archived BTH D01 station ozone observations",
+      "description": "Source table: mda8_d01.csv.gz.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_bth_validation",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_merra2_station_training",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Station ozone archive paired with MERRA-2",
+      "description": "Source table: obs_with_met_0.625_0.5.csv.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_merra2_station_training",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_modis_lai_2008",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "MODIS leaf area index for CAMx",
+      "description": "Dates follow the YYYYDDD filenames. The files do not record physical units or a scale factor, and the internal year attribute differs from the filenames.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_modis_lai_2008",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_station_metadata",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx merged China station list",
+      "description": "CAMx station reference table, china_sites_merge.csv. This archive contains station metadata.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_metadata",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_station_reference",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx national station crosswalk",
+      "description": "CAMx station reference table, China_sites_after_20220213.csv. This archive contains station metadata.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_reference",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_station_training",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx training station observations",
+      "description": "Source table: day_sim_obs.csv.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_training",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:camx_yrd_station_daily",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CAMx station daily observations",
+      "description": "Source table: obs_with_pollution_level.csv.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_yrd_station_daily",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:cobe_sst2_amip",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "COBE-SST2 AMIP boundary conditions",
+      "description": "CESM AMIP boundary forcing derived from COBE-SST2.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cobe_sst2_amip",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:cobe_sst2_jma",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "JMA COBE-SST2",
+      "description": "Japan Meteorological Agency Centennial In Situ Observation-Based Estimates of SST version 2.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cobe_sst2_jma",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:cropland_n2o_training",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Cropland nitrogen flux measurements",
+      "description": "N2O_NF.xlsx, data sheet. Fallow-season entries are in a separate sheet.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cropland_n2o_training",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:cru_ts_4_08",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "CRU TS v4.08 monthly climate grids",
+      "description": "Climatic Research Unit gridded time series, version 4.08.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cru_ts_4_08",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:fertilizer_nh3_measurements",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Fertilizer ammonia measurements",
+      "description": "Original supplementary workbook, Erate column. The table supplies no mapped study coordinates.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=fertilizer_nh3_measurements",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:gfed4_1_source",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED4.1 original archive burned fraction",
+      "description": "Original fire_emissions_v4_R1_1293 release annual HDF5 files.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1_source",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:gfed4_1s",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED4.1s global burned fraction",
+      "description": "Annual HDF5 archives include the experimental small-fire correction.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1s",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:gfed4_1s_emission_tables",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED4.1s annual global fire emissions",
+      "description": "Archive tables mark 2017–2023 estimates as beta, with higher uncertainty. The publisher advises against trend analysis using those estimates.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1s_emission_tables",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:gfed5_burned_area",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED5.0 historical burned area",
+      "description": "GFED5.0 monthly BA files. Area units follow the release readme.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_burned_area",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:gfed5_fireearth",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "FireEarth GFED5 monthly inputs",
+      "description": "gfed5_global_2x2p5deg_monthly_1997_2026.nc, archived GFED5 inputs and native-grid aggregates.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_fireearth",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:gfed5_shared",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "GFED5.1 shared fire emissions",
+      "description": "GFED5.1 Monthly files from the shared archive. GFED5.1NRT is outside this sample.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_shared",
+      "date": "2026-11-23T23:38:41Z",
+      "change": "added"
+    },
+    {
+      "id": "obshub:analysis:ghg_budget_inversions",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Greenhouse gas flux inversions",
+      "description": "Global Carbon Project 2019 methane budget, CTE simulation constrained by surface observations.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=ghg_budget_inversions",
+      "date": "2026-11-23T23:38:41Z",
       "change": "added"
     },
     {
@@ -26761,16 +30846,6 @@
       "title": "Yang & Gruber 2016 · 大气氮沉降与海洋氮循环",
       "description": "全球海洋 CESM1.2 / POP2–BEC（含 ¹⁵N 循环），标称 3°（热带纬向加密至 0.6°）。各组均使用 COREv2 正常年物理强迫。收录表 1 的 10 组实验和方法 §2.2 的自旋、工业化前对照。",
       "url": "../EarthModelHub/docs/simulations/?task=yang_2016_marine_ndep",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "mlhub:task:gleam-burned-area-inputs",
-      "hub": "MLHub",
-      "type": "Task",
-      "title": "Burned area with GLEAM predictors",
-      "description": "Use GLEAM root-zone soil moisture and evaporative stress as historical predictors alongside CESM2 and land-use inputs. The Gallery figures characterize the processed GLEAM source across its full period.",
-      "url": "../MachineLearningHub/docs/gallery/?task=gleam-burned-area-inputs",
       "date": "2026-11-23T23:00:42Z",
       "change": "added"
     },
@@ -26963,36 +31038,6 @@
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e26_atm_FCSD_HCO_NoFIRE_1970",
       "date": "2026-11-23T23:00:42Z",
       "change": "added"
-    },
-    {
-      "id": "mlhub:task:burned-area-ssp-projection",
-      "hub": "MLHub",
-      "type": "Task",
-      "title": "Burned area across four SSPs",
-      "description": "Reconstruct and project global burned area through 2100 using CESM2 climate, LUH2 land use and human population density. The paired GFED4.1s and GFED5 experiments use conservative remapping. Archived figures document the early Example 10 configuration.",
-      "url": "../MachineLearningHub/docs/gallery/?task=burned-area-ssp-projection",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "updated"
-    },
-    {
-      "id": "mlhub:dataset:gleam",
-      "hub": "MLHub",
-      "type": "Dataset",
-      "title": "GLEAM v4.1a land water cycle",
-      "description": "Monthly historical land evaporation, evaporative stress, and surface and root-zone soil moisture. Gallery diagnostics describe the processed 2° × 2.5° predictor grid.",
-      "url": "../MachineLearningHub/docs/gallery/?dataset=gleam",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "updated"
-    },
-    {
-      "id": "mlhub:task:configured-mlhub-ch2-fire-ba-ssp-gleam-ea0dd6dac21b",
-      "hub": "MLHub",
-      "type": "Task",
-      "title": "Ch2_FIRE_BA_SSP / GLEAM",
-      "description": "Experiments discovered from the repository configuration.",
-      "url": "../MachineLearningHub/docs/gallery/",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "removed"
     }
   ]
 }

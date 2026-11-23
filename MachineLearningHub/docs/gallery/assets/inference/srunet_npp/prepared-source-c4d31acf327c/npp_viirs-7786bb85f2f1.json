@@ -1,0 +1,49 @@
+{
+  "label": "SRUNet reconstructed NPP-VIIRS-V2-like nighttime light",
+  "units": "dimensionless",
+  "time_axis": "Calendar year",
+  "time_reduction": "Cos(latitude)-weighted mean",
+  "time": [
+    2000.0
+  ],
+  "values": [
+    0.04151132700861413
+  ],
+  "finite_grid_fractions": [
+    0.7760416666666666
+  ],
+  "years": [
+    2000
+  ],
+  "annual": [
+    0.04151132700861413
+  ],
+  "climatology": [],
+  "summary": {
+    "grid_cells": 55296,
+    "analysed_cells": 55296,
+    "spatial_stride": 1,
+    "time_steps": 1,
+    "steps_with_data": 1,
+    "valid_time_start": "2000-01-01",
+    "valid_time_end": "2000-01-01",
+    "cells_ever_finite": 42912,
+    "cells_always_finite": 42912,
+    "mean_finite_fraction": 0.7760416666666666,
+    "distribution": {
+      "grid_cells": 42912,
+      "min": 0.0,
+      "p01": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 4.075329161423724e-05,
+      "p99": 0.7351994574069977,
+      "max": 10.157402038574219,
+      "zero_fraction": 0.714951528709918
+    },
+    "annual_summation": false,
+    "trend_cells": 0,
+    "trend_method": "Least-squares slope over annual values with at least three finite years per cell.",
+    "excluded_filled_years": 0
+  }
+}

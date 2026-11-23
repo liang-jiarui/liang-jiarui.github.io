@@ -11,7 +11,11 @@ const roleLabels = {
 };
 const inferenceStatus = {
   profiled: "Profiled", partial: "Partially profiled", inspected: "Coverage available",
-  registered: "Registry only", derived: "Derived",
+  native: "Native metadata only", registered: "Registry only", derived: "Derived",
+};
+const inferenceProductKinds = {
+  native_source: "Native file header", prepared_source: "Prepared source", experiment_source: "Experiment input",
+  merged_archive: "Inference archive", merged_features: "Shared feature archive",
 };
 const gridNumber = new Intl.NumberFormat(undefined, { maximumFractionDigits: 4 });
 const fraction = new Intl.NumberFormat(undefined, { style: "percent", maximumFractionDigits: 1 });
@@ -50,14 +54,27 @@ function productName(product) {
   return [label, product.scenario, product.model].filter((value, index, values) => value && values.indexOf(value) === index).join(" · ");
 }
 
+function nativeHeader(product) {
+  return product.metadata_only === true || product.kind === "native_source";
+}
+
+function productKind(product) {
+  return nativeHeader(product) ? inferenceProductKinds.native_source : inferenceProductKinds[product.kind] ?? "Processed product";
+}
+
 function featureStatus(feature) {
-  if (feature.profiles) return feature.profiles < feature.variants.length ? "partial" : "profiled";
-  return feature.variants.length ? "inspected" : "registered";
+  const prepared = feature.variants.filter(({ product }) => !nativeHeader(product)).length;
+  if (feature.profiles) return feature.profiles < prepared ? "partial" : "profiled";
+  if (prepared) return "inspected";
+  return feature.variants.length ? "native" : "registered";
 }
 
 function gridShape(variable) {
   if (!variable.dimensions?.length || !variable.shape?.length) return "";
-  return variable.dimensions.map((name, index) => `${name} ${gridNumber.format(variable.shape[index])}`).join(" × ");
+  return variable.dimensions.map((name, index) => {
+    const size = variable.shape[index];
+    return `${name} ${Number.isFinite(size) ? gridNumber.format(size) : "size unknown"}`;
+  }).join(" × ");
 }
 
 function inferenceSources(datasets, inventory) {
@@ -81,7 +98,8 @@ function inferenceSources(datasets, inventory) {
     });
     const profiled = features.filter(feature => feature.profiles).length;
     const status = profiled ? (features.every(feature => featureStatus(feature) === "profiled") ? "profiled" : "partial")
-      : products.length ? "inspected" : dataset.role === "derived" ? "derived" : "registered";
+      : products.some(product => !nativeHeader(product)) ? "inspected" : products.length ? "native"
+        : dataset.role === "derived" ? "derived" : "registered";
     return { ...dataset, status, variables: [...names], products, features, profiled, inventoryNote: source?.note };
   });
 }
@@ -117,7 +135,7 @@ function start(catalog) {
       facet: row => row.status, facetTitle: id => inferenceStatus[id],
       relatedText: row => [
         row.features.map(({ native }) => [native.description, native.units]), inferenceStatus[row.status],
-        row.products.map(product => [productName(product), product.kind,
+        row.products.map(product => [productName(product), productKind(product), product.sampling,
           product.variables?.map(field => [field.label, field.description, field.units, dateLabel(field.time_start), dateLabel(field.time_end)])]),
       ],
       columns: [
@@ -518,26 +536,6 @@ function start(catalog) {
     if (typeof row.inventoryNote === "string" && row.inventoryNote) {
       detailContent.append(element("p", { class: "muted" }, row.inventoryNote));
     }
-    if (row.coverage_periods?.length) {
-      const periods = row.coverage_periods.map(period => [period.id, dateRange(period.start, period.end), period.scenarios?.join(", ") ?? "—"]);
-      section("Registered time windows", detailTable(["Period", "Dates", "Scenarios"], periods, "Registered time windows"));
-    }
-    if (row.products.length) {
-      const summarize = (variables, format) => {
-        const values = [...new Set(variables.map(format).filter(Boolean))];
-        return values.length < 3 ? values.join(" · ") || "—" : `${values.length} variable-specific ranges`;
-      };
-      const products = row.products.map(product => {
-        const variables = product.variables ?? [];
-        return [productName(product), summarize(variables, variable => dateRange(variable.time_start, variable.time_end)),
-          summarize(variables, coverageBounds), String(variables.length)];
-      });
-      section("Available products", detailTable(["Product", "Stored time range", "Grid bounds", "Variables"], products, "Available products"));
-    } else {
-      const message = row.role === "derived" ? "Computed during feature preparation."
-        : "Archive coverage will appear when a processed product is indexed.";
-      section("Available products", element("p", { class: "muted" }, message));
-    }
     const items = row.features.map(feature => {
       const { name, native, variants } = feature;
       const status = featureStatus(feature);
@@ -551,6 +549,26 @@ function start(catalog) {
     if (items.length) {
       section(`Variables (${items.length})`, detailTable(["Variable", "Units", "Availability", "Products"], items, "Variables"));
     }
+    if (row.coverage_periods?.length) {
+      const periods = row.coverage_periods.map(period => [period.id, dateRange(period.start, period.end), period.scenarios?.join(", ") ?? "—"]);
+      section("Registered time windows", detailTable(["Period", "Dates", "Scenarios"], periods, "Registered time windows"));
+    }
+    if (row.products.length) {
+      const summarize = (variables, format) => {
+        const values = [...new Set(variables.map(variable => format(variable)).filter(Boolean))];
+        return values.length < 3 ? values.join(" · ") || "—" : `${values.length} variable-specific ranges`;
+      };
+      const products = row.products.map(product => {
+        const variables = product.variables ?? [];
+        return [productName(product), productKind(product), summarize(variables, variable => dateRange(variable.time_start, variable.time_end)),
+          summarize(variables, coverageBounds), String(variables.length)];
+      });
+      section("Available products", detailTable(["Product", "Kind", "Stored time range", "Grid bounds", "Variables"], products, "Available products"));
+    } else {
+      const message = row.role === "derived" ? "Computed during feature preparation."
+        : "Archive coverage will appear when a processed product is indexed.";
+      section("Available products", element("p", { class: "muted" }, message));
+    }
   }
 
   function showInferenceVariable(row, feature) {
@@ -561,60 +579,93 @@ function start(catalog) {
     const { native, variants } = feature;
     const description = native.description ?? variants.find(({ variable }) => variable.description)?.variable.description;
     if (description) detailContent.append(element("p", { class: "description" }, description));
-    metadata([["Registered units", native.units], ["Registered dimensions", native.dims], ["ML scope", native.ml_scope]]);
+    const component = row.features.find(candidate =>
+      candidate.name === `${feature.name}_component_0` &&
+      candidate.variants.some(({ variable }) => variable.figures?.length));
+    if (component) detailContent.append(element("p", { class: "inference-back" },
+      inferenceSelectionLink("View the profiled index-zero component", row, component.name)));
     if (!variants.length) {
+      metadata([["Registered units", native.units], ["Registered dimensions", native.dims], ["ML scope", native.ml_scope]]);
       section("Coverage and profiles", element("p", { class: "muted" }, row.role === "derived"
         ? "Computed from the model grid and calendar during feature preparation."
         : "This variable is listed in the registry. Its archive coverage and profiles await a processed product."));
       return;
     }
+    const profiles = variants.filter(({ variable }) => variable.figures?.length);
+    const recordCount = ({ variable }) => variable.summary?.steps_with_data ?? 0;
     const selected = variants.find(({ product }) => product.id === state.product)
-      ?? variants.find(({ variable }) => variable.figures?.length) ?? variants[0];
+      ?? profiles.sort((left, right) => recordCount(right) - recordCount(left))[0]
+      ?? variants.find(({ product }) => !nativeHeader(product)) ?? variants[0];
     const { product, variable } = selected;
     const choices = variants.map(({ product, variable }) => [product.id,
-      [productName(product), dateRange(variable.time_start, variable.time_end)].filter(Boolean).join(" · ")]);
+      [productName(product), nativeHeader(product) && productKind(product), dateRange(variable.time_start, variable.time_end)]
+        .filter(Boolean).join(" · ")]);
     bar.append(inferenceSelector("inference-product", "Product and time range", choices, product.id,
       id => changeInferenceSelection(feature.name, id, "inference-product")));
     const summary = variable.summary ?? {};
     const finiteFraction = Number.isFinite(summary.mean_finite_fraction) ? fraction.format(summary.mean_finite_fraction) : "";
     const analysed = summary.analysed_cells ?? summary.grid_cells;
-    const sampled = Number.isFinite(analysed) && Number.isFinite(summary.grid_cells) && analysed < summary.grid_cells;
+    const sampledCells = Number.isFinite(analysed) && Number.isFinite(summary.grid_cells) && analysed < summary.grid_cells;
+    const sample = [sampledCells && `${gridNumber.format(analysed)} of ${gridNumber.format(summary.grid_cells)} grid cells`,
+      summary.spatial_stride > 1 && `Stride ${gridNumber.format(summary.spatial_stride)} on each grid axis`].filter(Boolean).join(" · ");
     metadata([
-      ["Archive units", variable.units], ["Stored time range", dateRange(variable.time_start, variable.time_end)],
-      ["Time range with data", dateRange(variable.valid_time_start, variable.valid_time_end)],
-      ["Frequency", variable.frequency ?? product.frequency], ["Resolution", variable.resolution ?? product.resolution],
-      ["Grid bounds", coverageBounds(variable)], ["Bounds with data", coverageBounds(variable, "valid_")],
-      ["Array shape", gridShape(variable)],
-      ["Time steps with data", Number.isFinite(summary.steps_with_data) && Number.isFinite(summary.time_steps)
-        ? `${gridNumber.format(summary.steps_with_data)} of ${gridNumber.format(summary.time_steps)}` : ""],
-      ["Spatial sample", sampled ? `${gridNumber.format(analysed)} of ${gridNumber.format(summary.grid_cells)} grid cells` : ""],
-      [sampled ? "Sampled cells with data" : "Grid cells with data", Number.isFinite(summary.cells_ever_finite) && Number.isFinite(analysed)
-        ? `${gridNumber.format(summary.cells_ever_finite)} of ${gridNumber.format(analysed)}` : ""],
-      ["Mean finite coverage", finiteFraction],
+      ["Time range with finite values", dateRange(variable.valid_time_start ?? summary.valid_time_start, variable.valid_time_end ?? summary.valid_time_end)],
+      ["Grid bounds", coverageBounds(variable)], ["Bounds with data", coverageBounds(variable, "valid_") || coverageBounds(summary, "valid_")],
+      ["Sampling and preparation", product.sampling],
     ]);
-    const notes = [...new Set([product.note, variable.note].filter(note => typeof note === "string" && note))];
-    if (notes.length) section("About this product", list(notes));
     const figures = variable.figures ?? [];
     if (figures.length) {
       const images = figures.map(figure => {
         const href = publishedAsset(figure.image);
         return element("figure", { class: "inference-figure" },
-          element("img", { src: href, alt: figure.alt ?? figure.title, loading: "lazy", decoding: "async" }),
+          element("img", { src: href, alt: figure.alt ?? figure.title, decoding: "async" }),
           element("figcaption", {}, element("span", {}, figure.title), element("a", { href }, "Open full size")));
       });
       section("Visual profiles", element("div", { class: "inference-figures" }, ...images));
     } else {
-      section("Visual profiles", element("p", { class: "muted" }, "Coverage metadata is available for this product."));
+      section("Visual profiles", element("p", { class: "muted" }, nativeHeader(product)
+        ? "Coverage and array dimensions come from the original source header."
+        : "Coverage metadata is available for this product."));
     }
+    showDownloads([...(product.data ?? []), ...(variable.data ?? []), ...figures.flatMap(figure => figure.data ?? [])], "Download profile data");
+    section("Archive details", definitionList([
+      ["Product kind", productKind(product)], [nativeHeader(product) ? "Native units" : "Archive units", variable.units],
+      ["Registered units", native.units], ["Registered dimensions", native.dims], ["ML scope", native.ml_scope],
+      ["Stored time range", dateRange(variable.time_start, variable.time_end)],
+      ["Frequency", variable.frequency ?? product.frequency], ["Resolution", variable.resolution ?? product.resolution],
+      ["Array shape", gridShape(variable)],
+      ["Archive shards", product.shards > 1 ? gridNumber.format(product.shards) : ""],
+      ["Header inspection", product.sampled_metadata ? "First, middle and last shard headers" : ""],
+      ["Filled archive years", product.year_fill_count > 0 ? `${gridNumber.format(product.year_fill_count)} copied from other years` : ""],
+      ["Filled years excluded from diagnostics", summary.excluded_filled_years > 0 ? gridNumber.format(summary.excluded_filled_years) : ""],
+      ["Time steps with data", Number.isFinite(summary.steps_with_data) && Number.isFinite(summary.time_steps)
+        ? `${gridNumber.format(summary.steps_with_data)} of ${gridNumber.format(summary.time_steps)}` : ""],
+      ["Spatial sample", sample],
+      ["Map display stride", summary.display_map_stride > 1 ? `${gridNumber.format(summary.display_map_stride)} on the analysed grid` : ""],
+      [sample ? "Sampled cells with data" : "Grid cells with data", Number.isFinite(summary.cells_ever_finite) && Number.isFinite(analysed)
+        ? `${gridNumber.format(summary.cells_ever_finite)} of ${gridNumber.format(analysed)}` : ""],
+      [Number.isFinite(summary.numeric_values) ? "Finite value fraction" : "Mean finite coverage", finiteFraction],
+      ["Trend method", summary.trend_cells > 0 ? summary.trend_method : ""],
+    ]));
+    const notes = [...new Set([product.note, variable.note,
+      summary.annual_source_repeated_monthly && "Archive records repeat each annual source value across months.",
+    ].filter(note => typeof note === "string" && note))];
+    if (notes.length) section("About this product", list(notes));
     const distribution = summary.distribution ?? {};
     const quantiles = [["Minimum", "min"], ["25th percentile", "p25"], ["Median", "p50"], ["75th percentile", "p75"], ["Maximum", "max"]]
       .filter(([, key]) => Number.isFinite(distribution[key]))
       .map(([name, key]) => [name, [statisticNumber.format(distribution[key]), variable.units].filter(Boolean).join(" ")]);
     if (quantiles.length) {
-      section(dateRange(variable.time_start, variable.time_end) ? "Distribution of grid-cell time means" : "Grid-cell value distribution",
+      const title = Number.isFinite(summary.numeric_values) ? "Value distribution"
+        : dateRange(variable.time_start, variable.time_end) ? "Distribution of grid-cell time means" : "Grid-cell value distribution";
+      section(title,
         definitionList(quantiles));
     }
-    showDownloads([...(product.data ?? []), ...(variable.data ?? []), ...figures.flatMap(figure => figure.data ?? [])], "Download profile data");
+    if (summary.categories?.length) {
+      const rows = summary.categories.map(({ code, label, records }) =>
+        [String(code), label, gridNumber.format(records)]);
+      section("Source flags", detailTable(["Code", "Meaning", "Records"], rows, "Source flags"));
+    }
   }
 
   function showTask(row) {

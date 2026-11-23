@@ -1,0 +1,57 @@
+{
+  "time_axis": "Calendar year",
+  "time_reduction": "Cos(latitude)-weighted mean",
+  "time": [
+    2003.0
+  ],
+  "dates": [
+    "2003-01-01"
+  ],
+  "values": [
+    45.976443397371234
+  ],
+  "finite_grid_fractions": [
+    0.31743827160493826
+  ],
+  "years": [
+    2003
+  ],
+  "annual": [
+    45.976443397371234
+  ],
+  "climatology": [],
+  "label": "Dead foliage fuel moisture content",
+  "units": "native units unspecified",
+  "summary": {
+    "grid_cells": 12960,
+    "analysed_cells": 12960,
+    "spatial_stride": 1,
+    "time_steps": 1,
+    "steps_with_data": 1,
+    "valid_time_start": "2003-01-01",
+    "valid_time_end": "2003-01-01",
+    "cells_ever_finite": 4114,
+    "cells_always_finite": 4114,
+    "mean_finite_fraction": 0.31743827160493826,
+    "distribution": {
+      "grid_cells": 4114,
+      "min": 0.0,
+      "p01": 0.0,
+      "p25": 32.26118469238281,
+      "p50": 62.99941062927246,
+      "p75": 70.53348731994629,
+      "p99": 76.65166374206542,
+      "max": 80.6451644897461,
+      "zero_fraction": 0.02552260573650948
+    },
+    "annual_summation": false,
+    "trend_cells": 0,
+    "trend_method": "Least-squares slope over annual values with at least three finite years per cell.",
+    "valid_lat_min": -61.0,
+    "valid_lat_max": 83.0,
+    "valid_lon_min": -178.75,
+    "valid_lon_max": 178.75,
+    "excluded_filled_years": 0,
+    "display_map_stride": 1
+  }
+}

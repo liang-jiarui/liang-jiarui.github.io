@@ -27,7 +27,7 @@
     return variable.observation_label ? `${variable.observation_label} count` : "Observation count";
   }
 
-  function extent(values, minimumSpread = 1) {
+  function extent(values, minimumSpread) {
     let low = Infinity;
     let high = -Infinity;
     for (const value of values) {
@@ -35,7 +35,10 @@
       low = Math.min(low, value);
       high = Math.max(high, value);
     }
-    if (low === high) return [low - minimumSpread / 2, high + minimumSpread / 2];
+    if (low === high) {
+      const spread = minimumSpread || Math.abs(low) * .02 || 1;
+      return [low - spread / 2, high + spread / 2];
+    }
     return [low, high];
   }
 
@@ -54,12 +57,22 @@
   }
 
   function drawAxes(ctx, width, height, {xValues, yValues, xDomain, yDomain, xLabel, yLabel,
-    xText = value => tickNumber.format(value), yText = value => tickNumber.format(value)}) {
+    geographic = false, xText = value => tickNumber.format(value), yText = value => tickNumber.format(value)}) {
     ctx.font = "12px system-ui, sans-serif";
-    const left = Math.max(37, ...yValues.map(value => ctx.measureText(yText(value)).width + 12));
-    const right = width - 15;
-    const top = yLabel ? 27 : 13;
-    const bottom = height - (xLabel ? 45 : 28);
+    let left = Math.max(37, ...yValues.map(value => ctx.measureText(yText(value)).width + 12));
+    let right = width - 15;
+    let top = yLabel ? 27 : 13;
+    let bottom = height - (xLabel ? 45 : 28);
+    if (geographic) {
+      const midLatitude = (yDomain[0] + yDomain[1]) / 2 * Math.PI / 180;
+      const aspect = (xDomain[1] - xDomain[0]) * Math.cos(midLatitude) / (yDomain[1] - yDomain[0]);
+      const plotWidth = Math.min(right - left, (bottom - top) * aspect);
+      const plotHeight = plotWidth / aspect;
+      left += (right - left - plotWidth) / 2;
+      top += (bottom - top - plotHeight) / 2;
+      right = left + plotWidth;
+      bottom = top + plotHeight;
+    }
     const x = scale(xDomain, [left, right]);
     const y = scale(yDomain, [bottom, top]);
 
@@ -67,8 +80,11 @@
     ctx.fillStyle = ink;
     ctx.textAlign = "right";
     ctx.textBaseline = "middle";
+    let previousY = Infinity;
     for (const value of yValues) {
       const at = y(value);
+      if (previousY - at < 15) continue;
+      previousY = at;
       ctx.beginPath();
       ctx.moveTo(left, at);
       ctx.lineTo(right, at);
@@ -76,18 +92,22 @@
       ctx.fillText(yText(value), left - 7, at);
     }
     ctx.textBaseline = "top";
+    let previousRight = -Infinity;
     for (const value of xValues) {
       const at = x(value);
       const label = xText(value);
       const halfLabel = ctx.measureText(label).width / 2;
+      const center = Math.max(halfLabel + 1, Math.min(width - halfLabel - 1, at));
+      if (center - halfLabel < previousRight + 4) continue;
+      previousRight = center + halfLabel;
       ctx.beginPath();
       ctx.moveTo(at, top);
       ctx.lineTo(at, bottom + 4);
       ctx.stroke();
       ctx.textAlign = "center";
-      ctx.fillText(label, Math.max(halfLabel + 1, Math.min(width - halfLabel - 1, at)), bottom + 8);
+      ctx.fillText(label, center, bottom + 8);
     }
-    if (xLabel) ctx.fillText(xLabel, width / 2, bottom + 28);
+    if (xLabel) ctx.fillText(xLabel, (left + right) / 2, bottom + 28);
     if (yLabel) {
       ctx.textAlign = "left";
       ctx.fillText(yLabel, left, 3);
@@ -257,7 +277,7 @@
 
   function timeSeries(variable, rows, raw = false) {
     const unit = variable.unit;
-    const period = variable.period_label || "Period";
+    const period = (raw && variable.raw_period_label) || variable.period_label || "Period";
     const hasRange = row => Number.isFinite(row.value) && Number.isFinite(row.low) && Number.isFinite(row.high);
     const showRange = rows.some(hasRange);
     const bandLabel = variable.band_label || "Reported range";
@@ -267,10 +287,10 @@
       swatch.style.cssText = `display:inline-block;width:1rem;height:.65rem;margin-right:.4rem;background:${band};border:1px solid ${accent}`;
       legend.append(swatch, document.createTextNode(bandLabel));
     }
-    return chart({title: raw ? "Individual values over time" : (variable.series_title || "Time series"), wide: true, legend,
+    return chart({title: raw ? variable.raw_title || "Individual values over time" : (variable.series_title || "Time series"), wide: true, legend,
       note: raw ? variable.raw_note || (rows.length + " source records shown. Repeated values can overlap.") : variable.series_note,
       headers: [period, `Value (${unit})`, ...(showRange ? [`${bandLabel} lower`, `${bandLabel} upper`] : []), raw ? "Source label" : countLabel(variable)],
-      rows: rows.map(row => [row.date, format(row.value), ...(showRange ? [format(row.low), format(row.high)] : []), raw ? row.label || "—" : format(row.count)]),
+      rows: rows.map(row => [row.date, raw ? String(row.value) : format(row.value), ...(showRange ? [format(row.low), format(row.high)] : []), raw ? row.label || "—" : format(row.count)]),
       draw(ctx, width, height) {
         const axis = timeAxis(rows, period, width);
         const observed = rows.flatMap(row => hasRange(row) ? [row.value, row.low, row.high] : [row.value]);
@@ -344,14 +364,26 @@
 
   function distribution(variable, bins) {
     const unit = variable.unit;
-    const ranges = bins.map(row => ({...row, start: row.min, end: row.max, amount: row.count}));
+    const logarithmic = variable.distribution.scale === "log" && bins.every(row => row.min > 0);
+    const position = value => logarithmic ? Math.log10(value) : value;
+    const ranges = bins.map(row => ({...row, start: position(row.min), end: position(row.max), amount: row.count}));
     return barChart({title: "Distribution", headers: [`Lower edge (${unit})`, `Upper edge (${unit})`, "Count"],
       rows: bins.map(row => [format(row.min), format(row.max), format(row.count)]), ranges,
       xAxis(width) {
-        const domain = extent(bins.flatMap(row => [row.min, row.max]));
+        const domain = extent(ranges.flatMap(row => [row.start, row.end]));
+        if (logarithmic) {
+          const labels = [];
+          for (let decade = Math.floor(domain[0]); decade <= Math.ceil(domain[1]); decade++) {
+            for (const multiplier of [1, 2, 5]) {
+              const value = decade + Math.log10(multiplier);
+              if (value >= domain[0] && value <= domain[1]) labels.push(value);
+            }
+          }
+          return {extent: domain, ticks: labels, text: value => tickNumber.format(10 ** value)};
+        }
         return {extent: domain, ticks: ticks(domain, Math.max(3, Math.floor(width / 75)))};
       },
-      xLabel: unit, yLabel: "Count",
+      xLabel: logarithmic ? unit + " (log scale)" : unit, yLabel: "Count",
       note: [variable.distribution.label, variable.distribution.notes].filter(Boolean).join(". "),
       text: row => [`${format(row.min)}–${format(row.max, unit)}`, `Count ${format(row.count)}`],
     });
@@ -408,13 +440,14 @@
     const note = [variable.spatial.notes, coastline.length ? "Coastline from Natural Earth." : ""].filter(Boolean).join(" ");
     return chart({title, legend, note,
       headers: ["Location", "Longitude", "Latitude", `Value (${unit})`, "Count"],
-      rows: points.map(point => [point.label || "—", longitude(point.lon), latitude(point.lat), format(point.value), format(point.count)]),
+      rows: points.map(point => [point.label || "—", String(point.lon), String(point.lat), String(point.value), format(point.count)]),
       draw(ctx, width, height) {
         const xt = ticks(extent(points.map(point => point.lon), 4), Math.max(3, Math.floor(width / 63)), {extend: true});
         const yt = ticks(extent(points.map(point => point.lat), 4), 5, {extend: true});
-        const frame = drawAxes(ctx, width, height, {xValues: xt, yValues: yt,
-          xDomain: [xt[0] - .25, xt[xt.length - 1] + .25], yDomain: [yt[0] - .25, yt[yt.length - 1] + .25],
-          xLabel: "Longitude", yLabel: "Latitude", xText: longitude, yText: latitude});
+        const frame = drawAxes(ctx, width, height, {xValues: xt.filter(v => Math.abs(v) <= 180), yValues: yt.filter(v => Math.abs(v) <= 90),
+          xDomain: [Math.max(-180, xt[0] - .25), Math.min(180, xt[xt.length - 1] + .25)],
+          yDomain: [Math.max(-90, yt[0] - .25), Math.min(90, yt[yt.length - 1] + .25)],
+          xLabel: "Longitude", yLabel: "Latitude", geographic: true, xText: longitude, yText: latitude});
         if (coastline.length) {
           ctx.save();
           ctx.beginPath();
@@ -445,7 +478,7 @@
           ctx.arc(px, py, radius, 0, Math.PI * 2);
           ctx.fill();
           ctx.stroke();
-          const coords = `${latitude(point.lat)}, ${longitude(point.lon)}`;
+          const coords = `${point.lat}°, ${point.lon}°`;
           marks.push({x: px, y: py, text: [point.label || coords, ...(point.label ? [coords] : []), format(point.value, unit),
             ...(Number.isFinite(point.count) ? [`Count ${format(point.count)}`] : [])]});
         }
@@ -466,14 +499,108 @@
         Number.isFinite(row.min) && Number.isFinite(row.max) && row.max > row.min);
       if (raw.length && raw[0].time !== raw[raw.length - 1].time) charts.push(timeSeries(variable, raw, true));
       const hasTrend = series.length > 1 && series.some(row => Number.isFinite(row.value)) &&
-        (!raw.length || series.some(row => row.count > 1));
-      if (hasTrend) charts.push(timeSeries(variable, series));
+        (variable.show_series || !raw.length || series.some(row => row.count > 1));
       if (spatialPoints.length) charts.push(spatial(variable, spatialPoints, coastline));
       if (bins.length) charts.push(distribution(variable, bins));
+      if (hasTrend && raw.length) charts.push(timeSeries(variable, series));
+      if (hasTrend && !raw.length) charts.unshift(timeSeries(variable, series));
       const changes = series.length > 1 && !raw.length ? periodBars(variable, series) : null;
       if (changes) charts.push(changes);
     }
     container.replaceChildren(...charts.map(item => item.figure));
     active.set(container, charts.map(item => item.mount()));
   };
+})();
+
+(() => {
+  "use strict";
+
+  const number = new Intl.NumberFormat("en");
+
+  function renderDatasetOverview(container, rows, {
+    allRows = rows,
+    profileIds = [],
+    selectedCategory = "",
+    filtered = false,
+    onCategory,
+  } = {}) {
+    const document = container.ownerDocument;
+    const previousFocus = document.activeElement;
+    const focusedCategory = container.contains(previousFocus) ? previousFocus.dataset.category : undefined;
+    const visible = new Set(rows.map(row => row.id));
+    const profiles = new Set(profileIds);
+    const categories = new Map();
+    for (const dataset of allRows) {
+      if (!categories.has(dataset.category)) {
+        categories.set(dataset.category, {total: 0, matching: 0, profiles: 0, matchingProfiles: 0});
+      }
+      const count = categories.get(dataset.category);
+      const matches = visible.has(dataset.id);
+      const hasProfile = profiles.has(dataset.id);
+      count.total += 1;
+      count.matching += Number(matches);
+      count.profiles += Number(hasProfile);
+      count.matchingProfiles += Number(matches && hasProfile);
+    }
+
+    function element(tag, className, text) {
+      const node = document.createElement(tag);
+      node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+
+    const head = element("div", "dataset-overview-head");
+    head.append(element("h2", "dataset-overview-heading", "Datasets by category"));
+    const totalProfiles = allRows.filter(row => profiles.has(row.id)).length;
+    const summary = element("p", "dataset-overview-summary",
+      `${number.format(allRows.length)} catalog datasets · ${number.format(totalProfiles)} with analysis`);
+    const showSelection = filtered || rows.length !== allRows.length;
+    if (showSelection) {
+      const matchingProfiles = rows.filter(row => profiles.has(row.id)).length;
+      summary.append(" ", element("span", "dataset-overview-selection",
+        `Showing ${number.format(rows.length)} of ${number.format(allRows.length)} · ${number.format(matchingProfiles)} with analysis`));
+    }
+    head.append(summary);
+
+    const groups = [...categories].sort(([left, a], [right, b]) => b.total - a.total || left.localeCompare(right, "en"));
+    const bars = element("ul", "dataset-overview-bars");
+    const maximum = groups[0]?.[1].total || 1;
+    let restoreFocus;
+    for (const [category, count] of groups) {
+      const item = element("li", "dataset-overview-item");
+      const button = element("button", "dataset-overview-bar");
+      const selected = category === selectedCategory;
+      button.type = "button";
+      button.dataset.category = category;
+      button.setAttribute("aria-pressed", String(selected));
+      const accessible = showSelection
+        ? `${category}, ${count.matching} of ${count.total} datasets match, ${count.matchingProfiles} matching datasets have analysis`
+        : `${category}, ${count.total} datasets, ${count.profiles} with analysis`;
+      button.setAttribute("aria-label", accessible);
+      button.title = accessible;
+      button.addEventListener("click", () => onCategory?.(selected ? "" : category));
+      if (category === focusedCategory) restoreFocus = button;
+
+      const label = element("span", "dataset-overview-label");
+      label.append(element("span", "dataset-overview-category", category), element("span", "dataset-overview-count",
+        showSelection ? `${number.format(count.matching)} / ${number.format(count.total)}` : number.format(count.total)));
+      const track = element("span", "dataset-overview-track");
+      track.setAttribute("aria-hidden", "true");
+      const baseline = element("span", "dataset-overview-total");
+      const match = element("span", "dataset-overview-match");
+      baseline.style.width = `${100 * count.total / maximum}%`;
+      match.style.width = `${100 * count.matching / maximum}%`;
+      track.append(baseline, match);
+      button.append(label, track);
+      item.append(button);
+      bars.append(item);
+    }
+
+    container.dataset.filtered = String(showSelection);
+    container.replaceChildren(head, bars);
+    restoreFocus?.focus({preventScroll: true});
+  }
+
+  window.renderDatasetOverview = renderDatasetOverview;
 })();

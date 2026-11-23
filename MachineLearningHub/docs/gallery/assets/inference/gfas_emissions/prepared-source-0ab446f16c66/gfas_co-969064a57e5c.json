@@ -1,0 +1,83 @@
+{
+  "time_axis": "Calendar year",
+  "time_reduction": "Sum over finite grid cells",
+  "time": [
+    2003.0,
+    2010.0,
+    2016.0,
+    2020.0,
+    2024.0
+  ],
+  "dates": [
+    "2003-01-01",
+    "2010-01-01",
+    "2016-01-01",
+    "2020-01-01",
+    "2024-01-01"
+  ],
+  "values": [
+    23977834574.398476,
+    18616537280.9465,
+    20348531644.354404,
+    22312672793.82264,
+    15222301630.944391
+  ],
+  "finite_grid_fractions": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "years": [
+    2003,
+    2010,
+    2016,
+    2020,
+    2024
+  ],
+  "annual": [
+    23977834574.398476,
+    18616537280.9465,
+    20348531644.354404,
+    22312672793.82264,
+    15222301630.944391
+  ],
+  "climatology": [],
+  "label": "cofire monthly emitted mass per grid cell",
+  "units": "kg",
+  "summary": {
+    "grid_cells": 12960,
+    "analysed_cells": 12960,
+    "spatial_stride": 1,
+    "time_steps": 5,
+    "steps_with_data": 5,
+    "valid_time_start": "2003-01-01",
+    "valid_time_end": "2024-01-01",
+    "cells_ever_finite": 12960,
+    "cells_always_finite": 12960,
+    "mean_finite_fraction": 1.0,
+    "distribution": {
+      "grid_cells": 12960,
+      "min": 0.0,
+      "p01": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p99": 20744782.706999958,
+      "max": 671957529.48125,
+      "zero_fraction": 0.8488425925925925
+    },
+    "annual_summation": false,
+    "trend_cells": 12960,
+    "trend_method": "Least-squares slope over January values with at least three sampled years per cell.",
+    "trend_median": 0.0,
+    "valid_lat_min": -89.0,
+    "valid_lat_max": 89.0,
+    "valid_lon_min": -178.75,
+    "valid_lon_max": 178.75,
+    "sample_month": "January",
+    "excluded_filled_years": 0,
+    "display_map_stride": 1
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "label": "BD",
+  "units": "",
+  "time_axis": "",
+  "time_reduction": "Cos(latitude)-weighted mean",
+  "time": [],
+  "values": [],
+  "finite_grid_fractions": [],
+  "years": [],
+  "annual": [],
+  "climatology": [],
+  "summary": {
+    "grid_cells": 933120000,
+    "analysed_cells": 388962,
+    "spatial_stride": 49,
+    "time_steps": 0,
+    "steps_with_data": null,
+    "valid_time_start": null,
+    "valid_time_end": null,
+    "cells_ever_finite": 81319,
+    "cells_always_finite": 81319,
+    "mean_finite_fraction": 0.20906669546125328,
+    "distribution": {
+      "grid_cells": 81319,
+      "min": 0.10999999940395355,
+      "p01": 0.1599999964237213,
+      "p25": 1.2599999904632568,
+      "p50": 1.3799999952316284,
+      "p75": 1.4500000476837158,
+      "p99": 1.6399999856948853,
+      "max": 1.7599999904632568,
+      "zero_fraction": 0.0
+    },
+    "annual_summation": false,
+    "trend_cells": 0,
+    "trend_method": "Least-squares slope over annual values with at least three finite years per cell.",
+    "excluded_filled_years": 0
+  }
+}

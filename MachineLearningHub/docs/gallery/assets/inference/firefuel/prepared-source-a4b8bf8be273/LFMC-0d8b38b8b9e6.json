@@ -1,0 +1,57 @@
+{
+  "time_axis": "Calendar year",
+  "time_reduction": "Cos(latitude)-weighted mean",
+  "time": [
+    2003.0
+  ],
+  "dates": [
+    "2003-01-01"
+  ],
+  "values": [
+    23.656824946905754
+  ],
+  "finite_grid_fractions": [
+    1.0
+  ],
+  "years": [
+    2003
+  ],
+  "annual": [
+    23.656824946905754
+  ],
+  "climatology": [],
+  "label": "Live fuel moisture content",
+  "units": "%",
+  "summary": {
+    "grid_cells": 12960,
+    "analysed_cells": 12960,
+    "spatial_stride": 1,
+    "time_steps": 1,
+    "steps_with_data": 1,
+    "valid_time_start": "2003-01-01",
+    "valid_time_end": "2003-01-01",
+    "cells_ever_finite": 12960,
+    "cells_always_finite": 12960,
+    "mean_finite_fraction": 1.0,
+    "distribution": {
+      "grid_cells": 12960,
+      "min": 0.0,
+      "p01": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 15.780695676803589,
+      "p99": 131.4526889038086,
+      "max": 147.91490173339844,
+      "zero_fraction": 0.6925154320987654
+    },
+    "annual_summation": false,
+    "trend_cells": 0,
+    "trend_method": "Least-squares slope over annual values with at least three finite years per cell.",
+    "valid_lat_min": -89.0,
+    "valid_lat_max": 89.0,
+    "valid_lon_min": -178.75,
+    "valid_lon_max": 178.75,
+    "excluded_filled_years": 0,
+    "display_map_stride": 1
+  }
+}

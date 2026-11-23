@@ -1,0 +1,77 @@
+{
+  "time_axis": "Calendar year",
+  "time_reduction": "Cos(latitude)-weighted mean",
+  "time": [
+    2015.5,
+    2018.5,
+    2021.5,
+    2024.5
+  ],
+  "dates": [
+    "2015-07-01",
+    "2018-07-01",
+    "2021-07-01",
+    "2024-07-01"
+  ],
+  "values": [
+    0.13644417087965652,
+    0.1395721523589429,
+    0.13596158019038235,
+    0.14254200044654328
+  ],
+  "finite_grid_fractions": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "years": [
+    2015,
+    2018,
+    2021,
+    2024
+  ],
+  "annual": [
+    0.13644417087965652,
+    0.1395721523589429,
+    0.13596158019038235,
+    0.14254200044654328
+  ],
+  "climatology": [],
+  "label": "Enhanced Vegetation Index",
+  "units": "1",
+  "summary": {
+    "grid_cells": 247,
+    "analysed_cells": 247,
+    "spatial_stride": 1,
+    "time_steps": 4,
+    "steps_with_data": 4,
+    "valid_time_start": "2015-07-01",
+    "valid_time_end": "2024-07-01",
+    "cells_ever_finite": 247,
+    "cells_always_finite": 247,
+    "mean_finite_fraction": 1.0,
+    "distribution": {
+      "grid_cells": 247,
+      "min": 0.03356806095689535,
+      "p01": 0.03749471515417099,
+      "p25": 0.058831887785345316,
+      "p50": 0.10994723625481129,
+      "p75": 0.1985614337027073,
+      "p99": 0.4190579956769943,
+      "max": 0.5112317427992821,
+      "zero_fraction": 0.0
+    },
+    "annual_summation": false,
+    "trend_cells": 247,
+    "trend_method": "Least-squares slope over July values with at least three sampled years per cell.",
+    "trend_median": 0.00021667728821436565,
+    "valid_lat_min": 35.5,
+    "valid_lat_max": 47.5,
+    "valid_lon_min": 74.5,
+    "valid_lon_max": 92.5,
+    "sample_month": "July",
+    "excluded_filled_years": 0,
+    "display_map_stride": 1
+  }
+}

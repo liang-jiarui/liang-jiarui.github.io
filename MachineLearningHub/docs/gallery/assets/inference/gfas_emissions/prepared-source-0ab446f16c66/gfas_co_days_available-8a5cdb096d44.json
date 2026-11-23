@@ -1,0 +1,46 @@
+{
+  "time_axis": "Calendar year",
+  "time": [
+    2003.0,
+    2010.0,
+    2016.0,
+    2020.0,
+    2024.0
+  ],
+  "dates": [
+    "2003-01-01",
+    "2010-01-01",
+    "2016-01-01",
+    "2020-01-01",
+    "2024-01-01"
+  ],
+  "values": [
+    31.0,
+    31.0,
+    31.0,
+    31.0,
+    31.0
+  ],
+  "label": "Source calendar days represented in each output month",
+  "units": "",
+  "summary": {
+    "time_steps": 5,
+    "steps_with_data": 5,
+    "valid_time_start": "2003-01-01",
+    "valid_time_end": "2024-01-01",
+    "mean_finite_fraction": 1.0,
+    "numeric_values": 5,
+    "distribution": {
+      "grid_cells": 5,
+      "min": 31.0,
+      "p01": 31.0,
+      "p25": 31.0,
+      "p50": 31.0,
+      "p75": 31.0,
+      "p99": 31.0,
+      "max": 31.0,
+      "zero_fraction": 0.0
+    },
+    "excluded_filled_years": 0
+  }
+}

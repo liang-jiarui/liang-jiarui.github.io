@@ -1,0 +1,74 @@
+{
+  "time_axis": "Calendar year",
+  "time_reduction": "Cos(latitude)-weighted mean",
+  "time": [
+    2020.0,
+    2020.0833333333333
+  ],
+  "dates": [
+    "2020-01-01",
+    "2020-02-01"
+  ],
+  "values": [
+    0.0904574246209215,
+    0.08552579896093954
+  ],
+  "finite_grid_fractions": [
+    1.0,
+    1.0
+  ],
+  "years": [
+    2020
+  ],
+  "annual": [
+    0.08799161179093051
+  ],
+  "climatology": [
+    0.0904574246209215,
+    0.08552579896093954,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "label": "Enhanced Vegetation Index",
+  "units": "1",
+  "summary": {
+    "grid_cells": 4,
+    "analysed_cells": 4,
+    "spatial_stride": 1,
+    "time_steps": 2,
+    "steps_with_data": 2,
+    "valid_time_start": "2020-01-01",
+    "valid_time_end": "2020-02-01",
+    "cells_ever_finite": 4,
+    "cells_always_finite": 4,
+    "mean_finite_fraction": 1.0,
+    "distribution": {
+      "grid_cells": 4,
+      "min": 0.07990724593400955,
+      "p01": 0.07995630152523518,
+      "p25": 0.08113363571465015,
+      "p50": 0.08768203295767307,
+      "p75": 0.09454369731247425,
+      "p99": 0.09662324078381061,
+      "max": 0.09670988842844963,
+      "zero_fraction": 0.0
+    },
+    "annual_summation": false,
+    "trend_cells": 0,
+    "trend_method": "Least-squares slope over annual values with at least three finite years per cell.",
+    "valid_lat_min": 33.0,
+    "valid_lat_max": 35.0,
+    "valid_lon_min": 66.25,
+    "valid_lon_max": 68.75,
+    "excluded_filled_years": 0,
+    "display_map_stride": 1
+  }
+}

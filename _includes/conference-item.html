@@ -26,6 +26,7 @@
       {% if place %}<i>{{ place }}</i>, {% endif %}{{ years }}{% if note %} · {{ note }}{% endif %}
       {% if item.schedule %} · <a href="{{ base_path }}{{ item.schedule }}" target="_blank" rel="noopener">{% if lang == "zh" %}日程{% else %}Schedule{% endif %}</a>{% endif %}
       {% if item.program %} · <a href="{{ base_path }}{{ item.program }}" target="_blank" rel="noopener">{% if lang == "zh" %}详细议程{% else %}Program{% endif %}</a>{% endif %}
+      {% if item.abstracts %} · <a href="{{ base_path }}{{ item.abstracts }}" target="_blank" rel="noopener">{% if lang == "zh" %}摘要册{% else %}Book of Abstracts{% endif %}</a>{% endif %}
     </p>
   </div>
 </article>

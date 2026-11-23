@@ -250,6 +250,10 @@ defaults:
     values:
       layout: single
       author_profile: true
+  - scope:
+      path: "desk-8e41c2d7"
+    values:
+      sitemap: false
   # _teaching
   - scope:
       path: ""

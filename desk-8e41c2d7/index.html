@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="theme-color" content="#f1f5f8">
+  <title>私人资料库</title>
+  <link rel="stylesheet" href="../assets/css/private-desk.css">
+  <script type="module" src="../assets/js/private-desk.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>私人资料库</span></div>
+      <div class="top-actions" id="workspace-actions" hidden>
+        <button class="button button-quiet" type="button" id="export">导出备份</button>
+        <button class="button" type="button" id="lock">锁定</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="gate" id="gate" aria-labelledby="gate-title">
+      <div class="gate-card">
+        <div class="gate-icon" aria-hidden="true"></div>
+        <h1 id="gate-title">私人资料库</h1>
+        <p class="muted" id="gate-description">正在读取此浏览器中的资料库。</p>
+        <noscript><p>请启用 JavaScript 以使用资料库。</p></noscript>
+        <form class="stack" id="gate-form" hidden>
+          <label>资料库密码
+            <input id="password" type="password" required>
+          </label>
+          <label id="confirm-field" hidden>确认密码
+            <input id="confirm-password" type="password" autocomplete="new-password" disabled>
+          </label>
+          <button class="button button-primary" id="gate-submit" type="submit">解锁</button>
+        </form>
+        <div class="status" id="gate-status" role="status" hidden></div>
+        <div class="gate-footer" id="gate-footer" hidden>
+          <button class="button button-quiet" id="restore" type="button">从备份恢复</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace" id="workspace" aria-labelledby="workspace-title" hidden>
+      <div class="workspace-heading">
+        <h1 id="workspace-title" tabindex="-1">链接资料库</h1>
+        <p class="muted">资料仅在此浏览器内加密保存。</p>
+      </div>
+      <div class="status" id="workspace-status" role="status" hidden></div>
+      <div class="desk-grid">
+        <aside class="sidebar" aria-labelledby="folders-title">
+          <div class="sidebar-heading"><h2 id="folders-title">文件夹</h2></div>
+          <ul class="folder-list" id="folder-list"></ul>
+          <div class="folder-tools">
+            <button class="button button-quiet" id="new-folder" type="button">新建文件夹</button>
+            <button class="button button-quiet" id="manage-folder" type="button" hidden>管理当前文件夹</button>
+          </div>
+        </aside>
+
+        <section class="content" aria-labelledby="list-title">
+          <div class="toolbar">
+            <label class="search"><span class="sr-only">搜索链接</span>
+              <input id="search" type="search" placeholder="搜索标题、网址或备注" autocomplete="off" spellcheck="false">
+            </label>
+            <div class="toolbar-actions">
+              <button class="button" id="bulk-add" type="button">批量添加</button>
+              <button class="button button-primary" id="new-link" type="button">添加链接</button>
+            </div>
+          </div>
+          <div class="list-heading">
+            <h2 id="list-title">全部链接</h2><span class="list-count" id="list-count" role="status"></span>
+          </div>
+          <ul class="link-list" id="link-list"></ul>
+          <div class="empty-state" id="empty-state" hidden>
+            <h3 id="empty-title"></h3>
+            <p class="muted" id="empty-detail"></p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="editor" aria-labelledby="dialog-title">
+    <form class="stack" id="editor-form" autocomplete="off" spellcheck="false">
+      <h2 id="dialog-title"></h2>
+      <fieldset class="stack" id="link-fields" hidden disabled>
+        <label>网址
+          <input id="link-url" type="text" inputmode="url" autocomplete="off" maxlength="4096" placeholder="https://" required>
+        </label>
+        <label>标题
+          <input id="link-title" type="text" maxlength="160" placeholder="留空时使用域名">
+        </label>
+      </fieldset>
+      <fieldset class="stack" id="bulk-fields" hidden disabled>
+        <label>网址列表
+          <textarea id="bulk-urls" rows="7" placeholder="每行粘贴一个网址" required></textarea>
+        </label>
+      </fieldset>
+      <fieldset class="stack" id="assign-fields" hidden disabled>
+        <label>文件夹
+          <select id="link-folder"></select>
+        </label>
+      </fieldset>
+      <fieldset class="stack" id="note-fields" hidden disabled>
+        <label>备注
+          <textarea id="link-note" rows="3" maxlength="1200"></textarea>
+        </label>
+      </fieldset>
+      <fieldset class="stack" id="folder-fields" hidden disabled>
+        <label>文件夹名称
+          <input id="folder-name" type="text" maxlength="80" required>
+        </label>
+      </fieldset>
+      <fieldset class="stack" id="restore-fields" hidden disabled>
+        <label>加密备份文件
+          <input id="backup-file" type="file" accept=".json,application/json" required>
+        </label>
+        <label>备份密码
+          <input id="backup-password" type="password" autocomplete="current-password" required>
+        </label>
+      </fieldset>
+      <p class="muted" id="dialog-detail" hidden></p>
+      <div class="status status-error" id="dialog-status" role="status" hidden></div>
+      <div class="dialog-actions">
+        <button class="button button-danger" id="dialog-delete" type="button" hidden>删除文件夹</button>
+        <button class="button" id="dialog-cancel" type="button">取消</button>
+        <button class="button button-primary" id="dialog-submit" type="submit">保存</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,2 @@
+target,model,model_scope,period,scale,R,RMSE,n
+BA,WeightedEnsemble_L2,holdout,holdout 201501–201612,1e-10,0.902028213654292,0.029065966187787114,186149

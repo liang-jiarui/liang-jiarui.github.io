@@ -465,6 +465,62 @@
       "related_resources": []
     },
     {
+      "id": "gleam",
+      "title": "GLEAM v4.1a land water cycle",
+      "category": "Hydrology",
+      "description": "Monthly historical land evaporation, evaporative stress, and surface and root-zone soil moisture. Gallery diagnostics describe the processed 2° × 2.5° predictor grid.",
+      "role": "feature",
+      "temporal": "monthly",
+      "spatial": "0.1 × 0.1 degrees, global",
+      "coverage": "1980-01–2023-12",
+      "coverage_periods": [
+        {
+          "id": "native",
+          "start": 198001,
+          "end": 202312
+        }
+      ],
+      "variables": [
+        "SMrz",
+        "SMs",
+        "S",
+        "E"
+      ],
+      "variable_metadata": {
+        "SMrz": {
+          "units": "m3 m-3",
+          "description": "Root-zone volumetric soil moisture",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "SMs": {
+          "units": "m3 m-3",
+          "description": "Surface volumetric soil moisture",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "S": {
+          "units": "1",
+          "description": "Evaporative stress factor",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        },
+        "E": {
+          "units": "mm",
+          "description": "Monthly actual land evaporation amount",
+          "dims": "time,lat,lon",
+          "ml_scope": "core"
+        }
+      },
+      "links": [
+        {
+          "label": "Dataset registry",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L170"
+        }
+      ],
+      "related_resources": []
+    },
+    {
       "id": "clm_luh2",
       "title": "CLM LUH2 land use",
       "category": "Land use",
@@ -1522,62 +1578,6 @@
       "related_resources": []
     },
     {
-      "id": "gleam",
-      "title": "gleam",
-      "category": "Other",
-      "description": "GLEAM v4.1a historical monthly land evaporation, evaporative stress, and soil moisture.",
-      "role": "feature",
-      "temporal": "monthly",
-      "spatial": "0.1 × 0.1 degrees, global",
-      "coverage": "1980-01–2023-12",
-      "coverage_periods": [
-        {
-          "id": "native",
-          "start": 198001,
-          "end": 202312
-        }
-      ],
-      "variables": [
-        "SMrz",
-        "SMs",
-        "S",
-        "E"
-      ],
-      "variable_metadata": {
-        "SMrz": {
-          "units": "m3 m-3",
-          "description": "Root-zone volumetric soil moisture",
-          "dims": "time,lat,lon",
-          "ml_scope": "core"
-        },
-        "SMs": {
-          "units": "m3 m-3",
-          "description": "Surface volumetric soil moisture",
-          "dims": "time,lat,lon",
-          "ml_scope": "core"
-        },
-        "S": {
-          "units": "1",
-          "description": "Evaporative stress factor",
-          "dims": "time,lat,lon",
-          "ml_scope": "core"
-        },
-        "E": {
-          "units": "mm",
-          "description": "Monthly actual land evaporation amount",
-          "dims": "time,lat,lon",
-          "ml_scope": "core"
-        }
-      },
-      "links": [
-        {
-          "label": "Dataset registry",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/framework/dataset_registry.yaml#L170"
-        }
-      ],
-      "related_resources": []
-    },
-    {
       "id": "isimip3b_met",
       "title": "isimip3b met",
       "category": "Other",
@@ -2096,7 +2096,7 @@
       "category": "Fire",
       "status": "Available",
       "target": "Global monthly burned area",
-      "description": "Reconstruct and project global burned area through 2100 using CESM2 climate, LUH2 land use and human population density. The paired GFED4.1s and GFED5 definitions use conservative remapping. Gallery diagnostics document the early Example 10 configuration.",
+      "description": "Reconstruct and project global burned area through 2100 using CESM2 climate, LUH2 land use and human population density. The paired GFED4.1s and GFED5 experiments use conservative remapping. Archived figures document the early Example 10 configuration.",
       "dataset_ids": [
         "gfed4",
         "gfed5",
@@ -2151,6 +2151,48 @@
           "url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/?task=xu_2026_fire_2023"
         }
       ]
+    },
+    {
+      "id": "gleam-burned-area-inputs",
+      "title": "Burned area with GLEAM predictors",
+      "category": "Fire",
+      "status": "Configured",
+      "target": "Monthly burned area",
+      "description": "Use GLEAM root-zone soil moisture and evaporative stress as historical predictors alongside CESM2 and land-use inputs. The Gallery figures characterize the processed GLEAM source across its full period.",
+      "dataset_ids": [
+        "gleam",
+        "gfed4",
+        "gfed5",
+        "cesm2_climate",
+        "clm_luh2",
+        "clm_hdm",
+        "other_features"
+      ],
+      "experiments": [
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba",
+          "title": "GFED4.1s with GLEAM predictors",
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba.yaml"
+        },
+        {
+          "profile": "fireearth",
+          "id": "Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba",
+          "title": "GFED5 with GLEAM predictors",
+          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba --schema-only",
+          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba.yaml",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba.yaml"
+        }
+      ],
+      "links": [
+        {
+          "label": "GLEAM inference input analysis",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/inference_data_analysis.md"
+        }
+      ],
+      "related_resources": []
     },
     {
       "id": "station-wet-deposition",
@@ -2604,68 +2646,6 @@
           "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/BA_BASELINE --schema-only",
           "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/BA_BASELINE.yaml",
           "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/BA_BASELINE.yaml"
-        }
-      ],
-      "links": [],
-      "related_resources": []
-    },
-    {
-      "id": "configured-mlhub-ch2-fire-ba-ssp-gleam-ea0dd6dac21b",
-      "title": "Ch2_FIRE_BA_SSP / GLEAM",
-      "category": "Experiment configurations",
-      "description": "Experiments discovered from the repository configuration.",
-      "status": "Configured",
-      "task_path": "Ch2_FIRE_BA_SSP/GLEAM",
-      "target": "burned_area, burned_area_gfed5",
-      "dataset_ids": [
-        "gfed4",
-        "other_features",
-        "clm_luh2",
-        "clm_hdm",
-        "cesm2_climate",
-        "gleam",
-        "gfed5"
-      ],
-      "experiments": [
-        {
-          "profile": "fireearth",
-          "id": "Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba",
-          "title": "gfed4_ba",
-          "description": "Historical GFED4.1s BA with GLEAM root-zone soil moisture and evaporative stress",
-          "targets": [
-            "burned_area"
-          ],
-          "dataset_ids": [
-            "gfed4",
-            "other_features",
-            "clm_luh2",
-            "clm_hdm",
-            "cesm2_climate",
-            "gleam"
-          ],
-          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba --schema-only",
-          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba.yaml",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed4_ba.yaml"
-        },
-        {
-          "profile": "fireearth",
-          "id": "Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba",
-          "title": "gfed5_ba",
-          "description": "Historical GFED5 BA with GLEAM root-zone soil moisture and evaporative stress",
-          "targets": [
-            "burned_area_gfed5"
-          ],
-          "dataset_ids": [
-            "gfed5",
-            "other_features",
-            "clm_luh2",
-            "clm_hdm",
-            "cesm2_climate",
-            "gleam"
-          ],
-          "command": "python scripts/mlhub --project fireearth validate --experiment Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba --schema-only",
-          "config": "config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba.yaml",
-          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/GLEAM/gfed5_ba.yaml"
         }
       ],
       "links": [],
@@ -4219,6 +4199,260 @@
       ]
     },
     {
+      "id": "gfed5-inference-seasonality",
+      "title": "GFED5 burned-area seasonality and monthly coverage",
+      "category": "Inference time series",
+      "description": "Annual global burned area, the historical median and 10th–90th percentile by calendar month, and a timeline of complete, partial and unavailable months.",
+      "variable": "burned_area_gfed5",
+      "period": "1997–2026 archive · 1997–2022 seasonal reference",
+      "task_id": "gfed5-burned-area-comparison",
+      "run_id": "gfed5/ba_monthly_1997_2026",
+      "image": "assets/gfed5-inference-seasonality.webp",
+      "alt": "Annual burned-area bars, a seasonal line peaking in December, and a monthly coverage strip.",
+      "findings": [
+        "The historical December median is 83.6 million hectares, the highest among calendar months.",
+        "The archive has 354 complete months, 4 partial months and 2 unavailable months."
+      ],
+      "data": [
+        {
+          "label": "Inference data summary (JSON)",
+          "path": "assets/inference-data-summary.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Data sources",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/inference_data_analysis.md"
+        }
+      ]
+    },
+    {
+      "id": "gfed5-inference-spatial",
+      "title": "Where land burns in the GFED5 archive",
+      "category": "Inference spatial",
+      "description": "Mean annual burned area as a percentage of each cell's area, with a map of the percentage-point change between two equal ten-year windows.",
+      "variable": "burned_area_gfed5 (% of grid cell area per year)",
+      "period": "1997–2022 · change from 1997–2006 to 2013–2022",
+      "task_id": "gfed5-burned-area-comparison",
+      "run_id": "gfed5/ba_monthly_1997_2026",
+      "image": "assets/gfed5-inference-spatial.webp",
+      "alt": "Global maps of mean annual burned fraction and the change in fraction between the early and late ten-year windows.",
+      "findings": [
+        "The highest mean annual burned fraction is 89.9% at 9°N, 1.25°W, in tropical West Africa."
+      ],
+      "data": [
+        {
+          "label": "Inference data summary (JSON)",
+          "path": "assets/inference-data-summary.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Data sources",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/inference_data_analysis.md"
+        }
+      ]
+    },
+    {
+      "id": "gfed5-inference-distribution",
+      "title": "Concentration of burned area across grid cells",
+      "category": "Inference distribution",
+      "description": "A logarithmic histogram of mean annual burned area in grid cells with burning, with a cumulative contribution curve using all grid cells.",
+      "variable": "burned_area_gfed5 (million hectares per grid cell per year)",
+      "period": "1997–2022",
+      "task_id": "gfed5-burned-area-comparison",
+      "run_id": "gfed5/ba_monthly_1997_2026",
+      "image": "assets/gfed5-inference-distribution.webp",
+      "alt": "Histogram of positive annual cell means and cumulative share of total burned area as cells are added in descending order.",
+      "findings": [
+        "The highest-burning 10% of all grid cells account for 97.3% of total burned area.",
+        "The mean annual burned area is zero in 72.8% of all grid cells, including ocean cells."
+      ],
+      "data": [
+        {
+          "label": "Inference data summary (JSON)",
+          "path": "assets/inference-data-summary.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Data sources",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/inference_data_analysis.md"
+        }
+      ]
+    },
+    {
+      "id": "gleam-inference-seasonality",
+      "title": "GLEAM soil moisture and evaporation over time",
+      "category": "Inference time series",
+      "description": "Annual land series and calendar-month medians with 10th–90th percentiles for root-zone soil moisture and actual evaporation on the staged inference grid.",
+      "variable": "SMrz, E",
+      "period": "1980–2023",
+      "task_id": "gleam-burned-area-inputs",
+      "image": "assets/gleam-inference-seasonality.webp",
+      "alt": "Annual series and seasonal profiles for GLEAM root-zone soil moisture and actual evaporation.",
+      "findings": [
+        "Mean annual evaporation was 446.8 mm in 1980–1999 and 460.8 mm in 2004–2023 over cells with data, using latitude weights."
+      ],
+      "data": [
+        {
+          "label": "Inference data summary (JSON)",
+          "path": "assets/inference-data-summary.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Data sources",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/inference_data_analysis.md"
+        }
+      ]
+    },
+    {
+      "id": "gleam-inference-spatial",
+      "title": "GLEAM mean land-surface conditions",
+      "category": "Inference spatial",
+      "description": "Maps of the full-period means for root-zone and surface soil moisture, evaporative stress and actual evaporation on the 2° × 2.5° predictor grid.",
+      "variable": "SMrz, SMs, S, E",
+      "period": "1980–2023",
+      "task_id": "gleam-burned-area-inputs",
+      "image": "assets/gleam-inference-spatial.webp",
+      "alt": "Four global maps showing the mean land-surface values for the four GLEAM variables.",
+      "data": [
+        {
+          "label": "Inference data summary (JSON)",
+          "path": "assets/inference-data-summary.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Data sources",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/inference_data_analysis.md"
+        }
+      ]
+    },
+    {
+      "id": "gleam-inference-distribution",
+      "title": "GLEAM predictor distributions across two periods",
+      "category": "Inference distribution",
+      "description": "Area-weighted histograms of grid-cell time means, using the same bins within each variable for two twenty-year periods.",
+      "variable": "SMrz, SMs, S, E",
+      "period": "1980–1999 and 2004–2023",
+      "task_id": "gleam-burned-area-inputs",
+      "image": "assets/gleam-inference-distribution.webp",
+      "alt": "Four histograms overlaying the early and late distributions for the GLEAM inference inputs.",
+      "data": [
+        {
+          "label": "Inference data summary (JSON)",
+          "path": "assets/inference-data-summary.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Data sources",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/inference_data_analysis.md"
+        }
+      ]
+    },
+    {
+      "id": "gleam-inference-coverage",
+      "title": "Coverage of GLEAM root-zone soil moisture",
+      "category": "Inference coverage",
+      "description": "A map of valid months per grid cell and a time series of the share of the full grid with finite values.",
+      "variable": "SMrz",
+      "period": "1980–2023",
+      "task_id": "gleam-burned-area-inputs",
+      "image": "assets/gleam-inference-coverage.webp",
+      "alt": "A global coverage map of the stable land-data footprint and a flat time series of valid grid-cell share.",
+      "findings": [
+        "All 528 months have valid data at the same 5,425 of 12,960 grid cells. The denominator includes ocean and other masked cells."
+      ],
+      "data": [
+        {
+          "label": "Inference data summary (JSON)",
+          "path": "assets/inference-data-summary.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Data sources",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/docs/inference_data_analysis.md"
+        },
+        {
+          "label": "Coverage plotting code",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/src/ml/plot/inference_data_diagnostics.py"
+        }
+      ]
+    },
+    {
+      "id": "gfed5-ssp-projection-comparison",
+      "title": "Burned area projections trained on GFED4.1s and GFED5",
+      "category": "Inference time series",
+      "description": "Global annual burned area across four SSPs and monthly comparisons with observations. Both experiments use the same 2° × 2.5° grid and CESM2 and land-use predictors.",
+      "variable": "BA (million hectares)",
+      "period": "1850–2100",
+      "scenario": "ssp126, ssp245, ssp370, ssp585",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "Ch2_FIRE_BA_SSP/v20261119_GFED5/gfed5_ba_1850_2100",
+      "image": "assets/gfed5-ssp-projection-comparison.webp",
+      "alt": "Annual projections by training dataset with the range of four SSPs, plus monthly model and observed totals from 1997 to 2026.",
+      "findings": [
+        "The GFED5-trained ensemble averages 788 million hectares per year in 1995–2014 and 813 to 1,053 million hectares per year across SSPs in 2081–2100.",
+        "Over the 96 months of the GFED5 holdout, global monthly RMSE ranges from 9.00 to 9.83 million hectares across the four scenarios."
+      ],
+      "data": [
+        {
+          "label": "Annual model and observed totals (CSV)",
+          "path": "assets/gfed5-ssp-annual-global-burned-area.csv"
+        },
+        {
+          "label": "Twenty-year scenario means (CSV)",
+          "path": "assets/gfed5-ssp-period-means.csv"
+        }
+      ],
+      "links": [
+        {
+          "label": "GFED5 experiment and reproduction",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20261119_GFED5/README.md"
+        },
+        {
+          "label": "Report code",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/src/ml/gfed5_ba_report.py"
+        }
+      ]
+    },
+    {
+      "id": "gfed4-conservative-holdout-scatter",
+      "title": "Burned area holdout on the conservative grid",
+      "category": "Model evaluation",
+      "description": "Observed and predicted monthly grid-cell burned area for the GFED4.1s-trained ensemble. Colors distinguish out-of-fold training predictions and the independent time holdout.",
+      "variable": "BA (million hectares per grid cell per month)",
+      "period": "1997–2014 training CV and 2015–2016 holdout",
+      "scenario": "ssp126",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_models",
+      "image": "assets/gfed4-conservative-holdout-scatter.webp",
+      "alt": "Log-log comparison of predicted and observed burned area, with training CV and holdout points around the one-to-one line.",
+      "findings": [
+        "The holdout has 186,149 grid-cell months, with Pearson r of 0.902 and RMSE of 0.0291 million hectares per grid cell per month."
+      ],
+      "data": [
+        {
+          "label": "Holdout scores (CSV)",
+          "path": "assets/gfed4-conservative-holdout-metrics.csv"
+        }
+      ],
+      "links": [
+        {
+          "label": "GFED4.1s experiment configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/v20260921_ML_2x2p5/test_BA_cesm_climate_full_ssp_20260921_models.yaml"
+        },
+        {
+          "label": "Holdout scatter plot code",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/src/ml/plot/plot_test_scatter.py"
+        }
+      ]
+    },
+    {
       "id": "ba-ssp-spatial-mean",
       "title": "Mean burned area by SSP",
       "category": "Scenario inference",
@@ -4283,6 +4517,108 @@
         {
           "label": "Remapping and current experiments",
           "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/Ch2_FIRE_BA_SSP/README.md"
+        }
+      ]
+    },
+    {
+      "id": "cesm2-ssp-temperature-annual",
+      "title": "Annual near-surface temperature across four SSPs",
+      "category": "Inference time series",
+      "description": "Annual means of the CESM2 near-surface air temperature predictor in the frozen Example 10 archive. The four pathways share a historical climate trajectory through 2014.",
+      "badge": "Archived diagnostic",
+      "variable": "tas (K)",
+      "period": "1850–2100",
+      "scenario": "ssp126, ssp245, ssp370, ssp585",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "examples/10_ba_cesm_climate_full_ssp_20260831",
+      "image": "assets/cesm2-ssp-temperature-annual.webp",
+      "alt": "Four annual line series that follow the same path historically and diverge during the SSP period.",
+      "findings": [
+        "By 2100, SSP5-8.5 has the highest annual mean and SSP1-2.6 the lowest in this CESM2 member."
+      ],
+      "links": [
+        {
+          "label": "Frozen experiment configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "label": "Scenario archive plotting code",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/src/ml/plot/compare_ssp/inference_data.py"
+        }
+      ]
+    },
+    {
+      "id": "cesm2-ssp-temperature-trend",
+      "title": "Global maps of CESM2 temperature trends",
+      "category": "Inference spatial",
+      "description": "Grid-cell linear slopes fitted to annual mean near-surface temperature over the full Example 10 archive. The four maps share a color scale.",
+      "badge": "Archived diagnostic",
+      "variable": "tas (K per year)",
+      "period": "1850–2100",
+      "scenario": "ssp126, ssp245, ssp370, ssp585",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "examples/10_ba_cesm_climate_full_ssp_20260831",
+      "image": "assets/cesm2-ssp-temperature-trend.webp",
+      "alt": "Four global temperature trend maps with the strongest warming in high northern latitudes.",
+      "findings": [
+        "The largest fitted warming rates are found at high northern latitudes, especially under SSP5-8.5."
+      ],
+      "links": [
+        {
+          "label": "Frozen experiment configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "label": "Scenario archive plotting code",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/src/ml/plot/compare_ssp/inference_data.py"
+        }
+      ]
+    },
+    {
+      "id": "luh2-ssp-cropland-zonal",
+      "title": "Cropland distribution by latitude",
+      "category": "Inference spatial",
+      "description": "Longitude averages of the time-mean CLM LUH2 cropland field in the frozen Example 10 archive.",
+      "badge": "Archived diagnostic",
+      "variable": "PCT_CROP",
+      "period": "1850–2100",
+      "scenario": "ssp126, ssp245, ssp370, ssp585",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "examples/10_ba_cesm_climate_full_ssp_20260831",
+      "image": "assets/luh2-ssp-cropland-zonal.webp",
+      "alt": "Four closely spaced profiles showing cropland concentration in northern mid-latitudes.",
+      "links": [
+        {
+          "label": "Frozen experiment configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "label": "Scenario archive plotting code",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/src/ml/plot/compare_ssp/inference_data.py"
+        }
+      ]
+    },
+    {
+      "id": "ba-ssp-seasonal-uncertainty",
+      "title": "Seasonal uncertainty of holdout burned area",
+      "category": "Model uncertainty",
+      "description": "Mean observed and predicted holdout burned area by calendar month, with an empirical absolute-residual band and the ensemble 16th–84th percentile envelope.",
+      "badge": "Archived diagnostic",
+      "note": "The 0831 experiment used non-conservative remapping of the burned-area label. Use this figure to inspect the archived workflow. The current 2° × 2.5° experiments use conservative remapping.",
+      "variable": "BA",
+      "scenario": "ssp126",
+      "task_id": "burned-area-ssp-projection",
+      "run_id": "examples/10_ba_cesm_climate_full_ssp_20260831",
+      "image": "assets/ba-ssp-seasonal-uncertainty.webp",
+      "alt": "Monthly observed and predicted values with shaded residual and ensemble spread bands.",
+      "links": [
+        {
+          "label": "Frozen experiment configuration",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/config/ml/experiment/examples/10_ba_cesm_climate_full_ssp_20260831.yaml"
+        },
+        {
+          "label": "Seasonal uncertainty plotting code",
+          "url": "https://github.com/liang-jiarui/MachineLearningHub/blob/main/src/ml/plot/plot_uncertainty.py"
         }
       ]
     },

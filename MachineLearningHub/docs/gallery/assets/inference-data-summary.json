@@ -1,0 +1,103 @@
+{
+  "GFED5": {
+    "complete_months": 354,
+    "partial_months": 4,
+    "unavailable_months": 2,
+    "months_with_coverage_gaps": {
+      "2026-02": 27,
+      "2026-03": 29,
+      "2026-04": 29,
+      "2026-10": 23,
+      "2026-11": 0,
+      "2026-12": 0
+    },
+    "maximum_difference_from_native_global_total_percent": 9.455570298928588e-07,
+    "historical_annual_mean_mha": 774.6294275435705,
+    "comparison_period_annual_means_mha": {
+      "1997–2006": 833.9470461263047,
+      "2013–2022": 704.4560229791307
+    },
+    "complete_annual_totals_mha": {
+      "1997": 749.4169482205391,
+      "1998": 921.7221724069391,
+      "1999": 791.0363989991127,
+      "2000": 833.3155178295419,
+      "2001": 916.1310459230418,
+      "2002": 859.0935758610145,
+      "2003": 817.1638266408336,
+      "2004": 854.4220429811253,
+      "2005": 826.8162848688715,
+      "2006": 770.3526475320275,
+      "2007": 825.585697243934,
+      "2008": 821.9675278588322,
+      "2009": 761.2479282367576,
+      "2010": 758.4239531409971,
+      "2011": 798.2401224238314,
+      "2012": 790.869196174124,
+      "2013": 698.7655582407094,
+      "2014": 724.8985592831064,
+      "2015": 744.9331158706107,
+      "2016": 739.5172254723601,
+      "2017": 734.7570121364901,
+      "2018": 686.0612587927424,
+      "2019": 683.0283452160509,
+      "2020": 724.2986593551998,
+      "2021": 687.2186594705191,
+      "2022": 621.081835953519,
+      "2023": 760.5830529114021,
+      "2024": 763.501962332866,
+      "2025": 671.353297726751
+    },
+    "peak_climatology_month": 12,
+    "peak_climatology_median_mha": 83.57427512299883,
+    "historical_mean_burned_fraction_max_pct": 89.8951182277553,
+    "historical_mean_burned_fraction_max_cell": {
+      "lat": 9.0,
+      "lon": -1.25
+    },
+    "zero_grid_cells_pct": 72.83179012345678,
+    "top_tenth_of_grid_global_burn_pct": 97.31944969120053
+  },
+  "GLEAM": {
+    "months": 528,
+    "total_cells": 12960,
+    "variables": {
+      "SMrz": {
+        "valid_cells_all_months": 5425,
+        "valid_cells_any_month": 5425,
+        "early_mean": 0.21465250429319002,
+        "late_mean": 0.21377956019960404,
+        "annual_units": "m³/m³",
+        "monthly_median_min_month": 12,
+        "monthly_median_min": 0.20849379733642803,
+        "monthly_median_max_month": 5,
+        "monthly_median_max": 0.21978250534620444
+      },
+      "SMs": {
+        "valid_cells_all_months": 5425,
+        "valid_cells_any_month": 5425,
+        "early_mean": 0.18789731680991822,
+        "late_mean": 0.18643195892397893,
+        "annual_units": "m³/m³"
+      },
+      "S": {
+        "valid_cells_all_months": 5548,
+        "valid_cells_any_month": 5548,
+        "early_mean": 0.5634567670704886,
+        "late_mean": 0.5591047421100084,
+        "annual_units": "0–1"
+      },
+      "E": {
+        "valid_cells_all_months": 5548,
+        "valid_cells_any_month": 5548,
+        "early_mean": 446.8101155353261,
+        "late_mean": 460.80488394306803,
+        "annual_units": "mm/year",
+        "monthly_median_min_month": 2,
+        "monthly_median_min": 29.182893957173548,
+        "monthly_median_max_month": 7,
+        "monthly_median_max": 48.26433257119439
+      }
+    }
+  }
+}

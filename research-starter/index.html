@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Browse ResearchStarter's submodules, galleries, and research workflows.">
+  <meta name="description" content="Search simulations, observational data, and machine learning across the ResearchStarter galleries.">
   <title>Research Gallery · ResearchStarter</title>
-  <link rel="stylesheet" href="hub-nav.css">
-  <link rel="stylesheet" href="gallery.css">
-  <script src="gallery.js" defer></script>
+  <link rel="stylesheet" href="hub-nav.css?v=15af2d303315">
+  <link rel="stylesheet" href="gallery.css?v=02f5fb75389b">
+  <script src="gallery.js?v=316504b88e2e" defer></script>
 </head>
 <body id="top">
-  <a class="skip-link" href="#module-directory">Skip to the submodule directory</a>
+  <a class="skip-link" href="#gallery-search">Skip to gallery search</a>
   <nav data-research-nav class="research-nav" aria-label="Research galleries"><div class="research-nav__inner"><a class="research-nav__home" href="index.html" aria-current="page">ResearchStarter</a><div class="research-nav__hubs"><a href="../EarthModelHub/docs/simulations/index.html">EMH</a><a href="../ObservationHub/docs/observations/index.html">ObsHub</a><a href="../MachineLearningHub/docs/gallery/index.html">MLHub</a></div></div></nav>
   <header class="masthead">
     <div class="page-width">
       <div class="hero">
         <h1>Research Gallery</h1>
-        <p>Explore Earth system simulations, observational data, and machine learning experiments. Find galleries and guides for each submodule.</p>
+        <p>Search Earth system simulations, observational data, and machine learning across three research hubs.</p>
         <nav class="section-links" aria-label="Page navigation">
+          <a href="#gallery-search">Search galleries</a>
+          <a href="#recent-updates">Recent updates</a>
           <a href="#module-directory">Submodule directory</a>
           <a href="#workflow">Experiment workflows</a>
         </nav>
@@ -26,6 +28,44 @@
   </header>
 
   <main class="page-width">
+    <div class="catalog-panels">
+      <section id="gallery-search" class="catalog-panel" aria-labelledby="gallery-search-heading">
+        <div class="section-heading">
+          <h2 id="gallery-search-heading">Search galleries</h2>
+        </div>
+        <form id="gallery-controls" class="module-controls gallery-controls" role="search" aria-label="Search galleries" hidden>
+          <label class="search-field">
+            <span class="visually-hidden">Search gallery entries</span>
+            <input id="gallery-query" type="search" placeholder="Search titles, variables or keywords" autocomplete="off">
+          </label>
+          <label class="category-field">
+            <span class="visually-hidden">Filter by hub</span>
+            <select id="gallery-hub"><option value="">All hubs</option></select>
+          </label>
+          <label class="category-field">
+            <span class="visually-hidden">Filter by entry type</span>
+            <select id="gallery-type"><option value="">All types</option></select>
+          </label>
+        </form>
+        <p id="gallery-status" class="module-count" role="status" hidden></p>
+        <ul id="gallery-results" class="catalog-list" aria-label="Gallery search results" hidden></ul>
+        <button id="gallery-more" class="button button--secondary catalog-more" type="button" hidden>Show more results</button>
+        <noscript><p class="module-count">Open a gallery from the submodule directory to browse its entries.</p></noscript>
+      </section>
+
+      <section id="recent-updates" class="catalog-panel" aria-labelledby="recent-heading">
+        <div class="section-heading">
+          <h2 id="recent-heading">Recent updates</h2>
+        </div>
+        <p id="recent-status" class="module-count" role="status" hidden></p>
+        <ul id="recent-list" class="catalog-list" hidden></ul>
+        <details id="recent-more" class="catalog-more" hidden>
+          <summary></summary>
+          <ul class="catalog-list"></ul>
+        </details>
+      </section>
+    </div>
+
     <section id="module-directory" class="directory" aria-labelledby="module-heading">
       <div class="section-heading">
         <h2 id="module-heading">Submodule directory</h2>

@@ -24,7 +24,7 @@ function start(catalog) {
   const views = {
     gallery: {
       title: "ML Gallery", unit: "figure", rows: catalog.gallery,
-      description: "Browse research figures and the experiments behind them.",
+      description: "Explore inference data diagnostics, research figures and the experiments behind them.",
       placeholder: "Search figures", groupLabel: "By result type",
       groupAll: "All result types", filterLabel: "By task", facetAll: "All tasks",
       facet: (row) => row.task_id, facetTitle: (id) => tasks.get(id)?.title ?? id,
@@ -214,6 +214,7 @@ function start(catalog) {
   function searchableText(row, view) {
     return [
       row.id, row.title, row.category, row.description, row.target, row.status, row.coverage, row.run_id, row.scenario, row.badge,
+      row.variable, row.period, row.findings, row.data?.map((asset) => asset.label),
       row.spatial, row.temporal, roleLabels[row.role], row.role, row.dataset_ids, row.variables, row.task_path,
       row.experiments?.map((entry) => [entry.id, entry.title, entry.description]), view.relatedText?.(row),
       row.related_resources?.map((resource) => [resource.id, resource.title, hubTitles.get(resource.hub_id)]),
@@ -339,14 +340,21 @@ function start(catalog) {
   }
 
   function showFigure(row) {
-    metadata([["Experiment", row.run_id], ["Scenario", row.scenario]]);
+    metadata([["Experiment", row.run_id], ["Variable", row.variable], ["Scenario", row.scenario], ["Period", row.period]]);
     if (row.note) detailContent.append(element("p", { class: "figure-note" }, row.note));
     detailContent.append(element("figure", { class: "full-figure" },
       element("img", { src: row.image, alt: row.alt ?? row.title })));
+    if (row.findings?.length) section("Findings", list(row.findings));
     const task = tasks.get(row.task_id);
     const links = [element("a", { href: row.image }, "Open image at full size")];
     if (task) links.unshift(detailLink(task.title, "tasks", task.id));
     section("Figure resources", list(links));
+    if (row.data?.length) {
+      section("Download figure data", list(row.data.map(({ label, path }) => {
+        const href = path.split("/").map(encodeURIComponent).join("/");
+        return element("a", { href, download: "" }, label);
+      })));
+    }
   }
 
   function showDataset(row) {

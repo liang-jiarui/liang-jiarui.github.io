@@ -128,7 +128,7 @@
     tooltip.setAttribute("aria-hidden", "true");
     tooltip.hidden = true;
     stage.append(canvas, tooltip);
-    figure.append(element("h3", config.title), stage);
+    figure.append(element("h4", config.title), stage);
     if (config.legend) figure.append(config.legend);
     if (config.note) figure.append(element("p", config.note, "chart-note"));
     const details = element("details", null, "chart-data");
@@ -201,9 +201,12 @@
     }};
   }
 
-  function seriesData(variable) {
-    return (variable.series || [])
-      .map(row => ({...row, time: Date.parse(row.date)}))
+  function seriesData(values) {
+    return (values || [])
+      .map(row => {
+        const utc = /^\d{4}-\d\d-\d\d[T ]\d\d:\d\d(:\d\d(\.\d+)?)?$/.test(row.date) ? row.date + "Z" : row.date;
+        return {...row, time: Date.parse(utc)};
+      })
       .filter(row => Number.isFinite(row.time))
       .sort((a, b) => a.time - b.time);
   }
@@ -212,18 +215,25 @@
     const days = 86400000;
     const annual = /year|annual/i.test(label);
     const monthly = /month/i.test(label);
-    const step = days * (annual ? 366 : monthly ? 31 : 1);
+    const hourly = series.some(row => /[T ]\d{2}:/.test(row.date)) &&
+      series[series.length - 1].time - series[0].time <= 2 * days;
+    const step = hourly ? days / 24 : days * (annual ? 366 : monthly ? 31 : 1);
     const years = new Set(series.map(row => new Date(row.time).getUTCFullYear()));
-    const spacing = annual ? 54 : years.size > 1 ? 70 : 40;
+    const spacing = hourly || years.size > 1 ? 86 : 54;
     const count = Math.min(series.length, Math.max(2, Math.floor((width - 50) / spacing)));
-    const selected = Array.from({length: count}, (_, i) => series[Math.round(i * (series.length - 1) / Math.max(count - 1, 1))].time);
+    const domain = extent(series.map(row => row.time), step);
+    const selected = [];
+    for (const row of series) {
+      if (!selected.length || row.time - selected[selected.length - 1] >= (domain[1] - domain[0]) / Math.max(count - 1, 1)) selected.push(row.time);
+    }
     return {
-      extent: extent(series.map(row => row.time), step),
+      extent: domain,
       ticks: [...new Set(selected)],
-      maxGap: step * (annual || monthly ? 1.5 : /day|daily/i.test(label) ? 2 : Infinity),
+      maxGap: step * (annual || monthly ? 1.5 : 2),
       text(value) {
         const year = new Date(value).getUTCFullYear();
         if (annual) return String(year);
+        if (hourly) return dayName.format(value) + " " + new Date(value).toISOString().slice(11, 16);
         const month = monthly ? monthName.format(value) : dayName.format(value);
         return years.size > 1 ? month + " ’" + String(year).slice(-2) : month;
       },
@@ -245,7 +255,7 @@
     return groups;
   }
 
-  function timeSeries(variable, rows) {
+  function timeSeries(variable, rows, raw = false) {
     const unit = variable.unit;
     const period = variable.period_label || "Period";
     const hasRange = row => Number.isFinite(row.value) && Number.isFinite(row.low) && Number.isFinite(row.high);
@@ -257,9 +267,10 @@
       swatch.style.cssText = `display:inline-block;width:1rem;height:.65rem;margin-right:.4rem;background:${band};border:1px solid ${accent}`;
       legend.append(swatch, document.createTextNode(bandLabel));
     }
-    return chart({title: variable.series_title || "Time series", wide: true, legend,
-      headers: [period, `Value (${unit})`, ...(showRange ? [`${bandLabel} lower`, `${bandLabel} upper`] : []), countLabel(variable)],
-      rows: rows.map(row => [row.date, format(row.value), ...(showRange ? [format(row.low), format(row.high)] : []), format(row.count)]),
+    return chart({title: raw ? "Individual values over time" : (variable.series_title || "Time series"), wide: true, legend,
+      note: raw ? variable.raw_note || (rows.length + " source records shown. Repeated values can overlap.") : variable.series_note,
+      headers: [period, `Value (${unit})`, ...(showRange ? [`${bandLabel} lower`, `${bandLabel} upper`] : []), raw ? "Source label" : countLabel(variable)],
+      rows: rows.map(row => [row.date, format(row.value), ...(showRange ? [format(row.low), format(row.high)] : []), raw ? row.label || "—" : format(row.count)]),
       draw(ctx, width, height) {
         const axis = timeAxis(rows, period, width);
         const observed = rows.flatMap(row => hasRange(row) ? [row.value, row.low, row.high] : [row.value]);
@@ -285,7 +296,7 @@
         }
         ctx.strokeStyle = accent;
         ctx.lineWidth = 2;
-        for (const group of segments(rows, row => Number.isFinite(row.value), axis.maxGap)) {
+        for (const group of (raw ? [] : segments(rows, row => Number.isFinite(row.value), axis.maxGap))) {
           ctx.beginPath();
           ctx.moveTo(x(group[0].time), y(group[0].value));
           for (const row of group.slice(1)) ctx.lineTo(x(row.time), y(row.value));
@@ -298,7 +309,7 @@
           ctx.beginPath();
           ctx.arc(px, py, 2.75, 0, Math.PI * 2);
           ctx.fill();
-          return {x: px, y: py, span: 14, text: [row.date, format(row.value, unit),
+          return {x: px, y: py, text: [row.date, format(row.value, unit), ...(row.label ? [row.label] : []),
             ...(hasRange(row) ? [`${bandLabel} ${format(row.low)}–${format(row.high, unit)}`] : []),
             ...(Number.isFinite(row.count) ? [`${countLabel(variable)} ${format(row.count)}`] : [])]};
         });
@@ -447,15 +458,19 @@
     for (const cleanup of active.get(container) || []) cleanup();
     const charts = [];
     if (variable) {
-      const series = seriesData(variable);
+      const series = seriesData(variable.series);
+      const raw = seriesData(variable.raw_series);
       const spatialPoints = (variable.spatial?.points || []).filter(point => Number.isFinite(point.value) &&
         Number.isFinite(point.lon) && Number.isFinite(point.lat));
       const bins = (variable.distribution?.bins || []).filter(row => Number.isFinite(row.count) &&
         Number.isFinite(row.min) && Number.isFinite(row.max) && row.max > row.min);
-      if (series.some(row => Number.isFinite(row.value))) charts.push(timeSeries(variable, series));
+      if (raw.length && raw[0].time !== raw[raw.length - 1].time) charts.push(timeSeries(variable, raw, true));
+      const hasTrend = series.length > 1 && series.some(row => Number.isFinite(row.value)) &&
+        (!raw.length || series.some(row => row.count > 1));
+      if (hasTrend) charts.push(timeSeries(variable, series));
       if (spatialPoints.length) charts.push(spatial(variable, spatialPoints, coastline));
       if (bins.length) charts.push(distribution(variable, bins));
-      const changes = series.length ? periodBars(variable, series) : null;
+      const changes = series.length > 1 && !raw.length ? periodBars(variable, series) : null;
       if (changes) charts.push(changes);
     }
     container.replaceChildren(...charts.map(item => item.figure));

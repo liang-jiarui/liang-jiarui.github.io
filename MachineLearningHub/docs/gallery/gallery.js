@@ -9,6 +9,13 @@ const navLinks = [...document.querySelectorAll("[data-view]")];
 const roleLabels = {
   label: "Label", feature: "Feature", feature_and_label: "Feature & label", derived: "Derived",
 };
+const inferenceStatus = {
+  profiled: "Profiled", partial: "Partially profiled", inspected: "Coverage available",
+  registered: "Registry only", derived: "Derived",
+};
+const gridNumber = new Intl.NumberFormat(undefined, { maximumFractionDigits: 4 });
+const fraction = new Intl.NumberFormat(undefined, { style: "percent", maximumFractionDigits: 1 });
+const statisticNumber = new Intl.NumberFormat(undefined, { maximumSignificantDigits: 5 });
 
 function element(tag, attrs = {}, ...children) {
   const node = document.createElement(tag);
@@ -17,9 +24,72 @@ function element(tag, attrs = {}, ...children) {
   return node;
 }
 
+function dateLabel(value) {
+  const text = String(value ?? "");
+  const compact = /^(\d{4})(\d{2})(\d{2})?$/.exec(text);
+  if (compact) return compact.slice(1).filter(Boolean).join("-");
+  return text.replace(/[T ]00:00:00(?:\.0+)?Z?$/, "");
+}
+
+function dateRange(start, end) {
+  const first = dateLabel(start);
+  const last = dateLabel(end);
+  return first && last && first !== last ? `${first} – ${last}` : first || last;
+}
+
+function coverageBounds(variable, prefix = "") {
+  const bounds = ["lat_min", "lat_max", "lon_min", "lon_max"].map(key => variable[prefix + key]);
+  if (!bounds.every(Number.isFinite)) return "";
+  const [latMin, latMax, lonMin, lonMax] = bounds;
+  const degrees = value => `${gridNumber.format(value)}°`;
+  return `${degrees(latMin)} to ${degrees(latMax)} lat · ${degrees(lonMin)} to ${degrees(lonMax)} lon`;
+}
+
+function productName(product) {
+  const label = product.label ?? product.title ?? product.id;
+  return [label, product.scenario, product.model].filter((value, index, values) => value && values.indexOf(value) === index).join(" · ");
+}
+
+function featureStatus(feature) {
+  if (feature.profiles) return feature.profiles < feature.variants.length ? "partial" : "profiled";
+  return feature.variants.length ? "inspected" : "registered";
+}
+
+function gridShape(variable) {
+  if (!variable.dimensions?.length || !variable.shape?.length) return "";
+  return variable.dimensions.map((name, index) => `${name} ${gridNumber.format(variable.shape[index])}`).join(" × ");
+}
+
+function inferenceSources(datasets, inventory) {
+  const sources = new Map((inventory?.datasets ?? []).map(row => [row.id, row]));
+  return datasets.map(dataset => {
+    const source = sources.get(dataset.id);
+    const products = source?.products ?? [];
+    const names = new Set(dataset.variables);
+    const index = new Map();
+    for (const product of products) {
+      for (const variable of product.variables ?? []) {
+        names.add(variable.name);
+        if (!index.has(variable.name)) index.set(variable.name, []);
+        index.get(variable.name).push({ product, variable });
+      }
+    }
+    const features = [...names].map(name => {
+      const variants = index.get(name) ?? [];
+      const profiles = variants.filter(({ variable }) => variable.figures?.length).length;
+      return { name, native: dataset.variable_metadata?.[name] ?? {}, variants, profiles };
+    });
+    const profiled = features.filter(feature => feature.profiles).length;
+    const status = profiled ? (features.every(feature => featureStatus(feature) === "profiled") ? "profiled" : "partial")
+      : products.length ? "inspected" : dataset.role === "derived" ? "derived" : "registered";
+    return { ...dataset, status, variables: [...names], products, features, profiled, inventoryNote: source?.note };
+  });
+}
+
 function start(catalog) {
   const tasks = new Map(catalog.tasks.map((row) => [row.id, row]));
   const datasets = new Map(catalog.datasets.map((row) => [row.id, row]));
+  const inference = inferenceSources(catalog.datasets, catalog.inference_data);
   const hubTitles = new Map(catalog.hubs.map((hub) => [hub.id, hub.short_name ?? hub.title]));
   const views = {
     gallery: {
@@ -40,6 +110,21 @@ function start(catalog) {
         ["spatial", "Resolution"], ["coverage", "Coverage"],
       ],
     },
+    inference: {
+      title: "Inference Data", unit: "dataset", rows: inference,
+      description: "Browse every registered source and inspect variable-level time coverage, maps and value distributions.",
+      placeholder: "Search by source, variable or scenario", filterLabel: "By availability", facetAll: "All availability",
+      facet: row => row.status, facetTitle: id => inferenceStatus[id],
+      relatedText: row => [
+        row.features.map(({ native }) => [native.description, native.units]), inferenceStatus[row.status],
+        row.products.map(product => [productName(product), product.kind,
+          product.variables?.map(field => [field.label, field.description, field.units, dateLabel(field.time_start), dateLabel(field.time_end)])]),
+      ],
+      columns: [
+        ["title", "Dataset"], ["status", "Availability"], ["variables", "Variables"], ["profiled", "Variables profiled"],
+        ["coverage", "Native time range"], ["spatial", "Native resolution"],
+      ],
+    },
     tasks: {
       title: "ML tasks", unit: "task", rows: catalog.tasks,
       description: "Find experiment configurations, input datasets and commands to validate each workflow.",
@@ -53,22 +138,26 @@ function start(catalog) {
     },
   };
 
-  const state = { view: "gallery", topic: "", facet: "", query: "", item: "", sort: "", descending: false };
+  const state = { view: "gallery", topic: "", facet: "", query: "", item: "", variable: "", product: "", sort: "", descending: false };
   const filterToggle = byId("filter-toggle");
   const reset = byId("reset");
   let opener;
 
-  function hrefFor(view, item = "") {
+  function hrefFor(view, item = "", variable = "", product = "") {
     const url = new URL(location.href);
     url.hash = "";
     url.search = "";
     if (view !== "gallery") url.searchParams.set("view", view);
     if (item) url.searchParams.set("item", item);
+    if (view === "inference" && item && variable) {
+      url.searchParams.set("variable", variable);
+      if (product) url.searchParams.set("product", product);
+    }
     return url;
   }
 
   function syncUrl(push = false) {
-    const url = hrefFor(state.view, state.item);
+    const url = hrefFor(state.view, state.item, state.variable, state.product);
     for (const [key, value] of [["topic", state.topic], ["filter", state.facet], ["q", state.query]]) {
       if (value) url.searchParams.set(key, value);
     }
@@ -84,19 +173,24 @@ function start(catalog) {
     const rows = views[view].rows;
     const topic = params.get("topic") ?? "";
     const facet = params.get("filter") ?? "";
-    const item = params.get("item") ?? (view === "tasks" ? directTask : view === "data" ? directDataset : "");
+    const item = params.get("item") ?? (view === "tasks" ? directTask : ["data", "inference"].includes(view) ? directDataset : "");
+    const row = rows.find((entry) => entry.id === item);
+    const variable = view === "inference" ? row?.features.find(feature => feature.name === params.get("variable")) : undefined;
+    const variant = variable?.variants.find(({ product }) => product.id === params.get("product"));
     Object.assign(state, {
       view,
       topic: rows.some((row) => row.category === topic) ? topic : "",
       facet: (view === "gallery" ? tasks.has(facet) : rows.some((row) => views[view].facet(row) === facet)) ? facet : "",
       query: params.get("q") ?? "",
-      item: rows.some((row) => row.id === item) ? item : "",
+      item: row?.id ?? "",
+      variable: variable?.name ?? "",
+      product: variant?.product.id ?? "",
       sort: "", descending: false,
     });
   }
 
   function navigate(view, item = "") {
-    Object.assign(state, { view, item, topic: "", facet: "", query: "", sort: "", descending: false });
+    Object.assign(state, { view, item, variable: "", product: "", topic: "", facet: "", query: "", sort: "", descending: false });
     syncUrl(true);
     drawView();
     drawDetail();
@@ -153,7 +247,7 @@ function start(catalog) {
 
   function openDetail(id, trigger) {
     opener = trigger;
-    state.item = id;
+    Object.assign(state, { item: id, variable: "", product: "" });
     syncUrl();
     drawDetail();
   }
@@ -184,7 +278,10 @@ function start(catalog) {
       button.addEventListener("click", () => openDetail(row.id, button));
       return element("th", { scope: "row" }, button, element("span", { class: "table-id mono" }, row.task_path ?? row.id));
     }
-    if (key === "status" || key === "role") return element("td", {}, pill(row[key]));
+    if (key === "status" || key === "role") {
+      const label = key === "status" && state.view === "inference" ? inferenceStatus[row.status] : row[key];
+      return element("td", {}, pill(label));
+    }
     const value = Array.isArray(row[key]) ? row[key].length : row[key];
     return element("td", {}, String(value ?? "—"));
   }
@@ -288,11 +385,24 @@ function start(catalog) {
     detailContent.append(element("section", { class: "detail-section" }, element("h3", {}, title), content));
   }
 
-  function metadata(pairs) {
+  function definitionList(pairs) {
     const entries = pairs.filter(([, value]) => value != null && value !== "" && value !== "—");
-    detailContent.append(element("dl", { class: "meta" }, ...entries.flatMap(([key, value]) => [
+    return element("dl", { class: "meta" }, ...entries.flatMap(([key, value]) => [
       element("dt", {}, key), element("dd", {}, value),
-    ])));
+    ]));
+  }
+
+  function metadata(pairs) {
+    detailContent.append(definitionList(pairs));
+  }
+
+  function detailTable(columns, rows, label) {
+    const table = element("table", { class: "inference-detail-table" },
+      element("caption", { class: "sr" }, label),
+      element("thead", {}, element("tr", {}, ...columns.map(name => element("th", { scope: "col" }, name)))),
+      element("tbody", {}, ...rows.map(([first, ...cells]) => element("tr", {},
+        element("th", { scope: "row" }, first), ...cells.map(value => element("td", {}, value))))));
+    return element("div", { class: "inference-table-wrap", tabindex: "0", role: "region", "aria-label": label }, table);
   }
 
   function detailLink(title, view, item) {
@@ -349,12 +459,17 @@ function start(catalog) {
     const links = [element("a", { href: row.image }, "Open image at full size")];
     if (task) links.unshift(detailLink(task.title, "tasks", task.id));
     section("Figure resources", list(links));
-    if (row.data?.length) {
-      section("Download figure data", list(row.data.map(({ label, path }) => {
-        const href = path.split("/").map(encodeURIComponent).join("/");
-        return element("a", { href, download: "" }, label);
-      })));
-    }
+    showDownloads(row.data ?? [], "Download figure data");
+  }
+
+  function publishedAsset(path) {
+    return path.split("/").map(encodeURIComponent).join("/");
+  }
+
+  function showDownloads(files, title) {
+    const byPath = new Map(files.map(file => [file.path, file]));
+    if (byPath.size) section(title, list([...byPath.values()].map(({ label, path }) =>
+      element("a", { href: publishedAsset(path), download: "" }, label))));
   }
 
   function showDataset(row) {
@@ -365,8 +480,141 @@ function start(catalog) {
     if (row.variables.length) {
       section("Variables", list(row.variables.map((name) => element("code", {}, name)), "variables"));
     }
+    section("Inference data", detailLink("Browse variable coverage and profiles", "inference", row.id));
     const relatedTasks = catalog.tasks.filter((item) => item.dataset_ids.includes(row.id));
     if (relatedTasks.length) section("ML tasks", list(relatedTasks.map((item) => detailLink(item.title, "tasks", item.id))));
+  }
+
+  function changeInferenceSelection(variable, product = "", focus = "detail-title") {
+    Object.assign(state, { variable, product });
+    syncUrl(true);
+    drawDetail();
+    byId(focus).focus();
+  }
+
+  function inferenceSelectionLink(title, row, variable = "") {
+    const link = element("a", { href: hrefFor("inference", row.id, variable) }, title);
+    link.addEventListener("click", event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      changeInferenceSelection(variable);
+    });
+    return link;
+  }
+
+  function inferenceSelector(id, label, choices, selected, select) {
+    const input = element("select", { id }, ...choices.map(([value, title]) => element("option", { value }, title)));
+    input.value = selected;
+    input.addEventListener("change", () => select(input.value));
+    return element("label", { class: "inference-select", for: id }, element("span", {}, label), input);
+  }
+
+  function showInferenceOverview(row) {
+    metadata([
+      ["Dataset ID", element("code", {}, row.id)], ["Role", pill(row.role)],
+      ["Availability", pill(inferenceStatus[row.status])], ["Native frequency", row.temporal],
+      ["Native resolution", row.spatial], ["Native time range", row.coverage],
+    ]);
+    if (typeof row.inventoryNote === "string" && row.inventoryNote) {
+      detailContent.append(element("p", { class: "muted" }, row.inventoryNote));
+    }
+    if (row.coverage_periods?.length) {
+      const periods = row.coverage_periods.map(period => [period.id, dateRange(period.start, period.end), period.scenarios?.join(", ") ?? "—"]);
+      section("Registered time windows", detailTable(["Period", "Dates", "Scenarios"], periods, "Registered time windows"));
+    }
+    if (row.products.length) {
+      const summarize = (variables, format) => {
+        const values = [...new Set(variables.map(format).filter(Boolean))];
+        return values.length < 3 ? values.join(" · ") || "—" : `${values.length} variable-specific ranges`;
+      };
+      const products = row.products.map(product => {
+        const variables = product.variables ?? [];
+        return [productName(product), summarize(variables, variable => dateRange(variable.time_start, variable.time_end)),
+          summarize(variables, coverageBounds), String(variables.length)];
+      });
+      section("Available products", detailTable(["Product", "Stored time range", "Grid bounds", "Variables"], products, "Available products"));
+    } else {
+      const message = row.role === "derived" ? "Computed during feature preparation."
+        : "Archive coverage will appear when a processed product is indexed.";
+      section("Available products", element("p", { class: "muted" }, message));
+    }
+    const items = row.features.map(feature => {
+      const { name, native, variants } = feature;
+      const status = featureStatus(feature);
+      const published = variants.find(({ variable }) => variable.units)?.variable.units;
+      const field = element("div", {}, inferenceSelectionLink(element("code", {}, name), row, name),
+        ...(native.description ? [element("p", { class: "muted" }, native.description)] : []));
+      return [field, native.units || published || "—",
+        pill(inferenceStatus[status === "registered" && row.role === "derived" ? "derived" : status]),
+        String(variants.length)];
+    });
+    if (items.length) {
+      section(`Variables (${items.length})`, detailTable(["Variable", "Units", "Availability", "Products"], items, "Variables"));
+    }
+  }
+
+  function showInferenceVariable(row, feature) {
+    const bar = element("div", { class: "inference-controls" },
+      inferenceSelector("inference-variable", "Variable", row.features.map(field => [field.name, field.name]), feature.name,
+        name => changeInferenceSelection(name, "", "inference-variable")));
+    detailContent.append(element("p", { class: "inference-back" }, inferenceSelectionLink("All variables in this dataset", row)), bar);
+    const { native, variants } = feature;
+    const description = native.description ?? variants.find(({ variable }) => variable.description)?.variable.description;
+    if (description) detailContent.append(element("p", { class: "description" }, description));
+    metadata([["Registered units", native.units], ["Registered dimensions", native.dims], ["ML scope", native.ml_scope]]);
+    if (!variants.length) {
+      section("Coverage and profiles", element("p", { class: "muted" }, row.role === "derived"
+        ? "Computed from the model grid and calendar during feature preparation."
+        : "This variable is listed in the registry. Its archive coverage and profiles await a processed product."));
+      return;
+    }
+    const selected = variants.find(({ product }) => product.id === state.product)
+      ?? variants.find(({ variable }) => variable.figures?.length) ?? variants[0];
+    const { product, variable } = selected;
+    const choices = variants.map(({ product, variable }) => [product.id,
+      [productName(product), dateRange(variable.time_start, variable.time_end)].filter(Boolean).join(" · ")]);
+    bar.append(inferenceSelector("inference-product", "Product and time range", choices, product.id,
+      id => changeInferenceSelection(feature.name, id, "inference-product")));
+    const summary = variable.summary ?? {};
+    const finiteFraction = Number.isFinite(summary.mean_finite_fraction) ? fraction.format(summary.mean_finite_fraction) : "";
+    const analysed = summary.analysed_cells ?? summary.grid_cells;
+    const sampled = Number.isFinite(analysed) && Number.isFinite(summary.grid_cells) && analysed < summary.grid_cells;
+    metadata([
+      ["Archive units", variable.units], ["Stored time range", dateRange(variable.time_start, variable.time_end)],
+      ["Time range with data", dateRange(variable.valid_time_start, variable.valid_time_end)],
+      ["Frequency", variable.frequency ?? product.frequency], ["Resolution", variable.resolution ?? product.resolution],
+      ["Grid bounds", coverageBounds(variable)], ["Bounds with data", coverageBounds(variable, "valid_")],
+      ["Array shape", gridShape(variable)],
+      ["Time steps with data", Number.isFinite(summary.steps_with_data) && Number.isFinite(summary.time_steps)
+        ? `${gridNumber.format(summary.steps_with_data)} of ${gridNumber.format(summary.time_steps)}` : ""],
+      ["Spatial sample", sampled ? `${gridNumber.format(analysed)} of ${gridNumber.format(summary.grid_cells)} grid cells` : ""],
+      [sampled ? "Sampled cells with data" : "Grid cells with data", Number.isFinite(summary.cells_ever_finite) && Number.isFinite(analysed)
+        ? `${gridNumber.format(summary.cells_ever_finite)} of ${gridNumber.format(analysed)}` : ""],
+      ["Mean finite coverage", finiteFraction],
+    ]);
+    const notes = [...new Set([product.note, variable.note].filter(note => typeof note === "string" && note))];
+    if (notes.length) section("About this product", list(notes));
+    const figures = variable.figures ?? [];
+    if (figures.length) {
+      const images = figures.map(figure => {
+        const href = publishedAsset(figure.image);
+        return element("figure", { class: "inference-figure" },
+          element("img", { src: href, alt: figure.alt ?? figure.title, loading: "lazy", decoding: "async" }),
+          element("figcaption", {}, element("span", {}, figure.title), element("a", { href }, "Open full size")));
+      });
+      section("Visual profiles", element("div", { class: "inference-figures" }, ...images));
+    } else {
+      section("Visual profiles", element("p", { class: "muted" }, "Coverage metadata is available for this product."));
+    }
+    const distribution = summary.distribution ?? {};
+    const quantiles = [["Minimum", "min"], ["25th percentile", "p25"], ["Median", "p50"], ["75th percentile", "p75"], ["Maximum", "max"]]
+      .filter(([, key]) => Number.isFinite(distribution[key]))
+      .map(([name, key]) => [name, [statisticNumber.format(distribution[key]), variable.units].filter(Boolean).join(" ")]);
+    if (quantiles.length) {
+      section(dateRange(variable.time_start, variable.time_end) ? "Distribution of grid-cell time means" : "Grid-cell value distribution",
+        definitionList(quantiles));
+    }
+    showDownloads([...(product.data ?? []), ...(variable.data ?? []), ...figures.flatMap(figure => figure.data ?? [])], "Download profile data");
   }
 
   function showTask(row) {
@@ -402,14 +650,20 @@ function start(catalog) {
       if (dialog.open) dialog.close();
       return;
     }
+    const feature = state.view === "inference" ? row.features.find(item => item.name === state.variable) : undefined;
+    dialog.classList.toggle("inference-dialog", state.view === "inference");
     detailContent.replaceChildren(
       element("span", { class: "kicker" }, [row.category, row.badge].filter(Boolean).join(" · ")),
-      element("h2", { id: "detail-title", tabindex: "-1" }, row.title),
-      element("p", { class: "description" }, row.description),
+      element("h2", { id: "detail-title", tabindex: "-1" }, feature ? `${row.title} · ${feature.name}` : row.title),
     );
+    if (!feature) detailContent.append(element("p", { class: "description" }, row.description));
     if (state.view === "gallery") showFigure(row);
     if (state.view === "data") showDataset(row);
     if (state.view === "tasks") showTask(row);
+    if (state.view === "inference") {
+      if (feature) showInferenceVariable(row, feature);
+      else showInferenceOverview(row);
+    }
     if (row.links?.length) {
       section("Sources and documentation", list(row.links.map(({ label, url }) => element("a", { href: url }, label))));
     }
@@ -421,7 +675,7 @@ function start(catalog) {
       ])));
     }
     detailContent.append(element("div", { class: "detail-actions" },
-      copyButton("Copy link", hrefFor(state.view, row.id).href)));
+      copyButton("Copy link", hrefFor(state.view, row.id, state.variable, state.product).href)));
     dialog.scrollTop = 0;
     if (!dialog.open) dialog.showModal();
   }
@@ -478,7 +732,7 @@ function start(catalog) {
   dialog.addEventListener("close", () => {
     if (dialog.open) return;
     if (state.item) {
-      state.item = "";
+      Object.assign(state, { item: "", variable: "", product: "" });
       syncUrl();
     }
     if (opener?.isConnected) opener.focus();

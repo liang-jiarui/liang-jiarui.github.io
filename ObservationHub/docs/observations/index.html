@@ -213,26 +213,15 @@ dialog h3 { font-size: .9375rem; margin: 1.125rem 0 .5rem; }
   <section class="analysis-panel" id="analysis-panel" aria-labelledby="analysis-title" hidden>
     <div class="analysis-header">
       <div>
-        <h1 id="analysis-title"></h1>
-        <p id="analysis-coverage"></p>
+        <h1 id="analysis-title">Observation analysis</h1>
+        <p id="analysis-count" aria-live="polite"></p>
       </div>
-      <div class="analysis-controls">
-        <label>Dataset<select id="analysis-profile"></select></label>
-        <label>Variable<select id="analysis-variable"></select></label>
-      </div>
+      <label class="search"><span class="sr">Find a dataset or variable</span>
+        <input id="analysis-search" type="search" placeholder="Find a dataset or variable" autocomplete="off">
+      </label>
     </div>
-    <dl class="analysis-stats" id="analysis-stats"></dl>
-    <div class="analysis-grid" id="analysis-charts"></div>
-    <section class="analysis-method" aria-labelledby="analysis-method-title">
-      <h2 id="analysis-method-title">Sources and methods</h2>
-      <p id="analysis-source"></p>
-      <p id="analysis-method"></p>
-      <div class="analysis-links">
-        <span id="analysis-catalog-link"></span>
-        <a id="analysis-source-link" hidden>Publisher or source archive</a>
-        <a href="analysis.json" download>Download chart data (JSON)</a>
-      </div>
-    </section>
+    <div id="analysis-report"></div>
+    <a class="analysis-download" href="analysis.json" download>Download chart data (JSON)</a>
   </section>
   <footer>
     <a href="https://github.com/liang-jiarui/ObservationHub">Guide</a>
@@ -1238,8 +1227,7 @@ const query = byId("query");
 const analysisData = JSON.parse(byId("analysis-data").textContent);
 const analysis = analysisData.profiles;
 const profilesByDataset = new Map(analysis.map(profile => [profile.dataset_id, profile]));
-const profileSelect = byId("analysis-profile");
-const variableSelect = byId("analysis-variable");
+const analysisSearch = byId("analysis-search");
 const views = {
   datasets: {title: "Observation datasets", item: "Dataset", index: new Map(data.datasets.map(row => [row.id, row]))},
   tasks: {title: "Evaluation tasks", item: "Task", index: new Map(data.tasks.map(row => [row.id, row]))},
@@ -1272,7 +1260,7 @@ function getState() {
   const dataset = params.get("dataset");
   const task = params.get("task");
   if (!dataset && !task && params.get("view") === "analysis") {
-    return {view: "analysis", profile: params.get("profile"), variable: params.get("variable")};
+    return {view: "analysis", profile: params.get("profile"), variable: params.get("variable"), q: params.get("q") || ""};
   }
   const view = task || (!dataset && params.get("view") === "tasks") ? "tasks" : "datasets";
   return {view, open: task || dataset || "", q: params.get("q") || "", category: params.get("category") || "", kind: view === "datasets" ? params.get("kind") || "" : ""};
@@ -1283,6 +1271,7 @@ function stateUrl(state) {
   url.search = "";
   if (state.view === "analysis") {
     url.searchParams.set("view", "analysis");
+    if (state.q) url.searchParams.set("q", state.q);
     if (state.profile) url.searchParams.set("profile", state.profile);
     if (state.variable) url.searchParams.set("variable", state.variable);
     return url;
@@ -1362,47 +1351,91 @@ for (const view of [...Object.keys(views), "analysis"]) {
   });
 }
 
-function options(select, choices, label) {
-  select.replaceChildren(...choices.map(choice => {
-    const option = element("option", choice[label]);
-    option.value = choice.id;
-    return option;
-  }));
-}
-
-options(profileSelect, analysis, "title");
-profileSelect.addEventListener("change", () => navigate({view: "analysis", profile: profileSelect.value}));
-variableSelect.addEventListener("change", () => navigate({
-  view: "analysis", profile: profileSelect.value, variable: variableSelect.value,
-}));
-
-function renderAnalysis() {
-  const profile = analysis.find(item => item.id === state.profile) || analysis[0];
-  const variable = profile.variables.find(item => item.id === state.variable) || profile.variables[0];
-  profileSelect.value = profile.id;
-  options(variableSelect, profile.variables, "name");
-  variableSelect.value = variable.id;
-  byId("analysis-title").textContent = profile.title;
-  byId("analysis-coverage").textContent = profile.coverage;
-  byId("analysis-source").textContent = profile.source_note;
-  const source = byId("analysis-source-link");
-  source.hidden = !profile.source_url;
-  if (profile.source_url) source.href = profile.source_url;
-  byId("analysis-method").textContent = variable.method;
-  const dataset = internalLink("View dataset and source links", "datasets", profile.dataset_id);
-  byId("analysis-catalog-link").replaceChildren(dataset);
-  byId("analysis-stats").replaceChildren(...variable.summary.map(([label, value]) => {
-    const metric = element("div");
-    metric.append(element("dt", label), element("dd", value));
-    return metric;
-  }));
-  const charts = byId("analysis-charts");
+const chartVariables = new Map();
+let observer;
+let lastAnalysisQuery;
+function paintCharts(grid) {
   if (typeof window.renderObservationCharts === "function") {
-    window.renderObservationCharts(charts, variable, analysisData.coastline.lines);
+    window.renderObservationCharts(grid, chartVariables.get(grid), analysisData.coastline.lines);
   } else {
-    charts.replaceChildren(element("p", "Charts could not load. Use the chart data link to view the values."));
+    grid.textContent = "Use the chart data download to inspect these values.";
   }
 }
+
+function variableSection(profile, variable) {
+  const section = element("section", null, "analysis-variable");
+  section.id = "variable-" + profile.id + "-" + variable.id;
+  const heading = element("h3", variable.name);
+  const method = element("p", variable.method, "variable-method");
+  const metrics = element("dl", null, "analysis-stats");
+  for (const [label, value] of variable.summary) {
+    const metric = element("div");
+    metric.append(element("dt", label), element("dd", value));
+    metrics.append(metric);
+  }
+  const grid = element("div", null, "analysis-grid");
+  grid.classList.add("awaiting-charts");
+  chartVariables.set(grid, variable);
+  section.append(heading, method, metrics, grid);
+  return section;
+}
+
+function renderAnalysis() {
+  const q = state.q || "";
+  analysisSearch.value = q;
+  const report = byId("analysis-report");
+  if (q !== lastAnalysisQuery) {
+    observer?.disconnect();
+    for (const grid of chartVariables.keys()) {
+      if (grid.children.length) window.renderObservationCharts?.(grid, null);
+    }
+    chartVariables.clear();
+    const sections = [];
+    const term = q.trim().toLowerCase();
+    let count = 0;
+    for (const profile of analysis) {
+      const dataset = views.datasets.index.get(profile.dataset_id);
+      const match = [profile.title, profile.dataset_id, dataset?.category, dataset?.title].join(" ").toLowerCase().includes(term);
+      const variables = profile.variables.filter(v => match || [v.name, v.id].join(" ").toLowerCase().includes(term));
+      if (!variables.length) continue;
+      const section = element("article", null, "analysis-dataset");
+      section.id = "profile-" + profile.id;
+      const head = element("header", null, "dataset-header");
+      head.append(element("p", dataset?.category, "dataset-category"), element("h2", profile.title),
+        element("p", profile.coverage, "dataset-coverage"));
+      if (profile.source_note) head.append(element("p", profile.source_note, "dataset-source"));
+      head.append(internalLink("Dataset and sources", "datasets", profile.dataset_id));
+      section.append(head, ...variables.map(v => variableSection(profile, v)));
+      sections.push(section);
+      count += variables.length;
+    }
+    byId("analysis-count").textContent = sections.length + " datasets · " + count + " variables";
+    report.replaceChildren(...(sections.length ? sections : [element("p", "No matching datasets or variables.", "analysis-empty")]));
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver(entries => {
+        for (const {target, isIntersecting} of entries) {
+          if (isIntersecting && !target.children.length) {
+            target.classList.remove("awaiting-charts");
+            paintCharts(target);
+          } else if (!isIntersecting && target.children.length && !target.contains(document.activeElement)) {
+            target.style.minHeight = target.offsetHeight + "px";
+            window.renderObservationCharts?.(target, null);
+          }
+          if (isIntersecting) target.style.minHeight = "";
+        }
+      }, {rootMargin: "350px"});
+      for (const grid of chartVariables.keys()) observer.observe(grid);
+    } else {
+      for (const grid of chartVariables.keys()) { grid.classList.remove("awaiting-charts"); paintCharts(grid); }
+    }
+    lastAnalysisQuery = q;
+  }
+  if (state.profile) {
+    const target = (state.variable && byId("variable-" + state.profile + "-" + state.variable)) || byId("profile-" + state.profile);
+    target?.scrollIntoView({block: "start"});
+  }
+}
+analysisSearch.addEventListener("input", () => navigate({view: "analysis", q: analysisSearch.value}, true));
 
 function refine(field, value) {
   navigate({...state, [field]: value, open: ""});
@@ -1583,7 +1616,7 @@ function render() {
       detail.close();
       openKey = "";
       openRowId = "";
-      profileSelect.focus({preventScroll: true});
+      analysisSearch.focus({preventScroll: true});
     }
     renderAnalysis();
     return;
@@ -1634,10 +1667,10 @@ detail.addEventListener("cancel", event => {
   navigate({...state, open: ""}, true);
 });
 document.addEventListener("keydown", event => {
-  if (event.key === "/" && state.view !== "analysis" && !detail.open && !event.altKey && !event.ctrlKey && !event.metaKey &&
+  if (event.key === "/" && !detail.open && !event.altKey && !event.ctrlKey && !event.metaKey &&
       !event.target.closest("input, textarea, select, [contenteditable]")) {
     event.preventDefault();
-    query.focus();
+    (state.view === "analysis" ? analysisSearch : query).focus();
   }
 });
 window.addEventListener("popstate", () => {

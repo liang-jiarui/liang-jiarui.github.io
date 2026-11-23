@@ -36,7 +36,7 @@ function filterModules() {
       visible += 1;
     }
   }
-  count.textContent = "显示 " + visible + " / " + modules.length + " 个子模块";
+  count.textContent = `Showing ${visible} of ${modules.length} ${modules.length === 1 ? "submodule" : "submodules"}`;
   empty.hidden = visible !== 0;
 }
 
@@ -56,20 +56,20 @@ async function copyCommand(event) {
   const code = button.closest(".command").querySelector("code");
   try {
     await navigator.clipboard.writeText(code.textContent);
-    button.textContent = "已复制";
-    copyStatus.textContent = "已复制命令。";
+    button.textContent = "Copied";
+    copyStatus.textContent = "Command copied.";
   } catch {
     const selection = window.getSelection();
     const range = document.createRange();
     range.selectNodeContents(code);
     selection.removeAllRanges();
     selection.addRange(range);
-    button.textContent = "已选中";
-    copyStatus.textContent = "已选中命令，按 Ctrl+C 或 ⌘C 复制。";
+    button.textContent = "Selected";
+    copyStatus.textContent = "Command selected. Press Ctrl+C or ⌘C to copy it.";
   }
   clearTimeout(copyTimers.get(button));
   copyTimers.set(button, setTimeout(() => {
-    button.textContent = "复制";
+    button.textContent = "Copy";
   }, 2000));
 }
 

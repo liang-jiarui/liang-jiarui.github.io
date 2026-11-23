@@ -1,0 +1,981 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="用零维能量平衡模式学习气候响应、数值积分与实验复现。">
+      
+      
+      
+        <link rel="canonical" href="https://liang-jiarui.github.io/DAOSHU/tutorial/experiments/">
+      
+      
+        <link rel="prev" href="../physics/">
+      
+      
+        <link rel="next" href="../results/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>CMIP6 风格实验 - DAOSHU 道枢地球系统模式</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/tutorial.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#03-cmip6" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="DAOSHU 道枢地球系统模式" class="md-header__button md-logo" aria-label="DAOSHU 道枢地球系统模式" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DAOSHU 道枢地球系统模式
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CMIP6 风格实验
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DAOSHU 道枢地球系统模式" class="md-nav__button md-logo" aria-label="DAOSHU 道枢地球系统模式" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DAOSHU 道枢地球系统模式
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    教程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    教程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    教程总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装与快速运行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../physics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    物理方程与数值方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMIP6 风格实验
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMIP6 风格实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理想化实验的共同设置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分别启动实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工业化前控制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        突增四倍 CO₂
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-co2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        每年增加 1% CO₂
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        只改变 CO₂ 的历史和情景实验
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="只改变 CO₂ 的历史和情景实验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据来源与处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从单箱过渡到耦合模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        动手分析
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    结果与验证
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码导读
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理想化实验的共同设置
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分别启动实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工业化前控制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        突增四倍 CO₂
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-co2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        每年增加 1% CO₂
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        只改变 CO₂ 的历史和情景实验
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="只改变 CO₂ 的历史和情景实验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据来源与处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从单箱过渡到耦合模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        动手分析
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="03-cmip6">03 · CMIP6 风格实验<a class="headerlink" href="#03-cmip6" title="Permanent link">&para;</a></h1>
+<p>DAOSHU M0 提供三个理想化实验和三组年均浓度驱动实验。前者借鉴 CMIP6 DECK 的 CO₂ 路径和积分时长，后者采用来自 CMIP6 的历史或情景 CO₂ 数据。结果是零维教学模拟。正式协议要求能够模拟大气与海洋耦合的模式、规定的背景强迫、实验分支以及规范的数据和元数据。<a href="https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf">Eyring et al. (2016) 表 2、附录 A</a> · <a href="https://wcrp-cmip.github.io/CMIP6_CVs/docs/CMIP6_experiment_id.html">CMIP6 实验词表</a></p>
+<h2 id="_1">理想化实验的共同设置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>三个配置使用同一套<a href="../physics/">物理参数</a>，从解析的工业化前平衡态 288 K 开始。理想化强迫实验与控制实验共享初态，相当于从无漂移的控制积分分支。模拟使用自己的模型时间，固定每年 365 天、每年 12 个等长积分步。参考浓度 284.317 ppm 取自 1850 年全球年平均近地表 CO₂。<a href="https://gmd.copernicus.org/articles/10/2057/2017/">Meinshausen et al. (2017) 表 8–9</a></p>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th style="text-align: right;">时长</th>
+<th>步首使用的 CO₂ 浓度</th>
+<th>学习目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>piControl</code></td>
+<td style="text-align: right;">500 年</td>
+<td>284.317 ppm</td>
+<td>检查长时间积分中的漂移和能量闭合</td>
+</tr>
+<tr>
+<td><code>abrupt-4xCO2</code></td>
+<td style="text-align: right;">150 年</td>
+<td>从第一步起为 1,137.268 ppm</td>
+<td>比较阶跃强迫、热惯性和新平衡</td>
+</tr>
+<tr>
+<td><code>1pctCO2</code></td>
+<td style="text-align: right;">150 年</td>
+<td><code>284.317 × 1.01^y</code> ppm</td>
+<td>诊断逐年增长强迫下的瞬态响应</td>
+</tr>
+</tbody>
+</table>
+<p><code>y</code> 为自模拟起点起算的年数，允许分数年。整数年边界上的浓度与每年增长 1% 的关系一致。正式强迫文献提供全球年平均值，M0 在每个等长积分步开头按连续复合公式取样，用这一个值驱动该步。</p>
+<h2 id="_2">分别启动实验<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>从仓库根目录运行，构建步骤见<a href="../quick-start/">快速开始</a>。</p>
+<div class="highlight"><pre><span></span><code>./build/ebm0d<span class="w"> </span>experiments/ebm0d/piControl.cfg<span class="w"> </span>runs/piControl
+./build/ebm0d<span class="w"> </span>experiments/ebm0d/abrupt-4xCO2.cfg<span class="w"> </span>runs/abrupt-4xCO2
+./build/ebm0d<span class="w"> </span>experiments/ebm0d/1pctCO2.cfg<span class="w"> </span>runs/1pctCO2
+./build/ebm0d<span class="w"> </span>experiments/ebm0d/historical-co2-only.cfg<span class="w"> </span>runs/historical-co2-only
+./build/ebm0d<span class="w"> </span>experiments/ebm0d/ssp245-co2-only.cfg<span class="w"> </span>runs/ssp245-co2-only
+./build/ebm0d<span class="w"> </span>experiments/ebm0d/ssp585-co2-only.cfg<span class="w"> </span>runs/ssp585-co2-only
+</code></pre></div>
+<p>用各实验的配置文件记录模拟时长、步数和参数。为比较单个参数的影响，可以在同一目录复制一份配置，修改一个值后写到新的结果目录，并保留基准结果用于相减或叠图。浓度表路径相对于配置文件的位置解析。<a href="https://github.com/liang-jiarui/daoshu-esm/tree/main/experiments/ebm0d">版本化实验配置</a></p>
+<p>也可以整组运行并更新教程图表。以下命令生成数据到新建的 <code>runs/ebm0d</code>，并把网页使用的结果写进指定的图表目录。绘图需要 Matplotlib，安装方式见<a href="../quick-start/">快速开始</a>。</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>tools/run_ebm_suite.py<span class="w"> </span>--executable<span class="w"> </span>build/ebm0d<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span>runs/ebm0d<span class="w"> </span>--figures<span class="w"> </span>docs/tutorial/generated
+</code></pre></div>
+<h2 id="_3">工业化前控制<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>维持参考 CO₂，初温设为 288 K。此时短波吸收与长波发射相等，CO₂ 强迫为零。在这组确定性方程中，温度应在整个 500 年内保持 288 K，净通量与能量收支残差应保持为零。这个实验可以抓住参考态、初值或积分实现中的错误。高维模式的控制实验还可用于分辨内部气候变率和长期漂移。</p>
+<p>运行一个有意偏离平衡的控制案例，可检验方程是否会把温度拉回初始平衡。对后续更复杂的模式，控制实验的同龄温度也可以用于估算强迫响应，例如 <code>ΔT(y) = Tforced(y) − Tcontrol(y)</code>。</p>
+<h2 id="co2">突增四倍 CO₂<a class="headerlink" href="#co2" title="Permanent link">&para;</a></h2>
+<p>第一步把 CO₂ 设为 4 倍基准，给定约 7.417 W m⁻² 的强迫。温度从 288 K 开始逐步上升，净通量随升温减小，并在趋近平衡时接近零。按基准参数，长期平衡温度约为 294.181 K，约 5.55 年后完成总平衡升温的 63%。</p>
+<p>把同一时刻的步首温度异常与净通量作散点图，可看出 <code>N = F − λ ΔT</code> 的线性关系。纵截距对应四倍 CO₂ 强迫，斜率对应 <code>−λ</code>，横截距对应平衡四倍增温。在可变反馈的耦合气候模式中，类似的 Gregory 回归用于估算有效强迫与反馈。M0 的线性关系由方程直接给定，拟合接近一条直线是检查实现和选列的办法。<a href="https://doi.org/10.1029/2003GL018747">Gregory et al. (2004)</a></p>
+<h2 id="1-co2">每年增加 1% CO₂<a class="headerlink" href="#1-co2" title="Permanent link">&para;</a></h2>
+<p>第一步从参考浓度开始。约在第 69.66 年达到两倍，139.32 年达到四倍，至 150 年边界达到约 4.448 倍。增长持续到实验结束，符合 CMIP6 在四倍后继续施加每年 1% 增长的设计。对数强迫沿时间近似为一条直线，温度稍落后于瞬时平衡。临近 150 年时应仍能看到正的能量收入。<a href="https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf">Eyring et al. (2016)，附录 A1.4</a></p>
+<p>瞬态气候响应（TCR）通常用接近倍增时刻的 20 年平均温度异常估算。可取模型时间 60 至 80 年区间，对同一时间窗内的 <code>1pctCO2</code> 和 <code>piControl</code> 温度求差并平均。对比单个年末取样和固定四倍实验的平衡量，能区分时刻、时间平均与平衡三种诊断。<a href="https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-7/">IPCC AR6 WGI 第 7 章</a></p>
+<h2 id="co2_1">只改变 CO₂ 的历史和情景实验<a class="headerlink" href="#co2_1" title="Permanent link">&para;</a></h2>
+<p>在 M0 中，历史和情景实验从 288 K 出发，仍使用理想化实验的参数组。输入是每年的全球平均近地表 CO₂ 浓度，同一年的 12 个步使用同一个年均值。</p>
+<table>
+<thead>
+<tr>
+<th>DAOSHU 配置</th>
+<th>积分区间</th>
+<th style="text-align: right;">终年 CO₂（ppm）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>historical-co2-only</code></td>
+<td>1850–2014</td>
+<td style="text-align: right;">397.5469793</td>
+</tr>
+<tr>
+<td><code>ssp245-co2-only</code></td>
+<td>1850–2100，2015 年起使用 SSP2-4.5</td>
+<td style="text-align: right;">602.7819824</td>
+</tr>
+<tr>
+<td><code>ssp585-co2-only</code></td>
+<td>1850–2100，2015 年起使用 SSP5-8.5</td>
+<td style="text-align: right;">1,135.2098694</td>
+</tr>
+</tbody>
+</table>
+<p>两条 SSP 积分都重跑同一段 1850–2014 历史浓度。初值、参数和每一步强迫相同，因此在 2014 年末状态相同，2015 年开始分别使用各自的浓度路径。这与从同一历史状态继续推进，在当前确定性模型中等效。</p>
+<p>正式的 CMIP6 历史实验覆盖多种人为和自然时变强迫。正式 ScenarioMIP 实验自 2014 年末的历史状态分支，按协议指定温室气体、气溶胶和土地利用等强迫。M0 的三个浓度驱动实验只改变 CO₂，用来研究同一单箱模式对给定浓度路径的温度响应。历史温度和 2100 年情景温度应结合这个假设阅读。<a href="https://gmd.copernicus.org/articles/9/1937/2016/">Eyring et al. (2016)</a> · <a href="https://gmd.copernicus.org/articles/9/3461/2016/">O’Neill et al. (2016)</a></p>
+<h3 id="_4">数据来源与处理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>仓库中的年均浓度来自 Nicholls 与 Lewis 发布的 RCMIP v5.1.0 年均浓度表，筛选变量 <code>Atmospheric Concentrations|CO2</code>、区域 <code>World</code>、单位 <code>ppm</code>、数据来源 <code>input4MIPs/CMIP6</code>，截取对应年份并重排成两列 <code>year,co2_ppm</code>。SSP 表截至 2014 年与历史浓度逐年一致。表中的 1850 年初始浓度为 284.3169988 ppm，强迫公式的参考浓度取 284.317 ppm。提取后的浓度数据遵循 CC BY-SA 4.0，见仓库中复现提取的说明。<a href="https://zenodo.org/records/4589756">RCMIP v5.1.0 数据</a> · <a href="https://gmd.copernicus.org/articles/13/5175/2020/">Nicholls et al. (2020)</a> · <a href="https://gmd.copernicus.org/articles/10/2057/2017/">Meinshausen et al. (2017)</a> · <a href="https://gmd.copernicus.org/articles/13/3571/2020/">Meinshausen et al. (2020)</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://github.com/liang-jiarui/daoshu-esm/tree/main/experiments/ebm0d/forcing">DAOSHU 年均浓度说明</a></p>
+<h2 id="_5">从单箱过渡到耦合模式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>PlaSiC 用自己的耦合模式展示控制、CO₂ 理想化响应和历史输入。在它的教程中可以继续学习如何从长积分结果分析漂移、TCR 与有效平衡气候敏感度，也能看到同一个实验思路如何用于更高复杂度的模式。<a href="https://sunmoumou1.github.io/PlaSiC/tutorial/">PlaSiC 在线教程</a> · <a href="https://github.com/sunmoumou1/PlaSiC#experiments-out-of-the-box">PlaSiC 实验说明</a></p>
+<h2 id="_6">动手分析<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ol>
+<li>先画两条强迫实验的 <code>F</code> 对时间曲线，区分阶跃和斜坡后再看各自随时间变化的温度。</li>
+<li>用相同的时间窗提取控制和渐增实验的温度异常，并验证用月步平均与先算年平均再平均会得到相同结果，前提是采用相同的区间和端点规则。</li>
+<li>调低辐射反馈强度 <code>λ</code>，保持 <code>C</code> 与浓度曲线相同。先按解析公式推断两个强迫实验的变化，再运行对照。</li>
+<li>把两条 SSP 输出按时间对齐，检查两者在 1850–2014 的状态是否重合，再比较 2015–2100 浓度差和温度差分别从何时开始增大。</li>
+</ol>
+<p><a href="../physics/">上一章 · 科学原理</a> · <a href="../results/">下一章 · 实验结果</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../physics/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 物理方程与数值方法">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                物理方程与数值方法
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../results/" class="md-footer__link md-footer__link--next" aria-label="下一页: 结果与验证">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                结果与验证
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.footer", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

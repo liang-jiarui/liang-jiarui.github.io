@@ -1,0 +1,33 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #203f3c;
+  --md-primary-fg-color--light: #365854;
+  --md-primary-fg-color--dark: #15322f;
+  --md-accent-fg-color: #17655c;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #193531;
+  --md-primary-fg-color--dark: #132d2a;
+  --md-typeset-a-color: #8fccc3;
+  --md-accent-fg-color: #9bdad0;
+}
+
+.md-typeset {
+  line-height: 1.75;
+}
+
+.md-typeset figure {
+  margin-inline: auto;
+}
+
+.md-typeset .arithmatex {
+  max-width: 100%;
+}
+
+.md-typeset div.arithmatex {
+  overflow-x: auto;
+}

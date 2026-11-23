@@ -1,0 +1,875 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="用零维能量平衡模式学习气候响应、数值积分与实验复现。">
+      
+      
+      
+        <link rel="canonical" href="https://liang-jiarui.github.io/DAOSHU/tutorial/physics/">
+      
+      
+        <link rel="prev" href="../quick-start/">
+      
+      
+        <link rel="next" href="../experiments/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>物理方程与数值方法 - DAOSHU 道枢地球系统模式</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/tutorial.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#02" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="DAOSHU 道枢地球系统模式" class="md-header__button md-logo" aria-label="DAOSHU 道枢地球系统模式" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DAOSHU 道枢地球系统模式
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              物理方程与数值方法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DAOSHU 道枢地球系统模式" class="md-nav__button md-logo" aria-label="DAOSHU 道枢地球系统模式" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DAOSHU 道枢地球系统模式
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    教程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    教程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    教程总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装与快速运行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    物理方程与数值方法
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    物理方程与数值方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从太阳辐射到能量收支
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用解析解理解实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从连续方程到每一步更新
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎样解读这一层模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        动手验证
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMIP6 风格实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    结果与验证
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代码导读
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从太阳辐射到能量收支
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用解析解理解实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从连续方程到每一步更新
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎样解读这一层模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        动手验证
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="02">02 · 科学原理与数值积分<a class="headerlink" href="#02" title="Permanent link">&para;</a></h1>
+<p>在 DAOSHU M0 中，整个地球系统由一个全球平均温度 <code>T</code> 表示。沿着吸收太阳辐射、发射长波辐射、温度变化这条链，可以直接追踪地球能量的净收入。“零维”指模式只有时间轴，无水平或垂直坐标。</p>
+<h2 id="_1">从太阳辐射到能量收支<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>设太阳辐照度为 <code>S</code>，行星反照率为 <code>α</code>。地球拦截太阳辐射的截面积是 <code>πR²</code>，地球总表面积是 <code>4πR²</code>，因此吸收的全球平均短波通量是 <code>SW = S(1 − α)/4</code>。反照率表示直接反射到太空的份额。</p>
+<p>长波通量采用以参考态为中心的线性近似 <code>OLR(T) = SW + λ(T − Tref)</code>。参考温度处的长波常数项等于吸收短波，使参考态的辐射收支闭合。正的 <code>λ</code> 表示升温会增加向外长波，进而减小地球的净能量收入。这里 <code>λ</code> 是一个可设定的净反馈强度。</p>
+<p>CO₂ 强迫采用对数近似 <code>F = a ln(CO₂/CO₂ref)</code>，其中 <code>ln</code> 为自然对数。浓度与参考值相同时 <code>F = 0</code>。浓度高于参考值时，正强迫增加地球系统的能量收入。每次翻倍带来的强迫增量都等于 <code>a ln(2)</code>。系数 <code>a = 5.35 W m⁻²</code> 取自经典近似。<a href="https://doi.org/10.1029/98GL01908">Myhre et al. (1998)</a></p>
+<p>把三项合在一起得到大气顶净向下通量 <code>N</code> 和温度方程。</p>
+<div class="highlight"><pre><span></span><code>N = SW − OLR(T) + F = F − λ(T − Tref)
+C dT/dt = N
+</code></pre></div>
+<p><code>C</code> 是按地球总表面积归一化的有效热容量。对一个给定的正 <code>N</code>，<code>C</code> 越大，升温越慢。温度用 K，时间导数的时间单位用秒，所以 <code>C dT/dt</code> 的单位是 J m⁻² s⁻¹，也就是 W m⁻²。温差 1 K 等于温差 1 °C。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th style="text-align: right;">基准值</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>S</code></td>
+<td>太阳辐照度</td>
+<td style="text-align: right;">1,361</td>
+<td>W m⁻²</td>
+</tr>
+<tr>
+<td><code>α</code></td>
+<td>行星反照率</td>
+<td style="text-align: right;">0.30</td>
+<td>无量纲</td>
+</tr>
+<tr>
+<td><code>Tref</code></td>
+<td>参考温度</td>
+<td style="text-align: right;">288</td>
+<td>K</td>
+</tr>
+<tr>
+<td><code>CO₂ref</code></td>
+<td>参考 CO₂ 干空气摩尔分数</td>
+<td style="text-align: right;">284.317</td>
+<td>ppm</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>CO₂ 对数强迫系数</td>
+<td style="text-align: right;">5.35</td>
+<td>W m⁻²</td>
+</tr>
+<tr>
+<td><code>λ</code></td>
+<td>线性辐射反馈强度</td>
+<td style="text-align: right;">1.2</td>
+<td>W m⁻² K⁻¹</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>有效热容量</td>
+<td style="text-align: right;">2.1 × 10⁸</td>
+<td>J m⁻² K⁻¹</td>
+</tr>
+</tbody>
+</table>
+<p>表中的参数组是 M0 的教学基准。对于该组参数，<code>SW ≈ 238.175 W m⁻²</code>，<code>CO₂ = CO₂ref</code> 时的平衡温度是 288 K。在当前长波定义下，修改 <code>S</code> 或 <code>α</code> 会同步改变短波和参考长波通量。研究太阳变化或反照率反馈时，需要为长波常数项保留独立的参考值，并把短波扰动显式加入预算。</p>
+<h2 id="_2">用解析解理解实验<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>持续施加同一个强迫 <code>F</code> 时，平衡要求 <code>N = 0</code>，因此 <code>Teq = Tref + F/λ</code>。用时间尺度 <code>τ = C/λ</code> 可以写出任意初温 <code>T0</code> 的连续解。</p>
+<div class="highlight"><pre><span></span><code>T(t) = Teq + (T0 − Teq) exp(−t/τ)
+</code></pre></div>
+<p>基准参数给出约 5.55 年的响应时间尺度。运行一个 <code>τ</code> 后，初态与新平衡之间的温差余下约 37%。持续 4×CO₂ 时，初始强迫约为 7.417 W m⁻²，最终升温约 6.181 K。在当前线性反馈式中，平衡倍增升温由参数直接决定，约为 3.090 K。</p>
+<p>渐增 CO₂ 实验在模型时钟 <code>y</code>（年）上的浓度为 <code>CO₂ref × 1.01^y</code>。对数强迫因此以约 0.05323 W m⁻² yr⁻¹ 的固定斜率增长。温度因热容量而落后于随强迫移动的瞬时平衡温度。可用本文的时间尺度解释落后量，也可把输出与<a href="../results/">实验结果</a>对照。</p>
+<h2 id="_3">从连续方程到每一步更新<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>前向 Euler 在步首读取温度和强迫，然后把该时刻的通量用于整个时间步。以下用 <code>n</code> 表示步号，<code>Δt</code> 表示步长（秒）。</p>
+<div class="highlight"><pre><span></span><code>Nₙ = SW − OLR(Tₙ) + Fₙ
+Tₙ₊₁ = Tₙ + Δt × Nₙ / C
+Rₙ = C × (Tₙ₊₁ − Tₙ) / Δt − Nₙ
+</code></pre></div>
+<p><code>Rₙ</code> 表示该步热储存变化率与驱动通量的差。由离散方程可知，它应当只剩浮点舍入误差。要验证的是同一步的温度差与步首通量。由许多步累加的 <code>Nₙ Δt</code> 则可以与首末热储存差 <code>C(Tend − T0)</code> 对比。</p>
+<p>一年固定为 365 天，每天 86,400 秒。默认每年等分成 12 步，每步 2,628,000 秒。用 4×CO₂ 实验手算第一步，初态 <code>T₀ = 288 K</code>，所以 <code>N₀ = F₀ ≈ 7.417 W m⁻²</code>，一步升温约 0.09281 K，步末温度约 288.09281 K。</p>
+<p>固定强迫时，离散步剩余的平衡温差每次乘以 <code>1 − Δt/τ</code>。因此 <code>0 &lt; Δt/τ &lt; 2</code> 时误差衰减，<code>Δt/τ ≤ 1</code> 时从同一侧趋近平衡，比值在 1 与 2 之间时会在平衡两侧振荡。M0 限制 <code>Δt ≤ τ</code>，使固定强迫下的响应单调趋近平衡。基准月步是 <code>Δt/τ ≈ 0.0150</code>。这一计算检验稳定性，精度还要看步长收敛。保持物理参数与总时间相同，步长减半，固定强迫下与连续解析解的误差在线性收敛区间内约减半。</p>
+<h2 id="_4">怎样解读这一层模式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>这个单一温度和固定反馈描述全球平均响应。区域气候、天气、海冰与碳循环需要额外的状态和过程。</li>
+<li>CO₂ 是指定浓度，模式解释的是这条浓度路径所产生的辐射响应。把排放换算成浓度需要碳循环。</li>
+<li>单箱给出一条快速和缓慢过程合并后的指数响应。要表示混合层与深海热交换，可在下一层加入独立的深海热储库及其交换通量。<a href="https://doi.org/10.1175/JCLI-D-12-00195.1">Geoffroy et al. (2013)</a></li>
+</ul>
+<h2 id="_5">动手验证<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li>把 4×CO₂ 的热容量改为两倍，保持其他量相同，再画温度曲线。用 <code>τ</code> 和 <code>Teq</code> 预判曲线何处会变、何处会重合。</li>
+<li>在控制实验把初温设为 289 K。从解析解推算 5.55 年和 11.10 年的温度，并用相近的输出时刻核对。</li>
+<li>把 4×CO₂ 分别用每年 12、24 和 48 步运行 20 年，计算第 20 年末温度与解析解的差，并验证两次步长减半的误差比。</li>
+</ol>
+<p><a href="../quick-start/">上一章 · 快速开始</a> · <a href="../experiments/">下一章 · 实验协议</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../quick-start/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 安装与快速运行">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                安装与快速运行
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../experiments/" class="md-footer__link md-footer__link--next" aria-label="下一页: CMIP6 风格实验">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                CMIP6 风格实验
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.footer", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

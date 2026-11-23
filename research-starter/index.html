@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ResearchStarter 的子模块 Gallery 和科研实验工作流入口。">
+  <title>研究 Gallery · ResearchStarter</title>
+  <link rel="stylesheet" href="gallery.css">
+  <script src="gallery.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#module-directory">跳到子模块目录</a>
+  <header class="masthead">
+    <div class="page-width">
+      <div class="topbar">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"></span>
+          ResearchStarter
+        </a>
+        <nav aria-label="页面导航">
+          <a href="#module-directory">子模块目录</a>
+          <a href="#workflow">实验工作流</a>
+        </nav>
+      </div>
+      <div class="hero">
+        <h1>研究 Gallery</h1>
+        <p>浏览地球系统模拟、观测数据和机器学习实验，打开各子模块的 Gallery 与使用说明。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-width">
+    <section id="module-directory" class="directory" aria-labelledby="module-heading">
+      <div class="section-heading">
+        <h2 id="module-heading">子模块目录</h2>
+        <p id="module-count" class="module-count" aria-live="polite"></p>
+      </div>
+      <form id="module-controls" class="module-controls" role="search" aria-label="筛选子模块" hidden>
+        <label class="search-field">
+          <span class="visually-hidden">搜索子模块或 Gallery</span>
+          <input id="module-query" name="q" type="search" placeholder="搜索子模块或 Gallery">
+        </label>
+        <label class="category-field">
+          <span class="visually-hidden">按类别筛选</span>
+          <select id="module-category" name="category">
+            <option value="">所有类别</option>
+          </select>
+        </label>
+      </form>
+      <div id="module-grid" class="module-grid">
+        <article class="module-card" data-category="model">
+  <div class="module-card__header">
+    <p class="module-card__type">地球系统模拟</p>
+    <h3>EarthModelHub</h3>
+  </div>
+  <p class="module-card__description">按模型、论文和版本浏览模拟实验，查看案例状态、配置文件与复现命令。</p>
+  <div class="module-card__links"><a class="button button--primary" href="https://liang-jiarui.github.io/EarthModelHub/docs/simulations/">Simulation Gallery</a><a class="button button--secondary" href="https://github.com/liang-jiarui/EarthModelHub/blob/3da861569db83c6301ba729d0c7cfdb655d39b88/docs/SIMULATIONS.md">模拟指南</a><a class="button button--secondary" href="https://github.com/liang-jiarui/EarthModelHub/tree/3da861569db83c6301ba729d0c7cfdb655d39b88">仓库</a></div>
+</article>
+<article class="module-card" data-category="observation">
+  <div class="module-card__header">
+    <p class="module-card__type">观测数据</p>
+    <h3>ObservationHub</h3>
+  </div>
+  <p class="module-card__description">查阅观测数据源、变量和覆盖范围，准备模型与观测匹配所需的输入。</p>
+  <div class="module-card__links"><a class="button button--primary" href="https://github.com/liang-jiarui/ObservationHub/blob/5e6f7046042c8b6f3c14f71c559899ecb11b86a0/data/sources.json">数据源目录</a><a class="button button--secondary" href="https://github.com/liang-jiarui/ObservationHub/tree/5e6f7046042c8b6f3c14f71c559899ecb11b86a0">仓库</a></div>
+</article>
+<article class="module-card" data-category="ml">
+  <div class="module-card__header">
+    <p class="module-card__type">机器学习</p>
+    <h3>MachineLearningHub</h3>
+  </div>
+  <p class="module-card__description">从项目目录列出和校验实验。在本地 Streamlit 工作台配置实验、提交 Slurm 作业并查看结果。</p>
+  <div class="module-card__links"><a class="button button--primary" href="#ml-workbench">本地工作台</a><a class="button button--secondary" href="https://github.com/liang-jiarui/MachineLearningHub/blob/c57e4734ac107ef11020fc6fbadd9bba0ebebc86/docs/projects.md">项目接入指南</a><a class="button button--secondary" href="https://github.com/liang-jiarui/MachineLearningHub/tree/c57e4734ac107ef11020fc6fbadd9bba0ebebc86">仓库</a></div>
+</article>
+<article class="module-card" data-category="paper">
+  <div class="module-card__header">
+    <p class="module-card__type">论文与投稿</p>
+    <h3>AcademicPaperTool</h3>
+  </div>
+  <p class="module-card__description">从 Markdown 构建 Word 稿件与投稿材料，记录审阅和返修流程。</p>
+  <div class="module-card__links"><a class="button button--primary" href="https://github.com/liang-jiarui/AcademicPaperTool/blob/afb0974bd198acb5417b4b64c9350180fac861e7/README.md">投稿工具指南</a><a class="button button--secondary" href="https://github.com/liang-jiarui/AcademicPaperTool/tree/afb0974bd198acb5417b4b64c9350180fac861e7">仓库</a></div>
+</article>
+      </div>
+      <p id="module-empty" class="empty-state" hidden>未找到匹配的子模块。可以换个关键词，或选择所有类别。</p>
+    </section>
+
+    <section id="workflow" class="workflow" aria-labelledby="workflow-heading">
+      <div class="section-heading">
+        <h2 id="workflow-heading">实验工作流</h2>
+      </div>
+      <p class="workflow-intro">进入项目环境后，在仓库根目录运行命令。提交作业时使用相应 Hub 的调度入口和已配置的 HPC 环境。</p>
+      <div class="workflow-grid">
+        <article class="workflow-card">
+          <h3>模拟任务</h3>
+          <p>列出登记的模拟任务。</p>
+          <div class="command">
+            <code>python3 scripts/earthmodel.py --list</code>
+            <button type="button" data-copy aria-label="复制列出模拟任务命令" hidden>复制</button>
+          </div>
+          <p>预演 2023 年火灾对照的 E3SM ne30 组。</p>
+          <div class="command">
+            <code>python3 scripts/earthmodel.py xu_2026_fire_2023 --groups e3sm/ne30 --dry-run</code>
+            <button type="button" data-copy aria-label="复制预演模拟任务命令" hidden>复制</button>
+          </div>
+        </article>
+        <article class="workflow-card" id="ml-workbench">
+          <h3>机器学习实验</h3>
+          <p>列出已登记的实验和配置。</p>
+          <div class="command">
+            <code>python3 deps/MachineLearningHub/scripts/mlhub list</code>
+            <button type="button" data-copy aria-label="复制列出机器学习实验命令" hidden>复制</button>
+          </div>
+          <p>启动工作台后，在同一台机器上打开页面，提交实验、查看状态和结果。</p>
+          <div class="command">
+            <code>(cd deps/MachineLearningHub &amp;&amp; python3 -m src.ml.ui --server.address 127.0.0.1 --server.port 8501)</code>
+            <button type="button" data-copy aria-label="复制启动 ML 工作台命令" hidden>复制</button>
+          </div>
+          <a class="button button--secondary workbench-link" href="http://127.0.0.1:8501" target="_blank" rel="noopener noreferrer">打开 ML 工作台</a>
+        </article>
+      </div>
+      <p id="copy-status" class="copy-status" role="status"></p>
+    </section>
+  </main>
+
+  <footer class="page-width footer">
+    <span>ResearchStarter</span>
+    <a href="#top">回到顶部</a>
+  </footer>
+</body>
+</html>

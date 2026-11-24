@@ -1017,7 +1017,8 @@ function cell(row, column, index) {
       : '<td class="ops"><div class="pad muted">Run record</div></td>';
   }
   const blocked = ready ? '' : ' disabled';
-  const tip = ready ? 'Copy reproduction command' : (kind === 'record' ? 'Installation record; view only' : 'Resolve missing dependencies first');
+  const copyLabel = row.model === 'uvic' ? 'Copy reproduction command' : 'Copy create, build and submit commands';
+  const tip = ready ? copyLabel : (kind === 'record' ? 'Installation record; view only' : 'Resolve missing dependencies first');
   return `<td class="ops"><div class="pad"><button type="button" class="primary" data-copy="reproduce" data-id="${esc(row.id)}"${blocked} title="${tip}">Reproduce</button></div></td>`;
 }
 function projectGroups(rows) {
@@ -1272,7 +1273,7 @@ function detail(id) {
     <button type="button" class="mini" data-copy="check" data-id="${esc(row.id)}">Copy check command</button>
     <p class="notes">${row.smoke_report ? 'See the smoke report for the attempted run and its limitations.' : 'This smoke plan needs the listed dependencies and a runnable case before validation.'}</p>` : `<div class="section-title">Reproduction</div>
     <pre class="command">${esc((row.commands || {}).reproduce || '')}</pre>
-    <button type="button" class="primary mini" data-copy="reproduce" data-id="${esc(row.id)}" ${ready ? '' : 'disabled'}>Copy reproduction command</button>`}`}`;
+    <button type="button" class="primary mini" data-copy="reproduce" data-id="${esc(row.id)}" ${ready ? '' : 'disabled'}>${row.model === 'uvic' ? 'Copy reproduction command' : 'Copy create, build and submit commands'}</button>`}`}`;
   document.querySelectorAll('tr.data').forEach(tr => tr.classList.toggle('open', tr.dataset.id === id));
   if (!$('detail').open) $('detail').showModal();
 }

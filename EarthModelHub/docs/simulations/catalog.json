@@ -13042,8 +13042,8 @@
     "version": "E3SM_v3_0_2",
     "task_title": "FireEarth · chapter5",
     "task_about": "",
-    "title": "Chapter 5 · RFMIP 方法短测 · 1850 CO₂ 对照",
-    "description": "EAM ne4 一年对照，使用 F1850 自带的逐月海温和海冰浓度气候态。",
+    "title": "Chapter 5 · RFMIP 方法试验 · 1850 CO₂ 对照",
+    "description": "EAM ne4 30 年对照，使用 F1850 自带的逐月海温和海冰浓度气候态。",
     "compset": "F1850",
     "res": "ne4pg2_oQU480",
     "group": "chapter5/test/rfmip_ne4",
@@ -13051,7 +13051,7 @@
     "category": "projects",
     "period": {
       "start": "0001-01-01",
-      "end": "0002-01-01",
+      "end": "0031-01-01",
       "frequency": "monthly",
       "end_exclusive": true
     },
@@ -13072,8 +13072,8 @@
     "version": "E3SM_v3_0_2",
     "task_title": "FireEarth · chapter5",
     "task_about": "",
-    "title": "Chapter 5 · RFMIP 方法短测 · 4×CO₂ 扰动",
-    "description": "EAM ne4 一年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。",
+    "title": "Chapter 5 · RFMIP 方法试验 · 4×CO₂ 扰动",
+    "description": "EAM ne4 30 年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。",
     "compset": "F1850",
     "res": "ne4pg2_oQU480",
     "group": "chapter5/test/rfmip_ne4",
@@ -13081,7 +13081,7 @@
     "category": "projects",
     "period": {
       "start": "0001-01-01",
-      "end": "0002-01-01",
+      "end": "0031-01-01",
       "frequency": "monthly",
       "end_exclusive": true
     },

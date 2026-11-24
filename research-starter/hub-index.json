@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-24T04:20:31Z",
+  "updated_at": "2026-11-24T04:25:19Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -9873,11 +9873,11 @@
       "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e04_rfmip_ne4_control",
       "hub": "EMH",
       "type": "Simulation",
-      "title": "Chapter 5 · RFMIP 方法短测 · 1850 CO₂ 对照",
+      "title": "Chapter 5 · RFMIP 方法试验 · 1850 CO₂ 对照",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter5%2Fe3sm%2FE3SM_v3_0_2%2Fe04_rfmip_ne4_control",
       "keywords": [
         "0001-01-01",
-        "0002-01-01",
+        "0031-01-01",
         "@fireearth_chapter5/e3sm/E3SM_v3_0_2/e04_rfmip_ne4_control",
         "E3SM_v3_0_2",
         "F1850",
@@ -9889,17 +9889,17 @@
         "rfmip_ne4_control",
         "simulation"
       ],
-      "description": "EAM ne4 一年对照，使用 F1850 自带的逐月海温和海冰浓度气候态。"
+      "description": "EAM ne4 30 年对照，使用 F1850 自带的逐月海温和海冰浓度气候态。"
     },
     {
       "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e05_rfmip_ne4_4xco2",
       "hub": "EMH",
       "type": "Simulation",
-      "title": "Chapter 5 · RFMIP 方法短测 · 4×CO₂ 扰动",
+      "title": "Chapter 5 · RFMIP 方法试验 · 4×CO₂ 扰动",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter5%2Fe3sm%2FE3SM_v3_0_2%2Fe05_rfmip_ne4_4xco2",
       "keywords": [
         "0001-01-01",
-        "0002-01-01",
+        "0031-01-01",
         "@fireearth_chapter5/e3sm/E3SM_v3_0_2/e05_rfmip_ne4_4xco2",
         "E3SM_v3_0_2",
         "F1850",
@@ -9911,7 +9911,7 @@
         "rfmip_ne4_4xco2",
         "simulation"
       ],
-      "description": "EAM ne4 一年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。"
+      "description": "EAM ne4 30 年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。"
     },
     {
       "id": "emh:simulation:@fireearth_completed/cesm/cesm2_3_alpha17e/test_G1850ECO_Fe_5d_20261105_7ebc94ec66",
@@ -30728,21 +30728,21 @@
       "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e04_rfmip_ne4_control",
       "hub": "EMH",
       "type": "Simulation",
-      "title": "Chapter 5 · RFMIP 方法短测 · 1850 CO₂ 对照",
-      "description": "EAM ne4 一年对照，使用 F1850 自带的逐月海温和海冰浓度气候态。",
+      "title": "Chapter 5 · RFMIP 方法试验 · 1850 CO₂ 对照",
+      "description": "EAM ne4 30 年对照，使用 F1850 自带的逐月海温和海冰浓度气候态。",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter5%2Fe3sm%2FE3SM_v3_0_2%2Fe04_rfmip_ne4_control",
-      "date": "2026-11-24T04:20:31Z",
-      "change": "added"
+      "date": "2026-11-24T04:25:19Z",
+      "change": "updated"
     },
     {
       "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e05_rfmip_ne4_4xco2",
       "hub": "EMH",
       "type": "Simulation",
-      "title": "Chapter 5 · RFMIP 方法短测 · 4×CO₂ 扰动",
-      "description": "EAM ne4 一年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。",
+      "title": "Chapter 5 · RFMIP 方法试验 · 4×CO₂ 扰动",
+      "description": "EAM ne4 30 年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter5%2Fe3sm%2FE3SM_v3_0_2%2Fe05_rfmip_ne4_4xco2",
-      "date": "2026-11-24T04:20:31Z",
-      "change": "added"
+      "date": "2026-11-24T04:25:19Z",
+      "change": "updated"
     },
     {
       "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/co2_2x",

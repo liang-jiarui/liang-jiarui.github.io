@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-24T04:10:19Z",
+  "updated_at": "2026-11-24T04:20:31Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -9868,6 +9868,50 @@
         "simulation"
       ],
       "description": "FireEarth 工作案例，任务 fireearth_chapter5。案例 fe_test_e9_atm_RF_PD2023_ALL。组 chapter5/v20260919/test。配置 FCSD_HCO / f19_f19_mg17。RUN_TYPE startup。参考案例 case.std，参考日期 0001-01-01。2022-12-01 至 2024-01-01（终点不含）。每段 13 个月，RESUBMIT 0，合计 13 个月。海温海冰年份 1850–2021。CO2 284.7 ppm。"
+    },
+    {
+      "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e04_rfmip_ne4_control",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Chapter 5 · RFMIP 方法短测 · 1850 CO₂ 对照",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter5%2Fe3sm%2FE3SM_v3_0_2%2Fe04_rfmip_ne4_control",
+      "keywords": [
+        "0001-01-01",
+        "0002-01-01",
+        "@fireearth_chapter5/e3sm/E3SM_v3_0_2/e04_rfmip_ne4_control",
+        "E3SM_v3_0_2",
+        "F1850",
+        "FireEarth · chapter5",
+        "chapter5/test/rfmip_ne4",
+        "e3sm",
+        "fireearth_chapter5",
+        "ne4pg2_oQU480",
+        "rfmip_ne4_control",
+        "simulation"
+      ],
+      "description": "EAM ne4 一年对照，使用 F1850 自带的逐月海温和海冰浓度气候态。"
+    },
+    {
+      "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e05_rfmip_ne4_4xco2",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Chapter 5 · RFMIP 方法短测 · 4×CO₂ 扰动",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter5%2Fe3sm%2FE3SM_v3_0_2%2Fe05_rfmip_ne4_4xco2",
+      "keywords": [
+        "0001-01-01",
+        "0002-01-01",
+        "@fireearth_chapter5/e3sm/E3SM_v3_0_2/e05_rfmip_ne4_4xco2",
+        "E3SM_v3_0_2",
+        "F1850",
+        "FireEarth · chapter5",
+        "chapter5/test/rfmip_ne4",
+        "e3sm",
+        "fireearth_chapter5",
+        "ne4pg2_oQU480",
+        "rfmip_ne4_4xco2",
+        "simulation"
+      ],
+      "description": "EAM ne4 一年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。"
     },
     {
       "id": "emh:simulation:@fireearth_completed/cesm/cesm2_3_alpha17e/test_G1850ECO_Fe_5d_20261105_7ebc94ec66",
@@ -30681,6 +30725,26 @@
   ],
   "recent": [
     {
+      "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e04_rfmip_ne4_control",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Chapter 5 · RFMIP 方法短测 · 1850 CO₂ 对照",
+      "description": "EAM ne4 一年对照，使用 F1850 自带的逐月海温和海冰浓度气候态。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter5%2Fe3sm%2FE3SM_v3_0_2%2Fe04_rfmip_ne4_control",
+      "date": "2026-11-24T04:20:31Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e05_rfmip_ne4_4xco2",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Chapter 5 · RFMIP 方法短测 · 4×CO₂ 扰动",
+      "description": "EAM ne4 一年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter5%2Fe3sm%2FE3SM_v3_0_2%2Fe05_rfmip_ne4_4xco2",
+      "date": "2026-11-24T04:20:31Z",
+      "change": "added"
+    },
+    {
       "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/co2_2x",
       "hub": "EMH",
       "type": "Simulation",
@@ -31407,26 +31471,6 @@
       "title": "GFED4 全球火排放对照（1997–2025）",
       "description": "按 Xu Fire 2023 的 9 个模式、compset 和分辨率组合扩展，多年运行使用独立 ALL 和 NoFIRE spinup。",
       "url": "../EarthModelHub/docs/simulations/?task=gfed4_fire_1997_2025",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:task:gfed5_fire_1997_2026",
-      "hub": "EMH",
-      "type": "Task",
-      "title": "GFED5 全球火排放对照（1997–2025）",
-      "description": "按 Xu Fire 2023 的 9 个模式、compset 和分辨率组合扩展，多年运行使用独立 ALL 和 NoFIRE spinup。",
-      "url": "../EarthModelHub/docs/simulations/?task=gfed5_fire_1997_2026",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:task:yang_2016_marine_ndep",
-      "hub": "EMH",
-      "type": "Task",
-      "title": "Yang & Gruber 2016 · 大气氮沉降与海洋氮循环",
-      "description": "全球海洋 CESM1.2 / POP2–BEC（含 ¹⁵N 循环），标称 3°（热带纬向加密至 0.6°）。各组均使用 COREv2 正常年物理强迫。收录表 1 的 10 组实验和方法 §2.2 的自旋、工业化前对照。",
-      "url": "../EarthModelHub/docs/simulations/?task=yang_2016_marine_ndep",
       "date": "2026-11-23T23:00:42Z",
       "change": "added"
     }

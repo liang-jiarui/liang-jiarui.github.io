@@ -125,6 +125,9 @@ th.sticky,td.sticky{position:sticky;left:0;z-index:2}
 th.sticky2,td.sticky2{position:sticky;left:46px;z-index:2}
 th.sticky3,td.sticky3{position:sticky;left:346px;z-index:2;box-shadow:8px 0 12px -10px #16342f33}
 thead th.sticky,thead th.sticky2,thead th.sticky3{z-index:4;background:var(--head)}
+.project-group th{background:var(--head);border-top:1px solid var(--line);font-weight:650}
+.project-group-label{position:sticky;left:0;display:inline-flex;gap:8px;align-items:baseline;padding:6px 10px}
+.project-group-count{color:var(--muted);font-size:12px;font-weight:400}
 tr.data td{background:var(--row-bg,#fff)}
 tr.data:nth-child(even) td{background:var(--row-bg,var(--zebra))}
 tr.data.local-completed,tr.data.local-run_success_recorded{--row-bg:#edf7ef}
@@ -993,17 +996,40 @@ function cell(row, column, index) {
   const tip = ready ? 'Copy create, build and submit commands' : (kind === 'record' ? 'Installation record; view only' : 'Resolve missing dependencies first');
   return `<td class="ops"><div class="pad"><button type="button" class="primary" data-copy="reproduce" data-id="${esc(row.id)}"${blocked} title="${tip}">Reproduce</button></div></td>`;
 }
-function paintBody() {
+function projectGroups(rows) {
+  const assigned = new Set();
+  const groups = [];
+  for (const {id, name} of projectIndex.children.get('') || []) {
+    const coverage = projectIndex.coverage.get(id);
+    const members = rows.filter(row => coverage.has(row.id));
+    if (!members.length) continue;
+    for (const row of members) assigned.add(row.id);
+    groups.push({name, rows:members});
+  }
+  const unassigned = rows.filter(row => !assigned.has(row.id));
+  if (unassigned.length) groups.push({name:'Unassigned', rows:unassigned});
+  return groups;
+}
+function experimentRow(row, index) {
+  const kind = publicGallery ? '' : (row.preflight || {}).status || 'blocked';
+  const status = Object.hasOwn(LOCAL_LABEL, row.local_state) ? row.local_state : 'unknown';
+  return `<tr class="data ${kind} local-${status}${state.detail === row.id ? ' open' : ''}" data-id="${esc(row.id)}">${COLUMNS.map(column => cell(row, column, index)).join('')}</tr>`;
+}
+function paintBody(grouped) {
   if (!shown.length) {
     const emptyFolder = state.folder && !projectIndex.coverage.get(state.folder).size;
     $('tbody').innerHTML = `<tr class="empty"><td colspan="${COLUMNS.length}">${emptyFolder ? 'No experiments in this folder yet.' : 'No matching experiments. Clear filters or try another query.'}</td></tr>`;
     return;
   }
-  $('tbody').innerHTML = shown.map((row, index) => {
-    const kind = publicGallery ? '' : (row.preflight || {}).status || 'blocked';
-    const status = Object.hasOwn(LOCAL_LABEL, row.local_state) ? row.local_state : 'unknown';
-    return `<tr class="data ${kind} local-${status}${state.detail === row.id ? ' open' : ''}" data-id="${esc(row.id)}">${COLUMNS.map(column => cell(row, column, index + 1)).join('')}</tr>`;
-  }).join('') || '<tr class="empty"><td colspan="14">No matching experiments.</td></tr>';
+  if (!grouped) {
+    $('tbody').innerHTML = shown.map((row, index) => experimentRow(row, index + 1)).join('');
+    return;
+  }
+  let index = 0;
+  $('tbody').innerHTML = projectGroups(shown).map(({name, rows}) =>
+    `<tr class="project-group"><th scope="row" colspan="${COLUMNS.length}"><span class="project-group-label">${esc(name)} <span class="project-group-count">${rows.length} ${rows.length === 1 ? 'experiment' : 'experiments'}</span></span></th></tr>`
+    + rows.map(row => experimentRow(row, ++index)).join('')
+  ).join('');
 }
 function fillPopover() {
   const key = state.open;
@@ -1084,12 +1110,15 @@ function render() {
   paintProjects();
   paintChips();
   paintHead();
-  paintBody();
+  const grouped = state.browse === 'projects' && !state.folder && projectIndex.children.has('');
+  paintBody(grouped);
   const column = COLUMNS.find(item => item.key === state.sort);
-  const mode = state.sort ? `${column ? column.label : 'Column'}${state.dir > 0 ? ' ascending' : ' descending'}` : 'Grouped by model and task';
+  const order = state.sort ? `${column ? column.label : 'Column'}${state.dir > 0 ? ' ascending' : ' descending'}` : '';
+  const mode = grouped ? 'Grouped by project' : 'Grouped by model and task';
+  const displayOrder = grouped && order ? `${mode} · ${order} within projects` : order || mode;
   const ready = shown.filter(row => (row.preflight || {}).status === 'ready').length;
   const total = state.folder ? projectIndex.coverage.get(state.folder).size : data.length;
-  $('resultcount').textContent = `${shown.length} / ${total} rows · ${publicGallery ? '' : `Ready ${ready} · `}${mode}`;
+  $('resultcount').textContent = `${shown.length} / ${total} ${grouped ? 'experiments' : 'rows'} · ${publicGallery ? '' : `Ready ${ready} · `}${displayOrder}`;
   $('reset').disabled = !filtersActive();
   saveState();
   syncUrl();

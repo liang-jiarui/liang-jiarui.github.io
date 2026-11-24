@@ -67,11 +67,19 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;padding:12px 16px 12
 .dot.publications{background:#80629b}
 .dot.projects{background:var(--projects)}
 .catblock+.catblock{border-top:1px solid var(--line);margin-top:4px;padding-top:4px}
-.project-line{display:flex;align-items:center;padding-inline-start:calc(4px + min(var(--depth),5) * 12px)}
+.project-folders{list-style:none;margin:0;padding:0}
+.project-line{--indent:calc(4px + min(var(--depth),4) * 10px);position:relative;display:flex;align-items:center;padding-inline-start:var(--indent)}
+.project-folders .project-folders .project-line::before{content:"";position:absolute;inset-block:0;inset-inline-start:calc(var(--indent) - 4px);border-inline-start:1px solid var(--line)}
 .tree .project-line .branch,.project-line .branch-space{flex:0 0 26px;width:26px;min-height:30px}
 .tree .project-line .branch{padding:0;justify-content:center;font-size:15px}
 .tree .project-line .folder{min-width:0;padding-inline-start:4px}
+.tree .project-root .folder{font-weight:650}
 .project-line .lab{white-space:normal;overflow-wrap:anywhere}
+@media(max-width:560px){
+  .project-line{--indent:calc(4px + min(var(--depth),4) * 6px)}
+  .tree .project-line .branch,.project-line .branch-space{flex-basis:18px;width:18px}
+  .tree .project-line .folder{padding-inline-end:6px}
+}
 .projectbar{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap}
 .projectbar .ghost{padding:4px 8px}
 .project-info{flex-basis:100%;color:var(--muted);margin:0}
@@ -425,6 +433,7 @@ const taskAbout = new Map();
 const taskCategory = new Map();
 const defaultProjects = JSON.parse($('projects').textContent);
 const projectStorageKey = 'emh-gallery-folders-v1';
+const UNASSIGNED_PROJECT = ':unassigned';
 const rowsById = new Map(data.map(row => [row.id, row]));
 const taskCases = new Map();
 for (const row of data) {
@@ -627,7 +636,11 @@ function rebuildProjects() {
     coverage.set(id, nested);
     return nested;
   }
-  for (const folder of children.get('') || []) collect(folder.id);
+  const assigned = new Set();
+  for (const folder of children.get('') || []) {
+    for (const id of collect(folder.id)) assigned.add(id);
+  }
+  coverage.set(UNASSIGNED_PROJECT, new Set([...rowsById.keys()].filter(id => !assigned.has(id))));
   projectIndex = {folders, children, coverage};
 }
 function localCaseIds(id) {
@@ -654,7 +667,8 @@ function projectScope(row) {
 }
 function selectProject(id) {
   state.browse = 'projects';
-  state.folder = projectIndex.folders.has(id) ? id : '';
+  state.folder = projectIndex.coverage.has(id) ? id : '';
+  state.branches.set('', true);
   for (const folder of folderPath(state.folder).slice(0, -1)) state.branches.set(folder.id, true);
   resetFilters();
 }
@@ -681,7 +695,8 @@ function loadSession() {
 }
 function loadUrl(params) {
   const view = params.get('view');
-  if (view === 'projects' || view === 'tasks' || params.has('project')) selectProject(params.get('project'));
+  if (view === 'unassigned') selectProject(UNASSIGNED_PROJECT);
+  else if (view === 'projects' || view === 'tasks' || params.has('project')) selectProject(params.get('project'));
   state.query = params.get('q') || params.get('query') || '';
   const sort = params.get('sort') || '';
   if (SORT_KEYS.has(sort)) state.sort = sort;
@@ -897,21 +912,30 @@ function paintProjects() {
   $('show-projects').setAttribute('aria-pressed', String(active));
   $('projectbar').hidden = !active;
   if (!active) return;
+  function folderRow(id, name, count, depth, open) {
+    const selected = id === state.folder;
+    const branch = open === undefined
+      ? '<span class="branch-space"></span>'
+      : `<button type="button" class="branch" data-project-branch="${esc(id)}" aria-expanded="${open}" aria-label="${open ? 'Collapse' : 'Expand'} ${esc(name)}">${open ? '−' : '+'}</button>`;
+    return `<div class="project-line${id ? '' : ' project-root'}" style="--depth:${depth}">${branch}<button type="button" data-project="${esc(id)}" class="folder${selected ? ' on' : ''}" aria-pressed="${selected}" title="${esc(name)}"><span class="lab">${esc(name)}</span><span class="n">${count}</span></button></div>`;
+  }
   function tree(parent, depth) {
-    return (projectIndex.children.get(parent) || []).map(folder => {
-      const {id, name} = folder;
-      const selected = id === state.folder;
-      const open = state.branches.get(id) ?? depth === 0;
-      const count = projectIndex.coverage.get(id).size;
-      const branch = projectIndex.children.has(id)
-        ? `<button type="button" class="branch" data-project-branch="${esc(id)}" aria-expanded="${open}" aria-label="${open ? 'Collapse' : 'Expand'} ${esc(name)}">${open ? '−' : '+'}</button>`
-        : '<span class="branch-space"></span>';
-      return `<div class="project-line" style="--depth:${depth}">${branch}<button type="button" data-project="${esc(id)}" class="folder${selected ? ' on' : ''}" aria-pressed="${selected}" title="${esc(name)}"><span class="lab">${esc(name)}</span><span class="n">${count}</span></button></div>${open ? tree(id, depth + 1) : ''}`;
+    return (projectIndex.children.get(parent) || []).map(({id, name}) => {
+      const open = projectIndex.children.has(id) ? state.branches.get(id) ?? depth < 3 : undefined;
+      const row = folderRow(id, name, projectIndex.coverage.get(id).size, depth, open);
+      return `<li>${row}${open ? `<ul class="project-folders">${tree(id, depth + 1)}</ul>` : ''}</li>`;
     }).join('');
   }
+  const unassigned = state.folder === UNASSIGNED_PROJECT;
+  const unassignedCount = projectIndex.coverage.get(UNASSIGNED_PROJECT).size;
+  const hasFolders = projectIndex.children.has('');
+  const showUnassigned = unassigned || (hasFolders && unassignedCount > 0);
+  const open = hasFolders || showUnassigned ? state.branches.get('') ?? true : undefined;
+  const unassignedRow = showUnassigned ? `<li>${folderRow(UNASSIGNED_PROJECT, 'Unassigned', unassignedCount, 1)}</li>` : '';
+  const folders = open ? `<ul class="project-folders">${tree('', 1)}${unassignedRow}</ul>` : '';
+  $('projecttree').innerHTML = `<ul class="project-folders"><li>${folderRow('', 'All experiments', data.length, 0, open)}${folders}</li></ul>`;
   const folder = projectIndex.folders.get(state.folder);
-  $('projecttree').innerHTML = `<button type="button" data-project="" class="${folder ? '' : 'on'}" aria-pressed="${!folder}"><span class="lab">All experiments</span><span class="n">${data.length}</span></button>${tree('', 0)}`;
-  const path = folderPath(state.folder).map(item => item.name).join(' / ');
+  const path = unassigned ? 'Unassigned' : folderPath(state.folder).map(item => item.name).join(' / ');
   $('projectbar').innerHTML = `${path ? `<strong>${esc(path)}</strong>` : ''}
     <button type="button" class="ghost" data-project-action="new">New folder</button>
     ${folder ? '<button type="button" class="ghost" data-project-action="contents">Edit contents</button>' : ''}
@@ -997,16 +1021,15 @@ function cell(row, column, index) {
   return `<td class="ops"><div class="pad"><button type="button" class="primary" data-copy="reproduce" data-id="${esc(row.id)}"${blocked} title="${tip}">Reproduce</button></div></td>`;
 }
 function projectGroups(rows) {
-  const assigned = new Set();
   const groups = [];
   for (const {id, name} of projectIndex.children.get('') || []) {
     const coverage = projectIndex.coverage.get(id);
     const members = rows.filter(row => coverage.has(row.id));
     if (!members.length) continue;
-    for (const row of members) assigned.add(row.id);
     groups.push({name, rows:members});
   }
-  const unassigned = rows.filter(row => !assigned.has(row.id));
+  const unassignedIds = projectIndex.coverage.get(UNASSIGNED_PROJECT);
+  const unassigned = rows.filter(row => unassignedIds.has(row.id));
   if (unassigned.length) groups.push({name:'Unassigned', rows:unassigned});
   return groups;
 }
@@ -1018,7 +1041,8 @@ function experimentRow(row, index) {
 function paintBody(grouped) {
   if (!shown.length) {
     const emptyFolder = state.folder && !projectIndex.coverage.get(state.folder).size;
-    $('tbody').innerHTML = `<tr class="empty"><td colspan="${COLUMNS.length}">${emptyFolder ? 'No experiments in this folder yet.' : 'No matching experiments. Clear filters or try another query.'}</td></tr>`;
+    const emptyMessage = state.folder === UNASSIGNED_PROJECT ? 'All experiments are assigned to a project.' : 'No experiments in this folder yet.';
+    $('tbody').innerHTML = `<tr class="empty"><td colspan="${COLUMNS.length}">${emptyFolder ? emptyMessage : 'No matching experiments. Clear filters or try another query.'}</td></tr>`;
     return;
   }
   if (!grouped) {
@@ -1085,7 +1109,8 @@ function saveState() {
 }
 function syncUrl() {
   const next = new URLSearchParams();
-  if (state.folder) next.set('project', state.folder);
+  if (state.folder === UNASSIGNED_PROJECT) next.set('view', 'unassigned');
+  else if (state.folder) next.set('project', state.folder);
   else if (state.browse === 'projects') next.set('view', 'projects');
   if (state.query.trim()) next.set('q', state.query.trim());
   for (const key of FILTERS) {
@@ -1280,7 +1305,7 @@ function openFolderEditor(edit) {
   const parents = [...projectIndex.folders.values()].filter(item => !editingFolder || !folderPath(item.id).some(ancestor => ancestor.id === editingFolder));
   $('folder-parent').innerHTML = '<option value="">Projects</option>' + parents.map(item =>
     `<option value="${esc(item.id)}">${esc(folderPath(item.id).map(ancestor => ancestor.name).join(' / '))}</option>`).join('');
-  $('folder-parent').value = editingFolder ? folder.parent : state.folder;
+  $('folder-parent').value = editingFolder ? folder.parent : folder?.id || '';
   $('folder-remove').hidden = !editingFolder || projectIndex.children.has(editingFolder);
   $('folder-dialog').showModal();
   $('folder-name').focus();
@@ -1422,7 +1447,12 @@ $('projecttree').addEventListener('click', event => {
     return;
   }
   const button = event.target.closest('[data-project]');
-  if (button) { selectProject(button.dataset.project); render(); }
+  if (button) {
+    const id = button.dataset.project;
+    selectProject(id);
+    render();
+    [...$('projecttree').querySelectorAll('[data-project]')].find(row => row.dataset.project === id)?.focus();
+  }
 });
 $('projectbar').addEventListener('click', event => {
   const action = event.target.closest('[data-project-action]')?.dataset.projectAction;

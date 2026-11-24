@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-23T23:50:47Z",
+  "updated_at": "2026-11-24T00:40:31Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -21921,7 +21921,7 @@
       "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin",
       "keywords": [
         "0001-01-01",
-        "0360-12-31",
+        "0400-12-31",
         "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
         "@trendy_v15_gcb2026/e3sm/elm/f19/spin",
         "TRENDY v15 / ELM f19",
@@ -21933,7 +21933,7 @@
         "simulation",
         "trendy_v15_gcb2026"
       ],
-      "description": "ELM 加速分解 360 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。"
+      "description": "ELM 加速分解 400 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。"
     },
     {
       "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin_postad",
@@ -21943,7 +21943,7 @@
       "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin_postad",
       "keywords": [
         "0001-01-01",
-        "0600-12-31",
+        "1400-12-31",
         "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
         "@trendy_v15_gcb2026/e3sm/elm/f19/spin_postad",
         "TRENDY v15 / ELM f19",
@@ -21955,7 +21955,7 @@
         "simulation",
         "trendy_v15_gcb2026"
       ],
-      "description": "从 AD 结束状态衔接，关闭加速分解并积分 600 年，覆盖 CLM SASU 与 post-SASU 的总时长。"
+      "description": "读取 400 年 AD 结束状态，关闭加速分解并积分 1400 年。"
     },
     {
       "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/s0",
@@ -30521,6 +30521,26 @@
   ],
   "recent": [
     {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · 加速分解自旋",
+      "description": "ELM 加速分解 400 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin",
+      "date": "2026-11-24T00:40:31Z",
+      "change": "updated"
+    },
+    {
+      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin_postad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GCB2026 · ELM f19 · 常规自旋",
+      "description": "读取 400 年 AD 结束状态，关闭加速分解并积分 1400 年。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin_postad",
+      "date": "2026-11-24T00:40:31Z",
+      "change": "updated"
+    },
+    {
       "id": "emh:task:fireearth_elm_cn_crop",
       "hub": "EMH",
       "type": "Task",
@@ -30607,26 +30627,6 @@
       "title": "GCB2026 · ELM f19 · S3 · 1901–2025",
       "description": "延续 S3 试验，从 1901 年起使用逐年 GCB2026 气象，积分至 2025 年末。",
       "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3_1901_2025",
-      "date": "2026-11-23T23:45:39Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GCB2026 · ELM f19 · 加速分解自旋",
-      "description": "ELM 加速分解 360 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin",
-      "date": "2026-11-23T23:45:39Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin_postad",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GCB2026 · ELM f19 · 常规自旋",
-      "description": "从 AD 结束状态衔接，关闭加速分解并积分 600 年，覆盖 CLM SASU 与 post-SASU 的总时长。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin_postad",
       "date": "2026-11-23T23:45:39Z",
       "change": "added"
     },

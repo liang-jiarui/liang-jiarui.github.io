@@ -30207,7 +30207,7 @@
     "task_title": "TRENDYv15 (GCB2026)",
     "task_about": "GCB2026 陆面试验。CLM6.0 的 AD、SASU、post-SASU 和 S0–S6 初始建例来自 trendyclm。CLM 和 ELM 均接入本地 GCB2026 CRU–JRA-3Q 气象。ELM 提供 f09 和 f19 自旋至 S3 全瞬变链，提交输出作为协议参考。",
     "title": "GCB2026 · ELM f19 · 加速分解自旋",
-    "description": "ELM 加速分解 360 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。",
+    "description": "ELM 加速分解 400 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。",
     "compset": "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
     "res": "f19_f19",
     "group": "TRENDY v15 / ELM f19",
@@ -30215,7 +30215,7 @@
     "category": "applications",
     "period": {
       "start": "0001-01-01",
-      "end": "0360-12-31",
+      "end": "0400-12-31",
       "frequency": "monthly"
     },
     "source_actual_period": {},
@@ -30236,7 +30236,7 @@
     "task_title": "TRENDYv15 (GCB2026)",
     "task_about": "GCB2026 陆面试验。CLM6.0 的 AD、SASU、post-SASU 和 S0–S6 初始建例来自 trendyclm。CLM 和 ELM 均接入本地 GCB2026 CRU–JRA-3Q 气象。ELM 提供 f09 和 f19 自旋至 S3 全瞬变链，提交输出作为协议参考。",
     "title": "GCB2026 · ELM f19 · 常规自旋",
-    "description": "从 AD 结束状态衔接，关闭加速分解并积分 600 年，覆盖 CLM SASU 与 post-SASU 的总时长。",
+    "description": "读取 400 年 AD 结束状态，关闭加速分解并积分 1400 年。",
     "compset": "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
     "res": "f19_f19",
     "group": "TRENDY v15 / ELM f19",
@@ -30244,7 +30244,7 @@
     "category": "applications",
     "period": {
       "start": "0001-01-01",
-      "end": "0600-12-31",
+      "end": "1400-12-31",
       "frequency": "monthly"
     },
     "source_actual_period": {},

@@ -24663,6 +24663,44 @@
     }
   },
   {
+    "id": "@mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
+    "task": "mengis_2020_uvic_escm",
+    "name": "historical_co2emit",
+    "model": "uvic",
+    "version": "v2.10",
+    "task_title": "UVic ESCM v2.10 历史排放驱动实验",
+    "task_about": "复现 Mengis 等（2020）的全球气候与碳循环历史积分。",
+    "title": "Mengis 2020 · UVic ESCM v2.10 · 历史排放驱动",
+    "description": "复现 GEOMAR 归档的 5_2p10_co2emit，使用 1500 年预工业漂移积分末的重启场， 按化石 CO₂ 排放驱动，模型诊断土地利用变化排放。1850 年初 10 日短测已通过，完整历史积分和论文对照待执行。",
+    "compset": "",
+    "res": "3.6° × 1.8°，海洋 19 层",
+    "group": "historical",
+    "role": "emission",
+    "category": "models",
+    "period": {
+      "start": "1850-01-01",
+      "end": "2015-01-01",
+      "end_exclusive": true
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "论文",
+        "url": "https://doi.org/10.5194/gmd-13-4183-2020"
+      },
+      {
+        "label": "作者归档算例",
+        "url": "https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/5_2p10_co2emit/"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
+      "preview": "python -m src.simulations reproduce @mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit --dry-run"
+    }
+  },
+  {
     "id": "@nr_rf_classic/geoschem_rrtmg/gc_13_2_0/paper_replicates__gc_merra2_fullchem_RRTMG",
     "task": "nr_rf_classic",
     "name": "nr_rf_classic__paper_replicates__gc_merra2_fullchem_RRTMG",
@@ -33074,6 +33112,32 @@
     "links": [],
     "commands": {
       "check": "python -m src.simulations check @install_smoke/wrfcmaq/CMAQv6.0/wrfcmaq_smoke"
+    }
+  },
+  {
+    "id": "@install_smoke/uvic/v2.10/smoke",
+    "task": "install_smoke",
+    "name": "smoke",
+    "model": "uvic",
+    "version": "v2.10",
+    "task_title": "安装短测",
+    "task_about": "安装后的短积分记录和待准备方案；是否跑通以实际运行证据为准。",
+    "title": "UVic ESCM v2.10 安装短测",
+    "description": "从官方预工业重启场复跑 10 个模拟日，检查耦合、诊断与重启输出。",
+    "compset": "",
+    "res": "3.6° lon × 1.8° lat",
+    "group": "smoke",
+    "role": "installation",
+    "category": "smoke",
+    "period": {
+      "length": "10 model days"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @install_smoke/uvic/v2.10/smoke"
     }
   },
   {

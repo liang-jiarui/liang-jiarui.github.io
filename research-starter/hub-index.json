@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-24T00:55:36Z",
+  "updated_at": "2026-11-24T03:50:29Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -16813,6 +16813,25 @@
       "description": "2019-07-01 起 3 小时，C24、MERRA-2 fullchem。运行日志以 MPI_Abort 结束，没有跑完。"
     },
     {
+      "id": "emh:simulation:@install_smoke/uvic/v2.10/smoke",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "UVic ESCM v2.10 安装短测",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fuvic%2Fv2.10%2Fsmoke",
+      "keywords": [
+        "10 model days",
+        "3.6° lon × 1.8° lat",
+        "@install_smoke/uvic/v2.10/smoke",
+        "install_smoke",
+        "installation",
+        "smoke",
+        "uvic",
+        "v2.10",
+        "安装短测"
+      ],
+      "description": "从官方预工业重启场复跑 10 个模拟日，检查耦合、诊断与重启输出。"
+    },
+    {
       "id": "emh:simulation:@install_smoke/wrfcamx/WRF_v4.8.0/smoke",
       "hub": "EMH",
       "type": "Simulation",
@@ -18268,6 +18287,27 @@
         "sensitivity"
       ],
       "description": "Leach 2021 FaIR v2.0.0-alpha，理想化响应，不用观测约束。案例 leach_alpha_co2_pulse_tcr25。组 pulse。时段 0–100（含首尾标签）。pulse_year 10，pulse_GtC 100，TCR 2.5。"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · 历史排放驱动",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fhistorical_co2emit",
+      "keywords": [
+        "1850-01-01",
+        "2015-01-01",
+        "3.6° × 1.8°，海洋 19 层",
+        "@mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
+        "UVic ESCM v2.10 历史排放驱动实验",
+        "emission",
+        "historical",
+        "historical_co2emit",
+        "mengis_2020_uvic_escm",
+        "uvic",
+        "v2.10"
+      ],
+      "description": "复现 GEOMAR 归档的 5_2p10_co2emit，使用 1500 年预工业漂移积分末的重启场， 按化石 CO₂ 排放驱动，模型诊断土地利用变化排放。1850 年初 10 日短测已通过，完整历史积分和论文对照待执行。"
     },
     {
       "id": "emh:simulation:@nr_rf_classic/geoschem_rrtmg/gc_13_2_0/fireearth__gc_merra2_fullchem_RRTMG",
@@ -24493,6 +24533,17 @@
       "description": "用简单气候模型 FaIR 第 2 版，从排放计算浓度、强迫和温度。"
     },
     {
+      "id": "emh:task:mengis_2020_uvic_escm",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "UVic ESCM v2.10 历史排放驱动实验",
+      "url": "../EarthModelHub/docs/simulations/?task=mengis_2020_uvic_escm",
+      "keywords": [
+        "mengis_2020_uvic_escm"
+      ],
+      "description": "复现 Mengis 等（2020）的全球气候与碳循环历史积分。"
+    },
+    {
       "id": "emh:task:nr_rf_classic",
       "hub": "EMH",
       "type": "Task",
@@ -30521,6 +30572,36 @@
   ],
   "recent": [
     {
+      "id": "emh:task:mengis_2020_uvic_escm",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "UVic ESCM v2.10 历史排放驱动实验",
+      "description": "复现 Mengis 等（2020）的全球气候与碳循环历史积分。",
+      "url": "../EarthModelHub/docs/simulations/?task=mengis_2020_uvic_escm",
+      "date": "2026-11-24T03:50:29Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@install_smoke/uvic/v2.10/smoke",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "UVic ESCM v2.10 安装短测",
+      "description": "从官方预工业重启场复跑 10 个模拟日，检查耦合、诊断与重启输出。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fuvic%2Fv2.10%2Fsmoke",
+      "date": "2026-11-24T03:50:29Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · 历史排放驱动",
+      "description": "复现 GEOMAR 归档的 5_2p10_co2emit，使用 1500 年预工业漂移积分末的重启场， 按化石 CO₂ 排放驱动，模型诊断土地利用变化排放。1850 年初 10 日短测已通过，完整历史积分和论文对照待执行。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fhistorical_co2emit",
+      "date": "2026-11-24T03:50:29Z",
+      "change": "added"
+    },
+    {
       "id": "emh:task:fireearth_elm_cn_crop",
       "hub": "EMH",
       "type": "Task",
@@ -31237,36 +31318,6 @@
       "title": "GFED4 · ALL · 1910",
       "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1910。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e13_atm_FCSD_HCO_ALL_1910",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e14_atm_FCSD_HCO_NoFIRE_1910",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1910",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1910。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e14_atm_FCSD_HCO_NoFIRE_1910",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e15_atm_FCSD_HCO_ALL_1920",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1920",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1920。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e15_atm_FCSD_HCO_ALL_1920",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e16_atm_FCSD_HCO_NoFIRE_1920",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1920",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1920。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e16_atm_FCSD_HCO_NoFIRE_1920",
       "date": "2026-11-23T23:00:42Z",
       "change": "added"
     }

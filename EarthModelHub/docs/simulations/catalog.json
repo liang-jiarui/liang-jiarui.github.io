@@ -24663,13 +24663,153 @@
     }
   },
   {
+    "id": "@mengis_2020_uvic_escm/uvic/v2.10/spinup_10000yrs",
+    "task": "mengis_2020_uvic_escm",
+    "name": "spinup_10000yrs",
+    "model": "uvic",
+    "version": "v2.10",
+    "task_title": "UVic ESCM v2.10 论文实验",
+    "task_about": "Mengis 等（2020）评估全球气候与碳循环的六组 GEOMAR 归档实验。",
+    "title": "Mengis 2020 · UVic ESCM v2.10 · 10000 年预工业自旋",
+    "description": "按 CMIP6 预工业条件续跑 10000 模拟年，固定强迫参考年为 1849，诊断沉积物风化。 归档末态供随后浓度驱动实验和预工业漂移积分使用。",
+    "compset": "",
+    "res": "3.6° × 1.8°，海洋 19 层",
+    "group": "spinup",
+    "role": "reference",
+    "category": "models",
+    "period": {
+      "start": "模式年 29300",
+      "end": "模式年 39300",
+      "length": "10000 模拟年",
+      "end_exclusive": true
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "作者归档算例",
+        "url": "https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/1_spinup_10000yrs/"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/spinup_10000yrs",
+      "preview": ""
+    }
+  },
+  {
+    "id": "@mengis_2020_uvic_escm/uvic/v2.10/co2_4x",
+    "task": "mengis_2020_uvic_escm",
+    "name": "co2_4x",
+    "model": "uvic",
+    "version": "v2.10",
+    "task_title": "UVic ESCM v2.10 论文实验",
+    "task_about": "Mengis 等（2020）评估全球气候与碳循环的六组 GEOMAR 归档实验。",
+    "title": "Mengis 2020 · UVic ESCM v2.10 · CO₂ 四倍浓度",
+    "description": "从万年自旋末态开始，指定 CO₂ 浓度每年增加 1%，达到四倍后保持恒定。 运行 1000 年，用于论文表 1 的瞬态响应、平衡气候敏感度和海洋热吸收诊断。",
+    "compset": "",
+    "res": "3.6° × 1.8°，海洋 19 层",
+    "group": "concentration",
+    "role": "reference",
+    "category": "models",
+    "period": {
+      "start": "1850-01-01",
+      "end": "2850-01-01",
+      "length": "1000 模拟年",
+      "end_exclusive": true
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "作者归档算例",
+        "url": "https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/2_4xCO2/"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/co2_4x",
+      "preview": ""
+    }
+  },
+  {
+    "id": "@mengis_2020_uvic_escm/uvic/v2.10/co2_2x",
+    "task": "mengis_2020_uvic_escm",
+    "name": "co2_2x",
+    "model": "uvic",
+    "version": "v2.10",
+    "task_title": "UVic ESCM v2.10 论文实验",
+    "task_about": "Mengis 等（2020）评估全球气候与碳循环的六组 GEOMAR 归档实验。",
+    "title": "Mengis 2020 · UVic ESCM v2.10 · CO₂ 双倍浓度",
+    "description": "从万年自旋末态开始，指定 CO₂ 浓度每年增加 1%，达到双倍后保持恒定。 运行 1000 年，用于论文表 1 的双倍浓度瞬态响应和平衡气候敏感度诊断。",
+    "compset": "",
+    "res": "3.6° × 1.8°，海洋 19 层",
+    "group": "concentration",
+    "role": "reference",
+    "category": "models",
+    "period": {
+      "start": "1850-01-01",
+      "end": "2850-01-01",
+      "length": "1000 模拟年",
+      "end_exclusive": true
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "作者归档算例",
+        "url": "https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/3_2xCO2/"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/co2_2x",
+      "preview": ""
+    }
+  },
+  {
+    "id": "@mengis_2020_uvic_escm/uvic/v2.10/esm_picontrol",
+    "task": "mengis_2020_uvic_escm",
+    "name": "esm_picontrol",
+    "model": "uvic",
+    "version": "v2.10",
+    "task_title": "UVic ESCM v2.10 论文实验",
+    "task_about": "Mengis 等（2020）评估全球气候与碳循环的六组 GEOMAR 归档实验。",
+    "title": "Mengis 2020 · UVic ESCM v2.10 · 预工业碳循环漂移",
+    "description": "从万年自旋末态开始，在 1849 年预工业条件下积分 1500 模拟年， 末态作为历史排放驱动实验的初始重启场。",
+    "compset": "",
+    "res": "3.6° × 1.8°，海洋 19 层",
+    "group": "control",
+    "role": "reference",
+    "category": "models",
+    "period": {
+      "start": "模式年 39300",
+      "end": "模式年 40800",
+      "length": "1500 模拟年",
+      "end_exclusive": true
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "作者归档算例",
+        "url": "https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/4_esm_piControl/"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/esm_picontrol",
+      "preview": ""
+    }
+  },
+  {
     "id": "@mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
     "task": "mengis_2020_uvic_escm",
     "name": "historical_co2emit",
     "model": "uvic",
     "version": "v2.10",
-    "task_title": "UVic ESCM v2.10 历史排放驱动实验",
-    "task_about": "复现 Mengis 等（2020）的全球气候与碳循环历史积分。",
+    "task_title": "UVic ESCM v2.10 论文实验",
+    "task_about": "Mengis 等（2020）评估全球气候与碳循环的六组 GEOMAR 归档实验。",
     "title": "Mengis 2020 · UVic ESCM v2.10 · 历史排放驱动",
     "description": "复现 GEOMAR 归档的 5_2p10_co2emit，使用 1500 年预工业漂移积分末的重启场， 按化石 CO₂ 排放驱动，模型诊断土地利用变化排放。1850 年初 10 日短测已通过，完整历史积分和论文对照待执行。",
     "compset": "",
@@ -24698,6 +24838,41 @@
     "commands": {
       "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
       "preview": "python -m src.simulations reproduce @mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit --dry-run"
+    }
+  },
+  {
+    "id": "@mengis_2020_uvic_escm/uvic/v2.10/seasonality",
+    "task": "mengis_2020_uvic_escm",
+    "name": "seasonality",
+    "model": "uvic",
+    "version": "v2.10",
+    "task_title": "UVic ESCM v2.10 论文实验",
+    "task_about": "Mengis 等（2020）评估全球气候与碳循环的六组 GEOMAR 归档实验。",
+    "title": "Mengis 2020 · UVic ESCM v2.10 · 季节性诊断",
+    "description": "从历史排放驱动实验的 2000 年重启场分支，积分 7300 日， 写出全球和格点十日平均，用于分析地表温度年循环与海冰季节变化。",
+    "compset": "",
+    "res": "3.6° × 1.8°，海洋 19 层",
+    "group": "seasonality",
+    "role": "reference",
+    "category": "models",
+    "period": {
+      "start": "2000-01-01",
+      "end": "2020-01-01",
+      "length": "20 模拟年",
+      "end_exclusive": true
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "作者归档算例",
+        "url": "https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/6_2p10_seasonality/"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/seasonality",
+      "preview": ""
     }
   },
   {

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-24T03:50:29Z",
+  "updated_at": "2026-11-24T04:10:19Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -18289,6 +18289,72 @@
       "description": "Leach 2021 FaIR v2.0.0-alpha，理想化响应，不用观测约束。案例 leach_alpha_co2_pulse_tcr25。组 pulse。时段 0–100（含首尾标签）。pulse_year 10，pulse_GtC 100，TCR 2.5。"
     },
     {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/co2_2x",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · CO₂ 双倍浓度",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fco2_2x",
+      "keywords": [
+        "1000 模拟年",
+        "1850-01-01",
+        "2850-01-01",
+        "3.6° × 1.8°，海洋 19 层",
+        "@mengis_2020_uvic_escm/uvic/v2.10/co2_2x",
+        "UVic ESCM v2.10 论文实验",
+        "co2_2x",
+        "concentration",
+        "mengis_2020_uvic_escm",
+        "reference",
+        "uvic",
+        "v2.10"
+      ],
+      "description": "从万年自旋末态开始，指定 CO₂ 浓度每年增加 1%，达到双倍后保持恒定。 运行 1000 年，用于论文表 1 的双倍浓度瞬态响应和平衡气候敏感度诊断。"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/co2_4x",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · CO₂ 四倍浓度",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fco2_4x",
+      "keywords": [
+        "1000 模拟年",
+        "1850-01-01",
+        "2850-01-01",
+        "3.6° × 1.8°，海洋 19 层",
+        "@mengis_2020_uvic_escm/uvic/v2.10/co2_4x",
+        "UVic ESCM v2.10 论文实验",
+        "co2_4x",
+        "concentration",
+        "mengis_2020_uvic_escm",
+        "reference",
+        "uvic",
+        "v2.10"
+      ],
+      "description": "从万年自旋末态开始，指定 CO₂ 浓度每年增加 1%，达到四倍后保持恒定。 运行 1000 年，用于论文表 1 的瞬态响应、平衡气候敏感度和海洋热吸收诊断。"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/esm_picontrol",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · 预工业碳循环漂移",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fesm_picontrol",
+      "keywords": [
+        "1500 模拟年",
+        "3.6° × 1.8°，海洋 19 层",
+        "@mengis_2020_uvic_escm/uvic/v2.10/esm_picontrol",
+        "UVic ESCM v2.10 论文实验",
+        "control",
+        "esm_picontrol",
+        "mengis_2020_uvic_escm",
+        "reference",
+        "uvic",
+        "v2.10",
+        "模式年 39300",
+        "模式年 40800"
+      ],
+      "description": "从万年自旋末态开始，在 1849 年预工业条件下积分 1500 模拟年， 末态作为历史排放驱动实验的初始重启场。"
+    },
+    {
       "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
       "hub": "EMH",
       "type": "Simulation",
@@ -18299,7 +18365,7 @@
         "2015-01-01",
         "3.6° × 1.8°，海洋 19 层",
         "@mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
-        "UVic ESCM v2.10 历史排放驱动实验",
+        "UVic ESCM v2.10 论文实验",
         "emission",
         "historical",
         "historical_co2emit",
@@ -18308,6 +18374,49 @@
         "v2.10"
       ],
       "description": "复现 GEOMAR 归档的 5_2p10_co2emit，使用 1500 年预工业漂移积分末的重启场， 按化石 CO₂ 排放驱动，模型诊断土地利用变化排放。1850 年初 10 日短测已通过，完整历史积分和论文对照待执行。"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/seasonality",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · 季节性诊断",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fseasonality",
+      "keywords": [
+        "20 模拟年",
+        "2000-01-01",
+        "2020-01-01",
+        "3.6° × 1.8°，海洋 19 层",
+        "@mengis_2020_uvic_escm/uvic/v2.10/seasonality",
+        "UVic ESCM v2.10 论文实验",
+        "mengis_2020_uvic_escm",
+        "reference",
+        "seasonality",
+        "uvic",
+        "v2.10"
+      ],
+      "description": "从历史排放驱动实验的 2000 年重启场分支，积分 7300 日， 写出全球和格点十日平均，用于分析地表温度年循环与海冰季节变化。"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/spinup_10000yrs",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · 10000 年预工业自旋",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fspinup_10000yrs",
+      "keywords": [
+        "10000 模拟年",
+        "3.6° × 1.8°，海洋 19 层",
+        "@mengis_2020_uvic_escm/uvic/v2.10/spinup_10000yrs",
+        "UVic ESCM v2.10 论文实验",
+        "mengis_2020_uvic_escm",
+        "reference",
+        "spinup",
+        "spinup_10000yrs",
+        "uvic",
+        "v2.10",
+        "模式年 29300",
+        "模式年 39300"
+      ],
+      "description": "按 CMIP6 预工业条件续跑 10000 模拟年，固定强迫参考年为 1849，诊断沉积物风化。 归档末态供随后浓度驱动实验和预工业漂移积分使用。"
     },
     {
       "id": "emh:simulation:@nr_rf_classic/geoschem_rrtmg/gc_13_2_0/fireearth__gc_merra2_fullchem_RRTMG",
@@ -24536,12 +24645,12 @@
       "id": "emh:task:mengis_2020_uvic_escm",
       "hub": "EMH",
       "type": "Task",
-      "title": "UVic ESCM v2.10 历史排放驱动实验",
+      "title": "UVic ESCM v2.10 论文实验",
       "url": "../EarthModelHub/docs/simulations/?task=mengis_2020_uvic_escm",
       "keywords": [
         "mengis_2020_uvic_escm"
       ],
-      "description": "复现 Mengis 等（2020）的全球气候与碳循环历史积分。"
+      "description": "Mengis 等（2020）评估全球气候与碳循环的六组 GEOMAR 归档实验。"
     },
     {
       "id": "emh:task:nr_rf_classic",
@@ -30572,24 +30681,64 @@
   ],
   "recent": [
     {
-      "id": "emh:task:mengis_2020_uvic_escm",
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/co2_2x",
       "hub": "EMH",
-      "type": "Task",
-      "title": "UVic ESCM v2.10 历史排放驱动实验",
-      "description": "复现 Mengis 等（2020）的全球气候与碳循环历史积分。",
-      "url": "../EarthModelHub/docs/simulations/?task=mengis_2020_uvic_escm",
-      "date": "2026-11-24T03:50:29Z",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · CO₂ 双倍浓度",
+      "description": "从万年自旋末态开始，指定 CO₂ 浓度每年增加 1%，达到双倍后保持恒定。 运行 1000 年，用于论文表 1 的双倍浓度瞬态响应和平衡气候敏感度诊断。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fco2_2x",
+      "date": "2026-11-24T04:10:19Z",
       "change": "added"
     },
     {
-      "id": "emh:simulation:@install_smoke/uvic/v2.10/smoke",
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/co2_4x",
       "hub": "EMH",
       "type": "Simulation",
-      "title": "UVic ESCM v2.10 安装短测",
-      "description": "从官方预工业重启场复跑 10 个模拟日，检查耦合、诊断与重启输出。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fuvic%2Fv2.10%2Fsmoke",
-      "date": "2026-11-24T03:50:29Z",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · CO₂ 四倍浓度",
+      "description": "从万年自旋末态开始，指定 CO₂ 浓度每年增加 1%，达到四倍后保持恒定。 运行 1000 年，用于论文表 1 的瞬态响应、平衡气候敏感度和海洋热吸收诊断。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fco2_4x",
+      "date": "2026-11-24T04:10:19Z",
       "change": "added"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/esm_picontrol",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · 预工业碳循环漂移",
+      "description": "从万年自旋末态开始，在 1849 年预工业条件下积分 1500 模拟年， 末态作为历史排放驱动实验的初始重启场。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fesm_picontrol",
+      "date": "2026-11-24T04:10:19Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/seasonality",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · 季节性诊断",
+      "description": "从历史排放驱动实验的 2000 年重启场分支，积分 7300 日， 写出全球和格点十日平均，用于分析地表温度年循环与海冰季节变化。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fseasonality",
+      "date": "2026-11-24T04:10:19Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/spinup_10000yrs",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "Mengis 2020 · UVic ESCM v2.10 · 10000 年预工业自旋",
+      "description": "按 CMIP6 预工业条件续跑 10000 模拟年，固定强迫参考年为 1849，诊断沉积物风化。 归档末态供随后浓度驱动实验和预工业漂移积分使用。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fspinup_10000yrs",
+      "date": "2026-11-24T04:10:19Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:task:mengis_2020_uvic_escm",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "UVic ESCM v2.10 论文实验",
+      "description": "Mengis 等（2020）评估全球气候与碳循环的六组 GEOMAR 归档实验。",
+      "url": "../EarthModelHub/docs/simulations/?task=mengis_2020_uvic_escm",
+      "date": "2026-11-24T04:10:19Z",
+      "change": "updated"
     },
     {
       "id": "emh:simulation:@mengis_2020_uvic_escm/uvic/v2.10/historical_co2emit",
@@ -30598,6 +30747,16 @@
       "title": "Mengis 2020 · UVic ESCM v2.10 · 历史排放驱动",
       "description": "复现 GEOMAR 归档的 5_2p10_co2emit，使用 1500 年预工业漂移积分末的重启场， 按化石 CO₂ 排放驱动，模型诊断土地利用变化排放。1850 年初 10 日短测已通过，完整历史积分和论文对照待执行。",
       "url": "../EarthModelHub/docs/simulations/?q=%40mengis_2020_uvic_escm%2Fuvic%2Fv2.10%2Fhistorical_co2emit",
+      "date": "2026-11-24T04:10:19Z",
+      "change": "updated"
+    },
+    {
+      "id": "emh:simulation:@install_smoke/uvic/v2.10/smoke",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "UVic ESCM v2.10 安装短测",
+      "description": "从官方预工业重启场复跑 10 个模拟日，检查耦合、诊断与重启输出。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fuvic%2Fv2.10%2Fsmoke",
       "date": "2026-11-24T03:50:29Z",
       "change": "added"
     },
@@ -31268,56 +31427,6 @@
       "title": "Yang & Gruber 2016 · 大气氮沉降与海洋氮循环",
       "description": "全球海洋 CESM1.2 / POP2–BEC（含 ¹⁵N 循环），标称 3°（热带纬向加密至 0.6°）。各组均使用 COREv2 正常年物理强迫。收录表 1 的 10 组实验和方法 §2.2 的自旋、工业化前对照。",
       "url": "../EarthModelHub/docs/simulations/?task=yang_2016_marine_ndep",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@elm_v1_cnp_validation/e3sm/E3SM_v1_0_0/hcru_ad_smoke_5d",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "Yang 2023 · 0.5° AD · 5 天运行验证",
-      "description": "复用已编译的 Yang AD 可执行文件，在独立运行目录验证完整驱动、CNP 收支和 restart；不是 250 年自旋完成记录。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40elm_v1_cnp_validation%2Fe3sm%2FE3SM_v1_0_0%2Fhcru_ad_smoke_5d",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e10_atm_FCSD_HCO_NoFIRE_1890",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1890",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1890。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e10_atm_FCSD_HCO_NoFIRE_1890",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e11_atm_FCSD_HCO_ALL_1900",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1900",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1900。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e11_atm_FCSD_HCO_ALL_1900",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e12_atm_FCSD_HCO_NoFIRE_1900",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · NoFIRE · 1900",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1900。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e12_atm_FCSD_HCO_NoFIRE_1900",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_chapter4/cesm/cesm2_3_alpha17e/v20261119/GFED4_month/atm/1850_1990/v20260919_e13_atm_FCSD_HCO_ALL_1910",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GFED4 · ALL · 1910",
-      "description": "FireEarth chapter4/v20260919/a_GFED4/atm/1850_1990。FCSD_HCO / f19_f19_mg17。人为源、飞机和火排放固定在 1910。气象从 1999-12-01 起 13 个月，NO_LEAP，侧边界按该年循环。终点不含 2001-01-01。火排放开关只在 HEMCO。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_chapter4%2Fcesm%2Fcesm2_3_alpha17e%2Fv20261119%2FGFED4_month%2Fatm%2F1850_1990%2Fv20260919_e13_atm_FCSD_HCO_ALL_1910",
       "date": "2026-11-23T23:00:42Z",
       "change": "added"
     }

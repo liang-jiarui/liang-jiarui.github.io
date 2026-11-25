@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-24T04:25:19Z",
+  "updated_at": "2026-11-25T00:45:28Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -10269,11 +10269,11 @@
       "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
       "hub": "EMH",
       "type": "Simulation",
-      "title": "FireEarth · ELM-CN · 400 年作物 AD 自旋",
+      "title": "FireEarth · ELM-CN · 360 年作物 AD 自旋",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fad",
       "keywords": [
         "0001-01-01",
-        "0400-12-31",
+        "0360-12-31",
         "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
         "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
         "E3SM_v3_0_2",
@@ -10335,11 +10335,11 @@
       "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
       "hub": "EMH",
       "type": "Simulation",
-      "title": "FireEarth · ELM-CN · 1400 年作物常规自旋",
+      "title": "FireEarth · ELM-CN · 600 年作物常规自旋",
       "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fpostad",
       "keywords": [
-        "0401-01-01",
-        "1800-12-31",
+        "0361-01-01",
+        "0960-12-31",
         "1850_DATM%CRU_ELM%BGC-CROP_SICE_SOCN_MOSART_SGLC_SWAV",
         "@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
         "E3SM_v3_0_2",
@@ -24446,7 +24446,7 @@
       "keywords": [
         "fireearth_elm_cn_crop"
       ],
-      "description": "FireEarth ALL 的 f19 ELM-CN 作物与灌溉试验。400 年 AD、1400 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。"
+      "description": "FireEarth ALL 的 f19 ELM-CN 作物与灌溉试验。360 年 AD、600 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。"
     },
     {
       "id": "emh:task:fireearth_geoschem",
@@ -30725,6 +30725,36 @@
   ],
   "recent": [
     {
+      "id": "emh:task:fireearth_elm_cn_crop",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "FireEarth · ELM-CN 作物与灌溉",
+      "description": "FireEarth ALL 的 f19 ELM-CN 作物与灌溉试验。360 年 AD、600 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。",
+      "url": "../EarthModelHub/docs/simulations/?task=fireearth_elm_cn_crop",
+      "date": "2026-11-25T00:45:28Z",
+      "change": "updated"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 360 年作物 AD 自旋",
+      "description": "ELM-CN 作物与灌溉",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fad",
+      "date": "2026-11-25T00:45:28Z",
+      "change": "updated"
+    },
+    {
+      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · ELM-CN · 600 年作物常规自旋",
+      "description": "ELM-CN 作物与灌溉",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fpostad",
+      "date": "2026-11-25T00:45:28Z",
+      "change": "updated"
+    },
+    {
       "id": "emh:simulation:@fireearth_chapter5/e3sm/E3SM_v3_0_2/e04_rfmip_ne4_control",
       "hub": "EMH",
       "type": "Simulation",
@@ -30823,36 +30853,6 @@
       "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fuvic%2Fv2.10%2Fsmoke",
       "date": "2026-11-24T03:50:29Z",
       "change": "added"
-    },
-    {
-      "id": "emh:task:fireearth_elm_cn_crop",
-      "hub": "EMH",
-      "type": "Task",
-      "title": "FireEarth · ELM-CN 作物与灌溉",
-      "description": "FireEarth ALL 的 f19 ELM-CN 作物与灌溉试验。400 年 AD、1400 年常规自旋、1850–2023 历史期和 2024–2100 SSP2-4.5。",
-      "url": "../EarthModelHub/docs/simulations/?task=fireearth_elm_cn_crop",
-      "date": "2026-11-24T00:55:36Z",
-      "change": "updated"
-    },
-    {
-      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ad",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "FireEarth · ELM-CN · 400 年作物 AD 自旋",
-      "description": "ELM-CN 作物与灌溉",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fad",
-      "date": "2026-11-24T00:55:36Z",
-      "change": "updated"
-    },
-    {
-      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/postad",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "FireEarth · ELM-CN · 1400 年作物常规自旋",
-      "description": "ELM-CN 作物与灌溉",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fpostad",
-      "date": "2026-11-24T00:55:36Z",
-      "change": "updated"
     },
     {
       "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin",

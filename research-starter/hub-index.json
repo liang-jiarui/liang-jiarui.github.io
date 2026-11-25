@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-25T00:45:28Z",
+  "updated_at": "2026-11-25T04:30:48Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -9912,6 +9912,50 @@
         "simulation"
       ],
       "description": "EAM ne4 30 年扰动，CO₂ 为配对对照的四倍，共用对照的初值和海洋边界。"
+    },
+    {
+      "id": "emh:simulation:@fireearth_clm_spinup/cesm/cesm2_3_alpha17e/ad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · CLM5.0 · AD 最后 10 年",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_clm_spinup%2Fcesm%2Fcesm2_3_alpha17e%2Fad",
+      "keywords": [
+        "0351-01-01",
+        "0360-12-31",
+        "@fireearth_clm_spinup/cesm/cesm2_3_alpha17e/ad",
+        "CLM5.0 自旋",
+        "FireEarth · CLM5.0 自旋 360＋600 年",
+        "I1850Clm50BgcCrop",
+        "cesm",
+        "cesm2_3_alpha17e",
+        "f19_f19_mg17",
+        "fireearth_clm50_f19_ad360",
+        "fireearth_clm_spinup",
+        "simulation"
+      ],
+      "description": "从 CRU-JRA 的第 350 年 AD 归档续跑至 360 年。"
+    },
+    {
+      "id": "emh:simulation:@fireearth_clm_spinup/cesm/cesm2_3_alpha17e/postad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · CLM5.0 · 600 年常规自旋",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_clm_spinup%2Fcesm%2Fcesm2_3_alpha17e%2Fpostad",
+      "keywords": [
+        "0361-01-01",
+        "0960-12-31",
+        "@fireearth_clm_spinup/cesm/cesm2_3_alpha17e/postad",
+        "CLM5.0 自旋",
+        "FireEarth · CLM5.0 自旋 360＋600 年",
+        "I1850Clm50BgcCrop",
+        "cesm",
+        "cesm2_3_alpha17e",
+        "f19_f19_mg17",
+        "fireearth_clm50_f19_postad600",
+        "fireearth_clm_spinup",
+        "simulation"
+      ],
+      "description": "从第 360 年 AD 状态初始化，关闭加速分解，继续积分 600 年。"
     },
     {
       "id": "emh:simulation:@fireearth_completed/cesm/cesm2_3_alpha17e/test_G1850ECO_Fe_5d_20261105_7ebc94ec66",
@@ -24428,6 +24472,17 @@
       ]
     },
     {
+      "id": "emh:task:fireearth_clm_spinup",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "FireEarth · CLM5.0 自旋 360＋600 年",
+      "url": "../EarthModelHub/docs/simulations/?task=fireearth_clm_spinup",
+      "keywords": [
+        "fireearth_clm_spinup"
+      ],
+      "description": "使用 CRU-JRA 归档继续 AD 至 360 年，然后做 600 年常规自旋。"
+    },
+    {
       "id": "emh:task:fireearth_completed",
       "hub": "EMH",
       "type": "Task",
@@ -30725,6 +30780,36 @@
   ],
   "recent": [
     {
+      "id": "emh:task:fireearth_clm_spinup",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "FireEarth · CLM5.0 自旋 360＋600 年",
+      "description": "使用 CRU-JRA 归档继续 AD 至 360 年，然后做 600 年常规自旋。",
+      "url": "../EarthModelHub/docs/simulations/?task=fireearth_clm_spinup",
+      "date": "2026-11-25T04:30:48Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@fireearth_clm_spinup/cesm/cesm2_3_alpha17e/ad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · CLM5.0 · AD 最后 10 年",
+      "description": "从 CRU-JRA 的第 350 年 AD 归档续跑至 360 年。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_clm_spinup%2Fcesm%2Fcesm2_3_alpha17e%2Fad",
+      "date": "2026-11-25T04:30:48Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@fireearth_clm_spinup/cesm/cesm2_3_alpha17e/postad",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "FireEarth · CLM5.0 · 600 年常规自旋",
+      "description": "从第 360 年 AD 状态初始化，关闭加速分解，继续积分 600 年。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_clm_spinup%2Fcesm%2Fcesm2_3_alpha17e%2Fpostad",
+      "date": "2026-11-25T04:30:48Z",
+      "change": "added"
+    },
+    {
       "id": "emh:task:fireearth_elm_cn_crop",
       "hub": "EMH",
       "type": "Task",
@@ -31442,36 +31527,6 @@
       "description": "Global Carbon Project 2019 methane budget, CTE simulation constrained by surface observations.",
       "url": "../ObservationHub/docs/observations/?view=analysis&profile=ghg_budget_inversions",
       "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:task:friedlingstein_2023_gcb2023",
-      "hub": "EMH",
-      "type": "Task",
-      "title": "Friedlingstein 2023 Global Carbon Budget 2023",
-      "description": "GCB2023 的 CLM5.0 官方 case。配置来自 Daniel Kennedy 的 ctsm_trendy_2023，案例名 TRENDY2023，积分到 2022。",
-      "url": "../EarthModelHub/docs/simulations/?task=friedlingstein_2023_gcb2023",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:task:friedlingstein_2026_gcb2026",
-      "hub": "EMH",
-      "type": "Task",
-      "title": "OCN (GCB2026)",
-      "description": "GCB2026 补充材料 Table S2 的 10 组海洋自旋。陆面试验见 TRENDYv15 (GCB2026)。",
-      "url": "../EarthModelHub/docs/simulations/?task=friedlingstein_2026_gcb2026",
-      "date": "2026-11-23T23:00:42Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:task:gfed4_fire_1997_2025",
-      "hub": "EMH",
-      "type": "Task",
-      "title": "GFED4 全球火排放对照（1997–2025）",
-      "description": "按 Xu Fire 2023 的 9 个模式、compset 和分辨率组合扩展，多年运行使用独立 ALL 和 NoFIRE spinup。",
-      "url": "../EarthModelHub/docs/simulations/?task=gfed4_fire_1997_2025",
-      "date": "2026-11-23T23:00:42Z",
       "change": "added"
     }
   ]

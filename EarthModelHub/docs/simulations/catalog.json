@@ -13095,6 +13095,64 @@
     }
   },
   {
+    "id": "@fireearth_clm_spinup/cesm/cesm2_3_alpha17e/ad",
+    "task": "fireearth_clm_spinup",
+    "name": "fireearth_clm50_f19_ad360",
+    "model": "cesm",
+    "version": "cesm2_3_alpha17e",
+    "task_title": "FireEarth · CLM5.0 自旋 360＋600 年",
+    "task_about": "使用 CRU-JRA 归档继续 AD 至 360 年，然后做 600 年常规自旋。",
+    "title": "FireEarth · CLM5.0 · AD 最后 10 年",
+    "description": "从 CRU-JRA 的第 350 年 AD 归档续跑至 360 年。",
+    "compset": "I1850Clm50BgcCrop",
+    "res": "f19_f19_mg17",
+    "group": "CLM5.0 自旋",
+    "role": "simulation",
+    "category": "projects",
+    "period": {
+      "start": "0351-01-01",
+      "end": "0360-12-31",
+      "frequency": "annual"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @fireearth_clm_spinup/cesm/cesm2_3_alpha17e/ad",
+      "preview": "python -m src.simulations reproduce @fireearth_clm_spinup/cesm/cesm2_3_alpha17e/ad --dry-run"
+    }
+  },
+  {
+    "id": "@fireearth_clm_spinup/cesm/cesm2_3_alpha17e/postad",
+    "task": "fireearth_clm_spinup",
+    "name": "fireearth_clm50_f19_postad600",
+    "model": "cesm",
+    "version": "cesm2_3_alpha17e",
+    "task_title": "FireEarth · CLM5.0 自旋 360＋600 年",
+    "task_about": "使用 CRU-JRA 归档继续 AD 至 360 年，然后做 600 年常规自旋。",
+    "title": "FireEarth · CLM5.0 · 600 年常规自旋",
+    "description": "从第 360 年 AD 状态初始化，关闭加速分解，继续积分 600 年。",
+    "compset": "I1850Clm50BgcCrop",
+    "res": "f19_f19_mg17",
+    "group": "CLM5.0 自旋",
+    "role": "simulation",
+    "category": "projects",
+    "period": {
+      "start": "0361-01-01",
+      "end": "0960-12-31",
+      "frequency": "annual"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @fireearth_clm_spinup/cesm/cesm2_3_alpha17e/postad",
+      "preview": "python -m src.simulations reproduce @fireearth_clm_spinup/cesm/cesm2_3_alpha17e/postad --dry-run"
+    }
+  },
+  {
     "id": "@fireearth_completed/cesm/cesm2_3_alpha17e/test_G1850ECO_Fe_5d_20261105_7ebc94ec66",
     "task": "fireearth_completed",
     "name": "fireearth_7ebc94ec66_test_G1850ECO_Fe_5d_20261105",

@@ -33521,6 +33521,72 @@
     }
   },
   {
+    "id": "@install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original",
+    "task": "install_smoke",
+    "name": "smoke_2x25_geosfp_original",
+    "model": "gcadj",
+    "version": "gcadj_v36",
+    "task_title": "安装短测",
+    "task_about": "源码接入后的短测方案；缺项补齐并实际完成积分后才能记为跑通。",
+    "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 正向短测",
+    "description": "原始 v36 完成 3 小时被动 CO 输送，诊断和重启通过时间戳及有限值检查。直接读取 GEOS-FP 气象场。",
+    "compset": "被动 CO 输送",
+    "res": "2°×2.5°，72 层",
+    "group": "smoke",
+    "role": "installation",
+    "category": "smoke",
+    "period": {
+      "start": "2013-07-01T00:00:00",
+      "end": "2013-07-01T03:00:00"
+    },
+    "source_actual_period": {
+      "start": "2013-07-01T00:00:00",
+      "end": "2013-07-01T03:00:00"
+    },
+    "source_success": true,
+    "source_run_status": "completed",
+    "smoke_plan": true,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original",
+      "preview": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original"
+    }
+  },
+  {
+    "id": "@install_smoke/gcadj/gcadj_v36/smoke_2x25_merra2_original",
+    "task": "install_smoke",
+    "name": "smoke_2x25_merra2_original",
+    "model": "gcadj",
+    "version": "gcadj_v36",
+    "task_title": "安装短测",
+    "task_about": "源码接入后的短测方案；缺项补齐并实际完成积分后才能记为跑通。",
+    "title": "GC-adjoint v36 · MERRA-2 2°×2.5° 正向短测",
+    "description": "原始 v36 完成 3 小时被动 CO 输送，诊断和重启通过时间戳及有限值检查。原 GEOS-FP 读取器使用案例侧适配的 MERRA-2 输入。文件名映射、常量场路径和气压单位在案例侧处理。",
+    "compset": "被动 CO 输送",
+    "res": "2°×2.5°，72 层",
+    "group": "smoke",
+    "role": "installation",
+    "category": "smoke",
+    "period": {
+      "start": "2013-07-01T00:00:00",
+      "end": "2013-07-01T03:00:00"
+    },
+    "source_actual_period": {
+      "start": "2013-07-01T00:00:00",
+      "end": "2013-07-01T03:00:00"
+    },
+    "source_success": true,
+    "source_run_status": "completed",
+    "smoke_plan": true,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_2x25_merra2_original",
+      "preview": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_2x25_merra2_original"
+    }
+  },
+  {
     "id": "@install_smoke/cheereio/CHEEREIO-main/smoke",
     "task": "install_smoke",
     "name": "smoke_assimilation_cycle",

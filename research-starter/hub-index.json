@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-25T04:30:48Z",
+  "updated_at": "2026-11-26T10:10:40Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -16882,6 +16882,52 @@
       "description": "先验收 4°×5° 正向 6 小时积分，再做伴随与梯度检验。旧输入仍含 research_ljr/phd_ljr 绝对路径；尚未运行。"
     },
     {
+      "id": "emh:simulation:@install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 正向短测",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fgcadj%2Fgcadj_v36%2Fsmoke_2x25_geosfp_original",
+      "keywords": [
+        "2013-07-01T00:00:00",
+        "2013-07-01T03:00:00",
+        "2°×2.5°，72 层",
+        "@install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original",
+        "completed",
+        "gcadj",
+        "gcadj_v36",
+        "install_smoke",
+        "installation",
+        "smoke",
+        "smoke_2x25_geosfp_original",
+        "安装短测",
+        "被动 CO 输送"
+      ],
+      "description": "原始 v36 完成 3 小时被动 CO 输送，诊断和重启通过时间戳及有限值检查。直接读取 GEOS-FP 气象场。"
+    },
+    {
+      "id": "emh:simulation:@install_smoke/gcadj/gcadj_v36/smoke_2x25_merra2_original",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · MERRA-2 2°×2.5° 正向短测",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fgcadj%2Fgcadj_v36%2Fsmoke_2x25_merra2_original",
+      "keywords": [
+        "2013-07-01T00:00:00",
+        "2013-07-01T03:00:00",
+        "2°×2.5°，72 层",
+        "@install_smoke/gcadj/gcadj_v36/smoke_2x25_merra2_original",
+        "completed",
+        "gcadj",
+        "gcadj_v36",
+        "install_smoke",
+        "installation",
+        "smoke",
+        "smoke_2x25_merra2_original",
+        "安装短测",
+        "被动 CO 输送"
+      ],
+      "description": "原始 v36 完成 3 小时被动 CO 输送，诊断和重启通过时间戳及有限值检查。原 GEOS-FP 读取器使用案例侧适配的 MERRA-2 输入。文件名映射、常量场路径和气压单位在案例侧处理。"
+    },
+    {
       "id": "emh:simulation:@install_smoke/gchp/gchp_14_1_1/smoke",
       "hub": "EMH",
       "type": "Simulation",
@@ -30780,6 +30826,26 @@
   ],
   "recent": [
     {
+      "id": "emh:simulation:@install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 正向短测",
+      "description": "原始 v36 完成 3 小时被动 CO 输送，诊断和重启通过时间戳及有限值检查。直接读取 GEOS-FP 气象场。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fgcadj%2Fgcadj_v36%2Fsmoke_2x25_geosfp_original",
+      "date": "2026-11-26T10:10:40Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@install_smoke/gcadj/gcadj_v36/smoke_2x25_merra2_original",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · MERRA-2 2°×2.5° 正向短测",
+      "description": "原始 v36 完成 3 小时被动 CO 输送，诊断和重启通过时间戳及有限值检查。原 GEOS-FP 读取器使用案例侧适配的 MERRA-2 输入。文件名映射、常量场路径和气压单位在案例侧处理。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fgcadj%2Fgcadj_v36%2Fsmoke_2x25_merra2_original",
+      "date": "2026-11-26T10:10:40Z",
+      "change": "added"
+    },
+    {
       "id": "emh:task:fireearth_clm_spinup",
       "hub": "EMH",
       "type": "Task",
@@ -31008,26 +31074,6 @@
       "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3_1850_1900",
       "date": "2026-11-23T23:45:39Z",
       "change": "added"
-    },
-    {
-      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3_1901_2025",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GCB2026 · ELM f19 · S3 · 1901–2025",
-      "description": "延续 S3 试验，从 1901 年起使用逐年 GCB2026 气象，积分至 2025 年末。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3_1901_2025",
-      "date": "2026-11-23T23:45:39Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:task:trendy_v15_gcb2026",
-      "hub": "EMH",
-      "type": "Task",
-      "title": "TRENDYv15 (GCB2026)",
-      "description": "GCB2026 陆面试验。CLM6.0 的 AD、SASU、post-SASU 和 S0–S6 初始建例来自 trendyclm。CLM 和 ELM 均接入本地 GCB2026 CRU–JRA-3Q 气象。ELM 提供 f09 和 f19 自旋至 S3 全瞬变链，提交输出作为协议参考。",
-      "url": "../EarthModelHub/docs/simulations/?task=trendy_v15_gcb2026",
-      "date": "2026-11-23T23:45:39Z",
-      "change": "updated"
     },
     {
       "id": "mlhub:inference variable:cam_emis_ndep:Fire_NH3_as_N_kgN_ha_month",

@@ -36127,6 +36127,12 @@
     "smoke_plan": true,
     "controls_summary": {},
     "links": [],
+    "reports": [
+      {
+        "label": "GC-adjoint v36 · GEOS-FP 2°×2.5° 正向短测报告",
+        "path": "reports/library/case-smoke-2x25-geosfp-original-bdc7190e4ced/report.html"
+      }
+    ],
     "commands": {
       "check": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original",
       "preview": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original"

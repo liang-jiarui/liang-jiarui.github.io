@@ -17,7 +17,7 @@
 <body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
 <main><p class="tag">Benchmark evidence</p><article><h1>GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告</h1>
 <p>核对日期为 2026-11-27。<strong>Tang 2023 Fig. 6 的 6 个排放梯度散点面板均未完成同口径复现，Wang 2020 Fig. 1 的两组观测梯度也尚未复现。</strong> 下方按论文面板列出复现条件和本站证据。本站已在 GEOS-FP 2°×2.5° 完成 CO 初值扰动基准，并复现了原版 v36 的反向故障。<a href="tables/paper_comparison.csv">逐面板对照表</a> · <a href="tables/paper_probes.json">四个 24 小时作业的验收记录</a></p>
-<p><strong>7 天与整月续跑</strong>。两个本地前向基准共 6 个成员，全部通过逐日验收，原版反向完成 0/2。下方附终点地图、垂直剖面和逐日演变。 <a href="tables/long_windows_daily.csv">长窗口逐日结果</a> · <a href="tables/long_windows_validation.json">自动验收记录</a></p>
+<p><strong>7 天与整月续跑</strong>。两个本地前向基准共 6 个成员，全部通过逐日验收，原版反向完成 0/2。独立修复版完成 2/2，并产出 CO 初值伴随梯度。 <a href="tables/long_windows_daily.csv">长窗口逐日结果</a> · <a href="tables/long_windows_validation.json">自动验收记录</a></p>
 <h2>Wang 等（2020）Figure 1 · 同网格、同气象类型</h2>
 <table>
 <thead>
@@ -96,11 +96,11 @@
 </tr>
 <tr>
 <td style="text-align:left"><strong>(e) 组合且关闭平流，7 d</strong>。R² = 1.000，m = 1.000。</td>
-<td style="text-align:left">同口径排放梯度未复现，配对点数 0。本站 7 天基准与正负扰动均通过前向验收，原版反向积分未完成。</td>
+<td style="text-align:left">同口径排放梯度未复现，配对点数 0。本站 7 天基准与正负扰动均通过前向验收，原版反向积分未完成。独立修复版 <code>353209_3</code> 已完成 CO 初值伴随。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>(f) 组合且关闭平流，1 个月</strong>。R² = 1.000，m = 1.000。</td>
-<td style="text-align:left">同口径排放梯度未复现，配对点数 0。本站 31 天基准与正负扰动均通过前向验收，原版反向积分未完成。</td>
+<td style="text-align:left">同口径排放梯度未复现，配对点数 0。本站 31 天基准与正负扰动均通过前向验收，原版反向积分未完成。独立修复版 <code>353210_3</code> 已完成 CO 初值伴随。</td>
 </tr>
 </tbody>
 </table>
@@ -112,13 +112,13 @@
 <thead>
 <tr>
 <th style="text-align:left">论文 Fig. 6(e–f)</th>
-<th style="text-align:left">本地同口径验收</th>
+<th style="text-align:left">本地验证与同口径状态</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><a href="figures/tang_2023_fig6.png"><img src="figures/tang_2023_fig6.png" alt="Tang 2023 Figure 6 原图，长时段对应 e 和 f" loading="lazy" /></a></td>
-<td style="text-align:left"><strong>7 天和 1 个月均未复现。</strong> 同口径的逐格排放梯度配对数为 0，两组 R²、斜率和散点图均待计算。</td>
+<td style="text-align:left"><strong>Fig. 6 的同口径排放梯度配对数为 0。</strong> 两组 R²、斜率和散点图均待计算。 <strong>本站图为修复版的 CO 初值伴随梯度。</strong> <a href="figures/long_windows_adjoint.png"><img src="figures/long_windows_adjoint.png" alt="7 天和 31 天的地表 CO 初值伴随梯度" loading="lazy" /></a></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Fig. 6(e)，7 天</strong>。关闭平流。发表图 R² = 1.000，斜率 m = 1.000。</td>
@@ -298,7 +298,34 @@ IF ( ALLOCATED( TTO3 ) ) TTO3(I,J) = TTO3_TMP(I,J)
 </tr>
 </tbody>
 </table>
-<p>最大逐格相对误差基于中心差分绝对值大于 1 kg 的格点，本次全部 13,104 格均满足。以上验证覆盖 v36 的 GEOS-FP 被动 CO 初值梯度，候选构建的 7 天、整月和论文排放梯度尚待验收。 <a href="tables/tto3_guard_validation.json">候选构建验收数据</a></p>
+<p>最大逐格相对误差基于中心差分绝对值大于 1 kg 的格点，本次全部 13,104 格均满足。 <a href="tables/tto3_guard_validation.json">24 小时验收数据</a></p>
+<h3>独立修复版的 7 天与整月伴随</h3>
+<p>仅修复 <code>TTO3</code> 时，整月在首个反向时间步触发 <code>invalid SPHU</code>。I3 插值的两个时标分别从模拟起点和当天 UTC 午夜计时，使 7 月 31 日 23:45 的插值权重成了 −239.0417。独立构建统一为当天 UTC 秒数，正确权重为 0.9583。用两端原始气象数据独立复算，该格点的比湿从错误外推的 1064.10 g/kg 回到 1.709 g/kg。原版模型源码和二进制均未修改。</p>
+<table>
+<thead>
+<tr>
+<th>窗口（UTC）</th>
+<th>修复版作业</th>
+<th style="text-align:right">正向加伴随墙钟</th>
+<th style="text-align:right">与原版逐字节一致的逐日前向重启</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7 天，2013-07-01 至 07-08</td>
+<td><code>353209_3</code></td>
+<td style="text-align:right">8 分 44 秒</td>
+<td style="text-align:right">7/7</td>
+</tr>
+<tr>
+<td>31 天，2013-07-01 至 08-01</td>
+<td><code>353210_3</code></td>
+<td style="text-align:right">38 分 00 秒</td>
+<td style="text-align:right">31/31</td>
+</tr>
+</tbody>
+</table>
+<p>两组在 <code>cpu_part</code> 以 4 个 OpenMP 线程完成。上方 Fig. 6 对照右栏展示了两组原生 <code>IJ-GDT-$</code> 在第一层的 CO 初值伴随梯度，使用同一色标。梯度张量均为 144×91×72，有效时间为 2013-07-01 00:00 UTC，图使用 BPCH 原始数值。长窗口自动验收覆盖完成标记、网格和时标、有效梯度及前向逐字节对照。逐格中心差分误差已在上面的 24 小时实验中独立量化。 <a href="tables/long_windows_adjoint_validation.json">两个长窗口的机器验收与 I3 插值复算</a></p>
 <h2>复跑命令和证据</h2>
 <p>从 EarthModelHub 根目录运行，使用新的运行目录。前向矩阵为 <strong>352976_0–15</strong>、<strong>353000_0–3</strong> 和 <strong>353009_4–6</strong>。原版伴随检查使用 <strong>352976_16</strong> 和 <strong>353009_0–3</strong>。先收齐三个数组结果，再执行两个验证脚本。脚本分别检查前向数值、成对诊断和该二进制的反向状态。</p>
 <pre><code class="language-bash">repo=&quot;$PWD&quot;

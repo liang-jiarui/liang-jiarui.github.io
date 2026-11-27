@@ -7,111 +7,241 @@
   <title>Paper Replicates · ResearchStarter</title>
   <link rel="stylesheet" href="../hub-nav.css?v=15af2d303315">
   <link rel="stylesheet" href="../gallery.css?v=02f5fb75389b">
-  <link rel="stylesheet" href="paper-replicates.css?v=4fe525c1f2f3">
-  <script src="paper-replicates.js?v=6a0a41d844c7" defer></script>
+  <link rel="stylesheet" href="paper-replicates.css?v=cbb33c1e0ab3">
+  <script src="paper-replicates.js?v=ce7ccba119fd" defer></script>
 </head>
-<body id="top">
+<body id="top" class="rep-page" data-view="projects">
   <a class="skip-link" href="#projects">Skip to replication projects</a>
   <nav data-research-nav class="research-nav" aria-label="Research galleries"><div class="research-nav__inner"><a class="research-nav__home" href="../index.html">ResearchStarter</a><div class="research-nav__hubs"><a href="../../EarthModelHub/docs/simulations/index.html">EMH</a><a href="../../ObservationHub/docs/observations/index.html">ObsHub</a><a href="../../MachineLearningHub/docs/gallery/index.html">MLHub</a><a href="index.html" aria-current="page">Paper Replicates</a><a href="../../EarthModelHub/docs/simulations/reports/index.html">Reports</a></div></div></nav>
-  <header class="masthead">
-    <div class="page-width">
-      <div class="hero replicate-hero">
-        <h1>Paper Replicates</h1>
-        <p>Browse paper replication projects, their experiment cases, and available reports.</p>
-      </div>
+  <header class="rep-masthead">
+    <div class="rep-wrap">
+      <span class="rep-brand"><span class="rep-mark" aria-hidden="true">◒</span>ResearchStarter <span class="rep-brand-context">/ PAPER REPLICATES</span></span>
     </div>
   </header>
-  <main id="projects" class="page-width directory">
-    <div class="section-heading">
-      <h2>Replication projects</h2>
-      <p id="replicate-count" class="module-count" role="status">9 projects</p>
-    </div>
-    <form class="module-controls replicate-controls" id="replicate-controls" role="search" aria-label="Filter replication projects" hidden>
-      <label class="search-field">
-        <span class="visually-hidden">Search replication projects</span>
-        <input id="replicate-query" type="search" placeholder="Search papers, topics, or models" autocomplete="off">
-      </label>
-      <label class="category-field">
-        <span class="visually-hidden">Filter by replication status</span>
-        <select id="replicate-status"><option value="">All statuses</option><option value="Archive analysis">Archive analysis</option><option value="In progress">In progress</option><option value="Partial reproduction">Partial reproduction</option><option value="Scoping">Scoping</option><option value="Smoke tests">Smoke tests</option></select>
-      </label>
-      <label class="category-field">
-        <span class="visually-hidden">Filter by related evidence</span>
-        <select id="replicate-source">
-          <option value="">All projects</option>
-          <option value="emh">With EMH cases</option>
-          <option value="reports">With linked reports</option>
-        </select>
-      </label>
-    </form>
-    <div class="module-grid" id="replicate-grid">
-      <article class="module-card replicate-card" id="mourgela-2026-wildfire" data-status="Archive analysis" data-sources="">
-  <p class="module-card__type">Archive analysis · Wildfire · Radiative forcing · EC-Earth3</p>
-  <h3>Mourgela et al. 2026 · Wildfire radiative effects and climate response</h3>
-  <p class="module-card__description">Recompute radiative effects and climate diagnostics from archived EC-Earth3-AerChem output.</p>
+  <main id="projects" class="rep-wrap rep-main">
+    <header class="rep-heading">
+      <div>
+        <h1>Paper Replicates</h1>
+        <p>Paper reproduction projects, figures, and simulation evidence.</p>
+      </div>
+      <nav class="rep-tabs" id="replicate-views" aria-label="Gallery views" hidden>
+        <a href="?view=projects" data-gallery-view="projects" aria-current="page">Projects</a>
+        <a href="?view=figures" data-gallery-view="figures">Figures</a>
+      </nav>
+    </header>
+    <section class="rep-workspace" aria-label="Replication gallery">
+      <aside class="rep-side" id="replicate-facets" aria-label="Replication status" hidden>
+        <h2>Replication status</h2>
+        <div class="rep-facets">
+          <button type="button" class="rep-facet" data-status-filter="" aria-pressed="true"><span class="rep-facet-label">All projects</span><span class="rep-facet-count">9</span><span class="rep-facet-bar" aria-hidden="true" style="--fill:100%"></span></button>
+<button type="button" class="rep-facet" data-status-filter="Archive analysis" aria-pressed="false"><span class="rep-facet-label">Archive analysis</span><span class="rep-facet-count">3</span><span class="rep-facet-bar" aria-hidden="true" style="--fill:33.3333%"></span></button>
+<button type="button" class="rep-facet" data-status-filter="In progress" aria-pressed="false"><span class="rep-facet-label">In progress</span><span class="rep-facet-count">1</span><span class="rep-facet-bar" aria-hidden="true" style="--fill:11.1111%"></span></button>
+<button type="button" class="rep-facet" data-status-filter="Partial reproduction" aria-pressed="false"><span class="rep-facet-label">Partial reproduction</span><span class="rep-facet-count">3</span><span class="rep-facet-bar" aria-hidden="true" style="--fill:33.3333%"></span></button>
+<button type="button" class="rep-facet" data-status-filter="Scoping" aria-pressed="false"><span class="rep-facet-label">Scoping</span><span class="rep-facet-count">1</span><span class="rep-facet-bar" aria-hidden="true" style="--fill:11.1111%"></span></button>
+<button type="button" class="rep-facet" data-status-filter="Smoke tests" aria-pressed="false"><span class="rep-facet-label">Smoke tests</span><span class="rep-facet-count">1</span><span class="rep-facet-bar" aria-hidden="true" style="--fill:11.1111%"></span></button>
+        </div>
+      </aside>
+      <div class="rep-sheet">
+        <div class="rep-toolbar">
+          <form class="rep-controls" id="replicate-controls" role="search" aria-label="Filter replication projects" hidden>
+            <label class="rep-search">
+              <span class="visually-hidden">Search replication projects</span>
+              <input id="replicate-query" type="search" placeholder="Search papers, topics, or models" autocomplete="off" aria-keyshortcuts="/">
+              <kbd aria-hidden="true">/</kbd>
+            </label>
+            <label class="rep-select rep-mobile-status">
+              <span class="visually-hidden">Filter by replication status</span>
+              <select id="replicate-status"><option value="">All statuses</option><option value="Archive analysis">Archive analysis</option><option value="In progress">In progress</option><option value="Partial reproduction">Partial reproduction</option><option value="Scoping">Scoping</option><option value="Smoke tests">Smoke tests</option></select>
+            </label>
+            <label class="rep-select">
+              <span class="visually-hidden">Filter by related evidence</span>
+              <select id="replicate-source">
+                <option value="">All evidence</option>
+                <option value="emh">With EMH cases</option>
+                <option value="reports">With linked reports</option>
+              </select>
+            </label>
+          </form>
+          <div class="rep-scope">
+            <p id="replicate-count" role="status">9 projects</p>
+            <button id="replicate-clear" class="rep-button" type="button" hidden>Clear filters</button>
+          </div>
+        </div>
+        <div class="rep-grid" id="replicate-grid">
+          <article class="replicate-card" id="mourgela-2026-wildfire" data-status="Archive analysis" data-sources="" data-figure="true">
+  <figure class="rep-figure">
+  <figcaption class="rep-figure-title">Net wildfire radiative effect <small>W m⁻²</small></figcaption>
+  <div class="rep-pair">
+  <p class="rep-pair-label">Global</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:100%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:21.978%;--width:78.022%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:22.3516%;--width:77.6484%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Preprint Table 1 <strong>−0.71</strong></span><span data-series="reproduced">Archive recomputation <strong>−0.7066</strong></span></p>
+</div><div class="rep-pair">
+  <p class="rep-pair-label">Northern Hemisphere</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:100%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:0%;--width:100%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:0.208791%;--width:99.7912%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Preprint Table 1 <strong>−0.91</strong></span><span data-series="reproduced">Archive recomputation <strong>−0.9081</strong></span></p>
+</div><div class="rep-pair">
+  <p class="rep-pair-label">Southern Hemisphere</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:100%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:43.956%;--width:56.044%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:44.4835%;--width:55.5165%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Preprint Table 1 <strong>−0.51</strong></span><span data-series="reproduced">Archive recomputation <strong>−0.5052</strong></span></p>
+</div>
+</figure>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="archive">Archive analysis</span><span>Wildfire · Radiative forcing · EC-Earth3</span></p>
+    <h3><a href="reports/mourgela-2026-wildfire/index.html">Mourgela et al. 2026 · Wildfire radiative effects and climate response</a></h3>
+    <p class="rep-description">Recompute radiative effects and climate diagnostics from archived EC-Earth3-AerChem output.</p>
+    
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/mourgela-2026-wildfire/index.html">Open report</a><a class="rep-button" href="https://egusphere.copernicus.org/preprints/2026/egusphere-2026-3239/">Paper</a></div>
+  </div>
+</article>
+<article class="replicate-card" id="nawaz-2026-gc-adjoint" data-status="Scoping" data-sources="" data-figure="false">
   
-  <div class="module-card__links"><a class="button button--primary" href="reports/mourgela-2026-wildfire/index.html">Replication report</a><a class="button button--secondary" href="https://egusphere.copernicus.org/preprints/2026/egusphere-2026-3239/">Paper</a></div>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="scoping">Scoping</span><span>Air quality · Health impacts · GEOS-Chem Adjoint</span></p>
+    <h3><a href="reports/nawaz-2026-gc-adjoint/index.html">Nawaz and Henze 2026 · Cross-border PM₂.₅ health benefits</a></h3>
+    <p class="rep-description">Review the inputs and methods for attributing PM₂.₅ health benefits across borders with GEOS-Chem Adjoint.</p>
+    
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/nawaz-2026-gc-adjoint/index.html">Open report</a><a class="rep-button" href="https://doi.org/10.1038/s41467-026-68827-0">Paper</a></div>
+  </div>
 </article>
-<article class="module-card replicate-card" id="nawaz-2026-gc-adjoint" data-status="Scoping" data-sources="">
-  <p class="module-card__type">Scoping · Air quality · Health impacts · GEOS-Chem Adjoint</p>
-  <h3>Nawaz and Henze 2026 · Cross-border PM₂.₅ health benefits</h3>
-  <p class="module-card__description">Review the inputs and methods for attributing PM₂.₅ health benefits across borders with GEOS-Chem Adjoint.</p>
+<article class="replicate-card" id="clow-2025-james" data-status="In progress" data-sources="emh" data-figure="true">
+  <figure class="rep-figure">
+  <figcaption class="rep-figure-title">EMH case records</figcaption>
+  <div class="rep-case-bar" aria-hidden="true"><span class="rep-case-completed" style="--width:82.6923%"></span></div>
+  <p class="rep-case-values"><span><strong>43</strong> recorded source completions</span>
+    <span><strong>52</strong> registered cases</span></p>
   
-  <div class="module-card__links"><a class="button button--primary" href="reports/nawaz-2026-gc-adjoint/index.html">Replication report</a><a class="button button--secondary" href="https://doi.org/10.1038/s41467-026-68827-0">Paper</a></div>
+</figure>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="active">In progress</span><span>Ocean biogeochemistry · CESM2 · E3SM</span></p>
+    <h3><a href="reports/clow-2025-james/index.html">Clow et al. 2025 · Satellite sampling of SST and chlorophyll</a></h3>
+    <p class="rep-description">Reproduce the CESM2 satellite sampling comparison for sea surface temperature and chlorophyll, with E3SM ocean biogeochemistry comparisons.</p>
+    <details class="rep-related"><summary>Related cases and reports</summary><ul><li><a href="../../EarthModelHub/docs/simulations/index.html?task=clow_2025_james">EMH experiment configurations</a></li><li><a href="../../EarthModelHub/docs/simulations/index.html?task=clow_2025_james_completed">EMH historical cases</a></li></ul></details>
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/clow-2025-james/index.html">Open report</a><a class="rep-button" href="https://doi.org/10.1029/2024MS004908">Paper</a></div>
+  </div>
 </article>
-<article class="module-card replicate-card" id="clow-2025-james" data-status="In progress" data-sources="emh">
-  <p class="module-card__type">In progress · Ocean biogeochemistry · CESM2 · E3SM</p>
-  <h3>Clow et al. 2025 · Satellite sampling of SST and chlorophyll</h3>
-  <p class="module-card__description">Reproduce the CESM2 satellite sampling comparison for sea surface temperature and chlorophyll, with E3SM ocean biogeochemistry comparisons.</p>
-  <p class="module-card__note">52 EMH cases</p><details class="replicate-evidence"><summary>Related cases and reports</summary><ul><li><a href="../../EarthModelHub/docs/simulations/index.html?task=clow_2025_james">EMH experiment configurations</a></li><li><a href="../../EarthModelHub/docs/simulations/index.html?task=clow_2025_james_completed">EMH historical cases</a></li></ul></details>
-  <div class="module-card__links"><a class="button button--primary" href="reports/clow-2025-james/index.html">Replication report</a><a class="button button--secondary" href="https://doi.org/10.1029/2024MS004908">Paper</a></div>
+<article class="replicate-card" id="mahfouz-2025-acp" data-status="Partial reproduction" data-sources="" data-figure="true">
+  <figure class="rep-figure">
+  <figcaption class="rep-figure-title">12 km SCREAM aerosol effective radiative forcing <small>W m⁻²</small></figcaption>
+  <div class="rep-pair">
+  <p class="rep-pair-label">Global annual mean</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:100%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:0%;--width:100%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:0.117487%;--width:99.8825%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Published value <strong>−1.95</strong></span><span data-series="reproduced">Archive recomputation <strong>−1.947709</strong></span></p>
+</div>
+</figure>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="partial">Partial reproduction</span><span>Aerosols · Radiative forcing · E3SM</span></p>
+    <h3><a href="reports/mahfouz-2025-acp/index.html">Mahfouz et al. 2025 · Prescribed aerosol properties and forcing</a></h3>
+    <p class="rep-description">Compare prescribed aerosol optics and cloud condensation nuclei in SCREAM with interactive EAM aerosol simulations.</p>
+    
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/mahfouz-2025-acp/index.html">Open report</a><a class="rep-button" href="https://doi.org/10.5194/acp-25-15105-2025">Paper</a></div>
+  </div>
 </article>
-<article class="module-card replicate-card" id="mahfouz-2025-acp" data-status="Partial reproduction" data-sources="">
-  <p class="module-card__type">Partial reproduction · Aerosols · Radiative forcing · E3SM</p>
-  <h3>Mahfouz et al. 2025 · Prescribed aerosol properties and forcing</h3>
-  <p class="module-card__description">Compare prescribed aerosol optics and cloud condensation nuclei in SCREAM with interactive EAM aerosol simulations.</p>
+<article class="replicate-card" id="zelinka-2023-acp" data-status="Archive analysis" data-sources="" data-figure="true">
+  <figure class="rep-figure">
+  <figcaption class="rep-figure-title">Shortwave forcing ratio under the insolation substitution <small>dimensionless</small></figcaption>
+  <div class="rep-pair">
+  <p class="rep-pair-label">Mean across 20 CMIP6 models</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:0%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:0%;--width:100%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:0%;--width:99.4805%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Published Figure 2 <strong>0.77</strong></span><span data-series="reproduced">Archive recomputation <strong>0.766</strong></span></p>
+</div>
+</figure>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="archive">Archive analysis</span><span>Aerosols · Radiative forcing · CMIP</span></p>
+    <h3><a href="reports/zelinka-2023-acp/index.html">Zelinka et al. 2023 · Aerosol forcing with APRP</a></h3>
+    <p class="rep-description">Recompute aerosol effective radiative forcing with approximate partial radiative perturbation and compare it with aerosol-free radiation calls.</p>
+    
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/zelinka-2023-acp/index.html">Open report</a><a class="rep-button" href="https://doi.org/10.5194/acp-23-8879-2023">Paper</a></div>
+  </div>
+</article>
+<article class="replicate-card" id="zhang-2022-acp" data-status="Partial reproduction" data-sources="" data-figure="true">
+  <figure class="rep-figure">
+  <figcaption class="rep-figure-title">2010 minus 1850 aerosol effective radiative forcing <small>W m⁻²</small></figcaption>
+  <div class="rep-pair">
+  <p class="rep-pair-label">Net</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:75.4658%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:24.5342%;--width:50.9317%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:24.5911%;--width:50.8747%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Published Table 2 <strong>−1.64</strong></span><span data-series="reproduced">Archive recomputation <strong>−1.638166</strong></span></p>
+</div><div class="rep-pair">
+  <p class="rep-pair-label">Shortwave</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:75.4658%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:0%;--width:75.4658%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:0.0610559%;--width:75.4048%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Published Table 2 <strong>−2.43</strong></span><span data-series="reproduced">Archive recomputation <strong>−2.428034</strong></span></p>
+</div><div class="rep-pair">
+  <p class="rep-pair-label">Longwave</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:75.4658%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:75.4658%;--width:24.5342%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:75.4658%;--width:24.5301%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Published Table 2 <strong>0.79</strong></span><span data-series="reproduced">Archive recomputation <strong>0.789868</strong></span></p>
+</div>
+</figure>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="partial">Partial reproduction</span><span>Aerosols · Radiative forcing · E3SM</span></p>
+    <h3><a href="reports/zhang-2022-acp/index.html">Zhang et al. 2022 · Aerosol effective radiative forcing in E3SM</a></h3>
+    <p class="rep-description">Recreate the EAMv1 aerosol forcing diagnostics from archived data and apply them to EAMv3 wildfire experiments.</p>
+    
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/zhang-2022-acp/index.html">Open report</a><a class="rep-button" href="https://doi.org/10.5194/acp-22-9129-2022">Paper</a></div>
+  </div>
+</article>
+<article class="replicate-card" id="leach-2021-fair-v2" data-status="Partial reproduction" data-sources="emh reports" data-figure="true">
+  <figure class="rep-figure">
+  <figcaption class="rep-figure-title">FaIR warming near CO₂ doubling <small>K</small></figcaption>
+  <div class="rep-pair">
+  <p class="rep-pair-label">1% CO₂ increase, year 70</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:0%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:0%;--width:99.6659%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:0%;--width:100%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Configured TCR <strong>1.79</strong></span><span data-series="reproduced">EMH simulation <strong>1.796</strong></span></p>
+</div>
+</figure>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="partial">Partial reproduction</span><span>Climate response · FaIR</span></p>
+    <h3><a href="reports/leach-2021-fair-v2/index.html">Leach et al. 2021 · FaIR v2 climate response</a></h3>
+    <p class="rep-description">Run the archived FaIR v2 workflow and compare historical and scenario responses with the paper.</p>
+    <details class="rep-related"><summary>Related cases and reports</summary><ul><li><a href="../../EarthModelHub/docs/simulations/reports/library/leach-2021-fair-v2-report/report.html">EMH FaIR reproduction report</a></li></ul></details>
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/leach-2021-fair-v2/index.html">Open report</a><a class="rep-button" href="https://doi.org/10.5194/gmd-14-3007-2021">Paper</a><a class="rep-button" href="../../EarthModelHub/docs/simulations/index.html?task=leach_2021_fair_v2">EMH cases</a></div>
+  </div>
+</article>
+<article class="replicate-card" id="skeie-2020-ozone-rf" data-status="Archive analysis" data-sources="" data-figure="true">
+  <figure class="rep-figure">
+  <figcaption class="rep-figure-title">2010 global total ozone radiative forcing <small>W m⁻²</small></figcaption>
+  <div class="rep-pair">
+  <p class="rep-pair-label">MRI-ESM2-0</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:0%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:0%;--width:73.5678%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:0%;--width:72.9349%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Author archive <strong>0.38590</strong></span><span data-series="reproduced">Archive recomputation <strong>0.38258</strong></span></p>
+</div><div class="rep-pair">
+  <p class="rep-pair-label">BCC-ESM1</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:0%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:0%;--width:68.8476%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:0%;--width:67.8067%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Author archive <strong>0.36114</strong></span><span data-series="reproduced">Archive recomputation <strong>0.35568</strong></span></p>
+</div><div class="rep-pair">
+  <p class="rep-pair-label">OsloCTM3</p>
+  <div class="rep-pair-bars" aria-hidden="true" style="--zero:0%"><div class="rep-bar-track"><span class="rep-bar" data-series="reference" style="--left:0%;--width:100%"></span></div><div class="rep-bar-track"><span class="rep-bar" data-series="reproduced" style="--left:0%;--width:99.3633%"></span></div></div>
+  <p class="rep-pair-values"><span data-series="reference">Author archive <strong>0.52455</strong></span><span data-series="reproduced">Archive recomputation <strong>0.52121</strong></span></p>
+</div>
+</figure>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="archive">Archive analysis</span><span>Ozone · Radiative forcing · CMIP</span></p>
+    <h3><a href="reports/skeie-2020-ozone-rf/index.html">Skeie et al. 2020 · Historical ozone radiative forcing</a></h3>
+    <p class="rep-description">Use ozone radiative kernels and archived model output to compare historical ozone forcing estimates.</p>
+    
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/skeie-2020-ozone-rf/index.html">Open report</a><a class="rep-button" href="https://doi.org/10.1038/s41612-020-00131-0">Paper</a></div>
+  </div>
+</article>
+<article class="replicate-card" id="lawrence-2019-clm5" data-status="Smoke tests" data-sources="emh reports" data-figure="true">
+  <figure class="rep-figure">
+  <figcaption class="rep-figure-title">EMH case records</figcaption>
+  <div class="rep-case-bar" aria-hidden="true"><span class="rep-case-completed" style="--width:0%"></span></div>
+  <p class="rep-case-values"><span><strong>0</strong> recorded source completions</span>
+    <span><strong>54</strong> registered cases</span></p>
   
-  <div class="module-card__links"><a class="button button--primary" href="reports/mahfouz-2025-acp/index.html">Replication report</a><a class="button button--secondary" href="https://doi.org/10.5194/acp-25-15105-2025">Paper</a></div>
+</figure>
+  <div class="rep-card-body">
+    <p class="rep-card-meta"><span class="rep-status" data-tone="smoke">Smoke tests</span><span>Land surface · CESM2 · CLM5</span></p>
+    <h3><a href="reports/lawrence-2019-clm5/index.html">Lawrence et al. 2019 · CLM5 land surface experiments</a></h3>
+    <p class="rep-description">Configure the CLM5 land experiment matrix and check cold starts at the target and coarser resolutions.</p>
+    <details class="rep-related"><summary>Related cases and reports</summary><ul><li><a href="../../EarthModelHub/docs/simulations/reports/library/lawrence-2019-clm5-report/report.html">EMH CLM5 reproduction report</a></li></ul></details>
+    <div class="rep-card-actions"><a class="rep-button" data-primary href="reports/lawrence-2019-clm5/index.html">Open report</a><a class="rep-button" href="https://doi.org/10.1029/2018MS001583">Paper</a><a class="rep-button" href="../../EarthModelHub/docs/simulations/index.html?task=lawrence_2019_clm5">EMH cases</a></div>
+  </div>
 </article>
-<article class="module-card replicate-card" id="zelinka-2023-acp" data-status="Archive analysis" data-sources="">
-  <p class="module-card__type">Archive analysis · Aerosols · Radiative forcing · CMIP</p>
-  <h3>Zelinka et al. 2023 · Aerosol forcing with APRP</h3>
-  <p class="module-card__description">Recompute aerosol effective radiative forcing with approximate partial radiative perturbation and compare it with aerosol-free radiation calls.</p>
-  
-  <div class="module-card__links"><a class="button button--primary" href="reports/zelinka-2023-acp/index.html">Replication report</a><a class="button button--secondary" href="https://doi.org/10.5194/acp-23-8879-2023">Paper</a></div>
-</article>
-<article class="module-card replicate-card" id="zhang-2022-acp" data-status="Partial reproduction" data-sources="">
-  <p class="module-card__type">Partial reproduction · Aerosols · Radiative forcing · E3SM</p>
-  <h3>Zhang et al. 2022 · Aerosol effective radiative forcing in E3SM</h3>
-  <p class="module-card__description">Recreate the EAMv1 aerosol forcing diagnostics from archived data and apply them to EAMv3 wildfire experiments.</p>
-  
-  <div class="module-card__links"><a class="button button--primary" href="reports/zhang-2022-acp/index.html">Replication report</a><a class="button button--secondary" href="https://doi.org/10.5194/acp-22-9129-2022">Paper</a></div>
-</article>
-<article class="module-card replicate-card" id="leach-2021-fair-v2" data-status="Partial reproduction" data-sources="emh reports">
-  <p class="module-card__type">Partial reproduction · Climate response · FaIR</p>
-  <h3>Leach et al. 2021 · FaIR v2 climate response</h3>
-  <p class="module-card__description">Run the archived FaIR v2 workflow and compare historical and scenario responses with the paper.</p>
-  <p class="module-card__note">3 EMH cases</p><details class="replicate-evidence"><summary>Related cases and reports</summary><ul><li><a href="../../EarthModelHub/docs/simulations/reports/library/leach-2021-fair-v2-report/report.html">EMH FaIR reproduction report</a></li></ul></details>
-  <div class="module-card__links"><a class="button button--primary" href="reports/leach-2021-fair-v2/index.html">Replication report</a><a class="button button--secondary" href="https://doi.org/10.5194/gmd-14-3007-2021">Paper</a><a class="button button--secondary" href="../../EarthModelHub/docs/simulations/index.html?task=leach_2021_fair_v2">EMH cases</a></div>
-</article>
-<article class="module-card replicate-card" id="skeie-2020-ozone-rf" data-status="Archive analysis" data-sources="">
-  <p class="module-card__type">Archive analysis · Ozone · Radiative forcing · CMIP</p>
-  <h3>Skeie et al. 2020 · Historical ozone radiative forcing</h3>
-  <p class="module-card__description">Use ozone radiative kernels and archived model output to compare historical ozone forcing estimates.</p>
-  
-  <div class="module-card__links"><a class="button button--primary" href="reports/skeie-2020-ozone-rf/index.html">Replication report</a><a class="button button--secondary" href="https://doi.org/10.1038/s41612-020-00131-0">Paper</a></div>
-</article>
-<article class="module-card replicate-card" id="lawrence-2019-clm5" data-status="Smoke tests" data-sources="emh reports">
-  <p class="module-card__type">Smoke tests · Land surface · CESM2 · CLM5</p>
-  <h3>Lawrence et al. 2019 · CLM5 land surface experiments</h3>
-  <p class="module-card__description">Configure the CLM5 land experiment matrix and check cold starts at the target and coarser resolutions.</p>
-  <p class="module-card__note">54 EMH cases</p><details class="replicate-evidence"><summary>Related cases and reports</summary><ul><li><a href="../../EarthModelHub/docs/simulations/reports/library/lawrence-2019-clm5-report/report.html">EMH CLM5 reproduction report</a></li></ul></details>
-  <div class="module-card__links"><a class="button button--primary" href="reports/lawrence-2019-clm5/index.html">Replication report</a><a class="button button--secondary" href="https://doi.org/10.1029/2018MS001583">Paper</a><a class="button button--secondary" href="../../EarthModelHub/docs/simulations/index.html?task=lawrence_2019_clm5">EMH cases</a></div>
-</article>
-    </div>
-    <p id="replicate-empty" class="empty-state" hidden>No projects match these filters.</p>
+        </div>
+        <p id="replicate-empty" class="rep-empty" hidden>No projects match these filters.</p>
+      </div>
+    </section>
   </main>
-  <footer class="page-width footer">
+  <footer class="rep-wrap rep-footer">
     <span>ResearchStarter</span>
     <a href="#top">Back to top</a>
   </footer>

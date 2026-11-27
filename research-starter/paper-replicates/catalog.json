@@ -18,7 +18,39 @@
       "emh_tasks": [],
       "emh_evidence": null,
       "report_summary": "The archive analysis compares aerosol–cloud and aerosol–radiation effects, spatial significance, regional attribution, and fast and slow climate responses. The ozone contribution remains part of the radiative residual until a dedicated radiation calculation is available.",
-      "report_digest": ""
+      "report_digest": "",
+      "comparison": {
+        "title": "Net wildfire radiative effect",
+        "unit": "W m⁻²",
+        "reference_label": "Preprint Table 1",
+        "reproduction_label": "Archive recomputation",
+        "note": "These 30-year averages come from the fixed sea surface temperature experiment with all wildfire source regions. Negative values indicate cooling at the top of the atmosphere.",
+        "source_label": "Preprint and Table 1",
+        "source_url": "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-3239/",
+        "rows": [
+          {
+            "label": "Global",
+            "reference": -0.71,
+            "reference_digits": 2,
+            "reproduced": -0.7066,
+            "reproduced_digits": 4
+          },
+          {
+            "label": "Northern Hemisphere",
+            "reference": -0.91,
+            "reference_digits": 2,
+            "reproduced": -0.9081,
+            "reproduced_digits": 4
+          },
+          {
+            "label": "Southern Hemisphere",
+            "reference": -0.51,
+            "reference_digits": 2,
+            "reproduced": -0.5052,
+            "reproduced_digits": 4
+          }
+        ]
+      }
     },
     {
       "id": "nawaz-2026-gc-adjoint",
@@ -95,7 +127,25 @@
       "emh_tasks": [],
       "emh_evidence": null,
       "report_summary": "Paired 12 km SCREAM archive data support an annual forcing comparison. A one-day interactive EAM pair validates startup and diagnostics. The long-term interactive EAM forcing comparison remains open.",
-      "report_digest": ""
+      "report_digest": "",
+      "comparison": {
+        "title": "12 km SCREAM aerosol effective radiative forcing",
+        "unit": "W m⁻²",
+        "reference_label": "Published value",
+        "reproduction_label": "Archive recomputation",
+        "note": "The recomputation uses paired present-day and preindustrial output from September 2019 through August 2020. The interactive 100 km aerosol run has one day of local evidence.",
+        "source_label": "Paper and Figure 2",
+        "source_url": "https://doi.org/10.5194/acp-25-15105-2025",
+        "rows": [
+          {
+            "label": "Global annual mean",
+            "reference": -1.95,
+            "reference_digits": 2,
+            "reproduced": -1.947709,
+            "reproduced_digits": 6
+          }
+        ]
+      }
     },
     {
       "id": "zelinka-2023-acp",
@@ -114,7 +164,25 @@
       "emh_tasks": [],
       "emh_evidence": null,
       "report_summary": "The analysis compares archived APRP calculations and double radiation calls for CMIP5 and CMIP6 members. The detailed report tracks unavailable members, numerical agreement and radiative budget closure.",
-      "report_digest": ""
+      "report_digest": "",
+      "comparison": {
+        "title": "Shortwave forcing ratio under the insolation substitution",
+        "unit": "dimensionless",
+        "reference_label": "Published Figure 2",
+        "reproduction_label": "Archive recomputation",
+        "note": "The ratio compares combined aerosol–radiation and aerosol–cloud forcing with net shortwave substituted for incident sunlight, relative to the corrected method. Across-model standard deviations were 0.05 in the paper and 0.048 in the recomputation.",
+        "source_label": "Paper and Figure 2",
+        "source_url": "https://doi.org/10.5194/acp-23-8879-2023",
+        "rows": [
+          {
+            "label": "Mean across 20 CMIP6 models",
+            "reference": 0.77,
+            "reference_digits": 2,
+            "reproduced": 0.766,
+            "reproduced_digits": 3
+          }
+        ]
+      }
     },
     {
       "id": "zhang-2022-acp",
@@ -133,7 +201,39 @@
       "emh_tasks": [],
       "emh_evidence": null,
       "report_summary": "The archive analysis regenerates paper figures, supplement and tables. The EAMv3 wildfire experiments provide an application of the diagnostic workflow, with their own matched short integrations and comparisons.",
-      "report_digest": ""
+      "report_digest": "",
+      "comparison": {
+        "title": "2010 minus 1850 aerosol effective radiative forcing",
+        "unit": "W m⁻²",
+        "reference_label": "Published Table 2",
+        "reproduction_label": "Archive recomputation",
+        "note": "These are the global annual means at the top of the atmosphere for EAMv1 experiment E2010. The EAMv3 wildfire runs use separate configurations and periods.",
+        "source_label": "Paper and Table 2",
+        "source_url": "https://doi.org/10.5194/acp-22-9129-2022",
+        "rows": [
+          {
+            "label": "Net",
+            "reference": -1.64,
+            "reference_digits": 2,
+            "reproduced": -1.638166,
+            "reproduced_digits": 6
+          },
+          {
+            "label": "Shortwave",
+            "reference": -2.43,
+            "reference_digits": 2,
+            "reproduced": -2.428034,
+            "reproduced_digits": 6
+          },
+          {
+            "label": "Longwave",
+            "reference": 0.79,
+            "reference_digits": 2,
+            "reproduced": 0.789868,
+            "reproduced_digits": 6
+          }
+        ]
+      }
     },
     {
       "id": "leach-2021-fair-v2",
@@ -170,7 +270,34 @@
         ]
       },
       "report_summary": "The EMH report tracks figures redrawn from new FaIR outputs and the remaining ensemble constraints and figures. Open the EMH report for the comparisons and supporting data.",
-      "report_digest": "df25bbbe9bafbd24dffcce1228ef92e3235ee199435a03b29b722a2bd9d7417c"
+      "report_digest": "1a37c7233b8bcf7a94c6d4c344ee7728a8c4a835c78a3bf72386ffd7f309ec33",
+      "comparison": {
+        "title": "FaIR warming near CO₂ doubling",
+        "unit": "K",
+        "reference_label": "Configured TCR",
+        "reproduction_label": "EMH simulation",
+        "note": "The run checks the default transient climate response parameter with an initial CO₂ concentration of 278 ppm. The paper's Figure 3 uses a protocol starting at 284 ppm.",
+        "source_label": "EMH FaIR reproduction report",
+        "source_url": "https://liang-jiarui.github.io/EarthModelHub/docs/simulations/reports/library/leach-2021-fair-v2-report/report.html",
+        "rows": [
+          {
+            "label": "1% CO₂ increase, year 70",
+            "reference": 1.79,
+            "reference_digits": 2,
+            "reproduced": 1.796,
+            "reproduced_digits": 3
+          }
+        ]
+      },
+      "emh_figures": [
+        {
+          "title": "Historical and scenario concentrations",
+          "alt": "Historical and Shared Socioeconomic Pathway greenhouse gas concentrations from the reproduced FaIR v2 run.",
+          "width": 2231,
+          "height": 2229,
+          "url": "../../EarthModelHub/docs/simulations/reports/library/leach-2021-fair-v2-report/figures/ours/fig2.png"
+        }
+      ]
     },
     {
       "id": "skeie-2020-ozone-rf",
@@ -189,7 +316,39 @@
       "emh_tasks": [],
       "emh_evidence": null,
       "report_summary": "The report compares completed historical windows and emissions snapshots with the author's archive. It records the alternative UKESM1-0-LL pressure-level input as a sensitivity calculation.",
-      "report_digest": ""
+      "report_digest": "",
+      "comparison": {
+        "title": "2010 global total ozone radiative forcing",
+        "unit": "W m⁻²",
+        "reference_label": "Author archive",
+        "reproduction_label": "Archive recomputation",
+        "note": "Each pair compares all-sky forcing at the tropopause after stratospheric temperature adjustment. The CMIP6 pairs use the 2005–2014 average against 1850–1859, and OsloCTM3 uses two emissions snapshots with fixed 2010 meteorology.",
+        "source_label": "Author's ozone forcing archive",
+        "source_url": "https://doi.org/10.11582/2020.00030",
+        "rows": [
+          {
+            "label": "MRI-ESM2-0",
+            "reference": 0.3859,
+            "reference_digits": 5,
+            "reproduced": 0.38258,
+            "reproduced_digits": 5
+          },
+          {
+            "label": "BCC-ESM1",
+            "reference": 0.36114,
+            "reference_digits": 5,
+            "reproduced": 0.35568,
+            "reproduced_digits": 5
+          },
+          {
+            "label": "OsloCTM3",
+            "reference": 0.52455,
+            "reference_digits": 5,
+            "reproduced": 0.52121,
+            "reproduced_digits": 5
+          }
+        ]
+      }
     },
     {
       "id": "lawrence-2019-clm5",

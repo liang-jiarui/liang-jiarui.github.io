@@ -33681,5 +33681,118 @@
       "check": "python -m src.simulations check @install_smoke/cesm3/cesm3_0_beta06/smoke",
       "preview": "python -m src.simulations check @install_smoke/cesm3/cesm3_0_beta06/smoke"
     }
+  },
+  {
+    "id": "@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
+    "task": "benchmark",
+    "name": "benchmark_20150101_merra2_pbl",
+    "model": "gcadj",
+    "version": "gcadj_hemco_tang_2023",
+    "task_title": "Benchmark experiments",
+    "task_about": "",
+    "title": "GC-Adjoint-HEMCO v35n · MERRA-2 PBL 梯度 benchmark",
+    "description": "24 小时被动 CO 边界层混合。全球 3312 个近地面格点的伴随与二阶有限差分最大相对误差 0.001094%，独立复跑与本地基线逐字节一致。这里扰动的是初始 CO，论文 Fig. 6(b) 扰动的是 CO 排放。",
+    "compset": "被动 CO 初值敏感度 · 仅 PBL 混合",
+    "res": "全球 4°×5°，47 层",
+    "group": "benchmark",
+    "role": "validation",
+    "category": "benchmark",
+    "period": {
+      "start": "2015-01-01T00:00:00Z",
+      "end": "2015-01-02T00:00:00Z"
+    },
+    "source_actual_period": {
+      "start": "2015-01-01T00:00:00Z",
+      "end": "2015-01-02T00:00:00Z"
+    },
+    "source_success": true,
+    "source_run_status": "completed",
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "Tang et al. (2023)",
+        "url": "https://gmd.copernicus.org/articles/16/6377/2023/"
+      },
+      {
+        "label": "Published source",
+        "url": "https://zenodo.org/records/7512111"
+      }
+    ],
+    "reports": [
+      {
+        "label": "Reproduction report (PDF)",
+        "path": "reports/gcadj/merra2-pbl-report.pdf"
+      },
+      {
+        "label": "Baseline and reproduction figure (PDF)",
+        "path": "reports/gcadj/merra2-pbl-comparison.pdf"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl"
+    }
+  },
+  {
+    "id": "@benchmark/gcadj/gcadj_v36/benchmark_36_001",
+    "task": "benchmark",
+    "name": "benchmark_36_001",
+    "model": "gcadj",
+    "version": "gcadj_v36",
+    "task_title": "Benchmark experiments",
+    "task_about": "",
+    "title": "GC-adjoint v36 · GEOS-5 官方 benchmark 36_001",
+    "description": "UCX 全化学，比较 O₃ 对初始 NO 的伴随与二阶有限差分梯度。运行配置已准备，缺原始 GEOS-5 A3、A6 和 I6 二进制气象及可访问的官方参考输出。",
+    "compset": "UCX 全化学 · O₃ 对初始 NO 的敏感度",
+    "res": "全球 4°×5°",
+    "group": "benchmark",
+    "role": "validation",
+    "category": "benchmark",
+    "period": {
+      "start": "2010-01-01T00:00:00Z",
+      "end": "2010-01-01T06:00:00Z"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "source_run_status": "configuration_only",
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "v36 UCX reference",
+        "url": "https://gmd.copernicus.org/articles/17/5689/2024/"
+      }
+    ],
+    "reports": [],
+    "commands": {
+      "check": "python -m src.simulations check @benchmark/gcadj/gcadj_v36/benchmark_36_001"
+    }
+  },
+  {
+    "id": "@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_pbl",
+    "task": "benchmark",
+    "name": "pbl_20130701_geosfp_2x25",
+    "model": "gcadj",
+    "version": "gcadj_v36",
+    "task_title": "Benchmark experiments",
+    "task_about": "",
+    "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° PBL 梯度候选",
+    "description": "后续拟采用的气象与网格。原版 v36 的 3 小时正向积分结束，PBL 伴随回算发生段错误，尚无完成的梯度对比。另有同气象与网格的已通过正向短测。",
+    "compset": "被动 CO 初值敏感度 · 仅 PBL 混合",
+    "res": "全球 2°×2.5°，72 层",
+    "group": "benchmark",
+    "role": "validation",
+    "category": "benchmark",
+    "period": {
+      "start": "2013-07-01T00:00:00Z",
+      "end": "2013-07-01T03:00:00Z"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "source_run_status": "failed",
+    "controls_summary": {},
+    "links": [],
+    "reports": [],
+    "commands": {
+      "check": "python -m src.simulations check @benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_pbl"
+    }
   }
 ]

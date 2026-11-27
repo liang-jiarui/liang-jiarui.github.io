@@ -1,7 +1,73 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-27T01:46:00Z",
+  "updated_at": "2026-11-27T01:49:55Z",
   "entries": [
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-Adjoint-HEMCO v35n · MERRA-2 PBL 梯度 benchmark",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_hemco_tang_2023%2Fbenchmark_20150101_merra2_pbl",
+      "keywords": [
+        "2015-01-01T00:00:00Z",
+        "2015-01-02T00:00:00Z",
+        "@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
+        "Benchmark experiments",
+        "benchmark",
+        "benchmark_20150101_merra2_pbl",
+        "completed",
+        "gcadj",
+        "gcadj_hemco_tang_2023",
+        "validation",
+        "全球 4°×5°，47 层",
+        "被动 CO 初值敏感度 · 仅 PBL 混合"
+      ],
+      "description": "24 小时被动 CO 边界层混合。全球 3312 个近地面格点的伴随与二阶有限差分最大相对误差 0.001094%，独立复跑与本地基线逐字节一致。这里扰动的是初始 CO，论文 Fig. 6(b) 扰动的是 CO 排放。"
+    },
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_36_001",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-5 官方 benchmark 36_001",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_36_001",
+      "keywords": [
+        "2010-01-01T00:00:00Z",
+        "2010-01-01T06:00:00Z",
+        "@benchmark/gcadj/gcadj_v36/benchmark_36_001",
+        "Benchmark experiments",
+        "UCX 全化学 · O₃ 对初始 NO 的敏感度",
+        "benchmark",
+        "benchmark_36_001",
+        "configuration_only",
+        "gcadj",
+        "gcadj_v36",
+        "validation",
+        "全球 4°×5°"
+      ],
+      "description": "UCX 全化学，比较 O₃ 对初始 NO 的伴随与二阶有限差分梯度。运行配置已准备，缺原始 GEOS-5 A3、A6 和 I6 二进制气象及可访问的官方参考输出。"
+    },
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_pbl",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° PBL 梯度候选",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_geosfp_2x25_pbl",
+      "keywords": [
+        "2013-07-01T00:00:00Z",
+        "2013-07-01T03:00:00Z",
+        "@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_pbl",
+        "Benchmark experiments",
+        "benchmark",
+        "failed",
+        "gcadj",
+        "gcadj_v36",
+        "pbl_20130701_geosfp_2x25",
+        "validation",
+        "全球 2°×2.5°，72 层",
+        "被动 CO 初值敏感度 · 仅 PBL 混合"
+      ],
+      "description": "后续拟采用的气象与网格。原版 v36 的 3 小时正向积分结束，PBL 伴随回算发生段错误，尚无完成的梯度对比。另有同气象与网格的已通过正向短测。"
+    },
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
       "hub": "EMH",
@@ -24403,6 +24469,16 @@
       "description": "E03/RG; 1001-01-01 至 1201-01-01（终点不含）；20 年 × 10 段。候选复现设置，尚未建例或积分。"
     },
     {
+      "id": "emh:task:benchmark",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "Benchmark experiments",
+      "url": "../EarthModelHub/docs/simulations/?task=benchmark",
+      "keywords": [
+        "benchmark"
+      ]
+    },
+    {
       "id": "emh:task:bth_ozone_camx",
       "hub": "EMH",
       "type": "Task",
@@ -30849,6 +30925,45 @@
   ],
   "recent": [
     {
+      "id": "emh:task:benchmark",
+      "hub": "EMH",
+      "type": "Task",
+      "title": "Benchmark experiments",
+      "url": "../EarthModelHub/docs/simulations/?task=benchmark",
+      "date": "2026-11-27T01:49:55Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-Adjoint-HEMCO v35n · MERRA-2 PBL 梯度 benchmark",
+      "description": "24 小时被动 CO 边界层混合。全球 3312 个近地面格点的伴随与二阶有限差分最大相对误差 0.001094%，独立复跑与本地基线逐字节一致。这里扰动的是初始 CO，论文 Fig. 6(b) 扰动的是 CO 排放。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_hemco_tang_2023%2Fbenchmark_20150101_merra2_pbl",
+      "date": "2026-11-27T01:49:55Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_36_001",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-5 官方 benchmark 36_001",
+      "description": "UCX 全化学，比较 O₃ 对初始 NO 的伴随与二阶有限差分梯度。运行配置已准备，缺原始 GEOS-5 A3、A6 和 I6 二进制气象及可访问的官方参考输出。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_36_001",
+      "date": "2026-11-27T01:49:55Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_pbl",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° PBL 梯度候选",
+      "description": "后续拟采用的气象与网格。原版 v36 的 3 小时正向积分结束，PBL 伴随回算发生段错误，尚无完成的梯度对比。另有同气象与网格的已通过正向短测。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_geosfp_2x25_pbl",
+      "date": "2026-11-27T01:49:55Z",
+      "change": "added"
+    },
+    {
       "id": "emh:simulation:@install_smoke/gcadj/gcadj_v36/smoke_geosfp_transport_6h_i3_psc",
       "hub": "EMH",
       "type": "Simulation",
@@ -31057,46 +31172,6 @@
       "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin_postad",
       "date": "2026-11-24T00:55:36Z",
       "change": "updated"
-    },
-    {
-      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1850_1900",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "FireEarth · ELM-CN · 历史期 1850–1900",
-      "description": "ELM-CN 作物与灌溉",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fhist_1850_1900",
-      "date": "2026-11-23T23:50:47Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/hist_1901_2023",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "FireEarth · ELM-CN · 历史期 1901–2023",
-      "description": "ELM-CN 作物与灌溉",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fhist_1901_2023",
-      "date": "2026-11-23T23:50:47Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@fireearth_elm_cn_crop/e3sm/E3SM_v3_0_2/ssp245_2024_2100",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "FireEarth · ELM-CN · SSP2-4.5 2024–2100",
-      "description": "ELM-CN 作物与灌溉",
-      "url": "../EarthModelHub/docs/simulations/?q=%40fireearth_elm_cn_crop%2Fe3sm%2FE3SM_v3_0_2%2Fssp245_2024_2100",
-      "date": "2026-11-23T23:50:47Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GCB2026 · ELM f19 · S3 · 1700–1849",
-      "description": "从平衡 restart 启动。CO₂ 自 1700 年历史变化，循环 1901–1920 年气象。土地利用和氮沉降沿用输入序列首年 1850。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3",
-      "date": "2026-11-23T23:45:39Z",
-      "change": "added"
     },
     {
       "id": "mlhub:inference variable:cam_emis_ndep:Fire_NH3_as_N_kgN_ha_month",

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CESM–GEOS-Chem experiment protocol · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>Implementation and evaluation of the GEOS-Chem chemistry module version 13.1.2 within CESM v2.1</h1>
+<p>模型：CESM–GEOS-Chem；年份：2022；DOI：<a href="https://doi.org/10.5194/gmd-15-8669-2022"><code>10.5194/gmd-15-8669-2022</code></a>。</p>
+<p><a href="https://doi.org/10.5194/gmd-15-8669-2022">论文全文</a> · 本地 PDF · <a href="https://doi.org/10.5281/zenodo.6465076">作者代码</a> · 任务配置 · Gallery</p>
+<p>作者用来出图的是 <a href="https://github.com/CESM-GC/CESM-GC-Standalone/releases/tag/v1.0.0_review">CESM-GC v1.0.0_review</a>，CESM 2.1.1，GEOS-Chem 13.1.2。本机带 GEOS-Chem 化学的源码是 CESM 2.3 alpha17e。GCHP 13.1.2 没有安装。下面的 case 是按论文 §3 和 Table 6 写的草案。</p>
+<p>三套配置共用 2016 日历年做比较。C-GC 和 C-CC 先积 1 年自旋，S-GC 先积 6 个月。排放都经 HEMCO。C-GC 与 C-CC 的气象是 MERRA-2 规定动力，松弛时间 50 h；水汽在初始化之后由 CAM 物理计算。S-GC 除平流层比湿外，气象直接取 MERRA-2。</p>
+<h2>实验表格</h2>
+<p>日期起点包含、终点不包含。六段都是 draft，还没有积分。</p>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>论文试验</th>
+<th>模式</th>
+<th>网格</th>
+<th>积分</th>
+<th>初值来自</th>
+<th>交给</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01 自旋</td>
+<td>C-GC。GEOS-Chem 13.1.2，复杂 SOA，MAM4。Table 6，图 2–23</td>
+<td><code>HIST_CAM60%GEOSCHEM%HEMCO%SDYN_…</code></td>
+<td><code>f19_f19_mg17</code>，56 层至 1.65 hPa</td>
+<td>2015-01-01 至 2016-01-01</td>
+<td>S-GC 的 restart，缺的物种（含 MAM4）用 C-CC restart 填</td>
+<td>E01 2016</td>
+</tr>
+<tr>
+<td>E01 2016</td>
+<td>C-GC 的评估年。图 2–23，表 2–5</td>
+<td>同自旋</td>
+<td>同自旋</td>
+<td>2016-01-01 至 2017-01-01</td>
+<td>E01 自旋的 2016-01-01</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E02 自旋</td>
+<td>C-CC。MOZART-TS1，MAM4，VBS SOA。与 C-GC 同一气象和排放</td>
+<td><code>FCSD_HCO</code></td>
+<td><code>f19_f19_mg17</code>，56 层至 1.65 hPa</td>
+<td>2015-01-01 至 2016-01-01</td>
+<td>CESM 标准 restart（论文写的是 21 世纪初）</td>
+<td>E02 2016</td>
+</tr>
+<tr>
+<td>E02 2016</td>
+<td>C-CC 的评估年</td>
+<td>同自旋</td>
+<td>同自旋</td>
+<td>2016-01-01 至 2017-01-01</td>
+<td>E02 自旋的 2016-01-01</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E03 自旋</td>
+<td>S-GC。GCHP 13.1.2，复杂 SOA，本体气溶胶方案</td>
+<td>GCHP fullchem</td>
+<td>C48（约 2°×2.5°），72 层至 0.01 hPa</td>
+<td>2015-07-01 至 2016-01-01</td>
+<td>GEOS-Chem 13.1.2 自带的 10 年 restart</td>
+<td>E03 2016</td>
+</tr>
+<tr>
+<td>E03 2016</td>
+<td>S-GC 的评估年</td>
+<td>同自旋</td>
+<td>同自旋</td>
+<td>2016-01-01 至 2017-01-01</td>
+<td>E03 自旋的 2016-01-01</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>C-GC、C-CC 的 2015 年是按“评估年之前再积 1 年”排的。S-GC 的 2015-07-01 是按“评估年之前再积 6 个月”排的。论文没有写出这两个起始日。干沉降在 C-GC 用论文 §2.3.2 的选项 2：陆地类型和叶面积来自 CLM，GEOS-Chem 自己算沉降速度。这个开关还没写进 namelist。</p>
+<h2>配置对照</h2>
+<p>Table 6 里和积分有关的列。排放和边界条件来自 §3。</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>E01 C-GC</th>
+<th>E02 C-CC</th>
+<th>E03 S-GC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>化学</td>
+<td>GEOS-Chem 13.1.2</td>
+<td>MOZART-TS1</td>
+<td>GEOS-Chem 13.1.2</td>
+</tr>
+<tr>
+<td>气溶胶</td>
+<td>MAM4，化学侧按 GEOS-Chem 本体物种归并后再分回模态</td>
+<td>MAM4，五档 VBS</td>
+<td>本体方案，四档 VBS，不经过 MAM4</td>
+</tr>
+<tr>
+<td>生物源</td>
+<td>CLM 在线 MEGAN2.1</td>
+<td>同 C-GC</td>
+<td>离线 MEGAN2.1</td>
+</tr>
+<tr>
+<td>闪电 NOx</td>
+<td>CESM 在线参数化</td>
+<td>同 C-GC</td>
+<td>存档闪电密度和云顶高度</td>
+</tr>
+<tr>
+<td>沙尘</td>
+<td>CESM 在线 DEAD，论文结果 5984 Tg yr−1</td>
+<td>同 C-GC</td>
+<td>同一方案、不同缩放和网格，论文结果 1390 Tg yr−1</td>
+</tr>
+<tr>
+<td>海盐</td>
+<td>CESM 在线</td>
+<td>同 C-GC</td>
+<td>离线海盐，以及离线海盐溴、氯</td>
+</tr>
+<tr>
+<td>长寿命气体</td>
+<td>SSP2-4.5 地面边界</td>
+<td>同 C-GC</td>
+<td>WMO 2018 臭氧评估的历史排放</td>
+</tr>
+<tr>
+<td>气象</td>
+<td>MERRA-2 规定动力。温度、风、地面气压、地面温度和地面通量由再分析提供，松弛 50 h。去掉 MERRA-2 最上 16 层</td>
+<td>同 C-GC</td>
+<td>MERRA-2 全场规定。平流层比湿在线计算</td>
+</tr>
+<tr>
+<td>对流清除</td>
+<td>CAM6 的 CLUBB 浅对流和 Zhang–McFarlane 深对流。上升气流内的清除不单独计算</td>
+<td>同 C-GC</td>
+<td>用存档的对流质量通量，并在上升气流内清除</td>
+</tr>
+</tbody>
+</table>
+<p>库存 <code>FCnudged_GC</code> 是另一套做法：32 层 MERRA-2 松弛，use case 里 U、V、T 的系数是 0.06。按 6 小时一次分析，这个系数对应的时间尺度是 100 h，而且不松弛地面气压。论文写的是规定动力和 50 h，所以 E01 用带 <code>%SDYN</code> 的长名，并在 <code>user_nl_cam</code> 里把 <code>met_rlx_time</code> 设为 50。这条长名还没有库存 use case，56 层也不会由现有的 <code>-nlev</code> 规则自动加上。</p>
+<p>E02 的别名 <code>FCSD_HCO</code> 会选 <code>sd_trop_strat_vbs_cam6</code>，其中已经是 <code>met_rlx_time = 50</code> 和 56 层。气象文件只登记了 <code>0.9x1.25</code> 和 <code>0.47x0.63</code>。案例仍按论文写成 <code>f19_f19_mg17</code>。</p>
+<h2>论文里的排放和浓度差</h2>
+<p>表 2 是 2016 年全球 NOx，单位 Tg (N) yr−1。</p>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th style="text-align:right">C-GC</th>
+<th style="text-align:right">S-GC</th>
+<th style="text-align:right">C-CC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人为 + 生物质燃烧</td>
+<td style="text-align:right">40.1</td>
+<td style="text-align:right">39.1</td>
+<td style="text-align:right">39.6</td>
+</tr>
+<tr>
+<td>土壤</td>
+<td style="text-align:right">7.23</td>
+<td style="text-align:right">7.23</td>
+<td style="text-align:right">7.23</td>
+</tr>
+<tr>
+<td>闪电</td>
+<td style="text-align:right">6.05</td>
+<td style="text-align:right">5.82</td>
+<td style="text-align:right">5.71</td>
+</tr>
+</tbody>
+</table>
+<p>表 5 是海盐和海盐溴，单位 Tg yr−1。C-CC 没有单列。</p>
+<table>
+<thead>
+<tr>
+<th>物种</th>
+<th style="text-align:right">C-GC</th>
+<th style="text-align:right">S-GC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>细海盐 SALA</td>
+<td style="text-align:right">93.0</td>
+<td style="text-align:right">59.1</td>
+</tr>
+<tr>
+<td>粗海盐 SALC</td>
+<td style="text-align:right">2780</td>
+<td style="text-align:right">3576</td>
+</tr>
+<tr>
+<td>细海盐溴 BrSALA</td>
+<td style="text-align:right">0.166</td>
+<td style="text-align:right">0.126</td>
+</tr>
+<tr>
+<td>粗海盐溴 BrSALC</td>
+<td style="text-align:right">10.1</td>
+<td style="text-align:right">7.54</td>
+</tr>
+</tbody>
+</table>
+<p>臭氧层核心（热带约 10 hPa）三套配置相差小于 10%。C-GC 的对流层臭氧整体低于 C-CC 和 S-GC。相对 S-GC，南半球对流层约低 30%，北半球相差在 10% 以内。热带对流层上层的硫酸盐和一次有机物，C-GC 比 S-GC 高过 100%，论文归因于对流清除的算法不同。近地面臭氧，C-GC 比 C-CC 在南半球低 5.4 ppbv、在北半球低 7.9 ppbv。</p>
+<h2>查看配置</h2>
+<pre><code class="language-bash">python -m src.simulations list --task fritz_2022_cesm_gc
+python -m src.simulations show @fritz_2022_cesm_gc/cesm/cesm2_3_alpha17e/e01_eval_cgc_GEOSCHEM_SDYN_f19_2016
+python -m src.simulations check @fritz_2022_cesm_gc/cesm/cesm2_3_alpha17e/e02_spin_ccc_FCSD_HCO_f19_2015
+</code></pre>
+<p>六段都能在 Gallery 里按任务 <code>fritz_2022_cesm_gc</code> 筛出来。预检会停在 draft：初值、f19 规定动力气象、HEMCO 清单和 GCHP 源码都还没有。E01 要等 E03 和 E02 的 restart 能拼初值之后再开跑，然后才把 2016-01-01 交给评估年。</p>
+</article></main></body></html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wildfire chemistry, aerosols and ozone reproduction plan · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>野火短寿命组分、气溶胶与 O₃：复现路线</h1>
+<p>检索和下载核对：2026-11-18。三篇 PDF 已保存在本库；实验配置已注册到 Gallery。配置状态为 <code>draft</code>，尚未进行论文数值复现。缺项逐个列在 <code>case.yaml: science.blockers</code>，Gallery 会阻止把缺少科学设置的模板当成生产案例提交。</p>
+<h2>选文与顺序</h2>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>论文</th>
+<th>为什么选</th>
+<th>首个目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>较小规模入门</td>
+<td>Xie et al., 2025，ACP，<a href="https://doi.org/10.5194/acp-25-13547-2025">DOI</a></td>
+<td>已发表；GEOS-Chem 12.8.2 + RRTMG；棕碳漂白同时影响吸收、光解、O₃/OH；公开修改代码</td>
+<td>Table 1 五组敏感性；Fig. 7 的 BrC DRE</td>
+</tr>
+<tr>
+<td>野火主线</td>
+<td>Xu et al., 2026，EGUsphere，<a href="https://doi.org/10.5194/egusphere-2026-4288">DOI</a></td>
+<td>E3SMv3 的交互化学、GFED5、气溶胶及 O₃ 辐射效应均与研究目标直接对应；目前为预印本</td>
+<td>Table 1 两组；先核 Table 2 排放预算，再做 Fig. 12–13</td>
+</tr>
+<tr>
+<td>ERF 方法</td>
+<td>Kramer et al., 2026，GMD，<a href="https://doi.org/10.5194/gmd-19-4447-2026">DOI</a></td>
+<td>已发表的 RFMIP2.0/CMIP7 协议；提供原始 XLSX 表和全部诊断请求</td>
+<td>实现 Table 1 的 Tier 1 六组，先跑 control / 4xCO2 / aer</td>
+</tr>
+</tbody>
+</table>
+<p>RFMIP2.0 是协议论文，复现对象是边界条件、实验设计和 ERF 算法。它的 Fig. 1 展示的是 CMIP6/2014 结果，不能要求 EAMv3 的 CMIP7/2021 新实验重复其中数值。需要数值参照时可补读 <a href="https://doi.org/10.5194/acp-20-9591-2020">Smith et al., 2020</a>，并另建 CMIP6 任务，不能混改本任务的现代表征年。</p>
+<h2>目录约定</h2>
+<p>这三篇都是应用或实验协议论文，统一放 <code>applications</code>，无需在 CAM、EAM 和 GC 目录重复存 PDF。</p>
+<pre><code class="language-text">docs/papers/applications/&lt;paper_id&gt;/
+  paper.yaml / README.md / paper.pdf / paper.txt
+  assets.json                         # 下载 URL、大小、SHA-256
+  tables/*.xlsx / *.csv               # 出版商原表及机器可读导出
+  benchmarks.yaml                     # 要复核的数值与口径
+  config -&gt; ../../../../config/tasks/applications/&lt;paper_id&gt;
+config/tasks/applications/&lt;paper_id&gt;/
+  task.yaml                           # Gallery 唯一注册入口
+  &lt;model&gt;/&lt;version&gt;/&lt;experiment&gt;/
+    case.yaml                         # CIME 或 GC 案例与逐项缺项
+    experiment.yaml                   # 论文事实、扰动定义、未决设置
+    user_nl_eam                       # 已核实的部分 namelist（EAM）
+model/papers/&lt;paper_id&gt;/              # 作者代码缓存；在 gitignore 中
+run/tasks/&lt;paper_id&gt;/products/        # 后续诊断和图表
+</code></pre>
+<p>本次不修改已有 <code>xu_2026_fire_2023</code> 和 <code>fireearth_paper_replicates</code>。那些是 2023 年及不同网格/松弛的任务，不是新论文 1997–2022 年原始实验的完成证明。也不复用其中 CMIP7 混合排放文件来声称已实现 GFED5 + CEDS v2025_04_18。</p>
+<h2>对齐三个辐射指标</h2>
+<ol>
+<li>GC–RRTMG 使用规定的 MERRA-2 气象，适合对同一大气状态做成对辐射调用，诊断 DRE/IRF。它不能单独给出包含云和气象快速调整的 ERF。Xie 2025 的辐射计算是晴空，目标不是全天空 ERF。</li>
+<li>Xu 2026 使用随年份变化的观测 SST，研究 1997–2022 年火排放的辐射效应。地表约 −1.12 W m⁻²、TOA 约 −0.35 W m⁻²分属不同高度；O₃ TOA 约 +0.05 W m⁻²不能与地表 +0.07 混用。这些值也不能直接称为 RFMIP ERF。</li>
+<li>RFMIP2.0 的所有相关案例共用从该模型至少 30 年 piControl 得到的月气候态 SST/海冰；单一外强迫改变后，允许陆面、大气和云调整，<code>ERF_fSST = Δ⟨rsdt − rsut − rlut⟩</code>。EAM/CAM 为 <code>Δ⟨FSNTOA − FLNT⟩</code>，向下为正。晴空差和云辐射效应差不能直接命名为 ERFari/ERFaci；后者需双辐射调用或 APRP 等明确分解。</li>
+</ol>
+<p>O₃ 必须用三维柱及垂直分布验证，不能用近地面 O₃ 代替其辐射效应。去掉全部 O₃ 的辐射调用适合检验算法，但火致 O₃ 贡献还需要 ALL/NOFIRE 的成对结果。若其他成分和气象不同，此差分仍含背景依赖；纯 O₃ 归因应在相同大气状态下替换两套 O₃ 场。</p>
+<h2>实施顺序与验收</h2>
+<p>先恢复作者版本、排放映射和初始化，再做短时冒烟，最后扩展论文时段；冒烟的数值不能冒充全年或 26 年平均。</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>需要落实的内容</th>
+<th>验收证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>版本和输入</td>
+<td>代码提交、数据版本、网格和单位；全/无火共用非火源与相同边界条件</td>
+<td>文件清单和哈希；逐物种地面/高空/模态数排放对照</td>
+</tr>
+<tr>
+<td>排放预算</td>
+<td>Xu 的 GFED5 月排放、14 区注入高度、SOAG0/POM=1.5；不启用火 CH₄</td>
+<td>Table 2 全球年排放与年际标准差，先消除质量映射错误</td>
+</tr>
+<tr>
+<td>最小运行</td>
+<td>先 1–5 天，检查化学、辐射诊断场、守恒和配对设置</td>
+<td>namelist、日志、restart 与输出字段；尚不验论文均值</td>
+</tr>
+<tr>
+<td>正式统计</td>
+<td>GC 2019；EAM 1997–2022；RFMIP 分别预热后保留 30 个完整年</td>
+<td>原生网格面积、月份长度权重、单位和 TOA/SFC 符号一致</td>
+</tr>
+<tr>
+<td>论文比较</td>
+<td><code>benchmarks.yaml</code> 记录数值、来源和统计口径</td>
+<td>逐项比较报告；论文年际 SD 不是验收容差或集合误差</td>
+</tr>
+</tbody>
+</table>
+<p>论文没有给出的 spin-up 时长、restart 和精确生产 namelist 不自行补成“论文设定”。本库 RFMIP 模板选择额外 1 年预热 + 30 年分析，这是本地实施选择，需要看平衡情况延长。论文目标数值的最终容差应在锁定数据和版本后确定。</p>
+<pre><code class="language-bash">python scripts/papers/fire_forcing_assets.py            # 验证已下载文件，重新导出 CSV/文本
+python scripts/papers/fire_forcing_assets.py --download # 仅补下载缺失论文/原始表
+python scripts/papers/fire_forcing_assets.py --download-code # 恢复作者 BrC 源码缓存，校验后解压
+python -m src.simulations list --task xu_2026_fire_chemistry
+python -m src.simulations check kramer_2026_rfmip2
+python -m src.simulations build
+</code></pre>
+<p><code>check</code> 当前应返回缺项，不能通过改 <code>status</code> 跳过。补齐输入、生产 namelist 并验证配置后才将对应案例设为 ready。</p>
+<h2>从复现走向自己的野火研究</h2>
+<p>第一阶段用 EAM 完成上述原文复现。第二阶段才在 <code>config/tasks/work/</code> 建统一年份的野火设计：NOFIRE、仅火气体、仅火气溶胶、全部火源。设四组诊断分别为 F₀、Fɢ、Fₐ、Fɢₐ，则相互作用为 <code>Fɢₐ − Fɢ − Fₐ + F₀</code>。每组都须保留生物源、人为源、SOAG0 和颗粒数的完整映射；气体中的 SO₂ 和 SOA 前体具有气溶胶途径，分组须事先定义，不能直接把“气体效应”叫作“O₃ 效应”。</p>
+<p>相同设计可分别用 CAM-chem 和 EAM 估算固定 SST 的 ERF，用 GC–RRTMG 检验固定气象下的 O₃/气溶胶辐射归因。CAM/EAM 差值还包括机制、云和气象差异，应先统一排放、背景年及诊断定义。CH₄ 寿命间接强迫需额外的寿命/平衡响应实验；当前论文复现不包含这部分长期强迫。</p>
+</article></main></body></html>

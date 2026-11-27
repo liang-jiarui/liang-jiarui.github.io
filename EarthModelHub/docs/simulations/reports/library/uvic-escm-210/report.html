@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UVic ESCM v2.10 experiment protocol and historical baseline · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>Mengis et al. (2020) · UVic ESCM v2.10</h1>
+<p>Mengis 等评估了维多利亚大学地球系统气候模型 v2.10 的历史温度、碳通量、海冰和海洋示踪物。期刊为 <em>Geoscientific Model Development</em>，第 13 卷，4183–4204 页。正文与补充材料以 CC BY 4.0 发布，补充材料的个别内容沿用各自的版权条款。 <a href="https://doi.org/10.5194/gmd-13-4183-2020">论文全文</a> · 本地 PDF · 本地补充材料</p>
+<h2>模型和时空分辨率</h2>
+<p>UVic ESCM 属于中等复杂度地球系统模型。它耦合二维大气能量—水分平衡、MOM2 三维海洋环流、海冰、海洋生地化以及陆地植被、土壤和冻土碳。各分量的水平网格为经度 3.6° × 纬度 1.8°，有效网格和格点输出为 100 × 100。海洋有 19 个垂直层，厚度约 50–500 m。陆地地下有 14 层，上 8 层参与水文。论文报告普通台式机积分 100 模拟年约需 4.6–11.5 小时。 <a href="https://gmd.copernicus.org/articles/13/4183/2020/#section1">论文 §1、§2.1</a> · <a href="https://data.geomar.de/thredds/dodsC/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/5_2p10_co2emit/tavg.01860.01.01.nc.dds">格点输出维度</a></p>
+<p>论文历史试验的大气步长为 15 小时，海洋密度和示踪物步长为 30 小时，海洋斜压和正压速度步长为 18 分 45 秒，每 5 个模拟日耦合一次。历史诊断输出为全球年均 <code>tsi</code> 和格点十年均 <code>tavg</code>。季节性试验把输出频率设为每 10 日。 <a href="https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/5_2p10_co2emit/control.in">历史配置</a> · <a href="https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/6_2p10_seasonality/control.in">季节性配置</a></p>
+<p>UVic 官方提供 Fortran 源码与 <code>mk</code> 构建脚本。发布条款要求参加模型互比项目须事先获得许可，属于源码公开但带用途限制的发布。 UVic 发布页 · 源码包 · 构建脚本</p>
+<h2>论文试验</h2>
+<p>下表的六个作者归档试验在 Gallery 中各有一条案例记录。历史案例可以运行，另外五个保留为试验参考。单独存放的 <code>forcing_data</code> 包括网格、外部强迫和三个重启状态。 <a href="https://gmd.copernicus.org/articles/13/4183/2020/#section2">论文 §2.2–2.4</a> · <a href="https://hdl.handle.net/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861">GEOMAR 归档</a></p>
+<table>
+<thead>
+<tr>
+<th>作者目录</th>
+<th>设计</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1_spinup_10000yrs</code></td>
+<td>采用工业化前边界条件，从既有重启状态开始，按给定 CO₂ 浓度积分 10,000 年</td>
+<td>生成平衡态初值，诊断陆地风化通量</td>
+</tr>
+<tr>
+<td><code>2_4xCO2</code></td>
+<td>从自旋末态分支，CO₂ 浓度每年增加 1%，达到四倍后保持恒定，积分 1,000 年</td>
+<td>表 1 的四倍浓度气候响应与海洋热吸收</td>
+</tr>
+<tr>
+<td><code>3_2xCO2</code></td>
+<td>从自旋末态分支，CO₂ 浓度每年增加 1%，达到两倍后保持恒定，积分 1,000 年</td>
+<td>表 1 的两倍浓度平衡响应</td>
+</tr>
+<tr>
+<td><code>4_esm_piControl</code></td>
+<td>从自旋末态继续做工业化前排放驱动漂移试验。归档配置积分 1,500 年，作者记录原试验超过 2,500 年</td>
+<td>第 1,500 年的重启场给历史积分提供初值</td>
+</tr>
+<tr>
+<td><code>5_2p10_co2emit</code></td>
+<td>1850–2014 年，CO₂ 排放驱动</td>
+<td>历史温度、碳循环、海冰和海洋示踪物评估</td>
+</tr>
+<tr>
+<td><code>6_2p10_seasonality</code></td>
+<td>从历史积分的 2000 年初分支，积分至 2020 年初，每 10 日输出</td>
+<td>分析季节循环</td>
+</tr>
+</tbody>
+</table>
+<p>自旋归档配置要求读取既有重启场。公开的 <code>rest.10000yrs_spinup.nc.nc</code> 对应模型时钟第 39,300 年，是 10,000 年段的末态，可为两组 CO₂ 增长试验和漂移试验提供初值。正文图 10、图 12–16 和部分补充图采用了 UVic ESCM v2.9 的对照结果。 <a href="https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/1_spinup_10000yrs/control.in">自旋配置</a> · <a href="https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/README.txt">归档说明</a> · <a href="https://data.geomar.de/thredds/dodsC/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/forcing_data/rest.10000yrs_spinup.nc.nc.ascii?time">末态时间坐标</a> · <a href="https://gmd.copernicus.org/articles/13/4183/2020/#section3">论文 §3.3</a></p>
+<h2>本库历史基准</h2>
+<p>历史案例 对应 <code>5_2p10_co2emit</code>，从 <code>rest.1500yrs_drift.nc</code> 开始，使用无闰日历积分 60,225 日，涵盖 1850–2014 年。强迫包括化石 CO₂ 排放、由土地利用变化动态诊断的排放、非 CO₂ 温室气体、硫酸盐气溶胶、火山和太阳变化。作者配置固定风化通量为 8,703 kg C s⁻¹，并使用 <code>aero_scal=0.7</code> 和 <code>co2_fert_scal=0.7</code>。 <a href="https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/5_2p10_co2emit/">作者配置和输出</a> · <a href="https://data.geomar.de/downloads/20.500.12085/c565622a-9655-42bc-840c-c20e7dfd0861/forcing_data/">强迫和重启文件</a></p>
+<h2>运行与验收</h2>
+<p>从仓库根目录执行。历史短测使用作者归档的预处理源码、原始强迫和 1,500 年漂移重启场，只调整积分时长和输出频率。</p>
+<pre><code class="language-bash">python -m src.model.uvic run smoke
+python -m src.model.uvic run historical_co2emit --days 10
+python -m src.tasks.run mengis_2020_uvic_escm --dry-run
+</code></pre>
+<p>官方安装短测和历史案例的 1850 年初 10 日短测均已通过。各写出两组 5 日均诊断和终止重启场。日志和诊断见 安装短测验收 与 历史短测验收。</p>
+<p>完整历史积分使用 <code>python -m src.model.uvic run historical_co2emit</code>。完整积分与图表对照待执行。先与作者归档的 <code>tsi.01851.01.01.nc</code> 和 <code>tavg.01860.01.01.nc</code> 对齐无闰时间轴，报告共同年份的偏差和 RMSE，再比较论文图表。</p>
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>诊断和处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图 2a 全球温度</td>
+<td><code>tsi</code> 中的 <code>A_sat</code> 减去 1850–1900 年均值。输出的 °C 温差与 K 温差数值相同。</td>
+</tr>
+<tr>
+<td>图 2b 大气 CO₂</td>
+<td><code>tsi</code> 中的 <code>A_co2</code>，单位 ppm。</td>
+</tr>
+<tr>
+<td>图 2d 和表 2 全球碳收支</td>
+<td>核对化石 CO₂ 排放 <code>F_co2emit</code>、大气碳库 <code>A_totcarb</code>、大气至陆地和海洋通量 <code>F_carba2l</code> 和 <code>F_carba2o</code>。先按作者时间窗汇总年通量和碳库变化，确认土地利用排放的分项定义，再对照累计量（Pg C）。</td>
+</tr>
+</tbody>
+</table>
+<p>任务配置 · Gallery</p>
+</article></main></body></html>

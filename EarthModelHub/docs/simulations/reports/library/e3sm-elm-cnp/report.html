@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELMv1-CNP experiment protocol and archived comparisons · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>Yang et al. (2023) ELMv1-CNP 复现实验表</h1>
+<p>论文在全球 0.5° 离线陆面上评估 ELMv1-CNP，并和关掉磷限制的 ELMv1-CN 比较。ELMv1-CNP 在 CLM4.5 上加了预报磷循环：土壤无机磷、植被磷、凋落物和土壤有机磷都是预报量；植物生产和分解按供需限制磷；氮和磷谁更缺由 Liebig 定律决定；土壤无机磷和有机磷有垂直层次；磷酸酶使磷循环可以和碳氮分解脱开；吸附–解吸按土纲给参数。相对 CLM4.5，它去掉了养分限制对光合的瞬时下调，改用非结构性碳、氮、磷库做较慢的下调。火模块默认打开，土壤侵蚀不打开，碳氮磷循环算到 3.8 m。 <a href="https://doi.org/10.5194/bg-20-2813-2023">论文 §§2.1–2.2，表 1</a></p>
+<p>补充材料 Text S1 写非结构性碳库使用 25 °C 基础呼吸率 <code>brcpool = 10⁻⁹ g C m⁻² s⁻¹</code>、大约 3 年周转、<code>Q10 = 1.5</code>，养分库用 <code>Nstor = 3</code>。这里存在需要核实的差异：v1.0.0 的 RD 默认参数 <code>clm_params_c180312.nc</code> 含 <code>nstor=3</code>、<code>br_xr=10⁻⁸</code>、<code>q10_mr=1.5</code>，<code>CNMRespMod.F90</code> 的温度参考为 20 °C；代码只有 <code>br_xr &gt; 10⁻⁹</code> 才启用这一呼吸与取消瞬时光合下调的分支。按一阶速率计算，<code>10⁻⁸ s⁻¹</code> 约为 3.17 年周转，<code>10⁻⁹ s⁻¹</code> 约为 31.7 年。当前保留发行版源码和 RD 默认参数，没有为匹配补充材料直接修改科学代码。PFT 化学计量和土纲磷参数仍需与 Yang et al. (2016) 的表 S1、S2 核对。</p>
+<p>README 论文总表 · 任务配置 · Gallery · 本地 PDF · 补充材料 · <a href="https://doi.org/10.6084/m9.figshare.12021348">作者输出</a></p>
+<p>正文和补充材料的出版商 PDF 已放在上一级目录。下面的试验和数字来自 2026-11-18 读到的全文和补充材料。</p>
+<h2>实验表格</h2>
+<p>20 个阶段均已创建 CIME case 并通过 Slurm 数组 340099 编译，尚未积分；科学配置仍为草案。自旋在 §2.2，不在表 1 里。表 1 的 13 个试验都在下面。正文只写了一次自旋：加速分解时补充矿质磷，常规自旋打开碳氮磷。CN 各试验从这次常规自旋的末态把磷限制关掉，论文没有另写一套 CN 自旋。</p>
+<p>气候注 a 是循环 GSWP3 的 1901–1920 年。注 b 是 1901–2010 的逐年 GSWP3。瞬变气候试验在 1850–1900 仍循环 1901–1920，这是本仓库补的，论文没有写这 51 年用哪一段气象。PDF 文本层把 <code>Hist_CN_all</code> 的土地利用印成 “AD”；正文和 <code>Hist_CNP_all</code> 都是瞬变土地利用，CN 全强迫也按瞬变写。FACE 的正文和文中图 6 都是 2001–2010 加 200 ppm；PDF 文本层在该格下面还出现过 “1991–2010”，这里跟正文和图。</p>
+<p>候选宿主是已安装的 E3SM v1.0.0，提交 <code>a0ef6f6df7951236da4520536edba0b226495c70</code>。这一版全球 0.5° 离线网格别名是 <code>hcru_hcru</code>，已通过 <code>create_newcase</code>；配置目录保留原来的 <code>r05_r05</code> 名称以保持已有 ID 和链接稳定，实际网格以 <code>case.yaml</code> 的 <code>res</code> 为准。v1.0.0 和 v1.1.0 的别名 <code>I20TRGSWCNPRDCTCBC</code> 展开成 1850 长名，所以历史段直接写长名 <code>20TR_DATM%GSWP3v1_CLM45%CNPRDCTCBC_SICE_SOCN_MOSART_SGLC_SWAV</code>。<code>suplphos</code> 已在源码和工程案例生成的 namelist 中确认：<code>ALL</code> 补足磷，<code>NONE</code> 打开磷限制。</p>
+<p>20 个论文 case 均显式指定 v1.0 的源码、Python 2.7 CIME 环境、scratch 和 archive 路径；初始编译布局为 64 个 MPI rank；AD 运行改为共享单节点 12 rank、128 GiB，MPI 使用 <code>--bind-to none</code>，PIO 使用 NetCDF。20 个阶段已完成编译；用户随后授权下载输入并开始自旋，目前正在准备独立短测和 AD 积分。另有独立的 工程编译案例，它的网格是 1.9°×2.5°，不能计作本论文的 0.5° 科学验证。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>论文试验</th>
+<th>磷</th>
+<th>CO₂</th>
+<th>土地利用</th>
+<th>气候</th>
+<th>氮沉降</th>
+<th>积分</th>
+<th>段长</th>
+<th>初值来自</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AD</td>
+<td>§2.2 加速分解。补足矿质磷；茎和粗根死亡 ×10</td>
+<td>关</td>
+<td>1850</td>
+<td>1850</td>
+<td>注 a</td>
+<td>1850</td>
+<td>0001-01-01 至 0251-01-01</td>
+<td>5 年 × 50</td>
+<td>冷启动</td>
+</tr>
+<tr>
+<td>RG</td>
+<td>§2.2 常规自旋。开始时用 Yang et al. (2013) 填土壤无机磷</td>
+<td>开</td>
+<td>1850</td>
+<td>1850</td>
+<td>注 a</td>
+<td>1850</td>
+<td>0251-01-01 至 0851-01-01</td>
+<td>50 年 × 12</td>
+<td>AD 的 0251-01-01</td>
+</tr>
+<tr>
+<td>Ctrl_CNP</td>
+<td>表 1 Ctrl_CNP。常规自旋的 1850–2010 延续</td>
+<td>开</td>
+<td>1850</td>
+<td>1850</td>
+<td>注 a</td>
+<td>1850</td>
+<td>1850-01-01 至 2011-01-01</td>
+<td>23 年 × 7</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Ctrl_CN</td>
+<td>表 1 Ctrl_CN</td>
+<td>关</td>
+<td>1850</td>
+<td>1850</td>
+<td>注 a</td>
+<td>1850</td>
+<td>1850-01-01 至 2011-01-01</td>
+<td>23 年 × 7</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CNP_CO2</td>
+<td>表 1 Hist_CNP_CO2</td>
+<td>开</td>
+<td>历史</td>
+<td>1850</td>
+<td>注 a</td>
+<td>1850</td>
+<td>1850-01-01 至 2011-01-01</td>
+<td>23 年 × 7</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CN_CO2</td>
+<td>表 1 Hist_CN_CO2</td>
+<td>关</td>
+<td>历史</td>
+<td>1850</td>
+<td>注 a</td>
+<td>1850</td>
+<td>1850-01-01 至 2011-01-01</td>
+<td>23 年 × 7</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CNP_LUC</td>
+<td>表 1 Hist_CNP_LUC</td>
+<td>开</td>
+<td>1850</td>
+<td>历史</td>
+<td>注 a</td>
+<td>1850</td>
+<td>1850-01-01 至 2011-01-01</td>
+<td>23 年 × 7</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CN_LUC</td>
+<td>表 1 Hist_CN_LUC</td>
+<td>关</td>
+<td>1850</td>
+<td>历史</td>
+<td>注 a</td>
+<td>1850</td>
+<td>1850-01-01 至 2011-01-01</td>
+<td>23 年 × 7</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CNP_climate 1850</td>
+<td>表 1 Hist_CNP_climate</td>
+<td>开</td>
+<td>1850</td>
+<td>1850</td>
+<td>1850–1900 循环注 a</td>
+<td>1850</td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 年 × 1</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CNP_climate 1901</td>
+<td>表 1 Hist_CNP_climate</td>
+<td>开</td>
+<td>1850</td>
+<td>1850</td>
+<td>注 b</td>
+<td>1850</td>
+<td>1901-01-01 至 2011-01-01</td>
+<td>10 年 × 11</td>
+<td>本试验 1850 段的 1901-01-01</td>
+</tr>
+<tr>
+<td>Hist_CN_climate 1850</td>
+<td>表 1 Hist_CN_climate</td>
+<td>关</td>
+<td>1850</td>
+<td>1850</td>
+<td>1850–1900 循环注 a</td>
+<td>1850</td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 年 × 1</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CN_climate 1901</td>
+<td>表 1 Hist_CN_climate</td>
+<td>关</td>
+<td>1850</td>
+<td>1850</td>
+<td>注 b</td>
+<td>1850</td>
+<td>1901-01-01 至 2011-01-01</td>
+<td>10 年 × 11</td>
+<td>本试验 1850 段的 1901-01-01</td>
+</tr>
+<tr>
+<td>Hist_CNP_Ndep</td>
+<td>表 1 Hist_CNP_Ndep</td>
+<td>开</td>
+<td>1850</td>
+<td>1850</td>
+<td>注 a</td>
+<td>历史</td>
+<td>1850-01-01 至 2011-01-01</td>
+<td>23 年 × 7</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CN_NDep</td>
+<td>表 1 Hist_CN_NDep</td>
+<td>关</td>
+<td>1850</td>
+<td>1850</td>
+<td>注 a</td>
+<td>历史</td>
+<td>1850-01-01 至 2011-01-01</td>
+<td>23 年 × 7</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CNP_all 1850</td>
+<td>表 1 Hist_CNP_all</td>
+<td>开</td>
+<td>历史</td>
+<td>历史</td>
+<td>1850–1900 循环注 a</td>
+<td>历史</td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 年 × 1</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CNP_all 1901</td>
+<td>表 1 Hist_CNP_all</td>
+<td>开</td>
+<td>历史</td>
+<td>历史</td>
+<td>注 b</td>
+<td>历史</td>
+<td>1901-01-01 至 2001-01-01</td>
+<td>10 年 × 10</td>
+<td>本试验 1850 段的 1901-01-01</td>
+</tr>
+<tr>
+<td>Hist_CNP_all 2001</td>
+<td>表 1 Hist_CNP_all。也是 FACE 的对照</td>
+<td>开</td>
+<td>历史</td>
+<td>历史</td>
+<td>注 b</td>
+<td>历史</td>
+<td>2001-01-01 至 2011-01-01</td>
+<td>10 年 × 1</td>
+<td>本试验 1901 段的 2001-01-01</td>
+</tr>
+<tr>
+<td>Hist_CN_all 1850</td>
+<td>表 1 Hist_CN_all</td>
+<td>关</td>
+<td>历史</td>
+<td>历史</td>
+<td>1850–1900 循环注 a</td>
+<td>历史</td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 年 × 1</td>
+<td>RG 的 0851-01-01</td>
+</tr>
+<tr>
+<td>Hist_CN_all 1901</td>
+<td>表 1 Hist_CN_all</td>
+<td>关</td>
+<td>历史</td>
+<td>历史</td>
+<td>注 b</td>
+<td>历史</td>
+<td>1901-01-01 至 2011-01-01</td>
+<td>10 年 × 11</td>
+<td>本试验 1850 段的 1901-01-01</td>
+</tr>
+<tr>
+<td>FACE_CO2</td>
+<td>表 1 FACE_CO2。2001–2010 在历史 CO₂ 上再加 200 ppm</td>
+<td>开</td>
+<td>历史 +200 ppm</td>
+<td>历史</td>
+<td>注 b</td>
+<td>历史</td>
+<td>2001-01-01 至 2011-01-01</td>
+<td>10 年 × 1</td>
+<td>Hist_CNP_all 的 2001-01-01</td>
+</tr>
+</tbody>
+</table>
+<p>平衡判据写在 §2.2：全球 NEE 的 100 年平均小于 0.1 Pg C yr⁻¹，这是 C4MIP 的阈值（Jones et al., 2016）。图 S1 是对照试验里活性磷、次生矿物磷和闭蓄磷，161 年里几乎不动。ILAMB 里的其他陆面模式是 LS3MIP 离线结果，用来给分数做参照，不是这篇要重跑的试验。</p>
+<h2>对照指标</h2>
+<p>下面是正文和表 2 里可以直接回算的数。时段若未另写，碳氮磷收支是 2001–2010 年平均，来自全强迫历史试验。ILAMB 分数图没有逐格数字，完整分数在作者当时的 <a href="https://compy-dtn.pnl.gov/yang954/_build/">ILAMB 页面</a>。 <a href="https://doi.org/10.5194/bg-20-2813-2023">论文 §§3.1–3.5，表 2，图 2、6、7、11</a></p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th style="text-align:right">论文值</th>
+<th>对照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1850–2010 陆地碳累积，CN / CNP</td>
+<td style="text-align:right">22 / 7 Pg C</td>
+<td>Hoffman et al. (2014) 的均值约 −8 Pg C。CNP 更接近均值，尤其是 1950 年以后</td>
+</tr>
+<tr>
+<td>CO₂ 施肥引起的碳累积，CN / CNP</td>
+<td style="text-align:right">134 / 108 Pg C</td>
+<td>§3.5 写磷使这项降低 19.5%；§4.5.2 写降低 20%</td>
+</tr>
+<tr>
+<td>土地利用排放，CN / CNP</td>
+<td style="text-align:right">161.21 / 143.89 Pg C</td>
+<td>磷使这项大约低 11%，因为初始生物量更低</td>
+</tr>
+<tr>
+<td>氮沉降的碳累积</td>
+<td style="text-align:right">有磷时大约少三分之一</td>
+<td>正文没有给绝对 Pg C</td>
+</tr>
+<tr>
+<td>气候的历史碳累积</td>
+<td style="text-align:right">CN 和 CNP 都很小</td>
+<td>气候主要贡献季节和年际变化</td>
+</tr>
+<tr>
+<td>生态系统碳 / 植被 / 凋落物+粗木质残体 / 土壤</td>
+<td style="text-align:right">2588.73 / 575.45 / 122.5 / 1890.78 Pg C</td>
+<td>植被在 IPCC AR5 的 450–650 Pg C 内</td>
+</tr>
+<tr>
+<td>凋落物 / 粗木质残体</td>
+<td style="text-align:right">22.9 / 99.6 Pg C</td>
+<td>凋落物低于 Matthews (1997) 的 68 和 Pan et al. (2011) 的 43±3；粗木质残体高于 75 和 73±6</td>
+</tr>
+<tr>
+<td>0–1 m 土壤碳</td>
+<td style="text-align:right">1134.41 Pg C</td>
+<td>Todd-Brown et al. (2013) 由 HWSD 给出的范围 890–1660</td>
+</tr>
+<tr>
+<td>GPP</td>
+<td style="text-align:right">134.15 Pg C yr⁻¹</td>
+<td>Beer et al. (2010) 123±8；Jung et al. (2011) 119±6；Joiner et al. (2018) 140</td>
+</tr>
+<tr>
+<td>NPP</td>
+<td style="text-align:right">46.09 Pg C yr⁻¹</td>
+<td>Turner et al. (2006) 55±11；Smith et al. (2016) 33–49</td>
+</tr>
+<tr>
+<td>植被氮 / 土壤有机氮</td>
+<td style="text-align:right">4.36 / 188.79 Pg N</td>
+<td>生物固氮 89 Tg N yr⁻¹，落在 Vitousek et al. (2013) 的 40–100 和 Davies-Barnard and Friedlingstein (2020) 的 52–130</td>
+</tr>
+<tr>
+<td>氮吸收 / 氮淋溶</td>
+<td style="text-align:right">760 / 12 Tg N yr⁻¹</td>
+<td>Wang et al. (2018) GOLUM-CNP 为 570 和 38</td>
+</tr>
+<tr>
+<td>植被磷 / 土壤有机磷</td>
+<td style="text-align:right">0.36 / 3.75 Pg P</td>
+<td>矿物磷：上层 40 cm 63.24 Pg P，60 cm 81.32 Pg P；Yang et al. (2013) 上层 50 cm 为 45 Pg P</td>
+</tr>
+<tr>
+<td>磷吸收 / 淋溶 / 闭蓄</td>
+<td style="text-align:right">43 / 0.46 / 1.85 Tg P yr⁻¹</td>
+<td>GOLUM-CNP 为 26 / 2.6 / 1.3</td>
+</tr>
+<tr>
+<td>FACE 全球响应，GPP / NPP / 植被碳 / LAI</td>
+<td style="text-align:right">+23% / +25.8% / +18% / +5%</td>
+<td>效应是 2001–2010 处理除以对照。Ainsworth and Long (2005) 的光合约 +28%，干物质约 +17%</td>
+</tr>
+</tbody>
+</table>
+<p>图 11 的单因子碳累积是表 1 各历史试验在 1850–2010 的 NEE 累积，单位 Pg C。图 7 把 GPP、NPP、LAI、植被碳和非结构性碳的效应比对照到 FACE 荟萃分析。GOLUM-CNP 的生物群比较在图 5 和图 S2–S6，正文没有把小提琴图读成一张数表。</p>
+<h2>数据与源码</h2>
+<p><strong>核查日期：2026-11-18。</strong> 输入根目录为 <code>[local path]</code>。作者输入清单在表 S3：GSWP3 气象、LUH2 土地利用（Hurtt et al., 2020）、CMIP6 氮沉降（Hegglin et al., 2016）、CMIP6 CO₂（Meinshausen et al., 2017）、磷沉降（Mahowald et al., 2008）、土壤磷图（Yang et al., 2013）。代码入口是 <a href="https://doi.org/10.11578/E3SM/dc.20180418.36">E3SM v1.0</a>，输入数据页是 <a href="https://web.lcrc.anl.gov/public/e3sm/inputdata/">https://web.lcrc.anl.gov/public/e3sm/inputdata/</a>。</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>本机情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GSWP3 0.5° 气象 <code>atm/datm7/atm_forcing.datm7.GSWP3.0.5d.v1.c170516</code></td>
+<td><strong>目录在</strong>。论文写的是 GSWP3 v2，和这份 v1 是不是同一套还没核对</td>
+</tr>
+<tr>
+<td>CMIP6 CO₂ <code>atm/datm7/CO2/fco2_datm_global_simyr_1750-2014_CMIP6_c180929.nc</code></td>
+<td><strong>在</strong>，覆盖到 2014，够用到 2010</td>
+</tr>
+<tr>
+<td>FACE 的 CO₂ 加 200 ppm</td>
+<td><strong>没有</strong>。case 指向 <code>yang2023_cmip6_hist_plus200ppm_2001-2010.nc</code>，文件还没做</td>
+</tr>
+<tr>
+<td>CMIP6 历史氮沉降，0.9°×1.25°</td>
+<td><strong>在</strong> <code>fndep_clm_hist_b.e21.BWHIST.f09_g17.CMIP6-historical-WACCM.ensmean_1849-2015_monthly_0.9x1.25_c180926.nc</code>。case 用 bilinear 映射。作者是否用过这块 0.9° 场还不知道</td>
+</tr>
+<tr>
+<td>0.5° 1850 地表和历史土地利用</td>
+<td>已下载 v1 默认 <code>surfdata_360x720cru_simyr1850_c180216.nc</code>。原 c190418 候选的经度排列与原生 domain 相差 180°，初始化已排除；没有修改科学源码跳过网格检查。历史土地利用仍待核实，尚未确认为作者文件</td>
+</tr>
+<tr>
+<td>植被参数 <code>clm_params_c180312.nc</code></td>
+<td><strong>已下载</strong>，是 v1.0.0 非作物 RD 方案默认文件；<code>nstor=3</code>、<code>br_xr=10⁻⁸</code>。旧草案引用的 <code>clm_params.cbgc.c07292018.nc</code> 为 <code>nstor=0</code> 且缺少 <code>br_xr</code>，现已修正引用</td>
+</tr>
+<tr>
+<td>磷参数 <code>CNP_parameters_c180312.nc</code></td>
+<td><strong>在</strong></td>
+</tr>
+<tr>
+<td>磷沉降</td>
+<td>使用现有原生 1.9° 的 <code>fpdep_clm_hist_simyr2000_1.9x2.5_c150929.nc</code>，通过 <code>pdepmapalgo='bilinear'</code> 映射到陆面网格。作者实际重映射方式仍需核实</td>
+</tr>
+<tr>
+<td>E3SM v1.0 源码</td>
+<td><strong>已安装</strong>于 <code>model/e3sm/E3SM_v1_0_0</code>，陆面需要的 FATES、MPP、sBeTR 固定为上游标签的子模块提交；机器移植脚本为 <code>scripts/e3sm/prepare_elm_v1.py</code>，环境为 <code>machines/group_zheng_hpc/e3sm_v1.env</code></td>
+</tr>
+<tr>
+<td>发行版额外默认输入</td>
+<td>人口火驱动 <code>clmforc.Li_2012_hdm_0.5x0.5_AVHRR_simyr1850-2010_c130401.nc</code>、MOSART 输入 <code>MOSART_Global_half_20161014c.nc</code> 、0.5° 陆面 domain 和两份陆面–MOSART 映射均已完整下载并通过 NetCDF 读取检查；下载清单和 SHA256 在 <code>run/tasks/yang_2023_elm/spinup/downloads.json</code></td>
+</tr>
+</tbody>
+</table>
+<h2>查看配置</h2>
+<pre><code class="language-bash">python -m src.simulations list --task yang_2023_elm
+python -m src.simulations show @yang_2023_elm/e3sm/E3SM_v1_0_0/spin_ad_I1850GSWCNPRDCTCBC_r05_r05_0001-0250
+python -m src.simulations check @yang_2023_elm/e3sm/E3SM_v1_0_0/spin_ad_I1850GSWCNPRDCTCBC_r05_r05_0001-0250
+</code></pre>
+<p><code>check</code> 现在会报缺失项。20 个 case 的 <code>science.status</code> 都是 <code>draft</code>。同一套 ECA 试验在 <a href="../../library/e3sm-elm-eca/report.html">Zhu et al. (2019)</a>，耦合的 CTC/ECA 历史试验在 <a href="../../library/e3sm-elm-biogeochemistry/report.html">Burrows et al. (2020)</a>。这篇是供需途径的 ELMv1-CNP，不是 ECA。</p>
+</article></main></body></html>

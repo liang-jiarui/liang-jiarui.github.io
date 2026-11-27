@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEOS-Chem paper comparisons · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Paper reproduction</p><article><h1>GEOS-Chem 论文复现对比报告</h1>
+<p>核对日期为 2026-11-27。报告沿用 FireEarth <code>paper_replicates</code> 的实验总表、逐图核对、差值与证据格式。整篇独立复现要求重跑论文的关键实验及其对照，并完成相同时间、空间、单位和筛选口径的图表比较。用作者归档的模型输出重画图表，记录为后处理复算。</p>
+<h2>总表</h2>
+<table>
+<thead>
+<tr>
+<th>论文</th>
+<th>全文实验</th>
+<th>已经核对的结果</th>
+<th>整篇复现仍需完成</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Akinjole 等（2026）GEOS-Chem-hyd</strong></td>
+<td>Classic 14.0.0-rc.3 与作者 hyd 1.1.0。4°×5°、72 层、MERRA-2。2019-07-01 的 24 小时对比、2019 年 8 月四周、季节试验和独立 ISORROPIA-II</td>
+<td><strong>Figs. S1–S3 原实验重跑完成</strong>，16 组回归斜率和 R² 均匹配论文显示精度。三维 NOₓ 对照已用作者代码开始积分</td>
+<td>24 小时梯度和其他三维图表待验收。作者包中的跨月初值需核对。<a href="https://gmd.copernicus.org/articles/19/11243/2026/">论文</a> · <a href="https://doi.org/10.5281/zenodo.22754273">源码</a> · <a href="https://doi.org/10.5281/zenodo.22699830">运行配置和初值</a></td>
+</tr>
+<tr>
+<td><strong>Pendergrass 等（2023）CHEEREIO 1.0</strong></td>
+<td>Classic 14.0.2，2°×2.5°，24 成员，2018 年末自旋与预同化，2019 年逐周反演</td>
+<td><strong>Figs. 3–6 全部从论文归档的数值输出重画</strong>。年排放增加 6.47%，论文为 6.5%</td>
+<td>归档中的示例配置日期与论文 Table 2 不同。完整 LETKF 从头运行及原始 TROPOMI 筛选仍待验证。<a href="https://gmd.copernicus.org/articles/16/4793/2023/">论文</a> · <a href="https://doi.org/10.5281/zenodo.7781437">代码</a> · <a href="https://doi.org/10.5281/zenodo.7806312">数值归档</a></td>
+</tr>
+<tr>
+<td><strong>Pendergrass 等（2025）CHEEREIO 1.3.1</strong></td>
+<td>Classic 14.1.1，2°×2.5° MERRA-2，四组各 32 成员。两套湿地先验分别做排放优化和排放加浓度优化</td>
+<td><strong>五年后验全球总量和 Table 1 的 13 项后验值全部复算</strong>，均与论文整数值一致。另重算 Fig. 4b 和 Fig. 7 的最佳后验部分</td>
+<td>卫星读取已验证。完整反演仍需锁定论文使用的湿地先验、初扰动强度文件和随机初始化。<a href="https://acp.copernicus.org/articles/25/14353/2025/">论文</a> · <a href="https://doi.org/10.5281/zenodo.11534085">代码</a> · <a href="https://doi.org/10.5281/zenodo.15120761">配置与后验排放</a></td>
+</tr>
+</tbody>
+</table>
+<p>服务器的 <code>[local path]</code> 有 2018-01-01 至 2024-01-01 每天的 A1、A3cld、A3dyn、A3mstC、A3mstE 和 I3，六类各 2192 个文件。服务器已有 Classic 14.1.1。Akinjole 的 4°×5°、72 层按原实验保留，7 月气象从 GEOS-Chem 公共输入库补，CEDS v2021-06 和大部分化学与排放数据复用服务器。CHEEREIO 采用集合卡尔曼滤波，Akinjole 采用正向超对偶数。严格使用 GC-adjoint 的候选见文末。 <a href="https://geos-chem.readthedocs.io/en/stable/geos-chem-shared-docs/doc/gcid-data-on-aws.html">GEOS-Chem 公共输入数据</a></p>
+<h2>Akinjole 等（2026）</h2>
+<h3>原实验矩阵</h3>
+<table>
+<thead>
+<tr>
+<th>论文图表</th>
+<th>原始实验与对照</th>
+<th>本次状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figure 1</td>
+<td>方法示意</td>
+<td>阅读对照</td>
+</tr>
+<tr>
+<td>Figs. 2–6、Tables 1–2</td>
+<td>2019-07-01 至 07-02，SO₂、NOₓ、异戊二烯，三类超对偶扰动及对应有限差分。Table 1 为一阶，Table 2 为二阶。NOₓ 的方法比较还用 50% 与 100%</td>
+<td>5% NOₓ 的三个原始运行已开始积分，其他 10 个独立算例已提交依赖作业</td>
+</tr>
+<tr>
+<td>Fig. 7</td>
+<td>同一 24 小时窗口，标准 Classic 与 hyd。论文性能使用 Derecho 的 128 核</td>
+<td>原始 Classic 14.0.0-rc.3 和 HEMCO 3.5.0 已取得，已提交同一节点用 16 核依次计时的依赖作业。硬件和线程数会影响比值</td>
+</tr>
+<tr>
+<td>Fig. 8</td>
+<td>2019-08-01 至 08-29，四个周段依次继承前段重启，比较 O₃、PM₂.₅、NH₄⁺、生物源有机气溶胶的一阶和二阶响应</td>
+<td>待跑</td>
+</tr>
+<tr>
+<td>Figs. S1、S2、S4–S7</td>
+<td>单个排放步、气溶胶灵敏度、2019 年 2 月、5 月、11 月各一周</td>
+<td>S1 和 S2 共 12 个 20 分钟原始运行已全部完成。其余已核对作者配置索引</td>
+</tr>
+<tr>
+<td>Fig. S3</td>
+<td>297 K、77% RH，101×101 个总铵和总硝酸盐组合。对总硫酸盐扰动 ±5%，对照气相 NH₃ 的一阶和二阶半归一化敏感度</td>
+<td>已完成。硫酸盐是每次扫描的 64 个扰动方向组合之一。<a href="https://gmd.copernicus.org/articles/19/11243/2026/gmd-19-11243-2026-supplement.pdf#page=4">原图，补充材料第 4 页</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Fig. S3 结果</h3>
+<table>
+<thead>
+<tr>
+<th>阶数及样本</th>
+<th style="text-align:right">论文斜率</th>
+<th style="text-align:right">本次斜率</th>
+<th style="text-align:right">论文 R²</th>
+<th style="text-align:right">本次 R²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一阶，全部点</td>
+<td style="text-align:right">1.01</td>
+<td style="text-align:right">1.009078</td>
+<td style="text-align:right">0.995</td>
+<td style="text-align:right">0.994569</td>
+</tr>
+<tr>
+<td>一阶，正负扰动中求解分支相同</td>
+<td style="text-align:right">1.00</td>
+<td style="text-align:right">0.998376</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">0.999614</td>
+</tr>
+<tr>
+<td>二阶，全部点</td>
+<td style="text-align:right">0.26</td>
+<td style="text-align:right">0.258260</td>
+<td style="text-align:right">0.195</td>
+<td style="text-align:right">0.194958</td>
+</tr>
+<tr>
+<td>二阶，正负扰动中求解分支相同</td>
+<td style="text-align:right">1.00</td>
+<td style="text-align:right">1.000040</td>
+<td style="text-align:right">0.996</td>
+<td style="text-align:right">0.996453</td>
+</tr>
+</tbody>
+</table>
+<p>10,201 个气相 NH₃–硫酸盐比较点中有 404 个跨越 ISORROPIA 求解分支。二阶比较的 R² 从全部点的 0.195 升到分支相同点的 0.996。三次扫描使用作者原始程序和输入，正负扰动由程序提供的 <code>HYDMODE</code>、<code>INCMODE</code>、<code>PERT</code> 环境变量设置。作业 352796、352811_0、352811_1 全部结束。<a href="tables/akinjole_2026_s3.json">回归数值</a> · 诊断代码</p>
+<p><img src="figures/akinjole_2026_s3.png" alt="Akinjole Fig. S3 local derivative regressions" loading="lazy" /></p>
+<h3>Figs. S1–S2 结果</h3>
+<p>Fig. S1 的 NO 和 O₃ 两个初始浓度扰动，各完成超对偶、+1% 和 −1% 三个 20 分钟运行。复算在 46×72 个格点提取 HEMCO 船舶羽流诊断中的 O₃、NO₂、NO 和 HNO₃ 通量。作者配置里的 <code>_Total</code> 诊断在超对偶输出中混入部分未扰动源的实部，所以用承担浓度响应的 <code>_Ship</code> 字段做同口径对照。8 个面板的斜率与 R² 全部匹配论文显示精度。最偏离 1:1 的 (e) 是 O₃ 通量对 O₃ 初值，斜率 <strong>1.01444</strong>、R² <strong>0.998423</strong>，论文显示 <strong>1.01</strong> 和 <strong>0.998</strong>。本次拟合包含全部水平格点，报告原始截距供核对。 <a href="https://gmd.copernicus.org/articles/19/11243/2026/gmd-19-11243-2026-supplement.pdf#page=2">论文 Fig. S1</a> · <a href="tables/akinjole_2026_s1.csv">回归 CSV</a> · 复算脚本</p>
+<p><img src="figures/akinjole_2026_s1.png" alt="Akinjole Fig. S1 local HEMCO sensitivity regressions" loading="lazy" /></p>
+<p>Fig. S2 比较超对偶的二阶分量和混合有限差分。NO 初值扰动 ±1%，O₃ 初值扰动 ±0.01%。四个面板的斜率在 <strong>0.9999235–1.0001453</strong>，R² 都大于 <strong>0.9999985</strong>，匹配原图的 <strong>1.00</strong> 和 <strong>1.000</strong>。S1 和 S2 的 12 个 Slurm 子作业 352830_0 至 352830_11 均正常结束，且输出了四个 HEMCO 分量。 <a href="https://gmd.copernicus.org/articles/19/11243/2026/gmd-19-11243-2026-supplement.pdf#page=3">论文 Fig. S2</a> · <a href="tables/akinjole_2026_s2.csv">回归 CSV</a></p>
+<p><img src="figures/akinjole_2026_s2.png" alt="Akinjole Fig. S2 local HEMCO second-order sensitivity regressions" loading="lazy" /></p>
+<h3>三维运行记录</h3>
+<p>三维案例用作者归档的 <code>e-h/hyd run</code>、<code>forward run</code> 与 <code>backward run</code> 驱动原样编译。运行副本更新 NCAR 路径，并填入 HEMCO 闪电数据路径所需的原生 MERRA-2 分辨率。三组一致读入作者 2019-07-01 初值和服务器 CEDS。初次运行 352806 在第一个化学时间步附近发生段错误。将 <code>KMP_STACKSIZE</code> 从 128 MB 提到 384 MB 后，诊断作业 352813 和前后扰动的试跑 352814 都至少到达模式时间 <code>00:20</code>。24 小时作业 352817 和 352820 使用同样的栈设置，尚无可供 Tables 1–2 验收的完整日平均诊断。 本机三维运行脚本</p>
+<p>2026-11-27 08:42（北京时间），超对偶已积分至模式时间 08:10，正、负有限差分均至 06:20。作者包中 Figs. 2–6 的 32 份驱动按 SHA-256 去重后为 13 份。首批三个完成后，作业 352846 会复算 Tables 1–2 的 NO₂、O₃ 和 PM₂.₅ 共六项。作业 352841 等待这三个模式运行结束，再执行其余 10 份已编译驱动，覆盖 SO₂、异戊二烯和 50%/100% NOₓ。Fig. 7 的标准模式与 hyd 均已编译，等待作业 352843 依次计时。 日平均对比脚本 · 其余 24 小时运行脚本 · 计时运行脚本</p>
+<p>S1 和 S2 的作者包指定 20 分钟窗口和 HEMCO 的末步输出。继承 24 小时 <code>HISTORY.rc</code> 的日频浓度诊断会触发 <code>History_ReadCollectionData</code>，随后清理路径出现段错误。运行副本的 HISTORY 只启用了末步重启，保留作者 HEMCO 设置和原始模型驱动。 本机补充实验运行脚本</p>
+<p>完整的作者初值与配置包已通过 Zenodo MD5 <code>6906ea5e024c41997d71093a53a3db7d</code> 核对。归档里 2、5、7、8、11 月的五个 restart 同为 SHA-256 <code>073bdd0f74356a52f490143f29d304a36e0e954eea4d4f22cecfd159d7df8011</code>，NetCDF 的内部时间都是 2019-07-01。这为 7 月试验提供了日期相符的输入。8 月与季节试验需要核对论文原运行是否特意采用共同初值。 <a href="https://doi.org/10.5281/zenodo.22699830">作者配置和初值</a></p>
+<h2>Pendergrass 等（2023）</h2>
+<p>论文先做 4 个月集合自旋，再按 Table 2 从 2018-11-01 同化至 2020-01-01，设置 24 个成员、168 小时同化窗和 500 km 局地化。2018 年 11–12 月是调整初期，正则化参数 γ 为 5，2019 年正式窗口为 1。归档的 <code>ens_config_CH4.json</code> 的起止日期分别是 2019-05-01 和 2020-07-01。原实验用 SRON 科学产品 2.2.0，服务器的混合和业务产品各有独立版本。三个论文归档覆盖格点配对观测、全球先验和 24 成员后验 HEMCO 通量，均通过归档 MD5 核对。 <a href="https://gmd.copernicus.org/articles/16/4793/2023/#section4">Table 2 和 §4</a> · <a href="https://doi.org/10.5281/zenodo.7806312">作者归档</a></p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th style="text-align:right">论文</th>
+<th style="text-align:right">本次</th>
+<th style="text-align:right">本次减论文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019 年全球后验相对先验增加</td>
+<td style="text-align:right">6.5%</td>
+<td style="text-align:right">6.4745%</td>
+<td style="text-align:right">−0.0255 个百分点</td>
+</tr>
+<tr>
+<td>12 月先验 XCH₄ 偏差</td>
+<td style="text-align:right">−16.1 ppb</td>
+<td style="text-align:right">−16.179 ppb</td>
+<td style="text-align:right">−0.079 ppb</td>
+</tr>
+<tr>
+<td>12 月先验偏差空间标准差</td>
+<td style="text-align:right">12.3 ppb</td>
+<td style="text-align:right">12.011 ppb</td>
+<td style="text-align:right">−0.289 ppb</td>
+</tr>
+<tr>
+<td>12 月后验 XCH₄ 偏差</td>
+<td style="text-align:right">+1.2 ppb</td>
+<td style="text-align:right">+1.133 ppb</td>
+<td style="text-align:right">−0.067 ppb</td>
+</tr>
+<tr>
+<td>12 月后验偏差空间标准差</td>
+<td style="text-align:right">10.6 ppb</td>
+<td style="text-align:right">10.264 ppb</td>
+<td style="text-align:right">−0.336 ppb</td>
+</tr>
+</tbody>
+</table>
+<p>年排放取 52 周全球通量，网格面积来自归档 <code>AREA</code>。12 月比较在每个格点先平均每个周窗的模式减观测值，并使用 CHEEREIO 1.0 归档示例中的 50 个原始检索阈值，保留 1481 个格点。空间标准差的最大差值为 0.336 ppb。 诊断脚本 · <a href="tables/pendergrass_2023_summary.json">指标 JSON</a> · <a href="tables/pendergrass_2023_weekly_emissions.csv">周排放 CSV</a></p>
+<table>
+<thead>
+<tr>
+<th>对照图</th>
+<th>论文</th>
+<th>从作者归档数值重画</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fig. 3，年均 XCH₄ 和观测数</td>
+<td><a href="https://gmd.copernicus.org/articles/16/4793/2023/gmd-16-4793-2023-f03-web.png">论文原图</a></td>
+<td><a href="figures/pendergrass_2023_fig3.png">观测均值和检索次数</a></td>
+</tr>
+<tr>
+<td>Fig. 4，全球周序列</td>
+<td><a href="https://gmd.copernicus.org/articles/16/4793/2023/gmd-16-4793-2023-f04-web.png">论文原图</a></td>
+<td><a href="figures/pendergrass_2023_fig4.png">浓度和排放</a></td>
+</tr>
+<tr>
+<td>Fig. 5，12 月排放空间分布</td>
+<td><a href="https://gmd.copernicus.org/articles/16/4793/2023/gmd-16-4793-2023-f05-web.png">论文原图</a></td>
+<td><a href="figures/pendergrass_2023_fig5.png">先验、后验和集合标准差</a></td>
+</tr>
+<tr>
+<td>Fig. 6，12 月模式减卫星</td>
+<td><a href="https://gmd.copernicus.org/articles/16/4793/2023/gmd-16-4793-2023-f06-web.png">论文原图</a></td>
+<td><a href="figures/pendergrass_2023_fig6.png">用相同色标的先验和后验偏差</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Pendergrass 等（2025）</h2>
+<p>四组 JSON 都从 2018-01-01 开始集合自旋，2018-05-01 起正式积分，2018-05-29 起同化。论文以 15 天窗口每 5 天推进。终点按照归档原值记录。</p>
+<table>
+<thead>
+<tr>
+<th>湿地先验</th>
+<th>优化状态量</th>
+<th style="text-align:right">成员</th>
+<th>归档积分终点</th>
+<th>归档后处理终点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LPJ-MERRA2</td>
+<td>排放</td>
+<td style="text-align:right">32</td>
+<td>2023-12-25</td>
+<td>2023-12-31</td>
+</tr>
+<tr>
+<td>LPJ-MERRA2</td>
+<td>排放和浓度</td>
+<td style="text-align:right">32</td>
+<td>2024-01-01</td>
+<td>2024-01-01</td>
+</tr>
+<tr>
+<td>WetCHARTs</td>
+<td>排放</td>
+<td style="text-align:right">32</td>
+<td>2023-12-25</td>
+<td>2020-12-25</td>
+</tr>
+<tr>
+<td>WetCHARTs</td>
+<td>排放和浓度</td>
+<td style="text-align:right">32</td>
+<td>2024-01-01</td>
+<td>2024-01-01</td>
+</tr>
+</tbody>
+</table>
+<p>WetCHARTs 排放组的后处理配置提前三年结束，使用该配置生成全窗口图表前需要核对原处理命令。 <a href="https://acp.copernicus.org/articles/25/14353/2025/#section2">论文方法</a> · <a href="https://doi.org/10.5281/zenodo.15120761">作者四组配置</a></p>
+<p>服务器的 <code>satellite/TROPOMI/CH4/blended-tropomi-gosat-methane</code> 镜像含同化期 28,858 个轨道文件、覆盖 2042 天。窗口中唯一无轨道的 2021-08-04 在公开 S3 目录也没有文件。归档 v1.3.1 的原始读取函数用独立的 NumPy 1.23.5 环境读通了 2018-05-29 和 2023-12-30 的两个轨道，分别筛得 455 和 1189 个有效陆地检索。服务器也已找到 WetCHARTs v1.3.1 九成员高性能子集及 GFEI v2。作者 JSON 指向的 <code>agg_control_CH4_HEMCO_diagnostics_gmd_paper.nc</code> 是集合初扰动强度的二维权重。本次取得的 2023 控制归档有 52 个时间样本，尚无证据确认作者生成该权重的聚合方法及随机种子。 <a href="https://registry.opendata.aws/blended-tropomi-gosat-methane/">卫星资料原始目录</a> · <a href="https://doi.org/10.5281/zenodo.15120761">作者配置与初值</a></p>
+<p>检验湿地先验时，服务器九成员 WetCHARTs 2019 通量积分为 <strong>148.960 Tg/年</strong>，论文为 <strong>148 Tg/年</strong>。论文链接中的 NASA GMAO 2019 年 LPJ 年度文件积分为 <strong>157.327 Tg/年</strong>，离论文 LPJ 的 <strong>193 Tg/年</strong> 相差 35.673 Tg/年。作者 HEMCO 实际指向另外一个多年度 <code>LPJ_mmch4e_MERRA2_1980-2022.nc</code>，需确认它的版本和前处理后才能投入整篇复现。 <a href="https://acp.copernicus.org/articles/25/14353/2025/#section2">论文 Table 1</a> · <a href="https://doi.org/10.3334/ORNLDAAC/1915">WetCHARTs v1.3.1</a> · <a href="https://gmao.gsfc.nasa.gov/gmaoftp/lott/CH4/wetlands/">NASA GMAO 原始文件目录</a></p>
+<table>
+<thead>
+<tr>
+<th>全球 CH₄ 排放，Tg/年</th>
+<th style="text-align:right">论文</th>
+<th style="text-align:right">本次</th>
+<th style="text-align:right">本次减论文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td style="text-align:right">560</td>
+<td style="text-align:right">560.391</td>
+<td style="text-align:right">+0.391</td>
+</tr>
+<tr>
+<td>2020</td>
+<td style="text-align:right">587</td>
+<td style="text-align:right">587.466</td>
+<td style="text-align:right">+0.466</td>
+</tr>
+<tr>
+<td>2021</td>
+<td style="text-align:right">592</td>
+<td style="text-align:right">591.939</td>
+<td style="text-align:right">−0.061</td>
+</tr>
+<tr>
+<td>2022</td>
+<td style="text-align:right">572</td>
+<td style="text-align:right">571.616</td>
+<td style="text-align:right">−0.384</td>
+</tr>
+<tr>
+<td>2023</td>
+<td style="text-align:right">570</td>
+<td style="text-align:right">570.236</td>
+<td style="text-align:right">+0.236</td>
+</tr>
+</tbody>
+</table>
+<p>归档 NetCDF 的通量变量没有 <code>units</code> 属性。按 HEMCO 的 kg m⁻² s⁻¹ 约定，用 2°×2.5° 的半极区格点面积积分，按每月天数加权年均，以 365 天换算成年化通量。五个年度总量和 Table 1 的 13 个后验量都回到论文的整数显示精度。2020 年若直接积分 366 天，得到 <strong>589.076 Tg</strong>。这解释统一年化口径与日历全年累积的差别。2023 年人为、自然排放分别是 <strong>391.956</strong> 与 <strong>178.281 Tg/年</strong>。重建的全球湿地平均季节循环在 9 月达到最高。 <a href="https://acp.copernicus.org/articles/25/14353/2025/#section3">论文 §3 和 Table 1</a> · <a href="tables/pendergrass_2025_annual.csv">年度 CSV</a> · <a href="tables/pendergrass_2025_table1.csv">Table 1 后验 CSV</a> · <a href="tables/pendergrass_2025_seasonal_cycle.csv">月循环 CSV</a> · 诊断脚本</p>
+<p><img src="figures/pendergrass_2025_annual.png" alt="Pendergrass 2025 annual methane comparison" loading="lazy" /></p>
+<p>Fig. 4b 的最佳后验分解得到 2020 年比 2019 年高 <strong>27.075 Tg/年</strong>，其中畜牧、废弃物和湿地分别贡献 <strong>10.718、5.300 和 4.091 Tg/年</strong>。重画 Fig. 7 各面板的最佳后验部分时，以格点跨纬度边界的面积比例划分纬带。2021 年北半球与北热带的后验峰值均出现在 9 月，与论文一致。Fig. 7c 复算的 0–30°N 峰值是 <strong>286.57 Tg/年</strong>，论文图读值约 <strong>305 Tg/年</strong>。改按中心位于 0–30°N 闭区间的完整格点计入，峰值为 <strong>306.12 Tg/年</strong>。按面积比例划分的结果保留在图中，原作者的选格与聚合口径尚待确认。原图还包含两套先验、集合范围和 GRACE-FO 数据。 <a href="https://acp.copernicus.org/articles/25/14353/2025/acp-25-14353-2025-f04-web.png">论文 Fig. 4</a> · <a href="https://acp.copernicus.org/articles/25/14353/2025/acp-25-14353-2025-f07-web.png">论文 Fig. 7</a> · <a href="tables/pendergrass_2025_figure4b.csv">部门年变化 CSV</a> · <a href="tables/pendergrass_2025_figure7_north_sector.csv">北半球部门月变化 CSV</a> · <a href="tables/pendergrass_2025_figure7_latitude.csv">纬带月变化 CSV</a></p>
+<p><img src="figures/pendergrass_2025_sector_seasonality.png" alt="Pendergrass 2025 archived posterior sector and latitude diagnostics" loading="lazy" /></p>
+<p>整篇还需对照 Fig. 2 的 XCH₄ 空间偏差、Fig. 3 的观测和逐成员曲线、Fig. 4–8 的完整区域归因、淹水和冷暖季比较。当前文件提供最佳后验的月网格通量，逐成员后验和先验需从四组实验取得。作者的 2018 甲烷平流层初值、损耗率、缩放 OH、四组 JSON 和参考后验均已下载并通过归档 MD5 核对。 <a href="https://doi.org/10.5281/zenodo.15120761">作者归档</a></p>
+<h2>严格 GC-adjoint 候选</h2>
+<ul>
+<li><strong>Tang 等（2023）</strong> 属于 GC-adjoint 正/反向试验。已有 Table 1 全球 CEDS CO 的一项复算和一个 24 小时 PBL 初值梯度 benchmark。整篇还需恢复 Fig. 4–5 的两套气象模拟、Fig. 6 的排放梯度、Fig. 7 OSSE 及 Fig. 8–9 的 MOPITT 同化与月初值。公开源码包无论文运行目录和预处理区域排放包。 <a href="https://gmd.copernicus.org/articles/16/6377/2023/">论文</a> · 前次核对</li>
+<li><strong>Dedoussi 等（2024）</strong> 属于 GC-adjoint 化学试验。原研究使用 v35f。除了 Figs. 3–4 的 1 小时梯度，整篇还需论文的正向 UCX 比较和多时段平流层敏感度。已确认源代码归档，精确的旧 GEOS-5 气象与原化学重启尚未齐。 <a href="https://gmd.copernicus.org/articles/17/5689/2024/">论文</a> · <a href="https://doi.org/10.5281/zenodo.4300535">作者源码</a></li>
+<li><strong>Yu 等（2021）</strong> 使用 GC-adjoint v35 的甲烷 OSSE，先比较均匀误差和空间误差的先验，再对照不同输送设定、优化方法和 1 天至 1 个月的窗口。主实验用 2018 年 8 月北美 0.25°×0.3125° GEOS-FP，2°×2.5° 全球正向提供三小时边界。公开论文提供代码 DOI，但归档服务器从本机返回 HTTP 403，未取得作者代码、25 年自旋初值和原始 OSSE 数据。 <a href="https://gmd.copernicus.org/articles/14/7775/2021/">论文</a> · <a href="https://doi.org/10.13020/g5xc-nj81">作者代码归档</a></li>
+</ul>
+<h2>复跑</h2>
+<p>在 EarthModelHub 根目录运行。输入归档在 <code>input/raw/papers/</code>，Akinjole 模式执行与诊断在 <code>run/tasks/akinjole_2026_geoschem_hyd/</code>。已生成的图表在本报告目录。</p>
+<pre><code class="language-bash">report_dir=docs/papers/models/geoschem/paper_replicates
+prefix/mamba/envs/hub/bin/python &quot;$report_dir/recompute_pendergrass_2025.py&quot; \
+  input/raw/papers/pendergrass_2025_cheereio/posterior_best_estimate_ch4_emis.nc &quot;$report_dir/tables&quot;
+prefix/mamba/envs/fair/bin/python &quot;$report_dir/plot_pendergrass_2025.py&quot;
+prefix/mamba/envs/fair/bin/python &quot;$report_dir/recompute_pendergrass_2023.py&quot; \
+  input/raw/papers/pendergrass_2023_cheereio &quot;$report_dir&quot;
+prefix/mamba/envs/fair/bin/python &quot;$report_dir/check_akinjole_2026_s3.py&quot; \
+  run/tasks/akinjole_2026_geoschem_hyd/isorropia_s3 &quot;$report_dir&quot;
+prefix/mamba/envs/fair/bin/python &quot;$report_dir/check_akinjole_2026_hemco.py&quot; \
+  run/tasks/akinjole_2026_geoschem_hyd/s1_s2 &quot;$report_dir&quot; S1
+prefix/mamba/envs/fair/bin/python &quot;$report_dir/check_akinjole_2026_hemco.py&quot; \
+  run/tasks/akinjole_2026_geoschem_hyd/s1_s2 &quot;$report_dir&quot; S2
+</code></pre>
+</article></main></body></html>

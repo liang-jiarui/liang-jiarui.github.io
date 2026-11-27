@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EAMv3 AMIP and aerosol forcing experiment protocol · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>Xie et al. (2025) EAMv3 复现实验表</h1>
+<p>论文评估 E3SMv3 大气分量 EAMv3。正式试验是 3 个 AMIP 成员，以及一组固定海温、向 MERRA-2 松弛风场的气溶胶有效辐射强迫（ERFaer：1850 对 2010）。代码基线是 E3SM v3.0.0，逐位复现用 <a href="https://github.com/E3SM-Project/E3SM/tree/maint-3.0"><code>maint-3.0</code></a>。本机检出是 <code>v3.0.2</code>（<code>4412b3a</code>）。 <a href="https://doi.org/10.1029/2025MS005120">Xie et al. (2025) §§3.1–3.2</a> · PDF · <a href="https://doi.org/10.1029/2025MS005302">Golaz et al. (2026) 表 2</a> · <a href="https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR">NERSC 输出</a></p>
+<p>路径都相对于 <code>$DIN_LOC_ROOT</code>。大气排放文件在 v3.0.0 与 v3.0.2 相同。陆面土地利用和氮沉降以 v3.0.0 为准，v3.0.2 的替换文件写在同一格里。MOSAIC 硝酸盐不在默认配置中，下面各列都关闭。</p>
+<h2>1. 论文正式试验</h2>
+<p>Xie 评估的是 E06、E07、E08 三个 AMIP，以及 E09、E10 的 ERFaer。三个 AMIP 没有自己的多年 spin-up。大气、陆面和河流初值来自 Golaz 等（2026）第 3 节和表 2，在本表里按交接顺序写成 E01–E05。E09 和 E10 不进入这条链。</p>
+<h3>衔接</h3>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>compset</th>
+<th>积分</th>
+<th>初值来自</th>
+<th>交给</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01 全耦合 spin-up</td>
+<td><code>WCYCL1850</code></td>
+<td>0001-01-01 至 2001-01-01，共 2000 年。日历从 0001 起算，论文没写这个日期</td>
+<td>§1.1 的海洋、海冰和陆面。这三段还没有 case</td>
+<td>E02，取 2001-01-01 的全耦合 restart</td>
+</tr>
+<tr>
+<td>E02 piControl</td>
+<td><code>WCYCL1850</code></td>
+<td>500 年。本仓库把起点改记为 0001-01-01，终点 0501-01-01。论文只写从 spin-up 终点延续</td>
+<td>E01 的 2001-01-01</td>
+<td>E03 取 0101-01-01，E04 取 0151-01-01，E05 取 0201-01-01。0051 和 0251 不建</td>
+</tr>
+<tr>
+<td>E03 historical_0101</td>
+<td><code>WCYCL20TR</code></td>
+<td>1850-01-01 至 1870-01-01，模拟年 1850–1869</td>
+<td>E02 的 0101-01-01。模式日期改为 1850-01-01</td>
+<td>E06，取 1870-01-01 的大气、陆面、河流</td>
+</tr>
+<tr>
+<td>E04 historical_0151</td>
+<td><code>WCYCL20TR</code></td>
+<td>同 E03</td>
+<td>E02 的 0151-01-01</td>
+<td>E07</td>
+</tr>
+<tr>
+<td>E05 historical_0201</td>
+<td><code>WCYCL20TR</code></td>
+<td>同 E03</td>
+<td>E02 的 0201-01-01</td>
+<td>E08</td>
+</tr>
+<tr>
+<td>E06 <code>amip_0101</code></td>
+<td><code>F20TR</code></td>
+<td>1870-01-01 至 2015-01-01，即 1870–2014</td>
+<td>E03 的 1870-01-01。海冰和海温改为规定场。restart 还没有，case 已写成 hybrid</td>
+<td>Xie 表 3 的一个成员</td>
+</tr>
+<tr>
+<td>E07 <code>amip_0151</code></td>
+<td><code>F20TR</code></td>
+<td>同 E06</td>
+<td>E04 的 1870-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E08 <code>amip_0201</code></td>
+<td><code>F20TR</code></td>
+<td>同 E06</td>
+<td>E05 的 1870-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E09 ERFaer PI</td>
+<td><code>F2010</code></td>
+<td>2009-10-01 至 2011-01-01</td>
+<td>不从 E01–E08 取值。论文未给这一天的 restart</td>
+<td>与 E10 相减，得到 Xie 表 4 的 ERFaer</td>
+</tr>
+<tr>
+<td>E10 ERFaer PD</td>
+<td><code>F2010</code></td>
+<td>同 E09</td>
+<td>同 E09</td>
+<td>同 E09</td>
+</tr>
+</tbody>
+</table>
+<h3>全耦合链的配置</h3>
+<p>网格、80 层和云、气溶胶可调参数与 E06–E08 相同。E01、E02 的海洋和海冰都是预报的，强迫停在 1850。E03–E05 从 1850 起用历史瞬变强迫。排放名单不在 <code>user_nl_eam</code> 里另写，由 compset 的 use case 带入。</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>E01</th>
+<th>E02</th>
+<th>E03</th>
+<th>E04</th>
+<th>E05</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compset</td>
+<td><code>WCYCL1850</code></td>
+<td>同 E01</td>
+<td><code>WCYCL20TR</code></td>
+<td>同 E03</td>
+<td>同 E03</td>
+</tr>
+<tr>
+<td>长名</td>
+<td><code>1850SOI_EAM%CMIP6_ELM%CNPRDCTCBCTOP_MPASSI_MPASO_MOSART_SGLC_SWAV</code></td>
+<td>同 E01</td>
+<td><code>20TRSOI_EAM%CMIP6_ELM%CNPRDCTCBCTOP_MPASSI_MPASO_MOSART_SGLC_SWAV</code></td>
+<td>同 E03</td>
+<td>同 E03</td>
+</tr>
+<tr>
+<td>大气 use case</td>
+<td><code>1850_eam_CMIP6_chemUCI-Linoz-mam5-vbs</code></td>
+<td>同 E01</td>
+<td><code>20TR_eam_CMIP6_chemUCI-Linoz-mam5-vbs</code></td>
+<td>同 E03</td>
+<td>同 E03</td>
+</tr>
+<tr>
+<td>陆面</td>
+<td>地表固定 1850，<code>sim_year_range=constant</code>。氮沉降年份 1850–1850，文件 <code>fndep_elm_cbgc_exp_simyr1849-2101_1.9x2.5_c190103.nc</code></td>
+<td>同 E01</td>
+<td>与 E06–E08 相同。土地利用 <code>landuse.timeseries_0.5x0.5_hist_simyr1850-2015_c191004.nc</code>，氮沉降 1850–2005</td>
+<td>同 E03</td>
+<td>同 E03</td>
+</tr>
+<tr>
+<td>主动分量</td>
+<td>EAM、ELM、MPAS-SI、MPAS-O、MOSART 预报。陆冰和海浪是 stub</td>
+<td>同 E01</td>
+<td>同 E01</td>
+<td>同 E01</td>
+<td>同 E01</td>
+</tr>
+<tr>
+<td>耦合步长</td>
+<td>30 分钟。<code>ATM_NCPL</code>、<code>OCN_NCPL</code>、<code>ICE_NCPL</code>、<code>LND_NCPL</code> 都是 48。该网格的 MPAS-O <code>config_dt</code> 已是 30 分钟</td>
+<td>同 E01</td>
+<td>同 E01</td>
+<td>同 E01</td>
+<td>同 E01</td>
+</tr>
+<tr>
+<td>CO₂</td>
+<td>284.317 ppm</td>
+<td>同 E01</td>
+<td><code>CCSM_CO2_PPMV=0.000001</code>，CO₂ 读与 E06–E08 相同的温室气体文件</td>
+<td>同 E03</td>
+<td>同 E03</td>
+</tr>
+<tr>
+<td>排放</td>
+<td>1850 use case，namelist 不另列物种</td>
+<td>同 E01</td>
+<td>20TR use case，与 E06–E08 同一套 1850–2014 瞬变文件</td>
+<td>同 E03</td>
+<td>同 E03</td>
+</tr>
+<tr>
+<td>风场松弛</td>
+<td>关闭</td>
+<td>关闭</td>
+<td>关闭</td>
+<td>关闭</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>运行</td>
+<td><code>startup</code>。50 年一段，再提交 39 次，restart 每 50 年</td>
+<td><code>hybrid</code>。<code>RUN_REFCASE=xie2025_E01_coupled_spinup</code>，<code>RUN_REFDATE=2001-01-01</code>。50 年一段，再提交 9 次。起点改记为 0001-01-01</td>
+<td><code>hybrid</code>。<code>RUN_REFCASE=xie2025_E02_picontrol</code>，<code>RUN_REFDATE=0101-01-01</code>。5 年一段，再提交 3 次</td>
+<td><code>RUN_REFDATE=0151-01-01</code>，其余同 E03</td>
+<td><code>RUN_REFDATE=0201-01-01</code>，其余同 E03</td>
+</tr>
+<tr>
+<td>相对论文的长度</td>
+<td>这 2000 年就是工业化前 spin-up</td>
+<td>这 500 年就是 piControl。顶净辐射平均 −0.05 W m−2 是论文给出的结果</td>
+<td>论文的 historical 积分到 2024，2015 起换 <code>WCYCLSSP245</code>。这里停在 1870-01-01，只为给 AMIP 初值</td>
+<td>同 E03</td>
+<td>同 E03</td>
+</tr>
+</tbody>
+</table>
+<h3>大气试验</h3>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>E06、E07、E08 AMIP。三份只差 restart，下表按 E06 写</th>
+<th>E09 ERFaer PI</th>
+<th>E10 ERFaer PD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>代码</td>
+<td>E3SM v3.0.0，<code>maint-3.0</code></td>
+<td>同左。在最终或接近最终的 EAMv3.0.0 上做</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>CIME<code>--compset</code></td>
+<td><code>F20TR</code></td>
+<td>从<code>F2010</code> 建例后改排放与松弛。库存 <code>F1850</code> 会把温室气体和 SST 一并锁在 1850，不能直接当 PI</td>
+<td><code>F2010</code></td>
+</tr>
+<tr>
+<td>compset 长名</td>
+<td><code>20TR_EAM%CMIP6_ELM%CNPRDCTCBCTOP_MPASSI%PRES_DOCN%DOM_MOSART_SGLC_SWAV</code></td>
+<td><code>2010_EAM%CMIP6_ELM%CNPRDCTCBCTOP_MPASSI%PRES_DOCN%DOM_MOSART_SGLC_SWAV</code>，再覆盖排放</td>
+<td>同左，不改排放年份</td>
+</tr>
+<tr>
+<td>大气 use case</td>
+<td><code>20TR_eam_CMIP6_chemUCI-Linoz-mam5-vbs</code></td>
+<td>以<code>2010_eam_CMIP6_chemUCI-Linoz-mam5-vbs</code> 为底，气溶胶和前体改到 1850</td>
+<td><code>2010_eam_CMIP6_chemUCI-Linoz-mam5-vbs</code></td>
+</tr>
+<tr>
+<td>陆面 use case</td>
+<td><code>20thC_CMIP6_transient</code></td>
+<td><code>2010_CMIP6_control</code>（<code>sim_year=2010</code>，土地利用不变）</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td><code>--res</code></td>
+<td><code>ne30pg2_r05_IcoswISC30E3r5</code>。动力 <code>ne30np4</code> 约 110 km，物理 <code>pg2</code> 约 165 km，陆面和径流 <code>r05</code>（0.5°），海洋掩膜 <code>IcoswISC30E3r5</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>垂直与编译</td>
+<td>80 层，模式顶约 60 km。<code>-nlev 80 -clubb_sgs -microphys p3 -chem chemuci_linozv3_mam5_vbs -rain_evap_to_coarse_aero -vbs</code>。地形做 6 次 Laplace 平滑</td>
+<td>同 E06</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>主动 / 规定分量</td>
+<td>EAM、ELM、MOSART 主动。<code>DOCN%DOM</code> 规定 SST，<code>MPASSI%PRES</code> 规定海冰密集度</td>
+<td>同 E06，另对水平风做松弛</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>积分时段</td>
+<td>1870–2014</td>
+<td>2009-10-01 至 2011-01-01</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>分析时段</td>
+<td>气候态和表 3 用 1985–2014。辐射观测对比用 2001–2014</td>
+<td>最后 12 个月（2010）</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>成员与初值</td>
+<td>E06 接 E03（<code>amip_0101</code>），E07 接 E04（<code>amip_0151</code>），E08 接 E05（<code>amip_0201</code>）。都取 1870-01-01 的大气、陆面和河流。海冰没有预报 restart，用该月规定密集度。<code>0101</code>/<code>0151</code>/<code>0201</code> 是 E02 的分支年，不是 AMIP 的模拟年</td>
+<td>论文未给 restart</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>spin-up</td>
+<td>无单独大气 spin-up。E03 在 1870-01-01 把大气、陆面和河流交给 E06，E04 交给 E07，E05 交给 E08</td>
+<td>不接这条耦合链。15 个月里的前 3 个月不用于分析</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>SST 与海冰</td>
+<td><code>ocn/docn7/SSTDATA/sst_ice_CMIP6_DECK_E3SM_1x1_c20180213.nc</code>。<code>SSTICE_YEAR_ALIGN/START/END</code> = 1869 / 1869 / 2016</td>
+<td>当代气候态<code>sst_ice_CMIP6_DECK_E3SM_1x1_2010_clim_c20190821.nc</code></td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>温室气体</td>
+<td><code>atm/cam/ggas/GHG_CMIP-1-2-0_Annual_Global_0000-2014_c20180105.nc</code>，<code>scenario_ghg=RAMPED</code>。<code>CCSM_CO2_PPMV=0.000001</code>，CO₂ 读该文件</td>
+<td>论文未写是否随气溶胶改到 1850。按“只改气溶胶”处理时锁在 2010：CO₂ 388.717 ppm，CH₄ 1807.851 ppb，N₂O 323.141 ppb，CFC11 768.7644 ppt，CFC12 531.2820 ppt</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>太阳</td>
+<td><code>atm/cam/solar/Solar_1850-2299_input4MIPS_c20181106.nc</code>，<code>SERIAL</code></td>
+<td>论文未单列。库存 2010 为<code>Solar_2010control_input4MIPS_c20181017.nc</code>，固定 20100101</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>Linoz 与氯</td>
+<td><code>linv3_1849-2017_CMIP6_Hist_10deg_58km_c20230705.nc</code>；氯 <code>Linoz_Chlorine_Loading_CMIP6_0003-2017_c20171114.nc</code>，均随时间</td>
+<td>同一 Linoz 文件，循环或固定在 2010；氯负荷固定 20100101。库存 1850 会固定在 18500101，E09 不要沿用</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>气体化学排放</td>
+<td>1850–2014 瞬变，目录<code>atm/cam/chem/trop_mozart_aero/emis/chem_gases/2degrees/</code>。地面：C2H4、C2H6、C3H8、CH2O、CH3CHO、CH3COCH3、CO、ISOP 为 <code>emissions-cmip6_e3sm_&lt;SPECIES&gt;_surface_1850-2014_1.9x2.5_c20210323.nc</code>；MTERP <code>..._c20230126.nc</code>；NO <code>..._c20220425.nc</code>；E90 <code>emissions_E90_surface_1750-2015_1.9x2.5_c20210408.nc</code>。飞机 NO2：<code>emissions-cmip6_NO2_aircraft_vertical_1750-2015_1.9x2.5_c20170608.nc</code></td>
+<td>固定在当代，用 2010 气候态：上述物种的<code>*_2010_clim_*</code>（NO2 飞机为 <code>emissions-cmip6_NO2_aircraft_vertical_2010_clim_1.9x2.5_c20230213.nc</code>）</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>气溶胶与前体</td>
+<td>1850–2014 瞬变，<code>atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/</code>。地面与高空：SO2、BC、POM、SO4_a1、SO4_a2 及数浓度 <code>cmip6_mam4_&lt;species&gt;_{surf,elev}_1850-2014_c180205.nc</code>。SOAG0 为 <code>emissions-cmip6_e3sm_SOAG0_{surf,elev}_1850-2014_1.9x2.5_c20230201.nc</code></td>
+<td>循环 1850：同一套<code>*_1850-2014_*</code>，<code>srf_emis_cycle_yr</code> 与 <code>ext_frc_cycle_yr</code> = 1850</td>
+<td>2010 气候态：<code>cmip6_mam4_&lt;species&gt;_{surf,elev}_1x1_2010_clim_c20190821.nc</code>，SOAG 为 <code>emissions-cmip6_e3sm_SOAG0_{surf,elev}_2010_clim_1.9x2.5_c20230213.nc</code></td>
+</tr>
+<tr>
+<td>火山 SO2</td>
+<td>高空文件含喷发火山：<code>cmip6_mam4_so2_elev_1850-2014_c180205_kzm_1850_2014_volcano.nc</code>。MAM5-PSA 由此预报平流层硫酸盐</td>
+<td>关闭喷发火山。库存 1850 用<code>cmip6_1850_2014_avg_so2_elev_strat_1850.nc</code>（1850–2014 平均）。生产 namelist 里实际关掉的文件待核对</td>
+<td>关闭喷发火山。库存 2010 高空 SO2 已是<code>cmip6_mam4_so2_elev_1x1_2010_clim_c20190821.nc</code>，不含喷发序列</td>
+</tr>
+<tr>
+<td>DMS</td>
+<td><code>DMSflux.1850-2100.1deg_latlon_conserv.POPmonthlyClimFromACES4BGC_c20160727.nc</code>，<code>dms_emis_scale=2</code>。未加倍全球 19.43 Tg S yr−1，加倍后 38.86</td>
+<td><code>DMSflux.1850.1deg_latlon_conserv.POPmonthlyClimFromACES4BGC_c20160416.nc</code>，仍然 <code>dms_emis_scale=2</code></td>
+<td><code>DMSflux.2010.1deg_latlon_conserv.POPmonthlyClimFromACES4BGC_c20190220.nc</code>，仍然 <code>dms_emis_scale=2</code></td>
+</tr>
+<tr>
+<td>尘、海盐、云滴</td>
+<td><code>dust_emis_fact=13.8</code>（土壤可蚀性随预报土壤湿度和裸土变）。<code>seasalt_emis_scale=0.55</code>。<code>p3_mincdnc=20×10⁶ m−3</code>（20 cm−3）。<code>p3_nc_autocon_expon=−1.1</code>。黑碳老化层数 <code>n_so4_monolayers_pcage=3</code>。POM 吸湿性 0.04</td>
+<td>同 E06</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>陆面地表与土地利用</td>
+<td>地表<code>lnd/clm2/surfdata_map/surfdata_0.5x0.5_simyr1850_c200609_with_TOP.nc</code>。土地利用 v3.0.0：<code>landuse.timeseries_0.5x0.5_hist_simyr1850-2015_c191004.nc</code>。v3.0.2 换成 <code>..._c240308.nc</code>，对照论文时用 v3.0.0</td>
+<td>地表仍是 1850 的<code>surfdata_0.5x0.5_simyr1850_c200609_with_TOP.nc</code>，<code>sim_year_range=constant</code></td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>氮沉降与磷沉降</td>
+<td>v3.0.0：<code>fndep_elm_cbgc_exp_simyr1849-2101_1.9x2.5_c190103.nc</code>，用 1850–2005，双线性插到 <code>r05</code>。v3.0.2 换成 <code>fndep_elm_cbgc_exp_simyr1849-2101_1.9x2.5_ssp245_c240903.nc</code>，用到 2101。磷沉降两边都是 <code>fpdep_clm_hist_simyr2000_1.9x2.5_c150929.nc</code>，固定 2000 年</td>
+<td>氮沉降年份固定 2010；磷沉降仍固定 2000</td>
+<td>同 E09</td>
+</tr>
+<tr>
+<td>氧化剂</td>
+<td><code>atm/cam/chem/trop_mozart_aero/oxid/oxid_1.9x2.5_L26_1850-2015_c20181106.nc</code>（O3、NO3、OH）。规定 CH4：<code>ch4_oxid_1.9x2.5_L26_1990-1999clim.c090804.nc</code>，循环 1995</td>
+<td>同 E06</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>风场松弛</td>
+<td>关闭</td>
+<td>MERRA-2 的 u、v。分析场每 6 小时，松弛时间 6 小时，每个大气步施加。<code>nudging_nl</code> 用剖面 2（Heaviside），垂直窗去掉最底 10 层。<code>Nudge_Path</code>、文件模板和 <code>Nudge_Vwin_*</code> 的生产数值待从案例 namelist 核对</td>
+<td>同 E09，用同一段 MERRA-2</td>
+</tr>
+<tr>
+<td>论文目标</td>
+<td>表 3 的 1985–2014 全球平均；图 3–12、16、18、19 的气候态与臭氧、气溶胶</td>
+<td>表 4：ERFaer −0.71、ERFari −0.03、ERFaci −0.77 W m−2（PD−PI，固定 SST）。表 5 是在此协议上的单因子试验</td>
+<td>与 E09 相减</td>
+</tr>
+</tbody>
+</table>
+<p><code>ne30pg2_EC30to60E2r2</code> 的陆面是 <code>ne30pg2</code>，不是上表的半度 <code>r05</code>。ERFaer 的气体排放、SST 和火山约束来自正文 §3.2.2；温室气体年份、松弛文件名和 restart 要以 NERSC 案例的 <code>case_scripts/run_script_provenance</code> 为准。</p>
+<p>本仓库的 case 在 config/tasks/models/xie_2025_eam。衔接表和两张配置表里的试验名都链到对应的 <code>case.yaml</code>。都是 draft。E06、E07、E08 的 compset、排放和 SST 相同，restart 分别来自 E03、E04、E05。E09 与 E10 的 <code>xmlchange</code> 相同；E09 只在 <code>user_nl_eam</code> 里把气溶胶、前体、DMS 和火山 SO2 换成 1850 文件，并把 <code>srf_emis_cycle_yr</code>、<code>ext_frc_cycle_yr</code> 设为 1850。本机 CO 的 2010 气候态 <code>date</code> 只有 2010 年，这个循环年会在初始化时找不到年份。松弛垂直窗 <code>Nudge_Vwin_Hindex=70.5</code> 按“物理层 1 为模式顶、关掉第 71–80 层”写入，不是生产 namelist 的原值。</p>
+<h2>1.1 E01 之前的三段初值</h2>
+<p>E01–E10 的交接和配置写在上面的表里。E01 开跑之前还有三段，Golaz 第 3 节写了做法，论文没有给到可直接运行的输入文件，所以没有编成 E 编号。Golaz 表 2 的全部成员在 <a href="../../library/e3sm-v3-coupled/report.html">Golaz 实验表</a>。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>论文协议</th>
+<th>本仓库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>海洋初值</td>
+<td>WOA23 位温和实用盐度插到 <code>IcoswISC30E3r5</code>，初始静止。再用 NCEP 1958–2000 气候风应力做 100 天单海洋调整：Rayleigh 拖曳前 10 天 (1\times10^{-4},\mathrm{s}^{-1})，接着 10 天 (1\times10^{-5},\mathrm{s}^{-1})，后 80 天为 0</td>
+<td>尚未建例。风应力文件和拖曳 namelist 论文没有给到可直接运行的名字。100 天结束时的海洋状态进入后面这 1 个月</td>
+</tr>
+<tr>
+<td>海冰初值</td>
+<td>70°N 与 60°S 向极一侧为均匀 1 m 冰盘。然后海洋—海冰用 JRA-55 强迫积分 1 个月</td>
+<td>尚未建例。月底的海洋和海冰 restart 进入 E01</td>
+</tr>
+<tr>
+<td>陆面初值</td>
+<td>用一份不含动态植被的后期开发版耦合大气强迫。加速土壤分解 250 年，再常速 250 年。叶面积在这 500 年后稳定</td>
+<td>尚未建例。这份强迫不是公开再分析。这份 restart 进入 E01</td>
+</tr>
+</tbody>
+</table>
+<h2>2. 对照数值</h2>
+<p>表 3 是三个 AMIP 成员在 1985–2014 的全球年平均。论文给的是汇总值。</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th style="text-align:right">观测</th>
+<th style="text-align:right">EAMv3</th>
+<th style="text-align:right">EAMv2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>陆地 2 m 气温（ERA5，°C）</td>
+<td style="text-align:right">8.87</td>
+<td style="text-align:right">8.59</td>
+<td style="text-align:right">8.72</td>
+</tr>
+<tr>
+<td>模式顶净通量（CERES-EBAF，W m−2）</td>
+<td style="text-align:right">0.9</td>
+<td style="text-align:right">2.2</td>
+<td style="text-align:right">0.2</td>
+</tr>
+<tr>
+<td>模式顶全天空短波（W m−2）</td>
+<td style="text-align:right">241.2</td>
+<td style="text-align:right">240.8</td>
+<td style="text-align:right">240.3</td>
+</tr>
+<tr>
+<td>模式顶全天空长波（W m−2）</td>
+<td style="text-align:right">240.3</td>
+<td style="text-align:right">238.7</td>
+<td style="text-align:right">240.2</td>
+</tr>
+<tr>
+<td>SWCRE（W m−2）</td>
+<td style="text-align:right">−45.3</td>
+<td style="text-align:right">−49.2</td>
+<td style="text-align:right">−47.9</td>
+</tr>
+<tr>
+<td>LWCRE（W m−2）</td>
+<td style="text-align:right">25.8</td>
+<td style="text-align:right">24.8</td>
+<td style="text-align:right">23.7</td>
+</tr>
+<tr>
+<td>地表向下短波（W m−2）</td>
+<td style="text-align:right">186.9</td>
+<td style="text-align:right">186.6</td>
+<td style="text-align:right">185.0</td>
+</tr>
+<tr>
+<td>地表向下长波（W m−2）</td>
+<td style="text-align:right">345.5</td>
+<td style="text-align:right">345.0</td>
+<td style="text-align:right">345.4</td>
+</tr>
+<tr>
+<td>水汽路径（ERA5，mm）</td>
+<td style="text-align:right">24.2</td>
+<td style="text-align:right">26.0</td>
+<td style="text-align:right">25.5</td>
+</tr>
+<tr>
+<td>降水（GPCP v2.3，mm d−1）</td>
+<td style="text-align:right">2.69</td>
+<td style="text-align:right">2.99</td>
+<td style="text-align:right">3.02</td>
+</tr>
+<tr>
+<td>感热（ERA5，W m−2）</td>
+<td style="text-align:right">16.7</td>
+<td style="text-align:right">19.9</td>
+<td style="text-align:right">20.2</td>
+</tr>
+<tr>
+<td>潜热（ERA5，W m−2）</td>
+<td style="text-align:right">83.1</td>
+<td style="text-align:right">86.6</td>
+<td style="text-align:right">87.3</td>
+</tr>
+<tr>
+<td>200 hPa 纬向风（ERA5，m s−1）</td>
+<td style="text-align:right">15.7</td>
+<td style="text-align:right">16.4</td>
+<td style="text-align:right">16.2</td>
+</tr>
+<tr>
+<td>AOD（MACv2）</td>
+<td style="text-align:right">0.122</td>
+<td style="text-align:right">0.112</td>
+<td style="text-align:right">0.159</td>
+</tr>
+</tbody>
+</table>
+<p>表 5 是 ERFaer 从 EAMv2（−1.33 W m−2）到 EAMv3（−0.71 W m−2）的 +0.62 W m−2，按 §3.2.2 的 15 个月松弛、一次改一项拆开。最小 Nd 10→20 cm−3 为 +0.25；2×DMS 为 +0.12；自动转化指数 −1.4→−1.1 为 +0.10；VBS SOA 为 +0.09；黑碳老化 8→3 层为 +0.08；POM 吸湿性为 +0.08；湿清除为 +0.04；尘与干沉降耦合为 +0.03；MG2→P3 为 +0.01；对流微物理、MCSP 与质量通量为一组 −0.20；残差 +0.06。 <a href="https://doi.org/10.1029/2025MS005120">Xie 表 3–5</a></p>
+</article></main></body></html>

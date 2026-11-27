@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GC-adjoint paper comparisons · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Paper reproduction</p><article><h1>GC-adjoint 论文复现对比报告</h1>
+<p>核对日期为 2026-11-27。本报告沿用 FireEarth <code>paper_replicates</code> 的实验矩阵、逐图核对、差值和证据索引。四篇论文均使用 GEOS-Chem adjoint。现已完成 Kelp 2023 的 West 受体归档梯度复算、Tang 2026 的全球后验排放复算，并复核 Tang 2023 的原生排放模块和本地伴随基准。四篇整文均尚未完成端到端重跑。</p>
+<h2>实验总表</h2>
+<table>
+<thead>
+<tr>
+<th>论文</th>
+<th>论文实验</th>
+<th>已验证</th>
+<th>整篇复现所缺证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Kelp 等（2023）美国西部野火与计划烧除</strong></td>
+<td>GC-adjoint v8-02-01，GEOS-FP，北美嵌套 0.25°×0.3125°。2018 和 2020 年各 7–11 月，11 个受体</td>
+<td>10 个月 West 原始梯度与服务器 GFED4s 重算 Fig. 2 的归一化 West 曲线。两年历史暴露峰值月匹配</td>
+<td>其余 10 个受体的原始掩膜或梯度、绝对单位后处理、历史计划烧除数据版本，以及原模式整月成功重跑。<a href="https://doi.org/10.1029/2022EF003468">论文</a> · <a href="https://doi.org/10.5281/zenodo.7517355">代码和运行归档</a></td>
+</tr>
+<tr>
+<td><strong>Tang 等（2026）MOPITT 约束全球 CO 源</strong></td>
+<td>GC-adjoint v35n，<strong>2°×2.5° MERRA-2、47 层</strong>，2003–2022；先做顺序 KF，再做三组月度 4D-Var</td>
+<td>积分 60 个年度 NetCDF 的 720 个实验月。人为排放趋势方向和 2021 年火排放峰值大体一致，两组归档逐年重复，Tables 2–3 的全球均值有系统差异</td>
+<td>与论文一致的三组后验发布版、同化前处理、KF 初值与每小时海洋 CO 边界、OH 快照和 4D-Var 配置。<a href="https://acp.copernicus.org/articles/26/5531/2026/">论文</a> · <a href="https://doi.org/10.5281/zenodo.17221834">后验排放</a></td>
+</tr>
+<tr>
+<td><strong>Tang 等（2023）HEMCO 与 MERRA-2 接口</strong></td>
+<td>GC-adjoint v35n，4°×5°、47 层。2015 年 tagged CO，GEOS-FP 与 MERRA-2 双气象，含有限差分、OSSE 和 MOPITT V7J</td>
+<td>Table 1 原生 CEDS 陆源积分 <strong>613.566419</strong> 对纸面 <strong>613.85 Tg CO/年</strong>。本地 24 小时 PBL 初值伴随与中心差分最大相对差 <strong>0.001094%</strong></td>
+<td>2015 整年原实验的区域排放及完整初值、配置和观测算子。Fig. 6(b) 需按原文扰动排放缩放因子。<a href="https://gmd.copernicus.org/articles/16/6377/2023/">论文</a> · <a href="https://doi.org/10.5281/zenodo.7512111">作者源码</a> · 已完成验证</td>
+</tr>
+<tr>
+<td><strong>Dedoussi 等（2024）UCX 平流层化学</strong></td>
+<td>全球 4°×5°、72 层、GEOS-5。五年正演、单步化学梯度、2010 年 3 月和 9 月两周伴随</td>
+<td>原始研究代码、4°×5° GEOS-5 一小时模板及定量验收值已定位。未改作者代码的编译试验已执行</td>
+<td>Zenodo 发布包缺 Fast-JX 所需模块，研究用 GEOS-5 初值和气象也未找到。<a href="https://gmd.copernicus.org/articles/17/5689/2024/">论文</a> · <a href="https://doi.org/10.5281/zenodo.4300535">v35f 原始研究分支</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Kelp 等（2023）</h2>
+<table>
+<thead>
+<tr>
+<th>图表</th>
+<th>论文实验</th>
+<th>本次核对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fig. 1、Table 1</td>
+<td>七个州级、一个 West 和三个社区受体</td>
+<td>归档运行目录提供 West 掩膜，包含 4,195 个格点，以及共同使用的 2020 人口文件。其他受体的掩膜未在已公开的两个 ZIP 成员目录找到</td>
+</tr>
+<tr>
+<td>Fig. 2、§3.1</td>
+<td>十个月的历史暴露。每季另固定论文指定月份的火排放，替换当季各月的输送梯度</td>
+<td>归档提供十个 West 梯度文件，每月四个火排放梯度。重算两条归一化 West 曲线并对照论文数值</td>
+</tr>
+<tr>
+<td>Figs. 3–5 及补充材料</td>
+<td>计划烧除的 50% 局地排放削减、跨区暴露、MTBS 和 NFPORS 地理对照</td>
+<td>已定位论文流程，完整受体梯度、掩膜与原用地理数据集待补</td>
+</tr>
+</tbody>
+</table>
+<p>归档梯度保留 <code>J/kg</code> 标签。实读网格为 225×202，中心经度 130°W–60°W、纬度 9.75°N–60°N，论文 §2.2 所写的北美范围为 140°W–40°W、10°N–70°N。脚本沿用归档坐标，按球面格盒重叠面积将服务器六类 GFED4s 干物质排放积分到归档网格。GFED4 排放因子给出 BC、OC，疏水和亲水比例沿用作者源码中的 80/20 与 50/50，再与对应的四种梯度相乘求和。服务器 <code>HEMCO/GFED4/v2023-03/README</code> 记录 2020–2022 地表干物质数据由 Kelp 提供。各季固定月份按论文设置为 2018 年 11 月和 2020 年 9 月。绝对梯度的单位及论文所用排放掩膜和处理流程尚未核实，图中给出归一化暴露，原始乘积列在 CSV。<a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2022EF003468">论文 §2.2–3.1</a> · <a href="https://geos-chem.s3.amazonaws.com/HEMCO/GFED4/v2023-03/README">GFED4 文件说明</a> · 复算脚本 · <a href="tables/kelp_2023_west.csv">逐月对比</a></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align:right">归档复算</th>
+<th style="text-align:right">论文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018 年 West 平均敏感度峰值月</td>
+<td style="text-align:right">11 月</td>
+<td style="text-align:right">11 月</td>
+</tr>
+<tr>
+<td>2020 年 West 平均敏感度峰值月</td>
+<td style="text-align:right">10 月</td>
+<td style="text-align:right">10 月</td>
+</tr>
+<tr>
+<td>2018 年 West 历史暴露峰值月</td>
+<td style="text-align:right">11 月</td>
+<td style="text-align:right">11 月</td>
+</tr>
+<tr>
+<td>2020 年 West 历史暴露峰值月</td>
+<td style="text-align:right">9 月</td>
+<td style="text-align:right">9 月</td>
+</tr>
+<tr>
+<td>2018 年 8 月与 11 月 West 历史暴露比</td>
+<td style="text-align:right">0.639</td>
+<td style="text-align:right">0.627（5.2 ÷ 8.3 μg/m³）</td>
+</tr>
+<tr>
+<td>2020 年固定 9 月排放，11 月与 9 月 West 暴露比</td>
+<td style="text-align:right">1.347</td>
+<td style="text-align:right">当前未核实对应论文数值</td>
+</tr>
+</tbody>
+</table>
+<p>两条梯度序列各自以 7 月归一化后，十个点最大绝对差为 0.027。0.639 对 0.627 是同一受体的跨月比值差。各季固定月份自身归一化为 1，图上的对应重合点来自定义。所用全归档网格内 2018 年 GFED4s 的 BC + OC 总质量通量在 8 月最高，支持在图中明确标出固定 11 月依照论文情景选择。其余 10 个受体、绝对浓度及计划烧除影响仍待比对。<a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2022EF003468">论文 Fig. 2 与 §3.1</a> · <a href="tables/kelp_2023_west.csv">图与逐月数据</a></p>
+<p><img src="figures/kelp_2023_west.png" alt="Kelp 2023 West 受体月度敏感度与暴露复算" loading="lazy" /></p>
+<h3>原始代码重跑</h3>
+<p>作者包公开 4°×5° GEOS-FP 区域边界序列、北美嵌套月初重启、West 掩膜以及 2020 年 11 月原配置。预编译可执行文件启动时缺原环境的 <code>libnetcdff.so.5</code> 和 <code>libnetcdf.so.7</code>（352854）。本地用相同归档源码重新编译，全球版与嵌套版均成功（352860、352859）。构建通过命令行适配 Intel OpenMP 和本站库路径，构建副本的源文件逐字节核对。</p>
+<p>首日测试使用作者 2020-11-01 的重启、北美边界、网格和目标函数，将结束时间设为次日并配套设置输出日。运行目录配置使用本站路径和作者脚本所需的两行 <code>ITER</code>。日气象是官方同版本 NA 数据，静态场 CN 从 Harvard GEOS-Chem 官方桶取得。MEGAN 初始化需要此前 15 天的 A1，使用服务器同分辨率 GEOS-FP 文件进行无插值裁剪。11 月 1 日测试中，裁剪结果与官方 NA 文件所有变量逐值相同。首次运行生成的 <code>diaginfo.dat</code> 与 <code>tracerinfo.dat</code> 覆盖了本地解包副本；两份文件已按 ZIP CRC-32 恢复，复跑使用独立的运行副本。作者人口读取例程仍使用 Harvard 上的硬编码绝对路径，这需要运行时映射。 <a href="https://doi.org/10.5281/zenodo.7517355">作者归档</a> · <a href="https://gcgrid.s3.amazonaws.com/index.html#GEOS_0.25x0.3125_NA/GEOS_FP/">原生北美日气象与静态场</a></p>
+<p>复编译后的作业 <strong>352894</strong> 读完前 15 天 MEGAN 所需 A1，并成功读取 2011-01-01 的 CN 以及 2020-11-01 首批 A1、A3cld、A3dyn、A3mstC、A3mstE、I3。随后 <code>rdland.f</code> 找不到 <code>leaf_area_index_200202/vegtype.global</code>，程序以 31 退出，尚无本地正向或反向梯度。Tang 基准使用的同名静态文件是 72×46 的 4°×5° 文件，Kelp 的北美算例是 225×202。所需版本仍未定位。日志保存在 <code>run/tasks/kelp_2023_gcadj/day_20201101/geos.352894.log</code>。 <a href="https://geoschem.github.io/gcclassic-manpage-archive/man.v8-01-04/chapter_4.html">GEOS-Chem 旧版土地类型和 LAI 文件说明</a></p>
+<h2>Tang 等（2026）</h2>
+<p>顺序 KF 自 2002-10-01 开始同化 MOPITT，生成月初 CO 与海洋每小时 CO 边界。三套 4D-Var 分别使用 V9J 总柱加 2013 年 OH、V9J 廓线加 2013 年 OH、V9J 总柱加 TCR-2 逐年 OH。需保留各实验的观测算子、采样、误差及干扰源设置。服务器同网格 <code>GEOS_2x2.5/MERRA2</code> 的 A1、A3cld、A3dyn、A3mstC、A3mstE 和 I3 于 2003–2022 年各 <strong>7,305/7,305</strong> 个日文件。服务器还存有对应时段 <strong>6,857</strong> 个 MOP02J V9 日文件，数量按归档文件名统计。同化前处理及 2002 年 KF 生产流程仍需核对。<a href="https://acp.copernicus.org/articles/26/5531/2026/#section2">实验设计 §2.1–2.2</a> · <a href="https://asdc.larc.nasa.gov/data/MOPITT/">NASA MOPITT</a></p>
+<table>
+<thead>
+<tr>
+<th>图表</th>
+<th>必需计算</th>
+<th>本次核对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fig. 1</td>
+<td>先验缩放、优化设置</td>
+<td>方法核对</td>
+</tr>
+<tr>
+<td>Fig. 2、Table 1</td>
+<td>KF 初值对柱 CO 偏差的影响，WDCGG、HIPPO、ATom 验证</td>
+<td>已定位适用数据，未重新求解</td>
+</tr>
+<tr>
+<td>Figs. 3–7、Tables 2–3</td>
+<td>历年人为、火灾和化学 CO 源，全球、半球和区域趋势</td>
+<td>四类份额完成全球年度积分，重画全球人为和火灾曲线并比较全球行。区域及统计显著性待核对</td>
+</tr>
+<tr>
+<td>Figs. 8–10、Table 4</td>
+<td>前向对照，源类别对 CO 浓度变化的归因</td>
+<td>需原始对照和三组更改排放的前向运行</td>
+</tr>
+<tr>
+<td>Fig. 11、§3.4</td>
+<td>固定 OH 与 TCR-2 的差异以及排放缩放因子</td>
+<td>两组 NMVOC 氧化生成的 CO 年均量可核对。OH 柱与缩放因子地图待核对</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>全球部门及实验</th>
+<th style="text-align:right">复算均值</th>
+<th style="text-align:right">论文均值</th>
+<th style="text-align:right">复算趋势</th>
+<th style="text-align:right">论文趋势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人为 Column-FixOH</td>
+<td style="text-align:right">706.54</td>
+<td style="text-align:right">612.8</td>
+<td style="text-align:right">−5.97</td>
+<td style="text-align:right">−5.6</td>
+</tr>
+<tr>
+<td>人为 Profile-FixOH</td>
+<td style="text-align:right">706.54</td>
+<td style="text-align:right">572.2</td>
+<td style="text-align:right">−5.97</td>
+<td style="text-align:right">−5.0</td>
+</tr>
+<tr>
+<td>人为 Column-VarOH</td>
+<td style="text-align:right">683.38</td>
+<td style="text-align:right">590.1</td>
+<td style="text-align:right">−5.68</td>
+<td style="text-align:right">−5.3</td>
+</tr>
+<tr>
+<td>火灾 Column-FixOH</td>
+<td style="text-align:right">370.52</td>
+<td style="text-align:right">345.6</td>
+<td style="text-align:right">+0.63</td>
+<td style="text-align:right">+0.9</td>
+</tr>
+<tr>
+<td>火灾 Profile-FixOH</td>
+<td style="text-align:right">370.52</td>
+<td style="text-align:right">326.6</td>
+<td style="text-align:right">+0.63</td>
+<td style="text-align:right">+1.7</td>
+</tr>
+<tr>
+<td>火灾 Column-VarOH</td>
+<td style="text-align:right">354.45</td>
+<td style="text-align:right">325.7</td>
+<td style="text-align:right">+0.76</td>
+<td style="text-align:right">−0.1</td>
+</tr>
+<tr>
+<td>NMVOC 氧化 Column-FixOH</td>
+<td style="text-align:right">407.48</td>
+<td style="text-align:right">407.6</td>
+<td style="text-align:right">−0.03</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>NMVOC 氧化 Column-VarOH</td>
+<td style="text-align:right">391.28</td>
+<td style="text-align:right">391.4</td>
+<td style="text-align:right">+0.05</td>
+<td style="text-align:right">—</td>
+</tr>
+</tbody>
+</table>
+<p>均值以 Tg CO/年计，趋势是 2003–2022 年年度总量的一元线性回归斜率，单位为 Tg CO/年²。四种归档通量以 <code>kg/m2/s</code> 储存，按实际月天数和含 1° 宽极地格盒的球面面积积分。Column-FixOH 的火灾后验在 2021 年达到 <strong>496.67 Tg CO</strong>，接近论文约 500 Tg。2003 至 2022 年端点的人为排放降低 <strong>15.16%</strong>，落在论文报告的 14%–17% 区间。两组 NMVOC 氧化 CO 均差约 −0.12 Tg CO/年。人为和火灾六项均值仍存在 24.92–134.34 Tg CO/年的差异。Col-FixOH 与 Prof-FixOH 的同年文件 20 对全部 SHA-256 相等，ZIP 内记录的 CRC-32 也相等。由此无法用当前发布文件独立验证论文中的两组差值。所用归档为 Zenodo 17221834，ZIP MD5 为 <code>dd45da312ae7d3018e7f1ac64fa777a5</code>。<a href="https://acp.copernicus.org/articles/26/5531/2026/acp-26-5531-2026-t02.xlsx">论文 Table 2</a> · <a href="https://acp.copernicus.org/articles/26/5531/2026/acp-26-5531-2026-t03.xlsx">论文 Table 3</a> · <a href="https://acp.copernicus.org/articles/26/5531/2026/#section3">论文 §3.4</a> · 复算代码 · <a href="tables/tang_2026_annual.csv">年度全表</a> · <a href="tables/tang_2026_global_tables.csv">全球行对比</a> · <a href="tables/tang_2026_archive_duplicates.csv">20 对校验和</a></p>
+<p><img src="figures/tang_2026_posterior.png" alt="Tang 2026 公开后验的全球人为与火灾 CO 排放" loading="lazy" /></p>
+<h2>Tang 等（2023）</h2>
+<table>
+<thead>
+<tr>
+<th>图表</th>
+<th>论文基准与复核结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Table 1</td>
+<td>作者 CEDS 模块在服务器数据上重算 2015 年全球陆源人为 CO 为 <strong>613.566419 Tg</strong>，GC-adjoint-HEMCO 论文值 <strong>613.85 Tg</strong>，差 <strong>−0.283581 Tg（−0.0462%）</strong>。船舶在源代码中单独读取</td>
+</tr>
+<tr>
+<td>Fig. 6(b)</td>
+<td>论文扰动 CO 排放缩放因子。本地 24 小时 4°×5° MERRA-2 用初始近地面 CO 缩放因子 ±10%，最大相对误差 <strong>0.001094%</strong>，相对 L₂ 误差 <strong>0.000113%</strong>，独立运行的诊断文件哈希相同。这个试验验收 PBL 梯度，Fig. 6(b) 的论文扰动算例尚待重跑</td>
+</tr>
+<tr>
+<td>Figs. 2–5、Table 2</td>
+<td>2015 年区域排放、季节循环，MERRA-2 对 GEOS-FP，以及 GC-v12、GC-Adjoint-HEMCO、GC-Adjoint-STD 三组地表和柱 CO。需作者区域 <code>HEMCO_1x1</code> 及完整先验和初值</td>
+</tr>
+<tr>
+<td>Fig. 7、Table 3</td>
+<td>OSSE-FullOBS 与 OSSE-MOPITT，先验缩放 0.5、真值 1.0，前者跑 40 次迭代后的六区域缩放因子已知。本地尚未独立复跑</td>
+</tr>
+<tr>
+<td>Figs. 8–9、Table 4</td>
+<td>2015 年 MOPITT V7J 月初状态校正与人为 CO 反演。完整观测算子与初值待定位。本地 PBL 个例的构建副本关闭 MOPITT/HDF4，三处前置路径适配详见补丁</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://gmd.copernicus.org/articles/16/6377/2023/">论文和图表</a> · 现有复跑命令与输入校验和 · 局部路径改动</p>
+<h2>Dedoussi 等（2024）</h2>
+<table>
+<thead>
+<tr>
+<th>图表</th>
+<th>论文基准与复核结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figs. 1–2</td>
+<td>三组使用相同初值。三年自旋后，2008–2012 年对比 Classic UCX、旧伴随正演和 UCX 伴随正演。主要指标含带状平均总柱臭氧 2.7% 的五年差异。原初值待定位</td>
+</tr>
+<tr>
+<td>Figs. 3–4</td>
+<td>1 小时、46×72 柱，关闭水平输送和对流，比较 GC-adjoint 与单边有限差分。第 20、40 层 NOₓ 分别扰动 100、300 kg 后，Oₓ 化学梯度的论文 R² 均大于 0.998。该最短实验尚未出本地梯度</td>
+</tr>
+<tr>
+<td>Figs. 5–9</td>
+<td>2010 年 3 月及 9 月各两周。重做对 Cl、NOₓ、BrO、ClO 的平流层 Oₓ 敏感度及不同高度带的梯度，需要同一次三年自旋产生的状态</td>
+</tr>
+</tbody>
+</table>
+<p>原始代码包中的一小时模板使用 2010-01-01 00–01 UTC、4°×5° GEOS-5、<code>restart.geos5.test.YYYYMMDDhh</code>。包中仅有 GEOS-4 的历史重启。本站对应时段找到 GEOS-IT 气象，GEOS-5 气象及该模板的初值未找到。原作者 Makefile 的 <code>-openmp</code> 被本站 Intel 2021 拒绝，第二次通过命令行改用 <code>-qopenmp</code> 后编译至 <code>CMN_FJX_MOD.o</code>，报 <code>No rule to make target</code>（352850）。档案中缺 <code>CMN_FJX_MOD</code> 源文件，服务器通用 v36 则有此文件，暂未将不同分支的 Fast-JX 混入论文原始代码。<a href="https://gmd.copernicus.org/articles/17/5689/2024/#section3">论文 §3–4</a> · <a href="https://doi.org/10.5281/zenodo.4300535">论文原代码包</a></p>
+<h2>2°×2.5° 原始 v36 冒烟与复算命令</h2>
+<p>此前的 GEOS-FP 和 MERRA-2 被动 CO 各完成 2013-07-01 00–03 UTC 的前向输送（352590、352591）。两者使用相同原始可执行文件和 GEOS-FP 读取器，MERRA-2 通过适配的输入布局喂入。这个证据验证了短时气象读取和正向输送。Tang 2026 的 47 层 MERRA-2 tagged CO 反演和原论文的伴随配置另需验收。GEOS-FP 冒烟验证 · MERRA-2 冒烟验证</p>
+<p>从 EarthModelHub 根目录执行，两个脚本读取已下载到 <code>input/raw/papers</code> 的归档成员。Kelp 还读取服务器 GFED4s，路径可通过 <code>--gfed-dir</code> 和 <code>--emission-factors</code> 指定。复算输入及其校验和见清单。 SHA-256 输入清单</p>
+<pre><code class="language-bash">p=docs/papers/models/geoschem/paper_replicates/gcadj
+sha256sum -c &quot;$p/inputs.sha256&quot;
+OPENBLAS_NUM_THREADS=1 prefix/mamba/envs/fair/bin/python &quot;$p/recompute_kelp_2023.py&quot;
+prefix/mamba/envs/fair/bin/python &quot;$p/recompute_tang_2026.py&quot;
+</code></pre>
+</article></main></body></html>

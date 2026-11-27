@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leach 2021 · Reproduction report · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Paper reproduction</p><article><h1>复现报告：FaIR v2.0.0-alpha</h1>
+<p>核对日期：2026-11-14。源码提交 <code>47c6eec031d2edcf09424394dbb86581a1b246ba</code>。配置见同目录 config。<code>scientific_status</code> 仍是 <code>unverified</code>。Fig. 2、4、5 和 Fig. S1–S3 的右栏只采用这次写出的 FaIR 输出，不用作者笔记本存好的图。100 万成员的历史和 SSP 指标表已经写出。Fig. 6–10 还要约束笔记本，右栏仍不是这批结果。</p>
+<p>&lt;!-- leach-comparison --&gt;</p>
+<h2>论文图</h2>
+<p>Fig. 1 是结构示意图。下面每张图左边是论文原图，右边是这次保存的 FaIR 输出按论文坐标重画。曲线一致是因为方程和输入相同，右栏不是论文 png 的拷贝。图下的链接指向这次写出的数值。Fig. 6–10 的 100 万成员指标表已在 2026-11-13 写完，约束后的图还没画，右栏仍是占位。每张对照图同一尺寸。图内文字用英文。</p>
+<h3>Fig2</h3>
+<p>历史和 SSP 浓度。彩色实线和灰色历史实线是这次 run_FaIR 写出的浓度。黑点是历史观测。点线是 MAGICC7，点划线是 FaIRv1.5，这两条是论文图里的对照，不是这次的模拟。</p>
+<p><img src="figures/fig2_side_by_side.png" alt="Fig2" loading="lazy" /></p>
+<p>这次的模拟结果：fig2_C.csv。右栏单独的图：<a href="figures/ours/fig2.png">fig2.png</a>。</p>
+<h3>Fig3</h3>
+<p>各 CMIP6 模式的 abrupt-4×CO₂、abrupt-2×CO₂、abrupt-0p5xCO₂ 和 1pctCO₂。右图是 CMIP6-climresp-results 笔记本重跑：黑色是 FaIRv2.0.0-alpha，橙色是 CMIP6。</p>
+<p><img src="figures/fig3_side_by_side.png" alt="Fig3" loading="lazy" /></p>
+<h3>Fig4</h3>
+<p>C4MIP 1pctCO₂ 碳循环。黑点是这次反演碳循环得到的排放。橙线是 C4MIP 参考，不是 FaIR 的输出。</p>
+<p><img src="figures/fig4_side_by_side.png" alt="Fig4" loading="lazy" /></p>
+<p>这次的模拟结果：fig4_fair.csv。右栏单独的图：<a href="figures/ours/fig4.png">fig4.png</a>。</p>
+<h3>Fig5</h3>
+<p>气溶胶有效辐射强迫。黑线是这次用拟合系数算出的 FaIR 强迫。橙点是 RFMIP 参考，不是 FaIR 的输出。</p>
+<p><img src="figures/fig5_side_by_side.png" alt="Fig5" loading="lazy" /></p>
+<p>这次的模拟结果：fig5_fair.csv。右栏单独的图：<a href="figures/ours/fig5.png">fig5.png</a>。</p>
+<h3>Fig6</h3>
+<p>全集合和约束集合的 ECS、TCR。100 万成员的指标表已经写出。约束笔记本还没跑，右栏仍不是重跑。</p>
+<p><img src="figures/fig6_side_by_side.png" alt="Fig6" loading="lazy" /></p>
+<h3>Fig7</h3>
+<p>约束集合里关键量的联合分布。100 万成员的指标表已经写出。约束笔记本还没跑，右栏仍不是重跑。</p>
+<p><img src="figures/fig7_side_by_side.png" alt="Fig7" loading="lazy" /></p>
+<h3>Fig8</h3>
+<p>理想化试验的集合范围。100 万成员的指标表已经写出。DECK 笔记本还没跑，右栏仍不是重跑。</p>
+<p><img src="figures/fig8_side_by_side.png" alt="Fig8" loading="lazy" /></p>
+<h3>Fig9</h3>
+<p>各 SSP 的分类有效辐射强迫。100 万成员的 SSP 表已经写出。SSP 笔记本还没跑，右栏仍不是重跑。</p>
+<p><img src="figures/fig9_side_by_side.png" alt="Fig9" loading="lazy" /></p>
+<h3>Fig10</h3>
+<p>各 SSP 的地表温度。100 万成员的 SSP 表已经写出。SSP 笔记本还没跑，右栏仍不是重跑。</p>
+<p><img src="figures/fig10_side_by_side.png" alt="Fig10" loading="lazy" /></p>
+<h3>FigS1</h3>
+<p>补充图 S1。点是这次用 FaIR 公式对 Etminan 线表算的残差，不是作者存好的图。这张图不是气候积分。</p>
+<p><img src="figures/figs1_side_by_side.png" alt="FigS1" loading="lazy" /></p>
+<p>这次的模拟结果：figs1_rf.csv。右栏单独的图：<a href="figures/ours/figs1.png">figs1.png</a>。</p>
+<h3>FigS2</h3>
+<p>补充图 S2：RCP8.5 的甲烷寿命，来自这次的 run_FaIR。</p>
+<p><img src="figures/figs2_side_by_side.png" alt="FigS2" loading="lazy" /></p>
+<p>这次的模拟结果：figs2_lifetime.csv。右栏单独的图：<a href="figures/ours/figs2.png">figs2.png</a>。</p>
+<h3>FigS3</h3>
+<p>补充图 S3：CO₂ 和 CH₄ 脉冲的缩放异常，来自这次的 run_FaIR。</p>
+<p><img src="figures/figs3_side_by_side.png" alt="FigS3" loading="lazy" /></p>
+<p>这次的模拟结果：figs3_plot.csv。右栏单独的图：<a href="figures/ours/figs3.png">figs3.png</a>。</p>
+<h2>表 7 和表 10</h2>
+<p>论文数值见 Leach et al. 2021。约束集合成员在笔记本里是一次没有固定种子的随机抽样，分位数会有抽样涨落。</p>
+<p>表 7 还没有生成。</p>
+<p>表 10 还没有生成。
+&lt;!-- /leach-comparison --&gt;</p>
+<h2>默认参数</h2>
+<p>这三次运行用作者默认气体循环，以及 F₂× = 3.759 W m⁻²、RWF = 0.552、TCR = 1.79 K。由此 ECS = 3.243 K，与论文四舍五入后的 3.24 K 一致。工业化前浓度是默认的 278 ppm。Fig. 3 的协议是 284 ppm，并且每个模式用自己的参数。</p>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>论文或设计预期</th>
+<th>复现结果</th>
+<th>差值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1pctCO2</code>，第 70 年</td>
+<td>TCR = 1.79 K；此时 CO₂ 约为初值的 2 倍</td>
+<td>CO₂ 557.88 ppm，是 278 ppm 的 2.007 倍；升温 1.796 K</td>
+<td>+0.006 K</td>
+</tr>
+<tr>
+<td><code>1pctCO2</code>，第 140 年</td>
+<td>论文没有给出这条默认参数曲线的末年升温</td>
+<td>CO₂ 1119.53 ppm，升温 4.086 K</td>
+<td>无论文数字可对</td>
+</tr>
+<tr>
+<td><code>co2_pulse</code>，TCR 1.79，第 100 年</td>
+<td>论文没有 100 GtC 脉冲的对照值</td>
+<td>CO₂ 292.05 ppm，升温 0.155 K</td>
+<td>无论文数字可对</td>
+</tr>
+<tr>
+<td><code>co2_pulse_tcr25</code>，TCR 2.5，第 100 年</td>
+<td>同一脉冲、更高 TCR 应更暖</td>
+<td>CO₂ 292.11 ppm，升温 0.220 K</td>
+<td>比 TCR 1.79 高 0.065 K</td>
+</tr>
+</tbody>
+</table>
+<p>第 70 年的竖线对应默认 TCR。100 GtC 脉冲打在第 10 年。</p>
+<p><img src="figures/1pctCO2.png" alt="Default-parameter 1pctCO2. The dotted line is year 70, and the dashed line is the published default TCR of 1.79 K." loading="lazy" /></p>
+<p><img src="figures/co2_pulse.png" alt="100 GtC pulse at year 10, for TCR 1.79 K and TCR 2.5 K." loading="lazy" /></p>
+<h2>归档</h2>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>运行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>leach_alpha_1pctCO2</code></td>
+<td><code>archive/fair/fair_v2.0.0-alpha/leach_alpha_1pctCO2/latest/</code>，<code>0e0e07bc8f6b411186462e37a3f3c5a6</code></td>
+</tr>
+<tr>
+<td><code>leach_alpha_co2_pulse</code></td>
+<td><code>archive/fair/fair_v2.0.0-alpha/leach_alpha_co2_pulse/latest/</code>，<code>85aafd28405a4e3190dd58198ba395a8</code></td>
+</tr>
+<tr>
+<td><code>leach_alpha_co2_pulse_tcr25</code></td>
+<td><code>archive/fair/fair_v2.0.0-alpha/leach_alpha_co2_pulse_tcr25/latest/</code>，<code>2ed2f7e6b0c644aa9199d50aec5318fe</code></td>
+</tr>
+</tbody>
+</table>
+<p>数值验收均为 <code>passed</code>。Fig. 3 的重跑脚本是 <code>src/model/fair_alpha/plot_leach2021.py</code>。</p>
+</article></main></body></html>

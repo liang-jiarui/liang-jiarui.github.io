@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Emmons 2020 · Reproduction report · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Paper reproduction</p><article><h1>复现报告：CAM-chem / WACCM6，Emmons et al. 2020</h1>
+<p>核对日期：2026-11-18。代码 <code>cam_cesm2_1_rel_60</code>（CESM 2.1.5）。DOI：<code>10.1029/2019MS001882</code>。试验协议见 实验表格。六段 case 已登记，都还没有积分。</p>
+<h2>Table 3（2013，尚未重算）</h2>
+<p>对流层臭氧收支。负担单位 Tg，通量 Tg/年。甲烷寿命由全球甲烷负担除以全年 CH4+OH 损耗得到，单位年。</p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th style="text-align:right">论文 T0</th>
+<th style="text-align:right">论文 T1</th>
+<th style="text-align:right">本次 T0</th>
+<th style="text-align:right">本次 T1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对流层臭氧负担</td>
+<td style="text-align:right">342</td>
+<td style="text-align:right">344</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>臭氧生成</td>
+<td style="text-align:right">5078</td>
+<td style="text-align:right">5134</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>臭氧损耗</td>
+<td style="text-align:right">4489</td>
+<td style="text-align:right">4498</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>臭氧沉降</td>
+<td style="text-align:right">841</td>
+<td style="text-align:right">828</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>平流层输入</td>
+<td style="text-align:right">469</td>
+<td style="text-align:right">479</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>甲烷寿命</td>
+<td style="text-align:right">8.4</td>
+<td style="text-align:right">8.2</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+</tbody>
+</table>
+<p>沉降通量低于 Young 等（2018）的多模式四分位区间 850–1200 Tg/年。负担、生成、损耗和平流层输入落在该区间内。</p>
+<h2>Table 4（地面臭氧偏差，尚未重算）</h2>
+<p>相对 TOAR 2°×2° 乡村站点中值，单位 ppb。WACCM 的窗口是 1990–2014，CAM-chem-SD 是 2000–2014，T0 和 T1 是 2013。JFM 是 1–3 月，JJA 是 6–8 月。</p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>模拟</th>
+<th style="text-align:right">R</th>
+<th style="text-align:right">全年</th>
+<th style="text-align:right">JFM</th>
+<th style="text-align:right">JJA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>美国东南</td>
+<td>CAM-chem-SD</td>
+<td style="text-align:right">0.76</td>
+<td style="text-align:right">6.9</td>
+<td style="text-align:right">2.4</td>
+<td style="text-align:right">13.4</td>
+</tr>
+<tr>
+<td>美国东南</td>
+<td>WACCM-SD</td>
+<td style="text-align:right">0.80</td>
+<td style="text-align:right">8.0</td>
+<td style="text-align:right">2.9</td>
+<td style="text-align:right">15.1</td>
+</tr>
+<tr>
+<td>美国东南</td>
+<td>WACCM-AMIP</td>
+<td style="text-align:right">0.81</td>
+<td style="text-align:right">6.3</td>
+<td style="text-align:right">3.0</td>
+<td style="text-align:right">10.6</td>
+</tr>
+<tr>
+<td>美国东南</td>
+<td>WACCM-HIST</td>
+<td style="text-align:right">0.78</td>
+<td style="text-align:right">6.7</td>
+<td style="text-align:right">2.7</td>
+<td style="text-align:right">11.2</td>
+</tr>
+<tr>
+<td>美国东南</td>
+<td>T0</td>
+<td style="text-align:right">0.51</td>
+<td style="text-align:right">7.9</td>
+<td style="text-align:right">2.1</td>
+<td style="text-align:right">15.0</td>
+</tr>
+<tr>
+<td>美国东南</td>
+<td>T1</td>
+<td style="text-align:right">0.57</td>
+<td style="text-align:right">6.7</td>
+<td style="text-align:right">1.2</td>
+<td style="text-align:right">13.1</td>
+</tr>
+<tr>
+<td>欧洲</td>
+<td>CAM-chem-SD</td>
+<td style="text-align:right">0.91</td>
+<td style="text-align:right">3.7</td>
+<td style="text-align:right">1.4</td>
+<td style="text-align:right">6.0</td>
+</tr>
+<tr>
+<td>欧洲</td>
+<td>WACCM-SD</td>
+<td style="text-align:right">0.90</td>
+<td style="text-align:right">3.8</td>
+<td style="text-align:right">1.3</td>
+<td style="text-align:right">6.4</td>
+</tr>
+<tr>
+<td>欧洲</td>
+<td>WACCM-AMIP</td>
+<td style="text-align:right">0.92</td>
+<td style="text-align:right">3.8</td>
+<td style="text-align:right">3.1</td>
+<td style="text-align:right">4.4</td>
+</tr>
+<tr>
+<td>欧洲</td>
+<td>WACCM-HIST</td>
+<td style="text-align:right">0.91</td>
+<td style="text-align:right">4.0</td>
+<td style="text-align:right">3.3</td>
+<td style="text-align:right">4.7</td>
+</tr>
+<tr>
+<td>欧洲</td>
+<td>T0</td>
+<td style="text-align:right">0.92</td>
+<td style="text-align:right">3.1</td>
+<td style="text-align:right">1.1</td>
+<td style="text-align:right">4.8</td>
+</tr>
+<tr>
+<td>欧洲</td>
+<td>T1</td>
+<td style="text-align:right">0.92</td>
+<td style="text-align:right">2.8</td>
+<td style="text-align:right">0.5</td>
+<td style="text-align:right">4.0</td>
+</tr>
+<tr>
+<td>日本</td>
+<td>CAM-chem-SD</td>
+<td style="text-align:right">0.84</td>
+<td style="text-align:right">7.7</td>
+<td style="text-align:right">4.3</td>
+<td style="text-align:right">13.3</td>
+</tr>
+<tr>
+<td>日本</td>
+<td>WACCM-SD</td>
+<td style="text-align:right">0.76</td>
+<td style="text-align:right">9.3</td>
+<td style="text-align:right">5.0</td>
+<td style="text-align:right">15.8</td>
+</tr>
+<tr>
+<td>日本</td>
+<td>WACCM-AMIP</td>
+<td style="text-align:right">0.64</td>
+<td style="text-align:right">8.9</td>
+<td style="text-align:right">6.3</td>
+<td style="text-align:right">14.2</td>
+</tr>
+<tr>
+<td>日本</td>
+<td>WACCM-HIST</td>
+<td style="text-align:right">0.63</td>
+<td style="text-align:right">9.6</td>
+<td style="text-align:right">6.1</td>
+<td style="text-align:right">15.7</td>
+</tr>
+<tr>
+<td>日本</td>
+<td>T0</td>
+<td style="text-align:right">0.73</td>
+<td style="text-align:right">10.8</td>
+<td style="text-align:right">6.9</td>
+<td style="text-align:right">17.8</td>
+</tr>
+<tr>
+<td>日本</td>
+<td>T1</td>
+<td style="text-align:right">0.79</td>
+<td style="text-align:right">9.5</td>
+<td style="text-align:right">5.8</td>
+<td style="text-align:right">15.7</td>
+</tr>
+<tr>
+<td>澳大利亚和新西兰</td>
+<td>CAM-chem-SD</td>
+<td style="text-align:right">0.93</td>
+<td style="text-align:right">4.0</td>
+<td style="text-align:right">5.8</td>
+<td style="text-align:right">2.0</td>
+</tr>
+<tr>
+<td>澳大利亚和新西兰</td>
+<td>WACCM-SD</td>
+<td style="text-align:right">0.83</td>
+<td style="text-align:right">4.6</td>
+<td style="text-align:right">6.1</td>
+<td style="text-align:right">2.7</td>
+</tr>
+<tr>
+<td>澳大利亚和新西兰</td>
+<td>WACCM-AMIP</td>
+<td style="text-align:right">0.79</td>
+<td style="text-align:right">3.7</td>
+<td style="text-align:right">4.9</td>
+<td style="text-align:right">2.1</td>
+</tr>
+<tr>
+<td>澳大利亚和新西兰</td>
+<td>WACCM-HIST</td>
+<td style="text-align:right">0.79</td>
+<td style="text-align:right">3.7</td>
+<td style="text-align:right">5.0</td>
+<td style="text-align:right">2.1</td>
+</tr>
+<tr>
+<td>澳大利亚和新西兰</td>
+<td>T0</td>
+<td style="text-align:right">0.98</td>
+<td style="text-align:right">3.5</td>
+<td style="text-align:right">5.1</td>
+<td style="text-align:right">1.8</td>
+</tr>
+<tr>
+<td>澳大利亚和新西兰</td>
+<td>T1</td>
+<td style="text-align:right">0.97</td>
+<td style="text-align:right">3.7</td>
+<td style="text-align:right">5.3</td>
+<td style="text-align:right">1.9</td>
+</tr>
+</tbody>
+</table>
+</article></main></body></html>

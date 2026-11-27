@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E3SMv1.1 ELM biogeochemistry experiment protocol · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>Burrows et al. (2020) ELM 复现实验表</h1>
+<p>README 论文总表 · 任务配置 · 本地 PDF · Gallery</p>
+<p>论文考察历史土地利用、CO₂ 升高及其引起的气候变化如何影响陆地碳汇，以及氮、磷限制如何改变这些响应。ELM 源自 CLM4.5。两套 ELMv1.1 方案均模拟植被、凋落物和土壤中的碳、氮、磷库及动态物候。默认的 CTC（Converging Trophic Cascade）用养分供需约束潜在生长和微生物分解。ECA（Equilibrium Chemistry Approximation）显式表示植物根系、微生物等对土壤养分的竞争，并用可变的植被 C:N:P 化学计量表征养分限制。两套方案还用了不同的初始土壤磷廓线和预积分处理，因此 CTC 与 ECA 的差异同时包含过程表示和初始化的影响。 <a href="https://doi.org/10.1029/2019MS001766">Burrows et al. (2020) §§2.1、2.4、3.1、5.3</a> · <a href="https://doi.org/10.1029/2018MS001571">Zhu et al. (2019) ECA 过程说明</a></p>
+<p>论文的陆地结果中，CTC 的恒定强迫对照碳库总体稳定，ECA 对照在解除土壤磷固定后出现碳库下降。两套方案的完整历史试验都呈现总生态系统碳先降后回升，ECA 的植被磷限制在历史后期更强。 <a href="https://doi.org/10.1029/2019MS001766">正文 §§5.1、5.3，图 17、20</a></p>
+<h2>1. 论文正式试验</h2>
+<p>同一陆面方案下的五组试验共用一次 spin-up 的最终状态。<code>ne30_oECv3</code> 的大气和陆面均为 <code>ne30np4</code>（约 1°），径流为 <code>r05</code>（约 0.5°），海洋和海冰使用 <code>oEC60to30v3</code>（60–30 km）。CTC 正式试验启用海洋及海冰 BGC，ECA 正式试验保持海洋及海冰物理耦合并关闭海洋及海冰 BGC。 <a href="https://doi.org/10.1029/2019MS001766">正文 §4.1、表 3、图 4</a> · <a href="https://github.com/E3SM-Project/E3SM/blob/v1.1.0/cime/config/e3sm/config_grids.xml#L1094">v1.1.0 网格定义</a> · <a href="https://github.com/E3SM-Project/E3SM/blob/v1.1.1/cime/config/e3sm/config_grids.xml#L1094">v1.1.1 网格定义</a></p>
+<p><strong>B</strong> 是陆面及启用时海洋 BGC 所见的 CO₂，<strong>R</strong> 是大气辐射计算所见的 CO₂。<strong>C</strong> 固定在 1850 年浓度，<strong>D</strong> 使用 CMIP6 历史浓度序列；两者均为规定浓度。 <a href="https://doi.org/10.1029/2019MS001766">正文 §4.1</a></p>
+<p>十行都是配置草案，还没有建例或积分。每行 1850-01-01 至 2015-01-01，15 年 × 11 段。预积分还没有 case，正式试验的 <code>RUN_REFCASE</code> 仍是占位。</p>
+<table>
+<thead>
+<tr>
+<th>陆面方案</th>
+<th>论文试验</th>
+<th>E3SM 版本</th>
+<th>CIME 分辨率 <code>--res</code>（陆面）</th>
+<th>CIME <code>--compset</code></th>
+<th>离线 spin-up（AD + 常规）</th>
+<th>耦合 spin-up（陆面状态）</th>
+<th>正式模拟年份</th>
+<th>B 生地化 CO₂</th>
+<th>R 辐射 CO₂</th>
+<th>其余外强迫</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CTC</td>
+<td>CNST-forcing</td>
+<td><code>v1.1.0</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BCRC_CNPRDCTC_1850</code></td>
+<td>200 + 710 年</td>
+<td>600 + 265 年</td>
+<td>1850–2014</td>
+<td>1850</td>
+<td>1850</td>
+<td>1850</td>
+</tr>
+<tr>
+<td>CTC</td>
+<td>BCRC-hist</td>
+<td><code>v1.1.0</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BCRC_CNPRDCTC_20TR</code></td>
+<td>200 + 710 年</td>
+<td>600 + 265 年</td>
+<td>1850–2014</td>
+<td>1850</td>
+<td>1850</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>CTC</td>
+<td>BDRC-hist</td>
+<td><code>v1.1.0</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BDRC_CNPRDCTC_20TR</code></td>
+<td>200 + 710 年</td>
+<td>600 + 265 年</td>
+<td>1850–2014</td>
+<td>历史</td>
+<td>1850</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>CTC</td>
+<td>BCRD-hist</td>
+<td><code>v1.1.0</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BCRD_CNPRDCTC_20TR</code></td>
+<td>200 + 710 年</td>
+<td>600 + 265 年</td>
+<td>1850–2014</td>
+<td>1850</td>
+<td>历史</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>CTC</td>
+<td>BDRD-hist</td>
+<td><code>v1.1.0</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BDRD_CNPRDCTC_20TR</code></td>
+<td>200 + 710 年</td>
+<td>600 + 265 年</td>
+<td>1850–2014</td>
+<td>历史</td>
+<td>历史</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>ECA</td>
+<td>CNST-forcing</td>
+<td><code>v1.1.1</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_CNTL_CNPECACNT_1850S</code></td>
+<td>200 + 300 年</td>
+<td>510 年</td>
+<td>1850–2014</td>
+<td>1850</td>
+<td>1850</td>
+<td>1850</td>
+</tr>
+<tr>
+<td>ECA</td>
+<td>BCRC-hist</td>
+<td><code>v1.1.1</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BCRC_CNPECACNT_20TRS</code></td>
+<td>200 + 300 年</td>
+<td>510 年</td>
+<td>1850–2014</td>
+<td>1850</td>
+<td>1850</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>ECA</td>
+<td>BDRC-hist</td>
+<td><code>v1.1.1</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BDRC_CNPECACNT_20TRS</code></td>
+<td>200 + 300 年</td>
+<td>510 年</td>
+<td>1850–2014</td>
+<td>历史</td>
+<td>1850</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>ECA</td>
+<td>BCRD-hist</td>
+<td><code>v1.1.1</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BCRD_CNPECACNT_20TRS</code></td>
+<td>200 + 300 年</td>
+<td>510 年</td>
+<td>1850–2014</td>
+<td>1850</td>
+<td>历史</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>ECA</td>
+<td>BDRD-hist</td>
+<td><code>v1.1.1</code></td>
+<td><code>ne30_oECv3</code>（约 1°）</td>
+<td><code>BGCEXP_BDRD_CNPECACNT_20TRS</code></td>
+<td>200 + 300 年</td>
+<td>510 年</td>
+<td>1850–2014</td>
+<td>历史</td>
+<td>历史</td>
+<td>历史</td>
+</tr>
+</tbody>
+</table>
+<p>正式模拟年份覆盖 1850 年 1 月至 2014 年 12 月。CNST 在这一时段反复施加 1850 年外强迫。正文 §3.1 将对照时段描述为 164 年，表中采用 §5.1、图 17 和发布归档给出的年份范围。 <a href="https://doi.org/10.1029/2019MS001766">正文 §§3.1、5.1，图 17</a> · <a href="https://catalogue.ceda.ac.uk/uuid/42752a05c1154fb698895ddb8d9510f3/">CTC piControl 归档时间范围</a> · <a href="https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/BGC/index.html">官方试验目录</a></p>
+<p>论文给出的提交为 CTC <code>19ab75a36d7c0d18a52107ad30ee312f796c3be8</code> 和 ECA <code>25c94366a5888316aa3194940943e7ff86f21318</code>。表中 compset 按论文强迫和海洋配置，在对应版本的 CIME 定义中匹配。原始生产脚本中的 compset、namelist 覆盖和 restart 路径待归档核对。 <a href="https://doi.org/10.1029/2019MS001766">正文 §4.1</a> · <a href="https://github.com/E3SM-Project/E3SM/blob/v1.1.0/cime/config/e3sm/allactive/config_compsets.xml#L137">CTC compset 定义</a> · <a href="https://github.com/E3SM-Project/E3SM/blob/v1.1.1/cime/config/e3sm/allactive/config_compsets.xml#L189">ECA compset 定义</a></p>
+<p>CNST 对应 <code>piControl</code>，CTC BDRC 对应 C4MIP <code>hist-bgc</code>，BDRD 对应 CMIP6 <code>historical</code>。各组差分在同一陆面方案内进行。BCRC − CNST 是土地利用与覆盖变化（LULCC）、氮沉降、气溶胶等非 CO₂ 强迫的合成响应。BDRC − BCRC 和 BCRD − BCRC 分别估计 CO₂ 生地化和辐射响应，BDRD − BCRC 给出总 CO₂ 响应，BDRD − BDRC − BCRD + BCRC 给出非线性交互项。 <a href="https://doi.org/10.1029/2019MS001766">正文 §§4.1、5.2、6.1</a></p>
+<h2>2. 预积分和初始化</h2>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>CTC</th>
+<th>ECA</th>
+<th>需要核对的输入或状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>离线加速分解（AD）</td>
+<td>200 年，暂设磷供应无限</td>
+<td>200 年，固定从观测图初始化的土壤磷库</td>
+<td>工业化前大气驱动反复读取 E3SMv1-DECK 预积分的 25 年、3 小时瞬时输出。</td>
+</tr>
+<tr>
+<td>离线常规积分（post-AD）</td>
+<td>710 年。开始时用观测图初始化土壤磷，随后碳氮磷库可演化</td>
+<td>300 年，继续固定土壤磷库</td>
+<td>CTC 将 0–50 cm 的土壤磷浓度用于整个 3.8 m 土柱；ECA 使用指数衰减廓线，e 折长度 3 m。</td>
+</tr>
+<tr>
+<td>耦合预积分</td>
+<td>先做 600 年陆面 BGC 耦合积分，再拼接独立 104 年海洋 BGC 分支的大气、海洋及海冰状态，继续耦合 265 年（海洋及海冰 BGC 开启）</td>
+<td>510 年耦合积分，保持土壤磷库固定，海洋及海冰 BGC 关闭</td>
+<td>陆面和河流状态来自离线预积分，初始大气、海洋和海冰状态来自 DECK piControl（图 4 标注 360 年）。</td>
+</tr>
+<tr>
+<td>沿陆面状态累加的 spin-up 时间</td>
+<td>1,775 年（离线 910 + 耦合 865）</td>
+<td>1,010 年（离线 500 + 耦合 510）</td>
+<td>CTC 的 104 年海洋 BGC 分支并行积分，拼接后海洋 BGC 共积 369 年（104 + 265）。</td>
+</tr>
+<tr>
+<td>正式试验起点</td>
+<td>继承对应耦合末态</td>
+<td>继承对应耦合末态，解除土壤磷固定，CNST 也允许土壤磷演化</td>
+<td>核对分量 restart 和日期，以及磷库释放设置。ECA 的碳库漂移是重要的诊断量。</td>
+</tr>
+</tbody>
+</table>
+<p>来源见 <a href="https://doi.org/10.1029/2019MS001766">正文 §3、图 4、附录 C.3</a>。正式试验的陆面输入按附录 C 核对。LULCC 使用重映射到 ne30 的 LUH2 v2h，陆面氮沉降使用 input4MIPs，合并 NHₓ 和 NOᵧ 的干、湿沉降。还需从归档确认 surface/domain、PFT 参数、CO₂ 文件及实际 restart 文件名与校验值。 <a href="https://doi.org/10.1029/2019MS001766">正文附录 C</a></p>
+<h2>3. 首轮对照指标</h2>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>论文目标</th>
+<th>所需试验</th>
+<th>处理和核对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>表 4 陆地碳收支</td>
+<td>CTC CNST、BDRD，随后 ECA 同两组</td>
+<td>先按 §4.6.1 的 1977–2006 年算全球多年平均。CTC 的 CNST / BDRD 参考值为 GPP 109 / 124 PgC/yr、植被碳 648 / 589 PgC、表层 1 m 土壤有机质碳 1,095 / 1,106 PgC。</td>
+</tr>
+<tr>
+<td>1</td>
+<td>图 17 陆地碳时序</td>
+<td>先 CTC CNST、BDRD，再扩展其余成员</td>
+<td>全球年值做 10 年滑动平均。GPP、NEE 用绝对值，碳库以 1850 年为基准。保存总生态系统碳、植被碳、表层 1 m 土壤有机质碳和含粗木质残体的凋落物碳。</td>
+</tr>
+<tr>
+<td>1</td>
+<td>工业化前碳漂移</td>
+<td>CTC 和 ECA 各自的 CNST</td>
+<td>计算全球 NEE 平均和植被、土壤碳的长期趋势。论文使用的 C4MIP 参考为绝对平均 NEE 小于 0.1 PgC/yr。正文 §3.1 与 §5.1 对 CTC 均给出接近零的值但数值不同，§3.1 对 ECA 的数值与控制阶段描述也有出入，复核时记录实际时段和口径。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>图 18、20、21 氮磷库及限制</td>
+<td>两方案 CNST 和历史成员</td>
+<td>保留固氮、土壤矿质氮、表层磷、矿化通量和限制因子。植被限制指标 CTC 用 FPG，ECA 用叶片 C:N:P 状态定义的指标。土壤微生物固定指标均用 FPI。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>图 19 GPP 响应与图 23 陆地反馈</td>
+<td>四组历史成员</td>
+<td>图 19 计算 GPP 空间差分。图 23 用 BDRC − BCRC 回归碳库对 CO₂ 的响应，用 BCRD − BCRC 回归碳库对全球近地面气温的响应，滑动窗取 75 和 100 年。</td>
+</tr>
+</tbody>
+</table>
+<p>论文 NEE 以陆地向大气排碳为正，包含火烧和人类扰动贡献。汇总原生 ELM 或 CMIP6 输出时，先核对变量符号、碳库边界、陆地面积权重和历法再换算为 PgC 或 PgC/yr。表 4 采用 §4.6.1 明示的 1977–2006 年作为首轮口径，§4.6 概述另写 1977–2014，需用归档输出和 Text S5 核实差异。 <a href="https://doi.org/10.1029/2019MS001766">正文 §2.3.1、§4.6、表 4、图 17–21、图 23</a></p>
+<h2>4. EarthModelHub 第一轮实施</h2>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>工作</th>
+<th>完成标志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>取 CTC <code>E3SM_1_1_piControl</code> 和 <code>E3SM_1_1_hist-BDRD</code> 的已发布输出，先做表 4 的核心量和图 17 的两条时序</td>
+<td>建立原生 ELM 与 CMIP6 变量对应及可复查的积分口径。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>为离线 ELM 准备 v1.1.0 环境，从 CTC 的工业化前短跑开始</td>
+<td>确认驱动日期、输入流、碳库连续性和输出字段。有可用的归档陆面状态后，再做工业化前控制及历史驱动配对。论文各组的辐射强迫先改变耦合气象，离线诊断这一响应时需使用对应耦合试验的气象。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>核实 CTC 原始生产脚本、初始分量 restart 和输入清单</td>
+<td>用论文耦合配置做短期续跑。初始 restart 取不到时，按图 4 回溯预积分链。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>以论文耦合设置扩展 CTC 其余历史成员，然后扩展 ECA</td>
+<td>复现表 3 的强迫差分，并用 ECA 自己的 CNST 量化其初始化漂移。</td>
+</tr>
+</tbody>
+</table>
+<h3>离线 ELM 工业化前短跑候选配置</h3>
+<table>
+<thead>
+<tr>
+<th>陆面方案</th>
+<th>E3SM 版本</th>
+<th>CIME 分辨率 <code>--res</code>（陆面）</th>
+<th>CIME <code>--compset</code></th>
+<th>大气驱动分量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CTC</td>
+<td><code>v1.1.0</code></td>
+<td><code>ne30_ne30</code>（<code>ne30np4</code>，约 1°）</td>
+<td><code>I1850CNPRDCTCBC</code></td>
+<td><code>DATM%QIA</code></td>
+</tr>
+<tr>
+<td>ECA</td>
+<td><code>v1.1.1</code></td>
+<td><code>ne30_ne30</code>（<code>ne30np4</code>，约 1°）</td>
+<td><code>I1850CNPECACNTBC</code></td>
+<td><code>DATM%QIA</code></td>
+</tr>
+</tbody>
+</table>
+<p>短跑候选取自对应版本的 CIME 定义，陆面网格与正式试验同为 <code>ne30np4</code>。离线网格别名 <code>ne30_ne30</code> 采用 <code>gx1v6</code> mask。论文离线预积分的网格别名、DATM stream 和 AD 阶段开关待原始配置确认。 <a href="https://github.com/E3SM-Project/E3SM/blob/v1.1.0/components/clm/cime_config/config_compsets.xml#L117">CTC 离线 compset</a> · <a href="https://github.com/E3SM-Project/E3SM/blob/v1.1.1/components/clm/cime_config/config_compsets.xml#L152">ECA 离线 compset</a> · <a href="https://github.com/E3SM-Project/E3SM/blob/v1.1.0/cime/config/e3sm/config_grids.xml#L766">离线网格定义</a></p>
+<p>归档目录已确认，实际数据和 restart 尚待取回。官方文档提供 NERSC HPSS 和 <code>zstash</code> 入口，可在每个归档中查找 <code>case_scripts/run_script_provenance/</code>。ESGF 可用于查找 CMIP6 标准输出，ILAMB 结果可用于交叉核对空间诊断。 <a href="https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/BGC/index.html">E3SM 试验与归档名</a> · <a href="https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/BGC/simulation_data/index.html">HPSS 与 provenance</a> · <a href="https://doi.org/10.6084/m9.figshare.11097356.v2">ILAMB 结果</a></p>
+<p>十个正式试验的 case 在 burrows_2020_elm，<code>science.status</code> 都是 <code>draft</code>。本机已安装的 E3SM 是 v3.0.2，不能代替 v1.1.0 和 v1.1.1。Wiley 的 Supporting Information PDF 返回 HTTP 403，原始 namelist、输入文件清单和 Text S5 处理细节仍待核对。 仓库安装文档 · <a href="https://doi.org/10.1029/2019MS001766">论文及补充材料入口</a></p>
+<h2>查看配置</h2>
+<pre><code class="language-bash">python -m src.simulations list --task burrows_2020_elm
+python -m src.simulations show @burrows_2020_elm/e3sm/E3SM_v1_1_0/ctc_bdrd_BGCEXP_BDRD_CNPRDCTC_20TR_ne30_oECv3_1850-2014
+python -m src.simulations check @burrows_2020_elm/e3sm/E3SM_v1_1_0/ctc_bdrd_BGCEXP_BDRD_CNPRDCTC_20TR_ne30_oECv3_1850-2014
+</code></pre>
+<p><code>check</code> 会报源码、环境和 restart 占位尚未就绪。</p>
+</article></main></body></html>

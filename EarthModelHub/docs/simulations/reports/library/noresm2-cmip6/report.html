@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NorESM2 DECK and scenario experiment protocol · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>Seland et al. (2020) NorESM2 实验表</h1>
+<p>论文评估的是两套耦合分辨率上的 CMIP6 DECK、historical 和 ScenarioMIP tier 1。NorESM2-LM 的大气和陆面约 2°，NorESM2-MM 约 1°。海洋和海冰都是约 1° 的三极网格。代码基线是 CESM2.1 上的 NorESM2。本机 CMIP6 树是 noresm2.0.6。 <a href="https://doi.org/10.5194/gmd-13-6165-2020">Seland et al. (2020) §4</a> · PDF · <a href="https://noresmhub.github.io/noresm-exp/intro.html">案例记录</a></p>
+<p>大气、陆面和海冰每半小时交换一次，海洋每小时交换一次。温室气体按浓度给定。海洋有 iHAMOCC，DMS 是预报的。 <a href="https://doi.org/10.5194/gmd-13-6165-2020">§2.4、§2.7、§4.1</a></p>
+<p><code>frc2</code> 只改排放文件的组织方式。源码写明：f09（MM）的 CMIP6 提交都用 <code>frc2</code>；f19（LM）的 piControl、historical 和扰动历史不用 <code>frc2</code>，情景用 <code>frc2</code>。理想化 CO₂ 与同分辨率的 piControl 使用同一套排放组织。 config_compsets.xml</p>
+<p>下面每一行是一个已写入 <code>case.yaml</code> 的试验。日期起点包含、终点不包含。全部是 draft。AMIP、DAMIP 和排放驱动不在本文的评估里，没有 case。</p>
+<h2>实验表格</h2>
+<h3>NorESM2-LM · <code>f19_tn14</code></h3>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>compset</th>
+<th>积分</th>
+<th>初值</th>
+<th>论文里的用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01 piControl</td>
+<td><code>N1850</code></td>
+<td>1600-01-01 至 2100-01-01，500 年</td>
+<td>自旋案例 <code>N1850_f19_tn14_11062019</code> 的 1600-01-01</td>
+<td>图 2、图 3。顶净辐射 −0.057 W m−2</td>
+</tr>
+<tr>
+<td>E02 abrupt-4xCO2</td>
+<td><code>NCO2x4cmip6</code></td>
+<td>0001-01-01 至 0501-01-01，500 年</td>
+<td>与 E01 同一初值。模式年从第 1 年重记</td>
+<td>图 3。150 年 Gregory 得 ECS 2.54 K。生产积分到第 620 年</td>
+</tr>
+<tr>
+<td>E03 1pctCO2</td>
+<td><code>N1PCTcmip6</code></td>
+<td>0001-01-01 至 0166-01-01，165 年</td>
+<td>同 E02</td>
+<td>图 3。第 60–80 年相对控制，TCR 1.48 K</td>
+</tr>
+<tr>
+<td>E04 historical r1</td>
+<td><code>NHIST</code></td>
+<td>1850-01-01 至 2015-01-01</td>
+<td>同一自旋的 1600-01-01</td>
+<td>图 4–9、表 4、表 5</td>
+</tr>
+<tr>
+<td>E05 historical r2</td>
+<td><code>NHIST</code></td>
+<td>同 E04</td>
+<td>1631-01-01</td>
+<td>同 E04</td>
+</tr>
+<tr>
+<td>E06 historical r3</td>
+<td><code>NHIST</code></td>
+<td>同 E04</td>
+<td>1661-01-01</td>
+<td>同 E04</td>
+</tr>
+<tr>
+<td>E07 SSP1-2.6 r1</td>
+<td><code>NSSP126frc2</code></td>
+<td>2015-01-01 至 2101-01-01</td>
+<td>E04 的 2015-01-01</td>
+<td>图 5–8。一个成员</td>
+</tr>
+<tr>
+<td>E08 SSP2-4.5 r1</td>
+<td><code>NSSP245frc2</code></td>
+<td>同 E07</td>
+<td>E04 的 2015-01-01</td>
+<td>图 5–8。三个成员，图 8 画了集合范围</td>
+</tr>
+<tr>
+<td>E09 SSP2-4.5 r2</td>
+<td><code>NSSP245frc2</code></td>
+<td>同 E07</td>
+<td>E05 的 2015-01-01</td>
+<td>同 E08</td>
+</tr>
+<tr>
+<td>E10 SSP2-4.5 r3</td>
+<td><code>NSSP245frc2</code></td>
+<td>同 E07</td>
+<td>E06 的 2015-01-01</td>
+<td>同 E08</td>
+</tr>
+<tr>
+<td>E11 SSP3-7.0 r1</td>
+<td><code>NSSP370frc2</code></td>
+<td>同 E07</td>
+<td>E04 的 2015-01-01</td>
+<td>图 5–8。三个成员</td>
+</tr>
+<tr>
+<td>E12 SSP3-7.0 r2</td>
+<td><code>NSSP370frc2</code></td>
+<td>同 E07</td>
+<td>E05 的 2015-01-01</td>
+<td>同 E11</td>
+</tr>
+<tr>
+<td>E13 SSP3-7.0 r3</td>
+<td><code>NSSP370frc2</code></td>
+<td>同 E07</td>
+<td>E06 的 2015-01-01</td>
+<td>同 E11</td>
+</tr>
+<tr>
+<td>E14 SSP5-8.5 r1</td>
+<td><code>NSSP585frc2</code></td>
+<td>同 E07</td>
+<td>E04 的 2015-01-01</td>
+<td>图 5–8。一个成员。公开分段只列到 2059，论文用了 2090–2099</td>
+</tr>
+</tbody>
+</table>
+<h3>NorESM2-MM · <code>f09_tn14</code></h3>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>compset</th>
+<th>积分</th>
+<th>初值</th>
+<th>论文里的用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E15 piControl</td>
+<td><code>N1850frc2</code></td>
+<td>1200-01-01 至 1700-01-01，500 年</td>
+<td><code>N1850_f09_tn14_20190913</code> 的 1200-01-01</td>
+<td>图 2、图 3。顶净辐射 −0.065 W m−2。生产链里 1450 年算了两次</td>
+</tr>
+<tr>
+<td>E16 abrupt-4xCO2</td>
+<td><code>NCO2x4cmip6frc2</code></td>
+<td>0001-01-01 至 0151-01-01，150 年</td>
+<td>与 E15 同一初值</td>
+<td>图 3。ECS 2.50 K</td>
+</tr>
+<tr>
+<td>E17 1pctCO2</td>
+<td><code>N1PCTcmip6frc2</code></td>
+<td>0001-01-01 至 0151-01-01，150 年</td>
+<td>同 E16</td>
+<td>图 3。TCR 1.33 K</td>
+</tr>
+<tr>
+<td>E18 historical r1</td>
+<td><code>NHISTfrc2</code></td>
+<td>1850-01-01 至 2015-01-01</td>
+<td>自旋 1200-01-01</td>
+<td>图 4–9、表 4、表 5</td>
+</tr>
+<tr>
+<td>E19 historical r2</td>
+<td><code>NHISTfrc2</code></td>
+<td>同 E18</td>
+<td>自旋末期，与 r1、r3 约隔 30 年。公开表没有这一天</td>
+<td>同 E18</td>
+</tr>
+<tr>
+<td>E20 historical r3</td>
+<td><code>NHISTfrc2</code></td>
+<td>同 E18</td>
+<td>同 E19，日期未公布</td>
+<td>同 E18</td>
+</tr>
+<tr>
+<td>E21 SSP1-2.6 r1</td>
+<td><code>NSSP126frc2</code></td>
+<td>2015-01-01 至 2101-01-01</td>
+<td>E18 的 2015-01-01</td>
+<td>图 5–8。一个成员</td>
+</tr>
+<tr>
+<td>E22 SSP2-4.5 r1</td>
+<td><code>NSSP245frc2</code></td>
+<td>同 E21</td>
+<td>E18 的 2015-01-01</td>
+<td>图 5。图 8 的 MM 情景是单成员曲线</td>
+</tr>
+<tr>
+<td>E23 SSP2-4.5 r2</td>
+<td><code>NSSP245frc2</code></td>
+<td>同 E21</td>
+<td>E19 的 2015-01-01</td>
+<td>公开记录有完整的 2015–2100</td>
+</tr>
+<tr>
+<td>E24 SSP2-4.5 r3</td>
+<td><code>NSSP245frc2</code></td>
+<td>2015-01-01 至 2021-01-01</td>
+<td>E20 的 2015-01-01</td>
+<td>公开记录只到 2020</td>
+</tr>
+<tr>
+<td>E25 SSP3-7.0 r1</td>
+<td><code>NSSP370frc2</code></td>
+<td>2015-01-01 至 2101-01-01</td>
+<td>E18 的 2015-01-01</td>
+<td>图 5、图 8。一个成员</td>
+</tr>
+<tr>
+<td>E26 SSP5-8.5 r1</td>
+<td><code>NSSP585frc2</code></td>
+<td>同 E25</td>
+<td>E18 的 2015-01-01</td>
+<td>图 5–8。一份重复积分只改了输出，不是第二个成员</td>
+</tr>
+</tbody>
+</table>
+<p>LM 的历史三个分支日来自案例页：1600、1631、1661。论文概括成“自旋末期、彼此相隔 30 个模式年”。MM 的 r2、r3 只有案例名，没有分支日，case 里留空。</p>
+<p>LM 的 piControl 公开分段是 1600–1999。论文写的是 500 年，所以 E01 记到 2100-01-01。MM 的 1200–1699 正好 500 年。</p>
+<h3>没有 case 的部分</h3>
+<p>第 3 节的自旋在进控制之前。LM 公开记录是 12 段、模式年 1–1600，MM 是 18 段、模式年 1–1200。陆面中途还用耦合交换场重做了约 1400 年的离线 CLM。这些段的强迫和重启关系没有细到能各写一条 case。</p>
+<p>DECK 里的 AMIP 本文不分析，说明在 Olivié (2020) 和 Toniazzo (2020)。公开的大气试验是 LM 的 <code>NFHISTnorpddmsbc</code>（1975–2014）和 MM 的 <code>NFHISTfrc2</code>（1975–2012）。</p>
+<p>LM 另外有 <code>hist-aer</code>、<code>hist-pintcf</code>，以及只跑到 2020 或 2059 的气溶胶、自然强迫和 lowNTCF 情景。排放驱动的 SSP5-8.5 属于 Tjiputra 等（2020）的碳循环配置。这些都不在 Seland 的评估清单里。</p>
+<h2>对照数字</h2>
+<p>表 1。ECS 用 abrupt-4xCO2 前 150 年的 Gregory 回归再除以 2。TCR 是 1pctCO2 第 60–80 年相对 piControl 的全球近地面温度差。TCRE 的单位是 K Eg C−1。 <a href="https://doi.org/10.5194/gmd-13-6165-2020">表 1</a></p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th style="text-align:right">ECS</th>
+<th style="text-align:right">TCR</th>
+<th style="text-align:right">TCRE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NorESM2-MM</td>
+<td style="text-align:right">2.50</td>
+<td style="text-align:right">1.33</td>
+<td style="text-align:right">1.21</td>
+</tr>
+<tr>
+<td>NorESM2-LM</td>
+<td style="text-align:right">2.54</td>
+<td style="text-align:right">1.48</td>
+<td style="text-align:right">1.36</td>
+</tr>
+<tr>
+<td>NorESM1-Happi</td>
+<td style="text-align:right">2.82</td>
+<td style="text-align:right">1.52</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>NorESM1-ME</td>
+<td style="text-align:right">2.99</td>
+<td style="text-align:right">1.56</td>
+<td style="text-align:right">1.93</td>
+</tr>
+<tr>
+<td>NorESM1-M</td>
+<td style="text-align:right">2.86</td>
+<td style="text-align:right">1.39</td>
+<td style="text-align:right">—</td>
+</tr>
+</tbody>
+</table>
+<p>piControl 的 500 年：顶净辐射 LM −0.057、MM −0.065 W m−2。海洋体积温度变化 0.03 K。全球海表盐度趋势 LM (2.6\times10^{-5})、MM (4.7\times10^{-5}) g kg−1。DMS 海气通量下降约 2%。 <a href="https://doi.org/10.5194/gmd-13-6165-2020">§4.2</a></p>
+<p>相对 1850–1879，2005–2014 升温 LM 0.72 K、MM 0.54 K。2090–2099 的升温，按 SSP1-2.6、SSP2-4.5、SSP3-7.0、SSP5-8.5：LM 为 1.30、2.15、2.95、3.94 K，MM 为 1.33、2.08、3.06、3.89 K。 <a href="https://doi.org/10.5194/gmd-13-6165-2020">§4.4</a></p>
+<p>表 4 是 historical 三个成员、1980–2009 的全球年平均。观测列取表中的第一套（CERES-EBAF、ISCCP、O'Dell、JRA-25）。 <a href="https://doi.org/10.5194/gmd-13-6165-2020">表 4</a></p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th style="text-align:right">NorESM2-LM</th>
+<th style="text-align:right">NorESM2-MM</th>
+<th style="text-align:right">观测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大气顶净短波（W m−2）</td>
+<td style="text-align:right">237.3</td>
+<td style="text-align:right">238.2</td>
+<td style="text-align:right">240.6</td>
+</tr>
+<tr>
+<td>大气顶向上长波（W m−2）</td>
+<td style="text-align:right">237.6</td>
+<td style="text-align:right">236.7</td>
+<td style="text-align:right">239.6</td>
+</tr>
+<tr>
+<td>长波云强迫（W m−2）</td>
+<td style="text-align:right">24.7</td>
+<td style="text-align:right">24.4</td>
+<td style="text-align:right">26.5</td>
+</tr>
+<tr>
+<td>短波云强迫（W m−2）</td>
+<td style="text-align:right">−50.3</td>
+<td style="text-align:right">−49.0</td>
+<td style="text-align:right">−47.1</td>
+</tr>
+<tr>
+<td>云量（%）</td>
+<td style="text-align:right">61.8</td>
+<td style="text-align:right">62.7</td>
+<td style="text-align:right">66.8</td>
+</tr>
+<tr>
+<td>云液水路径（g m−2）</td>
+<td style="text-align:right">84.0</td>
+<td style="text-align:right">82.7</td>
+<td style="text-align:right">86.9</td>
+</tr>
+<tr>
+<td>感热（W m−2）</td>
+<td style="text-align:right">21.5</td>
+<td style="text-align:right">22.0</td>
+<td style="text-align:right">19.4</td>
+</tr>
+<tr>
+<td>潜热（W m−2）</td>
+<td style="text-align:right">83.2</td>
+<td style="text-align:right">83.1</td>
+<td style="text-align:right">87.9</td>
+</tr>
+</tbody>
+</table>
+<h2>查看</h2>
+<p>配置在 config/tasks/models/seland_2020_noresm2。Gallery 在 seland_2020_noresm2。</p>
+<pre><code class="language-bash">python -m src.simulations list --task seland_2020_noresm2
+python -m src.simulations show @seland_2020_noresm2/noresm/noresm2.0.6/e01_picontrol_N1850_f19_tn14_1600-2099
+python -m src.simulations check @seland_2020_noresm2/noresm/noresm2.0.6/e01_picontrol_N1850_f19_tn14_1600-2099
+</code></pre>
+</article></main></body></html>

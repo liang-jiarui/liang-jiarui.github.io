@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kramer 2026 · Benchmark targets and protocol · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Reference targets</p><article><h1>Kramer 2026 · Benchmark targets and protocol</h1><pre>source_doi: 10.5194/gmd-19-4447-2026
+status: protocol_reference_only_not_reproduced
+numerical_cmip7_targets: []
+reason: protocol paper does not publish a new CMIP7 multimodel forcing result to reproduce
+requirements:
+  preindustrial_forcing_year: 1850
+  present_day_forcing_year: 2021
+  retained_years: 30
+  same_model_picontrol_sst_sic_climatology_min_years: 30
+  same_sst_sic_for_all_experiments: true
+  timeslice_members: 1
+local_design:
+  extra_spinup_years: 1
+  total_years: 31
+  analysis_start: &#x27;0002-01-01&#x27;
+  analysis_end_exclusive: &#x27;0032-01-01&#x27;
+  extra_spinup_is_not_a_protocol_requirement: true
+diagnostic:
+  quantity: ERF_fSST
+  formula_cmip: mean(perturbed.rsdt - perturbed.rsut - perturbed.rlut) - mean(control.rsdt - control.rsut - control.rlut)
+  formula_eam_cam: mean(perturbed.FSNTOA - perturbed.FLNT) - mean(control.FSNTOA - control.FLNT)
+  positive: downward
+  units: W m-2
+  averaging: native grid area and calendar month duration
+limitations:
+  - Figure 1 is CMIP6/2014, not a CMIP7/2021 validation target.
+  - The 0.2266 scaling in Figure 1 applies to its 2014 CO2 comparison, not automatically to 2021.
+  - Changes in clear-sky flux or cloud radiative effect alone do not equal ERFari or ERFaci.
+  - Land temperature can adjust in fixed-SST experiments; retain this qualification in reported ERF.
+</pre></article></main></body></html>

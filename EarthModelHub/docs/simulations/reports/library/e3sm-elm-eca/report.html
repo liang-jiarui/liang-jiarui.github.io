@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELMv1-ECA global experiments and comparison targets · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>Zhu et al. (2019) ELMv1-ECA 复现实验表</h1>
+<p>论文用全球离线陆面试验评估 ELMv1-ECA 的碳、氮、磷耦合。ECA 表示根系、微生物和土壤矿物表面对养分的竞争。叶片氮磷含量约束光合能力，资源可利用量调节植物碳分配。植物 C:N:P 以 TRY 和细根、边材、心材合成数据为基线，允许在基线上下 40% 内变化。论文以 CLM4.0-CN 和 CLM4.5-BGC 为基线，用 ILAMB v2.2 检验模型表现，并用关闭磷循环和固定碳分配两组敏感性试验评估过程贡献。 <a href="https://doi.org/10.1029/2018MS001571">论文 §§2–3，图 1、10，表 1–3</a> · 论文 PDF · <a href="https://doi.org/10.6084/m9.figshare.5722369">ILAMB 诊断</a></p>
+<p>README 论文总表 · 任务配置 · 输入检查快照</p>
+<h2>实验表格</h2>
+<p>21 个阶段都是配置草案，还没有建例或积分。E02–E05 的网格、1,000 + 200 年和 1850–2010 是本任务补上的共同协议，论文没有逐组写出。E01–E03 用 GSWP3，E04–E05 用 CRUNCEP v7。自旋 CO₂ 固定 <strong>285 ppm</strong>；历史 CO₂、氮沉降和土地利用按真实年变化。</p>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>论文试验</th>
+<th>宿主</th>
+<th>compset</th>
+<th>网格</th>
+<th>积分</th>
+<th>段长</th>
+<th>气象</th>
+<th>初值来自</th>
+<th>交给</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01 AD</td>
+<td>完整 ECA：C–N–P，动态分配。§2.4</td>
+<td>E3SM v1.1.1</td>
+<td><code>I1850GSWCNPECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>0001-01-01 至 1001-01-01</td>
+<td>20 nyears × 50</td>
+<td>GSWP3v1，循环 1901–1920</td>
+<td>冷启动</td>
+<td>RG</td>
+</tr>
+<tr>
+<td>E01 RG</td>
+<td>完整 ECA：C–N–P，动态分配。§2.4</td>
+<td>E3SM v1.1.1</td>
+<td><code>I1850GSWCNPECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1001-01-01 至 1201-01-01</td>
+<td>20 nyears × 10</td>
+<td>GSWP3v1，循环 1901–1920</td>
+<td>zhu2019_E01_AD 的 1001-01-01</td>
+<td>H1850</td>
+</tr>
+<tr>
+<td>E01 H1850</td>
+<td>完整 ECA：C–N–P，动态分配。§2.4</td>
+<td>E3SM v1.1.1</td>
+<td><code>I20TRGSWCNPECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 nyears × 1</td>
+<td>GSWP3v1，循环 1901–1920，模式年 1850 对齐 1901</td>
+<td>zhu2019_E01_RG 的 1201-01-01</td>
+<td>H1901</td>
+</tr>
+<tr>
+<td>E01 H1901</td>
+<td>完整 ECA：C–N–P，动态分配。§2.4</td>
+<td>E3SM v1.1.1</td>
+<td><code>I20TRGSWCNPECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1901-01-01 至 2011-01-01</td>
+<td>10 nyears × 11</td>
+<td>GSWP3v1，1901–2010 逐年</td>
+<td>zhu2019_E01_H1850 的 1901-01-01</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E02 AD</td>
+<td>ECA 关闭磷循环。图 10，设置未单列</td>
+<td>E3SM v1.1.1</td>
+<td><code>I1850GSWCNECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>0001-01-01 至 1001-01-01</td>
+<td>20 nyears × 50</td>
+<td>GSWP3v1，循环 1901–1920</td>
+<td>冷启动</td>
+<td>RG</td>
+</tr>
+<tr>
+<td>E02 RG</td>
+<td>ECA 关闭磷循环。图 10，设置未单列</td>
+<td>E3SM v1.1.1</td>
+<td><code>I1850GSWCNECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1001-01-01 至 1201-01-01</td>
+<td>20 nyears × 10</td>
+<td>GSWP3v1，循环 1901–1920</td>
+<td>zhu2019_E02_AD 的 1001-01-01</td>
+<td>H1850</td>
+</tr>
+<tr>
+<td>E02 H1850</td>
+<td>ECA 关闭磷循环。图 10，设置未单列</td>
+<td>E3SM v1.1.1</td>
+<td><code>I20TRGSWCNECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 nyears × 1</td>
+<td>GSWP3v1，循环 1901–1920，模式年 1850 对齐 1901</td>
+<td>zhu2019_E02_RG 的 1201-01-01</td>
+<td>H1901</td>
+</tr>
+<tr>
+<td>E02 H1901</td>
+<td>ECA 关闭磷循环。图 10，设置未单列</td>
+<td>E3SM v1.1.1</td>
+<td><code>I20TRGSWCNECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1901-01-01 至 2011-01-01</td>
+<td>10 nyears × 11</td>
+<td>GSWP3v1，1901–2010 逐年</td>
+<td>zhu2019_E02_H1850 的 1901-01-01</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E03 AD</td>
+<td>ECA 固定碳分配。图 10；分配代码还没写</td>
+<td>E3SM v1.1.1</td>
+<td><code>I1850GSWCNPECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>0001-01-01 至 1001-01-01</td>
+<td>20 nyears × 50</td>
+<td>GSWP3v1，循环 1901–1920</td>
+<td>冷启动</td>
+<td>RG</td>
+</tr>
+<tr>
+<td>E03 RG</td>
+<td>ECA 固定碳分配。图 10；分配代码还没写</td>
+<td>E3SM v1.1.1</td>
+<td><code>I1850GSWCNPECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1001-01-01 至 1201-01-01</td>
+<td>20 nyears × 10</td>
+<td>GSWP3v1，循环 1901–1920</td>
+<td>zhu2019_E03_AD 的 1001-01-01</td>
+<td>H1850</td>
+</tr>
+<tr>
+<td>E03 H1850</td>
+<td>ECA 固定碳分配。图 10；分配代码还没写</td>
+<td>E3SM v1.1.1</td>
+<td><code>I20TRGSWCNPECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 nyears × 1</td>
+<td>GSWP3v1，循环 1901–1920，模式年 1850 对齐 1901</td>
+<td>zhu2019_E03_RG 的 1201-01-01</td>
+<td>H1901</td>
+</tr>
+<tr>
+<td>E03 H1901</td>
+<td>ECA 固定碳分配。图 10；分配代码还没写</td>
+<td>E3SM v1.1.1</td>
+<td><code>I20TRGSWCNPECACNTBC</code></td>
+<td><code>f19_f19</code></td>
+<td>1901-01-01 至 2011-01-01</td>
+<td>10 nyears × 11</td>
+<td>GSWP3v1，1901–2010 逐年</td>
+<td>zhu2019_E03_H1850 的 1901-01-01</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E04 AD</td>
+<td>CLM4.5-BGC 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>I1850Clm45BgcCruGs</code></td>
+<td><code>f19_g17</code></td>
+<td>0001-01-01 至 1001-01-01</td>
+<td>20 nyears × 50</td>
+<td>CRUNCEPv7，循环 1901–1920</td>
+<td>冷启动</td>
+<td>RG</td>
+</tr>
+<tr>
+<td>E04 RG</td>
+<td>CLM4.5-BGC 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>I1850Clm45BgcCruGs</code></td>
+<td><code>f19_g17</code></td>
+<td>1001-01-01 至 1201-01-01</td>
+<td>20 nyears × 10</td>
+<td>CRUNCEPv7，循环 1901–1920</td>
+<td>zhu2019_E04_AD 的 1001-01-01</td>
+<td>H1850</td>
+</tr>
+<tr>
+<td>E04 H1850</td>
+<td>CLM4.5-BGC 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>IHistClm45BgcCruGs</code></td>
+<td><code>f19_g17</code></td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 nyears × 1</td>
+<td>CRUNCEPv7，循环 1901–1920，模式年 1850 对齐 1901</td>
+<td>zhu2019_E04_RG 的 1201-01-01</td>
+<td>H1901</td>
+</tr>
+<tr>
+<td>E04 H1901</td>
+<td>CLM4.5-BGC 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>IHistClm45BgcCruGs</code></td>
+<td><code>f19_g17</code></td>
+<td>1901-01-01 至 2011-01-01</td>
+<td>10 nyears × 11</td>
+<td>CRUNCEPv7，1901–2010 逐年</td>
+<td>zhu2019_E04_H1850 的 1901-01-01</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E05 AD</td>
+<td>CLM4.0-CN 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>1850_DATM%CRUv7_CLM40%CN_SICE_SOCN_RTM_SGLC_SWAV</code></td>
+<td><code>f19_g17</code></td>
+<td>0001-01-01 至 1001-01-01</td>
+<td>20 nyears × 50</td>
+<td>CRUNCEPv7，循环 1901–1920</td>
+<td>冷启动</td>
+<td>EX</td>
+</tr>
+<tr>
+<td>E05 EX</td>
+<td>CLM4.0-CN 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>1850_DATM%CRUv7_CLM40%CN_SICE_SOCN_RTM_SGLC_SWAV</code></td>
+<td><code>f19_g17</code></td>
+<td>1001-01-01 至 1002-01-01</td>
+<td>1 nyears × 1</td>
+<td>CRUNCEPv7，循环 1901–1920</td>
+<td>zhu2019_E05_AD 的 1001-01-01</td>
+<td>RG</td>
+</tr>
+<tr>
+<td>E05 RG</td>
+<td>CLM4.0-CN 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>1850_DATM%CRUv7_CLM40%CN_SICE_SOCN_RTM_SGLC_SWAV</code></td>
+<td><code>f19_g17</code></td>
+<td>1002-01-01 至 1201-01-01</td>
+<td>199 nyears × 1</td>
+<td>CRUNCEPv7，循环 1901–1920</td>
+<td>zhu2019_E05_EX 的 1002-01-01</td>
+<td>H1850</td>
+</tr>
+<tr>
+<td>E05 H1850</td>
+<td>CLM4.0-CN 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>IHistClm40CnCruGs</code></td>
+<td><code>f19_g17</code></td>
+<td>1850-01-01 至 1901-01-01</td>
+<td>51 nyears × 1</td>
+<td>CRUNCEPv7，循环 1901–1920，模式年 1850 对齐 1901</td>
+<td>zhu2019_E05_RG 的 1201-01-01</td>
+<td>H1901</td>
+</tr>
+<tr>
+<td>E05 H1901</td>
+<td>CLM4.0-CN 基线。§2.4</td>
+<td>CESM 2.1.5</td>
+<td><code>IHistClm40CnCruGs</code></td>
+<td><code>f19_g17</code></td>
+<td>1901-01-01 至 2011-01-01</td>
+<td>10 nyears × 11</td>
+<td>CRUNCEPv7，1901–2010 逐年</td>
+<td>zhu2019_E05_H1850 的 1901-01-01</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>E01–E04 的常规自旋在退出 AD 时读地表文件里的土壤磷库。E05 多一年 EX，用 <code>-spinup exit</code> 恢复碳氮库，再重新编译成 normal。各组不共用平衡态。E03 目前只有完整 ECA 的背景设置，固定分配还没有 SourceMods。E3SM v1.1.1 还没安装，不能用本机 v3.0.2 代替。</p>
+<h2>对照指标</h2>
+<p>表 1–3 是 ILAMB v2.2 的全球分数。GPP 的空间图使用 1982–2008 年年平均。Reco 与 GPP 都来自 FLUXNET-MTE，两者不独立。LAI 是 MODIS C5 <code>MCD15A3</code>。ET 是 GLEAM 的冠层蒸发、土壤蒸发、蒸腾、裸土蒸发和升华之和。地上生物量外推自 4,000 多个样地和 Saatchi et al. (2011)。土壤碳是 0–1 m，北半球高纬用 NCSCD，全球用 HWSD。 <a href="https://doi.org/10.1029/2018MS001571">论文 §§3.1–3.4，表 1–3</a></p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th style="text-align:right">基准</th>
+<th style="text-align:right">ELMv1-ECA</th>
+<th style="text-align:right">CLM4.5-BGC</th>
+<th style="text-align:right">CLM4.0-CN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPP 均值 / RMSE（Pg C/yr）</td>
+<td style="text-align:right">113</td>
+<td style="text-align:right">126 / 55</td>
+<td style="text-align:right">127 / 68</td>
+<td style="text-align:right">140 / 76</td>
+</tr>
+<tr>
+<td>GPP 总分</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"><strong>0.78</strong></td>
+<td style="text-align:right">0.75</td>
+<td style="text-align:right">0.67</td>
+</tr>
+<tr>
+<td>Reco 均值 / RMSE（Pg C/yr）</td>
+<td style="text-align:right">90</td>
+<td style="text-align:right">120 / 47</td>
+<td style="text-align:right">122 / 61</td>
+<td style="text-align:right">136 / 74</td>
+</tr>
+<tr>
+<td>Reco 总分</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"><strong>0.78</strong></td>
+<td style="text-align:right">0.73</td>
+<td style="text-align:right">0.64</td>
+</tr>
+<tr>
+<td>LAI 均值 / RMSE（m²/m²）</td>
+<td style="text-align:right">1.3</td>
+<td style="text-align:right">1.9 / 1.0</td>
+<td style="text-align:right">2.3 / 1.4</td>
+<td style="text-align:right">2.2 / 1.3</td>
+</tr>
+<tr>
+<td>LAI 总分</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"><strong>0.64</strong></td>
+<td style="text-align:right">0.52</td>
+<td style="text-align:right">0.54</td>
+</tr>
+<tr>
+<td>ET 均值 / RMSE（mm/day）</td>
+<td style="text-align:right">1.2</td>
+<td style="text-align:right">1.2 / 0.46</td>
+<td style="text-align:right">1.3 / 0.57</td>
+<td style="text-align:right">1.4 / 0.66</td>
+</tr>
+<tr>
+<td>ET 总分</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"><strong>0.81</strong></td>
+<td style="text-align:right">0.78</td>
+<td style="text-align:right">0.74</td>
+</tr>
+<tr>
+<td>地上活体生物量（Pg）</td>
+<td style="text-align:right">354</td>
+<td style="text-align:right">431，总分 <strong>0.74</strong></td>
+<td style="text-align:right">730，总分 0.48</td>
+<td style="text-align:right">702，总分 0.45</td>
+</tr>
+<tr>
+<td>0–1 m SOC，NCSCD / HWSD / 总分</td>
+<td style="text-align:right">1,270 Pg C（Todd-Brown et al., 2013，正文另给）</td>
+<td style="text-align:right">约 1,100 Pg C；0.71 / 0.72 / <strong>0.71</strong></td>
+<td style="text-align:right">约 1,800 Pg C；0.61 / 0.51 / 0.55</td>
+<td style="text-align:right">约 600 Pg C；0.29 / 0.58 / 0.45</td>
+</tr>
+</tbody>
+</table>
+<p>低地热带 LAI：ECA 约 6 m²/m²，CLM4.0-CN 约 8，CLM4.5-BGC 约 10。相对 GPP 偏差约为泛北极（67.5–90°N）14%、泛热带（23.5°S–23.5°N）16%、温带（23.5–67.5°N）4%。亚马孙和北方森林的 GPP 偏高、ET 偏低，水分利用效率偏高。</p>
+<p>1961–2010 年只报告了完整 ECA，用来对图 11 和补充图 S4–S6：</p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th style="text-align:right">论文值</th>
+<th>对照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生物固氮</td>
+<td style="text-align:right">175 Tg N/yr</td>
+<td>Cleveland et al. (1999) 100–290；Galloway et al. (2004) 138</td>
+</tr>
+<tr>
+<td>气态氮损失</td>
+<td style="text-align:right">10 Tg N/yr</td>
+<td>Galloway et al. (2004) 11；主要在热带</td>
+</tr>
+<tr>
+<td>水文 NO₃ 损失</td>
+<td style="text-align:right">17 Tg N/yr</td>
+<td>Galloway et al. (2004) 48。论文说明未含农田淋溶</td>
+</tr>
+<tr>
+<td>磷风化输入</td>
+<td style="text-align:right">39 Tg P/yr，1961–2010 下降</td>
+<td>热带母质更贫</td>
+</tr>
+<tr>
+<td>磷淋溶</td>
+<td style="text-align:right">13 Tg P/yr</td>
+<td>Wang et al. (2010) 为 14</td>
+</tr>
+</tbody>
+</table>
+<p>净生物群系生产与 Global Carbon Project（Le Quéré et al., 2016）的年际变化更接近，与 Hoffman et al. (2014) 的差异更大；重叠时段在图 S1，正文没有给出起止年。图 10 用同一套 ILAMB 分数比较完整 ECA、分配方案和磷循环方案，论文没有列出各柱的数字。 <a href="https://doi.org/10.1029/2018MS001571">论文 §§3.5–3.6，图 10、11，图 S1、S4–S6</a></p>
+<h2>数据、源码与初值是否齐全</h2>
+<p><strong>核查日期：2026-11-18。</strong> 输入根目录为 <code>[local path]</code>，下表文件路径相对此目录。已登记的 <strong>21 项关键文件中，12 项存在、9 项缺失</strong>；此外 CRUNCEP 三类气象目录缺失。GSWP3 核查了逐月文件名和非零文件大小；这不代表所有 NetCDF 内容或全部 CIME 默认输入已验收。完整路径和受影响 case 记录在检查快照。</p>
+<table>
+<thead>
+<tr>
+<th>数据编号</th>
+<th>关键输入</th>
+<th>影响实验</th>
+<th>本机情况 / 处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D01</td>
+<td>GSWP3v1：<code>atm/datm7/atm_forcing.datm7.GSWP3.0.5d.v1.c170516/</code> 下 Solar、Precip、TPHWL</td>
+<td>E01–E03</td>
+<td><strong>存在</strong>。1901–1920 各 240 个月；1901–2010 各 1,320 个月，历史三类共 3,960 个月文件齐全；forcing domain 存在</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>ECA 植被参数：<code>lnd/clm2/paramdata/clm_params.cbgc.c07292018.nc</code></td>
+<td>E01–E03</td>
+<td><strong>缺失</strong>，阻断 AD 及后续阶段</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>CRUNCEP v7：<code>atm/datm7/atm_forcing.datm7.cruncep_qianFill.0.5d.v7.c160715/</code>，含 domain 和三个 <code>*6Hrly</code> 目录</td>
+<td>E04–E05</td>
+<td><strong>目录与 domain 均缺失</strong>；不能用现有 CRU-JRA 静默替代</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>CLM45 植被参数：<code>lnd/clm2/paramdata/clm_params.c170913.nc</code></td>
+<td>E04</td>
+<td><strong>缺失</strong></td>
+</tr>
+<tr>
+<td>D05</td>
+<td>CLM40 PFT 参数：<code>lnd/clm2/pftdata/pft-physiology.clm40.c130424.nc</code></td>
+<td>E05</td>
+<td><strong>缺失</strong></td>
+</tr>
+<tr>
+<td>D06</td>
+<td>CMIP5 历史氮沉降：<code>lnd/clm2/ndepdata/fndep_clm_hist_simyr1849-2006_1.9x2.5_c100428.nc</code></td>
+<td>全部组的 spin-up / H1850</td>
+<td><strong>缺失</strong>；已存在的 CMIP6 氮沉降不等于此文件</td>
+</tr>
+<tr>
+<td>D07</td>
+<td>CMIP5 RCP8.5 氮沉降：<code>lnd/clm2/ndepdata/fndep_clm_rcp8.5_simyr1849-2106_1.9x2.5_c100428.nc</code></td>
+<td>全部组的 H1901</td>
+<td><strong>缺失</strong>；2006–2010 的情景延长还需科学核对</td>
+</tr>
+<tr>
+<td>D08</td>
+<td>旧历史 CO₂：<code>atm/datm7/CO2/fco2_datm_1765-2007_c100614.nc</code></td>
+<td>全部组的 H1850；历史延长检查</td>
+<td><strong>存在但覆盖不足</strong>：1765–2007，不能独自支撑到 2010；本任务仅在 H1850 使用</td>
+</tr>
+<tr>
+<td>D09</td>
+<td>CO₂ 延长候选：<code>atm/datm7/CO2/fco2_datm_rcp8.5_1765-2500_c110919.nc</code></td>
+<td>全部组的 H1901</td>
+<td><strong>缺失</strong>；历史 stream 已指向此文件，尚未使用新 CMIP6 序列替代</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>ECA 地表：<code>lnd/clm2/surfdata_map/surfdata_1.9x2.5_simyr1850_c180306.nc</code></td>
+<td>E01–E04</td>
+<td><strong>存在</strong>；含四类初始土壤磷库</td>
+</tr>
+<tr>
+<td>D11</td>
+<td>磷参数：<code>lnd/clm2/paramdata/CNP_parameters_c180312.nc</code></td>
+<td>E01–E03</td>
+<td><strong>存在</strong></td>
+</tr>
+<tr>
+<td>D12</td>
+<td>磷沉降：<code>lnd/clm2/pdepdata/fpdep_clm_hist_simyr2000_1.9x2.5_c150929.nc</code></td>
+<td>E01、E03</td>
+<td><strong>存在</strong>，仅有 2000 年气候态</td>
+</tr>
+<tr>
+<td>D13</td>
+<td>土地利用：<code>lnd/clm2/surfdata_map/landuse.timeseries_1.9x2.5_hist_simyr1850-2015_c180306.nc</code></td>
+<td>E01–E04 历史</td>
+<td><strong>存在</strong>，覆盖到 2015；变量是 <code>PCT_NAT_PFT</code></td>
+</tr>
+<tr>
+<td>D14</td>
+<td>CLM40 原生地表：<code>lnd/clm2/surfdata/surfdata_1.9x2.5_simyr1850_c091108.nc</code></td>
+<td>E05</td>
+<td><strong>缺失</strong>；CLM40 要求旧格式 <code>PCT_PFT</code>，现有 D10 不能直接复用</td>
+</tr>
+<tr>
+<td>D15</td>
+<td>CLM40 历史土地利用制备目标：<code>lnd/clm2/surfdata/zhu2019/surfdata.pftdyn_1.9x2.5_simyr1850-2010_CLM40.nc</code></td>
+<td>E05 历史</td>
+<td><strong>待制备 / 缺失</strong>。这是本任务指定的目标文件名，需取得作者数据或验证转换；发行版旧默认文件只到 2005</td>
+</tr>
+<tr>
+<td>D16</td>
+<td>f19 陆地域、DATM 地形、ELM 两个气溶胶文件、CLM CMIP6 气溶胶文件</td>
+<td>全部组</td>
+<td><strong>登记路径存在</strong>；其中两个陆地域分别为 <code>gx1v6.090206</code> 与 <code>gx1v7.170518</code>，掩膜差异仍需核对</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>影响实验</th>
+<th>当前情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>源码 / 机器移植</td>
+<td>E01–E03</td>
+<td>正式路径 <code>model/e3sm/E3SM_v1_1_1</code> 尚未安装；本轮仅用临时发行版快照静态查配置。需要准备完整依赖与 <code>centos7-ljr</code> 机器移植，作者实际提交仍未知</td>
+</tr>
+<tr>
+<td>固定碳分配代码与系数</td>
+<td>E03</td>
+<td><strong>缺失</strong>；不能将背景配置直接视作完成该敏感性试验</td>
+</tr>
+<tr>
+<td>AD、常规及历史 restart</td>
+<td>各组后续阶段</td>
+<td><strong>尚未生成</strong>。这是前序积分产物；可用作者 restart 代替时需先核对网格、PFT、模型提交和养分模式</td>
+</tr>
+<tr>
+<td>ILAMB v2.2 原始观测与配置</td>
+<td>五组论文结果比较</td>
+<td><strong>尚未登记本地数据路径及版本</strong>；Figshare 的诊断输出可作对照，不能代替所有原始观测输入</td>
+</tr>
+<tr>
+<td>作者补充材料 / 参数表</td>
+<td>原始设置核对</td>
+<td>补充材料下载曾返回 HTTP 403，表 S1 和敏感性分支初始化仍待核对</td>
+</tr>
+</tbody>
+</table>
+<h2>查看配置与下一步执行</h2>
+<p>在仓库根目录查看任务成员、某个阶段及其依赖：</p>
+<pre><code class="language-bash">python -m src.simulations list --task zhu_2019_elm
+python -m src.simulations show @zhu_2019_elm/e3sm/E3SM_v1_1_1/e01_eca_accelerated_I1850GSWCNPECACNTBC_f19_f19_0001-1000
+python -m src.simulations check @zhu_2019_elm/e3sm/E3SM_v1_1_1/e01_eca_accelerated_I1850GSWCNPECACNTBC_f19_f19_0001-1000
+</code></pre>
+<p>现阶段 <code>check</code> 会报告缺失项，所有 case 的 <code>science.status</code> 保持 <code>draft</code>。补齐并验证输入、源码、机器环境和本文列出的复现假设后，再更新相应状态及 blocker。按阶段运行，先检验短积分、AD 退出时的磷初始化和碳氮磷收支，再完成长积分与 ILAMB 对照。本文没有记录任何已完成的 Zhu 2019 模拟结果。</p>
+<p>Burrows et al. (2020) 的 ECA 耦合预积分与历史设置见<a href="../../library/e3sm-elm-biogeochemistry/report.html">相邻实验表</a>。</p>
+</article></main></body></html>

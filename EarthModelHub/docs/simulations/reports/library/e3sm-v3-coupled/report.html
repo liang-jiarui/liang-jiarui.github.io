@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coupled E3SMv3 experiment protocol · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>Golaz et al. (2026) E3SMv3 实验表</h1>
+<p>论文评估的是整套耦合模式，不是离线 ELM。表 2 的每一条积分里，陆面都在跑，而且和大气、河流同步。全耦合组里海洋和海冰也是预报的。规定海温组里海洋和海冰换成规定场，ELM 和 MOSART 仍然主动。 <a href="https://doi.org/10.1029/2025MS005302">Golaz et al. (2026) 表 2、§3</a> · PDF</p>
+<p>40 个草案 case 在 golaz_2026_e3smv3，Gallery 用任务名 <code>golaz_2026_e3smv3</code>。restart 链用 <code>golaz2026_*</code>，不借用 Xie 任务里为 AMIP 截短的历史个例。</p>
+<p>ELM 单独积分只出现在进耦合之前。用一份后期开发版、且没有动态植被的耦合大气强迫，先加速土壤分解 250 年，再按正常分解速率积分 250 年。叶面积在这 500 年后稳定，末态进入 2000 年耦合 spin-up。这份强迫不是公开再分析，论文没有给文件名。 <a href="https://doi.org/10.1029/2025MS005302">§3</a></p>
+<p>低分辨率网格是 <code>ne30pg2_r05_IcoswISC30E3r5</code>。大气动力约 110 km（48,602 格）、物理约 165 km（21,600 格）、80 层，模式顶约 60 km。陆面和河流共用 0.5°：陆面 94,838 格、15 层土壤和 5 层雪，河流 99,669 格。海洋和海冰是 <code>IcoswISC30E3r5</code>，约 20–30 km、465,044 格，海洋 64 层。灌溉和淹没没有打开。 <a href="https://doi.org/10.1029/2025MS005302">表 1、§2.1、§2.5</a></p>
+<p>ELMv3 相对 v2 的两处功能变化是：植被结构和叶面积改由植物与土壤的碳、养分预报，不再逐年重复同一套卫星叶面积；次网格地形改变陆面吸收和反射的太阳辐射（TOP）。预报植被沿用 E3SMv1.1-BGC 的方案。陆面时间步长 30 分钟。 <a href="https://doi.org/10.1029/2025MS005302">§2.5</a> · <a href="../../library/e3sm-elm-biogeochemistry/report.html">Burrows et al. (2020)</a> · <a href="https://doi.org/10.5194/gmd-14-6273-2021">Hao et al. (2021) TOP</a></p>
+<p>即将另文发表的 25 个成员历史和大集合、以及到 2050 年的近期预估，不在本文的试验清单里。南极冰架淡水通量也是另一篇文章。 <a href="https://doi.org/10.1029/2025MS005302">§1、§3</a></p>
+<h2>实验表格</h2>
+<p><code>N</code> 是 piControl 的初始化年，用来区分集合成员。论文给的年份是 51、101、151、201、251。Xie 任务里把 piControl 的模式日期改记成从 <code>0001-01-01</code> 起算，所以这些年写成 <code>0051</code>、<code>0101</code>、<code>0151</code>、<code>0201</code>、<code>0251</code>。 <a href="https://doi.org/10.1029/2025MS005302">表 2 注、§3</a></p>
+<p>历史类积分写到 2024。正文写明 <code>historical</code> 在 2014 年之后改用 SSP2-4.5。DAMIP 和 <code>piClim-hist*</code> 在表 2 里同样止于 2024，2015–2024 的强迫没有再单独说明。分析主体仍是到 2014 年的 CMIP6 历史时段。 <a href="https://doi.org/10.1029/2025MS005302">§3</a></p>
+<h3>进耦合之前</h3>
+<p>这四段不在表 2 里。陆面这一段是本文唯一的离线 ELM。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>谁在积分</th>
+<th>做法</th>
+<th>长度</th>
+<th>交给</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>海洋调整</td>
+<td>只有海洋</td>
+<td>WOA23 的位温和实用盐度插到 <code>IcoswISC30E3r5</code>，初始静止。NCEP 1958–2000 气候风应力。Rayleigh 拖曳前 10 天 (1\times10^{-4},\mathrm{s}^{-1})，接着 10 天 (1\times10^{-5},\mathrm{s}^{-1})，后 80 天为 0</td>
+<td>100 天</td>
+<td>下面这 1 个月</td>
+</tr>
+<tr>
+<td>海冰盘</td>
+<td>海洋和海冰</td>
+<td>70°N 与 60°S 向极一侧铺 1 m 均匀冰。大气和陆面强迫取 JRA-55</td>
+<td>1 个月</td>
+<td>2000 年耦合 spin-up 的海洋、海冰</td>
+</tr>
+<tr>
+<td>离线 ELM</td>
+<td>只有陆面</td>
+<td>加速土壤分解 250 年，再正常分解 250 年。强迫来自一份没有动态植被的后期开发版耦合大气</td>
+<td>500 年</td>
+<td>2000 年耦合 spin-up 的陆面。叶面积已稳定</td>
+</tr>
+<tr>
+<td>耦合 spin-up</td>
+<td>大气、海洋、海冰、陆面、河流</td>
+<td>工业化前条件。官方 piControl 从它的末态接着积</td>
+<td>2000 年</td>
+<td>piControl</td>
+</tr>
+</tbody>
+</table>
+<p>这四段都在 <code>golaz_2026_e3smv3</code>：<code>golaz2026_ocean_adjust</code>、<code>golaz2026_ocnice_month</code>、<code>golaz2026_elm_ad</code>、<code>golaz2026_elm_rg</code>，耦合 spin-up 是 <code>golaz2026_spinup</code>。Xie 任务里另有一条同协议的 2000 年 spin-up，只服务于 AMIP 初值。 <a href="../../library/e3sm-eamv3/report.html">Xie 实验表 §1.1</a></p>
+<h3>表 2：全耦合</h3>
+<p>海洋斜压步长默认 30 分钟。<code>1pctCO2</code>、<code>abrupt-4xCO2</code> 和多出来的那条 <code>historical_0101_bcdt15m</code> 改成 15 分钟，因为 30 分钟在约 20 km 的最小海洋网格上不稳定。这条 15 分钟历史用来确认步长变化不改变气候。 <a href="https://doi.org/10.1029/2025MS005302">§3</a></p>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>成员</th>
+<th>时段</th>
+<th>海洋步长</th>
+<th>初值</th>
+<th>本仓库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>piControl</td>
+<td>1</td>
+<td>500 年</td>
+<td>30 min</td>
+<td>2000 年耦合 spin-up 的末态</td>
+<td>Xie E02。顶净辐射 500 年平均 −0.05 W m−2</td>
+</tr>
+<tr>
+<td>piControl_bonus</td>
+<td>1</td>
+<td>第 401–500 年重跑</td>
+<td>30 min</td>
+<td>piControl 第 401 年</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。大气、海洋、海冰加高频输出，供机器学习训练</td>
+</tr>
+<tr>
+<td>1pctCO2_bcdt15m</td>
+<td>1</td>
+<td>150 年</td>
+<td>15 min</td>
+<td>piControl 第 101 年 1 月 1 日</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。CO₂ 每年增加 1%</td>
+</tr>
+<tr>
+<td>abrupt-4xCO2_bcdt15m</td>
+<td>1</td>
+<td>150 年</td>
+<td>15 min</td>
+<td>piControl 第 101 年 1 月 1 日</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。CO₂ 突然四倍</td>
+</tr>
+<tr>
+<td>historical_0051</td>
+<td>5 个中的 1 个</td>
+<td>1850–2024</td>
+<td>30 min</td>
+<td>piControl 第 51 年</td>
+<td>草案在 <code>golaz_2026_e3smv3</code></td>
+</tr>
+<tr>
+<td>historical_0101</td>
+<td>同上</td>
+<td>1850–2024</td>
+<td>30 min</td>
+<td>piControl 第 101 年</td>
+<td>Xie E03 只积到 1870-01-01，用来给 AMIP 初值</td>
+</tr>
+<tr>
+<td>historical_0151</td>
+<td>同上</td>
+<td>1850–2024</td>
+<td>30 min</td>
+<td>piControl 第 151 年</td>
+<td>Xie E04，同样停在 1870-01-01</td>
+</tr>
+<tr>
+<td>historical_0201</td>
+<td>同上</td>
+<td>1850–2024</td>
+<td>30 min</td>
+<td>piControl 第 201 年</td>
+<td>Xie E05，同样停在 1870-01-01</td>
+</tr>
+<tr>
+<td>historical_0251</td>
+<td>同上</td>
+<td>1850–2024</td>
+<td>30 min</td>
+<td>piControl 第 251 年</td>
+<td>草案在 <code>golaz_2026_e3smv3</code></td>
+</tr>
+<tr>
+<td>historical_0101_bcdt15m</td>
+<td>1</td>
+<td>1850–2024</td>
+<td>15 min</td>
+<td>piControl 第 101 年</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。对照 30 分钟的 historical_0101</td>
+</tr>
+<tr>
+<td>hist-GHG_0101、_0151、_0201</td>
+<td>3</td>
+<td>1850–2024</td>
+<td>30 min</td>
+<td>piControl 第 101、151、201 年</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。只保留充分混合温室气体，以及经交互化学和 Linoz 生成甲烷、氧化亚氮、对流层和平流层臭氧的前体</td>
+</tr>
+<tr>
+<td>hist-aer_0101、_0151、_0201</td>
+<td>3</td>
+<td>1850–2024</td>
+<td>30 min</td>
+<td>同上</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。只保留人为气溶胶及其前体</td>
+</tr>
+<tr>
+<td>hist-all-xGHG-xaer_0101、_0151、_0201</td>
+<td>3</td>
+<td>1850–2024</td>
+<td>30 min</td>
+<td>同上</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。去掉充分混合温室气体和气溶胶，其余强迫都开，包括土地利用、氮沉降和人口</td>
+</tr>
+</tbody>
+</table>
+<p>全耦合一共 19 条。<code>hist-GHG</code>、<code>hist-aer</code> 和 <code>hist-all-xGHG-xaer</code> 是 DAMIP 型分解。第三组不用 Gillett et al. (2016) 的纯自然历史，是为了把土地利用、氮沉降和人口密度留在分解里。 <a href="https://doi.org/10.1029/2025MS005302">§3</a></p>
+<h3>表 2：规定海温与海冰</h3>
+<p>这一组仍然积分大气、热力学海冰、陆面和河流。ELM 不是旁路。海洋动力学不预报。 <a href="https://doi.org/10.1029/2025MS005302">表 2</a></p>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>成员</th>
+<th>时段</th>
+<th>海温与海冰</th>
+<th>初值</th>
+<th>本仓库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amip_0101</td>
+<td>3 个中的 1 个</td>
+<td>1870–2014</td>
+<td>CMIP6 提供的规定海温和海冰密集度</td>
+<td>historical_0101 的 1870 年大气、陆面、河流</td>
+<td>Xie E06</td>
+</tr>
+<tr>
+<td>amip_0151</td>
+<td>同上</td>
+<td>1870–2014</td>
+<td>同上</td>
+<td>historical_0151 的 1870 年</td>
+<td>Xie E07</td>
+</tr>
+<tr>
+<td>amip_0201</td>
+<td>同上</td>
+<td>1870–2014</td>
+<td>同上</td>
+<td>historical_0201 的 1870 年</td>
+<td>Xie E08</td>
+</tr>
+<tr>
+<td>piClim-control</td>
+<td>1</td>
+<td>50 年</td>
+<td>固定在 piControl 第 51 年附近的工业化前海温和海冰</td>
+<td>piControl 第 51 年</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。RFMIP 基线</td>
+</tr>
+<tr>
+<td>piClim-histall_0101、_0151、_0201</td>
+<td>3</td>
+<td>1850–2024</td>
+<td>同上，海温海冰保持工业化前</td>
+<td>piControl 第 101、151、201 年</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。全部强迫随历史变化</td>
+</tr>
+<tr>
+<td>piClim-histaer_0101、_0151、_0201</td>
+<td>3</td>
+<td>1850–2024</td>
+<td>同上</td>
+<td>同上</td>
+<td>草案在 <code>golaz_2026_e3smv3</code>。只有人为气溶胶及其前体随历史变化</td>
+</tr>
+</tbody>
+</table>
+<p>规定海温一共 10 条。表 2 写 AMIP 是 3 个成员，初值取对应 <code>historical_N</code> 的 1870 年，没有在表内列出是哪三年。上表的 0101、0151、0201 与 DAMIP 的三个初始化年一致，也是 <a href="../../library/e3sm-eamv3/report.html">Xie et al. (2025)</a> 实际使用的三个 AMIP。0051 和 0251 没有对应的 AMIP。</p>
+<p><code>piClim-histall</code> 减 <code>piClim-control</code> 的顶净辐射是总有效辐射强迫。<code>piClim-histaer</code> 减 <code>piClim-control</code> 是气溶胶有效辐射强迫。1995–2014 的集合平均：总强迫 1.66 W m−2，气溶胶强迫 −0.78 W m−2。v2 的对应值是 1.00 和 −1.53 W m−2。 <a href="https://doi.org/10.1029/2025MS005302">§4.3、图 13</a></p>
+<h2>论文给出的响应</h2>
+<p>TCR 取 <code>1pctCO2</code> 在 CO₂ 加倍附近（约第 70 年）的 20 年平均地表气温变化，为 2.33 K。ECS 用 <code>abrupt-4xCO2</code> 全部 150 年的 Gregory 回归，异常相对 piControl 第 101–250 年，为 3.90 K。v2 是 2.41 K 和 4.00 K，v1 是 2.93 K 和 5.30 K。 <a href="https://doi.org/10.1029/2025MS005302">§4.2、图 10</a></p>
+<p>piControl 的 500 年顶净辐射平均 −0.05 W m−2，没有可辨认的长期趋势。 <a href="https://doi.org/10.1029/2025MS005302">§4.1</a></p>
+<h2>和现有 case 的关系</h2>
+<p>论文没有印 CIME compset。与本文重叠、而且已经写成草案的，是 Xie 任务里的 E01–E08：耦合 spin-up、500 年 piControl、三条只到 1870 年的历史，以及三个 AMIP。路径在 config/tasks/models/xie_2025_eam。Xie 自己的 E09、E10 是固定海温、向 MERRA-2 松弛风场的 ERFaer，不在 Golaz 表 2 里。</p>
+<p>Golaz 任务里的历史个例写到 2014，再用 <code>WCYCLSSP245</code> 续到 2024。DAMIP 和 <code>piClim-hist*</code> 没有对应的 SSP 单强迫别名，case 停在 2014，blocker 里写了 2015–2024。Xie 的 E03–E05 仍只积到 1870，用来给 Xie 自己的 AMIP 初值。</p>
+</article></main></body></html>

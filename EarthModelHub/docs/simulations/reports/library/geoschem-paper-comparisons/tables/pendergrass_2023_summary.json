@@ -1,0 +1,10 @@
+{
+  "mean_annual_prior_tg_per_year": 494.11176338386707,
+  "mean_annual_posterior_tg_per_year": 526.1029728865471,
+  "posterior_emission_increase_percent": 6.474488541538048,
+  "december_prior_bias_ppb": -16.178699598706554,
+  "december_prior_bias_sd_ppb": 12.010934602698368,
+  "december_posterior_bias_ppb": 1.1331280050887536,
+  "december_posterior_bias_sd_ppb": 10.264437651194465,
+  "december_matched_grid_cells": 1481
+}

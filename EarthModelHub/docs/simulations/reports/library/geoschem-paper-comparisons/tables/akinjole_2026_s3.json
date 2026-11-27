@@ -1,0 +1,48 @@
+{
+  "physical_points": 10201,
+  "changed_case_points": 404,
+  "first_order": {
+    "paper": {
+      "all": {
+        "slope": 1.01,
+        "r_squared": 0.995
+      },
+      "same_case": {
+        "slope": 1.0,
+        "r_squared": 1.0
+      }
+    },
+    "all": {
+      "slope": 1.0090782208409965,
+      "intercept": 3.3038062116300935e-10,
+      "r_squared": 0.9945690451597727
+    },
+    "same_case": {
+      "slope": 0.9983763501971369,
+      "intercept": 1.5730830390915884e-11,
+      "r_squared": 0.9996139292798845
+    }
+  },
+  "second_order": {
+    "paper": {
+      "all": {
+        "slope": 0.26,
+        "r_squared": 0.195
+      },
+      "same_case": {
+        "slope": 1.0,
+        "r_squared": 0.996
+      }
+    },
+    "all": {
+      "slope": 0.2582598180824241,
+      "intercept": 2.751682689646911e-09,
+      "r_squared": 0.19495789352042842
+    },
+    "same_case": {
+      "slope": 1.0000404243299104,
+      "intercept": -9.594341763360724e-11,
+      "r_squared": 0.9964533531198861
+    }
+  }
+}

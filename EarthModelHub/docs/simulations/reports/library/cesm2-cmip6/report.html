@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CESM2 CMIP6 experiment protocol · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Experiment protocol</p><article><h1>The Community Earth System Model Version 2 (CESM2)</h1>
+<p>模型：CESM2（本机 CESM 2.1.5）；年份：2020；DOI：<a href="https://doi.org/10.1029/2019MS001916"><code>10.1029/2019MS001916</code></a>。</p>
+<p><a href="https://doi.org/10.1029/2019MS001916">论文全文</a> · 本地 PDF · 任务配置 · Simulation Gallery</p>
+<p>论文评估的是名义 1° 的全耦合 CESM2(CAM6) 和 CESM2(WACCM6)。网格用发行版的 <code>f09_g17</code>：大气 1.25°×0.9°、32 层（WACCM6 为 70 层，顶约 130 km），海洋 <code>gx1v7</code>、60 层，海冰与海洋同网格，河流 0.5°。冰盖固定，组件集里是 <code>CISM2%NOEVOLVE</code>。海浪是 WW3 的 <code>ww3a</code> 网格。下面的 case 是按第 4–6 节和第 12 节写的草案，不是作者的原始 case 目录。</p>
+<p>耦合步长按第 2.7 节：大气、陆面、海浪和海冰 30 分钟，海洋 1 小时，陆冰 1 天。这些留在组件集的默认值里，case 没有再改 <code>NCPL</code>。</p>
+<h2>实验表格</h2>
+<p>日期起点包含、终点不包含。20 个 case 都是 draft，还没有积分。开发链、离线自旋、平板海洋和 AMIP 没有 case，写在表后。</p>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>论文试验</th>
+<th>compset</th>
+<th>积分</th>
+<th>段长</th>
+<th>初值来自</th>
+<th>交给</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01</td>
+<td>CESM2(WACCM6) piControl。图 4 黑线，图 6</td>
+<td><code>BW1850cmip6</code></td>
+<td>0001-01-01 至 0501-01-01</td>
+<td>50 nyears × 10</td>
+<td>Simulation 299 第 134 年的海洋、海冰、陆面、径流；大气来自 Simulation 298 第 11 年</td>
+<td>E03–E05，以及 CAM6 强迫</td>
+</tr>
+<tr>
+<td>E02</td>
+<td>CESM2(CAM6) piControl。图 4 红线，图 6</td>
+<td><code>B1850cmip6</code></td>
+<td>0001-01-01 至 1201-01-01</td>
+<td>50 nyears × 24</td>
+<td>Simulation 299 第 134 年。氧化剂、平流层臭氧和气溶胶、甲烷氧化率取 E01 第 21–50 年的平均</td>
+<td>E06–E18</td>
+</tr>
+<tr>
+<td>E03</td>
+<td>WACCM6 historical，第 56 年</td>
+<td><code>BWHISTcmip6</code></td>
+<td>1850-01-01 至 2015-01-01</td>
+<td>15 nyears × 11</td>
+<td>E01 的 0056-01-01</td>
+<td>CAM6 historical 强迫</td>
+</tr>
+<tr>
+<td>E04</td>
+<td>WACCM6 historical，第 61 年</td>
+<td><code>BWHISTcmip6</code></td>
+<td>同 E03</td>
+<td>同 E03</td>
+<td>E01 的 0061-01-01</td>
+<td>同 E03</td>
+</tr>
+<tr>
+<td>E05</td>
+<td>WACCM6 historical，第 71 年</td>
+<td><code>BWHISTcmip6</code></td>
+<td>同 E03</td>
+<td>同 E03</td>
+<td>E01 的 0071-01-01</td>
+<td>同 E03</td>
+</tr>
+<tr>
+<td>E06</td>
+<td>CAM6 historical，第 501 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>1850-01-01 至 2015-01-01</td>
+<td>15 nyears × 11</td>
+<td>E02 的 0501-01-01</td>
+<td>图 7 的 11 个成员之一</td>
+</tr>
+<tr>
+<td>E07</td>
+<td>CAM6 historical，第 601 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0601-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E08</td>
+<td>CAM6 historical，第 631 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0631-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E09</td>
+<td>CAM6 historical，第 661 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0661-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E10</td>
+<td>CAM6 historical，第 691 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0691-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E11</td>
+<td>CAM6 historical，第 721 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0721-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E12</td>
+<td>CAM6 historical，第 751 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0751-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E13</td>
+<td>CAM6 historical，第 781 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0781-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E14</td>
+<td>CAM6 historical，第 811 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0811-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E15</td>
+<td>CAM6 historical，第 841 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0841-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E16</td>
+<td>CAM6 historical，第 871 年</td>
+<td><code>BHISTcmip6</code></td>
+<td>同 E06</td>
+<td>同 E06</td>
+<td>E02 的 0871-01-01</td>
+<td>同 E06</td>
+</tr>
+<tr>
+<td>E17</td>
+<td>CAM6 abrupt-4×CO₂。第 12 节 Gregory</td>
+<td><code>BCO2x4cmip6</code></td>
+<td>0501-01-01 至 0651-01-01</td>
+<td>15 nyears × 10</td>
+<td>E02 的 0501-01-01</td>
+<td>有效气候敏感度 5.3 °C</td>
+</tr>
+<tr>
+<td>E18</td>
+<td>CAM6 1% CO₂ yr⁻¹。第 12 节 TCR</td>
+<td><code>B1PCTcmip6</code></td>
+<td>同 E17</td>
+<td>同 E17</td>
+<td>E02 的 0501-01-01</td>
+<td>TCR 2.0 °C，用第 60–79 年</td>
+</tr>
+<tr>
+<td>E19</td>
+<td>WACCM6 abrupt-4×CO₂。第 12 节</td>
+<td><code>BWCO2x4cmip6</code></td>
+<td>150 年，起点空着</td>
+<td>15 nyears × 10</td>
+<td>E01，日期未写</td>
+<td>Gregory 4.8 °C</td>
+</tr>
+<tr>
+<td>E20</td>
+<td>WACCM6 1% CO₂ yr⁻¹。第 12 节</td>
+<td><code>BW1PCTcmip6</code></td>
+<td>同 E19</td>
+<td>同 E19</td>
+<td>E01，日期未写</td>
+<td>TCR 1.9 °C</td>
+</tr>
+</tbody>
+</table>
+<p>E03–E05 要先跑完，它们的集合平均才是 E06–E16 的氧化剂、平流层臭氧、平流层气溶胶、甲烷氧化率和氮沉降。E01 的第 21–50 年同样先于 E02。历史都把模式日期改到 1850-01-01，控制试验的年份留在 <code>RUN_REFDATE</code>。</p>
+<p>E17、E18 的分支年是 Bacmeister et al. (2020) 写的 CESM2 piControl 第 501 年。Danabasoglu 第 12 节只写了用前 150 年，没有写从哪一年分出。日历留在 0501-01-01。E19、E20 不能用这个年份：WACCM6 控制只有 500 年，第 501 年是终点。这两份 case 的 <code>RUN_STARTDATE</code> 和 <code>RUN_REFDATE</code> 因此留空。</p>
+<p>第 5 节写三个 WACCM historical 的时段是 1850–2015，用来做 CAM6 强迫；平流层气溶胶的 5 日平均又写的是 1850–2014。图和摘要使用的 historical 是 1850–2014。case 停在 2015-01-01。</p>
+<h3>有协议、但没有 case</h3>
+<p>图 3 的黑线长度没有写成数字，中间还有“小调整和 bug 修复”，所以开发链不建 case。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>论文写明的衔接</th>
+<th>本仓库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>三个前期成员</td>
+<td>从 CESM1(LENS) piControl 第 402 年的 1 月 1 日启动。约第 80 年起，其中两个出现过大的拉布拉多海冰</td>
+<td>不建 case</td>
+</tr>
+<tr>
+<td>Simulation 262c</td>
+<td>第三个成员海冰保持合理，并延长到 350 年以上</td>
+<td>不建 case。后续海洋和海冰状态从这里接出</td>
+</tr>
+<tr>
+<td>Simulation 293</td>
+<td>从 262c 第 161 年启动</td>
+<td>不建 case</td>
+</tr>
+<tr>
+<td>Simulation 297</td>
+<td>从 293 第 130 年启动。抽出 21 年地面强迫</td>
+<td>不建 case</td>
+</tr>
+<tr>
+<td>Simulation 299</td>
+<td>从 297 第 249 年启动。第 134 年进入两条正式 piControl</td>
+<td>不建 case。CESM 2.1.5 的库存 refcase 名是 <code>b.e20.B1850.f09_g17.pi_control.all.299_merge_v3</code> 和 <code>..._v3waccm</code>，文件不在本仓库，case 里 <code>GET_REFCASE=FALSE</code></td>
+</tr>
+<tr>
+<td>Simulation 298</td>
+<td>初步 WACCM6 piControl。第 11 年的大气给正式 WACCM6 控制</td>
+<td>不建 case</td>
+</tr>
+<tr>
+<td>陆面自旋</td>
+<td>用 297 的 21 年强迫循环，从裸地做加速分解，再接数百年正常分解</td>
+<td>不建 case。年数和停机标准在 Lawrence et al. 2019</td>
+</tr>
+<tr>
+<td>海洋示踪自旋</td>
+<td>只自旋生物地球化学示踪。每个 21 年循环开始时把物理状态重置。一部分示踪用 Newton–Krylov</td>
+<td>不建 case</td>
+</tr>
+<tr>
+<td>平板海洋控制 / 2×CO₂</td>
+<td>CO₂ 为 280 和 560 ppmv，积分到全球地表温度平衡、TOA 接近 0。ECS 为 5.3 °C（CAM6）和 5.1 °C（WACCM6）</td>
+<td>不建 case。库存 <code>ETEST</code> 是 2000 年、CLM5 SP 的测试组件集</td>
+</tr>
+<tr>
+<td>AMIP</td>
+<td>DECK 的规定海温试验。正文没有写时段、成员和初值</td>
+<td>不建 case</td>
+</tr>
+<tr>
+<td>ScenarioMIP</td>
+<td>引言说明 CESM2 参加了未来情景</td>
+<td>不建 case。本文的图和表不用这些积分</td>
+</tr>
+</tbody>
+</table>
+<h2>第 6 节的调整</h2>
+<p>两条 piControl 以及后面所有试验使用同一组参数，控制积分过程中不再改。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>论文</th>
+<th>本仓库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLUBB <code>gamma_coef</code></td>
+<td>有很小的改动，用来减少海洋层积云。没有给数值</td>
+<td>不写进 namelist</td>
+</tr>
+<tr>
+<td>海冰雪融化温度偏移</td>
+<td>从 −1.0 °C 改为 −1.5 °C</td>
+<td><code>user_nl_cice</code> 的 <code>dt_mlt = 1.5</code>。CESM 2.1.5 默认已经是 1.5</td>
+</tr>
+<tr>
+<td>融化雪的最大粒径</td>
+<td>从 1000 μm 改为 1500 μm</td>
+<td><code>rsnw_mlt = 1500</code>。默认已经是 1500</td>
+</tr>
+<tr>
+<td>干雪粒径标准差</td>
+<td>从 CESM1 的 1.75 改为 1.25</td>
+<td>CICE 5.1.2 的 namelist 里没有这个名字。<code>R_snw</code> 的默认 1.50 是另一个系数，没有改</td>
+</tr>
+</tbody>
+</table>
+<p>目标是控制试验的全球、时间平均 TOA 能量不平衡落在 0.1 W m−2 以内。论文结果是 CAM6 全程 +0.05、末 500 年 +0.03；WACCM6 全程和末 200 年都是 +0.06，单位 W m−2。</p>
+<h2>对照数字</h2>
+<p>图 7：historical 的全球 2 m 气温距平相对各自的 1850–1870。2000–2014 末，CESM2 集合平均比观测暖约 0.2–0.4 °C。观测是 HADCRUT4.5、GISTEMP 和 NOAAGlobalTemp。</p>
+<p>1985–2014 全球平均 SST（0–10 m）相对 ERSSTv5：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:right">CESM2(CAM6)</th>
+<th style="text-align:right">CESM2(WACCM6)</th>
+<th style="text-align:right">CESM1(LENS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>偏差 (°C)</td>
+<td style="text-align:right">+0.39</td>
+<td style="text-align:right">+0.33</td>
+<td style="text-align:right">−0.27</td>
+</tr>
+<tr>
+<td>均方根 (°C)</td>
+<td style="text-align:right">0.77</td>
+<td style="text-align:right">0.75</td>
+<td style="text-align:right">0.67</td>
+</tr>
+</tbody>
+</table>
+<p>对应 piControl、靠近各 historical 平均起始年的 30 年，相对工业化前 ERSSTv5 的 SST 偏差是 +0.33、+0.18 和 −0.18 °C。</p>
+<p>1985–2014 陆地 2 m 气温，DJF，相对 BEST：CESM1 平均偏差 −2.24 °C、均方根 1.90 °C；CAM6 为 0.89 和 1.51；WACCM6 为 0.67 和 1.38。</p>
+<p>1985–2014 降水相对 GPCP：平均偏差从 CESM1 的 0.33 mm day−1 降到 CAM6 的 0.25 和 WACCM6 的 0.23；均方根从 0.87 降到约 0.71 mm day−1。</p>
+<p>第 12 节：</p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th style="text-align:right">CESM2(CAM6)</th>
+<th style="text-align:right">CESM2(WACCM6)</th>
+<th style="text-align:right">CESM1(CAM5)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平板海洋 ECS (°C)</td>
+<td style="text-align:right">5.3</td>
+<td style="text-align:right">5.1</td>
+<td style="text-align:right">约 4.0</td>
+</tr>
+<tr>
+<td>前 150 年 Gregory (°C)</td>
+<td style="text-align:right">5.3</td>
+<td style="text-align:right">4.8</td>
+<td style="text-align:right">4.3</td>
+</tr>
+<tr>
+<td>TCR (°C)</td>
+<td style="text-align:right">2.0</td>
+<td style="text-align:right">1.9</td>
+<td style="text-align:right">2.3</td>
+</tr>
+</tbody>
+</table>
+<p>TCR 是 1% CO₂ 在加倍附近第 60–79 年的 20 年平均地表气温，减去 piControl 上与这段重叠的 140 年线性趋势。计算细节可以带来 0.1–0.2 °C 的差别。</p>
+<p>气溶胶有效辐射强迫（2000 减 1850）从 CAM5 / CMIP5 的 −1.82 W m−2 变为 CAM6 / CMIP6 的 −1.67 W m−2。这个数的试验设计在 Gettelman, Hannay, et al. (2019)，不在上表的 20 个 case 里。</p>
+<h2>查看配置</h2>
+<pre><code class="language-bash">python -m src.simulations list --task danabasoglu_2020_cesm2
+python -m src.simulations show @danabasoglu_2020_cesm2/cesm/cesm2_1_5/e01_picontrol_BW1850cmip6_f09_g17_0001-0500
+</code></pre>
+<p>Gallery 里这 20 条都在任务 <code>danabasoglu_2020_cesm2</code> 下。预检会停在 draft：没有 299/298 的 restart，E19 和 E20 也还没有分支日期。</p>
+</article></main></body></html>

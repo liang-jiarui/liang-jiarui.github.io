@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lawrence 2019 · Reproduction report · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Paper reproduction</p><article><h1>复现报告：CLM5，Lawrence et al. 2019</h1>
+<p>核对日期：2026-11-18。陆面标签 <code>release-clm5.0.37</code>。DOI：<code>10.1029/2018MS001583</code>。试验协议和 52 个 draft 阶段见 实验表格。<code>scientific_status</code> 仍是 <code>unverified</code>。</p>
+<p>当前已完成的只有 GSWP3、<code>I1850Clm50BgcCrop</code> 的一天冷启动：</p>
+<ul>
+<li><code>f19_g17</code>，作业 <code>337603</code> / 归档 <code>337604</code>，archive</li>
+<li><strong><code>f09_g17</code>（论文网格，192×288）</strong>，作业 <code>337606</code> / 归档 <code>337607</code>，archive。<code>./check_input_data</code> 无缺文件。</li>
+</ul>
+<p>这两天不能填 Table 5。E01–E22 的 case 已登记，都还没有积分。</p>
+<h2>Table 5（目标，尚未重算）</h2>
+<p>单位：通量 Pg C yr⁻¹，碳库 Pg C，CUE 无量纲。论文是 GSWP3v1、1995–2014 平均。括号内是与观测空间相交后的 ILAMB 值。E01 的 H1901 跑完并达到 §3.1 的碳漂移标准之后，才能填“本次”一列。</p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th>观测</th>
+<th>论文 CLM5BGC</th>
+<th>本次</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPP</td>
+<td>(118)</td>
+<td>125 (119)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>NPP</td>
+<td>—</td>
+<td>49</td>
+<td>—</td>
+</tr>
+<tr>
+<td>CUE</td>
+<td>—</td>
+<td>0.43</td>
+<td>—</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>—</td>
+<td>70</td>
+<td>—</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>—</td>
+<td>42</td>
+<td>—</td>
+</tr>
+<tr>
+<td>ER</td>
+<td>(94)</td>
+<td>112 (103)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>生态系统碳</td>
+<td>—</td>
+<td>2574</td>
+<td>—</td>
+</tr>
+<tr>
+<td>植被碳</td>
+<td>(449)</td>
+<td>492 (460)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>土壤碳 1 m</td>
+<td>(1320)</td>
+<td>1057 (1040)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</article></main></body></html>

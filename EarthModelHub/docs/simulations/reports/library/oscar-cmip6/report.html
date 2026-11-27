@@ -1,0 +1,1588 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OSCAR v3.1 CMIP6 reproduction · EarthModelHub</title><style>
+  :root{font:16px/1.6 system-ui,sans-serif;color:#172d36;background:#f4f7f7}*{box-sizing:border-box}
+  body{margin:0}header{background:#143b4b;color:white;padding:14px clamp(20px,5vw,64px)}
+  header a{color:white;font-weight:650;margin-right:1.25rem}main{width:min(1080px,100% - 36px);margin:28px auto 60px}
+  h1,h2,h3{line-height:1.25;color:#162e3a}h1{font-size:clamp(1.7rem,4vw,2.35rem);margin:.15em 0 .6em}
+  h2{margin-top:1.65em}a{color:#125b86;text-underline-offset:3px}a:focus-visible,select:focus-visible{outline:3px solid #297cb0;outline-offset:3px}
+  .tag,.action{display:inline-block;border-radius:5px;font-size:.82rem;font-weight:650;padding:3px 8px}
+  .tag{color:#24566c;background:#e1eef3}.action{color:white;background:#155985;text-decoration:none;padding:6px 11px}
+  article,.library-row{background:white;border:1px solid #d7e2e7;border-radius:8px;padding:clamp(14px,3vw,34px)}
+  article{overflow:auto}article>h1:first-child{margin-top:0}img{max-width:100%;height:auto}
+  table{border-collapse:collapse;width:100%;font-size:.91rem}th,td{padding:7px 10px;text-align:left;border:1px solid #d6e0e6}
+  th{background:#eaf0f3}tr:nth-child(even){background:#f8fafb}pre{overflow:auto;background:#edf3f5;padding:14px;border-radius:6px}
+  .library-row{margin:10px 0;padding:13px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .library-row h2{font-size:1.05rem;margin:0 0 4px}.library-row p{margin:4px 0;color:#4c6572;font-size:.87rem}
+  select{font:inherit;padding:3px 8px;margin:0 8px;border:1px solid #b0c5cf;border-radius:5px;background:white;color:inherit}
+  [hidden]{display:none}code{overflow-wrap:anywhere}
+</style></head>
+<body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
+<main><p class="tag">Paper reproduction</p><article><h1>复现报告：OSCAR v3.1，Quilcaille et al. 2023</h1>
+<p>核对日期：2026-11-14。源码提交 <code>11a4639d5e7144b7957dbdd8ba4f6754433b7cca</code>。DOI：<code>10.5194/gmd-16-1129-2023</code>。<a href="https://gmd.copernicus.org/articles/16/1129/2023/">论文全文</a> · 本地 PDF</p>
+<p>论文脚本里这次排队的试验都已经结束，包括 Figure 7 下排的三条 <code>esm-bell</code>（1850–2950，作业 336671–336673）。能从这 4 组画出来的图都在下面。Figure 1 和 A1 是结构图。Figure 2 要的约束分布没有做。</p>
+<p>每一节都是两栏，左是论文，右是这次的结果。Figure 1–7 和 A1 各是一张拼好的对照图。Figure B1–B9 的左右两张分开排，不拼在一起。论文图从 CC BY 的 PDF 抽出，放在 <code>figures/paper/</code>。</p>
+<p>这次只有 4 组未筛选先验（种子 42，<code>RCP_5reg</code>）。论文色带和标准差来自约 1118 组稳定配置，再经观测约束。右栏的阴影是这 4 组的样本标准差，不能当成论文的集合不确定度。<code>scientific_status</code> 仍是 <code>unverified</code>。</p>
+<table>
+<thead>
+<tr>
+<th>条目</th>
+<th>右栏</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figure 3</td>
+<td>1000 年曲线、ECS 直方图、六项平衡态强迫。定义与论文作图脚本相同</td>
+</tr>
+<tr>
+<td>Figure 4，Table 3</td>
+<td>已用本次 4 组对照。图 4 只画到第 140 年，这段海洋通量还没有发散</td>
+</tr>
+<tr>
+<td>Figure 5</td>
+<td>13 格都画了，并叠了作图脚本里的 GCB、AR5、Cowtan、von Schuckmann 点</td>
+</tr>
+<tr>
+<td>Figure 6，Table 5</td>
+<td>8 条浓度驱动 SSP 接到 2300 年，12 格</td>
+</tr>
+<tr>
+<td>Figure 7，Table 6</td>
+<td>branched 和三条 <code>esm-bell-*</code> 都已画。1850–2950，仍是这 4 组</td>
+</tr>
+<tr>
+<td>Table 2、4</td>
+<td>已从这次的试验算出</td>
+</tr>
+<tr>
+<td>Figure B1–B5、B7–B9</td>
+<td>已按论文脚本的变量和试验画</td>
+</tr>
+<tr>
+<td>Figure B6</td>
+<td>陆面模式没有把通量写进输出，图上的通量是从陆面状态重算的</td>
+</tr>
+<tr>
+<td>Figure 1、A1</td>
+<td>结构图</td>
+</tr>
+<tr>
+<td>Figure 2</td>
+<td>约束流程没有做。set 12 的稳定性掩码把这 4 组全部剔除</td>
+</tr>
+</tbody>
+</table>
+<h2>实验表格</h2>
+<p>133 个 case 都在这张表里，顺序与 <code>task.yaml</code> 相同。论文复现成员用 Par-12 的前 4 组，种子 42，区域 <code>RCP_5reg</code>，<code>substeps</code> 4。前 5 行是同一套 4 组先验的学习运行，从 1750 年起，不依赖 spinup。依赖列是要先完成的 case 目录名。</p>
+<table>
+<thead>
+<tr>
+<th>试验</th>
+<th>组</th>
+<th>脚本</th>
+<th>时段</th>
+<th>依赖</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1pctCO2</td>
+<td>deck</td>
+<td><code>1pctCO2</code></td>
+<td>1750–1890</td>
+<td>—</td>
+<td>安装学习，不进论文图</td>
+</tr>
+<tr>
+<td>abrupt-4xCO2</td>
+<td>deck</td>
+<td><code>abrupt-4xCO2</code></td>
+<td>1750–1900</td>
+<td>—</td>
+<td>安装学习，不进论文图</td>
+</tr>
+<tr>
+<td>1pctCO2-feedback</td>
+<td>c4mip</td>
+<td><code>1pctCO2-feedback</code></td>
+<td>1750–1890</td>
+<td>—</td>
+<td>安装学习，不进论文图</td>
+</tr>
+<tr>
+<td>historical</td>
+<td>deck</td>
+<td><code>historical</code></td>
+<td>1750–2014</td>
+<td>—</td>
+<td>安装学习，不进论文图</td>
+</tr>
+<tr>
+<td>esm-hist</td>
+<td>deck</td>
+<td><code>esm-hist</code></td>
+<td>1750–2014</td>
+<td>—</td>
+<td>安装学习，不进论文图</td>
+</tr>
+<tr>
+<td>paper-spinup</td>
+<td>basis</td>
+<td><code>spinup</code></td>
+<td>1850–2850</td>
+<td>—</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-1pctCO2</td>
+<td>idealized</td>
+<td><code>1pctCO2</code></td>
+<td>1850–2100</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-1pctCO2-4xext</td>
+<td>idealized</td>
+<td><code>1pctCO2-4xext</code></td>
+<td>1850–2990</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-1pctCO2-bgc</td>
+<td>idealized</td>
+<td><code>1pctCO2-bgc</code></td>
+<td>1850–2100</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-1pctCO2-cdr</td>
+<td>idealized</td>
+<td><code>1pctCO2-cdr</code></td>
+<td>1850–3130</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-1pctCO2-rad</td>
+<td>idealized</td>
+<td><code>1pctCO2-rad</code></td>
+<td>1850–2100</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-G1</td>
+<td>idealized</td>
+<td><code>G1</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-G2</td>
+<td>idealized</td>
+<td><code>G2</code></td>
+<td>1850–2000</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-abrupt-0p5xCO2</td>
+<td>idealized</td>
+<td><code>abrupt-0p5xCO2</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-abrupt-2xCO2</td>
+<td>idealized</td>
+<td><code>abrupt-2xCO2</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-abrupt-4xCO2</td>
+<td>idealized</td>
+<td><code>abrupt-4xCO2</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-spinup</td>
+<td>basis</td>
+<td><code>esm-spinup</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-spinup-CMIP5</td>
+<td>cmip5</td>
+<td><code>esm-spinup-CMIP5</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-CO2</td>
+<td>attribution</td>
+<td><code>hist-CO2</code></td>
+<td>1850–2020</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-GHG</td>
+<td>attribution</td>
+<td><code>hist-GHG</code></td>
+<td>1850–2020</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-aer</td>
+<td>attribution</td>
+<td><code>hist-aer</code></td>
+<td>1850–2020</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-bgc</td>
+<td>basis</td>
+<td><code>hist-bgc</code></td>
+<td>1850–2014</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-nat</td>
+<td>attribution</td>
+<td><code>hist-nat</code></td>
+<td>1850–2020</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-noLu</td>
+<td>attribution</td>
+<td><code>hist-noLu</code></td>
+<td>1850–2014</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-piAer</td>
+<td>standalone</td>
+<td><code>hist-piAer</code></td>
+<td>1850–2014</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-piNTCF</td>
+<td>standalone</td>
+<td><code>hist-piNTCF</code></td>
+<td>1850–2014</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-sol</td>
+<td>attribution</td>
+<td><code>hist-sol</code></td>
+<td>1850–2020</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-volc</td>
+<td>attribution</td>
+<td><code>hist-volc</code></td>
+<td>1850–2020</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-historical</td>
+<td>basis</td>
+<td><code>historical</code></td>
+<td>1850–2014</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-spinup</td>
+<td>land</td>
+<td><code>land-spinup</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-spinup-altLu1</td>
+<td>land</td>
+<td><code>land-spinup-altLu1</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-spinup-altLu2</td>
+<td>land</td>
+<td><code>land-spinup-altLu2</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-spinup-altStartYear</td>
+<td>land</td>
+<td><code>land-spinup-altStartYear</code></td>
+<td>1700–2700</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-piControl</td>
+<td>standalone</td>
+<td><code>piControl</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-spinup-CMIP5</td>
+<td>cmip5</td>
+<td><code>spinup-CMIP5</code></td>
+<td>1850–2850</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-yr2010CO2</td>
+<td>cdrmip</td>
+<td><code>yr2010CO2</code></td>
+<td>1850–3010</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-1pct-brch-1000PgC</td>
+<td>idealized</td>
+<td><code>esm-1pct-brch-1000PgC</code></td>
+<td>1850–3000</td>
+<td>1pctCO2、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-1pct-brch-2000PgC</td>
+<td>idealized</td>
+<td><code>esm-1pct-brch-2000PgC</code></td>
+<td>1850–3000</td>
+<td>1pctCO2、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-1pct-brch-750PgC</td>
+<td>idealized</td>
+<td><code>esm-1pct-brch-750PgC</code></td>
+<td>1850–3000</td>
+<td>1pctCO2、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-bell-750PgC</td>
+<td>idealized</td>
+<td><code>esm-bell-750PgC</code></td>
+<td>1850–2950</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-bell-1000PgC</td>
+<td>idealized</td>
+<td><code>esm-bell-1000PgC</code></td>
+<td>1850–2950</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-bell-2000PgC</td>
+<td>idealized</td>
+<td><code>esm-bell-2000PgC</code></td>
+<td>1850–2950</td>
+<td>spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-1pctCO2</td>
+<td>idealized</td>
+<td><code>esm-1pctCO2</code></td>
+<td>1850–2100</td>
+<td>1pctCO2、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-abrupt-4xCO2</td>
+<td>idealized</td>
+<td><code>esm-abrupt-4xCO2</code></td>
+<td>1850–2850</td>
+<td>abrupt-4xCO2、esm-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-hist</td>
+<td>basis</td>
+<td><code>esm-hist</code></td>
+<td>1850–2014</td>
+<td>esm-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-histcmip5</td>
+<td>cmip5</td>
+<td><code>esm-histcmip5</code></td>
+<td>1850–2000</td>
+<td>esm-spinup-CMIP5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-pi-CO2pulse</td>
+<td>idealized</td>
+<td><code>esm-pi-CO2pulse</code></td>
+<td>1850–2850</td>
+<td>esm-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-pi-cdr-pulse</td>
+<td>idealized</td>
+<td><code>esm-pi-cdr-pulse</code></td>
+<td>1850–2850</td>
+<td>esm-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-piControl</td>
+<td>standalone</td>
+<td><code>esm-piControl</code></td>
+<td>1850–2850</td>
+<td>esm-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-piControl-CMIP5</td>
+<td>cmip5</td>
+<td><code>esm-piControl-CMIP5</code></td>
+<td>1850–2850</td>
+<td>esm-spinup-CMIP5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-yr2010CO2-CO2pulse</td>
+<td>cdrmip</td>
+<td><code>esm-yr2010CO2-CO2pulse</code></td>
+<td>1850–3010</td>
+<td>spinup、yr2010CO2</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-yr2010CO2-cdr-pulse</td>
+<td>cdrmip</td>
+<td><code>esm-yr2010CO2-cdr-pulse</code></td>
+<td>1850–3010</td>
+<td>spinup、yr2010CO2</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-yr2010CO2-control</td>
+<td>cdrmip</td>
+<td><code>esm-yr2010CO2-control</code></td>
+<td>1850–3010</td>
+<td>spinup、yr2010CO2</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-yr2010CO2-noemit</td>
+<td>cdrmip</td>
+<td><code>esm-yr2010CO2-noemit</code></td>
+<td>1850–3010</td>
+<td>spinup、yr2010CO2</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-1950HC</td>
+<td>standalone</td>
+<td><code>hist-1950HC</code></td>
+<td>1950–2014</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-historical-CMIP5</td>
+<td>cmip5</td>
+<td><code>historical-CMIP5</code></td>
+<td>1850–2000</td>
+<td>spinup、spinup-CMIP5</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-cCO2</td>
+<td>land</td>
+<td><code>land-cCO2</code></td>
+<td>1850–2010</td>
+<td>land-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-cClim</td>
+<td>land</td>
+<td><code>land-cClim</code></td>
+<td>1850–2010</td>
+<td>land-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-crop-grass</td>
+<td>land</td>
+<td><code>land-crop-grass</code></td>
+<td>1850–2010</td>
+<td>land-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-hist</td>
+<td>land</td>
+<td><code>land-hist</code></td>
+<td>1850–2010</td>
+<td>land-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-hist-altLu1</td>
+<td>land</td>
+<td><code>land-hist-altLu1</code></td>
+<td>1850–2010</td>
+<td>land-spinup-altLu1、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-hist-altLu2</td>
+<td>land</td>
+<td><code>land-hist-altLu2</code></td>
+<td>1850–2010</td>
+<td>land-spinup-altLu2、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-hist-altStartYear</td>
+<td>land</td>
+<td><code>land-hist-altStartYear</code></td>
+<td>1700–2010</td>
+<td>land-spinup-altStartYear、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-noLu</td>
+<td>land</td>
+<td><code>land-noLu</code></td>
+<td>1850–2010</td>
+<td>land-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-noShiftcultivate</td>
+<td>land</td>
+<td><code>land-noShiftcultivate</code></td>
+<td>1850–2010</td>
+<td>land-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-noWoodHarv</td>
+<td>land</td>
+<td><code>land-noWoodHarv</code></td>
+<td>1850–2010</td>
+<td>land-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-piControl</td>
+<td>land</td>
+<td><code>land-piControl</code></td>
+<td>1850–2010</td>
+<td>land-spinup、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-piControl-altLu1</td>
+<td>land</td>
+<td><code>land-piControl-altLu1</code></td>
+<td>1850–2010</td>
+<td>land-spinup-altLu1、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-piControl-altLu2</td>
+<td>land</td>
+<td><code>land-piControl-altLu2</code></td>
+<td>1850–2010</td>
+<td>land-spinup-altLu2、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-land-piControl-altStartYear</td>
+<td>land</td>
+<td><code>land-piControl-altStartYear</code></td>
+<td>1700–2700</td>
+<td>land-spinup-altStartYear、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-piControl-CMIP5</td>
+<td>cmip5</td>
+<td><code>piControl-CMIP5</code></td>
+<td>1850–2850</td>
+<td>spinup、spinup-CMIP5</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp119</td>
+<td>scenario</td>
+<td><code>ssp119</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp126</td>
+<td>scenario</td>
+<td><code>ssp126</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp126-ssp370Lu</td>
+<td>scenario</td>
+<td><code>ssp126-ssp370Lu</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245</td>
+<td>scenario</td>
+<td><code>ssp245</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245-CO2</td>
+<td>attribution</td>
+<td><code>ssp245-CO2</code></td>
+<td>2020–2100</td>
+<td>hist-CO2、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245-GHG</td>
+<td>attribution</td>
+<td><code>ssp245-GHG</code></td>
+<td>2020–2100</td>
+<td>hist-GHG、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245-aer</td>
+<td>attribution</td>
+<td><code>ssp245-aer</code></td>
+<td>2020–2100</td>
+<td>hist-aer、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245-nat</td>
+<td>attribution</td>
+<td><code>ssp245-nat</code></td>
+<td>2020–2100</td>
+<td>hist-nat、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245-sol</td>
+<td>attribution</td>
+<td><code>ssp245-sol</code></td>
+<td>2020–2100</td>
+<td>hist-sol、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245-volc</td>
+<td>attribution</td>
+<td><code>ssp245-volc</code></td>
+<td>2020–2100</td>
+<td>hist-volc、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp370</td>
+<td>scenario</td>
+<td><code>ssp370</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp370-lowNTCF</td>
+<td>scenario</td>
+<td><code>ssp370-lowNTCF</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp370-ssp126Lu</td>
+<td>scenario</td>
+<td><code>ssp370-ssp126Lu</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp434</td>
+<td>scenario</td>
+<td><code>ssp434</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp460</td>
+<td>scenario</td>
+<td><code>ssp460</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp534-over</td>
+<td>scenario</td>
+<td><code>ssp534-over</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp534-over-bgc</td>
+<td>bgc</td>
+<td><code>ssp534-over-bgc</code></td>
+<td>2014–2100</td>
+<td>hist-bgc、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp585</td>
+<td>scenario</td>
+<td><code>ssp585</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp585-bgc</td>
+<td>bgc</td>
+<td><code>ssp585-bgc</code></td>
+<td>2014–2100</td>
+<td>hist-bgc、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp585-ssp126Lu</td>
+<td>scenario</td>
+<td><code>ssp585-ssp126Lu</code></td>
+<td>2014–2100</td>
+<td>historical、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-G6solar</td>
+<td>scenario</td>
+<td><code>G6solar</code></td>
+<td>2014–2100</td>
+<td>historical、spinup、ssp245、ssp585</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-rcp26</td>
+<td>cmip5</td>
+<td><code>esm-rcp26</code></td>
+<td>2000–2500</td>
+<td>esm-histcmip5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-rcp45</td>
+<td>cmip5</td>
+<td><code>esm-rcp45</code></td>
+<td>2000–2500</td>
+<td>esm-histcmip5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-rcp60</td>
+<td>cmip5</td>
+<td><code>esm-rcp60</code></td>
+<td>2000–2500</td>
+<td>esm-histcmip5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-rcp85</td>
+<td>cmip5</td>
+<td><code>esm-rcp85</code></td>
+<td>2000–2500</td>
+<td>esm-histcmip5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp119</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp119</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp126</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp126</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp245</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp245</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp370</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp370</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp370-lowNTCF</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp370-lowNTCF</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp434</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp434</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp460</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp460</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp534-over</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp534-over</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp585</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp585</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp585-ssp126Lu</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp585-ssp126Lu</code></td>
+<td>2014–2100</td>
+<td>esm-hist、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-hist-stratO3</td>
+<td>attribution</td>
+<td><code>hist-stratO3</code></td>
+<td>1850–2020</td>
+<td>historical、spinup、ssp245</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-rcp26</td>
+<td>cmip5</td>
+<td><code>rcp26</code></td>
+<td>2000–2500</td>
+<td>historical-CMIP5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-rcp45</td>
+<td>cmip5</td>
+<td><code>rcp45</code></td>
+<td>2000–2500</td>
+<td>historical-CMIP5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-rcp60</td>
+<td>cmip5</td>
+<td><code>rcp60</code></td>
+<td>2000–2500</td>
+<td>historical-CMIP5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-rcp85</td>
+<td>cmip5</td>
+<td><code>rcp85</code></td>
+<td>2000–2500</td>
+<td>historical-CMIP5、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp119ext</td>
+<td>scenario</td>
+<td><code>ssp119ext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp119</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp126ext</td>
+<td>scenario</td>
+<td><code>ssp126ext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp126</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245ext</td>
+<td>scenario</td>
+<td><code>ssp245ext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp245</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp370-lowNTCFext</td>
+<td>scenario</td>
+<td><code>ssp370-lowNTCFext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp370-lowNTCF</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp370ext</td>
+<td>scenario</td>
+<td><code>ssp370ext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp370</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp434ext</td>
+<td>scenario</td>
+<td><code>ssp434ext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp434</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp460ext</td>
+<td>scenario</td>
+<td><code>ssp460ext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp460</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp534-over-bgcExt</td>
+<td>bgc</td>
+<td><code>ssp534-over-bgcExt</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp534-over-bgc</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp534-over-ext</td>
+<td>scenario</td>
+<td><code>ssp534-over-ext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp534-over</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp585-bgcExt</td>
+<td>bgc</td>
+<td><code>ssp585-bgcExt</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp585-bgc</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp585ext</td>
+<td>scenario</td>
+<td><code>ssp585ext</code></td>
+<td>2100–2500</td>
+<td>spinup、ssp585</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp119ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp119ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp119、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp126ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp126ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp126、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp245ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp245ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp245、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp370-lowNTCFext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp370-lowNTCFext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp370-lowNTCF、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp370ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp370ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp370、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp434ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp434ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp434、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp460ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp460ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp460、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp534-over-ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp534-over-ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp534-over、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp585-ssp126Lu-ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp585-ssp126Lu-ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp585-ssp126Lu、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-esm-ssp585ext</td>
+<td>esm-scenario</td>
+<td><code>esm-ssp585ext</code></td>
+<td>2100–2500</td>
+<td>esm-ssp585、spinup</td>
+<td>论文脚本</td>
+</tr>
+<tr>
+<td>paper-ssp245-stratO3</td>
+<td>attribution</td>
+<td><code>ssp245-stratO3</code></td>
+<td>2020–2100</td>
+<td>hist-stratO3、spinup、ssp245</td>
+<td>论文脚本</td>
+</tr>
+</tbody>
+</table>
+<h2>Figure 1</h2>
+<p>结构示意图。右栏没有另画曲线。已实现的是其中 CO₂ 试验：<code>D_CO2</code> 进碳循环，<code>RF_CO2 = 5.35 * ln(1 + ΔCO2_rad / 278)</code> 进辐射。</p>
+<p>&lt;img src=&quot;figures/compare/fig01.png&quot; alt=&quot;Figure 1 左论文右本次&quot; width=&quot;980&quot;&gt;</p>
+<h2>Table 1</h2>
+<p>论文列出的试验，以及这次是否跑过。</p>
+<table>
+<thead>
+<tr>
+<th>论文中的试验</th>
+<th>本次</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DECK：<code>1pctCO2</code>，<code>abrupt-4xCO2</code>，<code>historical</code>，<code>esm-hist</code>，<code>piControl</code>，<code>esm-piControl</code></td>
+<td>论文脚本已跑。另有 <code>abrupt-0p5xCO2</code>、<code>abrupt-2xCO2</code>，1850–2850</td>
+</tr>
+<tr>
+<td>C4MIP：<code>1pctCO2-bgc</code>，<code>1pctCO2-rad</code>，<code>hist-bgc</code>，<code>esm-ssp585</code>，<code>ssp585-bgc</code>，<code>ssp534-over-bgc</code></td>
+<td>已跑</td>
+</tr>
+<tr>
+<td>AerChemMIP、CDRMIP、DAMIP、LUMIP、GeoMIP、ScenarioMIP、RCP，以及 ZECMIP 的 branched</td>
+<td>已跑</td>
+</tr>
+<tr>
+<td>ZECMIP 的 <code>esm-bell-750PgC</code>、<code>esm-bell-1000PgC</code>、<code>esm-bell-2000PgC</code></td>
+<td>已跑完，1850–2950，与其它试验同一套 4 组。Figure 7 下排用的就是这三份输出</td>
+</tr>
+<tr>
+<td>稳定性剔除和观测权重</td>
+<td>没有做。<code>mask_all_exp_12.csv</code> 在 500 组里保留 64 组，下标 0–3 都是剔除</td>
+</tr>
+</tbody>
+</table>
+<h2>Figure 2</h2>
+<p>约束前后的直方图。historical-CMIP5 和四条 RCP 已经跑过，但只是这 4 组未筛选先验。论文图要的是约 10000 组里通过稳定性掩码的成员，再乘观测权重。set 12 的掩码保留 64/500，这 4 组都不在其中，所以没有画实线和虚线两条分布。</p>
+<p>&lt;img src=&quot;figures/compare/fig02.png&quot; alt=&quot;Figure 2 左论文右本次&quot; width=&quot;980&quot;&gt;</p>
+<h2>Table 2</h2>
+<p>单位 K，或 K (1000 PgC)⁻¹。左栏是论文的无约束列。右栏只有这次能从 4 组里算出的数。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>论文无约束</th>
+<th>本次 4 组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECS，参数</td>
+<td>3.17 ± 0.63</td>
+<td>未把气候参数汇总成这条</td>
+</tr>
+<tr>
+<td>ECS，<code>abrupt-2xCO2</code> 结束</td>
+<td>2.74 ± 0.52</td>
+<td>2.91 ± 0.42。四个值是 3.11、3.32、2.88、2.34。公式是年末 <code>D_Tg * RF(2×) / RF</code></td>
+</tr>
+<tr>
+<td>TCR</td>
+<td>1.78 ± 0.28</td>
+<td>2.00 ± 0.17。论文脚本的 <code>1pctCO2</code> 在 1920 年，CO₂ 为 571 ppm</td>
+</tr>
+<tr>
+<td>TCRE</td>
+<td>1.67 ± 0.40</td>
+<td>1.58 ± 0.23 K (1000 PgC)⁻¹。各成员在自己的 <code>year_breach</code> 上的升温</td>
+</tr>
+</tbody>
+</table>
+<h2>Figure 3</h2>
+<p>三条试验都是 1850–2850。右栏按论文作图脚本：左列是升温，中列是 <code>D_Tg(末) * RF_2x(末) / RF(末)</code> 的四个值，右列是年末的 <code>RF</code>、<code>RF_CO2</code>、<code>RF_O3t</code>、<code>RF_absorb</code>、<code>RF_scatter</code>、<code>RF_cloud</code>。2850 年的总强迫不是论文给的平衡态 3.46 ± 0.25 W m⁻²。4× 年末总强迫是 6.51 ± 1.11 W m⁻²，其中 CO₂ 强迫 7.54 W m⁻² 对四组相同。</p>
+<p>&lt;img src=&quot;figures/compare/fig03.png&quot; alt=&quot;Figure 3 左论文右本次&quot; width=&quot;980&quot;&gt;</p>
+<p>2850 年升温：<code>abrupt-0p5xCO2</code> −2.67 ± 0.46 K，<code>abrupt-2xCO2</code> 2.91 ± 0.42 K，<code>abrupt-4xCO2</code> 5.72 ± 0.90 K。按上面的公式，三条试验的 ECS 都是 2.90–2.92 ± 0.42 K。对应 CO₂ 异常 −136、291、859 ppm。</p>
+<h2>Table 3</h2>
+<p>β 为 PgC ppm⁻¹，γ 为 PgC K⁻¹。左栏是论文无约束列。右栏来自 <code>feedback_metrics.json</code>。海洋 β、海洋 γ 和陆地 γ 落在论文无约束的 ±1 个标准差里。陆地 β 比论文无约束平均高大约一个论文标准差。</p>
+<p>2×CO₂，1820 年：</p>
+<table>
+<thead>
+<tr>
+<th>反馈</th>
+<th>论文无约束</th>
+<th>本次 4 组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>陆地 β，R-B 与 B-F</td>
+<td>1.14 ± 0.64</td>
+<td>1.76 ± 0.22</td>
+</tr>
+<tr>
+<td>陆地 β，R-F</td>
+<td>1.10 ± 0.61</td>
+<td>1.70 ± 0.21</td>
+</tr>
+<tr>
+<td>海洋 β，R-B 与 B-F</td>
+<td>1.05 ± 0.03</td>
+<td>1.07 ± 0.03</td>
+</tr>
+<tr>
+<td>海洋 β，R-F</td>
+<td>1.00 ± 0.05</td>
+<td>1.00 ± 0.06</td>
+</tr>
+<tr>
+<td>陆地 γ，R-B 与 R-F</td>
+<td>−30.8 ± 20.5</td>
+<td>−29.5 ± 5.5</td>
+</tr>
+<tr>
+<td>陆地 γ，B-F</td>
+<td>−37.6 ± 26.4</td>
+<td>−38.6 ± 8.1</td>
+</tr>
+<tr>
+<td>海洋 γ，R-B 与 R-F</td>
+<td>−13.0 ± 0.7</td>
+<td>−12.5 ± 0.7</td>
+</tr>
+<tr>
+<td>海洋 γ，B-F</td>
+<td>−21.0 ± 5.7</td>
+<td>−22.4 ± 8.2</td>
+</tr>
+</tbody>
+</table>
+<p>4×CO₂，1890 年：</p>
+<table>
+<thead>
+<tr>
+<th>反馈</th>
+<th>论文无约束</th>
+<th>本次 4 组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>陆地 β，R-B 与 B-F</td>
+<td>0.96 ± 0.57</td>
+<td>1.55 ± 0.36</td>
+</tr>
+<tr>
+<td>陆地 β，R-F</td>
+<td>0.87 ± 0.50</td>
+<td>1.37 ± 0.31</td>
+</tr>
+<tr>
+<td>海洋 β，R-B 与 B-F</td>
+<td>0.94 ± 0.03</td>
+<td>0.95 ± 0.03</td>
+</tr>
+<tr>
+<td>海洋 β，R-F</td>
+<td>0.86 ± 0.07</td>
+<td>0.84 ± 0.10</td>
+</tr>
+<tr>
+<td>陆地 γ，R-B 与 R-F</td>
+<td>−43.3 ± 25.5</td>
+<td>−47.1 ± 5.4</td>
+</tr>
+<tr>
+<td>陆地 γ，B-F</td>
+<td>−63.1 ± 41.5</td>
+<td>−79.4 ± 15.1</td>
+</tr>
+<tr>
+<td>海洋 γ，R-B 与 R-F</td>
+<td>−17.7 ± 1.3</td>
+<td>−16.9 ± 1.4</td>
+</tr>
+<tr>
+<td>海洋 γ，B-F</td>
+<td>−35.5 ± 12.4</td>
+<td>−37.4 ± 15.4</td>
+</tr>
+</tbody>
+</table>
+<h2>Figure 4</h2>
+<p>四格都画了。浓度曲线是规定的 1%/yr：1890 年为 1120 ppm。温度、陆汇、海汇的形状和论文一致：<code>1pctCO2</code> 与 <code>1pctCO2-rad</code> 升温接近，<code>1pctCO2-bgc</code> 接近 0；陆汇和海汇都是 bgc 高于全耦合，rad 略为负。陆汇的数值高于论文图里大约 8 PgC yr⁻¹ 的平台，这 4 组先验的幅度不能代替论文集合。</p>
+<p>&lt;img src=&quot;figures/compare/fig04.png&quot; alt=&quot;Figure 4 左论文右本次&quot; width=&quot;980&quot;&gt;</p>
+<p>1890 年：全耦合升温 4.20 ± 1.13 K，bgc 0.21 ± 0.31 K，rad 3.99 ± 0.78 K。rad 的陆地和海洋碳库变化 −188 ± 39 PgC 和 −67 ± 11 PgC。</p>
+<h2>Figure 5</h2>
+<p>历史试验从 1850 年开始。<code>historical</code> 的化石排放是相容排放：<code>a_CO2 * d(D_CO2)/dt − D_Eluc − D_Epf_CO2 + D_Fland + D_Focean</code>。<code>esm-hist</code> 用规定的 <code>Eff</code>。陆地净通量是 <code>D_Fland − D_Eluc − D_Epf_CO2 − 0.001 * D_Epf_CH4</code>。温度相对 1850–1900，海洋热含量相对 1971。CO₂ 异常相对模式的 <code>CO2_0</code>（278 ppm）。黑点是作图脚本使用的评估范围。阴影是这 4 组的样本标准差。</p>
+<p>&lt;img src=&quot;figures/compare/fig05.png&quot; alt=&quot;Figure 5 左论文右本次&quot; width=&quot;980&quot;&gt;</p>
+<p>2014 年，<code>historical</code> / <code>esm-hist</code>：化石排放 8.61 ± 1.11 / 9.21 PgC yr⁻¹；海洋碳汇 2.26 ± 0.25 / 2.44 ± 0.34 PgC yr⁻¹；陆地净通量 2.48 ± 1.16 / 2.31 ± 0.70 PgC yr⁻¹；CO₂ 异常 119.5 / 117.8 ± 11.5 ppm；CO₂ 辐射强迫 1.91 / 1.89 ± 0.16 W m⁻²；有效辐射强迫 2.45 ± 0.42 / 2.43 ± 0.52 W m⁻²；相对 1850–1900 的升温 1.25 ± 0.20 / 1.24 ± 0.24 K。</p>
+<h2>Table 4</h2>
+<p>GSAT 为 2006–2015 减去 1850–1900，单位 K。全部、温室气体、CO₂、气溶胶分别来自 <code>historical</code>、<code>hist-GHG</code>、<code>hist-CO2</code>、<code>hist-aer</code>。NTCF 是 <code>historical</code> 减 <code>hist-piNTCF</code>。土地利用是 <code>historical</code> 减 <code>hist-noLu</code>。</p>
+<table>
+<thead>
+<tr>
+<th>强迫</th>
+<th>论文</th>
+<th>本次 4 组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全部</td>
+<td>0.98 ± 0.19</td>
+<td>1.15 ± 0.22</td>
+</tr>
+<tr>
+<td>WMGHGs</td>
+<td>1.24 ± 0.12</td>
+<td>1.45 ± 0.09</td>
+</tr>
+<tr>
+<td>NTCFs</td>
+<td>−0.26 ± 0.22</td>
+<td>−0.28 ± 0.33</td>
+</tr>
+<tr>
+<td>CO₂</td>
+<td>0.74 ± 0.07</td>
+<td>0.85 ± 0.06</td>
+</tr>
+<tr>
+<td>气溶胶</td>
+<td>−0.33 ± 0.20</td>
+<td>−0.30 ± 0.32</td>
+</tr>
+<tr>
+<td>土地利用</td>
+<td>−0.03 ± 0.03</td>
+<td>−0.05 ± 0.04</td>
+</tr>
+</tbody>
+</table>
+<h2>Table 5</h2>
+<p>浓度驱动。GSAT 是 2091–2100 相对历史 1850–1900。ERF 是 2100 年的 <code>RF_warm</code>。论文列是约束后的集合。这次的升温比论文高，2100 年的 ERF 接近论文。</p>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th>论文 2100 年 ERF</th>
+<th>论文 2091–2100 GSAT</th>
+<th>本次 ERF</th>
+<th>本次 GSAT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ssp585</td>
+<td>8.76 ± 0.50</td>
+<td>4.16 ± 0.38</td>
+<td>8.41 ± 0.84</td>
+<td>4.95 ± 0.27</td>
+</tr>
+<tr>
+<td>ssp370</td>
+<td>7.41 ± 0.58</td>
+<td>3.50 ± 0.32</td>
+<td>7.09 ± 0.66</td>
+<td>4.15 ± 0.17</td>
+</tr>
+<tr>
+<td>ssp460</td>
+<td>5.64 ± 0.40</td>
+<td>2.84 ± 0.27</td>
+<td>5.47 ± 0.45</td>
+<td>3.44 ± 0.19</td>
+</tr>
+<tr>
+<td>ssp245</td>
+<td>4.86 ± 0.31</td>
+<td>2.50 ± 0.25</td>
+<td>4.69 ± 0.46</td>
+<td>3.03 ± 0.17</td>
+</tr>
+<tr>
+<td>ssp534-over</td>
+<td>3.36 ± 0.27</td>
+<td>1.95 ± 0.22</td>
+<td>3.28 ± 0.32</td>
+<td>2.42 ± 0.19</td>
+</tr>
+<tr>
+<td>ssp434</td>
+<td>3.70 ± 0.31</td>
+<td>2.00 ± 0.21</td>
+<td>3.62 ± 0.29</td>
+<td>2.47 ± 0.18</td>
+</tr>
+<tr>
+<td>ssp126</td>
+<td>2.80 ± 0.20</td>
+<td>1.58 ± 0.17</td>
+<td>2.70 ± 0.29</td>
+<td>1.95 ± 0.15</td>
+</tr>
+<tr>
+<td>ssp119</td>
+<td>2.14 ± 0.18</td>
+<td>1.24 ± 0.15</td>
+<td>2.07 ± 0.22</td>
+<td>1.56 ± 0.13</td>
+</tr>
+</tbody>
+</table>
+<h2>Figure 6</h2>
+<p>12 格的变量与论文作图脚本一致：相容化石排放、海汇、陆地净通量、大气 CO₂、有效强迫、非 CO₂ 温室气体、气溶胶、对流层臭氧、相对 1850–1900 的升温、相对 1850 的海洋热含量和降水、多年冻土 CO₂。化石排放和海汇只保留 <code>|D_Focean| &gt; 30</code> PgC yr⁻¹ 的年份不超过 5 年的成员。ssp585 上这只剩 1 组，所以这两格没有色带。其余 10 格仍是 4 组。</p>
+<p>&lt;img src=&quot;figures/compare/fig06.png&quot; alt=&quot;Figure 6 左论文右本次&quot; width=&quot;980&quot;&gt;</p>
+<h2>Figure 7</h2>
+<p>上排是三条 branched 试验。左图是全程升温，右图是相对各成员 <code>year_breach</code> 的升温。<code>year_breach</code> 是累计化石排放达到目标的那一年，该年仍有排放，其后为 0。1000 PgC 的四个分支年是 1910、1910、1908、1902。下排是 <code>esm-bell-750PgC</code>、<code>esm-bell-1000PgC</code>、<code>esm-bell-2000PgC</code>，作业 336671–336673，各约 72 分钟。左图是 <code>D_Tg</code>，年份从 1850 起算。右图按论文作图脚本，减去 1950 年的 <code>D_Tg</code>，横轴是其后 1000 年。1950 年四组平均升温：750 PgC 为 1.09 ± 0.22 K，1000 PgC 为 1.42 ± 0.29 K，2000 PgC 为 2.63 ± 0.51 K。2950 年分别是 0.85 ± 0.22 K、1.12 ± 0.30 K、2.28 ± 0.65 K。相对 1950 年、再过 100 年的升温是 0.00 ± 0.06 K、0.01 ± 0.09 K、0.11 ± 0.20 K。这仍是 4 组未筛选先验，不是论文加权后的集合。</p>
+<p>&lt;img src=&quot;figures/compare/fig07.png&quot; alt=&quot;Figure 7 左论文右本次&quot; width=&quot;980&quot;&gt;</p>
+<h2>Table 6</h2>
+<p><code>esm-1pct-brch-1000PgC</code> 的零排放承诺，单位 K。</p>
+<p>相对各成员的 <code>year_breach</code>。这 4 组比论文更偏冷，而且论文的稳定性掩码把它们全部剔除。</p>
+<table>
+<thead>
+<tr>
+<th>年限</th>
+<th>论文 OSCAR</th>
+<th>本次 4 组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25 年</td>
+<td>−0.01 ± 0.07</td>
+<td>−0.17 ± 0.10</td>
+</tr>
+<tr>
+<td>50 年</td>
+<td>−0.02 ± 0.09</td>
+<td>−0.18 ± 0.12</td>
+</tr>
+<tr>
+<td>90 年</td>
+<td>−0.01 ± 0.11</td>
+<td>−0.16 ± 0.15</td>
+</tr>
+<tr>
+<td>500 年</td>
+<td>−0.21 ± 0.13</td>
+<td>−0.29 ± 0.18</td>
+</tr>
+</tbody>
+</table>
+<h2>Figure A1</h2>
+<p>抽样、剔除和约束的流程示意图。</p>
+<p>&lt;img src=&quot;figures/compare/figA1.png&quot; alt=&quot;Figure A1 左论文右本次&quot; width=&quot;980&quot;&gt;</p>
+<p>未执行这套流程。没有 10000 组抽样，没有稳定性剔除，也没有观测权重。本次是 4 组未筛选先验。</p>
+<h2>Figure B1–B9</h2>
+<p>变量和试验与论文作图脚本一致。海洋碳库和海汇去掉了海洋通量长时间超出 30 PgC yr⁻¹ 的成员。<code>rcp85</code> 四组都超出，那一格的 RCP 曲线空着。</p>
+<table>
+<thead>
+<tr>
+<th>图</th>
+<th>论文</th>
+<th>本次</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1 CDRMIP 可逆性</td>
+<td>&lt;img src=&quot;figures/paper/figB1.png&quot; alt=&quot;论文 Figure B1&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB1.png&quot; alt=&quot;本次 Figure B1&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+<tr>
+<td>B2 CO₂ 的 AGWP 与 AGTP</td>
+<td>&lt;img src=&quot;figures/paper/figB2.png&quot; alt=&quot;论文 Figure B2&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB2.png&quot; alt=&quot;本次 Figure B2&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+<tr>
+<td>B3 ssp534-over 与 ssp585 的碳循环</td>
+<td>&lt;img src=&quot;figures/paper/figB3.png&quot; alt=&quot;论文 Figure B3&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB3.png&quot; alt=&quot;本次 Figure B3&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+<tr>
+<td>B4 GeoMIP</td>
+<td>&lt;img src=&quot;figures/paper/figB4.png&quot; alt=&quot;论文 Figure B4&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB4.png&quot; alt=&quot;本次 Figure B4&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+<tr>
+<td>B5 SRM</td>
+<td>&lt;img src=&quot;figures/paper/figB5.png&quot; alt=&quot;论文 Figure B5&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB5.png&quot; alt=&quot;本次 Figure B5&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+<tr>
+<td>B6 LUMIP</td>
+<td>&lt;img src=&quot;figures/paper/figB6.png&quot; alt=&quot;论文 Figure B6&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB6.png&quot; alt=&quot;本次 Figure B6&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+<tr>
+<td>B7 另一套土地利用驱动</td>
+<td>&lt;img src=&quot;figures/paper/figB7.png&quot; alt=&quot;论文 Figure B7&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB7.png&quot; alt=&quot;本次 Figure B7&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+<tr>
+<td>B8 较低的 NTCF</td>
+<td>&lt;img src=&quot;figures/paper/figB8.png&quot; alt=&quot;论文 Figure B8&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB8.png&quot; alt=&quot;本次 Figure B8&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+<tr>
+<td>B9 RCP 与 SSP</td>
+<td>&lt;img src=&quot;figures/paper/figB9.png&quot; alt=&quot;论文 Figure B9&quot; width=&quot;480&quot;&gt;</td>
+<td>&lt;img src=&quot;figures/ours/figB9.png&quot; alt=&quot;本次 Figure B9&quot; width=&quot;480&quot;&gt;</td>
+</tr>
+</tbody>
+</table>
+<h2>这次右栏是怎么来的</h2>
+<p>源码提交 <code>11a4639d5e7144b7957dbdd8ba4f6754433b7cca</code>。右栏数值来自论文脚本，<code>setMC = 12</code>，每个脚本取参数文件的前 4 组，种子 42，区域 <code>RCP_5reg</code>。辐射强迫和碳通量是积分之后由状态、参数和驱动算出来再写回 <code>Out</code> 的。论文的 <code>mask_all_exp_12.csv</code> 在 500 组里保留 64 组，这 4 组都不在里面。其中 3 组在百年以上的试验里海洋碳通量会到上百 PgC yr⁻¹，图上的海汇、海洋碳库和相容排放没有把这些组算进平均。<code>scientific_status</code> 仍是 <code>unverified</code>。</p>
+<p>任务说明 · 1pctCO2 · abrupt-4xCO2 · 碳循环反馈</p>
+<table>
+<thead>
+<tr>
+<th>案例</th>
+<th>运行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quilcaille_1pctCO2</code></td>
+<td><code>archive/oscar/oscar_v3.1/quilcaille_1pctCO2/latest</code>，<code>7e245990da164148914ba9a38931ae50</code></td>
+</tr>
+<tr>
+<td><code>quilcaille_abrupt4xCO2</code></td>
+<td><code>archive/oscar/oscar_v3.1/quilcaille_abrupt4xCO2/latest</code>，<code>5cae93c6c75f4852881cc8db2b5f46bb</code></td>
+</tr>
+<tr>
+<td><code>quilcaille_1pctCO2_feedback</code></td>
+<td><code>archive/oscar/oscar_v3.1/quilcaille_1pctCO2_feedback/latest</code>，<code>3be5ff36a32741b29b8a45ab4cc8965e</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-bash">python -m src.model.oscar.utils.create_cases --only @quilcaille_2023_oscar_cmip6 --steps create_case,case_run
+</code></pre>
+</article></main></body></html>

@@ -36328,6 +36328,10 @@
       {
         "label": "Baseline and reproduction figure (PDF)",
         "path": "reports/gcadj/merra2-pbl-comparison.pdf"
+      },
+      {
+        "label": "GC-adjoint paper comparisons",
+        "path": "reports/library/gcadj-paper-comparisons/report.html"
       }
     ],
     "commands": {

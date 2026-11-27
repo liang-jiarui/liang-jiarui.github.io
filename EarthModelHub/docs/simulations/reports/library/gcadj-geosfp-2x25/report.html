@@ -16,8 +16,8 @@
 </style></head>
 <body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
 <main><p class="tag">Benchmark evidence</p><article><h1>GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告</h1>
-<p>核对日期为 2026-11-27。下方逐图并排展示论文原图和本站运行证据。<strong>Wang 2020 Fig. 1 的两组观测梯度尚未复现。Tang 2023 Fig. 6 的四个 24 小时过程开关已在本站 GEOS-FP 2°×2.5° 上逐一测试，四组均完成前向，原版伴随均停在首次反向检查点。</strong> 本站另完成 23 个 24 小时前向对照、扰动和重复运行。本文保留发表图中的量和单位，本站初值梯度单独列表。<a href="tables/paper_comparison.csv">逐面板对照表</a> · <a href="tables/paper_probes.json">四个 24 小时作业的验收记录</a></p>
-<p><strong>7 天与整月续跑</strong>。两个 case 的 6 个前向成员全部通过逐日验收，原版反向完成 0/2。下方附终点地图、垂直剖面和逐日演变。 <a href="tables/long_windows_daily.csv">长窗口逐日结果</a> · <a href="tables/long_windows_validation.json">自动验收记录</a></p>
+<p>核对日期为 2026-11-27。<strong>Tang 2023 Fig. 6 的 6 个排放梯度散点面板均未完成同口径复现，Wang 2020 Fig. 1 的两组观测梯度也尚未复现。</strong> 下方按论文面板列出复现条件和本站证据。本站已在 GEOS-FP 2°×2.5° 完成 CO 初值扰动基准，并复现了原版 v36 的反向故障。<a href="tables/paper_comparison.csv">逐面板对照表</a> · <a href="tables/paper_probes.json">四个 24 小时作业的验收记录</a></p>
+<p><strong>7 天与整月续跑</strong>。两个本地前向基准共 6 个成员，全部通过逐日验收，原版反向完成 0/2。下方附终点地图、垂直剖面和逐日演变。 <a href="tables/long_windows_daily.csv">长窗口逐日结果</a> · <a href="tables/long_windows_validation.json">自动验收记录</a></p>
 <h2>Wang 等（2020）Figure 1 · 同网格、同气象类型</h2>
 <table>
 <thead>
@@ -50,26 +50,26 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">论文原图</th>
-<th style="text-align:left">本地实测图</th>
+<th style="text-align:left">论文 Fig. 6 原图与计算口径</th>
+<th style="text-align:left">本地同口径验收</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><a href="figures/tang_2023_fig6.png"><img src="figures/tang_2023_fig6.png" alt="Tang 2023 Figure 6，六个面板的原生伴随与中心差分对照" loading="lazy" /></a></td>
-<td style="text-align:left"><a href="figures/tang_2023_local_fd.png"><img src="figures/tang_2023_local_fd.png" alt="本站 24 小时末地面 CO 对初值缩放的中心差分地图，四组过程开关" loading="lazy" /></a></td>
+<td style="text-align:left"><strong>同口径面板 0/6。</strong> 原版 v36 的四个 24 小时反向探针均未产出原生梯度。7 天和整月的同口径状态见下节。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>原图 Fig. 6(a–f)</strong>。横轴为伴随，纵轴为中心差分，量纲为 <strong>kg/格</strong>。前向对 <strong>CO 排放缩放因子</strong> 做 ±10% 扰动，比较全球末时刻第一层 CO。模型为 v35n GC-Adjoint-HEMCO，4°×5°、47 层。</td>
-<td style="text-align:left"><strong>本站 24 小时末地面 CO 中心差分</strong>。右图是用正负前向重启独立计算的 <code>(q₊ − q₋)/0.2</code>，量纲为 <strong>ppbv/单位初值缩放</strong>。模型为原版 v36，GEOS-FP 2°×2.5°、72 层，对 350 个格点的 <strong>初始 CO</strong> 做 ±10% 扰动。虚线为扰动区。</td>
+<td style="text-align:left"><strong>方法</strong>。v35n GC-Adjoint-HEMCO 的 tagged-CO，全球 4°×5°、47 层。将 <strong>CO 排放</strong>缩放 ±10%，比较全球末步第一层 CO 对该缩放因子的伴随与中心差分梯度，单位 kg CO/格。</td>
+<td style="text-align:left"><strong>本地方法</strong>。原版 v36，GEOS-FP 2°×2.5°、72 层。±10% 扰动加在 350 个格点的 <strong>初始 CO</strong>，结果为 ppbv/单位初值缩放。</td>
 </tr>
 <tr>
-<td style="text-align:left">原文 §3.1 分别开启对流、PBL、平流，组合面板关闭平流。本图的起始日和气象产品未在 §3.1 单列。</td>
-<td style="text-align:left">四组均用 2013-07-01 的同一份 GEOS-FP，组合只开启对流和 PBL。本地还评估了带平流的三过程联用，见下文 24 小时表。</td>
+<td style="text-align:left"><strong>耗时</strong>。论文 §1 引述 tagged-CO 可通过读取归档 OH 大幅降低全化学计算开销，Fig. 6 未报告墙钟时间。</td>
+<td style="text-align:left"><strong>作业 353018 耗时</strong>。31 天基准、+10%、−10% 分别用 13 分 03 秒、13 分 03 秒、12 分 48 秒。每个成员 4 个 OpenMP 线程。只推进一个被动 CO，关闭排放、化学、干湿沉降和平流，开启对流和 PBL，读取服务器现成的 GEOS-FP。</td>
 </tr>
 </tbody>
 </table>
-<p>左栏原图来自 Zhaojun Tang 等（2023），图像未改绘。由于缩放对象、网格和单位不同，右栏地图用于核对本站输送和过程开关。对流面板的近地面响应可在源区保留而不出现足够强的垂直信号，另有西太平洋第 10 层对流验证。<a href="https://gmd.copernicus.org/articles/16/6377/2023/#section3">论文 §3.1</a> · <a href="https://gmd.copernicus.org/articles/16/6377/2023/gmd-16-6377-2023-f06.png">原图文件</a> · <a href="https://doi.org/10.5281/zenodo.7512111">作者源码</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+<p>左栏原图来自 Zhaojun Tang 等（2023）。作者源码 ZIP 已核验，归档内有模型代码，未附生成 Fig. 6 的 <code>input.geos</code>、<code>input.gcadj</code> 和逐格配对梯度。已有的 4°×5° MERRA-2 作者版 PBL 试验验证的是 24 小时初值梯度。<a href="https://gmd.copernicus.org/articles/16/6377/2023/#section3">论文 §3.1</a> · <a href="https://gmd.copernicus.org/articles/16/6377/2023/gmd-16-6377-2023-f06.png">原图文件</a> · <a href="https://doi.org/10.5281/zenodo.7512111">作者源码</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
 <table>
 <thead>
 <tr>
@@ -96,34 +96,52 @@
 </tr>
 <tr>
 <td style="text-align:left"><strong>(e) 组合且关闭平流，7 d</strong>。R² = 1.000，m = 1.000。</td>
-<td style="text-align:left">本站 7 天基准与正负扰动均通过前向验收，原版反向积分未完成。详见下节。</td>
+<td style="text-align:left">同口径排放梯度未复现，配对点数 0。本站 7 天基准与正负扰动均通过前向验收，原版反向积分未完成。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>(f) 组合且关闭平流，1 个月</strong>。R² = 1.000，m = 1.000。</td>
-<td style="text-align:left">本站 31 天基准与正负扰动均通过前向验收，原版反向积分未完成。详见下节。</td>
+<td style="text-align:left">同口径排放梯度未复现，配对点数 0。本站 31 天基准与正负扰动均通过前向验收，原版反向积分未完成。</td>
 </tr>
 </tbody>
 </table>
-<p>四个 24 小时原版 <code>FD_GLOB</code> 作业均保留了时标正确的前向 CO 重启，均在相同的检查点调用地址崩溃，模式退出码为 <strong>174</strong>。四组本地的伴随–中心差分配对点数为 <strong>0</strong>，因此无法计算 R²、斜率或与论文的差值。原复现需要作者的排放输入、精确窗口、初值和图 6 的输出筛选。<a href="tables/paper_comparison.csv">论文发表值与本地配对状态 CSV</a> · <a href="tables/paper_probes.json">本地作业记录</a></p>
+<p>四个 24 小时原版 <code>FD_GLOB</code> 作业均保留了时标正确的前向 CO 重启，均在相同的检查点调用地址崩溃，模式退出码为 <strong>174</strong>。四组同口径的伴随–中心差分配对点数为 <strong>0</strong>。<a href="tables/paper_comparison.csv">论文发表值与本地配对状态 CSV</a> · <a href="tables/paper_probes.json">本地作业记录</a></p>
+<p>下图是本地 24 小时初值扰动的前向过程检查。虚线为扰动区，本地量纲为 ppbv/单位初值缩放。仅对流的第 10 层西太平洋敏感度另见下文。</p>
+<p><img src="figures/tang_2023_local_fd.png" alt="本站 24 小时末地面 CO 对初值缩放的中心差分地图" loading="lazy" /></p>
 <h2>Tang Figure 6(e–f) · 7 天与整月</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">论文原图</th>
-<th style="text-align:left">本地实测图</th>
+<th style="text-align:left">论文 Fig. 6(e–f)</th>
+<th style="text-align:left">本地同口径验收</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><a href="figures/tang_2023_fig6.png"><img src="figures/tang_2023_fig6.png" alt="Tang 2023 Figure 6 原图，长时段对应 e 和 f" loading="lazy" /></a></td>
-<td style="text-align:left"><a href="figures/long_windows_endpoints.png"><img src="figures/long_windows_endpoints.png" alt="7 天和整月的本地末时刻 CO 初值中心差分地图和垂直剖面" loading="lazy" /></a></td>
+<td style="text-align:left"><strong>7 天和 1 个月均未复现。</strong> 同口径的逐格排放梯度配对数为 0，两组 R²、斜率和散点图均待计算。</td>
 </tr>
 <tr>
-<td style="text-align:left">左图后两面板为 <strong>(e) 7 天</strong>和 <strong>(f) 1 个月</strong>。关闭平流，两组发表的 R² 和斜率均为 1.000。横轴是伴随、纵轴是中心差分，量纲为 kg/格。</td>
-<td style="text-align:left">右图对 350 个初始地面格点的 CO 做 ±10% 扰动。地图和剖面是中心差分，单位为 ppbv/单位初值缩放。两列共享地图色标和剖面范围。</td>
+<td style="text-align:left"><strong>Fig. 6(e)，7 天</strong>。关闭平流。发表图 R² = 1.000，斜率 m = 1.000。</td>
+<td style="text-align:left">本地 7 天为 2013-07-01 至 2013-07-08 UTC。匹配窗口长度。原始起止时刻待确认。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fig. 6(f)，1 个月</strong>。关闭平流。发表图 R² = 1.000，斜率 m = 1.000。</td>
+<td style="text-align:left">本地 1 个月为 2013-07-01 至 2013-08-01 UTC。匹配窗口类型。原始月份、日数和起止时刻待确认。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>坐标</strong>。末步第一层 CO 对排放缩放因子的导数，横轴伴随、纵轴中心差分，单位 kg CO/格。</td>
+<td style="text-align:left">本地用 350 个格点的初始 CO ±10% 求中心差分，单位 ppbv/单位初值缩放。两边的独立变量和输出单位均不同。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>输入和模型</strong>。v35n GC-Adjoint-HEMCO，4°×5°、47 层。正文和补充材料未列出此图的日期、气象产品、选用的排放配置、初始重启与散点筛选。</td>
+<td style="text-align:left">本地为 v36、GEOS-FP 2°×2.5°、72 层，被动 CO 初值 100 ppbv。原作者归档提供源代码，复跑仍需该图的运行清单和参考配对梯度。</td>
 </tr>
 </tbody>
 </table>
+<p>严格验收需先恢复作者的运行清单和输入版本，在原网格上按同一时刻、同一格点和同一掩膜配对两个 kg CO/格梯度。逐格核对作者参考数据并按原拟合口径重算斜率和 R²，汇报配对数、绝对偏差和相对偏差。图中三位小数一致只是验收的一项。</p>
+<h3>本地 7 天与整月前向基准</h3>
+<p><img src="figures/long_windows_endpoints.png" alt="7 天和整月的本地末时刻 CO 初值中心差分地图和垂直剖面" loading="lazy" /></p>
+<p>两图共享地图色标和剖面范围，展示的是本地初值扰动的响应。</p>
 <table>
 <thead>
 <tr>
@@ -246,6 +264,10 @@
 <h2>原版伴随失败复现</h2>
 <p>使用相同 GEOS-FP 网格和初值，打开 v36 原生 <code>FD_GLOB</code>，仅启用 PBL，窗口缩短为 00:00–03:00 UTC。作业 <strong>352976_16</strong> 正常完成前向并进入 <code>BACKWARD INTEGRATION</code>，首次 <code>LOAD_CHECKPT_DATA</code> 随即收到 SIGSEGV，模式退出码 <strong>174</strong>，<code>diagadj/gctm.fdglob.*</code> 未生成。</p>
 <p>调试作业 <strong>352999</strong> 使用同一二进制。在 <code>LOAD_CHECKPT_DATA</code> 入口，<code>TTO3</code> 数组描述符的起始地址为 <code>0x0</code>，而 <code>TTO3_TMP</code> 和 <code>TO3</code> 有有效地址。执行在 <code>TTO3_TMP(:,:) = TTO3(:,:)</code> 对应的内存复制处触发 SIGSEGV。GEOS-FP 的 <code>INIT_DAO_GEOSFP</code> 分配了 <code>TTO3_TMP</code> 和 <code>TO3</code>，GEOS-5 初始化另有 <code>TTO3</code> 的分配。气象读取和 3 小时前向已在同一作业成功。复跑与调试均使用原版可执行文件。原版正向和伴随的状态分别以结束标记验证。</p>
+<h3>独立修复候选</h3>
+<p><code>TTO3</code> 在旧 GEOS-5 读入器中是对流层臭氧柱。检查 2013-07-01 的六组 GEOS-FP NetCDF，A1 提供 <code>TO3</code>，这些输入中没有 <code>TTO3</code>。v36 的 GEOS-FP I3 读入器也没有读取 <code>TTO3</code> 的路径。反向代码有两个访问点，启动时 <code>LOAD_CHECKPT_DATA</code> 把 <code>TTO3</code> 复制到 <code>TTO3_TMP</code>，后续 <code>COPY_I6_FIELDS_ADJ</code> 会在 I3 时间步把暂存量写回 <code>TTO3</code>。</p>
+<p>独立构建对此数组的两处复制都增加 <code>ALLOCATED(TTO3)</code> 判定。已分配该字段的 GEOS-5 路径继续执行原有复制。GEOS-FP 跳过缺失字段，<code>TO3</code> 和其他气象场仍走原路径。补丁未合入原版模型目录。 两处改动的补丁</p>
+<p>在 <code>cpu_part</code> 的对照作业 <strong>353173</strong> 中，候选构建的 PBL 和对流加 PBL 两组均完成 24 小时前向和反向积分，耗时分别为 53 秒和 56 秒。候选构建的对流加 PBL 前向重启与原版逐字节一致。</p>
 <h2>复跑命令和证据</h2>
 <p>从 EarthModelHub 根目录运行，使用新的运行目录。前向矩阵为 <strong>352976_0–15</strong>、<strong>353000_0–3</strong> 和 <strong>353009_4–6</strong>。原版伴随检查使用 <strong>352976_16</strong> 和 <strong>353009_0–3</strong>。先收齐三个数组结果，再执行两个验证脚本。脚本分别检查前向数值、成对诊断和该二进制的反向状态。</p>
 <pre><code class="language-bash">repo=&quot;$PWD&quot;

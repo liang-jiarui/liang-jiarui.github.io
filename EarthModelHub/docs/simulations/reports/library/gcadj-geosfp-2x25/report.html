@@ -18,6 +18,7 @@
 <main><p class="tag">Benchmark evidence</p><article><h1>GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告</h1>
 <p>核对日期为 2026-11-27。<strong>Tang 2023 Fig. 6 的 6 个排放梯度散点面板均未完成同口径复现，Wang 2020 Fig. 1 的两组观测梯度也尚未复现。</strong> 下方按论文面板列出复现条件和本站证据。本站已在 GEOS-FP 2°×2.5° 完成 CO 初值扰动基准，并复现了原版 v36 的反向故障。<a href="tables/paper_comparison.csv">逐面板对照表</a> · <a href="tables/paper_probes.json">四个 24 小时作业的验收记录</a></p>
 <p><strong>7 天与整月续跑</strong>。两个本地前向基准共 6 个成员，全部通过逐日验收，原版反向完成 0/2。独立修复版完成 2/2，并产出 CO 初值伴随梯度。 <a href="tables/long_windows_daily.csv">长窗口逐日结果</a> · <a href="tables/long_windows_validation.json">自动验收记录</a></p>
+<p>复现工作区 Git 提交为 <code>dc610b0ce6f0d2c81a0e8a07b3fdd5f3c759e9a1</code>。</p>
 <p>HPC 复现工作区 · 24 小时配置 · 7 天配置 · 整月配置</p>
 <h2>Wang 等（2020）Figure 1 · 同网格、同气象类型</h2>
 <table>

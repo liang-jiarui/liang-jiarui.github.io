@@ -1,0 +1,9 @@
+paper,figure,target,paper_window,paper_n,paper_r,paper_rmse,paper_r_squared,paper_slope_fd_on_adj,local_grid_matched,local_window_matched,local_quantity_matched,local_native_fdglob_files,local_same_protocol_statistics
+Wang 2020,1a,SO2,3 d,192,1.00,6.07,,,horizontal only,no,no,,not available
+Wang 2020,1b,NOx,3 d,192,1.00,29.10,,,horizontal only,no,no,,not available
+Tang 2023,6a,convection,24 h,,,,1.000,1.000,no,yes,no,0,not available
+Tang 2023,6b,pbl,24 h,,,,1.000,1.000,no,yes,no,0,not available
+Tang 2023,6c,advection,24 h,,,,0.916,1.053,no,yes,no,0,not available
+Tang 2023,6d,columns,24 h,,,,1.000,1.000,no,yes,no,0,not available
+Tang 2023,6e,columns,7 d,,,,1.000,1.000,no,no,no,,not available
+Tang 2023,6f,columns,1 month,,,,1.000,1.000,no,no,no,,not available

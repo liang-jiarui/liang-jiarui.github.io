@@ -1,0 +1,65 @@
+{
+  "local_model": "GC-adjoint v36",
+  "local_meteorology": "GEOS-FP",
+  "grid": [
+    144,
+    91,
+    72
+  ],
+  "period_utc": [
+    "2013-07-01T00:00:00Z",
+    "2013-07-02T00:00:00Z"
+  ],
+  "perturbed_variable": "initial CO scaling factor",
+  "delta_scale": 0.1,
+  "runs": {
+    "convection": {
+      "case": "convection_24h_adjoint",
+      "forward_completed": true,
+      "backward_entered": true,
+      "backward_completed": false,
+      "model_exit_code": 174,
+      "signal": "SIGSEGV",
+      "trace_has_checkpoint_call_site": true,
+      "native_fdglob_files": 0,
+      "initial_CO_fd_peak_surface_ppbv_per_factor": 100.36476538743955,
+      "initial_CO_fd_max_midpoint_ppbv": 3.552713678800501e-06
+    },
+    "pbl": {
+      "case": "pbl_24h_adjoint",
+      "forward_completed": true,
+      "backward_entered": true,
+      "backward_completed": false,
+      "model_exit_code": 174,
+      "signal": "SIGSEGV",
+      "trace_has_checkpoint_call_site": true,
+      "native_fdglob_files": 0,
+      "initial_CO_fd_peak_surface_ppbv_per_factor": 100.1904692543576,
+      "initial_CO_fd_max_midpoint_ppbv": 3.552713678800501e-06
+    },
+    "advection": {
+      "case": "advection_24h_adjoint",
+      "forward_completed": true,
+      "backward_entered": true,
+      "backward_completed": false,
+      "model_exit_code": 174,
+      "signal": "SIGSEGV",
+      "trace_has_checkpoint_call_site": true,
+      "native_fdglob_files": 0,
+      "initial_CO_fd_peak_surface_ppbv_per_factor": 123.67106450028587,
+      "initial_CO_fd_max_midpoint_ppbv": 0.0003623767952376511
+    },
+    "columns": {
+      "case": "columns_24h_adjoint",
+      "forward_completed": true,
+      "backward_entered": true,
+      "backward_completed": false,
+      "model_exit_code": 174,
+      "signal": "SIGSEGV",
+      "trace_has_checkpoint_call_site": true,
+      "native_fdglob_files": 0,
+      "initial_CO_fd_peak_surface_ppbv_per_factor": 100.1904692543576,
+      "initial_CO_fd_max_midpoint_ppbv": 3.552713678800501e-06
+    }
+  }
+}

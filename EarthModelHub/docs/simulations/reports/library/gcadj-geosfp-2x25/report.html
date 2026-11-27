@@ -16,7 +16,94 @@
 </style></head>
 <body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
 <main><p class="tag">Benchmark evidence</p><article><h1>GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告</h1>
-<p>核对日期为 2026-11-27。使用服务器原生 GEOS-FP 和原版 GC-adjoint v36 二进制，完成 <strong>20 个 24 小时前向基准运行</strong>，覆盖无输送对照、边界层混合、对流、平流和三过程联用。独立重跑的平流重启文件 SHA-256 相同。原版 PBL 伴随试验在进入反向积分后崩溃，调试器确认读取了未分配的 <code>TTO3</code>。本报告的有限差分结果用于检验前向输送，原生伴随梯度仍待验证。<a href="tables/results.csv">数值全表</a> · <a href="tables/validation.json">验证记录</a></p>
+<p>核对日期为 2026-11-27。下方逐图并排展示论文原图和本站运行证据。<strong>Wang 2020 Fig. 1 的两组观测梯度尚未复现。Tang 2023 Fig. 6 的四个 24 小时过程开关已在本站 GEOS-FP 2°×2.5° 上逐一测试，四组均完成前向，原版伴随均停在首次反向检查点。</strong> 本站另完成 23 个 24 小时前向对照、扰动和重复运行。本文保留发表图中的量和单位，本站初值梯度单独列表。<a href="tables/paper_comparison.csv">逐面板对照表</a> · <a href="tables/paper_probes.json">四个 24 小时作业的验收记录</a></p>
+<h2>Wang 等（2020）Figure 1 · 同网格、同气象类型</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">论文原图</th>
+<th style="text-align:left">本地实测证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="figures/wang_2020_fig1.png"><img src="figures/wang_2020_fig1.png" alt="Wang 2020 Figure 1，SO₂ 和 NOₓ 代价函数梯度对照" loading="lazy" /></a></td>
+<td style="text-align:left"><a href="figures/adjoint_probe_stages.png"><img src="figures/adjoint_probe_stages.png" alt="原版 v36 四个 24 小时试验的前向、反向入口和梯度输出状态" loading="lazy" /></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>原图 Fig. 1(a–b)</strong>。横轴为中心差分，纵轴为伴随灵敏度。两面板各 <strong>192</strong> 个格柱，发表图的 <strong>R = 1.00</strong>。SO₂ 人为排放的 <strong>RMSE = 6.07</strong>，NOₓ 为 <strong>29.10</strong>，量纲均为无量纲。</td>
+<td style="text-align:left"><strong>本站原版 v36 的反向入口检查</strong>。右图来自四个被动 CO 作业的实际日志。前向均完成，反向均已进入，梯度文件数均为 0。Wang 的 SO₂、NOₓ 面板本地没有同协议样本，R、RMSE 与差值暂无可比结果。</td>
+</tr>
+<tr>
+<td style="text-align:left">论文使用 GEOS-FP、全球 2°×2.5°、47 层，在中国域做 3 天柱试验。关闭水平输送，代价函数使用 OMPS 的 SO₂、NO₂ 柱，剔除先验惩罚。扰动变量是人为排放缩放因子的对数 <code>σ = ln(E/Eₐ)</code>。</td>
+<td style="text-align:left">本站匹配水平网格和 GEOS-FP 类型，垂直为 72 层，作业使用 2013-07-01 的 24 小时被动 CO。论文应用为 2013 年 10 月，Fig. 1 的具体三天与扰动幅度未在图注或 §3.1 给出。</td>
+</tr>
+<tr>
+<td style="text-align:left">按图复跑还需 47 层研究用月初状态、原用 MIX 2010 人为排放输入、三天筛选后的 OMPS 像元、作者的两个观测算子、192 个格柱索引，以及两套原始梯度用于逐格检验。论文公开了卫星产品下载入口。</td>
+<td style="text-align:left">服务器有 2013 年 10 月的同网格 GEOS-FP 日气象。当前未取得该图的原始成对梯度、观测算子及精确算例配置。验收须在同一批 192 个格柱上分物种重算 Pearson R 和 RMSE，保留发表图显示精度。</td>
+</tr>
+</tbody>
+</table>
+<p>左栏原图来自 Yi Wang 等（2020），图像未改绘。右栏证据对应本站作业 353009_0–3。<a href="https://acp.copernicus.org/articles/20/6631/2020/#section3">论文 §3.1</a> · <a href="https://acp.copernicus.org/articles/20/6631/2020/acp-20-6631-2020-f01.png">原图文件</a> · <a href="https://acp.copernicus.org/articles/20/6631/2020/#section6">数据说明</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+<h2>Tang 等（2023）Figure 6 · 逐过程对照</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">论文原图</th>
+<th style="text-align:left">本地实测图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="figures/tang_2023_fig6.png"><img src="figures/tang_2023_fig6.png" alt="Tang 2023 Figure 6，六个面板的原生伴随与中心差分对照" loading="lazy" /></a></td>
+<td style="text-align:left"><a href="figures/tang_2023_local_fd.png"><img src="figures/tang_2023_local_fd.png" alt="本站 24 小时末地面 CO 对初值缩放的中心差分地图，四组过程开关" loading="lazy" /></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>原图 Fig. 6(a–f)</strong>。横轴为伴随，纵轴为中心差分，量纲为 <strong>kg/格</strong>。前向对 <strong>CO 排放缩放因子</strong> 做 ±10% 扰动，比较全球末时刻第一层 CO。模型为 v35n GC-Adjoint-HEMCO，4°×5°、47 层。</td>
+<td style="text-align:left"><strong>本站 24 小时末地面 CO 中心差分</strong>。右图是用正负前向重启独立计算的 <code>(q₊ − q₋)/0.2</code>，量纲为 <strong>ppbv/单位初值缩放</strong>。模型为原版 v36，GEOS-FP 2°×2.5°、72 层，对 350 个格点的 <strong>初始 CO</strong> 做 ±10% 扰动。虚线为扰动区。</td>
+</tr>
+<tr>
+<td style="text-align:left">原文 §3.1 分别开启对流、PBL、平流，组合面板关闭平流。本图的起始日和气象产品未在 §3.1 单列。</td>
+<td style="text-align:left">四组均用 2013-07-01 的同一份 GEOS-FP，组合只开启对流和 PBL。本地还评估了带平流的三过程联用，见下文 24 小时表。</td>
+</tr>
+</tbody>
+</table>
+<p>左栏原图来自 Zhaojun Tang 等（2023），图像未改绘。由于缩放对象、网格和单位不同，右栏地图用于核对本站输送和过程开关。对流面板的近地面响应可在源区保留而不出现足够强的垂直信号，另有西太平洋第 10 层对流验证。<a href="https://gmd.copernicus.org/articles/16/6377/2023/#section3">论文 §3.1</a> · <a href="https://gmd.copernicus.org/articles/16/6377/2023/gmd-16-6377-2023-f06.png">原图文件</a> · <a href="https://doi.org/10.5281/zenodo.7512111">作者源码</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">论文面板及发表值</th>
+<th style="text-align:left">本站对应配置及实测结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>(a) 仅对流，24 h</strong>。R² = 1.000，斜率 m = 1.000。</td>
+<td style="text-align:left"><strong>353009_0</strong>。地面中心差分峰值 <strong>100.365 ppbv/单位缩放</strong>。伴随进入后 SIGSEGV。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(b) 仅 PBL，24 h</strong>。R² = 1.000，m = 1.000。</td>
+<td style="text-align:left"><strong>353009_1</strong>。地面中心差分峰值 <strong>100.190 ppbv/单位缩放</strong>。伴随进入后 SIGSEGV。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(c) 仅平流，24 h</strong>。R² = 0.916，m = 1.053。论文使用离散前向和连续平流伴随，报告了较大的梯度偏离。</td>
+<td style="text-align:left"><strong>353009_2</strong>。地面中心差分峰值 <strong>123.671 ppbv/单位缩放</strong>，源区外响应达到阈值的格柱为 <strong>128</strong> 个。伴随进入后 SIGSEGV。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(d) 组合且关闭平流，24 h</strong>。R² = 1.000，m = 1.000。</td>
+<td style="text-align:left"><strong>353009_3–6</strong>。对流加 PBL，关闭平流，地面中心差分峰值 <strong>100.190 ppbv/单位缩放</strong>。同组 3 次扰动和基准正向运行完成。伴随进入后 SIGSEGV。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(e) 组合且关闭平流，7 d</strong>。R² = 1.000，m = 1.000。</td>
+<td style="text-align:left">本地此轮只验证了 24 h 窗口。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(f) 组合且关闭平流，1 个月</strong>。R² = 1.000，m = 1.000。</td>
+<td style="text-align:left">本地此轮只验证了 24 h 窗口。</td>
+</tr>
+</tbody>
+</table>
+<p>四个 24 小时原版 <code>FD_GLOB</code> 作业均保留了时标正确的前向 CO 重启，均在相同的检查点调用地址崩溃，模式退出码为 <strong>174</strong>。四组本地的伴随–中心差分配对点数为 <strong>0</strong>，因此无法计算 R²、斜率或与论文的差值。原复现需要作者的排放输入、精确窗口、初值和图 6 的输出筛选。<a href="tables/paper_comparison.csv">论文发表值与本地配对状态 CSV</a> · <a href="tables/paper_probes.json">本地作业记录</a></p>
 <h2>配置和判据</h2>
 <ul>
 <li>全球 <strong>144×91×72</strong>，时间为 <strong>2013-07-01 00:00 至 2013-07-02 00:00 UTC</strong>。动力和对流步长 15 分钟。初值为 100 ppbv 被动 CO，关闭排放、化学和干湿沉降。原版二进制来自作业 352589，编译副本只切换 <code>define.h</code> 中的 GEOS-FP、2°×2.5° 选项，Fortran 源文件沿用 v36 本地原始工作版本。环境为 Intel Fortran 2021.3，4 个 OpenMP 线程。</li>
@@ -102,30 +189,8 @@
 <h2>原版伴随失败复现</h2>
 <p>使用相同 GEOS-FP 网格和初值，打开 v36 原生 <code>FD_GLOB</code>，仅启用 PBL，窗口缩短为 00:00–03:00 UTC。作业 <strong>352976_16</strong> 正常完成前向并进入 <code>BACKWARD INTEGRATION</code>，首次 <code>LOAD_CHECKPT_DATA</code> 随即收到 SIGSEGV，模式退出码 <strong>174</strong>，<code>diagadj/gctm.fdglob.*</code> 未生成。</p>
 <p>调试作业 <strong>352999</strong> 使用同一二进制。在 <code>LOAD_CHECKPT_DATA</code> 入口，<code>TTO3</code> 数组描述符的起始地址为 <code>0x0</code>，而 <code>TTO3_TMP</code> 和 <code>TO3</code> 有有效地址。执行在 <code>TTO3_TMP(:,:) = TTO3(:,:)</code> 对应的内存复制处触发 SIGSEGV。GEOS-FP 的 <code>INIT_DAO_GEOSFP</code> 分配了 <code>TTO3_TMP</code> 和 <code>TO3</code>，GEOS-5 初始化另有 <code>TTO3</code> 的分配。气象读取和 3 小时前向已在同一作业成功。复跑与调试均使用原版可执行文件。原版正向和伴随的状态分别以结束标记验证。</p>
-<h2>同网格文献基准</h2>
-<table>
-<thead>
-<tr>
-<th>参考</th>
-<th>原文实验</th>
-<th>本地对照范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Wang 等（2020）Fig. 1</strong></td>
-<td>GEOS-FP，2°×2.5°、47 层。3 天关闭水平输送的柱模型，比较 OMPS SO₂ 和 NO₂ 观测代价对人为排放缩放因子对数的伴随和中心差分</td>
-<td>与需求一致的水平网格和气象类型。需作者的 47 层配置、初值和定制 OMPS 观测算子。本文的被动 CO 初值扰动提供输送基准。论文梯度没有在本地重算。<a href="https://acp.copernicus.org/articles/20/6631/2020/#section3">原文 §3.1 与 Fig. 1</a></td>
-</tr>
-<tr>
-<td><strong>Tang 等（2023）Fig. 6</strong></td>
-<td>分拆对流、PBL、平流并与有限差分比较，另有 24 小时、7 天和 1 个月组合试验。论文使用 4°×5°、47 层，扰动变量为 CO 排放缩放因子</td>
-<td>本报告沿用过程拆分和正负差分思想，目标网格改为 2°×2.5°、72 层，扰动被动 CO 初值。可用于本地回归，数值结果对应本报告配置。<a href="https://gmd.copernicus.org/articles/16/6377/2023/#section3">原文 §3.1</a></td>
-</tr>
-</tbody>
-</table>
 <h2>复跑命令和证据</h2>
-<p>从 EarthModelHub 根目录运行，使用新的运行目录。前向矩阵为作业 <strong>352976_0–15</strong> 和 <strong>353000_0–3</strong>。先收齐两个作业数组的结果，再执行验证脚本。原版伴随成员预期仍停在上述检查点，验证脚本会记录退出码及现有梯度文件。</p>
+<p>从 EarthModelHub 根目录运行，使用新的运行目录。前向矩阵为 <strong>352976_0–15</strong>、<strong>353000_0–3</strong> 和 <strong>353009_4–6</strong>。原版伴随检查使用 <strong>352976_16</strong> 和 <strong>353009_0–3</strong>。先收齐三个数组结果，再执行两个验证脚本。脚本分别检查前向数值、成对诊断和该二进制的反向状态。</p>
 <pre><code class="language-bash">repo=&quot;$PWD&quot;
 p=docs/papers/models/geoschem/paper_replicates/gcadj/geosfp_2x25
 py=&quot;$repo/prefix/mamba/envs/fair/bin/python&quot;
@@ -135,11 +200,14 @@ work=&quot;$(mktemp -d &quot;$base/replay.XXXXXX&quot;)&quot;
 sha256sum -c &quot;$p/inputs.sha256&quot;
 &quot;$py&quot; &quot;$p/prepare.py&quot; &quot;$work/surface&quot;
 &quot;$py&quot; &quot;$p/prepare.py&quot; &quot;$work/elevated&quot; --suite elevated
+&quot;$py&quot; &quot;$p/prepare.py&quot; &quot;$work/paper-probes&quot; --suite paper-probes
 sbatch --array=0-16%6 -o &quot;$work/surface/slurm-%A_%a.log&quot; &quot;$p/run.sbatch&quot; &quot;$repo&quot; &quot;$work/surface&quot;
 sbatch --array=0-3 -o &quot;$work/elevated/slurm-%A_%a.log&quot; &quot;$p/run.sbatch&quot; &quot;$repo&quot; &quot;$work/elevated&quot;
+sbatch --array=0-6%6 -o &quot;$work/paper-probes/slurm-%A_%a.log&quot; &quot;$p/run.sbatch&quot; &quot;$repo&quot; &quot;$work/paper-probes&quot;
 
 # Slurm 作业结束后
 OPENBLAS_NUM_THREADS=1 &quot;$py&quot; &quot;$p/validate.py&quot; &quot;$work/surface&quot; &quot;$work/elevated&quot;
+OPENBLAS_NUM_THREADS=1 &quot;$py&quot; &quot;$p/paper_comparison.py&quot; &quot;$work/surface&quot; &quot;$work/paper-probes&quot;
 </code></pre>
-<p>现有每例的 <code>input.geos</code>、<code>input.gcadj</code>、校验和、日志和重启在 <code>run/tasks/gcadj_geosfp_2x25_bench/20261127_reference</code> 和 <code>20261127_elevated</code>。调试日志为前者的 <code>adjoint_debug/debugger.log</code>。准备脚本将前向 <code>ITER</code> 的停止迭代值设为 0。早期尝试使用了 1，驱动程序退出但未积分，验收依据排除了该批输出。运行准备脚本 · Slurm 脚本 · 数值验证脚本</p>
+<p>现有每例的 <code>input.geos</code>、<code>input.gcadj</code>、校验和、日志和重启在 <code>run/tasks/gcadj_geosfp_2x25_bench/20261127_reference</code> 、<code>20261127_elevated</code> 和 <code>20261127_paper_probes</code>。调试日志为前者的 <code>adjoint_debug/debugger.log</code>。准备脚本将前向 <code>ITER</code> 的停止迭代值设为 0。早期尝试使用了 1，驱动程序退出但未积分，验收依据排除了该批输出。运行准备脚本 · Slurm 脚本 · 数值验证脚本 · 论文逐图对照脚本</p>
 </article></main></body></html>

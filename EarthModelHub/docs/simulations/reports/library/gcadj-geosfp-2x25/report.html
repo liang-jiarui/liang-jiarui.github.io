@@ -18,8 +18,8 @@
 <main><p class="tag">Benchmark evidence</p><article><h1>GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告</h1>
 <p>核对日期为 2026-11-27。<strong>Tang 2023 Fig. 6 的 6 个排放梯度散点面板均未完成同口径复现，Wang 2020 Fig. 1 的两组观测梯度也尚未复现。</strong> 下方按论文面板列出复现条件和本站证据。本站已在 GEOS-FP 2°×2.5° 完成 CO 初值扰动基准，并复现了原版 v36 的反向故障。<a href="tables/paper_comparison.csv">逐面板对照表</a> · <a href="tables/paper_probes.json">四个 24 小时作业的验收记录</a></p>
 <p><strong>7 天与整月续跑</strong>。两个本地前向基准共 6 个成员，全部通过逐日验收，原版反向完成 0/2。独立修复版完成 2/2，并产出 CO 初值伴随梯度。 <a href="tables/long_windows_daily.csv">长窗口逐日结果</a> · <a href="tables/long_windows_validation.json">自动验收记录</a></p>
-<p>复现工作区 Git 提交为 <code>dc610b0ce6f0d2c81a0e8a07b3fdd5f3c759e9a1</code>。</p>
-<p>HPC 复现工作区 · 24 小时配置 · 7 天配置 · 整月配置</p>
+<p>基准工作区 Git 提交为 <code>f97311cee530de05ef9db5d2c3635e27654c86b3</code>。</p>
+<p>HPC 基准工作区 · 24 小时配置 · 7 天配置 · 整月配置</p>
 <h2>Wang 等（2020）Figure 1 · 同网格、同气象类型</h2>
 <table>
 <thead>
@@ -179,7 +179,7 @@
 <p>两个原版伴随成员均到达指定结束时刻，进入反向后在已定位的 <code>LOAD_CHECKPT_DATA</code> 调用点触发 SIGSEGV。 论文缩放的是 CO 排放，本文缩放的是初始 CO。本地重跑匹配两种窗口长度和关闭平流的设置，论文 Fig. 6(e–f) 的同口径成对梯度仍待取得。运行于 <code>cpu_part</code>，7 天作业数组 <code>353017</code>，整月 <code>353018</code>。</p>
 <p><a href="tables/long_windows_daily.csv">逐日结果 CSV</a> · <a href="tables/long_windows_validation.json">长窗口验收记录</a> · <a href="https://gmd.copernicus.org/articles/16/6377/2023/#section3">Tang 等（2023）Fig. 6</a></p>
 <p>从 EarthModelHub 根目录执行下列命令。脚本会准备两个 case 并提交基准、正负扰动和原版伴随检查。所有成员结束后自动验收、重画图并重建 Gallery。</p>
-<pre><code class="language-bash">p=&quot;${PAPER_REPLICATE_DIR:-../../paper_replicates/GC_adjoint_GEOSFP_2x25}&quot;
+<pre><code class="language-bash">p=&quot;${GCADJ_BENCHMARK_DIR:-${PAPER_REPLICATE_DIR:-../../benchmarks/GC_adjoint_GEOSFP_2x25}}&quot;
 bash &quot;$p/submit_long_windows.sh&quot;
 </code></pre>
 <h2>配置和判据</h2>
@@ -333,7 +333,7 @@ IF ( ALLOCATED( TTO3 ) ) TTO3(I,J) = TTO3_TMP(I,J)
 <p>从 EarthModelHub 根目录运行，使用新的运行目录。前向矩阵为 <strong>352976_0–15</strong>、<strong>353000_0–3</strong> 和 <strong>353009_4–6</strong>。原版伴随检查使用 <strong>352976_16</strong> 和 <strong>353009_0–3</strong>。先收齐三个数组结果，再执行两个验证脚本。脚本分别检查前向数值、成对诊断和该二进制的反向状态。</p>
 <pre><code class="language-bash">repo=&quot;$PWD&quot;
 export EMH_ROOT=&quot;$repo&quot;
-p=&quot;${PAPER_REPLICATE_DIR:-../../paper_replicates/GC_adjoint_GEOSFP_2x25}&quot;
+p=&quot;${GCADJ_BENCHMARK_DIR:-${PAPER_REPLICATE_DIR:-../../benchmarks/GC_adjoint_GEOSFP_2x25}}&quot;
 py=&quot;$repo/prefix/mamba/envs/fair/bin/python&quot;
 base=&quot;$p/run&quot;
 mkdir -p &quot;$base&quot;
@@ -350,5 +350,5 @@ sbatch --array=0-6%6 -o &quot;$work/paper-probes/slurm-%A_%a.log&quot; &quot;$p/
 OPENBLAS_NUM_THREADS=1 &quot;$py&quot; &quot;$p/validate.py&quot; &quot;$work/surface&quot; &quot;$work/elevated&quot;
 OPENBLAS_NUM_THREADS=1 &quot;$py&quot; &quot;$p/paper_comparison.py&quot; &quot;$work/surface&quot; &quot;$work/paper-probes&quot;
 </code></pre>
-<p>现有每例的 <code>input.geos</code>、<code>input.gcadj</code>、校验和、日志和重启保存在复现工作区的 <code>run/20261127_reference</code>、<code>run/20261127_elevated</code> 和 <code>run/20261127_paper_probes</code>。调试日志为前者的 <code>adjoint_debug/debugger.log</code>。准备脚本将前向 <code>ITER</code> 的停止迭代值设为 0。早期尝试使用了 1，驱动程序退出但未积分，验收依据排除了该批输出。运行准备脚本 · Slurm 脚本 · 数值验证脚本 · 论文逐图对照脚本</p>
+<p>现有每例的 <code>input.geos</code>、<code>input.gcadj</code>、校验和、日志和重启保存在基准工作区的 <code>run/20261127_reference</code>、<code>run/20261127_elevated</code> 和 <code>run/20261127_paper_probes</code>。调试日志为前者的 <code>adjoint_debug/debugger.log</code>。准备脚本将前向 <code>ITER</code> 的停止迭代值设为 0。早期尝试使用了 1，驱动程序退出但未积分，验收依据排除了该批输出。运行准备脚本 · Slurm 脚本 · 数值验证脚本 · 论文逐图对照脚本</p>
 </article></main></body></html>

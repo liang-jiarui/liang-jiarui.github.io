@@ -1052,6 +1052,9 @@ function cell(row, column, index) {
       ? `<td class="ops"><div class="pad"><button type="button" data-copy="preview" data-id="${esc(row.id)}">Preview</button></div></td>`
       : '<td class="ops"><div class="pad muted">Run record</div></td>';
   }
+  if (row.external_summary) {
+    return `<td class="ops"><div class="pad"><button type="button" data-copy="check" data-id="${esc(row.id)}">Check</button></div></td>`;
+  }
   const blocked = ready ? '' : ' disabled';
   const copyLabel = row.model === 'uvic' ? 'Copy reproduction command' : 'Copy create, build and submit commands';
   const tip = ready ? copyLabel : (kind === 'record' ? 'Installation record; view only' : 'Resolve missing dependencies first');
@@ -1284,7 +1287,8 @@ function detail(id) {
     ${reports.length ? `<div class="report-panel"><div class="section-title">Reports and comparison material</div><div class="report-actions">${reports.map(report => reportLink(report, report.label)).join('')}</div></div>` : ''}
     ${links.length ? `<div class="section-title">References</div><ul class="notes">${links.map(link => `<li><a href="${esc(link.url)}" target="_blank" rel="noopener noreferrer">${esc(link.label)}</a></li>`).join('')}</ul>` : ''}
     <div class="statusline">${publicGallery ? '' : pill}<span class="pill ${row.source_success ? 'ok' : 'mute'}">Source run: ${esc(sourceLabel(row))}</span>${publicGallery ? '' : `<span class="pill ${localTone(row.local_state)}">${esc(localLabel(row.local_state))}</span>`}</div>
-    ${publicGallery ? '' : `<div class="section-title">Configuration files · ${files.length}${files.some(file => file.name.startsWith('original/')) ? ' · Original ' + files.filter(file => file.name.startsWith('original/')).length : ''}</div>${paintFiles(row)}`}
+    ${publicGallery ? '' : row.external_summary ? `<div class="section-title">External project configuration</div>
+    <p class="notes"><a href="${esc(row.config_link)}">Task registration</a></p>` : `<div class="section-title">Configuration files · ${files.length}${files.some(file => file.name.startsWith('original/')) ? ' · Original ' + files.filter(file => file.name.startsWith('original/')).length : ''}</div>${paintFiles(row)}`}
     <dl class="meta">
       <dt>${PAPER_CATEGORIES.includes(categoryOf(row)) ? 'Paper' : 'Task'}</dt><dd>${paperUrl(row.task) ? `<a href="${esc(paperUrl(row.task))}" target="_blank" rel="noopener noreferrer">${esc(row.task_title || row.task)}</a>` : esc(row.task_title || row.task)}</dd>
       <dt>Case name</dt><dd>${esc(row.name || '')}</dd>
@@ -1310,7 +1314,9 @@ function detail(id) {
     <p class="desc">${esc((row.preflight || {}).scope || '')} ${row.role === 'reference' ? '' : kind === 'record' ? 'This recorded run cannot be resubmitted from the gallery.' : 'Actions copy commands; execution checks dependencies again.'}</p>
     ${errors.length ? `<ul class="errors">${errors.map(item => `<li>${esc(item)}</li>`).join('')}</ul>` : (kind === 'record' || row.model === 'uvic' ? '' : '<p class="notes">Registered control files, model sources and inputs are accessible.</p>')}
     ${notes.length ? `<ul class="notes">${notes.map(item => `<li>${esc(item)}</li>`).join('')}</ul>` : ''}
-    ${row.role === 'reference' ? '' : row.category === 'benchmark' ? '' : row.smoke_plan ? `<div class="section-title">Smoke checks</div>
+    ${row.external_summary ? `<div class="section-title">Local validation</div>
+    <pre class="command">${esc((row.commands || {}).check || '')}</pre>
+    <button type="button" class="mini" data-copy="check" data-id="${esc(row.id)}">Copy check command</button>` : row.role === 'reference' ? '' : row.category === 'benchmark' ? '' : row.smoke_plan ? `<div class="section-title">Smoke checks</div>
     <pre class="command">${esc((row.commands || {}).check || '')}</pre>
     <button type="button" class="mini" data-copy="check" data-id="${esc(row.id)}">Copy check command</button>
     <p class="notes">${row.smoke_report ? 'See the smoke report for the attempted run and its limitations.' : 'This smoke plan needs the listed dependencies and a runnable case before validation.'}</p>` : `<div class="section-title">Reproduction</div>

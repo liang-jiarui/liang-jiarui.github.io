@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-26T10:10:40Z",
+  "updated_at": "2026-11-27T01:46:00Z",
   "entries": [
     {
       "id": "emh:simulation:@bth_ozone_camx/wrfcamx/CAMx_v6.20/C01_Y2014_GC",
@@ -16928,6 +16928,29 @@
       "description": "原始 v36 完成 3 小时被动 CO 输送，诊断和重启通过时间戳及有限值检查。原 GEOS-FP 读取器使用案例侧适配的 MERRA-2 输入。文件名映射、常量场路径和气压单位在案例侧处理。"
     },
     {
+      "id": "emh:simulation:@install_smoke/gcadj/gcadj_v36/smoke_geosfp_transport_6h_i3_psc",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 4°×5° 正向短测",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fgcadj%2Fgcadj_v36%2Fsmoke_geosfp_transport_6h_i3_psc",
+      "keywords": [
+        "2013-07-01T00:00:00Z",
+        "2013-07-01T06:00:00Z",
+        "@install_smoke/gcadj/gcadj_v36/smoke_geosfp_transport_6h_i3_psc",
+        "completed",
+        "gcadj",
+        "gcadj_v36",
+        "install_smoke",
+        "installation",
+        "smoke",
+        "smoke_geosfp_transport_6h_i3_psc",
+        "仅正向输送",
+        "全球 4°×5°",
+        "安装短测"
+      ],
+      "description": "通过 6 小时正向输送。使用含 I3 气象插值、土壤数据读入条件及清理逻辑调整的构建。全化学和伴随梯度另待验证。"
+    },
+    {
       "id": "emh:simulation:@install_smoke/gchp/gchp_14_1_1/smoke",
       "hub": "EMH",
       "type": "Simulation",
@@ -30826,6 +30849,16 @@
   ],
   "recent": [
     {
+      "id": "emh:simulation:@install_smoke/gcadj/gcadj_v36/smoke_geosfp_transport_6h_i3_psc",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 4°×5° 正向短测",
+      "description": "通过 6 小时正向输送。使用含 I3 气象插值、土壤数据读入条件及清理逻辑调整的构建。全化学和伴随梯度另待验证。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fgcadj%2Fgcadj_v36%2Fsmoke_geosfp_transport_6h_i3_psc",
+      "date": "2026-11-27T01:46:00Z",
+      "change": "added"
+    },
+    {
       "id": "emh:simulation:@install_smoke/gcadj/gcadj_v36/smoke_2x25_geosfp_original",
       "hub": "EMH",
       "type": "Simulation",
@@ -31062,16 +31095,6 @@
       "title": "GCB2026 · ELM f19 · S3 · 1700–1849",
       "description": "从平衡 restart 启动。CO₂ 自 1700 年历史变化，循环 1901–1920 年气象。土地利用和氮沉降沿用输入序列首年 1850。",
       "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3",
-      "date": "2026-11-23T23:45:39Z",
-      "change": "added"
-    },
-    {
-      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/s3_1850_1900",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GCB2026 · ELM f19 · S3 · 1850–1900",
-      "description": "延续 S3 的全强迫试验，历史土地利用和氮沉降从 1850 年起变化，气象继续循环 1901–1920 年。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fs3_1850_1900",
       "date": "2026-11-23T23:45:39Z",
       "change": "added"
     },

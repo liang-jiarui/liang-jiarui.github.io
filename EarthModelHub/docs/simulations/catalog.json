@@ -17446,8 +17446,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/nemo/nemo3.6_planktom12/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/nemo/nemo3.6_planktom12/spin"
     }
   },
   {
@@ -17494,8 +17493,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/nemo/nemo4.2_pisces_ipsl/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/nemo/nemo4.2_pisces_ipsl/spin"
     }
   },
   {
@@ -17534,8 +17532,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/mpiom/mpiom_hamocc6/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/mpiom/mpiom_hamocc6/spin"
     }
   },
   {
@@ -17578,8 +17575,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/fesom/fesom2.1_recom3/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/fesom/fesom2.1_recom3/spin"
     }
   },
   {
@@ -17622,8 +17618,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/nemo/nemo3.6_pisces_cnrm/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/nemo/nemo3.6_pisces_cnrm/spin"
     }
   },
   {
@@ -17666,8 +17661,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/mom6/mom6_cobaltv3_1deg/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/mom6/mom6_cobaltv3_1deg/spin"
     }
   },
   {
@@ -17710,8 +17704,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/mricom/mri_esm2_4/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/mricom/mri_esm2_4/spin"
     }
   },
   {
@@ -17750,8 +17743,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/access/mom5_wombat/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2025/access/mom5_wombat/spin"
     }
   },
   {
@@ -17794,8 +17786,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/nemo/nemo5.0_planktom12/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/nemo/nemo5.0_planktom12/spin"
     }
   },
   {
@@ -17842,8 +17833,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/nemo/nemo4.2_pisces_ipsl/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/nemo/nemo4.2_pisces_ipsl/spin"
     }
   },
   {
@@ -17882,8 +17872,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/mpiom/mpiom_hamocc6/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/mpiom/mpiom_hamocc6/spin"
     }
   },
   {
@@ -17926,8 +17915,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/fesom/fesom2.7_recom3.1/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/fesom/fesom2.7_recom3.1/spin"
     }
   },
   {
@@ -17970,8 +17958,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/nemo/nemo4.2.3_pisces_cnrm/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/nemo/nemo4.2.3_pisces_cnrm/spin"
     }
   },
   {
@@ -18014,8 +18001,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/mom6/mom6_cobaltv3_0.5deg/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/mom6/mom6_cobaltv3_0.5deg/spin"
     }
   },
   {
@@ -18058,8 +18044,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/mricom/mri_esm2_4/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/mricom/mri_esm2_4/spin"
     }
   },
   {
@@ -18098,8 +18083,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/access/mom5_wombat/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/access/mom5_wombat/spin"
     }
   },
   {
@@ -18138,8 +18122,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/cesm/cesm1_3_ethz/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/cesm/cesm1_3_ethz/spin"
     }
   },
   {
@@ -18178,8 +18161,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/noresm/noresm1_ocv1_2/spin",
-      "preview": ""
+      "check": "python -m src.simulations check @friedlingstein_2026_gcb2026/noresm/noresm1_ocv1_2/spin"
     }
   },
   {
@@ -24811,8 +24793,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/spinup_10000yrs",
-      "preview": ""
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/spinup_10000yrs"
     }
   },
   {
@@ -24846,8 +24827,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/co2_4x",
-      "preview": ""
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/co2_4x"
     }
   },
   {
@@ -24881,8 +24861,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/co2_2x",
-      "preview": ""
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/co2_2x"
     }
   },
   {
@@ -24916,8 +24895,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/esm_picontrol",
-      "preview": ""
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/esm_picontrol"
     }
   },
   {
@@ -24989,8 +24967,7 @@
       }
     ],
     "commands": {
-      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/seasonality",
-      "preview": ""
+      "check": "python -m src.simulations check @mengis_2020_uvic_escm/uvic/v2.10/seasonality"
     }
   },
   {
@@ -33584,6 +33561,39 @@
     "commands": {
       "check": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_2x25_merra2_original",
       "preview": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_2x25_merra2_original"
+    }
+  },
+  {
+    "id": "@install_smoke/gcadj/gcadj_v36/smoke_geosfp_transport_6h_i3_psc",
+    "task": "install_smoke",
+    "name": "smoke_geosfp_transport_6h_i3_psc",
+    "model": "gcadj",
+    "version": "gcadj_v36",
+    "task_title": "安装短测",
+    "task_about": "源码接入后的短测方案；缺项补齐并实际完成积分后才能记为跑通。",
+    "title": "GC-adjoint v36 · GEOS-FP 4°×5° 正向短测",
+    "description": "通过 6 小时正向输送。使用含 I3 气象插值、土壤数据读入条件及清理逻辑调整的构建。全化学和伴随梯度另待验证。",
+    "compset": "仅正向输送",
+    "res": "全球 4°×5°",
+    "group": "smoke",
+    "role": "installation",
+    "category": "smoke",
+    "period": {
+      "start": "2013-07-01T00:00:00Z",
+      "end": "2013-07-01T06:00:00Z"
+    },
+    "source_actual_period": {
+      "start": "2013-07-01T00:00:00Z",
+      "end": "2013-07-01T06:00:00Z"
+    },
+    "source_success": true,
+    "source_run_status": "completed",
+    "smoke_plan": true,
+    "controls_summary": {},
+    "links": [],
+    "commands": {
+      "check": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_geosfp_transport_6h_i3_psc",
+      "preview": "python -m src.simulations check @install_smoke/gcadj/gcadj_v36/smoke_geosfp_transport_6h_i3_psc"
     }
   },
   {

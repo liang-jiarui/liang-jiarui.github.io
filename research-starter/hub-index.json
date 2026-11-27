@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-27T03:15:35Z",
+  "updated_at": "2026-11-27T03:30:22Z",
   "entries": [
     {
       "id": "emh:simulation:@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
@@ -59,7 +59,7 @@
         "Benchmark experiments",
         "benchmark",
         "benchmark_geosfp_2x25_7d",
-        "configuration_only",
+        "completed",
         "gcadj",
         "gcadj_v36",
         "validation",
@@ -81,7 +81,7 @@
         "Benchmark experiments",
         "benchmark",
         "benchmark_geosfp_2x25_month",
-        "configuration_only",
+        "completed",
         "gcadj",
         "gcadj_v36",
         "validation",
@@ -30975,8 +30975,8 @@
       "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 7 天 CO 前向基准",
       "description": "关闭平流，开启对流与边界层混合，比较初值 ±10% 的被动 CO 前向响应。另设原版反向检查。对应 Tang 2023 Fig. 6(e) 的时间窗。",
       "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_geosfp_2x25_7d",
-      "date": "2026-11-27T03:15:35Z",
-      "change": "added"
+      "date": "2026-11-27T03:30:22Z",
+      "change": "updated"
     },
     {
       "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_month",
@@ -30985,8 +30985,8 @@
       "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 整月 CO 前向基准",
       "description": "关闭平流，开启对流与边界层混合，比较初值 ±10% 的被动 CO 前向响应。另设原版反向检查。对应 Tang 2023 Fig. 6(f) 的时间窗。",
       "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_geosfp_2x25_month",
-      "date": "2026-11-27T03:15:35Z",
-      "change": "added"
+      "date": "2026-11-27T03:30:22Z",
+      "change": "updated"
     },
     {
       "id": "emh:task:benchmark",

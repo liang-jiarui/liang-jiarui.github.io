@@ -36401,9 +36401,12 @@
       "start": "2013-07-01T00:00:00Z",
       "end": "2013-07-08T00:00:00Z"
     },
-    "source_actual_period": {},
-    "source_success": false,
-    "source_run_status": "configuration_only",
+    "source_actual_period": {
+      "start": "2013-07-01T00:00:00Z",
+      "end": "2013-07-08T00:00:00Z"
+    },
+    "source_success": true,
+    "source_run_status": "completed",
     "controls_summary": {},
     "links": [
       {
@@ -36440,9 +36443,12 @@
       "start": "2013-07-01T00:00:00Z",
       "end": "2013-08-01T00:00:00Z"
     },
-    "source_actual_period": {},
-    "source_success": false,
-    "source_run_status": "configuration_only",
+    "source_actual_period": {
+      "start": "2013-07-01T00:00:00Z",
+      "end": "2013-08-01T00:00:00Z"
+    },
+    "source_success": true,
+    "source_run_status": "completed",
     "controls_summary": {},
     "links": [
       {

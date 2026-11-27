@@ -17,6 +17,7 @@
 <body><header><nav aria-label="EarthModelHub"><a href="../../../index.html">Simulation Gallery</a><a href="../../index.html">Reports</a></nav></header>
 <main><p class="tag">Benchmark evidence</p><article><h1>GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告</h1>
 <p>核对日期为 2026-11-27。下方逐图并排展示论文原图和本站运行证据。<strong>Wang 2020 Fig. 1 的两组观测梯度尚未复现。Tang 2023 Fig. 6 的四个 24 小时过程开关已在本站 GEOS-FP 2°×2.5° 上逐一测试，四组均完成前向，原版伴随均停在首次反向检查点。</strong> 本站另完成 23 个 24 小时前向对照、扰动和重复运行。本文保留发表图中的量和单位，本站初值梯度单独列表。<a href="tables/paper_comparison.csv">逐面板对照表</a> · <a href="tables/paper_probes.json">四个 24 小时作业的验收记录</a></p>
+<p><strong>7 天与整月续跑</strong>。两个 case 的 6 个前向成员全部通过逐日验收，原版反向完成 0/2。下方附终点地图、垂直剖面和逐日演变。 <a href="tables/long_windows_daily.csv">长窗口逐日结果</a> · <a href="tables/long_windows_validation.json">自动验收记录</a></p>
 <h2>Wang 等（2020）Figure 1 · 同网格、同气象类型</h2>
 <table>
 <thead>
@@ -95,15 +96,71 @@
 </tr>
 <tr>
 <td style="text-align:left"><strong>(e) 组合且关闭平流，7 d</strong>。R² = 1.000，m = 1.000。</td>
-<td style="text-align:left">本地此轮只验证了 24 h 窗口。</td>
+<td style="text-align:left">本站 7 天基准与正负扰动均通过前向验收，原版反向积分未完成。详见下节。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>(f) 组合且关闭平流，1 个月</strong>。R² = 1.000，m = 1.000。</td>
-<td style="text-align:left">本地此轮只验证了 24 h 窗口。</td>
+<td style="text-align:left">本站 31 天基准与正负扰动均通过前向验收，原版反向积分未完成。详见下节。</td>
 </tr>
 </tbody>
 </table>
 <p>四个 24 小时原版 <code>FD_GLOB</code> 作业均保留了时标正确的前向 CO 重启，均在相同的检查点调用地址崩溃，模式退出码为 <strong>174</strong>。四组本地的伴随–中心差分配对点数为 <strong>0</strong>，因此无法计算 R²、斜率或与论文的差值。原复现需要作者的排放输入、精确窗口、初值和图 6 的输出筛选。<a href="tables/paper_comparison.csv">论文发表值与本地配对状态 CSV</a> · <a href="tables/paper_probes.json">本地作业记录</a></p>
+<h2>Tang Figure 6(e–f) · 7 天与整月</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">论文原图</th>
+<th style="text-align:left">本地实测图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="figures/tang_2023_fig6.png"><img src="figures/tang_2023_fig6.png" alt="Tang 2023 Figure 6 原图，长时段对应 e 和 f" loading="lazy" /></a></td>
+<td style="text-align:left"><a href="figures/long_windows_endpoints.png"><img src="figures/long_windows_endpoints.png" alt="7 天和整月的本地末时刻 CO 初值中心差分地图和垂直剖面" loading="lazy" /></a></td>
+</tr>
+<tr>
+<td style="text-align:left">左图后两面板为 <strong>(e) 7 天</strong>和 <strong>(f) 1 个月</strong>。关闭平流，两组发表的 R² 和斜率均为 1.000。横轴是伴随、纵轴是中心差分，量纲为 kg/格。</td>
+<td style="text-align:left">右图对 350 个初始地面格点的 CO 做 ±10% 扰动。地图和剖面是中心差分，单位为 ppbv/单位初值缩放。两列共享地图色标和剖面范围。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>时间窗（UTC）</th>
+<th>前向验收</th>
+<th style="text-align:right">地表峰值（ppbv/单位缩放）</th>
+<th style="text-align:right">响应 ≥0.01 ppbv 的最高层</th>
+<th style="text-align:right">最大日中点残差（ppbv）</th>
+<th>原版反向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7 天，2013-07-01 至 2013-07-08</td>
+<td>3/3</td>
+<td style="text-align:right">33.774405</td>
+<td style="text-align:right">33</td>
+<td style="text-align:right">3.553e-06</td>
+<td>SIGSEGV，退出码 174</td>
+</tr>
+<tr>
+<td>31 天，2013-07-01 至 2013-08-01</td>
+<td>3/3</td>
+<td style="text-align:right">18.074573</td>
+<td style="text-align:right">34</td>
+<td style="text-align:right">3.553e-06</td>
+<td>SIGSEGV，退出码 174</td>
+</tr>
+</tbody>
+</table>
+<p>前七天对同一基准和正负扰动逐日核对，<strong>21/21</strong> 份重启逐字节一致，最大混合比差为 <strong>0.000e+00 ppbv</strong>。扰动区外的响应和正负扰动中点残差均通过 3×10⁻⁵ ppbv 阈值。</p>
+<p><img src="figures/long_windows_evolution.png" alt="两组时间窗每日地面灵敏度峰值和垂直传播层数" loading="lazy" /></p>
+<p>两个原版伴随成员均到达指定结束时刻，进入反向后在已定位的 <code>LOAD_CHECKPT_DATA</code> 调用点触发 SIGSEGV。 论文缩放的是 CO 排放，本文缩放的是初始 CO。本地重跑匹配两种窗口长度和关闭平流的设置，论文 Fig. 6(e–f) 的同口径成对梯度仍待取得。运行于 <code>cpu_part</code>，7 天作业数组 <code>353017</code>，整月 <code>353018</code>。</p>
+<p><a href="tables/long_windows_daily.csv">逐日结果 CSV</a> · <a href="tables/long_windows_validation.json">长窗口验收记录</a> · <a href="https://gmd.copernicus.org/articles/16/6377/2023/#section3">Tang 等（2023）Fig. 6</a></p>
+<p>从 EarthModelHub 根目录执行下列命令。脚本会准备两个 case 并提交基准、正负扰动和原版伴随检查。所有成员结束后自动验收、重画图并重建 Gallery。</p>
+<pre><code class="language-bash">bash docs/papers/models/geoschem/paper_replicates/gcadj/geosfp_2x25/submit_long_windows.sh
+</code></pre>
 <h2>配置和判据</h2>
 <ul>
 <li>全球 <strong>144×91×72</strong>，时间为 <strong>2013-07-01 00:00 至 2013-07-02 00:00 UTC</strong>。动力和对流步长 15 分钟。初值为 100 ppbv 被动 CO，关闭排放、化学和干湿沉降。原版二进制来自作业 352589，编译副本只切换 <code>define.h</code> 中的 GEOS-FP、2°×2.5° 选项，Fortran 源文件沿用 v36 本地原始工作版本。环境为 Intel Fortran 2021.3，4 个 OpenMP 线程。</li>

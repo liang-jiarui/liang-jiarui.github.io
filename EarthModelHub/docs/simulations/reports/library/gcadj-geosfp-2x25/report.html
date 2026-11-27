@@ -88,7 +88,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><strong>(c) 仅平流，24 h</strong>。R² = 0.916，m = 1.053。论文使用离散前向和连续平流伴随，报告了较大的梯度偏离。</td>
-<td style="text-align:left"><strong>353009_2</strong>。地面中心差分峰值 <strong>123.671 ppbv/单位缩放</strong>，源区外响应达到阈值的格柱为 <strong>128</strong> 个。伴随进入后 SIGSEGV。</td>
+<td style="text-align:left">独立仅平流前向的初值中心差分峰值为 <strong>123.671 ppbv/单位缩放</strong>。<code>LFD_GLOB</code> 强制关平流，探针 <strong>353009_2</strong> 的末时刻重启与无输送对照逐字节一致。该探针在反向入口崩溃。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>(d) 组合且关闭平流，24 h</strong>。R² = 1.000，m = 1.000。</td>
@@ -266,8 +266,39 @@
 <p>调试作业 <strong>352999</strong> 使用同一二进制。在 <code>LOAD_CHECKPT_DATA</code> 入口，<code>TTO3</code> 数组描述符的起始地址为 <code>0x0</code>，而 <code>TTO3_TMP</code> 和 <code>TO3</code> 有有效地址。执行在 <code>TTO3_TMP(:,:) = TTO3(:,:)</code> 对应的内存复制处触发 SIGSEGV。GEOS-FP 的 <code>INIT_DAO_GEOSFP</code> 分配了 <code>TTO3_TMP</code> 和 <code>TO3</code>，GEOS-5 初始化另有 <code>TTO3</code> 的分配。气象读取和 3 小时前向已在同一作业成功。复跑与调试均使用原版可执行文件。原版正向和伴随的状态分别以结束标记验证。</p>
 <h3>独立修复候选</h3>
 <p><code>TTO3</code> 在旧 GEOS-5 读入器中是对流层臭氧柱。检查 2013-07-01 的六组 GEOS-FP NetCDF，A1 提供 <code>TO3</code>，这些输入中没有 <code>TTO3</code>。v36 的 GEOS-FP I3 读入器也没有读取 <code>TTO3</code> 的路径。反向代码有两个访问点，启动时 <code>LOAD_CHECKPT_DATA</code> 把 <code>TTO3</code> 复制到 <code>TTO3_TMP</code>，后续 <code>COPY_I6_FIELDS_ADJ</code> 会在 I3 时间步把暂存量写回 <code>TTO3</code>。</p>
-<p>独立构建对此数组的两处复制都增加 <code>ALLOCATED(TTO3)</code> 判定。已分配该字段的 GEOS-5 路径继续执行原有复制。GEOS-FP 跳过缺失字段，<code>TO3</code> 和其他气象场仍走原路径。补丁未合入原版模型目录。 两处改动的补丁</p>
+<p>独立构建在两处增加 <code>ALLOCATED(TTO3)</code> 判定。已分配该字段的 GEOS-5 路径继续执行原有复制。GEOS-FP 跳过缺失字段，<code>TO3</code> 和其他气象场仍走原路径。补丁未合入原版模型目录。两条替换语句如下。</p>
+<pre><code class="language-fortran">! LOAD_CHECKPT_DATA
+IF ( ALLOCATED( TTO3 ) ) TTO3_TMP(:,:) = TTO3(:,:)
+! COPY_I6_FIELDS_ADJ
+IF ( ALLOCATED( TTO3 ) ) TTO3(I,J) = TTO3_TMP(I,J)
+</code></pre>
 <p>在 <code>cpu_part</code> 的对照作业 <strong>353173</strong> 中，候选构建的 PBL 和对流加 PBL 两组均完成 24 小时前向和反向积分，耗时分别为 53 秒和 56 秒。候选构建的对流加 PBL 前向重启与原版逐字节一致。</p>
+<p>作业 <strong>353187</strong> 使用同一候选二进制，将动力和对流步长设为 30 分钟、诊断使用的化学步长保持 60 分钟。原生 <code>FD_GLOB</code> 的时间门限由此在 23:00 UTC 命中。每组完成原始和正负扰动三个迭代。根据双精度正负快照独立求差，重算结果与文件内的单精度中心差分在相对容差 10⁻⁷ 内一致。</p>
+<table>
+<thead>
+<tr>
+<th>24 小时初值梯度</th>
+<th style="text-align:right">地表配对格点数</th>
+<th style="text-align:right">伴随与中心差分的相对 L₂ 误差</th>
+<th style="text-align:right">最大逐格相对误差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仅 PBL</td>
+<td style="text-align:right">13,104</td>
+<td style="text-align:right">0.04347%</td>
+<td style="text-align:right">0.72977%</td>
+</tr>
+<tr>
+<td>对流加 PBL</td>
+<td style="text-align:right">13,104</td>
+<td style="text-align:right">0.03783%</td>
+<td style="text-align:right">0.67389%</td>
+</tr>
+</tbody>
+</table>
+<p>最大逐格相对误差基于中心差分绝对值大于 1 kg 的格点，本次全部 13,104 格均满足。以上验证覆盖 v36 的 GEOS-FP 被动 CO 初值梯度，候选构建的 7 天、整月和论文排放梯度尚待验收。 <a href="tables/tto3_guard_validation.json">候选构建验收数据</a></p>
 <h2>复跑命令和证据</h2>
 <p>从 EarthModelHub 根目录运行，使用新的运行目录。前向矩阵为 <strong>352976_0–15</strong>、<strong>353000_0–3</strong> 和 <strong>353009_4–6</strong>。原版伴随检查使用 <strong>352976_16</strong> 和 <strong>353009_0–3</strong>。先收齐三个数组结果，再执行两个验证脚本。脚本分别检查前向数值、成对诊断和该二进制的反向状态。</p>
 <pre><code class="language-bash">repo=&quot;$PWD&quot;

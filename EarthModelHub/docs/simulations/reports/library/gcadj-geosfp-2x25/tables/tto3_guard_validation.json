@@ -1,0 +1,28 @@
+{
+  "scope": "24 h GEOS-FP initial CO scaling, separate from the Tang emission benchmark",
+  "grid": [
+    144,
+    91,
+    72
+  ],
+  "identical_forward_restart_at_15_min_step": true,
+  "gradient_timestamp_utc": "2013-07-01T23:00:00Z",
+  "gradient_chemistry_timestep_minutes": 60,
+  "gradient_dynamics_and_convection_timestep_minutes": 30,
+  "runs": {
+    "pbl_24h_adjoint": {
+      "surface_cells": 13104,
+      "relative_error_cells_abs_fd_above_1_kg": 13104,
+      "native_adjoint_vs_fd_relative_l2_percent": 0.04346971507604794,
+      "max_relative_error_percent": 0.7297729263250222,
+      "diagnostic_sha256": "e1c05f7a78ee158699409d073252893442b535d2deec7ac55dd2b5e3162fd1d7"
+    },
+    "columns_24h_adjoint": {
+      "surface_cells": 13104,
+      "relative_error_cells_abs_fd_above_1_kg": 13104,
+      "native_adjoint_vs_fd_relative_l2_percent": 0.0378298118967181,
+      "max_relative_error_percent": 0.6738899095576063,
+      "diagnostic_sha256": "116d8802deefe5cabe70c8f40206b4c2fad76f9fc829f014bbda1c2537d0c573"
+    }
+  }
+}

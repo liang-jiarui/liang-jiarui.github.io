@@ -717,9 +717,11 @@ function loadUrl(params) {
   for (const key of FILTERS) if (params.has(key)) state.picked[key] = decodeList(params.get(key));
 }
 const params = new URLSearchParams(location.search);
-const urlHas = params.has('view') || params.has('project') || params.has('q') || params.has('query') || params.has('sort') || FILTERS.some(key => params.has(key));
+const linkedCase = rowsById.get(params.get('case'));
+const urlHas = linkedCase || params.has('view') || params.has('project') || params.has('q') || params.has('query') || params.has('sort') || FILTERS.some(key => params.has(key));
 if (urlHas) loadUrl(params); else loadSession();
 if (state.picked.task && !state.picked.family) syncPaperModels();
+if (linkedCase) state.detail = linkedCase.id;
 $('query').value = state.query;
 
 let shown = [];
@@ -1148,6 +1150,7 @@ function syncUrl() {
   else if (state.folder) next.set('project', state.folder);
   else if (state.browse === 'projects') next.set('view', 'projects');
   if (state.query.trim()) next.set('q', state.query.trim());
+  if (state.detail) next.set('case', state.detail);
   for (const key of FILTERS) {
     const picked = state.picked[key];
     if (!picked) continue;
@@ -1315,6 +1318,7 @@ function detail(id) {
     <button type="button" class="primary mini" data-copy="reproduce" data-id="${esc(row.id)}" ${ready ? '' : 'disabled'}>${row.model === 'uvic' ? 'Copy reproduction command' : 'Copy create, build and submit commands'}</button>`}`}`;
   document.querySelectorAll('tr.data').forEach(tr => tr.classList.toggle('open', tr.dataset.id === id));
   if (!$('detail').open) $('detail').showModal();
+  syncUrl();
 }
 function experimentReports(row) {
   return (row.reports || []).filter(report => report.label && /^reports\/(?:[a-z0-9_-]+\/)*[a-z0-9_-]+\.(?:pdf|html)$/.test(report.path || ''));
@@ -1562,6 +1566,7 @@ $('detail').addEventListener('close', () => {
   state.detail = '';
   document.querySelectorAll('tr.data.open').forEach(tr => tr.classList.remove('open'));
   document.querySelectorAll('#modeltree .exp.on').forEach(node => node.classList.remove('on'));
+  syncUrl();
 });
 $('popover').addEventListener('click', event => event.stopPropagation());
 $('popq').addEventListener('input', () => { state.popQuery = $('popq').value; fillPopover(); });
@@ -1643,6 +1648,7 @@ document.addEventListener('keydown', event => {
   }
 });
 render();
+if (linkedCase) detail(linkedCase.id);
 </script>
 </body>
 </html>

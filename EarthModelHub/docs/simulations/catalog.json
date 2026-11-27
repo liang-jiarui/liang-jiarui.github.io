@@ -36131,6 +36131,10 @@
       {
         "label": "GC-adjoint v36 · GEOS-FP 2°×2.5° 正向短测报告",
         "path": "reports/library/case-smoke-2x25-geosfp-original-bdc7190e4ced/report.html"
+      },
+      {
+        "label": "GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告",
+        "path": "reports/library/gcadj-geosfp-2x25/report.html"
       }
     ],
     "commands": {
@@ -36402,7 +36406,12 @@
     "source_run_status": "failed",
     "controls_summary": {},
     "links": [],
-    "reports": [],
+    "reports": [
+      {
+        "label": "GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告",
+        "path": "reports/library/gcadj-geosfp-2x25/report.html"
+      }
+    ],
     "commands": {
       "check": "python -m src.simulations check @benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_pbl"
     }

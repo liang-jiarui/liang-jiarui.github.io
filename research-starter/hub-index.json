@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-27T01:49:55Z",
+  "updated_at": "2026-11-27T03:15:35Z",
   "entries": [
     {
       "id": "emh:simulation:@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
@@ -45,6 +45,50 @@
         "全球 4°×5°"
       ],
       "description": "UCX 全化学，比较 O₃ 对初始 NO 的伴随与二阶有限差分梯度。运行配置已准备，缺原始 GEOS-5 A3、A6 和 I6 二进制气象及可访问的官方参考输出。"
+    },
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_7d",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 7 天 CO 前向基准",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_geosfp_2x25_7d",
+      "keywords": [
+        "2013-07-01T00:00:00Z",
+        "2013-07-08T00:00:00Z",
+        "@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_7d",
+        "Benchmark experiments",
+        "benchmark",
+        "benchmark_geosfp_2x25_7d",
+        "configuration_only",
+        "gcadj",
+        "gcadj_v36",
+        "validation",
+        "全球 2°×2.5°，72 层",
+        "被动 CO 初值敏感度 · 对流和边界层混合"
+      ],
+      "description": "关闭平流，开启对流与边界层混合，比较初值 ±10% 的被动 CO 前向响应。另设原版反向检查。对应 Tang 2023 Fig. 6(e) 的时间窗。"
+    },
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_month",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 整月 CO 前向基准",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_geosfp_2x25_month",
+      "keywords": [
+        "2013-07-01T00:00:00Z",
+        "2013-08-01T00:00:00Z",
+        "@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_month",
+        "Benchmark experiments",
+        "benchmark",
+        "benchmark_geosfp_2x25_month",
+        "configuration_only",
+        "gcadj",
+        "gcadj_v36",
+        "validation",
+        "全球 2°×2.5°，72 层",
+        "被动 CO 初值敏感度 · 对流和边界层混合"
+      ],
+      "description": "关闭平流，开启对流与边界层混合，比较初值 ±10% 的被动 CO 前向响应。另设原版反向检查。对应 Tang 2023 Fig. 6(f) 的时间窗。"
     },
     {
       "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_pbl",
@@ -30925,6 +30969,26 @@
   ],
   "recent": [
     {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_7d",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 7 天 CO 前向基准",
+      "description": "关闭平流，开启对流与边界层混合，比较初值 ±10% 的被动 CO 前向响应。另设原版反向检查。对应 Tang 2023 Fig. 6(e) 的时间窗。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_geosfp_2x25_7d",
+      "date": "2026-11-27T03:15:35Z",
+      "change": "added"
+    },
+    {
+      "id": "emh:simulation:@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_month",
+      "hub": "EMH",
+      "type": "Simulation",
+      "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 整月 CO 前向基准",
+      "description": "关闭平流，开启对流与边界层混合，比较初值 ±10% 的被动 CO 前向响应。另设原版反向检查。对应 Tang 2023 Fig. 6(f) 的时间窗。",
+      "url": "../EarthModelHub/docs/simulations/?q=%40benchmark%2Fgcadj%2Fgcadj_v36%2Fbenchmark_geosfp_2x25_month",
+      "date": "2026-11-27T03:15:35Z",
+      "change": "added"
+    },
+    {
       "id": "emh:task:benchmark",
       "hub": "EMH",
       "type": "Task",
@@ -31152,26 +31216,6 @@
       "url": "../EarthModelHub/docs/simulations/?q=%40install_smoke%2Fuvic%2Fv2.10%2Fsmoke",
       "date": "2026-11-24T03:50:29Z",
       "change": "added"
-    },
-    {
-      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GCB2026 · ELM f19 · 加速分解自旋",
-      "description": "ELM 加速分解 360 年，固定 1700 年 CO₂ 与工业化前土地状态，循环 1901–1920 年气象。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin",
-      "date": "2026-11-24T00:55:36Z",
-      "change": "updated"
-    },
-    {
-      "id": "emh:simulation:@trendy_v15_gcb2026/e3sm/elm/f19/spin_postad",
-      "hub": "EMH",
-      "type": "Simulation",
-      "title": "GCB2026 · ELM f19 · 常规自旋",
-      "description": "从 AD 结束状态衔接，关闭加速分解并积分 600 年，覆盖 CLM SASU 与 post-SASU 的总时长。",
-      "url": "../EarthModelHub/docs/simulations/?q=%40trendy_v15_gcb2026%2Fe3sm%2Felm%2Ff19%2Fspin_postad",
-      "date": "2026-11-24T00:55:36Z",
-      "change": "updated"
     },
     {
       "id": "mlhub:inference variable:cam_emis_ndep:Fire_NH3_as_N_kgN_ha_month",

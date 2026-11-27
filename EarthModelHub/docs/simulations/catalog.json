@@ -36383,6 +36383,84 @@
     }
   },
   {
+    "id": "@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_7d",
+    "task": "benchmark",
+    "name": "benchmark_geosfp_2x25_7d",
+    "model": "gcadj",
+    "version": "gcadj_v36",
+    "task_title": "Benchmark experiments",
+    "task_about": "",
+    "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 7 天 CO 前向基准",
+    "description": "关闭平流，开启对流与边界层混合，比较初值 ±10% 的被动 CO 前向响应。另设原版反向检查。对应 Tang 2023 Fig. 6(e) 的时间窗。",
+    "compset": "被动 CO 初值敏感度 · 对流和边界层混合",
+    "res": "全球 2°×2.5°，72 层",
+    "group": "benchmark",
+    "role": "validation",
+    "category": "benchmark",
+    "period": {
+      "start": "2013-07-01T00:00:00Z",
+      "end": "2013-07-08T00:00:00Z"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "source_run_status": "configuration_only",
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "Tang 2023 Fig. 6(e)",
+        "url": "https://gmd.copernicus.org/articles/16/6377/2023/"
+      }
+    ],
+    "reports": [
+      {
+        "label": "GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告",
+        "path": "reports/library/gcadj-geosfp-2x25/report.html"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_7d"
+    }
+  },
+  {
+    "id": "@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_month",
+    "task": "benchmark",
+    "name": "benchmark_geosfp_2x25_month",
+    "model": "gcadj",
+    "version": "gcadj_v36",
+    "task_title": "Benchmark experiments",
+    "task_about": "",
+    "title": "GC-adjoint v36 · GEOS-FP 2°×2.5° 整月 CO 前向基准",
+    "description": "关闭平流，开启对流与边界层混合，比较初值 ±10% 的被动 CO 前向响应。另设原版反向检查。对应 Tang 2023 Fig. 6(f) 的时间窗。",
+    "compset": "被动 CO 初值敏感度 · 对流和边界层混合",
+    "res": "全球 2°×2.5°，72 层",
+    "group": "benchmark",
+    "role": "validation",
+    "category": "benchmark",
+    "period": {
+      "start": "2013-07-01T00:00:00Z",
+      "end": "2013-08-01T00:00:00Z"
+    },
+    "source_actual_period": {},
+    "source_success": false,
+    "source_run_status": "configuration_only",
+    "controls_summary": {},
+    "links": [
+      {
+        "label": "Tang 2023 Fig. 6(f)",
+        "url": "https://gmd.copernicus.org/articles/16/6377/2023/"
+      }
+    ],
+    "reports": [
+      {
+        "label": "GC-adjoint v36 · GEOS-FP 2°×2.5° 基准复现报告",
+        "path": "reports/library/gcadj-geosfp-2x25/report.html"
+      }
+    ],
+    "commands": {
+      "check": "python -m src.simulations check @benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_month"
+    }
+  },
+  {
     "id": "@benchmark/gcadj/gcadj_v36/benchmark_geosfp_2x25_pbl",
     "task": "benchmark",
     "name": "pbl_20130701_geosfp_2x25",

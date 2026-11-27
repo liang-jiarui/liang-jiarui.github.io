@@ -19,9 +19,14 @@
         {
           "label": "Source archive",
           "url": "https://quotsoft.net/air/"
+        },
+        {
+          "label": "GB 3095–2012 amendment (2018)",
+          "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/201808/t20180815_629602.html"
         }
       ],
-      "coverage": "The station archive covers 2,040 dates across part of 2014, all of 2017, 2020 and 2023–2024, and 2025 through December 20. The city archive covers 1,827 days across all of 2017, 2020 and 2023–2025."
+      "coverage": "The station archive covers 2,040 dates across part of 2014, all of 2017, 2020 and 2023–2024, and 2025 through December 20. The city archive covers 1,827 days across all of 2017, 2020 and 2023–2025.",
+      "reference_state": "From 1 September 2018 (Beijing time), GB 3095–2012 uses 298.15 K and 101.325 kPa for gaseous pollutants and the temperature and pressure during monitoring for particles. Before that date, the standard used 273 K and 101.325 kPa for all pollutants."
     },
     {
       "id": "beijing_air_quality",

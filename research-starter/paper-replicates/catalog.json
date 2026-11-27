@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "id": "mourgela-2026-wildfire",
+      "title": "Mourgela et al. 2026 · Wildfire radiative effects and climate response",
+      "year": 2026,
+      "description": "Recompute radiative effects and climate diagnostics from archived EC-Earth3-AerChem output.",
+      "status": "Archive analysis",
+      "topics": [
+        "Wildfire",
+        "Radiative forcing",
+        "EC-Earth3"
+      ],
+      "paper_url": "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-3239/",
+      "emh_links": [],
+      "report_links": [],
+      "emh_tasks": [],
+      "emh_evidence": null,
+      "report_summary": "The archive analysis compares aerosol–cloud and aerosol–radiation effects, spatial significance, regional attribution, and fast and slow climate responses. The ozone contribution remains part of the radiative residual until a dedicated radiation calculation is available.",
+      "report_digest": ""
+    },
+    {
+      "id": "nawaz-2026-gc-adjoint",
+      "title": "Nawaz and Henze 2026 · Cross-border PM₂.₅ health benefits",
+      "year": 2026,
+      "description": "Review the inputs and methods for attributing PM₂.₅ health benefits across borders with GEOS-Chem Adjoint.",
+      "status": "Scoping",
+      "topics": [
+        "Air quality",
+        "Health impacts",
+        "GEOS-Chem Adjoint"
+      ],
+      "paper_url": "https://doi.org/10.1038/s41467-026-68827-0",
+      "emh_links": [],
+      "report_links": [],
+      "emh_tasks": [],
+      "emh_evidence": null,
+      "report_summary": "The study's source–receptor results and figure data are archived. The project notes identify the adjoint configuration and the sensitivity fields needed for a rerun. The archived figure data support comparison while those fields are being sourced.",
+      "report_digest": ""
+    },
+    {
+      "id": "clow-2025-james",
+      "title": "Clow et al. 2025 · Satellite sampling of SST and chlorophyll",
+      "year": 2025,
+      "description": "Reproduce the CESM2 satellite sampling comparison for sea surface temperature and chlorophyll, with E3SM ocean biogeochemistry comparisons.",
+      "status": "In progress",
+      "topics": [
+        "Ocean biogeochemistry",
+        "CESM2",
+        "E3SM"
+      ],
+      "paper_url": "https://doi.org/10.1029/2024MS004908",
+      "emh_links": [
+        {
+          "label": "EMH experiment configurations",
+          "url": "../../EarthModelHub/docs/simulations/index.html?task=clow_2025_james"
+        },
+        {
+          "label": "EMH historical cases",
+          "url": "../../EarthModelHub/docs/simulations/index.html?task=clow_2025_james_completed"
+        }
+      ],
+      "report_links": [],
+      "emh_tasks": [
+        "clow_2025_james",
+        "clow_2025_james_completed"
+      ],
+      "emh_evidence": {
+        "cases": 52,
+        "source_completed": 43,
+        "models": [
+          "cesm",
+          "e3sm",
+          "noresm"
+        ]
+      },
+      "report_summary": "EarthModelHub records the experiment configurations and separate historical case runs. The scientific target is the satellite-sampled OMIP2 comparison for 2003–2016. The historical runs and the sampling comparison have separate evidence requirements.",
+      "report_digest": ""
+    },
+    {
+      "id": "mahfouz-2025-acp",
+      "title": "Mahfouz et al. 2025 · Prescribed aerosol properties and forcing",
+      "year": 2025,
+      "description": "Compare prescribed aerosol optics and cloud condensation nuclei in SCREAM with interactive EAM aerosol simulations.",
+      "status": "Partial reproduction",
+      "topics": [
+        "Aerosols",
+        "Radiative forcing",
+        "E3SM"
+      ],
+      "paper_url": "https://doi.org/10.5194/acp-25-15105-2025",
+      "emh_links": [],
+      "report_links": [],
+      "emh_tasks": [],
+      "emh_evidence": null,
+      "report_summary": "Paired 12 km SCREAM archive data support an annual forcing comparison. A one-day interactive EAM pair validates startup and diagnostics. The long-term interactive EAM forcing comparison remains open.",
+      "report_digest": ""
+    },
+    {
+      "id": "zelinka-2023-acp",
+      "title": "Zelinka et al. 2023 · Aerosol forcing with APRP",
+      "year": 2023,
+      "description": "Recompute aerosol effective radiative forcing with approximate partial radiative perturbation and compare it with aerosol-free radiation calls.",
+      "status": "Archive analysis",
+      "topics": [
+        "Aerosols",
+        "Radiative forcing",
+        "CMIP"
+      ],
+      "paper_url": "https://doi.org/10.5194/acp-23-8879-2023",
+      "emh_links": [],
+      "report_links": [],
+      "emh_tasks": [],
+      "emh_evidence": null,
+      "report_summary": "The analysis compares archived APRP calculations and double radiation calls for CMIP5 and CMIP6 members. The detailed report tracks unavailable members, numerical agreement and radiative budget closure.",
+      "report_digest": ""
+    },
+    {
+      "id": "zhang-2022-acp",
+      "title": "Zhang et al. 2022 · Aerosol effective radiative forcing in E3SM",
+      "year": 2022,
+      "description": "Recreate the EAMv1 aerosol forcing diagnostics from archived data and apply them to EAMv3 wildfire experiments.",
+      "status": "Partial reproduction",
+      "topics": [
+        "Aerosols",
+        "Radiative forcing",
+        "E3SM"
+      ],
+      "paper_url": "https://doi.org/10.5194/acp-22-9129-2022",
+      "emh_links": [],
+      "report_links": [],
+      "emh_tasks": [],
+      "emh_evidence": null,
+      "report_summary": "The archive analysis regenerates paper figures, supplement and tables. The EAMv3 wildfire experiments provide an application of the diagnostic workflow, with their own matched short integrations and comparisons.",
+      "report_digest": ""
+    },
+    {
+      "id": "leach-2021-fair-v2",
+      "title": "Leach et al. 2021 · FaIR v2 climate response",
+      "year": 2021,
+      "description": "Run the archived FaIR v2 workflow and compare historical and scenario responses with the paper.",
+      "status": "Partial reproduction",
+      "topics": [
+        "Climate response",
+        "FaIR"
+      ],
+      "paper_url": "https://doi.org/10.5194/gmd-14-3007-2021",
+      "emh_links": [
+        {
+          "label": "EMH FaIR cases",
+          "url": "../../EarthModelHub/docs/simulations/index.html?task=leach_2021_fair_v2"
+        }
+      ],
+      "report_links": [
+        {
+          "label": "EMH FaIR reproduction report",
+          "url": "../../EarthModelHub/docs/simulations/reports/library/leach-2021-fair-v2-report/report.html",
+          "path": "library/leach-2021-fair-v2-report/report.html"
+        }
+      ],
+      "emh_tasks": [
+        "leach_2021_fair_v2"
+      ],
+      "emh_evidence": {
+        "cases": 3,
+        "source_completed": 0,
+        "models": [
+          "fair"
+        ]
+      },
+      "report_summary": "The EMH report tracks figures redrawn from new FaIR outputs and the remaining ensemble constraints and figures. Open the EMH report for the comparisons and supporting data.",
+      "report_digest": "df25bbbe9bafbd24dffcce1228ef92e3235ee199435a03b29b722a2bd9d7417c"
+    },
+    {
+      "id": "skeie-2020-ozone-rf",
+      "title": "Skeie et al. 2020 · Historical ozone radiative forcing",
+      "year": 2020,
+      "description": "Use ozone radiative kernels and archived model output to compare historical ozone forcing estimates.",
+      "status": "Archive analysis",
+      "topics": [
+        "Ozone",
+        "Radiative forcing",
+        "CMIP"
+      ],
+      "paper_url": "https://doi.org/10.1038/s41612-020-00131-0",
+      "emh_links": [],
+      "report_links": [],
+      "emh_tasks": [],
+      "emh_evidence": null,
+      "report_summary": "The report compares completed historical windows and emissions snapshots with the author's archive. It records the alternative UKESM1-0-LL pressure-level input as a sensitivity calculation.",
+      "report_digest": ""
+    },
+    {
+      "id": "lawrence-2019-clm5",
+      "title": "Lawrence et al. 2019 · CLM5 land surface experiments",
+      "year": 2019,
+      "description": "Configure the CLM5 land experiment matrix and check cold starts at the target and coarser resolutions.",
+      "status": "Smoke tests",
+      "topics": [
+        "Land surface",
+        "CESM2",
+        "CLM5"
+      ],
+      "paper_url": "https://doi.org/10.1029/2018MS001583",
+      "emh_links": [
+        {
+          "label": "EMH CLM5 cases",
+          "url": "../../EarthModelHub/docs/simulations/index.html?task=lawrence_2019_clm5"
+        }
+      ],
+      "report_links": [
+        {
+          "label": "EMH CLM5 reproduction report",
+          "url": "../../EarthModelHub/docs/simulations/reports/library/lawrence-2019-clm5-report/report.html",
+          "path": "library/lawrence-2019-clm5-report/report.html"
+        }
+      ],
+      "emh_tasks": [
+        "lawrence_2019_clm5"
+      ],
+      "emh_evidence": {
+        "cases": 54,
+        "source_completed": 0,
+        "models": [
+          "cesm"
+        ]
+      },
+      "report_summary": "EMH records evidence from one-day cold starts. The published land diagnostics require the full experiment periods. Open the EMH report for the run evidence and Table 5 targets.",
+      "report_digest": "755e2f850d60d55e3bbfb0224e70530c36a8a3596ca49f03228ccd6c0b674345"
+    }
+  ]
+}

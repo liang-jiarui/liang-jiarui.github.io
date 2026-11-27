@@ -112,6 +112,7 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;padding:12px 16px 12
 .report-panel .section-title{color:#174d69;margin:0 0 8px}
 .report-actions{display:flex;flex-wrap:wrap;gap:7px}
 .report-actions .report-link{white-space:normal;text-align:left}
+.tree [data-pick="reproduction"] .lab{white-space:normal;overflow:visible;line-height:1.25}
 .search{flex:1;display:flex;align-items:center;gap:8px;border:1px solid #c9d6c8;border-radius:8px;padding:0 10px;background:#fff;min-width:180px}
 .search input{border:0;padding:7px 0;width:100%;background:transparent;outline:none}
 .search kbd{font:11px ui-monospace,Menlo,Consolas,monospace;color:var(--muted);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px}
@@ -851,11 +852,15 @@ function syncPaperModels() {
   state.picked.version = null;
   state.picked.model = null;
 }
+function activeFamilies() {
+  if (state.picked.family || !state.picked.model) return state.picked.family;
+  return new Set(data.filter(row => state.picked.model.has(row.model)).map(familyOf));
+}
 function paintModelTree() {
   const counts = new Map();
   const scope = data.filter(row => projectScope(row) && (!state.picked.task || state.picked.task.has(row.task)));
   for (const row of scope) counts.set(familyOf(row), (counts.get(familyOf(row)) || 0) + 1);
-  const familyPick = state.picked.family;
+  const familyPick = activeFamilies();
   let html = `<button type="button" data-pick="all-model" class="${familyPick ? '' : 'on'}"><span class="lab">All models</span><span class="n">${scope.length}</span></button>`;
   for (const family of familyList()) {
     const on = !!(familyPick && familyPick.has(family));
@@ -865,7 +870,7 @@ function paintModelTree() {
   $('modeltree').innerHTML = html;
 }
 function paintVersionTree() {
-  const familyPick = state.picked.family;
+  const familyPick = activeFamilies();
   const families = familyPick ? [...familyPick] : familyList();
   const versionPick = state.picked.version;
   const total = families.reduce((sum, family) => sum + versionsFor(family).reduce((inner, version) => inner + versionCount(family, version), 0), 0);
@@ -890,6 +895,7 @@ function paintTaskTree() {
   }
   const catPick = state.picked.category;
   const taskPick = state.picked.task;
+  const familyPick = activeFamilies();
   const reproduction = state.picked.reproduction?.has('1') || false;
   const experimentScope = data.filter(row => pass(row, new Set(['category','task','reproduction'])));
   const reproductionCount = experimentScope.filter(row => row.reproduction).length;
@@ -906,8 +912,7 @@ function paintTaskTree() {
       if (taskCategory.get(task) !== category) return false;
       if ((taskCount.get(task) || 0) > 0) return true;
       if (!paperMeta.has(task)) return false;
-      const families = state.picked.family;
-      return !families || paperFamilies(task).some(family => families.has(family));
+      return !familyPick || paperFamilies(task).some(family => familyPick.has(family));
     }).sort(comparePapers);
     if (!tasks.length) continue;
     const count = tasks.length;
@@ -1014,7 +1019,7 @@ function cell(row, column, index) {
   if (column.key === 'index') return `<td class="idx sticky"><div class="pad">${index}</div></td>`;
   if (column.key === 'title') {
     const [report] = experimentReports(row);
-    return `<td class="name sticky2"><div class="cell row-title"><span class="title" title="${esc(row.name || '')}&#10;${esc(row.description || '')}">${esc(row.title)}</span>${report ? reportLink(report, report.path.endsWith('.pdf') ? 'Report PDF' : 'Report') : ''}</div></td>`;
+    return `<td class="name sticky2"><div class="cell row-title"><span class="title" title="${esc(row.title)}&#10;${esc(row.name || '')}&#10;${esc(row.description || '')}">${esc(row.title)}</span>${report ? reportLink(report, report.path.endsWith('.pdf') ? 'Report PDF' : 'Report') : ''}</div></td>`;
   }
   if (column.key === 'category') {
     const category = categoryOf(row);
@@ -1422,16 +1427,17 @@ function clearKey(key, value) {
 }
 function pickTree(kind, value, family) {
   const inScope = (row, model, version) => (!model || familyOf(row) === model) && (!version || version.has(row.version));
-  if (kind === 'all-model') { state.picked.family = null; state.picked.version = null; return; }
+  if (kind === 'all-model') { state.picked.family = null; state.picked.model = null; state.picked.version = null; return; }
   if (kind === 'all-version') { state.picked.version = null; return; }
   if (kind === 'family') {
     const only = state.picked.family && state.picked.family.size === 1 && state.picked.family.has(value);
     state.picked.family = only ? null : new Set([value]);
+    state.picked.model = null;
     if (only || (state.picked.version && ![...state.picked.version].every(version => versionsFor(value).includes(version)))) state.picked.version = null;
     const version = state.picked.version;
     if (!only) {
       if (state.picked.task && ![...state.picked.task].some(task => paperFamilies(task).includes(value))) state.picked.task = null;
-      if (state.picked.category && ![...state.picked.category].some(category => data.some(row => categoryOf(row) === category && inScope(row, value, version)))) state.picked.category = null;
+      if (state.picked.category && ![...state.picked.category].some(category => category === 'benchmark' || data.some(row => categoryOf(row) === category && inScope(row, value, version)))) state.picked.category = null;
     }
     return;
   }
@@ -1441,7 +1447,7 @@ function pickTree(kind, value, family) {
     state.picked.version = new Set([value]);
     if (family) state.picked.family = new Set([family]);
     if (state.picked.task && ![...state.picked.task].some(task => data.some(row => row.task === task && inScope(row, family, state.picked.version)))) state.picked.task = null;
-    if (state.picked.category && ![...state.picked.category].some(category => data.some(row => categoryOf(row) === category && inScope(row, family, state.picked.version)))) state.picked.category = null;
+    if (state.picked.category && ![...state.picked.category].some(category => category === 'benchmark' || data.some(row => categoryOf(row) === category && inScope(row, family, state.picked.version)))) state.picked.category = null;
     return;
   }
   if (kind === 'all-task' || kind === 'reproduction') {

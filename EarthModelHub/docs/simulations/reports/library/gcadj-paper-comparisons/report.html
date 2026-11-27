@@ -295,6 +295,7 @@
 </table>
 <p>原始代码包中的一小时模板使用 2010-01-01 00–01 UTC、4°×5° GEOS-5、<code>restart.geos5.test.YYYYMMDDhh</code>。包中仅有 GEOS-4 的历史重启。本站对应时段找到 GEOS-IT 气象，GEOS-5 气象及该模板的初值未找到。原作者 Makefile 的 <code>-openmp</code> 被本站 Intel 2021 拒绝，第二次通过命令行改用 <code>-qopenmp</code> 后编译至 <code>CMN_FJX_MOD.o</code>，报 <code>No rule to make target</code>（352850）。档案中缺 <code>CMN_FJX_MOD</code> 源文件，服务器通用 v36 则有此文件，暂未将不同分支的 Fast-JX 混入论文原始代码。<a href="https://gmd.copernicus.org/articles/17/5689/2024/#section3">论文 §3–4</a> · <a href="https://doi.org/10.5281/zenodo.4300535">论文原代码包</a></p>
 <h2>2°×2.5° 原始 v36 冒烟与复算命令</h2>
+<p>同网格 GEOS-FP 的 24 小时正向基准与原版伴随失败定位见 GC-adjoint GEOS-FP 专项报告。</p>
 <p>此前的 GEOS-FP 和 MERRA-2 被动 CO 各完成 2013-07-01 00–03 UTC 的前向输送（352590、352591）。两者使用相同原始可执行文件和 GEOS-FP 读取器，MERRA-2 通过适配的输入布局喂入。这个证据验证了短时气象读取和正向输送。Tang 2026 的 47 层 MERRA-2 tagged CO 反演和原论文的伴随配置另需验收。GEOS-FP 冒烟验证 · MERRA-2 冒烟验证</p>
 <p>从 EarthModelHub 根目录执行，两个脚本读取已下载到 <code>input/raw/papers</code> 的归档成员。Kelp 还读取服务器 GFED4s，路径可通过 <code>--gfed-dir</code> 和 <code>--emission-factors</code> 指定。复算输入及其校验和见清单。 SHA-256 输入清单</p>
 <pre><code class="language-bash">p=docs/papers/models/geoschem/paper_replicates/gcadj

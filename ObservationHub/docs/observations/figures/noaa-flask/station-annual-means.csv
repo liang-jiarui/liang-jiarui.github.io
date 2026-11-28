@@ -1,0 +1,121 @@
+gas,site_code,year,mean,months,site_name,latitude,longitude,unit
+ch4,ALT,2025,2017.50417,12,"Alert, Nunavut",82.45080,-62.50720,ppb
+ch4,AMY,2025,2037.12083,12,Anmyeon-do,36.53890,126.32950,ppb
+ch4,ASC,2025,1898.98750,12,Ascension Island,-7.96670,-14.40000,ppb
+ch4,BKT,2025,1949.55583,12,Bukit Kototabang,-0.20200,100.31800,ppb
+ch4,BMW,2025,1991.70833,12,"Tudor Hill, Bermuda",32.26470,-64.87880,ppb
+ch4,BRW,2025,2025.28333,12,Barrow Atmospheric Baseline Observatory,71.32300,-156.61140,ppb
+ch4,CBA,2025,2020.88000,12,"Cold Bay, Alaska",55.21000,-162.72000,ppb
+ch4,CGO,2025,1885.24167,12,"Cape Grim, Tasmania",-40.68300,144.69000,ppb
+ch4,CPT,2025,1885.79083,12,Cape Point,-34.35230,18.48910,ppb
+ch4,CRZ,2025,1884.20583,12,Crozet Island,-46.43370,51.84780,ppb
+ch4,DSI,2025,1996.40833,12,Dongsha Island,20.69920,116.72970,ppb
+ch4,HPB,2025,2052.37750,12,Hohenpeissenberg,47.80110,11.02450,ppb
+ch4,HUN,2025,2063.89000,12,Hegyhatsal,46.95590,16.65210,ppb
+ch4,ICE,2025,2013.81333,12,"Storhofdi, Vestmannaeyjar",63.39980,-20.28840,ppb
+ch4,IZO,2025,1974.05417,12,"Izana, Tenerife, Canary Islands",28.30900,-16.49900,ppb
+ch4,KEY,2025,1976.19917,12,"Key Biscayne, Florida",25.66540,-80.15800,ppb
+ch4,KUM,2025,1967.39750,12,"Cape Kumukahi, Hawaii",19.56080,-154.88830,ppb
+ch4,LLN,2025,1967.36583,12,Lulin,23.47000,120.87000,ppb
+ch4,LMP,2025,2008.10333,12,Lampedusa,35.51810,12.63220,ppb
+ch4,MEX,2025,1954.46750,12,High Altitude Global Climate Observation Center,18.98410,-97.31100,ppb
+ch4,MHD,2025,2008.64833,12,"Mace Head, County Galway",53.32600,-9.89900,ppb
+ch4,MID,2025,1982.10417,12,"Sand Island, Midway",28.21860,-177.36780,ppb
+ch4,MLO,2025,1949.13333,12,"Mauna Loa, Hawaii",19.53620,-155.57630,ppb
+ch4,NMB,2025,1895.60250,12,Gobabeb,-23.58000,15.03000,ppb
+ch4,NWR,2025,1983.82583,12,"Niwot Ridge, Colorado",40.05310,-105.58640,ppb
+ch4,OXK,2025,2033.20833,12,Ochsenkopf,50.03010,11.80840,ppb
+ch4,PAL,2025,2033.29833,12,"Pallas-Sammaltunturi, GAW Station",67.97330,24.11570,ppb
+ch4,PSA,2025,1884.48583,12,"Palmer Station, Antarctica",-64.77420,-64.05270,ppb
+ch4,SEY,2025,1910.93333,12,Mahe Island,-4.68240,55.53250,ppb
+ch4,SHM,2025,2019.19000,12,"Shemya Island, Alaska",52.71120,174.12600,ppb
+ch4,SMO,2025,1892.89083,12,Tutuila,-14.24740,-170.56440,ppb
+ch4,SPO,2025,1884.22000,12,"South Pole, Antarctica",-89.98000,-24.80000,ppb
+ch4,SUM,2025,2009.82583,12,Summit,72.59620,-38.42200,ppb
+ch4,SYO,2025,1884.11417,12,"Syowa Station, Antarctica",-69.01250,39.59000,ppb
+ch4,TAP,2025,2045.73500,12,Tae-ahn Peninsula,36.73760,126.13280,ppb
+ch4,USH,2025,1884.54250,12,Ushuaia,-54.84840,-68.31060,ppb
+ch4,UTA,2025,1991.08583,12,"Wendover, Utah",39.90180,-113.71810,ppb
+ch4,UUM,2025,2027.15250,12,Ulaan Uul,44.45160,111.09560,ppb
+ch4,WIS,2025,2031.62750,12,"Weizmann Institute of Science at the Arava Institute, Ketura",29.96460,35.06050,ppb
+ch4,WLG,2025,1999.68250,12,Mt. Waliguan,36.28790,100.89640,ppb
+co2,ALT,2025,427.93750,12,"Alert, Nunavut",82.45080,-62.50720,ppm
+co2,AMY,2025,433.84083,12,Anmyeon-do,36.53890,126.32950,ppm
+co2,ASC,2025,424.47750,12,Ascension Island,-7.96670,-14.40000,ppm
+co2,BKT,2025,422.54167,12,Bukit Kototabang,-0.20200,100.31800,ppm
+co2,BMW,2025,428.17500,12,"Tudor Hill, Bermuda",32.26470,-64.87880,ppm
+co2,BRW,2025,428.03250,12,Barrow Atmospheric Baseline Observatory,71.32300,-156.61140,ppm
+co2,CBA,2025,427.58167,12,"Cold Bay, Alaska",55.21000,-162.72000,ppm
+co2,CGO,2025,423.07083,12,"Cape Grim, Tasmania",-40.68300,144.69000,ppm
+co2,CPT,2025,422.75917,12,Cape Point,-34.35230,18.48910,ppm
+co2,CRZ,2025,423.00750,12,Crozet Island,-46.43370,51.84780,ppm
+co2,DSI,2025,430.93250,12,Dongsha Island,20.69920,116.72970,ppm
+co2,HPB,2025,425.96083,12,Hohenpeissenberg,47.80110,11.02450,ppm
+co2,HUN,2025,431.27750,12,Hegyhatsal,46.95590,16.65210,ppm
+co2,ICE,2025,427.26583,12,"Storhofdi, Vestmannaeyjar",63.39980,-20.28840,ppm
+co2,IZO,2025,427.01417,12,"Izana, Tenerife, Canary Islands",28.30900,-16.49900,ppm
+co2,KEY,2025,428.70167,12,"Key Biscayne, Florida",25.66540,-80.15800,ppm
+co2,KUM,2025,427.75750,12,"Cape Kumukahi, Hawaii",19.56080,-154.88830,ppm
+co2,LLN,2025,428.74167,12,Lulin,23.47000,120.87000,ppm
+co2,LMP,2025,428.21833,12,Lampedusa,35.51810,12.63220,ppm
+co2,MEX,2025,425.91417,12,High Altitude Global Climate Observation Center,18.98410,-97.31100,ppm
+co2,MHD,2025,427.36000,12,"Mace Head, County Galway",53.32600,-9.89900,ppm
+co2,MID,2025,428.37833,12,"Sand Island, Midway",28.21860,-177.36780,ppm
+co2,MLO,2025,427.38500,12,"Mauna Loa, Hawaii",19.53620,-155.57630,ppm
+co2,NMB,2025,423.99417,12,Gobabeb,-23.58000,15.03000,ppm
+co2,NWR,2025,428.23000,12,"Niwot Ridge, Colorado",40.05310,-105.58640,ppm
+co2,OXK,2025,427.96333,12,Ochsenkopf,50.03010,11.80840,ppm
+co2,PAL,2025,430.68917,12,"Pallas-Sammaltunturi, GAW Station",67.97330,24.11570,ppm
+co2,PSA,2025,422.97417,12,"Palmer Station, Antarctica",-64.77420,-64.05270,ppm
+co2,SEY,2025,425.04583,12,Mahe Island,-4.68240,55.53250,ppm
+co2,SHM,2025,427.90917,12,"Shemya Island, Alaska",52.71120,174.12600,ppm
+co2,SMO,2025,424.70167,12,Tutuila,-14.24740,-170.56440,ppm
+co2,SPO,2025,423.01750,12,"South Pole, Antarctica",-89.98000,-24.80000,ppm
+co2,SUM,2025,427.34750,12,Summit,72.59620,-38.42200,ppm
+co2,SYO,2025,423.06833,12,"Syowa Station, Antarctica",-69.01250,39.59000,ppm
+co2,TAP,2025,433.47583,12,Tae-ahn Peninsula,36.73760,126.13280,ppm
+co2,USH,2025,422.69833,12,Ushuaia,-54.84840,-68.31060,ppm
+co2,UTA,2025,428.50750,12,"Wendover, Utah",39.90180,-113.71810,ppm
+co2,UUM,2025,427.30583,12,Ulaan Uul,44.45160,111.09560,ppm
+co2,WIS,2025,429.44250,12,"Weizmann Institute of Science at the Arava Institute, Ketura",29.96460,35.06050,ppm
+co2,WLG,2025,427.91667,12,Mt. Waliguan,36.28790,100.89640,ppm
+n2o,ALT,2025,339.28417,12,"Alert, Nunavut",82.45080,-62.50720,ppb
+n2o,AMY,2025,340.36167,12,Anmyeon-do,36.53890,126.32950,ppb
+n2o,ASC,2025,338.76917,12,Ascension Island,-7.96670,-14.40000,ppb
+n2o,BKT,2025,339.71417,12,Bukit Kototabang,-0.20200,100.31800,ppb
+n2o,BMW,2025,339.53417,12,"Tudor Hill, Bermuda",32.26470,-64.87880,ppb
+n2o,BRW,2025,339.32417,12,Barrow Atmospheric Baseline Observatory,71.32300,-156.61140,ppb
+n2o,CBA,2025,339.53000,12,"Cold Bay, Alaska",55.21000,-162.72000,ppb
+n2o,CGO,2025,337.95833,12,"Cape Grim, Tasmania",-40.68300,144.69000,ppb
+n2o,CPT,2025,338.05833,12,Cape Point,-34.35230,18.48910,ppb
+n2o,CRZ,2025,337.91000,12,Crozet Island,-46.43370,51.84780,ppb
+n2o,DSI,2025,340.21500,12,Dongsha Island,20.69920,116.72970,ppb
+n2o,HPB,2025,340.16583,12,Hohenpeissenberg,47.80110,11.02450,ppb
+n2o,HUN,2025,340.46500,12,Hegyhatsal,46.95590,16.65210,ppb
+n2o,ICE,2025,339.37583,12,"Storhofdi, Vestmannaeyjar",63.39980,-20.28840,ppb
+n2o,IZO,2025,339.46167,12,"Izana, Tenerife, Canary Islands",28.30900,-16.49900,ppb
+n2o,KEY,2025,339.58000,12,"Key Biscayne, Florida",25.66540,-80.15800,ppb
+n2o,KUM,2025,339.48917,12,"Cape Kumukahi, Hawaii",19.56080,-154.88830,ppb
+n2o,LLN,2025,339.87167,12,Lulin,23.47000,120.87000,ppb
+n2o,LMP,2025,339.64083,12,Lampedusa,35.51810,12.63220,ppb
+n2o,MEX,2025,339.64833,12,High Altitude Global Climate Observation Center,18.98410,-97.31100,ppb
+n2o,MHD,2025,339.40000,12,"Mace Head, County Galway",53.32600,-9.89900,ppb
+n2o,MID,2025,339.50750,12,"Sand Island, Midway",28.21860,-177.36780,ppb
+n2o,MLO,2025,339.50250,12,"Mauna Loa, Hawaii",19.53620,-155.57630,ppb
+n2o,NMB,2025,338.76917,12,Gobabeb,-23.58000,15.03000,ppb
+n2o,NWR,2025,339.52250,12,"Niwot Ridge, Colorado",40.05310,-105.58640,ppb
+n2o,OXK,2025,339.91083,12,Ochsenkopf,50.03010,11.80840,ppb
+n2o,PAL,2025,339.47417,12,"Pallas-Sammaltunturi, GAW Station",67.97330,24.11570,ppb
+n2o,PSA,2025,337.95917,12,"Palmer Station, Antarctica",-64.77420,-64.05270,ppb
+n2o,SEY,2025,339.00750,12,Mahe Island,-4.68240,55.53250,ppb
+n2o,SHM,2025,339.61750,12,"Shemya Island, Alaska",52.71120,174.12600,ppb
+n2o,SMO,2025,338.77583,12,Tutuila,-14.24740,-170.56440,ppb
+n2o,SPO,2025,337.82833,12,"South Pole, Antarctica",-89.98000,-24.80000,ppb
+n2o,SUM,2025,339.24500,12,Summit,72.59620,-38.42200,ppb
+n2o,SYO,2025,337.87500,12,"Syowa Station, Antarctica",-69.01250,39.59000,ppb
+n2o,TAP,2025,340.50000,12,Tae-ahn Peninsula,36.73760,126.13280,ppb
+n2o,USH,2025,337.92250,12,Ushuaia,-54.84840,-68.31060,ppb
+n2o,UTA,2025,339.67750,12,"Wendover, Utah",39.90180,-113.71810,ppb
+n2o,UUM,2025,339.51833,12,Ulaan Uul,44.45160,111.09560,ppb
+n2o,WIS,2025,339.98917,12,"Weizmann Institute of Science at the Arava Institute, Ketura",29.96460,35.06050,ppb
+n2o,WLG,2025,339.53833,12,Mt. Waliguan,36.28790,100.89640,ppb

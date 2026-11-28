@@ -622,7 +622,11 @@
           "url": "https://gml.noaa.gov/aftp/data/trace_gases/n2o/flask/surface/"
         }
       ],
-      "coverage": "1967–2025 across 86 fixed sites. Coverage varies by gas and site."
+      "coverage": "Global fixed-site flask network. The analysis lists the measured period and station count for each gas.",
+      "figure_report": {
+        "label": "Methane seasonal amplitude and NOAA station figures",
+        "page": "figures/noaa-flask/index.html"
+      }
     },
     {
       "id": "noaa_gml_global_mole_fractions",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-28T00:15:31Z",
+  "updated_at": "2026-11-28T00:25:30Z",
   "entries": [
     {
       "id": "emh:simulation:@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
@@ -30721,8 +30721,8 @@
       "title": "NOAA GML fixed-site flask CO₂, CH₄ and N₂O",
       "url": "../ObservationHub/docs/observations/?dataset=noaa_gml_surface_flask",
       "keywords": [
-        "1967–2025 across 86 fixed sites. Coverage varies by gas and site.",
         "Climate benchmarks",
+        "Global fixed-site flask network. The analysis lists the measured period and station count for each gas.",
         "NOAA Global Monitoring Laboratory and cooperative sampling sites",
         "Station observations"
       ],
@@ -31193,6 +31193,16 @@
   ],
   "recent": [
     {
+      "id": "obshub:dataset:noaa_gml_surface_flask",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "NOAA GML fixed-site flask CO₂, CH₄ and N₂O",
+      "description": "Individual dry-air mole fraction measurements and published station monthly means. The source files include UTC sampling times, sample coordinates, flask and instrument IDs, estimated uncertainty and NOAA quality flags.",
+      "url": "../ObservationHub/docs/observations/?dataset=noaa_gml_surface_flask",
+      "date": "2026-11-28T00:25:30Z",
+      "change": "updated"
+    },
+    {
       "id": "obshub:analysis:noaa_gml_surface_flask",
       "hub": "ObsHub",
       "type": "Analysis",
@@ -31200,16 +31210,6 @@
       "description": "NOAA GML Global Greenhouse Gas Reference Network, Carbon Cycle Cooperative Global Air Sampling Network.",
       "url": "../ObservationHub/docs/observations/?view=analysis&profile=noaa_gml_surface_flask",
       "date": "2026-11-28T00:15:31Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:dataset:noaa_gml_surface_flask",
-      "hub": "ObsHub",
-      "type": "Dataset",
-      "title": "NOAA GML fixed-site flask CO₂, CH₄ and N₂O",
-      "description": "Individual dry-air mole fraction measurements and published station monthly means. The source files include UTC sampling times, sample coordinates, flask and instrument IDs, estimated uncertainty and NOAA quality flags.",
-      "url": "../ObservationHub/docs/observations/?dataset=noaa_gml_surface_flask",
-      "date": "2026-11-28T00:10:37Z",
       "change": "added"
     },
     {

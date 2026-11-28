@@ -911,7 +911,11 @@ dialog h3 { font-size: .9375rem; margin: 1.125rem 0 .5rem; }
           "url": "https://gml.noaa.gov/aftp/data/trace_gases/n2o/flask/surface/"
         }
       ],
-      "coverage": "1967–2025 across 86 fixed sites. Coverage varies by gas and site."
+      "coverage": "Global fixed-site flask network. The analysis lists the measured period and station count for each gas.",
+      "figure_report": {
+        "label": "Methane seasonal amplitude and NOAA station figures",
+        "page": "figures/noaa-flask/index.html"
+      }
     },
     {
       "id": "noaa_gml_global_mole_fractions",
@@ -1336,6 +1340,12 @@ function externalLink(label, url) {
   return link;
 }
 
+function figureReportLink(report) {
+  const link = element("a", report.label);
+  link.href = report.page;
+  return link;
+}
+
 function getState() {
   const params = new URLSearchParams(location.search);
   const dataset = params.get("dataset");
@@ -1592,6 +1602,7 @@ function renderAnalysis() {
       if (profile.source_note) head.append(element("p", profile.source_note, "dataset-source"));
       if (dataset?.reference_state) head.append(element("p", dataset.reference_state, "dataset-source"));
       head.append(internalLink("Dataset and sources", "datasets", profile.dataset_id));
+      if (dataset?.figure_report) head.append(element("br"), figureReportLink(dataset.figure_report));
       const subsections = variables.map(variable => ({variable, section: variableSection(profile, variable)}));
       section.append(head, ...subsections.map(item => item.section));
       const link = analysisIndexLink(profile.title, profile.id, section);
@@ -1879,6 +1890,7 @@ function renderDetail(row) {
   } else {
     if (row.reference_state) body.append(element("p", row.reference_state, "description"));
     const profile = profilesByDataset.get(row.id);
+    if (row.figure_report) body.append(figureReportLink(row.figure_report));
     if (profile) {
       const figures = datasetFigures(profile, "details-" + profile.id);
       detailGrid = figures.grid;

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Greenhouse gases at NOAA flask stations · ObservationHub</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#203733;background:#fcfdfa;line-height:1.55}
+body{max-width:1060px;margin:0 auto;padding:1.5rem clamp(1rem,4vw,4rem) 4rem}
+nav{display:flex;column-gap:1.2rem;row-gap:.4rem;flex-wrap:wrap;font-size:.95rem}
+a{color:#146351;text-underline-offset:.2em} a:focus-visible{outline:3px solid #d17825}
+h1,h2{line-height:1.15;letter-spacing:-.025em}h1{font-size:clamp(2.1rem,5vw,3.4rem);margin:2rem 0 .6rem}
+h2{font-size:clamp(1.5rem,3vw,2.1rem);margin:0 0 .7rem}p{max-width:83ch}
+section{border-top:1px solid #bfcec5;margin:2.4rem 0 0;padding:1.7rem 0 0}
+figure{margin:1rem 0}img{display:block;width:100%;height:auto;background:#fff;border:1px solid #e0e7e2;box-sizing:border-box}
+figcaption,.data{font-size:.95rem;color:#465d55}.data{display:flex;gap:.35rem 1.1rem;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<nav aria-label="Gallery"><a href="../../index.html?view=analysis&amp;profile=noaa_gml_surface_flask">← NOAA flask observations</a></nav>
+<main>
+<h1>Greenhouse gases at NOAA flask stations</h1>
+<nav aria-label="On this page"><a href="#methane">Methane seasonal amplitude</a><a href="#check">Independent NOAA check</a><a href="#trends">Four-station comparison</a><a href="#map">Station map</a></nav>
+<section id="methane">
+<h2>How has methane’s seasonal amplitude changed?</h2>
+<p>Methane’s annual peak-to-trough range narrowed at Barrow and widened at Mauna Loa and the South Pole during 1984–2020. This redraw of Figure 1 in Liu et al. (2025) uses the authors’ published figure data. Panels a–f compare seasonal cycles and annual amplitudes. Panels g–h examine how the trend varies with latitude.</p>
+<figure><a href="methane-figure1.png"><img src="methane-figure1.png" alt="Eight panels with seasonal methane cycles, peak-to-trough trends at three stations, a station map and a latitude regression"></a></figure>
+<p>The fitted slopes are −0.350, +0.195 and +0.185 ppb per year at Barrow, Mauna Loa and the South Pole. The authors used atmospheric transport and chemistry simulations to attribute the northern high-latitude decrease primarily to growing natural emissions and the tropical and subtropical increase primarily to stronger oxidation by OH.</p>
+<p class="data"><a href="https://doi.org/10.1038/s41586-025-08900-8">Liu et al., Nature (2025)</a><a href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-025-08900-8/MediaObjects/41586_2025_8900_MOESM2_ESM.xlsx">Original Figure 1 data (XLSX)</a><a href="methane-seasonal-cycles.csv">Seasonal cycles (CSV)</a><a href="methane-annual-amplitudes.csv">Annual amplitudes (CSV)</a><a href="methane-station-trends.csv">Station trends (CSV)</a><a href="methane-regressions.csv">Regressions (CSV)</a></p>
+</section>
+<section id="check">
+<h2>Independent check from individual flask measurements</h2>
+<p>We used NOAA’s 17 July 2026 release to estimate the 1984–2020 amplitude trends at five sites. The signs agree with the published trends at the three focal stations. Mahé (4.7° S) and Ascension (8.0° S) also show increasing amplitudes, with substantially different slopes.</p>
+<figure><a href="independent-methane-trends.png"><img loading="lazy" src="independent-methane-trends.png" alt="Methane seasonal-amplitude trends at five stations with 95 percent confidence intervals"></a></figure>
+<p>We averaged quality-selected measurements into eight-day bins, filled gaps with iterated random forests, and extracted the 180–420-day component using singular spectrum analysis. Trends use site-years with at least 23 of 46 observed bins. The primary embedding window is three years. Updated data and choices for binning, imputation and filtering affect the estimates. Intervals are conditional on the reconstructed seasonal series.</p>
+<p class="data"><a href="independent-methane-trends.csv">Trends and window sensitivity (CSV)</a><a href="independent-methane-annual.csv">Annual amplitudes and coverage (CSV)</a><a href="independent-methane-8day.csv">Eight-day values (CSV)</a><a href="https://doi.org/10.15138/VNCZ-M766">NOAA methane measurements</a></p>
+</section>
+<section id="trends">
+<h2>Long-term change and the seasonal cycle at four stations</h2>
+<figure><a href="station-trends-seasonality.png"><img loading="lazy" src="station-trends-seasonality.png" alt="Monthly carbon dioxide, methane and nitrous oxide at Barrow, Waliguan, Mauna Loa and the South Pole, with 2015–2024 seasonal anomalies"></a></figure>
+<p class="data"><a href="seasonal-cycle.csv">Monthly seasonal anomalies and counts (CSV)</a></p>
+</section>
+<section id="map">
+<h2>Where are concentrations highest?</h2>
+<figure><a href="station-map.png"><img loading="lazy" src="station-map.png" alt="Global maps of annual mean dry-air mole fractions for three greenhouse gases, using complete station years"></a><figcaption>Each station mean weights its 12 published monthly means equally. Each gas has its own scale.</figcaption></figure>
+<p class="data"><a href="station-annual-means.csv">Mapped station means and coordinates (CSV)</a><a href="https://gml.noaa.gov/dv/ftpdata.html">NOAA GML data archive</a></p>
+</section></main></body></html>

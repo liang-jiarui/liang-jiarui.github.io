@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-27T06:22:18Z",
+  "updated_at": "2026-11-28T00:10:37Z",
   "entries": [
     {
       "id": "emh:simulation:@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
@@ -30699,6 +30699,20 @@
       "description": "The companion table to NOAA's Annual Greenhouse Gas Index used in the FaIR study reproduction. Includes 46 annual values from 1979–2024 and fields for 22 gases."
     },
     {
+      "id": "obshub:dataset:noaa_gml_surface_flask",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "NOAA GML fixed-site flask CO₂, CH₄ and N₂O",
+      "url": "../ObservationHub/docs/observations/?dataset=noaa_gml_surface_flask",
+      "keywords": [
+        "1967–2025 across 86 fixed sites. Coverage varies by gas and site.",
+        "Climate benchmarks",
+        "NOAA Global Monitoring Laboratory and cooperative sampling sites",
+        "Station observations"
+      ],
+      "description": "Individual dry-air mole fraction measurements and published station monthly means. The source files include UTC sampling times, sample coordinates, flask and instrument IDs, estimated uncertainty and NOAA quality flags."
+    },
+    {
       "id": "obshub:dataset:noaa_isd_lite_china",
       "hub": "ObsHub",
       "type": "Dataset",
@@ -31162,6 +31176,16 @@
     }
   ],
   "recent": [
+    {
+      "id": "obshub:dataset:noaa_gml_surface_flask",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "NOAA GML fixed-site flask CO₂, CH₄ and N₂O",
+      "description": "Individual dry-air mole fraction measurements and published station monthly means. The source files include UTC sampling times, sample coordinates, flask and instrument IDs, estimated uncertainty and NOAA quality flags.",
+      "url": "../ObservationHub/docs/observations/?dataset=noaa_gml_surface_flask",
+      "date": "2026-11-28T00:10:37Z",
+      "change": "added"
+    },
     {
       "id": "paper-replicates:paper reproduction:leach-2021-fair-v2",
       "hub": "Paper Replicates",
@@ -31988,16 +32012,6 @@
       "title": "GFED5.1 shared fire emissions",
       "description": "GFED5.1 Monthly files from the shared archive. GFED5.1NRT is outside this sample.",
       "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_shared",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:ghg_budget_inversions",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "Greenhouse gas flux inversions",
-      "description": "Global Carbon Project 2019 methane budget, CTE simulation constrained by surface observations.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=ghg_budget_inversions",
       "date": "2026-11-23T23:38:41Z",
       "change": "added"
     }

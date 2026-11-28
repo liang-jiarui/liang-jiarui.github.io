@@ -1410,9 +1410,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e01_jra_smoke_000101_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_00010101-00010101",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/cesm/cesm2_1_5/e01_jra_smoke_000101_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_00010101-00010101 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e01_jra_smoke_000101_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_00010101-00010101"
     }
   },
   {
@@ -1439,9 +1439,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e02_jra_1yr_0001_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_0001-0001",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/cesm/cesm2_1_5/e02_jra_1yr_0001_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_0001-0001 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e02_jra_1yr_0001_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_0001-0001"
     }
   },
   {
@@ -1468,9 +1468,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e03_jra_hindcast_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_0001-0122",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/cesm/cesm2_1_5/e03_jra_hindcast_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_0001-0122 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e03_jra_hindcast_GOMIPECOIAF_JRA-1p4-2018_TL319_g17_0001-0122"
     }
   },
   {
@@ -1497,9 +1497,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e04_g37_smoke_000101_G1850ECO_T62_g37_00010101-00010101",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/cesm/cesm2_1_5/e04_g37_smoke_000101_G1850ECO_T62_g37_00010101-00010101 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e04_g37_smoke_000101_G1850ECO_T62_g37_00010101-00010101"
     }
   },
   {
@@ -1526,9 +1526,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e05_g37_1yr_0001_G1850ECO_T62_g37_0001-0001",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/cesm/cesm2_1_5/e05_g37_1yr_0001_G1850ECO_T62_g37_0001-0001 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e05_g37_1yr_0001_G1850ECO_T62_g37_0001-0001"
     }
   },
   {
@@ -1555,9 +1555,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e06_g37_normalyear_G1850ECO_T62_g37_0001-0122",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/cesm/cesm2_1_5/e06_g37_normalyear_G1850ECO_T62_g37_0001-0122 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/cesm/cesm2_1_5/e06_g37_normalyear_G1850ECO_T62_g37_0001-0122"
     }
   },
   {
@@ -1584,9 +1584,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/e3sm/E3SM_v3_0_2/e07_jra_smoke_000101_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_00010101-00010101",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/e3sm/E3SM_v3_0_2/e07_jra_smoke_000101_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_00010101-00010101 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/e3sm/E3SM_v3_0_2/e07_jra_smoke_000101_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_00010101-00010101"
     }
   },
   {
@@ -1613,9 +1613,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/e3sm/E3SM_v3_0_2/e08_jra_1yr_0001_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_0001-0001",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/e3sm/E3SM_v3_0_2/e08_jra_1yr_0001_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_0001-0001 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/e3sm/E3SM_v3_0_2/e08_jra_1yr_0001_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_0001-0001"
     }
   },
   {
@@ -1642,9 +1642,9 @@
     "source_success": false,
     "controls_summary": {},
     "links": [],
+    "external_summary": true,
     "commands": {
-      "check": "python -m src.simulations check @clow_2025_james/e3sm/E3SM_v3_0_2/e09_jra_hindcast_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_0001-0122",
-      "preview": "python -m src.simulations reproduce @clow_2025_james/e3sm/E3SM_v3_0_2/e09_jra_hindcast_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_0001-0122 --dry-run"
+      "check": "python -m src.simulations check @clow_2025_james/e3sm/E3SM_v3_0_2/e09_jra_hindcast_GMPAS-OIECO-JRA1p4_TL319_EC30to60E2r2_0001-0122"
     }
   },
   {

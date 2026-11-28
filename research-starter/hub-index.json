@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-28T00:10:37Z",
+  "updated_at": "2026-11-28T00:15:31Z",
   "entries": [
     {
       "id": "emh:simulation:@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
@@ -30070,6 +30070,22 @@
       "content_hash": "8f8857cce4ba89fac244e0095d74b2c07817b45e803c6ba2844316345f1e1af3"
     },
     {
+      "id": "obshub:analysis:noaa_gml_surface_flask",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Greenhouse gases at surface flask stations",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=noaa_gml_surface_flask",
+      "keywords": [
+        "1967–2025 · fixed stations · discrete measurements and published monthly means",
+        "Carbon dioxide",
+        "Methane",
+        "Nitrous oxide",
+        "noaa_gml_surface_flask"
+      ],
+      "description": "NOAA GML Global Greenhouse Gas Reference Network, Carbon Cycle Cooperative Global Air Sampling Network.",
+      "content_hash": "f70d45700431042fbf589ef3f27a8d03a67995037247e2bb650eadcdb987413e"
+    },
+    {
       "id": "obshub:analysis:omi_total_column_o3",
       "hub": "ObsHub",
       "type": "Analysis",
@@ -31177,6 +31193,16 @@
   ],
   "recent": [
     {
+      "id": "obshub:analysis:noaa_gml_surface_flask",
+      "hub": "ObsHub",
+      "type": "Analysis",
+      "title": "Greenhouse gases at surface flask stations",
+      "description": "NOAA GML Global Greenhouse Gas Reference Network, Carbon Cycle Cooperative Global Air Sampling Network.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=noaa_gml_surface_flask",
+      "date": "2026-11-28T00:15:31Z",
+      "change": "added"
+    },
+    {
       "id": "obshub:dataset:noaa_gml_surface_flask",
       "hub": "ObsHub",
       "type": "Dataset",
@@ -32002,16 +32028,6 @@
       "title": "FireEarth GFED5 monthly inputs",
       "description": "gfed5_global_2x2p5deg_monthly_1997_2026.nc, archived GFED5 inputs and native-grid aggregates.",
       "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_fireearth",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:gfed5_shared",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED5.1 shared fire emissions",
-      "description": "GFED5.1 Monthly files from the shared archive. GFED5.1NRT is outside this sample.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_shared",
       "date": "2026-11-23T23:38:41Z",
       "change": "added"
     }

@@ -215,6 +215,7 @@ dialog h3 { font-size: .9375rem; margin: 1.125rem 0 .5rem; }
     <a href="?view=datasets" id="datasets-tab">Datasets<span id="datasets-total" class="count"></span></a>
     <a href="?view=tasks" id="tasks-tab">Tasks<span id="tasks-total" class="count"></span></a>
     <a href="?view=analysis" id="analysis-tab">Analysis</a>
+    <a href="figures/noaa-flask/index.html#methane">Methane · Fig. 1</a>
   </nav>
   <div class="workspace" id="catalog-workspace">
     <aside class="tree" aria-labelledby="category-heading">
@@ -265,6 +266,18 @@ dialog h3 { font-size: .9375rem; margin: 1.125rem 0 .5rem; }
         </label>
       </header>
       <div class="analysis-scroller" id="analysis-scroller" tabindex="0" role="region" aria-label="Analysis report">
+        <figure id="methane-figure" class="paper-figure">
+          <figcaption>
+            <div>
+              <p>Liu et al. · <i>Nature</i> (2025) · Figure 1</p>
+              <h2>Trends in the seasonal amplitude of atmospheric methane</h2>
+            </div>
+            <a href="figures/noaa-flask/index.html#methane">Methods and figure data</a>
+          </figcaption>
+          <a class="paper-image" href="figures/noaa-flask/methane-figure1.png">
+            <img src="figures/noaa-flask/methane-figure1.png" width="2478" height="1640" alt="Methane seasonal amplitude, 1984–2020. The annual peak-to-trough range narrowed at Barrow and widened at Mauna Loa and the South Pole. Open full-size figure.">
+          </a>
+        </figure>
         <div id="analysis-report"></div>
         <a class="analysis-download" href="analysis.json" download>Download chart data (JSON)</a>
       </div>
@@ -1439,7 +1452,10 @@ for (const view of [...Object.keys(views), "analysis"]) {
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     navigate({view});
-    if (view === "analysis") byId("analysis-title").scrollIntoView({block: "nearest"});
+    if (view === "analysis") {
+      analysisScroller.scrollTop = 0;
+      byId("analysis-title").scrollIntoView({block: "nearest"});
+    }
   });
 }
 
@@ -1574,6 +1590,11 @@ function renderAnalysis() {
   const q = state.q || "";
   if (analysisSearch.value !== q) analysisSearch.value = q;
   const report = byId("analysis-report");
+  const figure = byId("methane-figure");
+  const normalize = value => value.normalize("NFKC").toLowerCase();
+  const figureTerms = normalize(figure.textContent + " CH₄ Peng Shushi NOAA flask");
+  const searchTerms = normalize(q).trim().split(/\s+/).filter(Boolean);
+  figure.hidden = Boolean(state.profile) || !searchTerms.every(term => figureTerms.includes(term));
   if (q !== lastAnalysisQuery) {
     observer?.disconnect();
     for (const grid of chartVariables.keys()) {
@@ -1581,15 +1602,14 @@ function renderAnalysis() {
     }
     chartVariables.clear();
     const groups = new Map();
-    const normalize = value => value.normalize("NFKC").toLowerCase();
-    const terms = normalize(q).trim().split(/\s+/).filter(Boolean);
     let count = 0;
     for (const profile of analysis) {
       const dataset = views.datasets.index.get(profile.dataset_id);
-      const context = normalize([profile.title, profile.dataset_id, dataset?.category, dataset?.title].join(" "));
+      const context = normalize([profile.title, profile.dataset_id, dataset?.category, dataset?.title,
+        profile.dataset_id === "noaa_gml_surface_flask" ? figureTerms : ""].join(" "));
       const variables = profile.variables.filter(v => {
         const text = context + " " + normalize([v.name, v.id].join(" "));
-        return terms.every(term => text.includes(term));
+        return searchTerms.every(term => text.includes(term));
       });
       if (!variables.length) continue;
       const category = dataset?.category || "Other resources";

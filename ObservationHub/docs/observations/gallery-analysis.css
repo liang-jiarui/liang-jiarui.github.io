@@ -54,6 +54,13 @@
 .analysis-header p, .dataset-coverage, .variable-method, .dataset-source { color: var(--muted); }
 .analysis-scroller { flex: 1; min-height: 0; padding: 0 clamp(.875rem, 2.2vw, 1.75rem) 1.25rem; }
 .analysis-scroller:focus-visible { outline-offset: -3px; }
+.paper-figure { margin: 1rem 0; padding: clamp(.65rem, 1.5vw, 1.1rem); background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+.paper-figure figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: end; gap: .3rem 1rem; margin-bottom: .7rem; }
+.paper-figure figcaption p, .paper-figure figcaption a { font-size: .875rem; }
+.paper-figure figcaption p { color: var(--muted); }
+.paper-figure h2 { font-size: clamp(1.1rem, 2vw, 1.5rem); line-height: 1.3; }
+.paper-image { display: block; width: fit-content; max-width: 100%; margin-inline: auto; }
+.paper-image img { display: block; width: auto; height: auto; max-width: 100%; max-height: 55vh; cursor: zoom-in; }
 .analysis-dataset { margin-top: 1.4rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
 .analysis-dataset:first-child { margin-top: 0; border-top: 0; }
 .dataset-header { max-width: 86ch; }

@@ -24,7 +24,7 @@
   }
 
   function countLabel(variable) {
-    return variable.observation_label ? `${variable.observation_label} count` : "Observation count";
+    return variable.observation_label ? `${variable.observation_label} count` : "Record count";
   }
 
   function extent(values, minimumSpread) {
@@ -551,7 +551,7 @@
     }
 
     const head = element("div", "dataset-overview-head");
-    head.append(element("h2", "dataset-overview-heading", "Datasets by category"));
+    head.append(element("h2", "dataset-overview-heading", "Datasets by topic"));
     const totalProfiles = allRows.filter(row => profiles.has(row.id)).length;
     const summary = element("p", "dataset-overview-summary",
       `${number.format(allRows.length)} catalog datasets · ${number.format(totalProfiles)} with analysis`);

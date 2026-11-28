@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-28T00:25:30Z",
+  "updated_at": "2026-11-28T00:55:42Z",
   "entries": [
     {
       "id": "emh:simulation:@benchmark/gcadj/gcadj_hemco_tang_2023/benchmark_20150101_merra2_pbl",
@@ -29835,49 +29835,6 @@
       "content_hash": "364f0eb23771cd5bb053cb6692ebddcd0bb20df89d44cb9a782d66cadd14693e"
     },
     {
-      "id": "obshub:analysis:gfed4_1_source",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED4.1 original archive burned fraction",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1_source",
-      "keywords": [
-        "Burned fraction",
-        "Global native-grid samples in 2010 and 2015",
-        "gfed4_1_source"
-      ],
-      "description": "Original fire_emissions_v4_R1_1293 release annual HDF5 files.",
-      "content_hash": "a7175bccffe6749a840dc71a7387af9d5729eb7f0e0ae02363cc7224d5025fd6"
-    },
-    {
-      "id": "obshub:analysis:gfed4_1s",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED4.1s global burned fraction",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1s",
-      "keywords": [
-        "Burned fraction",
-        "Global native-grid samples in 2010 and 2016",
-        "gfed4_1s"
-      ],
-      "description": "Annual HDF5 archives include the experimental small-fire correction.",
-      "content_hash": "efb65fdafbf234521d2603322b931788dbcecb84657f98191ae8a96a15f4b0cc"
-    },
-    {
-      "id": "obshub:analysis:gfed4_1s_emission_tables",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED4.1s annual global fire emissions",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1s_emission_tables",
-      "keywords": [
-        "Ammonia emissions",
-        "Global annual estimates, 1997–2023",
-        "Nitrogen oxide emissions",
-        "gfed4_1s_emission_tables"
-      ],
-      "description": "Archive tables mark 2017–2023 estimates as beta, with higher uncertainty. The publisher advises against trend analysis using those estimates.",
-      "content_hash": "6022310337dd814a13504a474f3e89d5a838e9455f2bbebe535866cc41e0784d"
-    },
-    {
       "id": "obshub:analysis:gfed5_burned_area",
       "hub": "ObsHub",
       "type": "Analysis",
@@ -29895,7 +29852,7 @@
       "id": "obshub:analysis:gfed5_fireearth",
       "hub": "ObsHub",
       "type": "Analysis",
-      "title": "FireEarth GFED5 monthly inputs",
+      "title": "GFED5 monthly burned area for FireEarth",
       "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_fireearth",
       "keywords": [
         "Burned area in the FireEarth grid",
@@ -29904,21 +29861,7 @@
         "gfed5_fireearth"
       ],
       "description": "gfed5_global_2x2p5deg_monthly_1997_2026.nc, archived GFED5 inputs and native-grid aggregates.",
-      "content_hash": "03b460b8593e2c9e084a0f1329beffb8b11c19d705b8196eec7655fdb4082202"
-    },
-    {
-      "id": "obshub:analysis:gfed5_shared",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED5.1 shared fire emissions",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_shared",
-      "keywords": [
-        "Carbon emissions",
-        "Global GFED5.1 grid samples in 2001, 2010 and 2022",
-        "gfed5_shared"
-      ],
-      "description": "GFED5.1 Monthly files from the shared archive. GFED5.1NRT is outside this sample.",
-      "content_hash": "d2fe21a743cb56347df975cd775efc9d283be8525472448e077d14e6020dc6dd"
+      "content_hash": "8782699d6cb7e91f6f826d7c3d8c11b3e159ff010383b782414b28bcb7570d29"
     },
     {
       "id": "obshub:analysis:ghg_budget_inversions",
@@ -30248,7 +30191,7 @@
       "keywords": [
         "Air quality",
         "China National Environmental Monitoring Centre (CNEMC) and CAMx",
-        "Matched model and station data"
+        "Model–observation matchups"
       ],
       "description": "Two hourly gridded input tables with observed ozone, CAMx ozone and WRF meteorological fields. The audit files in camx_acs_ozone_validation record their input checksums."
     },
@@ -30261,7 +30204,7 @@
       "keywords": [
         "Air quality",
         "China National Environmental Monitoring Centre (CNEMC) and CAMx",
-        "Matched model and station data"
+        "Model–observation matchups"
       ],
       "description": "Station observations, station lists, grid-level observations, CAMx baseline indices and audit files for the summers of 2014, 2017, 2020 and 2023. Consult the audit files when using camx_acs_ozone_grid_hourly with this archive."
     },
@@ -30272,8 +30215,8 @@
       "title": "WRF D02 hourly station meteorology validation for the CAMx study",
       "url": "../ObservationHub/docs/observations/?dataset=camx_acs_weather_validation",
       "keywords": [
-        "Matched model and station data",
         "Meteorology and soundings",
+        "Model–observation matchups",
         "NOAA ISD-Lite and CAMx"
       ],
       "description": "Hourly temperature, relative humidity and wind speed matchups used in Supplementary Figure S6, with station metadata and validation notes. Covers 30 stations for the summers of 2014, 2017, 2020 and 2023."
@@ -30287,7 +30230,7 @@
       "keywords": [
         "Air quality",
         "China National Environmental Monitoring Centre (CNEMC) and BTH-Ozone-CAMx-OSAT",
-        "Matched model and station data"
+        "Model–observation matchups"
       ],
       "description": "The main sample, subsets used for Figure 2 and Figure S4, and the Beijing holdout validation. Hourly and daily tables cover D01 and D02 for the summers of 2014, 2017, 2020 and 2023. The Figure 2 D01 daily table is in camx_bth_validation."
     },
@@ -30300,7 +30243,7 @@
       "keywords": [
         "Air quality",
         "BTH-Ozone-CAMx-OSAT",
-        "Matched model and station data"
+        "Model–observation matchups"
       ],
       "description": "Includes the existing mda8_d01.csv.gz matchup table and four UTC days of example CAMx simulations. Source project file locations are listed in data/README.md."
     },
@@ -30313,7 +30256,7 @@
       "keywords": [
         "Air quality",
         "CAMx project archive",
-        "Matched model and station data"
+        "Model–observation matchups"
       ],
       "description": "Daily station ozone statistics and matched MERRA-2 meteorological and surface fields for the summers of 2014, 2017, 2020 and 2023. Includes the 0.625° × 0.5° and 0.1° × 0.1° matchup tables and their training inputs."
     },
@@ -30325,7 +30268,7 @@
       "url": "../ObservationHub/docs/observations/?dataset=camx_modis_lai_2008",
       "keywords": [
         "MODIS and CAMx",
-        "Observation-derived model inputs",
+        "Model inputs",
         "Remote sensing"
       ],
       "description": "46 NetCDF files on a 0.05° grid contain the LAIv variable and geographic coordinates for MEGAN. Source filenames follow eight-day intervals in 2008."
@@ -30339,7 +30282,7 @@
       "keywords": [
         "Air quality",
         "CAMx project historical archive",
-        "Station metadata"
+        "Reference data"
       ],
       "description": "National, Beijing and Jining station lists with records for merging station lists or mapping stations to model grids."
     },
@@ -30352,7 +30295,7 @@
       "keywords": [
         "Air quality",
         "CAMx project working archive",
-        "Station metadata"
+        "Reference data"
       ],
       "description": "Monitoring network rosters, station crosswalks and project grid fields."
     },
@@ -30365,7 +30308,7 @@
       "keywords": [
         "Air quality",
         "CAMx project archive",
-        "Matched model and station data"
+        "Model–observation matchups"
       ],
       "description": "The day_sim_obs.csv and training_data_processed.csv tables contain national monitoring station observations, model output and meteorological variables."
     },
@@ -30378,7 +30321,7 @@
       "keywords": [
         "Air quality",
         "China National Environmental Monitoring Centre (CNEMC) and CAMx",
-        "Observation-derived products"
+        "Station observations"
       ],
       "description": "Daily O₃ and PM₂.₅ statistics and pollution categories at 12 stations from May 1, 2024 to April 30, 2025. SHA-256 checksums agree across the Yangtze River Delta and Beijing project branches and the CAMx working copy."
     },
@@ -30405,7 +30348,7 @@
       "keywords": [
         "1850–2025 at 1° and 1.9° × 2.5°.",
         "CESM boundary data used by EarthModelHub",
-        "Observation-derived model inputs",
+        "Model inputs",
         "Ocean"
       ],
       "description": "Model boundary files derived from COBE-SST2, available at 1° and 1.9° × 2.5°."
@@ -30432,7 +30375,7 @@
       "url": "../ObservationHub/docs/observations/?dataset=cropland_n2o_training",
       "keywords": [
         "Cropland nitrogen fluxes",
-        "Literature and training tables",
+        "Field study compilations",
         "Published supplementary data compiled by the N2O_mitigation project"
       ],
       "description": "Original study supplements and project training tables for N₂O, nitrogen leaching and runoff, NH₃, and fertilizer management."
@@ -30459,48 +30402,9 @@
       "keywords": [
         "Cropland nitrogen fluxes",
         "Fertilizer-Management-for-Global-Ammonia-Emission-Reduction",
-        "Supplementary tables"
+        "Field study compilations"
       ],
       "description": "Supplementary Table 3-use2775.xlsx from the original study repository."
-    },
-    {
-      "id": "obshub:dataset:gfed4_1_source",
-      "hub": "ObsHub",
-      "type": "Dataset",
-      "title": "GFED4.1 original fire emissions release",
-      "url": "../ObservationHub/docs/observations/?dataset=gfed4_1_source",
-      "keywords": [
-        "Global Fire Emissions Database",
-        "Satellite-derived products",
-        "Wildfire"
-      ],
-      "description": "Original GFED4.1 release files preserved by EarthModelHub."
-    },
-    {
-      "id": "obshub:dataset:gfed4_1s",
-      "hub": "ObsHub",
-      "type": "Dataset",
-      "title": "GFED4.1s global burned area and fire emissions",
-      "url": "../ObservationHub/docs/observations/?dataset=gfed4_1s",
-      "keywords": [
-        "Global Fire Emissions Database",
-        "Satellite-derived products",
-        "Wildfire"
-      ],
-      "description": "Annual HDF5 archive assembled by EarthModelHub. Later years are marked beta."
-    },
-    {
-      "id": "obshub:dataset:gfed4_1s_emission_tables",
-      "hub": "ObsHub",
-      "type": "Dataset",
-      "title": "GFED4.1s annual fire emissions of NH₃ and NOₓ",
-      "url": "../ObservationHub/docs/observations/?dataset=gfed4_1s_emission_tables",
-      "keywords": [
-        "Global Fire Emissions Database and Fire_Ndep_Csink",
-        "Satellite-derived products",
-        "Wildfire"
-      ],
-      "description": "Global and regional emissions estimates for 1997–2023. The estimates for 2017–2023 are marked beta."
     },
     {
       "id": "obshub:dataset:gfed5_burned_area",
@@ -30509,9 +30413,9 @@
       "title": "GFED5 historical monthly gridded burned area",
       "url": "../ObservationHub/docs/observations/?dataset=gfed5_burned_area",
       "keywords": [
+        "Fire",
         "Global Fire Emissions Database",
-        "Satellite-derived products",
-        "Wildfire"
+        "Observation-derived products"
       ],
       "description": "Original release package and monthly burned area grids archived by EarthModelHub. Includes the historical reconstruction and the satellite-era product."
     },
@@ -30519,28 +30423,15 @@
       "id": "obshub:dataset:gfed5_fireearth",
       "hub": "ObsHub",
       "type": "Dataset",
-      "title": "FireEarth GFED5 monthly gridded product",
+      "title": "GFED5 monthly burned area for the FireEarth model",
       "url": "../ObservationHub/docs/observations/?dataset=gfed5_fireearth",
       "keywords": [
+        "Fire",
         "FireEarth and the Global Fire Emissions Database",
-        "Satellite-derived products",
-        "The file indicates 1997–2026 on a monthly 2° × 2.5° grid.",
-        "Wildfire"
+        "Model inputs",
+        "The file indicates 1997–2026 on a monthly 2° × 2.5° grid."
       ],
-      "description": "Monthly 2° × 2.5° gridded input prepared for FireEarth."
-    },
-    {
-      "id": "obshub:dataset:gfed5_shared",
-      "hub": "ObsHub",
-      "type": "Dataset",
-      "title": "GFED5 shared data archive",
-      "url": "../ObservationHub/docs/observations/?dataset=gfed5_shared",
-      "keywords": [
-        "Global Fire Emissions Database",
-        "Satellite-derived products",
-        "Wildfire"
-      ],
-      "description": "Shared data archive used by EarthModelHub and other projects."
+      "description": "Burned area regridded to the 2° × 2.5° FireEarth model grid, with global totals for comparison."
     },
     {
       "id": "obshub:dataset:ghg_budget_inversions",
@@ -30550,7 +30441,7 @@
       "url": "../ObservationHub/docs/observations/?dataset=ghg_budget_inversions",
       "keywords": [
         "Carbon budgets and inversions",
-        "Flux inversion products",
+        "Flux inversions",
         "GHG_budget project archive"
       ],
       "description": "Multiple versions of CO₂, CH₄ and N₂O flux inversion products, including priors, posteriors and some original releases."
@@ -30562,7 +30453,7 @@
       "title": "Global Carbon Budget and project comparison workbooks",
       "url": "../ObservationHub/docs/observations/?dataset=global_carbon_budget",
       "keywords": [
-        "Carbon budget workbooks",
+        "Budget and model estimates",
         "Carbon budgets and inversions",
         "Global Carbon Project, FireEarth and Fire_Ndep"
       ],
@@ -30576,7 +30467,7 @@
       "url": "../ObservationHub/docs/observations/?dataset=gosat_ch4_ocpr_v9",
       "keywords": [
         "Remote sensing",
-        "Satellite observations",
+        "Satellite retrievals",
         "University of Leicester and GOSAT"
       ],
       "description": "Level 2 methane NetCDF files for 2009–2025, including the 2021 data used in the course."
@@ -30589,7 +30480,7 @@
       "url": "../ObservationHub/docs/observations/?dataset=huaihe_gnss_pwv",
       "keywords": [
         "Meteorology and soundings",
-        "Station observations",
+        "Observation-derived products",
         "The project configuration uses 20 stations in the Huai River basin.",
         "huaihe_ahqx project"
       ],
@@ -30642,9 +30533,9 @@
       "title": "IGCC global mean surface temperature time series",
       "url": "../ObservationHub/docs/observations/?dataset=igcc_gmst_1850_2022",
       "keywords": [
-        "Climate benchmarks",
+        "Climate and greenhouse gases",
         "Indicators of Global Climate Change and the FaIR calibration project",
-        "Observational benchmarks"
+        "Observation-derived products"
       ],
       "description": "Global mean surface temperature used to calibrate FaIR, with 173 annual values from 1850–2022."
     },
@@ -30669,7 +30560,7 @@
       "url": "../ObservationHub/docs/observations/?dataset=mopitt_co_l2_v9",
       "keywords": [
         "Remote sensing",
-        "Satellite observations",
+        "Satellite retrievals",
         "Terra MOPITT"
       ],
       "description": "Level 2 carbon monoxide HDF-EOS5 files for 2000–2024."
@@ -30683,8 +30574,8 @@
       "keywords": [
         "Dates vary by network. The merged workbook reports monthly NH₄⁺ and NO₃⁻ wet deposition by station.",
         "EANET, CAPMoN, NADP/NTN, INDAAF, EMEP and other networks and study authors",
-        "Monitoring networks and references",
-        "Nitrogen deposition"
+        "Nitrogen deposition",
+        "Station observations"
       ],
       "description": "Raw data, monthly wet deposition measurements, historical intermediate tables, literature and training workbooks."
     },
@@ -30695,11 +30586,11 @@
       "title": "Nitrogen deposition and carbon sink reference workbook",
       "url": "../ObservationHub/docs/observations/?dataset=ndep_csink_reference",
       "keywords": [
+        "Budget and model estimates",
         "Carbon budgets and inversions",
-        "FireEarth and Fire_Ndep",
-        "Project references"
+        "FireEarth and Fire_Ndep"
       ],
-      "description": "Project summary workbook dated April 12, 2026."
+      "description": "Project workbook dated April 12, 2026. The chart shows model estimates of net biome production."
     },
     {
       "id": "obshub:dataset:noaa_gml_global_mole_fractions",
@@ -30708,7 +30599,7 @@
       "title": "NOAA GML global annual mean greenhouse gas dry-air mole fractions",
       "url": "../ObservationHub/docs/observations/?dataset=noaa_gml_global_mole_fractions",
       "keywords": [
-        "Climate benchmarks",
+        "Climate and greenhouse gases",
         "NOAA Global Monitoring Laboratory",
         "Observation-derived products"
       ],
@@ -30721,12 +30612,12 @@
       "title": "NOAA GML fixed-site flask CO₂, CH₄ and N₂O",
       "url": "../ObservationHub/docs/observations/?dataset=noaa_gml_surface_flask",
       "keywords": [
-        "Climate benchmarks",
+        "Climate and greenhouse gases",
         "Global fixed-site flask network. The analysis lists the measured period and station count for each gas.",
         "NOAA Global Monitoring Laboratory and cooperative sampling sites",
         "Station observations"
       ],
-      "description": "Individual dry-air mole fraction measurements and published station monthly means. The source files include UTC sampling times, sample coordinates, flask and instrument IDs, estimated uncertainty and NOAA quality flags."
+      "description": "Individual dry-air mole fraction measurements and published station monthly means. The source files include UTC sampling times, sample coordinates, flask and instrument IDs, estimated uncertainty and NOAA quality flags. The figure report compares station records with the methane seasonality study by Gang Liu, Shushi Peng and colleagues (Nature, 2025)."
     },
     {
       "id": "obshub:dataset:noaa_isd_lite_china",
@@ -30752,7 +30643,7 @@
         "Air quality",
         "Aura Ozone Monitoring Instrument (OMI)",
         "Global 1° grids in 12 annual directories between 2012 and 2025.",
-        "Satellite-derived products"
+        "Observation-derived products"
       ],
       "description": "Daily global 1° grids whose file headers read OMI TO3 STD OZONE. The archive retains the original text files."
     },
@@ -30763,9 +30654,9 @@
       "title": "OSCAR v3.1 climate and atmospheric composition benchmarks",
       "url": "../ObservationHub/docs/observations/?dataset=oscar_v3_1_observation_benchmarks",
       "keywords": [
-        "Climate benchmarks",
+        "Climate and greenhouse gases",
         "OSCAR v3.1 and the observation product providers",
-        "Observational benchmarks"
+        "Reference data"
       ],
       "description": "24 NetCDF files compiled for the project, covering greenhouse gas concentrations, surface temperature, precipitation, sea surface temperature, ocean heat content, carbon budgets, radiative forcing and related evaluation quantities."
     },
@@ -30777,8 +30668,8 @@
       "url": "../ObservationHub/docs/observations/?dataset=sr_unet_nightlights",
       "keywords": [
         "MachineLearningHub and Fire_Ndep project archives",
-        "Remote sensing",
-        "Remote-sensing reconstructions"
+        "Observation-derived products",
+        "Remote sensing"
       ],
       "description": "Historical nighttime lights reconstruction and simulation products, including original compressed archives and extracted files."
     },
@@ -30817,7 +30708,7 @@
       "url": "../ObservationHub/docs/observations/?dataset=tropomi_no2_l2",
       "keywords": [
         "Remote sensing",
-        "Satellite observations",
+        "Satellite retrievals",
         "Sentinel-5P TROPOMI"
       ],
       "description": "NetCDF orbital files for 2018–2026, including reprocessed and offline products."
@@ -30830,7 +30721,7 @@
       "url": "../ObservationHub/docs/observations/?dataset=wrfgc_station_observations",
       "keywords": [
         "Air quality",
-        "Matched model and station data",
+        "Model–observation matchups",
         "lym_ml_wrfgc project station archive"
       ],
       "description": "Station O₃ and PM₂.₅ observation CSVs and matched tables containing model variables. The source time zone is unconfirmed."
@@ -31193,24 +31084,254 @@
   ],
   "recent": [
     {
-      "id": "obshub:dataset:noaa_gml_surface_flask",
+      "id": "obshub:analysis:gfed5_fireearth",
       "hub": "ObsHub",
-      "type": "Dataset",
-      "title": "NOAA GML fixed-site flask CO₂, CH₄ and N₂O",
-      "description": "Individual dry-air mole fraction measurements and published station monthly means. The source files include UTC sampling times, sample coordinates, flask and instrument IDs, estimated uncertainty and NOAA quality flags.",
-      "url": "../ObservationHub/docs/observations/?dataset=noaa_gml_surface_flask",
-      "date": "2026-11-28T00:25:30Z",
+      "type": "Analysis",
+      "title": "GFED5 monthly burned area for FireEarth",
+      "description": "gfed5_global_2x2p5deg_monthly_1997_2026.nc, archived GFED5 inputs and native-grid aggregates.",
+      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_fireearth",
+      "date": "2026-11-28T00:55:42Z",
       "change": "updated"
     },
     {
-      "id": "obshub:analysis:noaa_gml_surface_flask",
+      "id": "obshub:dataset:camx_acs_ozone_grid_hourly",
       "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "Greenhouse gases at surface flask stations",
-      "description": "NOAA GML Global Greenhouse Gas Reference Network, Carbon Cycle Cooperative Global Air Sampling Network.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=noaa_gml_surface_flask",
-      "date": "2026-11-28T00:15:31Z",
-      "change": "added"
+      "type": "Dataset",
+      "title": "CAMx study D01/D02 hourly gridded ozone matchups",
+      "description": "Two hourly gridded input tables with observed ozone, CAMx ozone and WRF meteorological fields. The audit files in camx_acs_ozone_validation record their input checksums.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_acs_ozone_grid_hourly",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_acs_ozone_validation",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "CAMx study D01/D02 ozone station validation data",
+      "description": "Station observations, station lists, grid-level observations, CAMx baseline indices and audit files for the summers of 2014, 2017, 2020 and 2023. Consult the audit files when using camx_acs_ozone_grid_hourly with this archive.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_acs_ozone_validation",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_acs_weather_validation",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "WRF D02 hourly station meteorology validation for the CAMx study",
+      "description": "Hourly temperature, relative humidity and wind speed matchups used in Supplementary Figure S6, with station metadata and validation notes. Covers 30 stations for the summers of 2014, 2017, 2020 and 2023.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_acs_weather_validation",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_bth_station_pairs",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "BTH CAMx hourly and MDA8 station ozone matchups",
+      "description": "The main sample, subsets used for Figure 2 and Figure S4, and the Beijing holdout validation. Hourly and daily tables cover D01 and D02 for the summers of 2014, 2017, 2020 and 2023. The Figure 2 D01 daily table is in camx_bth_validation.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_bth_station_pairs",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_bth_validation",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "BTH CAMx example and national station matchup archive",
+      "description": "Includes the existing mda8_d01.csv.gz matchup table and four UTC days of example CAMx simulations. Source project file locations are listed in data/README.md.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_bth_validation",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_merra2_station_training",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "CAMx daily station observations matched to MERRA-2",
+      "description": "Daily station ozone statistics and matched MERRA-2 meteorological and surface fields for the summers of 2014, 2017, 2020 and 2023. Includes the 0.625° × 0.5° and 0.1° × 0.1° matchup tables and their training inputs.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_merra2_station_training",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_modis_lai_2008",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "2008 MODIS leaf area index for CAMx MEGAN",
+      "description": "46 NetCDF files on a 0.05° grid contain the LAIv variable and geographic coordinates for MEGAN. Source filenames follow eight-day intervals in 2008.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_modis_lai_2008",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_station_metadata",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "CAMx air quality station reference tables for China and regional domains",
+      "description": "National, Beijing and Jining station lists with records for merging station lists or mapping stations to model grids.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_station_metadata",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_station_reference",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "CAMx national and Beijing station crosswalks",
+      "description": "Monitoring network rosters, station crosswalks and project grid fields.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_station_reference",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_station_training",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "CAMx daily station observation and simulation training pairs",
+      "description": "The day_sim_obs.csv and training_data_processed.csv tables contain national monitoring station observations, model output and meteorological variables.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_station_training",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:camx_yrd_station_daily",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "CAMx regional project daily station O₃ and PM₂.₅ statistics",
+      "description": "Daily O₃ and PM₂.₅ statistics and pollution categories at 12 stations from May 1, 2024 to April 30, 2025. SHA-256 checksums agree across the Yangtze River Delta and Beijing project branches and the CAMx working copy.",
+      "url": "../ObservationHub/docs/observations/?dataset=camx_yrd_station_daily",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:cobe_sst2_amip",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "COBE-SST2 boundary data for CESM AMIP",
+      "description": "Model boundary files derived from COBE-SST2, available at 1° and 1.9° × 2.5°.",
+      "url": "../ObservationHub/docs/observations/?dataset=cobe_sst2_amip",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:cropland_n2o_training",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "Cropland N₂O and related nitrogen flux training data",
+      "description": "Original study supplements and project training tables for N₂O, nitrogen leaching and runoff, NH₃, and fertilizer management.",
+      "url": "../ObservationHub/docs/observations/?dataset=cropland_n2o_training",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:fertilizer_nh3_measurements",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "Global fertilizer management and ammonia volatilization supplementary data",
+      "description": "Supplementary Table 3-use2775.xlsx from the original study repository.",
+      "url": "../ObservationHub/docs/observations/?dataset=fertilizer_nh3_measurements",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:gfed5_burned_area",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "GFED5 historical monthly gridded burned area",
+      "description": "Original release package and monthly burned area grids archived by EarthModelHub. Includes the historical reconstruction and the satellite-era product.",
+      "url": "../ObservationHub/docs/observations/?dataset=gfed5_burned_area",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:gfed5_fireearth",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "GFED5 monthly burned area for the FireEarth model",
+      "description": "Burned area regridded to the 2° × 2.5° FireEarth model grid, with global totals for comparison.",
+      "url": "../ObservationHub/docs/observations/?dataset=gfed5_fireearth",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:ghg_budget_inversions",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "Global greenhouse gas budget inversion reference data",
+      "description": "Multiple versions of CO₂, CH₄ and N₂O flux inversion products, including priors, posteriors and some original releases.",
+      "url": "../ObservationHub/docs/observations/?dataset=ghg_budget_inversions",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:global_carbon_budget",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "Global Carbon Budget and project comparison workbooks",
+      "description": "The workbooks compile multiple datasets and estimates. Includes the 2024 v1.1, 2025 v0.7 and 2026 v0.1 editions, along with project comparison tables.",
+      "url": "../ObservationHub/docs/observations/?dataset=global_carbon_budget",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:gosat_ch4_ocpr_v9",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "GOSAT CH₄ OCPR v9 shared archive",
+      "description": "Level 2 methane NetCDF files for 2009–2025, including the 2021 data used in the course.",
+      "url": "../ObservationHub/docs/observations/?dataset=gosat_ch4_ocpr_v9",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:huaihe_gnss_pwv",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "Huai River basin GNSS precipitable water vapor and station data",
+      "description": "Station metadata, original compressed archives and extracted high-frequency text records. Use is subject to the source project's permissions.",
+      "url": "../ObservationHub/docs/observations/?dataset=huaihe_gnss_pwv",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:igcc_gmst_1850_2022",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "IGCC global mean surface temperature time series",
+      "description": "Global mean surface temperature used to calibrate FaIR, with 173 annual values from 1850–2022.",
+      "url": "../ObservationHub/docs/observations/?dataset=igcc_gmst_1850_2022",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:mopitt_co_l2_v9",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "Terra MOPITT Level 2 CO v9 shared archive",
+      "description": "Level 2 carbon monoxide HDF-EOS5 files for 2000–2024.",
+      "url": "../ObservationHub/docs/observations/?dataset=mopitt_co_l2_v9",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:ndep",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "Atmospheric nitrogen deposition observations and reference data",
+      "description": "Raw data, monthly wet deposition measurements, historical intermediate tables, literature and training workbooks.",
+      "url": "../ObservationHub/docs/observations/?dataset=ndep",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
+    },
+    {
+      "id": "obshub:dataset:ndep_csink_reference",
+      "hub": "ObsHub",
+      "type": "Dataset",
+      "title": "Nitrogen deposition and carbon sink reference workbook",
+      "description": "Project workbook dated April 12, 2026. The chart shows model estimates of net biome production.",
+      "url": "../ObservationHub/docs/observations/?dataset=ndep_csink_reference",
+      "date": "2026-11-28T00:55:42Z",
+      "change": "updated"
     },
     {
       "id": "paper-replicates:paper reproduction:leach-2021-fair-v2",
@@ -31798,236 +31919,6 @@
       "title": "CAM emissions and nitrogen deposition · dry NHx+NOy fire",
       "description": "Monthly dry deposition (fire)",
       "url": "../MachineLearningHub/docs/gallery/?view=inference&item=cam_emis_ndep&variable=NDEP_dry_month_fire",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:beijing_air_quality",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "Beijing hourly air quality",
-      "description": "Beijing monitoring station archive, beijing_all and beijing_extra.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=beijing_air_quality",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:blended_tropomi_gosat_ch4",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "Blended TROPOMI–GOSAT methane",
-      "description": "Blended TROPOMI–GOSAT Level 2 files. Dates label the orbit start day.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=blended_tropomi_gosat_ch4",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_acs_ozone_grid_hourly",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "CAMx ACS D01 grid observation inputs",
-      "description": "Source table: hour_obs_with_feature_d01.csv.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_ozone_grid_hourly",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_acs_ozone_validation",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "CAMx ACS D01 station ozone archive",
-      "description": "D01 station_pairs.npz observation field, times from the corresponding grid table, and locations from stations.csv.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_ozone_validation",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_acs_weather_validation",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "CAMx ACS weather station observations",
-      "description": "Source table: paired_station_hours.csv.gz.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_acs_weather_validation",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_bth_station_pairs",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "BTH D01 station observations from CAMx matchups",
-      "description": "Source table: extract_site_hour_ml_obs_d01.csv.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_bth_station_pairs",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_bth_validation",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "Archived BTH D01 station ozone observations",
-      "description": "Source table: mda8_d01.csv.gz.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_bth_validation",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_merra2_station_training",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "Station ozone archive paired with MERRA-2",
-      "description": "Source table: obs_with_met_0.625_0.5.csv.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_merra2_station_training",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_modis_lai_2008",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "MODIS leaf area index for CAMx",
-      "description": "Dates follow the YYYYDDD filenames. The files do not record physical units or a scale factor, and the internal year attribute differs from the filenames.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_modis_lai_2008",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_station_metadata",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "CAMx merged China station list",
-      "description": "CAMx station reference table, china_sites_merge.csv. This archive contains station metadata.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_metadata",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_station_reference",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "CAMx national station crosswalk",
-      "description": "CAMx station reference table, China_sites_after_20220213.csv. This archive contains station metadata.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_reference",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_station_training",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "CAMx training station observations",
-      "description": "Source table: day_sim_obs.csv.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_station_training",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:camx_yrd_station_daily",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "CAMx station daily observations",
-      "description": "Source table: obs_with_pollution_level.csv.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=camx_yrd_station_daily",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:cobe_sst2_amip",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "COBE-SST2 AMIP boundary conditions",
-      "description": "CESM AMIP boundary forcing derived from COBE-SST2.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cobe_sst2_amip",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:cobe_sst2_jma",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "JMA COBE-SST2",
-      "description": "Japan Meteorological Agency Centennial In Situ Observation-Based Estimates of SST version 2.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cobe_sst2_jma",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:cropland_n2o_training",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "Cropland nitrogen flux measurements",
-      "description": "N2O_NF.xlsx, data sheet. Fallow-season entries are in a separate sheet.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cropland_n2o_training",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:cru_ts_4_08",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "CRU TS v4.08 monthly climate grids",
-      "description": "Climatic Research Unit gridded time series, version 4.08.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=cru_ts_4_08",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:fertilizer_nh3_measurements",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "Fertilizer ammonia measurements",
-      "description": "Original supplementary workbook, Erate column. The table supplies no mapped study coordinates.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=fertilizer_nh3_measurements",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:gfed4_1_source",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED4.1 original archive burned fraction",
-      "description": "Original fire_emissions_v4_R1_1293 release annual HDF5 files.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1_source",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:gfed4_1s",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED4.1s global burned fraction",
-      "description": "Annual HDF5 archives include the experimental small-fire correction.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1s",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:gfed4_1s_emission_tables",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED4.1s annual global fire emissions",
-      "description": "Archive tables mark 2017–2023 estimates as beta, with higher uncertainty. The publisher advises against trend analysis using those estimates.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed4_1s_emission_tables",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:gfed5_burned_area",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "GFED5.0 historical burned area",
-      "description": "GFED5.0 monthly BA files. Area units follow the release readme.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_burned_area",
-      "date": "2026-11-23T23:38:41Z",
-      "change": "added"
-    },
-    {
-      "id": "obshub:analysis:gfed5_fireearth",
-      "hub": "ObsHub",
-      "type": "Analysis",
-      "title": "FireEarth GFED5 monthly inputs",
-      "description": "gfed5_global_2x2p5deg_monthly_1997_2026.nc, archived GFED5 inputs and native-grid aggregates.",
-      "url": "../ObservationHub/docs/observations/?view=analysis&profile=gfed5_fireearth",
       "date": "2026-11-23T23:38:41Z",
       "change": "added"
     }
